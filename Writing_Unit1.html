@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles for the body, setting font, background, and default text properties */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #334155;
+            line-height: 1.6;
+            font-size: 1rem; /* Default base font size for larger screens */
+        }
+        /* Container for the main content, providing max-width, margin, padding, and styling */
+        .container {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        /* Styling for headings (h1, h2, h3) */
+        h1, h2, h3 {
+            color: #1e293b;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        h1 { font-size: 2.25rem; }
+        h2 { font-size: 1.75rem; }
+        h3 { font-size: 1.25rem; }
+        /* Styling for each exercise section */
+        .exercise-section {
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        /* Styling for individual question items within an exercise */
+        .question-item {
+            margin-bottom: 1.25rem;
+            padding: 1rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .question-item p {
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            color: #475569;
+        }
+        /* Feedback message styling (Correct/Incorrect) */
+        .feedback {
+            margin-top: 0.5rem;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .feedback.correct {
+            color: #16a34a;
+            background-color: #dcfce7;
+            border: 1px solid #bbf7d0;
+        }
+        .feedback.incorrect {
+            color: #dc2626;
+            background-color: #fee2e2;
+            border: 1px solid #fca5a5;
+        }
+        /* Styling for check answer buttons */
+        .check-button {
+            background-color: #2563eb;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 1.5rem;
+            display: inline-block;
+            border: none;
+        }
+        .check-button:hover {
+            background-color: #1d4ed8;
+        }
+        /* Styling for text inputs, selects, and textareas */
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem; /* Default input font size */
+            color: #334155;
+            background-color: #f8fafc;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        input[type="text"]:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+        /* Styling for radio and checkbox inputs */
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 0.5rem;
+            transform: scale(1.1);
+        }
+        /* Styling for labels, aligning them with their inputs */
+        label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+        }
+        /* Container for images in Exercise 2 and 9 */
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        /* Styling for individual image items */
+        .image-item {
+            width: 120px; /* Fixed width for consistency */
+            height: 120px; /* Fixed height for consistency */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            background-color: #f0f4f8;
+            padding: 0.5rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: #475569;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .image-item img {
+            max-width: 100%;
+            max-height: 80px;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+        }
+        /* Styles for highlighted keywords */
+        .highlight-keyword {
+            background-color: #fcd34d; /* Yellow highlight */
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-weight: bold; /* Keep it bold for emphasis */
+        }
+        /* Styles for information boxes (e.g., in Exercise 8) */
+        .info-box {
+            background-color: #e0f2fe;
+            border: 1px solid #90cdf4;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            color: #1e40af;
+        }
+        .info-box p {
+            margin-bottom: 0.5rem;
+        }
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Styles for regular input blanks (reverted for Exercise 8) */
+        .regular-input-blank {
+            display: inline-block;
+            width: 160px; /* A reasonable default width, can be adjusted */
+            padding: 0.6rem 0.8rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+            color: #334155;
+            background-color: #f8fafc;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            vertical-align: middle;
+        }
+        .regular-input-blank:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+        @media (max-width: 768px) {
+            .regular-input-blank {
+                width: 120px;
+                font-size: 0.9rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .regular-input-blank {
+                width: 90px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* --- Responsive Font Adjustments (existing) --- */
+        @media (max-width: 768px) {
+            body {
+                font-size: 0.9rem; /* Slightly smaller base font */
+            }
+            h1 { font-size: 1.75rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.1rem; }
+            .question-item p, .question-item label {
+                font-size: 0.9rem; /* Adjust question text and labels */
+            }
+            input[type="text"], select, textarea {
+                font-size: 0.9rem; /* Adjust input fields */
+            }
+            .image-item {
+                width: 100px; /* Smaller width for images on small screens */
+                height: 100px;
+                font-size: 0.75rem;
+            }
+            .image-item img {
+                max-height: 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 0.85rem; /* Even smaller base font */
+            }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.25rem; }
+            h3 { font-size: 1rem; }
+            .question-item p, .question-item label {
+                font-size: 0.85rem;
+            }
+            input[type="text"], select, textarea {
+                font-size: 0.85rem;
+            }
+            .image-item {
+                width: 90px; /* Even smaller width for images */
+                height: 90px;
+                font-size: 0.7rem;
+            }
+            .image-item img {
+                max-height: 50px;
+            }
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="container">
+
+        <div id="exercise1" class="exercise-section">
+            <h2 class="mb-4">Unit 1: Exercise 1</h2>
+            <p class="mb-4">Choose the correct answers to the questions.</p>
+              <div class="question-item">
+    <p>1. How many minutes should you take to complete IELTS Writing Task 1?</p>
+    <div class="flex flex-wrap gap-4">
+      <label><input type="radio" name="ex1_q1" value="10"> 10</label>
+      <label><input type="radio" name="ex1_q1" value="20"> 20</label>
+      <label><input type="radio" name="ex1_q1" value="30"> 30</label>
+      <label><input type="radio" name="ex1_q1" value="40"> 40</label>
+    </div>
+    <div id="feedback_ex1_q1" class="feedback"></div>
+  </div>
+
+  <div class="question-item">
+    <p>2. How many words should you write for IELTS Writing Task 1?</p>
+    <div class="flex flex-wrap gap-4">
+      <label><input type="radio" name="ex1_q2" value="75"> 75</label>
+      <label><input type="radio" name="ex1_q2" value="100"> 100</label>
+      <label><input type="radio" name="ex1_q2" value="150"> 150</label>
+      <label><input type="radio" name="ex1_q2" value="250"> 250</label>
+    </div>
+    <div id="feedback_ex1_q2" class="feedback"></div>
+  </div>
+
+  <div class="question-item">
+    <p>3. In Academic IELTS Writing Task 1 you might have to write:</p>
+    <div class="flex flex-wrap gap-4">
+      <label><input type="radio" name="ex1_q3" value="a report"> a report</label>
+      <label><input type="radio" name="ex1_q3" value="an essay"> an essay</label>
+      <label><input type="radio" name="ex1_q3" value="a story"> a story</label>
+      <label><input type="radio" name="ex1_q3" value="a letter"> a letter</label>
+    </div>
+    <div id="feedback_ex1_q3" class="feedback"></div>
+  </div>
+
+  <div class="question-item">
+    <p>4. In Academic IELTS Writing Task 1 you might describe:</p>
+    <div class="flex flex-wrap gap-4">
+      <label><input type="radio" name="ex1_q4" value="a chart"> a chart</label>
+      <label><input type="radio" name="ex1_q4" value="a line graph"> a line graph</label>
+      <label><input type="radio" name="ex1_q4" value="a table"> a table</label>
+      <label><input type="radio" name="ex1_q4" value="all of them"> all of them</label>
+    </div>
+    <div id="feedback_ex1_q4" class="feedback"></div>
+  </div>
+
+  <div class="question-item">
+    <p>5. The diagram might describe:</p>
+    <div class="flex flex-wrap gap-4">
+      <label><input type="radio" name="ex1_q5" value="a process"> a process</label>
+      <label><input type="radio" name="ex1_q5" value="an object"> an object</label>
+      <label><input type="radio" name="ex1_q5" value="an event"> an event</label>
+      <label><input type="radio" name="ex1_q5" value="all of them"> all of them</label>
+    </div>
+    <div id="feedback_ex1_q5" class="feedback"></div>
+  </div>
+            <button class="check-button" onclick="checkExercise1()">Check Answers</button>
+        </div>
+
+        <div id="exercise2" class="exercise-section">
+            <h2 class="mb-4">Unit 1: Exercise 2</h2>
+            <p class="mb-4">Look at the pictures. They are from a diagram that shows the process of producing tea for selling in a supermarket. Label the pictures (1–7) to put the stages of the process in order.</p>
+            <p class="mb-2 text-sm text-gray-600">Match the description to the correct stage number.</p>
+
+            <div class="image-container" id="ex2_images">
+                <div class="image-item">
+                    <img src="https://i.postimg.cc/GhY7YKMq/Tea-Stage1.jpg" alt="Tea Growing Stage 1" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Image+1';">
+                    <p>Stage 1: Tea growing</p>
+                </div>
+                <div class="image-item">
+                    <img src="https://i.postimg.cc/kgmjySz9/Tea-Stage2.jpg" alt="Tea Picking Stage 2" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Image+2';">
+                    <p>Stage 2: Tea picking</p>
+                </div>
+                <div class="image-item">
+                    <img src="https://i.postimg.cc/VNsDx8zV/Tea-Stage3.jpg" alt="Tea Resting Stage 3" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Image+3';">
+                    <p>Stage 3: Tea resting</p>
+                </div>
+                <div class="image-item">
+                    <img src="https://i.postimg.cc/3xFtfRQG/Tea-Stage4.jpg" alt="Tea Drying Stage 4" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Image+4';">
+                    <p>Stage 4: Tea drying</p>
+                </div>
+                <div class="image-item">
+                    <img src="https://i.postimg.cc/wBW0HGvT/Tea-Stage5.jpg" alt="Tea Packing Stage 5" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Image+5';">
+                    <p>Stage 5: Teabags packed</p>
+                </div>
+                <div class="image-item">
+                    <img src="https://i.postimg.cc/bJsLv9D0/Tea-Stage6.jpg" alt="Tea Delivery Stage 6" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Image+6';">
+                    <p>Stage 6: Tea delivered</p>
+                </div>
+                <div class="image-item">
+                    <img src="https://i.postimg.cc/pT4C55zw/Tea-Stage7.jpg" alt="Customer Buys Tea Stage 7" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Image+7';">
+                    <p>Stage 7: Customer buys tea</p>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <p>1. Select the stage for "<span class="highlight-keyword">Grown for 3 years</span>":</p>
+                <select id="ex2_q1" class="w-full">
+                    <option value="">Select Stage</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <div id="feedback_ex2_q1" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>2. Select the stage for "<span class="highlight-keyword">Picked by hand</span>":</p>
+                <select id="ex2_q2" class="w-full">
+                    <option value="">Select Stage</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <div id="feedback_ex2_q2" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>3. Select the stage for "<span class="highlight-keyword">Left to rest (outdoors or indoors)</span>":</p>
+                <select id="ex2_q3" class="w-full">
+                    <option value="">Select Stage</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <div id="feedback_ex2_q3" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>4. Select the stage for "<span class="highlight-keyword">Dried at 260 degrees for two hours</span>":</p>
+                <select id="ex2_q4" class="w-full">
+                    <option value="">Select Stage</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <div id="feedback_ex2_q4" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>5. Select the stage for "<span class="highlight-keyword">Teabags packed in boxes</span>":</p>
+                <select id="ex2_q5" class="w-full">
+                    <option value="">Select Stage</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <div id="feedback_ex2_q5" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>6. Select the stage for "<span class="highlight-keyword">Delivered to supermarket</span>":</p>
+                <select id="ex2_q6" class="w-full">
+                    <option value="">Select Stage</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <div id="feedback_ex2_q6" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>7. Select the stage for "<span class="highlight-keyword">Customer buys tea</span>":</p>
+                <select id="ex2_q7" class="w-full">
+                    <option value="">Select Stage</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <div id="feedback_ex2_q7" class="feedback"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise2()">Check Answers</button>
+        </div>
+
+        <div id="exercise3" class="exercise-section">
+            <h2 class="mb-4">Unit 1: Exercise 3</h2>
+            <p class="mb-4">The diagram shows the process of producing tea for selling in a supermarket. Complete the information about each stage of the process. Select the correct word from the dropdown list.</p>
+            <div class="question-item">
+                <p>Grown for
+                    <select id="ex3_q1" class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]">
+                        <option value="">Select word</option>
+                        <option value="3 years">3 years</option>
+                        <option value="by hand">by hand</option>
+                        <option value="indoors">indoors</option>
+                        <option value="260 degrees">260 degrees</option>
+                        <option value="in boxes">in boxes</option>
+                        <option value="supermarket">supermarket</option>
+                        <option value="tea">tea</option>
+                    </select>
+                </p>
+                <div id="feedback_ex3_q1" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>Picked
+                    <select id="ex3_q2" class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]">
+                        <option value="">Select word</option>
+                        <option value="3 years">3 years</option>
+                        <option value="by hand">by hand</option>
+                        <option value="indoors">indoors</option>
+                        <option value="260 degrees">260 degrees</option>
+                        <option value="in boxes">in boxes</option>
+                        <option value="supermarket">supermarket</option>
+                        <option value="tea">tea</option>
+                    </select>
+                </p>
+                <div id="feedback_ex3_q2" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>Left to rest (outdoors or
+                    <select id="ex3_q3" class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]">
+                        <option value="">Select word</option>
+                        <option value="3 years">3 years</option>
+                        <option value="by hand">by hand</option>
+                        <option value="indoors">indoors</option>
+                        <option value="260 degrees">260 degrees</option>
+                        <option value="in boxes">in boxes</option>
+                        <option value="supermarket">supermarket</option>
+                        <option value="tea">tea</option>
+                    </select>
+                    )
+                </p>
+                <div id="feedback_ex3_q3" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>Dried at
+                    <select id="ex3_q4" class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]">
+                        <option value="">Select word</option>
+                        <option value="3 years">3 years</option>
+                        <option value="by hand">by hand</option>
+                        <option value="indoors">indoors</option>
+                        <option value="260 degrees">260 degrees</option>
+                        <option value="in boxes">in boxes</option>
+                        <option value="supermarket">supermarket</option>
+                        <option value="tea">tea</option>
+                    </select>
+                    for two hours
+                </p>
+                <div id="feedback_ex3_q4" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>Teabags packed
+                    <select id="ex3_q5" class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]">
+                        <option value="">Select word</option>
+                        <option value="3 years">3 years</option>
+                        <option value="by hand">by hand</option>
+                        <option value="indoors">indoors</option>
+                        <option value="260 degrees">260 degrees</option>
+                        <option value="in boxes">in boxes</option>
+                        <option value="supermarket">supermarket</option>
+                        <option value="tea">tea</option>
+                    </select>
+                </p>
+                <div id="feedback_ex3_q5" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>Delivered to
+                    <select id="ex3_q6" class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]">
+                        <option value="">Select word</option>
+                        <option value="3 years">3 years</option>
+                        <option value="by hand">by hand</option>
+                        <option value="indoors">indoors</option>
+                        <option value="260 degrees">260 degrees</option>
+                        <option value="in boxes">in boxes</option>
+                        <option value="supermarket">supermarket</option>
+                        <option value="tea">tea</option>
+                    </select>
+                </p>
+                <div id="feedback_ex3_q6" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>Customer buys
+                    <select id="ex3_q7" class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]">
+                        <option value="">Select word</option>
+                        <option value="3 years">3 years</option>
+                        <option value="by hand">by hand</option>
+                        <option value="indoors">indoors</option>
+                        <option value="260 degrees">260 degrees</option>
+                        <option value="in boxes">in boxes</option>
+                        <option value="supermarket">supermarket</option>
+                        <option value="tea">tea</option>
+                    </select>
+                </p>
+                <div id="feedback_ex3_q7" class="feedback"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise3()">Check Answers</button>
+        </div>
+
+        <div id="exercise4" class="exercise-section">
+            <h2 class="mb-4">Unit 1: Exercise 4</h2>
+            <p class="mb-4">When you write a report of a process in IELTS Writing Task 1, you should only use important information from the diagram. Do not give your own opinion or use information that is not important. Look at a student's notes on the IELTS Writing Task 1. Choose whether the information is important or not important.</p>
+              <div class="question-item">
+    <p>1. Sun shining a lot.</p>
+    <div class="flex gap-4">
+      <label><input type="radio" name="ex4_q1" value="Important"> Important</label>
+      <label><input type="radio" name="ex4_q1" value="Not important"> Not important</label>
+    </div>
+    <div id="feedback_ex4_q1" class="feedback"></div>
+  </div>
+
+  <div class="question-item">
+    <p>2. Tea grows for three years.</p>
+    <div class="flex gap-4">
+      <label><input type="radio" name="ex4_q2" value="Important"> Important</label>
+      <label><input type="radio" name="ex4_q2" value="Not important"> Not important</label>
+    </div>
+    <div id="feedback_ex4_q2" class="feedback"></div>
+  </div>
+
+  <div class="question-item">
+    <p>3. Person picking tea is female.</p>
+    <div class="flex gap-4">
+      <label><input type="radio" name="ex4_q3" value="Important"> Important</label>
+      <label><input type="radio" name="ex4_q3" value="Not important"> Not important</label>
+    </div>
+    <div id="feedback_ex4_q3" class="feedback"></div>
+  </div>
+
+  <div class="question-item">
+    <p>4. Tea picked by hand.</p>
+    <div class="flex gap-4">
+      <label><input type="radio" name="ex4_q4" value="Important"> Important</label>
+      <label><input type="radio" name="ex4_q4" value="Not important"> Not important</label>
+    </div>
+    <div id="feedback_ex4_q4" class="feedback"></div>
+  </div>
+
+  <div class="question-item">
+    <p>5. Tea left to rest outdoors or indoors.</p>
+    <div class="flex gap-4">
+      <label><input type="radio" name="ex4_q5" value="Important"> Important</label>
+      <label><input type="radio" name="ex4_q5" value="Not important"> Not important</label>
+    </div>
+    <div id="feedback_ex4_q5" class="feedback"></div>
+  </div>
+
+  <div class="question-item">
+    <p>6. Round machine has open lid.</p>
+    <div class="flex gap-4">
+      <label><input type="radio" name="ex4_q6" value="Important"> Important</label>
+      <label><input type="radio" name="ex4_q6" value="Not important"> Not important</label>
+    </div>
+    <div id="feedback_ex4_q6" class="feedback"></div>
+  </div>
+
+  <div class="question-item">
+    <p>7. Tea in drying machine for two hours.</p>
+    <div class="flex gap-4">
+      <label><input type="radio" name="ex4_q7" value="Important"> Important</label>
+      <label><input type="radio" name="ex4_q7" value="Not important"> Not important</label>
+    </div>
+    <div id="feedback_ex4_q7" class="feedback"></div>
+  </div>
+
+  <div class="question-item">
+    <p>8. Tea is dried at 260°C.</p>
+    <div class="flex gap-4">
+      <label><input type="radio" name="ex4_q8" value="Important"> Important</label>
+      <label><input type="radio" name="ex4_q8" value="Not important"> Not important</label>
+    </div>
+    <div id="feedback_ex4_q8" class="feedback"></div>
+  </div>
+
+  <div class="question-item">
+    <p>9. Put in box at packaging stage.</p>
+    <div class="flex gap-4">
+      <label><input type="radio" name="ex4_q9" value="Important"> Important</label>
+      <label><input type="radio" name="ex4_q9" value="Not important"> Not important</label>
+    </div>
+    <div id="feedback_ex4_q9" class="feedback"></div>
+  </div>
+
+  <div class="question-item">
+    <p>10. Delivered to supermarket.</p>
+    <div class="flex gap-4">
+      <label><input type="radio" name="ex4_q10" value="Important"> Important</label>
+      <label><input type="radio" name="ex4_q10" value="Not important"> Not important</label>
+    </div>
+    <div id="feedback_ex4_q10" class="feedback"></div>
+  </div>
+
+  <div class="question-item">
+    <p>11. Tea is finally bought by customers.</p>
+    <div class="flex gap-4">
+      <label><input type="radio" name="ex4_q11" value="Important"> Important</label>
+      <label><input type="radio" name="ex4_q11" value="Not important"> Not important</label>
+    </div>
+    <div id="feedback_ex4_q11" class="feedback"></div>
+  </div>
+
+            <button class="check-button" onclick="checkExercise4()">Check Answers</button>
+        </div>
+
+        <div id="exercise5" class="exercise-section">
+            <h2 class="mb-4">Unit 1: Exercise 5</h2>
+            <p class="mb-4">Read the report on the diagram and answer the questions.</p>
+            <div class="report-text bg-gray-100 p-4 rounded-md mb-4 border border-gray-200">
+                <p>The diagram explains how tea is produced before it is sold in supermarkets. Supermarkets in my country sell a lot of tea.It shows several stages of production from the growing and picking stages to when lorries deliver the tea to supermarkets and when customers buy it while they are shopping. There are seven main stages between the tea being planted and being bought.</p>
+                <p>First of all, the tea is grown for three years when it is picked by hand. After that, the tea is left to rest either outdoors or indoors. After this comes the packaging stage. The dried tea is made into teabags and the teabags are put into boxes. The boxes are then packed into lorries. The lorries are very big. The lorries deliver the tea to the supermarkets. Tea is a healthy drink.</p>
+            </div>
+              <div class="question-item">
+    <p>1. Has the student used all of the important information?</p>
+    <div class="flex gap-4">
+      <label><input type="radio" name="ex5_q1" value="Yes"> Yes</label>
+      <label><input type="radio" name="ex5_q1" value="No"> No</label>
+    </div>
+    <div id="feedback_ex5_q1" class="feedback"></div>
+  </div>
+
+  <div class="question-item">
+    <p>2. Has the student given his or her own opinion or used any information that is not important?</p>
+    <div class="flex gap-4">
+      <label><input type="radio" name="ex5_q2" value="Yes"> Yes</label>
+      <label><input type="radio" name="ex5_q2" value="No"> No</label>
+    </div>
+    <div id="feedback_ex5_q2" class="feedback"></div>
+  </div>
+
+  <div class="question-item">
+    <p>3. Is the report long enough?</p>
+    <div class="flex gap-4">
+      <label><input type="radio" name="ex5_q3" value="Yes"> Yes</label>
+      <label><input type="radio" name="ex5_q3" value="No"> No</label>
+    </div>
+    <div id="feedback_ex5_q3" class="feedback"></div>
+  </div>
+            <button class="check-button" onclick="checkExercise5()">Check Answers</button>
+        </div>
+
+        <div id="exercise6" class="exercise-section">
+            <h2 class="mb-4">Unit 1: Exercise 6</h2>
+            <p class="mb-4">Look at the diagram again. Then put the paragraphs in the correct order to complete the report.</p>
+            <p class="mb-2 text-sm text-gray-600">Select the correct order for each paragraph.</p>
+            <div class="question-item">
+                <p>Paragraph 1: "<span class="highlight-keyword">The diagram explains how tea is produced before it is sold in supermarkets.</span>"</p>
+                <select id="ex6_q1" class="w-full">
+                    <option value="">Select Order</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <div id="feedback_ex6_q1" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>Paragraph 2: "<span class="highlight-keyword">First of all, the tea is grown for three years when it is picked by hand. After that, the tea is left to rest either outdoors or indoors. Next, it is put in a drying machine where it is dried for two hours. The temperature during this stage of the process should be just over 260°C.</span>"</p>
+                <select id="ex6_q2" class="w-full">
+                    <option value="">Select Order</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <div id="feedback_ex6_q2" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>Paragraph 3: "<span class="highlight-keyword">It shows several stages of production from the growing and picking stages to when lorries deliver the tea to supermarkets and when customers buy it while they are shopping. There are seven main stages between the tea being planted and being bought.</span>"</p>
+                <select id="ex6_q3" class="w-full">
+                    <option value="">Select Order</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <div id="feedback_ex6_q3" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>Paragraph 4: "<span class="highlight-keyword">After this comes the packaging stage. The dried tea is made into teabags and the teabags are put into boxes. The boxes are then packed into lorries. The lorries deliver the tea to the supermarkets. Tea is a healthy drink.</span>"</p>
+                <select id="ex6_q4" class="w-full">
+                    <option value="">Select Order</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <div id="feedback_ex6_q4" class="feedback"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise6()">Check Answers</button>
+        </div>
+
+        <div id="exercise7" class="exercise-section">
+            <h2 class="mb-4">Unit 1: Exercise 7</h2>
+            <p class="mb-4">Match the correct pictures with the sentences describing the process of producing tea.</p>
+            <p class="mb-2 text-sm text-gray-600">Select the stage number (1-7) that matches each sentence.</p>
+
+            <div class="question-item">
+                <p>1. "First of all, the tea is grown for three years."</p>
+                <select id="ex7_q1" class="w-full">
+                    <option value="">Select Stage</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <div id="feedback_ex7_q1" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>2. "Then it is picked by hand."</p>
+                <select id="ex7_q2" class="w-full">
+                    <option value="">Select Stage</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <div id="feedback_ex7_q2" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>3. "After that, the tea is left to rest either outdoors or indoors."</p>
+                <select id="ex7_q3" class="w-full">
+                    <option value="">Select Stage</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <div id="feedback_ex7_q3" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>4. "Next, it is put in a drying machine where it is dried for two hours. The temperature during this stage of the process should be just over 260°C."</p>
+                <select id="ex7_q4" class="w-full">
+                    <option value="">Select Stage</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <div id="feedback_ex7_q4" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>5. "After this comes the packaging stage. The dried tea is made into teabags and the teabags are put into boxes."</p>
+                <select id="ex7_q5" class="w-full">
+                    <option value="">Select Stage</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <div id="feedback_ex7_q5" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>6. "The boxes are then packed into lorries. The lorries deliver the tea to the supermarkets."</p>
+                <select id="ex7_q6" class="w-full">
+                    <option value="">Select Stage</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <div id="feedback_ex7_q6" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>7. "Finally, customers buy the tea when they are shopping."</p>
+                <select id="ex7_q7" class="w-full">
+                    <option value="">Select Stage</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <div id="feedback_ex7_q7" class="feedback"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise7()">Check Answers</button>
+        </div>
+
+        <div id="exercise8" class="exercise-section">
+            <h2 class="mb-4">Unit 1: Exercise 8</h2>
+            <p class="mb-4">Read the information below. Then complete the sentences in the present simple passive.</p>
+            <div class="info-box bg-blue-50 p-4 rounded-md mb-4 border border-blue-200 text-blue-800">
+                <p><span class="font-bold">To make a present simple passive sentence:</span> you take the object of the verb in the active sentence (e.g. the tea) + am/is/are + past participle (e.g. grown).</p>
+                <p>The tea is grown for three years. (Passive)</p>
+            </div>
+            <div class="question-item">
+                <p>1. Workers pick the tea by hand.<br>The tea <input type="text" id="ex8_q1" class="regular-input-blank"> by hand.</p>
+                <div id="feedback_ex8_q1" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>2. Workers keep the good oranges.<br>The good oranges <input type="text" id="ex8_q2" class="regular-input-blank">.</p>
+                <div id="feedback_ex8_q2" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>3. Workers ship the coffee in fridges.<br>The coffee <input type="text" id="ex8_q3" class="regular-input-blank"> in fridges.</p>
+                <div id="feedback_ex8_q3" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>4. Workers pack the apples into lorries.<br>The apples <input type="text" id="ex8_q4" class="regular-input-blank"> into lorries.</p>
+                <div id="feedback_ex8_q4" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>5. The lorries deliver the rice to the supermarket.<br>The rice <input type="text" id="ex8_q5" class="regular-input-blank"> to the supermarket.</p>
+                <div id="feedback_ex8_q5" class="feedback"></div>
+            </div>
+            <div class="question-item">
+                <p>6. Customers buy the chocolate in the supermarket.<br>The chocolate <input type="text" id="ex8_q6" class="regular-input-blank"> in the supermarket.</p>
+                <div id="feedback_ex8_q6" class="feedback"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise8()">Check Answers</button>
+        </div>
+
+        <div id="exercise9" class="exercise-section">
+            <h2 class="mb-4">Unit 1: Exercise 9</h2>
+            <p class="mb-4">Look at the diagram. Then label each stage of the process. Select the correct label from the dropdown list.</p>
+            <div class="image-container">
+                <div class="image-item">
+                    <img src="https://i.postimg.cc/gkXV600p/Banana-step1.png" alt="Banana Growing Stage 1" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Banana+1';">
+                    <select id="ex9_q1" class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]">
+                        <option value="">Select label</option>
+                        <option value="Buying Stage">Buying Stage</option>
+                        <option value="Checking Stage">Checking Stage</option>
+                        <option value="Delivery Stage">Delivery Stage</option>
+                        <option value="Growing Stage">Growing Stage</option>
+                        <option value="Picking Stage">Picking Stage</option>
+                        <option value="Resting Stage">Resting Stage</option>
+                        <option value="Shipping Stage">Shipping Stage</option>
+                    </select>
+                    <div id="feedback_ex9_q1" class="feedback"></div>
+                </div>
+                <div class="image-item">
+                    <img src="https://i.postimg.cc/BQrx5G8K/Banana-step2.png" alt="Banana Picking Stage 2" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Banana+2';">
+                    <select id="ex9_q2" class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]">
+                        <option value="">Select label</option>
+                        <option value="Buying Stage">Buying Stage</option>
+                        <option value="Checking Stage">Checking Stage</option>
+                        <option value="Delivery Stage">Delivery Stage</option>
+                        <option value="Growing Stage">Growing Stage</option>
+                        <option value="Picking Stage">Picking Stage</option>
+                        <option value="Resting Stage">Resting Stage</option>
+                        <option value="Shipping Stage">Shipping Stage</option>
+                    </select>
+                    <div id="feedback_ex9_q2" class="feedback"></div>
+                </div>
+                <div class="image-item">
+                    <img src="https://i.postimg.cc/tJ7hkqth/Banana-step3.png" alt="Banana Checking Stage 3" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Banana+3';">
+                    <select id="ex9_q3" class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]">
+                        <option value="">Select label</option>
+                        <option value="Buying Stage">Buying Stage</option>
+                        <option value="Checking Stage">Checking Stage</option>
+                        <option value="Delivery Stage">Delivery Stage</option>
+                        <option value="Growing Stage">Growing Stage</option>
+                        <option value="Picking Stage">Picking Stage</option>
+                        <option value="Resting Stage">Resting Stage</option>
+                        <option value="Shipping Stage">Shipping Stage</option>
+                    </select>
+                    <div id="feedback_ex9_q3" class="feedback"></div>
+                </div>
+                <div class="image-item">
+                    <img src="https://i.postimg.cc/kGZWh0fL/Banana-step4.png" alt="Banana Shipping Stage 4" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Banana+4';">
+                    <select id="ex9_q4" class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]">
+                        <option value="">Select label</option>
+                        <option value="Buying Stage">Buying Stage</option>
+                        <option value="Checking Stage">Checking Stage</option>
+                        <option value="Delivery Stage">Delivery Stage</option>
+                        <option value="Growing Stage">Growing Stage</option>
+                        <option value="Picking Stage">Picking Stage</option>
+                        <option value="Resting Stage">Resting Stage</option>
+                        <option value="Shipping Stage">Shipping Stage</option>
+                    </select>
+                    <div id="feedback_ex9_q4" class="feedback"></div>
+                </div>
+                <div class="image-item">
+                    <img src="https://i.postimg.cc/tTB3FZPq/Banana-step5.png" alt="Banana Resting Stage 5" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Banana+5';">
+                    <select id="ex9_q5" class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]">
+                        <option value="">Select label</option>
+                        <option value="Buying Stage">Buying Stage</option>
+                        <option value="Checking Stage">Checking Stage</option>
+                        <option value="Delivery Stage">Delivery Stage</option>
+                        <option value="Growing Stage">Growing Stage</option>
+                        <option value="Picking Stage">Picking Stage</option>
+                        <option value="Resting Stage">Resting Stage</option>
+                        <option value="Shipping Stage">Shipping Stage</option>
+                    </select>
+                    <div id="feedback_ex9_q5" class="feedback"></div>
+                </div>
+                <div class="image-item">
+                    <img src="https://i.postimg.cc/d1sR7mhN/Banana-step6.png" alt="Banana Delivery Stage 6" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Banana+6';">
+                    <select id="ex9_q6" class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]">
+                        <option value="">Select label</option>
+                        <option value="Buying Stage">Buying Stage</option>
+                        <option value="Checking Stage">Checking Stage</option>
+                        <option value="Delivery Stage">Delivery Stage</option>
+                        <option value="Growing Stage">Growing Stage</option>
+                        <option value="Picking Stage">Picking Stage</option>
+                        <option value="Resting Stage">Resting Stage</option>
+                        <option value="Shipping Stage">Shipping Stage</option>
+                    </select>
+                    <div id="feedback_ex9_q6" class="feedback"></div>
+                </div>
+                <div class="image-item">
+                    <img src="https://i.postimg.cc/nVwKzmpT/Banana-step7.png" alt="Banana Buying Stage 7" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Banana+7';">
+                    <select id="ex9_q7" class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]">
+                        <option value="">Select label</option>
+                        <option value="Buying Stage">Buying Stage</option>
+                        <option value="Checking Stage">Checking Stage</option>
+                        <option value="Delivery Stage">Delivery Stage</option>
+                        <option value="Growing Stage">Growing Stage</option>
+                        <option value="Picking Stage">Picking Stage</option>
+                        <option value="Resting Stage">Resting Stage</option>
+                        <option value="Shipping Stage">Shipping Stage</option>
+                    </select>
+                    <div id="feedback_ex9_q7" class="feedback"></div>
+                </div>
+            </div>
+            <button class="check-button" onclick="checkExercise9()">Check Answers</button>
+        </div>
+
+        <div id="exercise10" class="exercise-section">
+            <h2 class="mb-4">Unit 1: Exercise 10 - WRITING TASK 1</h2>
+            <p class="mb-4">You should spend about 20 minutes on this task. The diagram shows the process of growing bananas for selling in supermarkets. Summarise the information by selecting and reporting the main features and make comparisons where relevant. Write at least 150 words.</p>
+            <p class="mb-2 text-sm text-gray-600">Please write your report in the text area below. There is no automated checking for this exercise, as it is a free-form writing task.</p>
+            <textarea id="ex10_writing_task" rows="10" placeholder="Start writing your report here..."></textarea>
+        </div>
+
+    </div>
+
+    <script>
+        // Object containing all correct answers for each exercise
+        const correctAnswers = {
+            exercise1: {
+                q1: "20",
+                q2: "150",
+                q3: "a report",
+                q4: "all of them",
+                q5: "all of them"
+            },
+            exercise2: { // Stage number to description mapping for the tea process
+                q1: "1", // Grown for 3 years
+                q2: "2", // Picked by hand
+                q3: "3", // Left to rest (outdoors or indoors)
+                q4: "4", // Dried at 260 degrees for two hours
+                q5: "5", // Teabags packed in boxes
+                q6: "6", // Delivered to supermarket
+                q7: "7"  // Customer buys tea
+            },
+            exercise3: { // Fill-in-the-blanks for tea production
+                q1: "3 years",
+                q2: "by hand",
+                q3: "indoors",
+                q4: "260 degrees",
+                q5: "in boxes",
+                q6: "supermarket",
+                q7: "tea"
+            },
+            exercise4: { // Important vs. Not important information
+                q1: "Not important",
+                q2: "Important",
+                q3: "Not important",
+                q4: "Important",
+                q5: "Important",
+                q6: "Not important",
+                q7: "Important",
+                q8: "Important",
+                q9: "Important",
+                q10: "Important",
+                q11: "Important"
+            },
+            exercise5: { // Critiquing the sample report
+                q1: "No",
+                q2: "Yes",
+                q3: "No"
+            },
+            exercise6: { // Correct order of paragraphs for the report
+                q1: "1", // "The diagram explains..." (Introduction)
+                q2: "3", // "First of all, the tea is grown..." (Process start)
+                q3: "2", // "It shows several stages..." (Overview)
+                q4: "4"  // "After this comes the packaging..." (Process end)
+            },
+            exercise7: { // Matching sentences to tea production stages
+                q1: "1",
+                q2: "2",
+                q3: "3",
+                q4: "4",
+                q5: "5",
+                q6: "6",
+                q7: "7"
+            },
+            exercise8: { // Present simple passive voice
+                q1: "is picked",
+                q2: "are kept",
+                q3: "is shipped",
+                q4: "are packed",
+                q5: "is delivered",
+                q6: "is bought"
+            },
+            exercise9: { // Labeling banana production stages
+                q1: "Growing Stage",
+                q2: "Picking Stage",
+                q3: "Checking Stage",
+                q4: "Shipping Stage",
+                q5: "Resting Stage",
+                q6: "Delivery Stage",
+                q7: "Buying Stage"
+            }
+        };
+
+        /**
+         * Displays feedback (Correct/Incorrect) for a given element.
+         * @param {string} elementId - The ID of the feedback div.
+         * @param {boolean} isCorrect - True if the answer is correct, false otherwise.
+         */
+        function showFeedback(elementId, isCorrect) {
+            const feedbackElement = document.getElementById(elementId);
+            // Remove existing classes to reset feedback
+            feedbackElement.classList.remove('correct', 'incorrect');
+            if (isCorrect) {
+                feedbackElement.classList.add('correct');
+                feedbackElement.textContent = 'Correct!';
+            } else {
+                feedbackElement.classList.add('incorrect');
+                feedbackElement.textContent = 'Incorrect.';
+            }
+        }
+
+        function checkExercise1() {
+            for (let i = 1; i <= 5; i++) {
+                const selectedValue = document.querySelector(`input[name="ex1_q${i}"]:checked`)?.value;
+                const isCorrect = selectedValue === correctAnswers.exercise1[`q${i}`];
+                showFeedback(`feedback_ex1_q${i}`, isCorrect);
+            }
+        }
+
+        function checkExercise2() {
+            for (let i = 1; i <= 7; i++) {
+                const selectedValue = document.getElementById(`ex2_q${i}`).value;
+                const isCorrect = selectedValue === correctAnswers.exercise2[`q${i}`];
+                showFeedback(`feedback_ex2_q${i}`, isCorrect);
+            }
+        }
+
+        function checkExercise3() {
+            for (let i = 1; i <= 7; i++) {
+                // For dropdowns, get the selected value
+                const selectedValue = document.getElementById(`ex3_q${i}`).value;
+                const correctAnswer = correctAnswers.exercise3[`q${i}`]; // Keep original case for dropdown comparison
+                const isCorrect = selectedValue === correctAnswer;
+                showFeedback(`feedback_ex3_q${i}`, isCorrect);
+            }
+        }
+
+        function checkExercise4() {
+            for (let i = 1; i <= 11; i++) {
+                const selectedValue = document.querySelector(`input[name="ex4_q${i}"]:checked`)?.value;
+                const isCorrect = selectedValue === correctAnswers.exercise4[`q${i}`];
+                showFeedback(`feedback_ex4_q${i}`, isCorrect);
+            }
+        }
+
+        function checkExercise5() {
+            for (let i = 1; i <= 3; i++) {
+                const selectedValue = document.querySelector(`input[name="ex5_q${i}"]:checked`)?.value;
+                const isCorrect = selectedValue === correctAnswers.exercise5[`q${i}`];
+                showFeedback(`feedback_ex5_q${i}`, isCorrect);
+            }
+        }
+
+        function checkExercise6() {
+            // Note: The correct order is hardcoded based on the provided solution.
+            // Paragraph 1 in HTML (The diagram explains...) is order 1.
+            // Paragraph 2 in HTML (First of all...) is order 3.
+            // Paragraph 3 in HTML (It shows several stages...) is order 2.
+            // Paragraph 4 in HTML (After this comes...) is order 4.
+
+            const ex6_q1_isCorrect = document.getElementById('ex6_q1').value === correctAnswers.exercise6.q1;
+            showFeedback('feedback_ex6_q1', ex6_q1_isCorrect);
+
+            const ex6_q2_isCorrect = document.getElementById('ex6_q2').value === correctAnswers.exercise6.q2;
+            showFeedback('feedback_ex6_q2', ex6_q2_isCorrect);
+
+            const ex6_q3_isCorrect = document.getElementById('ex6_q3').value === correctAnswers.exercise6.q3;
+            showFeedback('feedback_ex6_q3', ex6_q3_isCorrect);
+
+            const ex6_q4_isCorrect = document.getElementById('ex6_q4').value === correctAnswers.exercise6.q4;
+            showFeedback('feedback_ex6_q4', ex6_q4_isCorrect);
+        }
+
+        function checkExercise7() {
+            for (let i = 1; i <= 7; i++) {
+                const selectedValue = document.getElementById(`ex7_q${i}`).value;
+                const isCorrect = selectedValue === correctAnswers.exercise7[`q${i}`];
+                showFeedback(`feedback_ex7_q${i}`, isCorrect);
+            }
+        }
+
+        function checkExercise8() {
+            for (let i = 1; i <= 6; i++) {
+                // For text input, get value from the input element
+                const inputValue = document.getElementById(`ex8_q${i}`).value.trim().toLowerCase();
+                const correctAnswer = correctAnswers.exercise8[`q${i}`].toLowerCase();
+                const isCorrect = inputValue === correctAnswer;
+                showFeedback(`feedback_ex8_q${i}`, isCorrect);
+            }
+        }
+
+        function checkExercise9() {
+            for (let i = 1; i <= 7; i++) {
+                // For dropdowns, get the selected value
+                const selectedValue = document.getElementById(`ex9_q${i}`).value;
+                const correctAnswer = correctAnswers.exercise9[`q${i}`]; // Keep original case for dropdown comparison
+                const isCorrect = selectedValue === correctAnswer;
+                showFeedback(`feedback_ex9_q${i}`, isCorrect);
+            }
+        }
+    </script>
+</body>
+</html>
