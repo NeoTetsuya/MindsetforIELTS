@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zoo Conservation Programmes Interactive Worksheet</title>
+<style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #f8f9fa;
+    }
+    .left, .right {
+      padding: 30px;
+      overflow-y: auto;
+    }
+    .left {
+      width: 50%;
+      background-color: #ffffff;
+      border-right: 2px solid #dee2e6;
+      box-shadow: inset -5px 0 5px -5px #dee2e6;
+      line-height: 1.6;
+    }
+    .right {
+      width: 50%;
+      background-color: #fdfdfd;
+    }
+    h2 {
+      color: #2c3e50;
+      font-size: 1.75em;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+    p, li {
+      font-size: 1.05em;
+      color: #333;
+    }
+    input[type="text"], select {
+      width: 100%;
+      padding: 8px;
+      font-size: 1em;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      font-size: 1em;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .explanation {
+      display: block;
+      white-space: normal;
+      word-wrap: break-word;
+      max-width: 100%;
+      font-size: 0.95em;
+      color: #333;
+      background-color: #eef5e8;
+      padding: 10px;
+      margin-top: 8px;
+      border-left: 4px solid #4CAF50;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+      width: 100%;
+    }
+    .resizer {
+      width: 6px;
+      cursor: col-resize;
+      background-color: #ced4da;
+      transition: background-color 0.3s;
+    }
+    .resizer:hover {
+      background-color: #adb5bd;
+    }
+  .highlighted {
+      background-color: yellow;
+    }
+  .floating-tools {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    padding-bottom: 10px;
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="left" style="position: relative; padding-left: 50px;">
+<h2 style="text-align: center; font-size: 2em; margin-top: 0;">Zoo Conservation Programmes</h2>
+<p>One of London Zoo’s recent advertisements caused me some irritation, so patently did it distort reality. Headlined “Without zoos, you might as well tell these animals to get stuffed”, it was bordered with illustrations of several endangered species and went on to extol the myth that without zoos like London Zoo these animals “will almost certainly disappear forever”. With the zoo world’s rather mediocre record on conservation, one might be forgiven for being slightly skeptical about such an advertisement.</p>
+<p>Zoos were originally created as places of entertainment, and their suggested involvement with conservation didn’t seriously arise until about 30 years ago when the Zoological Society of London held the first formal international meeting on the subject. Eight years later, a series of world conferences took place, entitled “The Breeding of Endangered Species”, and from this point onwards conservation became the zoo community’s buzzword. This commitment has now been clearly defined in The World Zoo Conservation Strategy (WZGS, September 1993), which although an important and welcome document does seem to be based on an unrealistic optimism about the nature of the zoo industry.</p>
+<p>The WZCS estimates that there are about 10,000 zoos in the world, of which around 1,000 represent a core of quality collections capable of participating in coordinated conservation programmes. This is probably the document’s first failing, as I believe that 10,000 is a serious underestimate of the total number of places masquerading as zoological establishments. Of course, it is difficult to get accurate data but, to put the issue into perspective, I have found that, in a year of working in Eastern Europe, I discover fresh zoos on almost a weekly basis.</p>
+<p>The second flaw in the reasoning of the WZCS document is the naive faith it places in its 1,000 core zoos. One would assume that the caliber of these institutions would have been carefully examined, but it appears that the criterion for inclusion on this select list might merely be that the zoo is a member of a zoo federation or association. This might be a good starting point, working on the premise that members must meet certain standards, but again the facts don’t support the theory. The greatly respected American Association of Zoological Parks and Aquariums (AAZPA) has had extremely dubious members, and in the UK the Federation of Zoological Gardens of Great Britain and Ireland has occasionally had members that have been roundly censured in the national press. These include Robin Hill Adventure Park on the Isle of Wight, which many consider the most notorious collection of animals in the country. This establishment, which for years was protected by the Isle’s local council (which viewed it as a tourist amenity), was finally closed down following a damning report by a veterinary inspector appointed under the terms of the Zoo Licensing Act 1981.</p>
+<p>Even assuming that the WZCS’s 1,000 core zoos are all of a high standard complete with scientific staff and research facilities, trained and dedicated keepers, accommodation that permits normal or natural behavior, and a policy of cooperating fully with one another—what might be the potential for conservation? Colin Tudge, author of <em>Last Animals at the Zoo</em> (Oxford University Press, 1992), argues that “if the world’s zoos worked together in cooperative breeding programmes, then even without further expansion they could save around 2,000 species of endangered land vertebrates.” This seems an extremely optimistic proposition from a man who must be aware of the failings and weaknesses of the zoo industry—the man who, when a member of the council of London Zoo, had to persuade the zoo to devote more of its activities to conservation. Moreover, where are the facts to support such optimism?</p>
+<p>Today approximately 16 species might be said to have been “saved” by captive breeding programmes, although a number of these can hardly be looked upon as resounding successes. Beyond that, about a further 20 species are being seriously considered for zoo conservation programmes. Given that the international conference at London Zoo was held 30 years ago, this is pretty slow progress, and a long way off Tudge’s target of 2,000.</p>
+<div class="floating-tools" style="position: fixed; top: 100px; left: 10px; display: flex; flex-direction: column; gap: 4px; z-index: 1000; background-color: rgba(255,255,255,0.2); padding: 2px; border-radius: 4px; transition: opacity 0.3s ease;">
+<button onclick="highlightSelection()" onmouseout="this.style.transform='scale(1)'" onmouseover="this.style.transform='scale(1.3)'" style="background-color: transparent; border: none; font-size: 0.9em; cursor: pointer; transition: transform 0.2s ease; color: #2c3e50;" title="Highlight">✏️</button>
+<button onclick="clearHighlights()" onmouseout="this.style.transform='scale(1)'" onmouseover="this.style.transform='scale(1.3)'" style="background-color: transparent; border: none; font-size: 0.9em; cursor: pointer; transition: transform 0.2s ease; color: #dc3545;" title="Clear Highlights">❌</button>
+</div>
+</div>
+<div class="resizer"></div>
+<div class="right">
+<h2>Questions</h2>
+<h3>Questions 1–7</h3>
+<p>Write <strong>YES</strong>, <strong>NO</strong>, or <strong>NOT GIVEN</strong>.</p>
+<ol>
+<li>London Zoo’s advertisements are dishonest.<br/><select id="q1">
+<option value="">-- Select --</option>
+<option value="YES">YES</option>
+<option value="NO">NO</option>
+<option value="NOT GIVEN">NOT GIVEN</option>
+</select>
+<div id="q1_result"></div></li>
+<li>Zoos made an insignificant contribution to conservation up until 30 years ago.<br/><select id="q2">
+<option value="">-- Select --</option>
+<option value="YES">YES</option>
+<option value="NO">NO</option>
+<option value="NOT GIVEN">NOT GIVEN</option>
+</select>
+<div id="q2_result"></div></li>
+<li>The WZCS document is not known in Eastern Europe.<br/><select id="q3">
+<option value="">-- Select --</option>
+<option value="YES">YES</option>
+<option value="NO">NO</option>
+<option value="NOT GIVEN">NOT GIVEN</option>
+</select>
+<div id="q3_result"></div></li>
+<li>Zoos in the WZCS select list were carefully inspected.<br/><select id="q4">
+<option value="">-- Select --</option>
+<option value="YES">YES</option>
+<option value="NO">NO</option>
+<option value="NOT GIVEN">NOT GIVEN</option>
+</select>
+<div id="q4_result"></div></li>
+<li>No-one knew how the animals were being treated at Robin Hill Adventure Park.<br/><select id="q5">
+<option value="">-- Select --</option>
+<option value="YES">YES</option>
+<option value="NO">NO</option>
+<option value="NOT GIVEN">NOT GIVEN</option>
+</select>
+<div id="q5_result"></div></li>
+<li>Colin Tudge was dissatisfied with the treatment of animals at London Zoo.<br/><select id="q6">
+<option value="">-- Select --</option>
+<option value="YES">YES</option>
+<option value="NO">NO</option>
+<option value="NOT GIVEN">NOT GIVEN</option>
+</select>
+<div id="q6_result"></div></li>
+<li>Only about 16 species have been saved by zoos.<br/><select id="q7">
+<option value="">-- Select --</option>
+<option value="YES">YES</option>
+<option value="NO">NO</option>
+<option value="NOT GIVEN">NOT GIVEN</option>
+</select>
+<div id="q7_result"></div></li>
+</ol>
+<button onclick="checkAnswersPart1()">Check Answers 1–7</button>
+<h3>Questions 8–10</h3>
+<ol start="8">
+<li>What were the objectives of the WZCS document?<br/>
+<select id="q8">
+<option value="">-- Select an answer --</option>
+<option value="A">A. to improve the caliber of zoos worldwide</option>
+<option value="B">B. to identify zoos suitable for conservation practice</option>
+<option value="C">C. to provide funds for zoos in underdeveloped countries</option>
+<option value="D">D. to list the endangered species of the world</option>
+</select>
+<div id="q8_result"></div>
+</li>
+<li>Why does the writer refer to Robin Hill Adventure Park?<br/>
+<select id="q9">
+<option value="">-- Select an answer --</option>
+<option value="A">A. to support the Isle of Wight local council</option>
+<option value="B">B. to criticise the 1981 Zoo Licensing Act</option>
+<option value="C">C. to illustrate a weakness in the WZCS document</option>
+<option value="D">D. to exemplify the standards in AAZPA zoos</option>
+</select>
+<div id="q9_result"></div>
+</li>
+<li>What does the writer think about Tudge’s prediction?<br/>
+<select id="q10">
+<option value="">-- Select an answer --</option>
+<option value="A">A. It is overly optimistic.</option>
+<option value="B">B. It is completely realistic.</option>
+<option value="C">C. It is not mentioned.</option>
+<option value="D">D. It is irrelevant.</option>
+</select>
+<div id="q10_result"></div>
+</li>
+</ol>
+<button onclick="checkAnswersPart2()">Check Answers 8–10</button>
+<h3>Questions 11–13</h3>
+<p>The writer mentions a number of factors that lead him to doubt the value of the WZCS document. Which <strong>THREE</strong> of the following are mentioned?</p>
+<form id="q11to13">
+<label><input name="q11to13" type="checkbox" value="A"/> A. the number of unregistered zoos in the world</label><br/>
+<label><input name="q11to13" type="checkbox" value="B"/> B. the lack of money in developing countries</label><br/>
+<label><input name="q11to13" type="checkbox" value="C"/> C. the actions of the Isle of Wight local council</label><br/>
+<label><input name="q11to13" type="checkbox" value="D"/> D. the failure of the WZCS to examine the standards of the “core zoos”</label><br/>
+<label><input name="q11to13" type="checkbox" value="E"/> E. the unrealistic aim of the WZCS in view of the number of species “saved” to date</label><br/>
+<label><input name="q11to13" type="checkbox" value="F"/> F. the policies of WZCS zoo managers</label><br/>
+<div id="q11to13_result"></div>
+</form>
+<button onclick="checkAnswersPart3()">Check Answers 11–13</button>
+</div>
+</div>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const left = document.querySelector('.left');
+      const right = document.querySelector('.right');
+      const resizer = document.querySelector('.resizer');
+
+      let isResizing = false;
+
+      resizer.addEventListener('mousedown', () => {
+        isResizing = true;
+        document.body.style.cursor = 'col-resize';
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (!isResizing) return;
+        const container = document.querySelector('.container');
+        const containerOffsetLeft = container.offsetLeft;
+        const pointerRelativeX = e.clientX - containerOffsetLeft;
+        const containerWidth = container.offsetWidth;
+        const leftWidth = (pointerRelativeX / containerWidth) * 100;
+        left.style.width = `${leftWidth}%`;
+        right.style.width = `${100 - leftWidth}%`;
+      });
+
+      document.addEventListener('mouseup', () => {
+        isResizing = false;
+        document.body.style.cursor = 'default';
+      });
+    });
+  </script>
+<script>
+    function checkAnswersPart1() {
+      const explanations = {
+        q1: "The writer states the advertisement distorted reality, implying dishonesty.",
+        q2: "Conservation wasn’t a serious concern until 30 years ago, so contribution was minimal.",
+        q3: "The passage discusses discovering zoos in Eastern Europe, but not WZCS document awareness.",
+        q4: "The writer doubts inspections occurred and suggests inclusion was based on association membership.",
+        q5: "The public and press were aware, and the zoo was eventually closed due to a report.",
+        q6: "There is no mention of Tudge's dissatisfaction with treatment of animals specifically.",
+        q7: "The writer clearly states that about 16 species have been saved by captive breeding."
+      };
+      const answers = {
+        q1: "YES",
+        q2: "YES",
+        q3: "NOT GIVEN",
+        q4: "NO",
+        q5: "NO",
+        q6: "NOT GIVEN",
+        q7: "YES"
+      };
+      for (let i = 1; i <= 7; i++) {
+        const input = document.getElementById("q" + i);
+        const result = document.getElementById("q" + i + "_result");
+        if (input.value === "") {
+          result.innerHTML = "";
+        } else {
+          if (input.value === answers["q" + i]) {
+          result.innerHTML = "✅ Correct";
+          const explanation = document.createElement('div');
+          explanation.className = 'explanation';
+          explanation.textContent = explanations["q" + i];
+          result.appendChild(explanation);
+        } else {
+          result.innerHTML = "❌ Incorrect";
+        }
+        }
+      }
+    }
+
+    function checkAnswersPart2() {
+      const explanations = {
+        q8: "The document aimed to identify zoos capable of participating in conservation.",
+        q9: "Robin Hill Park is used to show flaws in relying on associations for standards.",
+        q10: "The writer says Tudge's prediction is overly optimistic given slow progress."
+      };
+      const answers = {
+        q8: "B",
+        q9: "C",
+        q10: "A"
+      };
+      for (let i = 8; i <= 10; i++) {
+        const input = document.getElementById("q" + i);
+        const result = document.getElementById("q" + i + "_result");
+        if (input.value === "") {
+          result.innerHTML = "";
+        } else {
+          if (input.value === answers["q" + i]) {
+          result.innerHTML = "✅ Correct";
+          const explanation = document.createElement('div');
+          explanation.className = 'explanation';
+          explanation.textContent = explanations["q" + i];
+          result.appendChild(explanation);
+        } else {
+          result.innerHTML = "❌ Incorrect";
+        }
+        }
+      }
+    }
+
+    function checkAnswersPart3() {
+      const selected = Array.from(document.querySelectorAll('input[name="q11to13"]:checked')).map(e => e.value);
+      const correctSet = ["A", "D", "E"];
+      const resultDiv = document.getElementById("q11to13_result");
+
+      if (selected.length !== 3) {
+        resultDiv.innerHTML = `<p class='explanation'>❌ Please select exactly three options.</p>`;
+        return;
+      }
+
+      const correctSelected = selected.filter(x => correctSet.includes(x));
+      const incorrectSelected = selected.filter(x => !correctSet.includes(x));
+
+      let message = "";
+
+      if (correctSelected.length === 3 && incorrectSelected.length === 0) {
+        message = "✅ Correct!";
+      } else {
+        message = "❌ Incorrect.";
+      }
+      resultDiv.innerHTML = `<p class='explanation'>${message}</p>`;
+    }
+  function highlightSelection() {
+  const selection = window.getSelection();
+  if (!selection.rangeCount) return;
+  const range = selection.getRangeAt(0);
+  const selectedText = range.toString();
+  if (!selectedText.trim()) return;
+
+  const span = document.createElement("span");
+  span.className = "highlighted";
+  span.textContent = selectedText;
+  range.deleteContents();
+  range.insertNode(span);
+  selection.removeAllRanges();
+}
+
+function clearHighlights() {
+  const highlights = document.querySelectorAll('.highlighted');
+  highlights.forEach(span => {
+    const textNode = document.createTextNode(span.textContent);
+    span.parentNode.replaceChild(textNode, span);
+  });
+}
+window.addEventListener('scroll', () => {
+  const tools = document.querySelector('.floating-tools');
+  if (!tools) return;
+  tools.style.opacity = '0';
+  clearTimeout(window.scrollTimeout);
+  window.scrollTimeout = setTimeout(() => {
+    tools.style.opacity = '1';
+  }, 300);
+});
+</script>
+
+<script>
+function saveAnswersToLocalStorage() {
+  const inputs = document.querySelectorAll('input, select, textarea');
+  const answers = {};
+
+  inputs.forEach(input => {
+    if (input.type === 'radio' || input.type === 'checkbox') {
+      const key = input.name + '-' + input.value;
+      answers[key] = input.checked;
+    } else {
+      answers[input.name || input.id] = input.value;
+    }
+  });
+
+  localStorage.setItem('zoo_answers', JSON.stringify(answers));
+}
+
+function loadAnswersFromLocalStorage() {
+  const saved = localStorage.getItem('zoo_answers');
+  if (!saved) return;
+
+  const answers = JSON.parse(saved);
+
+  Object.keys(answers).forEach(key => {
+    if (key.includes('-')) {
+      const [name, value] = key.split('-');
+      const el = document.querySelector(`input[name="${name}"][value="${value}"]`);
+      if (el) el.checked = answers[key];
+    } else {
+      const el = document.querySelector(`[name="${key}"], #${key}`);
+      if (el) el.value = answers[key];
+    }
+  });
+}
+
+function resetSavedAnswers() {
+  localStorage.removeItem('zoo_answers');
+  window.location.reload();
+}
+
+document.addEventListener('DOMContentLoaded', loadAnswersFromLocalStorage);
+document.addEventListener('input', saveAnswersToLocalStorage);
+</script>
+</body>
+</html>
