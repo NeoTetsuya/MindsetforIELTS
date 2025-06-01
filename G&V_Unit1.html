@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        /* Base styles for the body and container */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #334155;
+            line-height: 1.6;
+            font-size: 1rem; /* Default base font size for larger screens */
+        }
+        .container {
+            max-width: 1200px; /* Increased max-width to make the worksheet wider */
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        /* Heading styles */
+        h1, h2, h3 {
+            color: #1e293b;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        h1 { font-size: 2.25rem; }
+        h2 { font-size: 1.75rem; }
+        h3 { font-size: 1.25rem; }
+        /* Exercise section styling */
+        .exercise-section {
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        /* Question item styling */
+        .question-item {
+            margin-bottom: 1.25rem;
+            padding: 1rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .question-item p {
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            color: #475569;
+        }
+        /* Feedback message styling */
+        .feedback {
+            margin-top: 0.5rem;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .feedback.correct {
+            color: #16a34a;
+            background-color: #dcfce7;
+            border: 1px solid #bbf7d0;
+        }
+        .feedback.incorrect {
+            color: #dc2626;
+            background-color: #fee2e2;
+            border: 1px solid #fca5a5;
+        }
+        /* Check button styling */
+        .check-button {
+            background-color: #2563eb;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 1.5rem;
+            display: inline-block;
+            border: none;
+        }
+        .check-button:hover {
+            background-color: #1d4ed8;
+        }
+        /* Input field and select styling */
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem; /* Default input font size */
+            color: #334155;
+            background-color: #f8fafc;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            vertical-align: middle; /* Align with surrounding text */
+        }
+        input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+        /* Select specific styling for better visibility */
+        select {
+            width: 100%;
+            padding: 0.75rem 1rem; /* Increased padding */
+            border: 2px solid #60a5fa; /* More prominent border */
+            border-radius: 8px; /* Slightly more rounded */
+            font-size: 1.05rem; /* Slightly larger font */
+            color: #1e293b; /* Darker text for contrast */
+            background-color: #e0f2fe; /* Lighter blue background */
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            appearance: none; /* Remove default arrow on some browsers */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%20viewBox%3D%220%200%20292.4%20292.4%22%3E%3Cpath%20fill%3D%22%231e293b%22%20d%3D%22M287%2C197.9L146.2%2C57.1L5.4%2C197.9h281.6z%22%2F%3E%3C%2Fsvg%3E'); /* Custom arrow */
+            background-repeat: no-repeat;
+            background-position: right 0.7em top 50%, 0 0;
+            background-size: 0.65em auto, 100%;
+            cursor: pointer;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+        select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+            background-color: #dbeafe; /* Slightly darker on focus */
+        }
+
+        /* Radio and checkbox styling */
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 0.5rem;
+            transform: scale(1.1);
+        }
+        /* Checkbox group for inline display (Exercise 1 & 3) */
+        .checkbox-group label {
+            display: inline-flex; /* Use inline-flex to put them on the same line */
+            align-items: center;
+            margin-right: 1.5rem; /* Add some space between options */
+            margin-bottom: 0.5rem; /* Keep a small bottom margin for wrapping */
+        }
+        .checkbox-group label:last-child {
+            margin-right: 0;
+        }
+
+        /* Radio group for stacked display (Exercise 8) - Reverted to default block-like behavior */
+        .radio-group label {
+            display: flex; /* Ensure each label takes its own line */
+            align-items: flex-start; /* Align text to top if multiple lines */
+            margin-bottom: 0.5rem; /* Space between radio options */
+        }
+
+        /* Info box styling */
+        .info-box {
+            background-color: #e0f2fe;
+            border: 1px solid #90cdf4;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            color: #1e40af;
+        }
+        .info-box p {
+            margin-bottom: 0.5rem;
+        }
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+        /* Keyword highlight styling */
+        .highlight-keyword {
+            background-color: #fcd34d; /* Yellow highlight */
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-weight: bold; /* Keep it bold for emphasis */
+        }
+
+        /* --- Responsive Font Adjustments --- */
+        @media (max-width: 768px) { /* Tablets (portrait) and larger phones (landscape) */
+            body {
+                font-size: 0.9rem; /* Slightly smaller base font */
+            }
+            h1 { font-size: 1.75rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.1rem; }
+            .question-item p, .question-item label {
+                font-size: 0.9rem; /* Adjust question text and labels */
+            }
+            input[type="text"], select, textarea {
+                font-size: 0.95rem; /* Adjust input fields and selects */
+                padding: 0.6rem 0.8rem; /* Adjust padding for smaller screens */
+            }
+            /* Adjust checkbox spacing for smaller screens */
+            .checkbox-group label {
+                margin-right: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) { /* Smaller phones (portrait) */
+            body {
+                font-size: 0.85rem; /* Even smaller base font */
+            }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.25rem; }
+            h3 { font-size: 1rem; }
+            .question-item p, .question-item label {
+                font-size: 0.85rem;
+            }
+            input[type="text"], select, textarea {
+                font-size: 0.9rem; /* Adjust input fields and selects */
+                padding: 0.5rem 0.7rem; /* Further adjust padding */
+            }
+            /* Further adjust checkbox spacing for very small screens */
+            .checkbox-group label {
+                margin-right: 0.75rem;
+            }
+        }
+        /* Specific adjustments for select blanks in Exercises 2, 4 and 5 */
+        .inline-block.w-40 { /* Default width for Ex2 and Ex4 selects */
+            width: 160px;
+        }
+        @media (max-width: 768px) {
+            .inline-block.w-40 {
+                width: 120px;
+            }
+        }
+        @media (max-width: 480px) {
+            .inline-block.w-40 {
+                width: 90px;
+            }
+        }
+
+        .inline-block.w-96 { /* Default width for Ex5 selects */
+            width: 384px;
+        }
+        @media (max-width: 768px) {
+            .inline-block.w-96 {
+                width: 280px;
+            }
+        }
+        @media (max-width: 480px) {
+            .inline-block.w-96 {
+                width: 100%; /* Full width on phones */
+            }
+        }
+        /* Specific adjustments for input blanks in Exercise 7 & 9 */
+        .inline-block.w-64 { /* Original width for Ex7 & Ex9 */
+            width: 256px; /* Default Tailwind w-64 */
+        }
+        /* Override for smaller screens */
+        @media (max-width: 768px) {
+            .inline-block.w-64 {
+                width: 180px;
+            }
+        }
+        @media (max-width: 480px) {
+            .inline-block.w-64 {
+                width: 100%; /* Full width on phones */
+            }
+        }
+    </style>
+</head>
+
+<div class="exercise-section" id="exercise1">
+<h2 class="mb-4">Unit 1: Exercise 1</h2>
+<p class="mb-4">Choose the correct answers to the questions. There is often more than one possible answer.</p>
+<div class="question-item">
+<p>1. Your uncle is your …</p>
+<div class="checkbox-group">
+<label><input name="ex1_q1" type="checkbox" value="aunt’s husband"/> aunt’s husband.</label>
+<label><input name="ex1_q1" type="checkbox" value="mother or father’s brother"/> mother or father’s brother.</label>
+<label><input name="ex1_q1" type="checkbox" value="sister’s husband"/> sister’s husband.</label>
+</div>
+<div class="feedback" id="feedback_ex1_q1"></div>
+</div>
+<div class="question-item">
+<p>2. Your cousin is your …</p>
+<div class="checkbox-group">
+<label><input name="ex1_q2" type="checkbox" value="brother’s father"/> brother’s father.</label>
+<label><input name="ex1_q2" type="checkbox" value="father’s nephew or niece"/> father’s nephew or niece.</label>
+<label><input name="ex1_q2" type="checkbox" value="uncle or aunt’s child"/> uncle or aunt’s child.</label>
+</div>
+<div class="feedback" id="feedback_ex1_q2"></div>
+</div>
+<div class="question-item">
+<p>3. Your niece is your …</p>
+<div class="checkbox-group">
+<label><input name="ex1_q3" type="checkbox" value="brother or sister’s daughter"/> brother or sister’s daughter.</label>
+<label><input name="ex1_q3" type="checkbox" value="mother or father’s cousin"/> mother or father’s cousin.</label>
+<label><input name="ex1_q3" type="checkbox" value="son or daughter’s cousin"/> son or daughter’s cousin.</label>
+</div>
+<div class="feedback" id="feedback_ex1_q3"></div>
+</div>
+<div class="question-item">
+<p>4. Your brother-in-law is your …</p>
+<div class="checkbox-group">
+<label><input name="ex1_q4" type="checkbox" value="husband or wife’s brother"/> husband or wife’s brother.</label>
+<label><input name="ex1_q4" type="checkbox" value="sister’s husband"/> sister’s husband.</label>
+<label><input name="ex1_q4" type="checkbox" value="brother’s wife"/> brother’s wife.</label>
+</div>
+<div class="feedback" id="feedback_ex1_q4"></div>
+</div>
+<div class="question-item">
+<p>5. Your aunt is your …</p>
+<div class="checkbox-group">
+<label><input name="ex1_q5" type="checkbox" value="cousin’s wife"/> cousin’s wife.</label>
+<label><input name="ex1_q5" type="checkbox" value="mother or father’s sister"/> mother or father’s sister.</label>
+<label><input name="ex1_q5" type="checkbox" value="uncle’s wife"/> uncle’s wife.</label>
+</div>
+<div class="feedback" id="feedback_ex1_q5"></div>
+</div>
+<div class="question-item">
+<p>6. Your daughter-in-law is your …</p>
+<div class="checkbox-group">
+<label><input name="ex1_q6" type="checkbox" value="brother’s wife"/> brother’s wife.</label>
+<label><input name="ex1_q6" type="checkbox" value="daughter’s husband"/> daughter’s husband.</label>
+<label><input name="ex1_q6" type="checkbox" value="son’s wife"/> son’s wife.</label>
+</div>
+<div class="feedback" id="feedback_ex1_q6"></div>
+</div>
+<div class="question-item">
+<p>7. Your nephew is your …</p>
+<div class="checkbox-group">
+<label><input name="ex1_q7" type="checkbox" value="brother or sister’s daughter"/> brother or sister’s daughter.</label>
+<label><input name="ex1_q7" type="checkbox" value="brother or sister’s son"/> brother or sister’s son.</label>
+<label><input name="ex1_q7" type="checkbox" value="niece’s brother"/> niece’s brother.</label>
+</div>
+<div class="feedback" id="feedback_ex1_q7"></div>
+</div>
+<button class="check-button" onclick="checkExercise1()">Check Answers</button>
+</div>
+<div class="exercise-section" id="exercise2">
+<h2 class="mb-4">Unit 1: Exercise 2</h2>
+<p class="mb-4">Complete the text. Choose the correct word from the dropdown list for each blank.</p>
+<div class="question-item">
+<p>I come from a very large family, but we all live in different places, so we don’t get <select class="inline-block w-40" id="ex2_q1" name="exercise2_q1">
+<option value="">--Select--</option>
+<option value="anniversary">anniversary</option>
+<option value="celebrate">celebrate</option>
+<option value="congratulated">congratulated</option>
+<option value="engaged">engaged</option>
+<option value="have">have</option>
+<option value="invited">invited</option>
+<option value="married">married</option>
+<option value="occasions">occasions</option>
+<option value="together">together</option>
+<option value="wish">wish</option>
+</select> very often. We usually meet for special <select class="inline-block w-40" id="ex2_q2" name="exercise2_q2">
+<option value="">--Select--</option>
+<option value="anniversary">anniversary</option>
+<option value="celebrate">celebrate</option>
+<option value="congratulated">congratulated</option>
+<option value="engaged">engaged</option>
+<option value="have">have</option>
+<option value="invited">invited</option>
+<option value="married">married</option>
+<option value="occasions">occasions</option>
+<option value="together">together</option>
+<option value="wish">wish</option>
+</select> like weddings. Last year, we all met for my grandparents’ 50th wedding <select class="inline-block w-40" id="ex2_q3" name="exercise2_q3">
+<option value="">--Select--</option>
+<option value="anniversary">anniversary</option>
+<option value="celebrate">celebrate</option>
+<option value="congratulated">congratulated</option>
+<option value="engaged">engaged</option>
+<option value="have">have</option>
+<option value="invited">invited</option>
+<option value="married">married</option>
+<option value="occasions">occasions</option>
+<option value="together">together</option>
+<option value="wish">wish</option>
+</select>.</p>
+<div class="feedback" id="feedback_ex2_q1"></div>
+<div class="feedback" id="feedback_ex2_q2"></div>
+<div class="feedback" id="feedback_ex2_q3"></div>
+</div>
+<div class="question-item">
+<p>It was my birthday a few weeks ago, but I didn’t <select class="inline-block w-40" id="ex2_q4" name="exercise2_q4">
+<option value="">--Select--</option>
+<option value="anniversary">anniversary</option>
+<option value="celebrate">celebrate</option>
+<option value="congratulated">congratulated</option>
+<option value="engaged">engaged</option>
+<option value="have">have</option>
+<option value="invited">invited</option>
+<option value="married">married</option>
+<option value="occasions">occasions</option>
+<option value="together">together</option>
+<option value="wish">wish</option>
+</select> a big party. I prefer to <select class="inline-block w-40" id="ex2_q5" name="exercise2_q5">
+<option value="">--Select--</option>
+<option value="anniversary">anniversary</option>
+<option value="celebrate">celebrate</option>
+<option value="congratulated">congratulated</option>
+<option value="engaged">engaged</option>
+<option value="have">have</option>
+<option value="invited">invited</option>
+<option value="married">married</option>
+<option value="occasions">occasions</option>
+<option value="together">together</option>
+<option value="wish">wish</option>
+</select> my birthday with my family and a few close friends. My cousin, who lives in Australia, phoned to <select class="inline-block w-40" id="ex2_q6" name="exercise2_q6">
+<option value="">--Select--</option>
+<option value="anniversary">anniversary</option>
+<option value="celebrate">celebrate</option>
+<option value="congratulated">congratulated</option>
+<option value="engaged">engaged</option>
+<option value="have">have</option>
+<option value="invited">invited</option>
+<option value="married">married</option>
+<option value="occasions">occasions</option>
+<option value="together">together</option>
+<option value="wish">wish</option>
+</select> me a happy birthday. She got <select class="inline-block w-40" id="ex2_q7" name="exercise2_q7">
+<option value="">--Select--</option>
+<option value="anniversary">anniversary</option>
+<option value="celebrate">celebrate</option>
+<option value="congratulated">congratulated</option>
+<option value="engaged">engaged</option>
+<option value="have">have</option>
+<option value="invited">invited</option>
+<option value="married">married</option>
+<option value="occasions">occasions</option>
+<option value="together">together</option>
+<option value="wish">wish</option>
+</select> last month and is going to get <select class="inline-block w-40" id="ex2_q8" name="exercise2_q8">
+<option value="">--Select--</option>
+<option value="anniversary">anniversary</option>
+<option value="celebrate">celebrate</option>
+<option value="congratulated">congratulated</option>
+<option value="engaged">engaged</option>
+<option value="have">have</option>
+<option value="invited">invited</option>
+<option value="married">married</option>
+<option value="occasions">occasions</option>
+<option value="together">together</option>
+<option value="wish">wish</option>
+</select> next year. I <select class="inline-block w-40" id="ex2_q9" name="exercise2_q9">
+<option value="">--Select--</option>
+<option value="anniversary">anniversary</option>
+<option value="celebrate">celebrate</option>
+<option value="congratulated">congratulated</option>
+<option value="engaged">engaged</option>
+<option value="have">have</option>
+<option value="invited">invited</option>
+<option value="married">married</option>
+<option value="occasions">occasions</option>
+<option value="together">together</option>
+<option value="wish">wish</option>
+</select> her on the great news. She’s <select class="inline-block w-40" id="ex2_q10" name="exercise2_q10">
+<option value="">--Select--</option>
+<option value="anniversary">anniversary</option>
+<option value="celebrate">celebrate</option>
+<option value="congratulated">congratulated</option>
+<option value="engaged">engaged</option>
+<option value="have">have</option>
+<option value="invited">invited</option>
+<option value="married">married</option>
+<option value="occasions">occasions</option>
+<option value="together">together</option>
+<option value="wish">wish</option>
+</select> me to her wedding next year. I'm so excited because I've never been to Australia before.</p>
+<div class="feedback" id="feedback_ex2_q4"></div>
+<div class="feedback" id="feedback_ex2_q5"></div>
+<div class="feedback" id="feedback_ex2_q6"></div>
+<div class="feedback" id="feedback_ex2_q7"></div>
+<div class="feedback" id="feedback_ex2_q8"></div>
+<div class="feedback" id="feedback_ex2_q9"></div>
+<div class="feedback" id="feedback_ex2_q10"></div>
+</div>
+<button class="check-button" onclick="checkExercise2()">Check Answers</button>
+</div>
+<div class="exercise-section" id="exercise3">
+<h2 class="mb-4">Unit 1: Exercise 3</h2>
+<p class="mb-4">Choose <span class="font-bold">two</span> correct words to complete the sentences.</p>
+<div class="question-item">
+<p>1. Age: She’s …</p>
+<div class="checkbox-group">
+<label><input name="ex3_q1" type="checkbox" value="middle-aged"/> middle-aged.</label>
+<label><input name="ex3_q1" type="checkbox" value="slim"/> slim.</label>
+<label><input name="ex3_q1" type="checkbox" value="young"/> young.</label>
+</div>
+<div class="feedback" id="feedback_ex3_q1"></div>
+</div>
+<div class="question-item">
+<p>2. Type of person: He’s a/an …</p>
+<div class="checkbox-group">
+<label><input name="ex3_q2" type="checkbox" value="baby"/> baby.</label>
+<label><input name="ex3_q2" type="checkbox" value="child"/> child.</label>
+<label><input name="ex3_q2" type="checkbox" value="scar"/> scar.</label>
+</div>
+<div class="feedback" id="feedback_ex3_q2"></div>
+</div>
+<div class="question-item">
+<p>3. Size/Height: He’s …</p>
+<div class="checkbox-group">
+<label><input name="ex3_q3" type="checkbox" value="long"/> long.</label>
+<label><input name="ex3_q3" type="checkbox" value="short"/> short.</label>
+<label><input name="ex3_q3" type="checkbox" value="tall"/> tall.</label>
+</div>
+<div class="feedback" id="feedback_ex3_q3"></div>
+</div>
+<div class="question-item">
+<p>4. Weight: He’s …</p>
+<div class="checkbox-group">
+<label><input name="ex3_q4" type="checkbox" value="plain"/> plain.</label>
+<label><input name="ex3_q4" type="checkbox" value="slim"/> slim.</label>
+<label><input name="ex3_q4" type="checkbox" value="thin"/> thin.</label>
+</div>
+<div class="feedback" id="feedback_ex3_q4"></div>
+</div>
+<div class="question-item">
+<p>5. Looks: She’s …</p>
+<div class="checkbox-group">
+<label><input name="ex3_q5" type="checkbox" value="good-looking"/> good-looking.</label>
+<label><input name="ex3_q5" type="checkbox" value="plain"/> plain.</label>
+<label><input name="ex3_q5" type="checkbox" value="wavy"/> wavy.</label>
+</div>
+<div class="feedback" id="feedback_ex3_q5"></div>
+</div>
+<div class="question-item">
+<p>6. Hair: He’s got … hair.</p>
+<div class="checkbox-group">
+<label><input name="ex3_q6" type="checkbox" value="Bald"/> Bald</label>
+<label><input name="ex3_q6" type="checkbox" value="Dark"/> Dark</label>
+<label><input name="ex3_q6" type="checkbox" value="fair"/> fair</label>
+</div>
+<div class="feedback" id="feedback_ex3_q6"></div>
+</div>
+<div class="question-item">
+<p>7. Features: He’s got a/an …</p>
+<div class="checkbox-group">
+<label><input name="ex3_q7" type="checkbox" value="adult"/> adult.</label>
+<label><input name="ex3_q7" type="checkbox" value="beard"/> beard.</label>
+<label><input name="ex3_q7" type="checkbox" value="moustache"/> moustache.</label>
+</div>
+<div class="feedback" id="feedback_ex3_q7"></div>
+</div>
+<div class="question-item">
+<p>8. Features: She wears …</p>
+<div class="checkbox-group">
+<label><input name="ex3_q8" type="checkbox" value="big earrings"/> big earrings.</label>
+<label><input name="ex3_q8" type="checkbox" value="glasses"/> glasses.</label>
+<label><input name="ex3_q8" type="checkbox" value="long hair"/> long hair.</label>
+</div>
+<div class="feedback" id="feedback_ex3_q8"></div>
+</div>
+<button class="check-button" onclick="checkExercise3()">Check Answers</button>
+</div>
+<div class="exercise-section" id="exercise4">
+<h2 class="mb-4">Unit 1: Exercise 4</h2>
+<p class="mb-4">Complete the sentences. Choose the correct word from the dropdown list for each blank.</p>
+<div class="question-item">
+<p>1. A/An <select class="inline-block w-40" id="ex4_q1" name="exercise4_q1">
+<option value="">--Select--</option>
+<option value="boss">boss</option>
+<option value="classmate">classmate</option>
+<option value="colleague">colleague</option>
+<option value="enemy">enemy</option>
+<option value="neighbor">neighbor</option>
+<option value="partner">partner</option>
+<option value="relative">relative</option>
+<option value="stranger">stranger</option>
+</select> is a member of your family, such as a cousin, a parent or one of your children.</p>
+<div class="feedback" id="feedback_ex4_q1"></div>
+</div>
+<div class="question-item">
+<p>2. A/An <select class="inline-block w-40" id="ex4_q2" name="exercise4_q2">
+<option value="">--Select--</option>
+<option value="boss">boss</option>
+<option value="classmate">classmate</option>
+<option value="colleague">colleague</option>
+<option value="enemy">enemy</option>
+<option value="neighbor">neighbor</option>
+<option value="partner">partner</option>
+<option value="relative">relative</option>
+<option value="stranger">stranger</option>
+</select> is a person who hates another person and tries to hurt them or stop them from doing something.</p>
+<div class="feedback" id="feedback_ex4_q2"></div>
+</div>
+<div class="question-item">
+<p>3. Your <select class="inline-block w-40" id="ex4_q3" name="exercise4_q3">
+<option value="">--Select--</option>
+<option value="boss">boss</option>
+<option value="classmate">classmate</option>
+<option value="colleague">colleague</option>
+<option value="enemy">enemy</option>
+<option value="neighbor">neighbor</option>
+<option value="partner">partner</option>
+<option value="relative">relative</option>
+<option value="stranger">stranger</option>
+</select> is someone who lives very close to you, sometimes in the next house or flat.</p>
+<div class="feedback" id="feedback_ex4_q3"></div>
+</div>
+<div class="question-item">
+<p>4. If you don’t know somebody, they are a/an <select class="inline-block w-40" id="ex4_q4" name="exercise4_q4">
+<option value="">--Select--</option>
+<option value="boss">boss</option>
+<option value="classmate">classmate</option>
+<option value="colleague">colleague</option>
+<option value="enemy">enemy</option>
+<option value="neighbor">neighbor</option>
+<option value="partner">partner</option>
+<option value="relative">relative</option>
+<option value="stranger">stranger</option>
+</select>.</p>
+<div class="feedback" id="feedback_ex4_q4"></div>
+</div>
+<div class="question-item">
+<p>5. Your <select class="inline-block w-40" id="ex4_q5" name="exercise4_q5">
+<option value="">--Select--</option>
+<option value="boss">boss</option>
+<option value="classmate">classmate</option>
+<option value="colleague">colleague</option>
+<option value="enemy">enemy</option>
+<option value="neighbor">neighbor</option>
+<option value="partner">partner</option>
+<option value="relative">relative</option>
+<option value="stranger">stranger</option>
+</select> is the person who tells you what to do at work.</p>
+<div class="feedback" id="feedback_ex4_q5"></div>
+</div>
+<div class="question-item">
+<p>6. A/An <select class="inline-block w-40" id="ex4_q6" name="exercise4_q6">
+<option value="">--Select--</option>
+<option value="boss">boss</option>
+<option value="classmate">classmate</option>
+<option value="colleague">colleague</option>
+<option value="enemy">enemy</option>
+<option value="neighbor">neighbor</option>
+<option value="partner">partner</option>
+<option value="relative">relative</option>
+<option value="stranger">stranger</option>
+</select> is someone who is in the same class as you at school or university.</p>
+<div class="feedback" id="feedback_ex4_q6"></div>
+</div>
+<div class="question-item">
+<p>7. A/An <select class="inline-block w-40" id="ex4_q7" name="exercise4_q7">
+<option value="">--Select--</option>
+<option value="boss">boss</option>
+<option value="classmate">classmate</option>
+<option value="colleague">colleague</option>
+<option value="enemy">enemy</option>
+<option value="neighbor">neighbor</option>
+<option value="partner">partner</option>
+<option value="relative">relative</option>
+<option value="stranger">stranger</option>
+</select> is one of a group of people who work together.</p>
+<div class="feedback" id="feedback_ex4_q7"></div>
+</div>
+<div class="question-item">
+<p>8. Your <select class="inline-block w-40" id="ex4_q8" name="exercise4_q8">
+<option value="">--Select--</option>
+<option value="boss">boss</option>
+<option value="classmate">classmate</option>
+<option value="colleague">colleague</option>
+<option value="enemy">enemy</option>
+<option value="neighbor">neighbor</option>
+<option value="partner">partner</option>
+<option value="relative">relative</option>
+<option value="stranger">stranger</option>
+</select> is a person you work closely with, for example in pairwork.</p>
+<div class="feedback" id="feedback_ex4_q8"></div>
+</div>
+<button class="check-button" onclick="checkExercise4()">Check Answers</button>
+</div>
+<div class="exercise-section" id="exercise5">
+<h2 class="mb-4">Unit 1: Exercise 5</h2>
+<p class="mb-4">Complete the sentences. Choose the correct phrase from the dropdown list for each blank.</p>
+<div class="question-item">
+<p>1. A hard-working person, <select class="inline-block w-96" id="ex5_q1" name="exercise5_q1">
+<option value="">--Select--</option>
+<option value="always does a lot of work">always does a lot of work</option>
+<option value="doesn’t like meeting new people">doesn’t like meeting new people</option>
+<option value="doesn’t want to work or do anything that needs effort">doesn’t want to work or do anything that needs effort</option>
+<option value="is happy to give other people money, help or their time">is happy to give other people money, help or their time</option>
+<option value="is happy to help other people">is happy to help other people</option>
+<option value="is happy to meet new people">is happy to meet new people</option>
+<option value="thinks only of themselves, and doesn’t care about other people">thinks only of themselves, and doesn’t care about other people</option>
+<option value="will do what they say they will do">will do what they say they will do</option>
+</select></p>
+<div class="feedback" id="feedback_ex5_q1"></div>
+</div>
+<div class="question-item">
+<p>2. A lazy person, <select class="inline-block w-96" id="ex5_q2" name="exercise5_q2">
+<option value="">--Select--</option>
+<option value="always does a lot of work">always does a lot of work</option>
+<option value="doesn’t like meeting new people">doesn’t like meeting new people</option>
+<option value="doesn’t want to work or do anything that needs effort">doesn’t want to work or do anything that needs effort</option>
+<option value="is happy to give other people money, help or their time">is happy to give other people money, help or their time</option>
+<option value="is happy to help other people">is happy to help other people</option>
+<option value="is happy to meet new people">is happy to meet new people</option>
+<option value="thinks only of themselves, and doesn’t care about other people">thinks only of themselves, and doesn’t care about other people</option>
+<option value="will do what they say they will do">will do what they say they will do</option>
+</select></p>
+<div class="feedback" id="feedback_ex5_q2"></div>
+</div>
+<div class="question-item">
+<p>3. A shy person, <select class="inline-block w-96" id="ex5_q3" name="exercise5_q3">
+<option value="">--Select--</option>
+<option value="always does a lot of work">always does a lot of work</option>
+<option value="doesn’t like meeting new people">doesn’t like meeting new people</option>
+<option value="doesn’t want to work or do anything that needs effort">doesn’t want to work or do anything that needs effort</option>
+<option value="is happy to give other people money, help or their time">is happy to give other people money, help or their time</option>
+<option value="is happy to help other people">is happy to help other people</option>
+<option value="is happy to meet new people">is happy to meet new people</option>
+<option value="thinks only of themselves, and doesn’t care about other people">thinks only of themselves, and doesn’t care about other people</option>
+<option value="will do what they say they will do">will do what they say they will do</option>
+</select></p>
+<div class="feedback" id="feedback_ex5_q3"></div>
+</div>
+<div class="question-item">
+<p>4. A friendly person, <select class="inline-block w-96" id="ex5_q4" name="exercise5_q4">
+<option value="">--Select--</option>
+<option value="always does a lot of work">always does a lot of work</option>
+<option value="doesn’t like meeting new people">doesn’t like meeting new people</option>
+<option value="doesn’t want to work or do anything that needs effort">doesn’t want to work or do anything that needs effort</option>
+<option value="is happy to give other people money, help or their time">is happy to give other people money, help or their time</option>
+<option value="is happy to help other people">is happy to help other people</option>
+<option value="is happy to meet new people">is happy to meet new people</option>
+<option value="thinks only of themselves, and doesn’t care about other people">thinks only of themselves, and doesn’t care about other people</option>
+<option value="will do what they say they will do">will do what they say they will do</option>
+</select></p>
+<div class="feedback" id="feedback_ex5_q4"></div>
+</div>
+<div class="question-item">
+<p>5. A reliable person, <select class="inline-block w-96" id="ex5_q5" name="exercise5_q5">
+<option value="">--Select--</option>
+<option value="always does a lot of work">always does a lot of work</option>
+<option value="doesn’t like meeting new people">doesn’t like meeting new people</option>
+<option value="doesn’t want to work or do anything that needs effort">doesn’t want to work or do anything that needs effort</option>
+<option value="is happy to give other people money, help or their time">is happy to give other people money, help or their time</option>
+<option value="is happy to help other people">is happy to help other people</option>
+<option value="is happy to meet new people">is happy to meet new people</option>
+<option value="thinks only of themselves, and doesn’t care about other people">thinks only of themselves, and doesn’t care about other people</option>
+<option value="will do what they say they will do">will do what they say they will do</option>
+</select></p>
+<div class="feedback" id="feedback_ex5_q5"></div>
+</div>
+<div class="question-item">
+<p>6. A selfish person, <select class="inline-block w-96" id="ex5_q6" name="exercise5_q6">
+<option value="">--Select--</option>
+<option value="always does a lot of work">always does a lot of work</option>
+<option value="doesn’t like meeting new people">doesn’t like meeting new people</option>
+<option value="doesn’t want to work or do anything that needs effort">doesn’t want to work or do anything that needs effort</option>
+<option value="is happy to give other people money, help or their time">is happy to give other people money, help or their time</option>
+<option value="is happy to help other people">is happy to help other people</option>
+<option value="is happy to meet new people">is happy to meet new people</option>
+<option value="thinks only of themselves, and doesn’t care about other people">thinks only of themselves, and doesn’t care about other people</option>
+<option value="will do what they say they will do">will do what they say they will do</option>
+</select></p>
+<div class="feedback" id="feedback_ex5_q6"></div>
+</div>
+<div class="question-item">
+<p>7. A helpful person, <select class="inline-block w-96" id="ex5_q7" name="exercise5_q7">
+<option value="">--Select--</option>
+<option value="always does a lot of work">always does a lot of work</option>
+<option value="doesn’t like meeting new people">doesn’t like meeting new people</option>
+<option value="doesn’t want to work or do anything that needs effort">doesn’t want to work or do anything that needs effort</option>
+<option value="is happy to give other people money, help or their time">is happy to give other people money, help or their time</option>
+<option value="is happy to help other people">is happy to help other people</option>
+<option value="is happy to meet new people">is happy to meet new people</option>
+<option value="thinks only of themselves, and doesn’t care about other people">thinks only of themselves, and doesn’t care about other people</option>
+<option value="will do what they say they will do">will do what they say they will do</option>
+</select></p>
+<div class="feedback" id="feedback_ex5_q7"></div>
+</div>
+<div class="question-item">
+<p>8. A generous person, <select class="inline-block w-96" id="ex5_q8" name="exercise5_q8">
+<option value="">--Select--</option>
+<option value="always does a lot of work">always does a lot of work</option>
+<option value="doesn’t like meeting new people">doesn’t like meeting new people</option>
+<option value="doesn’t want to work or do anything that needs effort">doesn’t want to work or do anything that needs effort</option>
+<option value="is happy to give other people money, help or their time">is happy to give other people money, help or their time</option>
+<option value="is happy to help other people">is happy to help other people</option>
+<option value="is happy to meet new people">is happy to meet new people</option>
+<option value="thinks only of themselves, and doesn’t care about other people">thinks only of themselves, and doesn’t care about other people</option>
+<option value="will do what they say they will do">will do what they say they will do</option>
+</select></p>
+<div class="feedback" id="feedback_ex5_q8"></div>
+</div>
+<button class="check-button" onclick="checkExercise5()">Check Answers</button>
+</div>
+<div class="exercise-section" id="exercise6">
+<h2 class="mb-4">Unit 1: Exercise 6</h2>
+<p class="mb-4">Read the information. Then change the underlined words to the negative form. Use contractions (e.g. don’t, aren’t) where possible.</p>
+<div class="info-box">
+<p><span class="font-bold">To make a sentence negative:</span> we use <em>do + not + the infinitive without to</em>.</p>
+<p><span class="font-bold">Positive sentence:</span> I <u>see</u> my cousin very often because she <u>lives</u> in the same town.</p>
+<p><span class="font-bold">Negative sentence:</span> I <u>don’t see</u> my cousin very often because she <u>doesn’t live</u> in the same town.</p>
+</div>
+<div class="question-item">
+<p>1. I <span class="highlight-keyword">can remember</span> people’s names because I’ve got a good memory.</p>
+<input class="w-full" id="ex6_q1" name="exercise6_q1" placeholder="" type="text"/>
+<div class="feedback" id="feedback_ex6_q1"></div>
+</div>
+<div class="question-item">
+<p>2. My uncle <span class="highlight-keyword">looks</span> old because he’s got grey hair.</p>
+<input class="w-full" id="ex6_q2" name="exercise6_q2" placeholder="" type="text"/>
+<div class="feedback" id="feedback_ex6_q2"></div>
+</div>
+<div class="question-item">
+<p>3. My grandmother <span class="highlight-keyword">gives</span> us lots of presents because she’s a rich person.</p>
+<input class="w-full" id="ex6_q3" name="exercise6_q3" placeholder="" type="text"/>
+<div class="feedback" id="feedback_ex6_q3"></div>
+</div>
+<div class="question-item">
+<p>4. We <span class="highlight-keyword">have</span> a lot of family get-togethers*, so I know my cousins very well.</p>
+<input class="w-full" id="ex6_q4" name="exercise6_q4" placeholder="" type="text"/>
+<p class="text-sm text-gray-600 mt-1">* get-together = a social occasion/event, usually organised for a particular reason</p>
+<div class="feedback" id="feedback_ex6_q4"></div>
+</div>
+<div class="question-item">
+<p>5. You <span class="highlight-keyword">can buy</span> toys for your nieces and nephews because they’re little children.</p>
+<input class="w-full" id="ex6_q5" name="exercise6_q5" placeholder="" type="text"/>
+<div class="feedback" id="feedback_ex6_q5"></div>
+</div>
+<button class="check-button" onclick="checkExercise6()">Check Answers</button>
+</div>
+<div class="exercise-section" id="exercise7">
+<h2 class="mb-4">Unit 1: Exercise 7</h2>
+<p class="mb-4">Complete the questions in the conversations.</p>
+<div class="question-item">
+<p>A: How <input class="inline-block w-64" id="ex7_q1" name="exercise7_q1" type="text"/> do you see your cousins?</p>
+<p>B: Not very often. I only see them about once a year.</p>
+<div class="feedback" id="feedback_ex7_q1"></div>
+</div>
+<div class="question-item">
+<p>A: <input class="inline-block w-64" id="ex7_q2" name="exercise7_q2" type="text"/> wear a lot of make-up?</p>
+<p>B: My boss? Yes, she wears a lot of make-up.</p>
+<div class="feedback" id="feedback_ex7_q2"></div>
+</div>
+<div class="question-item">
+<p>A: <input class="inline-block w-64" id="ex7_q3" name="exercise7_q3" type="text"/> your nephews and nieces?</p>
+<p>B: My nephew is eight years old and my nieces are five and two years old.</p>
+<div class="feedback" id="feedback_ex7_q3"></div>
+</div>
+<div class="question-item">
+<p>A: <input class="inline-block w-64" id="ex7_q4" name="exercise7_q4" type="text"/> your colleagues lazy or hard-working?</p>
+<p>B: They’re quite lazy.</p>
+<div class="feedback" id="feedback_ex7_q4"></div>
+</div>
+<div class="question-item">
+<p>A: How <input class="inline-block w-64" id="ex7_q5" name="exercise7_q5" type="text"/> got?</p>
+<p>B: I’ve got six cousins.</p>
+<div class="feedback" id="feedback_ex7_q5"></div>
+</div>
+<div class="question-item">
+<p>A: What <input class="inline-block w-64" id="ex7_q6" name="exercise7_q6" type="text"/> your brother’s hair?</p>
+<p>B: It’s dark brown.</p>
+<div class="feedback" id="feedback_ex7_q6"></div>
+</div>
+<div class="question-item">
+<p>A: <input class="inline-block w-64" id="ex7_q7" name="exercise7_q7" type="text"/> your cousin’s wedding?</p>
+<p>B: No, I can’t. I was only three years old at the time, so I can’t remember it at all.</p>
+<div class="feedback" id="feedback_ex7_q7"></div>
+</div>
+<div class="question-item">
+<p>A: <input class="inline-block w-64" id="ex7_q8" name="exercise7_q8" type="text"/> usually celebrate your birthday?</p>
+<p>B: I usually have a party with my relatives and close friends.</p>
+<div class="feedback" id="feedback_ex7_q8"></div>
+</div>
+<button class="check-button" onclick="checkExercise7()">Check Answers</button>
+</div>
+<div class="exercise-section" id="exercise8">
+<h2 class="mb-4">Unit 1: Exercise 8</h2>
+<p class="mb-4">Choose the sentence that is closest in meaning to the first sentence.</p>
+<div class="question-item">
+<p>1. Whenever it’s my aunt’s birthday, she organises a family get-together.</p>
+<div class="radio-group">
+<label><input name="exercise8_q1" type="radio" value="My aunt always organises a family get-together for her birthday."/> My aunt always organises a family get-together for her birthday.</label>
+<label><input name="exercise8_q2" type="radio" value="My aunt occasionally organises a family get-together for her birthday."/> My aunt occasionally organises a family get-together for her birthday.</label>
+<label><input name="exercise8_q3" type="radio" value="My aunt rarely organises a family get-together for her birthday."/> My aunt rarely organises a family get-together for her birthday.</label>
+</div>
+<div class="feedback" id="feedback_ex8_q1"></div>
+</div>
+<div class="question-item">
+<p>2. When it’s my aunt’s birthday, she usually organises a family get-together.</p>
+<div class="radio-group">
+<label><input name="exercise8_q4" type="radio" value="My aunt almost never organises a family get-together for her birthday."/> My aunt almost never organises a family get-together for her birthday.</label>
+<label><input name="exercise8_q1" type="radio" value="My aunt always organises a family get-together for her birthday."/> My aunt always organises a family get-together for her birthday.</label>
+<label><input name="exercise8_q5" type="radio" value="My aunt organises a family get-together most years for her birthday."/> My aunt organises a family get-together most years for her birthday.</label>
+</div>
+<div class="feedback" id="feedback_ex8_q2"></div>
+</div>
+<div class="question-item">
+<p>3. My aunt often organises family get-togethers.</p>
+<div class="radio-group">
+<label><input name="exercise8_q6" type="radio" value="My aunt always organises family get-togethers."/> My aunt always organises family get-togethers.</label>
+<label><input name="exercise8_q7" type="radio" value="My aunt occasionally organises family get-togethers."/> My aunt occasionally organises family get-togethers.</label>
+<label><input name="exercise8_q8" type="radio" value="My aunt organises a lot of family get-togethers."/> My aunt organises a lot of family get-togethers.</label>
+</div>
+<div class="feedback" id="feedback_ex8_q3"></div>
+</div>
+<div class="question-item">
+<p>4. My aunt organises family get-togethers from time to time.</p>
+<div class="radio-group">
+<label><input name="exercise8_q9" type="radio" value="My aunt almost never organises family get-togethers."/> My aunt almost never organises family get-togethers.</label>
+<label><input name="exercise8_q6" type="radio" value="My aunt always organises family get-togethers."/> My aunt always organises family get-togethers.</label>
+<label><input name="exercise8_q7" type="radio" value="My aunt occasionally organises family get-togethers."/> My aunt occasionally organises family get-togethers.</label>
+</div>
+<div class="feedback" id="feedback_ex8_q4"></div>
+</div>
+<div class="question-item">
+<p>5. My aunt organises a family get-together three times a year.</p>
+<div class="radio-group">
+<label><input name="exercise8_q10" type="radio" value="My aunt organises a family get-together every four months."/> My aunt organises a family get-together every four months.</label>
+<label><input name="exercise8_q11" type="radio" value="My aunt organises a family get-together every month."/> My aunt organises a family get-together every month.</label>
+<label><input name="exercise8_q12" type="radio" value="My aunt organises a family get-together every three months."/> My aunt organises a family get-together every three months.</label>
+</div>
+<div class="feedback" id="feedback_ex8_q5"></div>
+</div>
+<div class="question-item">
+<p>6. My aunt organises a family get-together every other month.</p>
+<div class="radio-group">
+<label><input name="exercise8_q10" type="radio" value="My aunt organises a family get-together every four months."/> My aunt organises a family get-together every four months.</label>
+<label><input name="exercise8_q13" type="radio" value="My aunt organises a family get-together six times a year."/> My aunt organises a family get-together six times a year.</label>
+<label><input name="exercise8_q14" type="radio" value="My aunt organises a family get-together twice a year."/> My aunt organises a family get-together twice a year.</label>
+</div>
+<div class="feedback" id="feedback_ex8_q6"></div>
+</div>
+<div class="question-item">
+<p>7. My aunt doesn’t often organise family get-togethers.</p>
+<div class="radio-group">
+<label><input name="exercise8_q8" type="radio" value="My aunt organises a lot of family get-togethers."/> My aunt organises a lot of family get-togethers.</label>
+<label><input name="exercise8_q15" type="radio" value="My aunt organises family get-togethers from time to time."/> My aunt organises family get-togethers from time to time.</label>
+<label><input name="exercise8_q16" type="radio" value="My aunt rarely organises family get-togethers."/> My aunt rarely organises family get-togethers.</label>
+</div>
+<div class="feedback" id="feedback_ex8_q7"></div>
+</div>
+<div class="question-item">
+<p>8. My aunt hardly ever organises family get-togethers.</p>
+<div class="radio-group">
+<label><input name="exercise8_q9" type="radio" value="My aunt almost never organises family get-togethers."/> My aunt almost never organises family get-togethers.</label>
+<label><input name="exercise8_q6" type="radio" value="My aunt always organises family get-togethers."/> My aunt always organises family get-togethers.</label>
+<label><input name="exercise8_q7" type="radio" value="My aunt occasionally organises family get-togethers."/> My aunt occasionally organises family get-togethers.</label>
+</div>
+<div class="feedback" id="feedback_ex8_q8"></div>
+</div>
+<button class="check-button" onclick="checkExercise8()">Check Answers</button>
+</div>
+<div class="exercise-section" id="exercise9">
+<h2 class="mb-4">Unit 1: Exercise 9</h2>
+<p class="mb-4">Read the information. Then complete the present simple passive sentences underneath. Leave out the underlined words from the passive sentences. The first one has been done for you.</p>
+<div class="info-box bg-blue-50 p-4 rounded-md mb-4 border border-blue-200 text-blue-800">
+<p><span class="font-bold">Example:</span> <u>We</u> treat elderly people with respect in my country.</p>
+<p>Elderly people <input class="inline-block w-64" name="exercise9_q1" readonly="" type="text" value="are treated"/> with respect in my country.</p>
+</div>
+<div class="question-item">
+<p>1. <u>We</u> define teenagers as young people aged between 13 and 19 years old.</p>
+<p><input class="inline-block w-full" id="ex9_q1" name="exercise9_q2" placeholder="Your answer" type="text"/></p>
+<div class="feedback" id="feedback_ex9_q1"></div>
+</div>
+<div class="question-item">
+<p>2. <u>The police</u> describe the thief as tall with a scar on his face.</p>
+<input class="inline-block w-full" id="ex9_q2" name="exercise9_q3" placeholder="Your answer" type="text"/>
+<div class="feedback" id="feedback_ex9_q2"></div>
+</div>
+<div class="question-item">
+<p>3. <u>The police</u> advise members of the public not to speak to the thief.</p>
+<input class="inline-block w-full" id="ex9_q3" name="exercise9_q4" placeholder="Your answer" type="text"/>
+<div class="feedback" id="feedback_ex9_q3"></div>
+</div>
+<div class="question-item">
+<p>4. How do <u>people</u> usually celebrate birthdays in your country?</p>
+<p>How <input class="inline-block w-full" id="ex9_q4" name="exercise9_q5" placeholder="Your answer" type="text"/></p>
+<div class="feedback" id="feedback_ex9_q4"></div>
+</div>
+<div class="question-item">
+<p>5. <u>We</u> don’t expect you to give us an exact number of guests.</p>
+<p><input class="inline-block w-full" id="ex9_q5" name="exercise9_q6" placeholder="Your answer" type="text"/></p>
+<div class="feedback" id="feedback_ex9_q5"></div>
+</div>
+<div class="question-item">
+<p>6. <u>They</u> don’t allow us to wear make-up at school.</p>
+<p><input class="inline-block w-full" id="ex9_q6" name="exercise9_q7" placeholder="Your answer" type="text"/></p>
+<div class="feedback" id="feedback_ex9_q6"></div>
+</div>
+<div class="question-item">
+<p>7. What kind of presents do <u>people</u> normally give at weddings in your country?</p>
+<p>What kind of presents <input class="inline-block w-full" id="ex9_q7" name="exercise9_q8" placeholder="Your answer" type="text"/></p>
+<div class="feedback" id="feedback_ex9_q7"></div>
+</div>
+<button class="check-button" onclick="checkExercise9()">Check Answers</button>
+</div>
+<div class="exercise-section" id="exercise10">
+<h2 class="mb-4">Unit 1: Exercise 10</h2>
+<p class="mb-4">Complete the sentences with the correct present simple form of the verbs in brackets. Some answers need to be in the present simple passive.</p>
+<div class="question-item">
+<p>1. In my country, a wedding usually <input class="inline-block w-40" id="ex10_q1" name="exercise10_q1" type="text"/> (take) months, or even years, to prepare.</p>
+<div class="feedback" id="feedback_ex10_q1"></div>
+</div>
+<div class="question-item">
+<p>2. The best places for a wedding reception <input class="inline-block w-40" id="ex10_q2" name="exercise10_q2" type="text"/> (book) years in advance.</p>
+<div class="feedback" id="feedback_ex10_q2"></div>
+</div>
+<div class="question-item">
+<p>3. So you <input class="inline-block w-40" id="ex10_q3" name="exercise10_q3" type="text"/> (need) to make a booking as soon as possible.</p>
+<div class="feedback" id="feedback_ex10_q3"></div>
+</div>
+<div class="question-item">
+<p>4. This <input class="inline-block w-40" id="ex10_q4" name="exercise10_q4" type="text"/> (mean) that you need to quickly decide how many people you want to invite.</p>
+<div class="feedback" id="feedback_ex10_q4"></div>
+</div>
+<div class="question-item">
+<p>5. A wedding often <input class="inline-block w-40" id="ex10_q5" name="exercise10_q5" type="text"/> (cost) a lot of money, so you need to find out how many people you can afford to invite.</p>
+<div class="feedback" id="feedback_ex10_q5"></div>
+</div>
+<div class="question-item">
+<p>6. The guests <input class="inline-block w-40" id="ex10_q6" name="exercise10_q6" type="text"/> (invite) as soon as possible to give them time to make the necessary arrangements.</p>
+<div class="feedback" id="feedback_ex10_q6"></div>
+</div>
+<div class="question-item">
+<p>7. The whole event <input class="inline-block w-40" id="ex10_q7" name="exercise10_q7" type="text"/> (plan) very carefully, as there are a lot of things to organise in time for the wedding.</p>
+<div class="feedback" id="feedback_ex10_q7"></div>
+</div>
+<div class="question-item">
+<p>8. Finally, the wedding day <input class="inline-block w-40" id="ex10_q8" name="exercise10_q8" type="text"/> (arrive).</p>
+<div class="feedback" id="feedback_ex10_q8"></div>
+</div>
+<div class="question-item">
+<p>9. Usually, everything goes well, everyone has a nice time and the stress of the last months <input class="inline-block w-40" id="ex10_q9" name="exercise10_q9" type="text"/> (forget).</p>
+<div class="feedback" id="feedback_ex10_q9"></div>
+</div>
+<button class="check-button" onclick="checkExercise10()">Check Answers</button>
+</div>
+<button class="check-button mt-6 bg-red-500 hover:bg-red-600" onclick="resetSavedAnswers()">
+  Reset My Answers
+</button>
+
+<script>
+            // ✅ SAVE user answers to localStorage
+function saveAnswersToLocalStorage() {
+  const inputs = document.querySelectorAll('input, select, textarea');
+  const answers = {};
+
+  inputs.forEach(input => {
+    if (input.type === 'radio' || input.type === 'checkbox') {
+      const key = input.name + '-' + input.value;
+      answers[key] = input.checked;
+    } else {
+      answers[input.name || input.id] = input.value;
+    }
+  });
+
+  localStorage.setItem('ielts_answers', JSON.stringify(answers));
+}
+
+// ✅ LOAD user answers from localStorage
+function loadAnswersFromLocalStorage() {
+  const saved = localStorage.getItem('ielts_answers');
+  if (!saved) return;
+
+  const answers = JSON.parse(saved);
+
+  Object.keys(answers).forEach(key => {
+    if (key.includes('-')) {
+      const [name, value] = key.split('-');
+      const el = document.querySelector(`input[name="${name}"][value="${value}"]`);
+      if (el) el.checked = answers[key];
+    } else {
+      const el = document.querySelector(`[name="${key}"], #${key}`);
+      if (el) el.value = answers[key];
+    }
+  });
+}
+
+// ✅ RESET all answers
+function resetSavedAnswers() {
+  localStorage.removeItem('ielts_answers');
+  window.location.reload();
+}
+
+// Automatically save when user interacts
+document.addEventListener('input', saveAnswersToLocalStorage);
+
+// Load saved answers when page loads
+document.addEventListener('DOMContentLoaded', loadAnswersFromLocalStorage);
+
+
+
+        // Object containing all the correct answers for each exercise and question
+        const correctAnswers = {
+            exercise1: {
+                q1: ["aunt’s husband", "mother or father’s brother"], 
+                q2: ["uncle or aunt’s child"],
+                q3: ["brother or sister’s daughter"],
+                q4: ["sister’s husband"], 
+                q5: ["mother or father’s sister", "uncle’s wife"], 
+                q6: ["son’s wife"],
+                q7: ["brother or sister’s son"]
+            },
+            exercise2: {
+                q1: "together",
+                q2: "occasions",
+                q3: "anniversary",
+                q4: "have",
+                q5: "celebrate",
+                q6: "wish",
+                q7: "engaged",
+                q8: "married",
+                q9: "congratulated",
+                q10: "invited"
+            },
+            exercise3: {
+                q1: ["middle-aged", "young"],
+                q2: ["baby", "child"],
+                q3: ["short", "tall"],
+                q4: ["slim", "thin"],
+                q5: ["good-looking", "plain"],
+                q6: ["Bald", "Dark", "fair"], 
+                q7: ["beard", "moustache"],
+                q8: ["big earrings", "glasses"] 
+            },
+            exercise4: {
+                q1: "relative",
+                q2: "enemy",
+                q3: "neighbor",
+                q4: "stranger",
+                q5: "boss",
+                q6: "classmate",
+                q7: "colleague",
+                q8: "partner"
+            },
+            exercise5: {
+                q1: "always does a lot of work",
+                q2: "doesn’t want to work or do anything that needs effort",
+                q3: "doesn’t like meeting new people",
+                q4: "is happy to meet new people",
+                q5: "will do what they say they will do",
+                q6: "thinks only of themselves, and doesn’t care about other people",
+                q7: "is happy to help other people",
+                q8: "is happy to give other people money, help or their time"
+            },
+            exercise6: {
+                q1: "I can’t remember people’s names because I haven’t got a good memory.", 
+                q2: "My uncle doesn’t look old because he hasn’t got grey hair.", 
+                q3: "My grandmother doesn’t give us lots of presents because she isn’t a rich person.", 
+                q4: "We don’t have a lot of family get-togethers, I don’t know my cousins very well.", 
+                q5: "You can’t buy toy for your nieces and nephews because they aren’t little children." 
+            },
+            exercise7: {
+                q1: "often",
+                q2: "does your boss", 
+                q3: "how old are",
+                q4: "are",
+                q5: "many cousins have you",
+                q6: "color is", 
+                q7: "can you remember",
+                q8: "how do you"
+            },
+            exercise8: {
+                q1: "My aunt always organises a family get-together for her birthday.",
+                q2: "My aunt organises a family get-together most years for her birthday.",
+                q3: "My aunt organises a lot of family get-togethers.",
+                q4: "My aunt occasionally organises family get-togethers.",
+                q5: "My aunt organises a family get-together every four months.", 
+                q6: "My aunt organises a family get-together six times a year.", 
+                q7: "My aunt rarely organises family get-togethers.",
+                q8: "My aunt almost never organises family get-togethers."
+            },
+            exercise9: {
+                q1: "Teenagers are defined as young people aged between 13 and 19 years old.",
+                q2: "The thief is described as tall with a scar on his face by the police.", 
+                q3: "Members of the public are advised not to speak to the thief by the police.", 
+                q4: "are birthdays in your country celebrated?", 
+                q5: "You aren’t expected to give us an exact number of guests.",
+                q6: "We aren't allowed to wear make-up at school.",
+                q7: "are normally given at weddings in your country?"
+            },
+            exercise10: {
+                q1: "takes",
+                q2: "are booked",
+                q3: "need",
+                q4: "means",
+                q5: "costs",
+                q6: "are invited",
+                q7: "is planned",
+                q8: "arrives",
+                q9: "is forgotten"
+            }
+        };
+
+        // Helper function to display feedback (Correct/Incorrect)
+        function showFeedback(elementId, isCorrect) {
+            const feedbackElement = document.getElementById(elementId);
+            // Clear previous feedback classes
+            feedbackElement.classList.remove('correct', 'incorrect');
+            if (isCorrect) {
+                feedbackElement.classList.add('correct');
+                feedbackElement.textContent = 'Correct!';
+            } else {
+                feedbackElement.classList.add('incorrect');
+                feedbackElement.textContent = 'Incorrect.';
+            }
+        }
+
+        // Function to check multiple choice (checkboxes) - Exercise 1 & 3
+        function checkMultipleChoice(exerciseNum, questionNum, correctOptions) {
+            const checkboxes = document.querySelectorAll(`input[name="ex${exerciseNum}_q${questionNum}"]:checked`);
+            const selectedValues = Array.from(checkboxes).map(cb => cb.value);
+
+            let isCorrect = false;
+            // Check if all selected options are correct and all correct options are selected
+            const allSelectedAreCorrect = selectedValues.every(val => correctOptions.includes(val));
+            const allCorrectAreSelected = correctOptions.every(val => selectedValues.includes(val));
+
+            // If there are correct options, ensure all correct ones are selected and no incorrect ones are selected
+            if (correctOptions.length > 0) {
+                isCorrect = allSelectedAreCorrect && allCorrectAreSelected && selectedValues.length === correctOptions.length;
+            } else {
+                // If there are no correct options (e.g., all options are wrong), then selecting nothing is correct.
+                isCorrect = selectedValues.length === 0;
+            }
+
+            showFeedback(`feedback_ex${exerciseNum}_q${questionNum}`, isCorrect);
+        }
+
+        // Functions to check each exercise
+        function checkExercise1() {
+            checkMultipleChoice(1, 1, correctAnswers.exercise1.q1);
+            checkMultipleChoice(1, 2, correctAnswers.exercise1.q2);
+            checkMultipleChoice(1, 3, correctAnswers.exercise1.q3);
+            checkMultipleChoice(1, 4, correctAnswers.exercise1.q4);
+            checkMultipleChoice(1, 5, correctAnswers.exercise1.q5);
+            checkMultipleChoice(1, 6, correctAnswers.exercise1.q6);
+            checkMultipleChoice(1, 7, correctAnswers.exercise1.q7);
+        }
+
+        function checkExercise2() {
+            // Retrieve selected values from dropdowns for validation
+            const q1 = document.getElementById('ex2_q1').value.trim().toLowerCase();
+            const q2 = document.getElementById('ex2_q2').value.trim().toLowerCase();
+            const q3 = document.getElementById('ex2_q3').value.trim().toLowerCase();
+            const q4 = document.getElementById('ex2_q4').value.trim().toLowerCase();
+            const q5 = document.getElementById('ex2_q5').value.trim().toLowerCase();
+            const q6 = document.getElementById('ex2_q6').value.trim().toLowerCase();
+            const q7 = document.getElementById('ex2_q7').value.trim().toLowerCase();
+            const q8 = document.getElementById('ex2_q8').value.trim().toLowerCase();
+            const q9 = document.getElementById('ex2_q9').value.trim().toLowerCase();
+            const q10 = document.getElementById('ex2_q10').value.trim().toLowerCase();
+
+            // Compare with correct answers and show feedback
+            showFeedback('feedback_ex2_q1', q1 === correctAnswers.exercise2.q1.toLowerCase());
+            showFeedback('feedback_ex2_q2', q2 === correctAnswers.exercise2.q2.toLowerCase());
+            showFeedback('feedback_ex2_q3', q3 === correctAnswers.exercise2.q3.toLowerCase());
+            showFeedback('feedback_ex2_q4', q4 === correctAnswers.exercise2.q4.toLowerCase());
+            showFeedback('feedback_ex2_q5', q5 === correctAnswers.exercise2.q5.toLowerCase());
+            showFeedback('feedback_ex2_q6', q6 === correctAnswers.exercise2.q6.toLowerCase());
+            showFeedback('feedback_ex2_q7', q7 === correctAnswers.exercise2.q7.toLowerCase());
+            showFeedback('feedback_ex2_q8', q8 === correctAnswers.exercise2.q8.toLowerCase());
+            showFeedback('feedback_ex2_q9', q9 === correctAnswers.exercise2.q9.toLowerCase());
+            showFeedback('feedback_ex2_q10', q10 === correctAnswers.exercise2.q10.toLowerCase());
+        }
+
+        function checkExercise3() {
+            checkMultipleChoice(3, 1, correctAnswers.exercise3.q1);
+            checkMultipleChoice(3, 2, correctAnswers.exercise3.q2);
+            checkMultipleChoice(3, 3, correctAnswers.exercise3.q3);
+            checkMultipleChoice(3, 4, correctAnswers.exercise3.q4);
+            checkMultipleChoice(3, 5, correctAnswers.exercise3.q5);
+            checkMultipleChoice(3, 6, correctAnswers.exercise3.q6);
+            checkMultipleChoice(3, 7, correctAnswers.exercise3.q7);
+            checkMultipleChoice(3, 8, correctAnswers.exercise3.q8);
+        }
+
+        function checkExercise4() {
+            for (let i = 1; i <= 8; i++) {
+                const inputValue = document.getElementById(`ex4_q${i}`).value.trim().toLowerCase(); // Get value from select
+                const correctAnswer = correctAnswers.exercise4[`q${i}`].toLowerCase();
+                showFeedback(`feedback_ex4_q${i}`, inputValue === correctAnswer);
+            }
+        }
+
+        function checkExercise5() {
+            for (let i = 1; i <= 8; i++) {
+                const inputValue = document.getElementById(`ex5_q${i}`).value.trim().toLowerCase(); // Get value from select
+                const correctAnswer = correctAnswers.exercise5[`q${i}`].toLowerCase();
+                showFeedback(`feedback_ex5_q${i}`, inputValue === correctAnswer);
+            }
+        }
+
+        function checkExercise6() {
+            for (let i = 1; i <= 5; i++) {
+                const inputValue = document.getElementById(`ex6_q${i}`).value.trim().toLowerCase();
+                const correctAnswer = correctAnswers.exercise6[`q${i}`].toLowerCase();
+                showFeedback(`feedback_ex6_q${i}`, inputValue === correctAnswer);
+            }
+        }
+
+        function checkExercise7() {
+            for (let i = 1; i <= 8; i++) {
+                const inputValue = document.getElementById(`ex7_q${i}`).value.trim().toLowerCase();
+                const correctAnswer = correctAnswers.exercise7[`q${i}`].toLowerCase();
+                showFeedback(`feedback_ex7_q${i}`, inputValue === correctAnswer);
+            }
+        }
+
+        function checkExercise8() {
+            for (let i = 1; i <= 8; i++) {
+                const selectedValue = document.querySelector(`input[name="ex8_q${i}"]:checked`)?.value;
+                const isCorrect = selectedValue === correctAnswers.exercise8[`q${i}`];
+                showFeedback(`feedback_ex8_q${i}`, isCorrect);
+            }
+        }
+
+        function checkExercise9() {
+            for (let i = 1; i <= 7; i++) {
+                const inputValue = document.getElementById(`ex9_q${i}`).value.trim().toLowerCase();
+                const correctAnswer = correctAnswers.exercise9[`q${i}`].toLowerCase();
+                showFeedback(`feedback_ex9_q${i}`, inputValue === correctAnswer);
+            }
+        }
+
+        function checkExercise10() {
+            for (let i = 1; i <= 9; i++) {
+                const inputValue = document.getElementById(`ex10_q${i}`).value.trim().toLowerCase();
+                const correctAnswer = correctAnswers.exercise10[`q${i}`].toLowerCase();
+                showFeedback(`feedback_ex10_q${i}`, inputValue === correctAnswer);
+            }
+        }
+    </script>
+
+</html>
