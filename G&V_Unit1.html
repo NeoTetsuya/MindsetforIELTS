@@ -1298,29 +1298,12 @@ document.addEventListener('DOMContentLoaded', loadAnswersFromLocalStorage);
         }
 
             function checkExercise6() {
-  function normalizeAnswer(value) {
-    return value.trim().toLowerCase();
-  }
-
-  let correct = 0;
-  const a1 = normalizeAnswer(document.getElementById('ex6_q1').value);
-  const a2 = normalizeAnswer(document.getElementById('ex6_q2').value);
-  const a3 = normalizeAnswer(document.getElementById('ex6_q3').value);
-  const a4 = normalizeAnswer(document.getElementById('ex6_q4').value);
-
-  correct += a1 === 'so' ? 1 : 0;
-  correct += a2 === 'although' ? 1 : 0;
-  correct += a3 === 'however' ? 1 : 0;
-  correct += a4 === 'because' ? 1 : 0;
-
-  setFeedback('feedback_ex6_q1', a1 === 'so');
-  setFeedback('feedback_ex6_q2', a2 === 'although');
-  setFeedback('feedback_ex6_q3', a3 === 'however');
-  setFeedback('feedback_ex6_q4', a4 === 'because');
-
-  calculateScoreAndShowSummary(correct, 4);
+    for (let i = 1; i <= 5; i++) {
+        const inputValue = document.getElementById(`ex6_q${i}`).value.trim().toLowerCase();
+        const correctAnswer = correctAnswers.exercise6[`q${i}`].trim().toLowerCase();
+        showFeedback(`feedback_ex6_q${i}`, inputValue === correctAnswer);
+    }
 }
-
 
         function checkExercise7() {
             for (let i = 1; i <= 8; i++) {
