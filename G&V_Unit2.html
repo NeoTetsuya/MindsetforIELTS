@@ -204,6 +204,57 @@
             border-color: #3b82f6;
             background-color: #e0f2fe;
         }
+
+        /* Specific styles for Exercise 9 drag and drop */
+        .ex9-word-pool {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            padding: 0.5rem;
+            border: 1px dashed #a78bfa; /* Purple dashed border */
+            border-radius: 0.375rem;
+            background-color: #f5f3ff; /* Light purple background */
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .ex9-sentence-target {
+            min-height: 40px;
+            border: 2px dashed #8b5cf6; /* Darker purple dashed border */
+            border-radius: 0.375rem;
+            padding: 0.5rem;
+            background-color: #ede9fe; /* Even lighter purple */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            align-content: flex-start;
+        }
+        .ex9-word-item {
+            background-color: #c4b5fd; /* Medium purple for words */
+            color: #312e81; /* Dark text */
+            padding: 0.3rem 0.6rem;
+            border-radius: 0.25rem;
+            cursor: grab;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            border: 1px solid #a78bfa;
+        }
+        .ex9-word-item:hover {
+            background-color: #a78bfa;
+        }
+
+        /* Styles for Exercise 10 dropdowns */
+        .ex10-question-line .ex10-select {
+            width: 100%; /* Full width for dropdown on small screens */
+            max-width: 400px; /* Limit width on larger screens */
+            margin-top: 0.5rem; /* Space below question text */
+        }
+        @media (min-width: 768px) {
+            .ex10-question-line .ex10-select {
+                margin-top: 0; /* Remove top margin when in row layout */
+                margin-left: 1rem; /* Space from question text */
+                flex-grow: 1; /* Allow dropdown to take available space */
+            }
+        }
     </style>
 </head>
 <body>
@@ -305,7 +356,7 @@
             </ol>
             <button class="check-button" onclick="checkExercise1()">Check Exercise 1</button>
             <div id="ex1_result" class="result hidden"></div>
-            </div>
+        </div>
 
         <div class="exercise">
             <h2>Unit 2: Exercise 2</h2>
@@ -335,7 +386,7 @@
                 </select> , so it’s part of the city but away from the city centre. Many of the people who work in the city live here.</li>
                 <li>We live on <select id="ex2_q3" class="rounded-md">
                     <option value="">--Select--</option>
-                    <option value="a village">a village</option>
+                    <option value="a village">a village</m>
                     <option value="the city centre">the city centre</option>
                     <option value="the coast">the coast</option>
                     <option value="the countryside">the countryside</option>
@@ -347,12 +398,12 @@
                 <li>I’d love to live in <select id="ex2_q4" class="rounded-md">
                     <option value="">--Select--</option>
                     <option value="a village">a village</option>
-                    <option value="the city centre">the city centre</soption>
+                    <option value="the city centre">the city centre</option>
                     <option value="the coast">the coast</option>
                     <option value="the countryside">the countryside</option>
                     <option value="the outskirts of">the outskirts of</option>
                     <option value="the seaside">the seaside</option>
-                    <option value="the south of">the south of</soption>
+                    <option value="the south of">the south of</option>
                     <option value="the suburbs">the suburbs</option>
                 </select> , away from all the noise and traffic of the city.</li>
                 <li>Our house is in <select id="ex2_q5" class="rounded-md">
@@ -369,12 +420,12 @@
                 <li>The city where I was born is on <select id="ex2_q6" class="rounded-md">
                     <option value="">--Select--</option>
                     <option value="a village">a village</option>
-                    <option value="the city centre">the city centre</soption>
+                    <option value="the city centre">the city centre</option>
                     <option value="the coast">the coast</option>
                     <option value="the countryside">the countryside</option>
                     <option value="the outskirts of">the outskirts of</option>
                     <option value="the seaside">the seaside</option>
-                    <option value="the south of">the south of</soption>
+                    <option value="the south of">the south of</option>
                     <option value="the suburbs">the suburbs</option>
                 </select> . There are always a lot of ships from around the world in the port.</li>
                 <li>I live in <select id="ex2_q7" class="rounded-md">
@@ -385,7 +436,7 @@
                     <option value="the countryside">the countryside</option>
                     <option value="the outskirts of">the outskirts of</option>
                     <option value="the seaside">the seaside</option>
-                    <option value="the south of">the south of</soption>
+                    <option value="the south of">the south of</option>
                     <option value="the suburbs">the suburbs</option>
                 </select> , which is great. It means that I can walk to restaurants, cinemas and museums. But it does get very noisy here sometimes.</li>
                 <li>My town is in <select id="ex2_q8" class="rounded-md">
@@ -396,13 +447,13 @@
                     <option value="the countryside">the countryside</option>
                     <option value="the outskirts of">the outskirts of</option>
                     <option value="the seaside">the seaside</option>
-                    <option value="the south of">the south of</soption>
+                    <option value="the south of">the south of</option>
                     <option value="the suburbs">the suburbs</option>
                 </select> my country, not far from the mountains.</li>
             </ol>
             <button class="check-button" onclick="checkExercise2()">Check Exercise 2</button>
             <div id="ex2_result" class="result hidden"></div>
-            </div>
+        </div>
 
         <div class="exercise">
             <h2>Unit 2: Exercise 3</h2>
@@ -460,12 +511,13 @@
             </select> a flat – hopefully I’ll have enough money in a few years.</p>
             <button class="check-button" onclick="checkExercise3()">Check Exercise 3</button>
             <div id="ex3_result" class="result hidden"></div>
-            </div>
+        </div>
 
         <div class="exercise">
             <h2>Unit 2: Exercise 4</h2>
             <p>Put the words in the correct categories. Drag and drop the words into the correct boxes.</p>
-            <div class="drag-container drop-target" id="ex4_words"> <div class="drag-item" draggable="true" id="ex4_leisure_centre">leisure centre</div>
+            <div class="drag-container drop-target" id="ex4_words">
+                <div class="drag-item" draggable="true" id="ex4_leisure_centre">leisure centre</div>
                 <div class="drag-item" draggable="true" id="ex4_library">library</div>
                 <div class="drag-item" draggable="true" id="ex4_tower_block">tower block</div>
                 <div class="drag-item" draggable="true" id="ex4_shopping_centre">shopping centre</div>
@@ -499,7 +551,7 @@
             </div>
             <button class="check-button" onclick="checkExercise4()">Check Exercise 4</button>
             <div id="ex4_result" class="result hidden"></div>
-            </div>
+        </div>
 
         <div class="exercise">
             <h2>Unit 2: Exercise 5</h2>
@@ -548,7 +600,7 @@
             </ol>
             <button class="check-button" onclick="checkExercise5()">Check Exercise 5</button>
             <div id="ex5_result" class="result hidden"></div>
-            </div>
+        </div>
 
         <div class="exercise">
             <h2>Unit 2: Exercise 6</h2>
@@ -567,7 +619,7 @@
             </ol>
             <button class="check-button" onclick="checkExercise6()">Check Exercise 6</button>
             <div id="ex6_result" class="result hidden"></div>
-            </div>
+        </div>
 
         <div class="exercise">
             <h2>Unit 2: Exercise 7</h2>
@@ -584,7 +636,7 @@
             </ol>
             <button class="check-button" onclick="checkExercise7()">Check Exercise 7</button>
             <div id="ex7_result" class="result hidden"></div>
-            </div>
+        </div>
 
         <div class="exercise">
             <h2>Unit 2: Exercise 8</h2>
@@ -600,59 +652,217 @@
             </ol>
             <button class="check-button" onclick="checkExercise8()">Check Exercise 8</button>
             <div id="ex8_result" class="result hidden"></div>
-            </div>
+        </div>
 
         <div class="exercise">
             <h2>Unit 2: Exercise 9</h2>
-            <p>Put the words in the correct order to complete the questions.</p>
+            <p>Put the words in the correct order to complete the questions. Drag the words from the pool to the sentence box below each question.</p>
             <ol>
-                <li><input type="text" id="ex9_q1" class="rounded-md" placeholder="Type your answer here"></li>
-                <li><input type="text" id="ex9_q2" class="rounded-md" placeholder="Type your answer here"></li>
-                <li><input type="text" id="ex9_q3" class="rounded-md" placeholder="Type your answer here"></li>
-                <li><input type="text" id="ex9_q4" class="rounded-md" placeholder="Type your answer here"></li>
-                <li><input type="text" id="ex9_q5" class="rounded-md" placeholder="Type your answer here"></li>
-                <li><input type="text" id="ex9_q6" class="rounded-md" placeholder="Type your answer here"></li>
-                <li><input type="text" id="ex9_q7" class="rounded-md" placeholder="Type your answer here"></li>
-                <li><input type="text" id="ex9_q8" class="rounded-md" placeholder="Type your answer here"></li>
+                <li>
+                    <p><strong>Words:</strong> Were, a, child?, Did, you, you, Where, young, live, when</p>
+                    <div class="ex9-word-pool drop-target" id="ex9_q1_pool">
+                        <span class="ex9-word-item" draggable="true" id="ex9_q1_word_where">Where</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q1_word_did">did</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q1_word_you1">you</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q1_word_live">live</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q1_word_when">when</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q1_word_you2">you</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q1_word_were">were</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q1_word_a">a</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q1_word_young">young</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q1_word_child">child?</span>
+                    </div>
+                    <div class="ex9-sentence-target drop-target" id="ex9_q1_target"></div>
+                </li>
+                <li>
+                    <p><strong>Words:</strong> What, your, was, like?, House</p>
+                    <div class="ex9-word-pool drop-target" id="ex9_q2_pool">
+                        <span class="ex9-word-item" draggable="true" id="ex9_q2_word_what">What</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q2_word_was">was</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q2_word_your">your</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q2_word_house">house</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q2_word_like">like?</span>
+                    </div>
+                    <div class="ex9-sentence-target drop-target" id="ex9_q2_target"></div>
+                </li>
+                <li>
+                    <p><strong>Words:</strong> Living, enjoy, you, Did, there?</p>
+                    <div class="ex9-word-pool drop-target" id="ex9_q3_pool">
+                        <span class="ex9-word-item" draggable="true" id="ex9_q3_word_did">Did</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q3_word_you">you</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q3_word_enjoy">enjoy</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q3_word_living">living</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q3_word_there">there?</span>
+                    </div>
+                    <div class="ex9-sentence-target drop-target" id="ex9_q3_target"></div>
+                </li>
+                <li>
+                    <p><strong>Words:</strong> You, didn’t, it?, What, about, like</p>
+                    <div class="ex9-word-pool drop-target" id="ex9_q4_pool">
+                        <span class="ex9-word-item" draggable="true" id="ex9_q4_word_what">What</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q4_word_didnt">didn’t</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q4_word_you">you</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q4_word_like">like</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q4_word_about">about</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q4_word_it">it?</span>
+                    </div>
+                    <div class="ex9-sentence-target drop-target" id="ex9_q4_target"></div>
+                </li>
+                <li>
+                    <p><strong>Words:</strong> Could, from, your, you, walk, house?, to, school</p>
+                    <div class="ex9-word-pool drop-target" id="ex9_q5_pool">
+                        <span class="ex9-word-item" draggable="true" id="ex9_q5_word_could">Could</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q5_word_you">you</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q5_word_walk">walk</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q5_word_to">to</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q5_word_school">school</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q5_word_from">from</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q5_word_your">your</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q5_word_house">house?</span>
+                    </div>
+                    <div class="ex9-sentence-target drop-target" id="ex9_q5_target"></div>
+                </li>
+                <li>
+                    <p><strong>Words:</strong> To, up?, Place, grow, it, Was, a, good</p>
+                    <div class="ex9-word-pool drop-target" id="ex9_q6_pool">
+                        <span class="ex9-word-item" draggable="true" id="ex9_q6_word_was">Was</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q6_word_it">it</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q6_word_a">a</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q6_word_good">good</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q6_word_place">place</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q6_word_to">to</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q6_word_grow">grow</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q6_word_up">up?</span>
+                    </div>
+                    <div class="ex9-sentence-target drop-target" id="ex9_q6_target"></div>
+                </li>
+                <li>
+                    <p><strong>Words:</strong> Home?, You, How, you, old, left, were, when</p>
+                    <div class="ex9-word-pool drop-target" id="ex9_q7_pool">
+                        <span class="ex9-word-item" draggable="true" id="ex9_q7_word_how">How</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q7_word_old">old</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q7_word_were">were</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q7_word_you">you</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q7_word_when">when</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q7_word_you2">you</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q7_word_left">left</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q7_word_home">home?</span>
+                    </div>
+                    <div class="ex9-sentence-target drop-target" id="ex9_q7_target"></div>
+                </li>
+                <li>
+                    <p><strong>Words:</strong> You, Why, did, leave, home?</p>
+                    <div class="ex9-word-pool drop-target" id="ex9_q8_pool">
+                        <span class="ex9-word-item" draggable="true" id="ex9_q8_word_why">Why</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q8_word_did">did</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q8_word_you">you</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q8_word_leave">leave</span>
+                        <span class="ex9-word-item" draggable="true" id="ex9_q8_word_home">home?</span>
+                    </div>
+                    <div class="ex9-sentence-target drop-target" id="ex9_q8_target"></div>
+                </li>
             </ol>
             <button class="check-button" onclick="checkExercise9()">Check Exercise 9</button>
             <div id="ex9_result" class="result hidden"></div>
-            </div>
+        </div>
 
         <div class="exercise">
             <h2>Unit 2: Exercise 10</h2>
-            <p>Match the answers with the questions.</p>
-            <div class="match-item">
+            <p>Match the answers with the questions. Select the correct answer from the dropdown list.</p>
+            <div class="ex10-question-line">
                 <span>Where did you live when you were a child?</span>
-                <input type="text" id="ex10_q1" class="rounded-md">
+                <select id="ex10_q1_select" class="rounded-md ex10-select">
+                    <option value="">--Select--</option>
+                    <option value="I left home because I went to study at university.">I left home because I went to study at university.</option>
+                    <option value="I lived in a small mountain village.">I lived in a small mountain village.</option>
+                    <option value="I was 18.">I was 18.</option>
+                    <option value="No, I couldn’t. It was too far away.">No, I couldn’t. It was too far away.</option>
+                    <option value="There weren’t many other children, so sometimes I felt quite lonely.">There weren’t many other children, so sometimes I felt quite lonely.</option>
+                    <option value="Yes, I did. It was a lovely place to live.">Yes, I did. It was a lovely place to live.</option>
+                    <option value="Yes, it was. It was very safe.">Yes, it was. It was very safe.</option>
+                </select>
             </div>
-            <div class="match-item">
+            <div class="ex10-question-line">
                 <span>Did you enjoy living there?</span>
-                <input type="text" id="ex10_q2" class="rounded-md">
+                <select id="ex10_q2_select" class="rounded-md ex10-select">
+                    <option value="">--Select--</option>
+                    <option value="I left home because I went to study at university.">I left home because I went to study at university.</option>
+                    <option value="I lived in a small mountain village.">I lived in a small mountain village.</option>
+                    <option value="I was 18.">I was 18.</option>
+                    <option value="No, I couldn’t. It was too far away.">No, I couldn’t. It was too far away.</option>
+                    <option value="There weren’t many other children, so sometimes I felt quite lonely.">There weren’t many other children, so sometimes I felt quite lonely.</option>
+                    <option value="Yes, I did. It was a lovely place to live.">Yes, I did. It was a lovely place to live.</option>
+                    <option value="Yes, it was. It was very safe.">Yes, it was. It was very safe.</option>
+                </select>
             </div>
-            <div class="match-item">
+            <div class="ex10-question-line">
                 <span>What didn’t you like about it?</span>
-                <input type="text" id="ex10_q3" class="rounded-md">
+                <select id="ex10_q3_select" class="rounded-md ex10-select">
+                    <option value="">--Select--</option>
+                    <option value="I left home because I went to study at university.">I left home because I went to study at university.</option>
+                    <option value="I lived in a small mountain village.">I lived in a small mountain village.</option>
+                    <option value="I was 18.">I was 18.</option>
+                    <option value="No, I couldn’t. It was too far away.">No, I couldn’t. It was too far away.</option>
+                    <option value="There weren’t many other children, so sometimes I felt quite lonely.">There weren’t many other children, so sometimes I felt quite lonely.</option>
+                    <option value="Yes, I did. It was a lovely place to live.">Yes, I did. It was a lovely place to live.</option>
+                    <option value="Yes, it was. It was very safe.">Yes, it was. It was very safe.</option>
+                </select>
             </div>
-            <div class="match-item">
+            <div class="ex10-question-line">
                 <span>Could you walk to school from your house?</span>
-                <input type="text" id="ex10_q4" class="rounded-md">
+                <select id="ex10_q4_select" class="rounded-md ex10-select">
+                    <option value="">--Select--</option>
+                    <option value="I left home because I went to study at university.">I left home because I went to study at university.</option>
+                    <option value="I lived in a small mountain village.">I lived in a small mountain village.</option>
+                    <option value="I was 18.">I was 18.</option>
+                    <option value="No, I couldn’t. It was too far away.">No, I couldn’t. It was too far away.</option>
+                    <option value="There weren’t many other children, so sometimes I felt quite lonely.">There weren’t many other children, so sometimes I felt quite lonely.</option>
+                    <option value="Yes, I did. It was a lovely place to live.">Yes, I did. It was a lovely place to live.</option>
+                    <option value="Yes, it was. It was very safe.">Yes, it was. It was very safe.</option>
+                </select>
             </div>
-            <div class="match-item">
+            <div class="ex10-question-line">
                 <span>Was it a good place to grow up?</span>
-                <input type="text" id="ex10_q5" class="rounded-md">
+                <select id="ex10_q5_select" class="rounded-md ex10-select">
+                    <option value="">--Select--</option>
+                    <option value="I left home because I went to study at university.">I left home because I went to study at university.</option>
+                    <option value="I lived in a small mountain village.">I lived in a small mountain village.</option>
+                    <option value="I was 18.">I was 18.</option>
+                    <option value="No, I couldn’t. It was too far away.">No, I couldn’t. It was too far away.</option>
+                    <option value="There weren’t many other children, so sometimes I felt quite lonely.">There weren’t many other children, so sometimes I felt quite lonely.</option>
+                    <option value="Yes, I did. It was a lovely place to live.">Yes, I did. It was a lovely place to live.</option>
+                    <option value="Yes, it was. It was very safe.">Yes, it was. It was very safe.</option>
+                </select>
             </div>
-            <div class="match-item">
+            <div class="ex10-question-line">
                 <span>How old were you when you left home?</span>
-                <input type="text" id="ex10_q6" class="rounded-md">
+                <select id="ex10_q6_select" class="rounded-md ex10-select">
+                    <option value="">--Select--</option>
+                    <option value="I left home because I went to study at university.">I left home because I went to study at university.</option>
+                    <option value="I lived in a small mountain village.">I lived in a small mountain village.</option>
+                    <option value="I was 18.">I was 18.</option>
+                    <option value="No, I couldn’t. It was too far away.">No, I couldn’t. It was too far away.</option>
+                    <option value="There weren’t many other children, so sometimes I felt quite lonely.">There weren’t many other children, so sometimes I felt quite lonely.</option>
+                    <option value="Yes, I did. It was a lovely place to live.">Yes, I did. It was a lovely place to live.</option>
+                    <option value="Yes, it was. It was very safe.">Yes, it was. It was very safe.</option>
+                </select>
             </div>
-            <div class="match-item">
+            <div class="ex10-question-line">
                 <span>Why did you leave home?</span>
-                <input type="text" id="ex10_q7" class="rounded-md">
+                <select id="ex10_q7_select" class="rounded-md ex10-select">
+                    <option value="">--Select--</option>
+                    <option value="I left home because I went to study at university.">I left home because I went to study at university.</option>
+                    <option value="I lived in a small mountain village.">I lived in a small mountain village.</option>
+                    <option value="I was 18.">I was 18.</option>
+                    <option value="No, I couldn’t. It was too far away.">No, I couldn’t. It was too far away.</option>
+                    <option value="There weren’t many other children, so sometimes I felt quite lonely.">There weren’t many other children, so sometimes I felt quite lonely.</option>
+                    <option value="Yes, I did. It was a lovely place to live.">Yes, I did. It was a lovely place to live.</option>
+                    <option value="Yes, it was. It was very safe.">Yes, it was. It was very safe.</option>
+                </select>
             </div>
             <button class="check-button" onclick="checkExercise10()">Check Exercise 10</button>
             <div id="ex10_result" class="result hidden"></div>
-            </div>
+        </div>
     </div>
 
     <script>
@@ -660,17 +870,22 @@
         function displayResult(elementId, isCorrect, score, total, feedback) {
             const resultElement = document.getElementById(elementId);
 
-            resultElement.classList.remove('hidden', 'correct', 'incorrect', 'partial');
+            // Ensure resultElement exists before trying to manipulate its classList
+            if (resultElement) {
+                resultElement.classList.remove('hidden', 'correct', 'incorrect', 'partial');
 
-            if (score === total) {
-                resultElement.classList.add('correct');
-                resultElement.textContent = `All correct! (${score}/${total})`;
-            } else if (score > 0) {
-                resultElement.classList.add('partial');
-                resultElement.textContent = `Partially correct. You got ${score} out of ${total} correct.`;
+                if (score === total) {
+                    resultElement.classList.add('correct');
+                    resultElement.textContent = `All correct! (${score}/${total})`;
+                } else if (score > 0) {
+                    resultElement.classList.add('partial');
+                    resultElement.textContent = `Partially correct. You got ${score} out of ${total} correct.`;
+                } else {
+                    resultElement.classList.add('incorrect');
+                    resultElement.textContent = `Incorrect. You got 0 out of ${total} correct.`;
+                }
             } else {
-                resultElement.classList.add('incorrect');
-                resultElement.textContent = `Incorrect. You got 0 out of ${total} correct.`;
+                console.error(`Error: Result element with ID '${elementId}' not found.`);
             }
         }
 
@@ -752,44 +967,46 @@
             displayResult('ex3_result', score === totalQuestions, score, totalQuestions, feedbackHtml);
         }
 
-        let draggedItem = null;
-
+        // Common drag-and-drop logic
         document.addEventListener('DOMContentLoaded', (event) => {
-            const dragItems = document.querySelectorAll('.drag-item');
-            // Select all drop targets, including the initial drag-container
-            const dropTargets = document.querySelectorAll('.drop-target');
+            // Select all draggable items and drop targets
+            const allDraggables = document.querySelectorAll('.drag-item, .ex9-word-item, .ex10-answer-item');
+            const allDropTargets = document.querySelectorAll('.drop-target, .ex9-word-pool, .ex9-sentence-target, .ex10-answers-pool, .ex10-question-target');
 
-            dragItems.forEach(item => {
+            allDraggables.forEach(item => {
                 item.addEventListener('dragstart', (e) => {
-                    // Set the data for the drag operation (the ID of the dragged element)
                     e.dataTransfer.setData('text/plain', e.target.id);
-                    // Add a visual cue to the dragged item
+                    // Add a class to indicate dragging, useful for styling
                     setTimeout(() => {
                         e.target.classList.add('opacity-50');
                     }, 0);
                 });
 
                 item.addEventListener('dragend', (e) => {
-                    // Remove the visual cue when dragging ends
                     e.target.classList.remove('opacity-50');
                 });
             });
 
-            dropTargets.forEach(target => {
+            allDropTargets.forEach(target => {
                 target.addEventListener('dragover', (e) => {
-                    e.preventDefault(); // Allow drop by preventing default handling of the element
-                    target.classList.add('hover'); // Add visual cue for valid drop target
+                    e.preventDefault(); // Allow drop
+                    const draggedId = e.dataTransfer.getData('text/plain');
+                    const draggedElement = document.getElementById(draggedId);
+
+                    // Prevent dropping into self or non-matching target types if needed
+                    if (draggedElement && target !== draggedElement.parentNode) {
+                        target.classList.add('hover');
+                    }
                 });
 
                 target.addEventListener('dragleave', (e) => {
-                    target.classList.remove('hover'); // Remove visual cue when drag leaves
+                    target.classList.remove('hover');
                 });
 
                 target.addEventListener('drop', (e) => {
-                    e.preventDefault(); // Prevent default drop behavior
-                    target.classList.remove('hover'); // Remove visual cue
+                    e.preventDefault();
+                    target.classList.remove('hover');
 
-                    // Get the ID of the dragged element from the dataTransfer
                     const data = e.dataTransfer.getData('text/plain');
                     const droppedElement = document.getElementById(data);
 
@@ -946,52 +1163,56 @@
         }
 
         function checkExercise9() {
-            const answers = {
-                "ex9_q1": "Where did you live when you were young?",
-                "ex9_q2": "What was your house like?",
-                "ex9_q3": "Did you enjoy living there?",
-                "ex9_q4": "What didn't you like about it?",
-                "ex9_q5": "Could you walk to school from your house?",
-                "ex9_q6": "Was it a good place to grow up?",
-                "ex9_q7": "How old were you when you left home?",
-                "ex9_q8": "Why did you leave home?"
+            const correctAnswers = {
+                "ex9_q1_target": "Where did you live when you were a young child?",
+                "ex9_q2_target": "What was your house like?",
+                "ex9_q3_target": "Did you enjoy living there?",
+                "ex9_q4_target": "What didn’t you like about it?",
+                "ex9_q5_target": "Could you walk to school from your house?",
+                "ex9_q6_target": "Was it a good place to grow up?",
+                "ex9_q7_target": "How old were you when you left home?",
+                "ex9_q8_target": "Why did you leave home?"
             };
             let score = 0;
-            let feedbackHtml = ''; // Empty feedback
-            const totalQuestions = Object.keys(answers).length;
+            const totalQuestions = Object.keys(correctAnswers).length;
 
-            for (const id in answers) {
-                const inputValue = document.getElementById(id).value.toLowerCase().trim().replace(/\s+/g, ' '); // Normalize spaces
-                const correctAnswer = answers[id].toLowerCase().replace(/\s+/g, ' '); // Normalize spaces
-                if (inputValue === correctAnswer) {
+            for (const targetId in correctAnswers) {
+                const targetElement = document.getElementById(targetId);
+                const droppedWords = Array.from(targetElement.children).map(item => item.textContent.trim());
+                const userAnswer = droppedWords.join(' ').replace(/\s+/g, ' ').trim(); // Join and normalize spaces
+
+                const correctAnswer = correctAnswers[targetId].replace(/\s+/g, ' ').trim();
+
+                if (userAnswer === correctAnswer) {
                     score++;
                 }
             }
-            displayResult('ex9_result', score === totalQuestions, score, totalQuestions, feedbackHtml);
+            displayResult('ex9_result', score === totalQuestions, score, totalQuestions, '');
         }
 
         function checkExercise10() {
-            const answers = {
-                "ex10_q1": "I lived in a small mountain village.",
-                "ex10_q2": "Yes, I did. It was a lovely place to live.",
-                "ex10_q3": "There weren’t many other children, so sometimes I felt quite lonely.",
-                "ex10_q4": "No, I couldn’t. It was too far away.",
-                "ex10_q5": "Yes, it was. It was very safe.",
-                "ex10_q6": "I was 18.",
-                "ex10_q7": "I left home because I went to study at university."
+            const correctAnswers = {
+                "ex10_q1_select": "I lived in a small mountain village.",
+                "ex10_q2_select": "Yes, I did. It was a lovely place to live.",
+                "ex10_q3_select": "There weren’t many other children, so sometimes I felt quite lonely.",
+                "ex10_q4_select": "No, I couldn’t. It was too far away.",
+                "ex10_q5_select": "Yes, it was. It was very safe.",
+                "ex10_q6_select": "I was 18.",
+                "ex10_q7_select": "I left home because I went to study at university."
             };
             let score = 0;
-            let feedbackHtml = ''; // Empty feedback
-            const totalQuestions = Object.keys(answers).length;
+            const totalQuestions = Object.keys(correctAnswers).length;
 
-            for (const id in answers) {
-                const inputValue = document.getElementById(id).value.toLowerCase().trim().replace(/\s+/g, ' '); // Normalize spaces
-                const correctAnswer = answers[id].toLowerCase().replace(/\s+/g, ' '); // Normalize spaces
-                if (inputValue === correctAnswer) {
+            for (const selectId in correctAnswers) {
+                const selectElement = document.getElementById(selectId);
+                const selectedValue = selectElement.value;
+                const correctAnswer = correctAnswers[selectId];
+
+                if (selectedValue === correctAnswer) {
                     score++;
                 }
             }
-            displayResult('ex10_result', score === totalQuestions, score, totalQuestions, feedbackHtml);
+            displayResult('ex10_result', score === totalQuestions, score, totalQuestions, '');
         }
     </script>
 </body>
