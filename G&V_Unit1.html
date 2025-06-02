@@ -813,7 +813,7 @@
 <div class="feedback" id="feedback_ex6_q4"></div>
 </div>
 <div class="question-item">
-<p>5. You <span class="highlight-keyword">can buy</span> toys for your nieces and nephews because they<span class="highlight-keyword">’re</span> little children.</p>
+<p>5. You <span class="highlight-keyword">can</span> buy toys for your nieces and nephews because they<span class="highlight-keyword">’re</span> little children.</p>
 <input class="w-full" id="ex6_q5" name="exercise6_q5" placeholder="" type="text"/>
 <div class="feedback" id="feedback_ex6_q5"></div>
 </div>
@@ -1150,11 +1150,11 @@ document.addEventListener('DOMContentLoaded', loadAnswersFromLocalStorage);
                 q8: "is happy to give other people money, help or their time"
             },
             exercise6: {
-                q1: "i can’t remember people’s names because i haven’t got a good memory.", 
-                q2: "my uncle doesn’t look old because he hasn’t got grey hair.", 
-                q3: "my grandmother doesn’t give us lots of presents because she isn’t a rich person.", 
-                q4: "we don’t have a lot of family get-togethers, so i don’t know my cousins very well.", 
-                q5: "you can’t buy toy for your nieces and nephews because they aren’t little children." 
+                q1: "i can't remember people's names because i haven't got a good memory.", 
+                q2: "my uncle doesn't look old because he hasn't got grey hair.", 
+                q3: "my grandmother doesn't give us lots of presents because she isn't a rich person.", 
+                q4: "we don't have a lot of family get-togethers, so i don't know my cousins very well.", 
+                q5: "you can't buy toys for your nieces and nephews because they aren't little children." 
             },
             exercise7: {
                 q1: "often",
@@ -1297,14 +1297,22 @@ document.addEventListener('DOMContentLoaded', loadAnswersFromLocalStorage);
             }
         }
 
-            function checkExercise6() {
+            function normalizeText(text) {
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/[‘’]/g, "'") // curly apostrophes → straight
+        .replace(/[“”]/g, '"'); // curly quotes → straight quotes
+}
+
+function checkExercise6() {
     for (let i = 1; i <= 5; i++) {
-        const inputValue = document.getElementById(`ex6_q${i}`).value.trim().toLowerCase();
-        const correctAnswer = correctAnswers.exercise6[`q${i}`].trim().toLowerCase();
+        const inputValue = document.getElementById(`ex6_q${i}`).value;
+        const correctAnswer = correctAnswers.exercise6[`q${i}`];
+        const normalizedInput = normalizeText(inputValue);
+        const normalizedAnswer = normalizeText(correctAnswer);
 
-        console.log(`Q${i}:`, inputValue, 'vs', correctAnswer); // For debugging
-
-        showFeedback(`feedback_ex6_q${i}`, inputValue === correctAnswer);
+        showFeedback(`feedback_ex6_q${i}`, normalizedInput === normalizedAnswer);
     }
 }
 
