@@ -433,32 +433,35 @@
 <!-- Question 1 -->
 <p>1. How many speakers are there?</p>
 <div class="radio-group-horizontal">
-  <label><input name="exercise3_q1" type="radio" value="Two"/> Two</label>
-  <label><input name="exercise3_q1" type="radio" value="Three"/> Three</label>
-  <label><input name="exercise3_q1" type="radio" value="Four"/> Four</label>
+  <label><input name="ex3_q1" type="radio" value="Two"/> Two</label>
+  <label><input name="ex3_q1" type="radio" value="Three"/> Three</label>
+  <label><input name="ex3_q1" type="radio" value="Four"/> Four</label>
 </div>
+<div class="feedback" id="feedback_ex3_q1"></div>
 
 <!-- Question 2 -->
 <p>2. What is the relationship between the two people?</p>
-<label><input name="exercise3_q2" type="radio" value="They are a student and her teacher."/> They are a student and her teacher.</label>
-<label><input name="exercise3_q2" type="radio" value="They are both teachers."/> They are both teachers.</label>
-<label><input name="exercise3_q2" type="radio" value="They are both students."/> They are both students.</label>
+<label><input name="ex3_q2" type="radio" value="They are a student and her teacher."/> They are a student and her teacher.</label>
+<label><input name="ex3_q2" type="radio" value="They are both teachers."/> They are both teachers.</label>
+<label><input name="ex3_q2" type="radio" value="They are both students."/> They are both students.</label>
+<div class="feedback" id="feedback_ex3_q2"></div>
 
 <!-- Question 3 -->
 <p>3. Which animals does the woman decide to do her project on?</p>
 <div class="radio-group-horizontal">
-  <label><input name="exercise3_q3" type="radio" value="Pandas"/> Pandas</label>
-  <label><input name="exercise3_q3" type="radio" value="Sharks"/> Sharks</label>
-  <label><input name="exercise3_q3" type="radio" value="dolphins"/> dolphins</label>
+  <label><input name="ex3_q3" type="radio" value="Pandas"/> pandas</label>
+  <label><input name="ex3_q3" type="radio" value="Sharks"/> sharks</label>
+  <label><input name="ex3_q3" type="radio" value="dolphins"/> dolphins</label>
 </div>
+<div class="feedback" id="feedback_ex3_q3"></div>
 
 <!-- Question 4 -->
 <p>4. What does the woman have to do for her project?</p>
-<label><input name="exercise3_q4" type="radio" value="write a report on an animal"/> write a report on an animal</label>
-<label><input name="exercise3_q4" type="radio" value="give a presentation about New Zealand"/> give a presentation about New Zealand</label>
-<label><input name="exercise3_q4" type="radio" value="take some photographs of wild animals"/> take some photographs of wild animals</label>
-
+<label><input name="ex3_q4" type="radio" value="write a report on an animal"/> write a report on an animal</label>
+<label><input name="ex3_q4" type="radio" value="give a presentation about New Zealand"/> give a presentation about New Zealand</label>
+<label><input name="ex3_q4" type="radio" value="take some photographs of wild animals"/> take some photographs of wild animals</label>
 <div class="feedback" id="feedback_ex3_q4"></div>
+
 </div>
 <button class="check-button" onclick="checkExercise3()">Check Answers</button>
 </div>
@@ -508,8 +511,20 @@
 <div class="feedback" id="feedback_ex4_q3"></div>
 </div>
 <div class="question-item">
+<p>4. What do Anne and Tom agree is <span class="highlight-keyword">typical behaviour</span> for Maui dolphins?</p>
+<select class="w-full" id="ex4_q4" name="exercise4_q4">
+<option value="">Select type</option>
+<option value="adjective of character and behavior">adjective of character and behavior</option>
+<option value="number and measurement of distance">number and measurement of distance</option>
+<option value="number and measurement of length">number and measurement of length</option>
+<option value="number showing quantity">number showing quantity</option>
+<option value="place or location">place or location</option>
+</select>
+<div class="feedback" id="feedback_ex4_q4"></div>
+</div>
+<div class="question-item">
 <p>5. How <span class="highlight-keyword">far</span> along the coastline do Maui dolphins swim?</p>
-<select class="w-full" id="ex4_q5" name="exercise4_q4">
+<select class="w-full" id="ex4_q5" name="exercise4_q5">
 <option value="">Select type</option>
 <option value="adjective of character and behavior">adjective of character and behavior</option>
 <option value="number and measurement of distance">number and measurement of distance</option>
@@ -521,94 +536,103 @@
 </div>
 <button class="check-button" onclick="checkExercise4()">Check Answers</button>
 </div>
-<div class="exercise-section" id="exercise5">
-<h2 class="mb-4">Unit 1: Exercise 5</h2>
-<p class="mb-4">In IELTS Listening multiple choice activities, it is often important to recognise different forms of the same word, which are used in paraphrasing. Match the adjectives on the left with the nouns on the right.</p>
-<div class="info-box">
-<p class="font-bold">Tip on Paraphrasing:</p>
-<p>When we paraphrase something, we use different words to express the same or a similar meaning. Sometimes a paraphrase will include a different form of the same word. For example, you hear a noun (e.g. danger) but the question or answer needs an adjective (e.g. dangerous): You read: When is a tiger most dangerous? You hear: ‘If you see a tiger trying to catch fish in a river, you may be in great danger.’</p>
-<p>Other times, we use an adjective that relates to a noun but is a completely different word, for example large (adjective) and size (noun).</p>
+<div class="exercise-section">
+  <h2 class="mb-4">Unit 1: Exercise 5</h2>
+  <p class="mb-4">In IELTS Listening multiple choice activities, it is often important to recognise different forms of the same word, which are used in paraphrasing. Match the adjectives on the left with the nouns on the right.</p>
+
+  <div class="info-box">
+    <p class="font-bold">Tip on Paraphrasing:</p>
+    <p>When we paraphrase something, we use different words to express the same or a similar meaning. Sometimes a paraphrase will include a different form of the same word. For example, you hear a noun (e.g. danger) but the question or answer needs an adjective (e.g. dangerous): You read: When is a tiger most dangerous? You hear: ‘If you see a tiger trying to catch fish in a river, you may be in great danger.’</p>
+    <p>Other times, we use an adjective that relates to a noun but is a completely different word, for example large (adjective) and size (noun).</p>
+  </div>
+
+  <div class="question-item">
+    <p>1. <span class="highlight-keyword">far</span></p>
+    <select class="inline-block w-48 md:w-56" id="ex5_q1" name="exercise5_q1">
+      <option value="">Select noun</option>
+      <option value="height">height</option>
+      <option value="width">width</option>
+      <option value="length">length</option>
+      <option value="distance">distance</option>
+      <option value="weight">weight</option>
+      <option value="speed">speed</option>
+    </select>
+    <div class="feedback" id="feedback_ex5_q1"></div>
+  </div>
+
+  <div class="question-item">
+    <p>2. <span class="highlight-keyword">tall</span></p>
+    <select class="inline-block w-48 md:w-56" id="ex5_q2" name="exercise5_q2">
+      <option value="">Select noun</option>
+      <option value="height">height</option>
+      <option value="width">width</option>
+      <option value="length">length</option>
+      <option value="distance">distance</option>
+      <option value="weight">weight</option>
+      <option value="speed">speed</option>
+    </select>
+    <div class="feedback" id="feedback_ex5_q2"></div>
+  </div>
+
+  <div class="question-item">
+    <p>3. <span class="highlight-keyword">long</span></p>
+    <select class="inline-block w-48 md:w-56" id="ex5_q3" name="exercise5_q3">
+      <option value="">Select noun</option>
+      <option value="height">height</option>
+      <option value="width">width</option>
+      <option value="length">length</option>
+      <option value="distance">distance</option>
+      <option value="weight">weight</option>
+      <option value="speed">speed</option>
+    </select>
+    <div class="feedback" id="feedback_ex5_q3"></div>
+  </div>
+
+  <div class="question-item">
+    <p>4. <span class="highlight-keyword">wide</span></p>
+    <select class="inline-block w-48 md:w-56" id="ex5_q4" name="exercise5_q4">
+      <option value="">Select noun</option>
+      <option value="height">height</option>
+      <option value="width">width</option>
+      <option value="length">length</option>
+      <option value="distance">distance</option>
+      <option value="weight">weight</option>
+      <option value="speed">speed</option>
+    </select>
+    <div class="feedback" id="feedback_ex5_q4"></div>
+  </div>
+
+  <div class="question-item">
+    <p>5. <span class="highlight-keyword">heavy</span></p>
+    <select class="inline-block w-48 md:w-56" id="ex5_q5" name="exercise5_q5">
+      <option value="">Select noun</option>
+      <option value="height">height</option>
+      <option value="width">width</option>
+      <option value="length">length</option>
+      <option value="distance">distance</option>
+      <option value="weight">weight</option>
+      <option value="speed">speed</option>
+    </select>
+    <div class="feedback" id="feedback_ex5_q5"></div>
+  </div>
+
+  <div class="question-item">
+    <p>6. <span class="highlight-keyword">fast</span></p>
+    <select class="inline-block w-48 md:w-56" id="ex5_q6" name="exercise5_q6">
+      <option value="">Select noun</option>
+      <option value="height">height</option>
+      <option value="width">width</option>
+      <option value="length">length</option>
+      <option value="distance">distance</option>
+      <option value="weight">weight</option>
+      <option value="speed">speed</option>
+    </select>
+    <div class="feedback" id="feedback_ex5_q6"></div>
+  </div>
+
+  <button class="check-button" onclick="checkExercise5()">Check Answers</button>
 </div>
-<div class="question-item">
-<p>1. <span class="highlight-keyword">far</span></p>
-<select class="w-full" id="ex5_q1" name="exercise5_q1">
-<option value="">Select noun</option>
-<option value="height">height</option>
-<option value="width">width</option>
-<option value="length">length</option>
-<option value="distance">distance</option>
-<option value="weight">weight</option>
-<option value="speed">speed</option>
-</select>
-<div class="feedback" id="feedback_ex5_q1"></div>
-</div>
-<div class="question-item">
-<p>2. <span class="highlight-keyword">wide</span></p>
-<select class="w-full" id="ex5_q2" name="exercise5_q2">
-<option value="">Select noun</option>
-<option value="height">height</option>
-<option value="width">width</option>
-<option value="length">length</option>
-<option value="distance">distance</option>
-<option value="weight">weight</option>
-<option value="speed">speed</option>
-</select>
-<div class="feedback" id="feedback_ex5_q2"></div>
-</div>
-<div class="question-item">
-<p>3. <span class="highlight-keyword">long</span></p>
-<select class="w-full" id="ex5_q3" name="exercise5_q3">
-<option value="">Select noun</option>
-<option value="height">height</option>
-<option value="width">width</option>
-<option value="length">length</option>
-<option value="distance">distance</option>
-<option value="weight">weight</option>
-<option value="speed">speed</option>
-</select>
-<div class="feedback" id="feedback_ex5_q3"></div>
-</div>
-<div class="question-item">
-<p>4. <span class="highlight-keyword">heavy</span></p>
-<select class="w-full" id="ex5_q4" name="exercise5_q4">
-<option value="">Select noun</option>
-<option value="height">height</option>
-<option value="width">width</option>
-<option value="length">length</option>
-<option value="distance">distance</option>
-<option value="weight">weight</option>
-<option value="speed">speed</option>
-</select>
-<div class="feedback" id="feedback_ex5_q4"></div>
-</div>
-<div class="question-item">
-<p>5. <span class="highlight-keyword">high</span></p>
-<select class="w-full" id="ex5_q5" name="exercise5_q5">
-<option value="">Select noun</option>
-<option value="height">height</option>
-<option value="width">width</option>
-<option value="length">length</option>
-<option value="distance">distance</option>
-<option value="weight">weight</option>
-<option value="speed">speed</option>
-</select>
-<div class="feedback" id="feedback_ex5_q5"></div>
-</div>
-<div class="question-item">
-<p>6. <span class="highlight-keyword">fast</span></p>
-<select class="w-full" id="ex5_q6" name="exercise5_q6">
-<option value="">Select noun</option>
-<option value="height">height</option>
-<option value="width">width</option>
-<option value="length">length</option>
-<option value="distance">distance</option>
-<option value="weight">weight</option>
-<option value="speed">speed</option>
-</select>
-<div class="feedback" id="feedback_ex5_q6"></div>
-</div>
-<button class="check-button" onclick="checkExercise5()">Check Answers</button>
-</div>
+
 <div class="exercise-section" id="exercise6">
 <h2 class="mb-4">Unit 1: Exercise 6</h2>
 <p class="mb-4">Complete the questions. Use the words in the box.</p>
@@ -697,42 +721,46 @@
 <!-- Question 1 -->
 <p>1. How does the man describe female elephants?</p>
 <div class="radio-group-horizontal">
-  <label><input name="exercise7_q1" type="radio" value="Rare"/> Rare</label>
-  <label><input name="exercise7_q1" type="radio" value="Dangerous"/> Dangerous</label>
-  <label><input name="exercise7_q1" type="radio" value="sociable"/> sociable</label>
+  <label><input name="ex7_q1" type="radio" value="Rare"/> rare</label>
+  <label><input name="ex7_q1" type="radio" value="Dangerous"/> dangerous</label>
+  <label><input name="ex7_q1" type="radio" value="sociable"/> sociable</label>
 </div>
+<div class="feedback" id="feedback_ex7_q1"></div>
 
 <!-- Question 2 -->
 <p>2. People should not keep wolves as pets because they are</p>
-<label><input name="exercise7_q2" type="radio" value="wild animals."/> wild animals.</label>
-<label><input name="exercise7_q2" type="radio" value="dangerous."/> dangerous.</label>
-<label><input name="exercise7_q2" type="radio" value="very expensive to feed."/> very expensive to feed.</label>
+<label><input name="ex7_q2" type="radio" value="wild animals."/> wild animals.</label>
+<label><input name="ex7_q2" type="radio" value="dangerous."/> dangerous.</label>
+<label><input name="ex7_q2" type="radio" value="very expensive to feed."/> very expensive to feed.</label>
+<div class="feedback" id="feedback_ex7_q2"></div>
 
 <!-- Question 3 -->
 <p>3. How fast does a great white shark usually swim?</p>
 <div class="radio-group-horizontal">
-  <label><input name="exercise7_q3" type="radio" value="56 kph"/> 56 kph</label>
-  <label><input name="exercise7_q3" type="radio" value="2.5 kph"/> 2.5 kph</label>
-  <label><input name="exercise7_q3" type="radio" value="74 kph"/> 74 kph</label>
+  <label><input name="ex7_q3" type="radio" value="56 kph"/> 56 kph</label>
+  <label><input name="ex7_q3" type="radio" value="2.5 kph"/> 2.5 kph</label>
+  <label><input name="ex7_q3" type="radio" value="74 kph"/> 74 kph</label>
 </div>
+<div class="feedback" id="feedback_ex7_q3"></div>
 
 <!-- Question 4 -->
 <p>4. In what unexpected place do sea lions sometimes sleep?</p>
 <div class="radio-group-horizontal">
-  <label><input name="exercise7_q4" type="radio" value="on the beach"/> on the beach</label>
-  <label><input name="exercise7_q4" type="radio" value="along the coast"/> along the coast</label>
-  <label><input name="exercise7_q4" type="radio" value="in the sea"/> in the sea</label>
+  <label><input name="ex7_q4" type="radio" value="on the beach"/> on the beach</label>
+  <label><input name="ex7_q4" type="radio" value="along the coast"/> along the coast</label>
+  <label><input name="ex7_q4" type="radio" value="in the sea"/> in the sea</label>
 </div>
+<div class="feedback" id="feedback_ex7_q4"></div>
 
 <!-- Question 5 -->
 <p>5. How long is a giraffe's neck?</p>
 <div class="radio-group-horizontal">
-  <label><input name="exercise7_q5" type="radio" value="3.5 m"/> 3.5 m</label>
-  <label><input name="exercise7_q5" type="radio" value="1.45 m"/> 1.45 m</label>
-  <label><input name="exercise7_q5" type="radio" value="1.8 m"/> 1.8 m</label>
+  <label><input name="ex7_q5" type="radio" value="3.5 m"/> 3.5 m</label>
+  <label><input name="ex7_q5" type="radio" value="1.45 m"/> 1.45 m</label>
+  <label><input name="ex7_q5" type="radio" value="1.8 m"/> 1.8 m</label>
 </div>
-
 <div class="feedback" id="feedback_ex7_q5"></div>
+
 </div>
 <button class="check-button" onclick="checkExercise7()">Check Answers</button>
 </div>
@@ -746,30 +774,34 @@
 <div class="question-item">
 <!-- Question 1 -->
 <p>1. the appearance of the dolphins</p>
-<label><input name="exercise8_q1" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
-<label><input name="exercise8_q1" type="radio" value="No, they don’t discuss this."/> No, they don’t discuss this.</label>
+<label><input name="ex8_q1" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
+<label><input name="ex8_q1" type="radio" value="No, they don't discuss this."/> No, they don't discuss this.</label>
+<div class="feedback" id="feedback_ex8_q1"></div>
 
 <!-- Question 2 -->
 <p>2. the size of the dolphins</p>
-<label><input name="exercise8_q2" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
-<label><input name="exercise8_q2" type="radio" value="No, they don’t discuss this."/> No, they don’t discuss this.</label>
+<label><input name="ex8_q2" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
+<label><input name="ex8_q2" type="radio" value="No, they don't discuss this."/> No, they don't discuss this.</label>
+<div class="feedback" id="feedback_ex8_q2"></div>
 
 <!-- Question 3 -->
 <p>3. how dolphins hunt for their food</p>
-<label><input name="exercise8_q3" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
-<label><input name="exercise8_q3" type="radio" value="No, they don’t discuss this."/> No, they don’t discuss this.</label>
+<label><input name="ex8_q3" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
+<label><input name="ex8_q3" type="radio" value="No, they don't discuss this."/> No, they don't discuss this.</label>
+<div class="feedback" id="feedback_ex8_q3"></div>
 
 <!-- Question 4 -->
 <p>4. how many dolphins are still alive</p>
-<label><input name="exercise8_q4" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
-<label><input name="exercise8_q4" type="radio" value="No, they don’t discuss this."/> No, they don’t discuss this.</label>
+<label><input name="ex8_q4" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
+<label><input name="ex8_q4" type="radio" value="No, they don't discuss this."/> No, they don't discuss this.</label>
+<div class="feedback" id="feedback_ex8_q4"></div>
 
 <!-- Question 5 -->
 <p>5. how the government is trying to help the dolphins</p>
-<label><input name="exercise8_q5" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
-<label><input name="exercise8_q5" type="radio" value="No, they don’t discuss this."/> No, they don’t discuss this.</label>
-
+<label><input name="ex8_q5" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
+<label><input name="ex8_q5" type="radio" value="No, they don't discuss this."/> No, they don't discuss this.</label>
 <div class="feedback" id="feedback_ex8_q5"></div>
+
 </div>
 <button class="check-button" onclick="checkExercise8()">Check Answers</button>
 </div>
@@ -835,7 +867,7 @@
 
 <div class="exercise-section" id="exercise10">
   <h2 class="mb-4">Unit 1: Exercise 10</h2>
-  <p class="mb-4">Think about what you’ve learnt from doing this unit. Choose the correct answers.</p>
+  <p class="mb-4">Think about what you've learnt from doing this unit. Choose the correct answers.</p>
 
   <div class="question-item">
     <p>1. Use the time before the recording starts to read the questions carefully and</p>
@@ -859,7 +891,7 @@
   </div>
 
   <div class="question-item">
-    <p>4. It’s best to choose a number or measurement from a set of options</p>
+    <p>4. It's best to choose a number or measurement from a set of options</p>
     <label><input name="exercise10_q4" type="radio" value="only after the speakers have mentioned and discussed all of them."/> only after the speakers have mentioned and discussed all of them.</label>
     <label><input name="exercise10_q4" type="radio" value="which the speakers mention first or more than once in their discussion."/> which the speakers mention first or more than once in their discussion.</label>
     <div class="feedback" id="feedback_ex10_q4"></div>
@@ -926,11 +958,11 @@
                 q5: "1.8 m"
             },
             exercise8: {
-                q1: "No, they don’t discuss this.",
+                q1: "No, they don't discuss this.",
                 q2: "Yes, they discuss this.",
-                q3: "No, they don’t discuss this.",
+                q3: "No, they don't discuss this.",
                 q4: "Yes, they discuss this.",
-                q5: "No, they don’t discuss this."
+                q5: "No, they don't discuss this."
             },
             exercise9: {
                 q1: "he once did a similar project to Anne.",
