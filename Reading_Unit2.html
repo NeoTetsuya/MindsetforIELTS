@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Reading Worksheet: Unit 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the Inter font and general body */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Style for draggable items */
+        .draggable-item {
+            cursor: grab;
+        }
+        /* Style for drag over effect */
+        .drop-target-hover {
+            border-color: #60a5fa; /* blue-400 */
+            background-color: #eff6ff; /* blue-50 */
+        }
+        /* Highlighting tool specific styles */
+        .highlight-tool {
+            position: fixed;
+            left: 0.5rem; /* Reduced left margin */
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+            backdrop-filter: blur(5px); /* Frosted glass effect */
+            padding: 0.4rem; /* Further reduced padding */
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem; /* Further reduced gap */
+        }
+        .highlight-color-btn {
+            width: 1.75rem; /* Reduced size */
+            height: 1.75rem; /* Reduced size */
+            border-radius: 9999px; /* full circle */
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: border-color 0.2s ease-in-out;
+            display: flex; /* For centering SVG */
+            justify-content: center; /* For centering SVG */
+            align-items: center; /* For centering SVG */
+        }
+        .highlight-color-btn.active {
+            border-color: #3b82f6; /* blue-500 */
+        }
+        .highlight-yellow { background-color: #fde047; /* yellow-300 */ }
+        .highlight-green { background-color: #86efac; /* green-300 */ }
+        .highlight-pink { background-color: #fbcfe8; /* pink-200 */ }
+        .highlight-blue { background-color: #bfdbfe; /* blue-200 */ }
+        .highlight-clear { background-color: #e5e7eb; /* gray-200 */ }
+        .highlight-clear-all {
+            background-color: #fca5a5; /* red-300 */
+            width: 1.75rem; /* Match color buttons */
+            height: 1.75rem; /* Match color buttons */
+            border-radius: 9999px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .highlight-clear-all:hover {
+            background-color: #ef4444; /* red-500 */
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100 p-4 sm:p-6 text-gray-900">
+
+    <header class="text-center mb-8">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-800 mb-2">IELTS Reading Worksheet: Unit 2</h1>
+        <p class="text-base text-gray-600">Practice your reading skills with interactive exercises.</p>
+    </header>
+
+    <main id="worksheet-content" class="max-w-4xl mx-auto space-y-8">
+        <div id="exercise1" class="mb-8 p-6 bg-white rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4 text-blue-700">Unit 2: Exercise 1</h2>
+            <p class="mb-4 text-gray-700 text-sm">What do you already know about mammoths? Choose the correct answers.</p>
+
+            <div class="mb-4">
+                <p class="font-medium mb-2 text-sm">Mammoths had ... .</p>
+                <label class="block mb-2 text-gray-800 text-sm">
+                    <input type="checkbox" name="ex1_q1" value="no fur and long tusks" class="mr-2 rounded text-blue-600 focus:ring-blue-500">
+                    no fur and long tusks
+                </label>
+                <label class="block mb-2 text-gray-800 text-sm">
+                    <input type="checkbox" name="ex1_q1" value="orange-brown fur and long tusks" class="mr-2 rounded text-blue-600 focus:ring-blue-500">
+                    orange-brown fur and long tusks
+                </label>
+                <label class="block mb-2 text-gray-800 text-sm">
+                    <input type="checkbox" name="ex1_q1" value="orange-brown fur and short tusks" class="mr-2 rounded text-blue-600 focus:ring-blue-500">
+                    orange-brown fur and short tusks
+                </label>
+            </div>
+
+            <div class="mb-4">
+                <p class="font-medium mb-2 text-sm">The last mammoths were alive about ... .</p>
+                <label class="block mb-2 text-gray-800 text-sm">
+                    <input type="checkbox" name="ex1_q2" value="4,000 years ago" class="mr-2 rounded text-blue-600 focus:ring-blue-500">
+                    4,000 years ago
+                </label>
+                <label class="block mb-2 text-gray-800 text-sm">
+                    <input type="checkbox" name="ex1_q2" value="7,000 years ago" class="mr-2 rounded text-blue-600 focus:ring-blue-500">
+                    7,000 years ago
+                </label>
+                <label class="block mb-2 text-gray-800 text-sm">
+                    <input type="checkbox" name="ex1_q2" value="10,000 years ago" class="mr-2 rounded text-blue-600 focus:ring-blue-500">
+                    10,000 years ago
+                </label>
+            </div>
+
+            <div class="mb-4">
+                <p class="font-medium mb-2 text-sm">People have found many bodies of mammoths ... .</p>
+                <label class="block mb-2 text-gray-800 text-sm">
+                    <input type="checkbox" name="ex1_q3" value="at the bottom of lakes in Europe" class="mr-2 rounded text-blue-600 focus:ring-blue-500">
+                    at the bottom of lakes in Europe
+                </label>
+                <label class="block mb-2 text-gray-800 text-sm">
+                    <input type="checkbox" name="ex1_q3" value="in the desert in Australia" class="mr-2 rounded text-blue-600 focus:ring-blue-500">
+                    in the desert in Australia
+                </label>
+                <label class="block mb-2 text-gray-800 text-sm">
+                    <input type="checkbox" name="ex1_q3" value="in the ice in Siberia" class="mr-2 rounded text-blue-600 focus:ring-blue-500">
+                    in the ice in Siberia
+                </label>
+            </div>
+
+            <button onclick="checkAnswers('exercise1')" class="mt-4 px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                Check Answer
+            </button>
+            <p id="feedback-exercise1" class="mt-2 text-base font-medium"></p>
+        </div>
+
+        <div id="exercise2" class="mb-8 p-6 bg-white rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4 text-blue-700">Unit 2: Exercise 2</h2>
+            <p class="mb-4 text-gray-700 text-sm">The title of the text about mammoths is called ‘Bringing the mammoth back to life’. What do you think the text might be about? Choose the best option.</p>
+
+            <label class="block mb-2 text-gray-800 text-sm">
+                <input type="checkbox" name="ex2_option" value="a scientific study of the way mammoths used to behave" class="mr-2 rounded text-blue-600 focus:ring-blue-500">
+                a scientific study of the way mammoths used to behave
+            </label>
+            <label class="block mb-2 text-gray-800 text-sm">
+                <input type="checkbox" name="ex2_option" value="methods for transporting mammoth skeletons to museums in different countries" class="mr-2 rounded text-blue-600 focus:ring-blue-500">
+                methods for transporting mammoth skeletons to museums in different countries
+            </label>
+            <label class="block mb-2 text-gray-800 text-sm">
+                <input type="checkbox" name="ex2_option" value="the idea that mammoths might be created again in the future" class="mr-2 rounded text-blue-600 focus:ring-blue-500">
+                the idea that mammoths might be created again in the future
+            </label>
+
+            <button onclick="checkAnswers('exercise2')" class="mt-4 px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                Check Answer
+            </button>
+            <p id="feedback-exercise2" class="mt-2 text-base font-medium"></p>
+        </div>
+
+        <div id="exercise3" class="mb-8 p-6 bg-white rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4 text-blue-700">Unit 2: Exercise 3</h2>
+            <p class="mb-4 text-gray-700 text-sm">Read the information. Then read the first paragraph of the text. Try to focus only on the main words. Choose the correct answer.</p>
+            <div class="bg-gray-100 p-4 rounded-md mb-4 text-gray-800 text-xs italic">
+                <p>"In any IELTS Reading task, it is a good idea to read the text quickly to understand the main idea of each paragraph. Try to read only the main nouns, verbs and adjectives (shown in bold in the paragraph below)."</p>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-md mb-4 text-gray-800 border border-gray-200">
+                <h3 class="font-bold text-base mb-2">Bringing the mammoth back to life</h3>
+                <p id="reading-passage-3" class="text-sm leading-relaxed">Mammoths once lived in large numbers across Asia, Africa, North America and Europe. However, over time, their numbers fell until the mammoth became extinct. Scientists think this happened for two reasons. Firstly, the mammoths’ natural habitat decreased in size because of climate change. Secondly, many mammoths were killed by people who hunted them. The last population of mammoths lived on Wrangel Island, off north-east Siberia in the Chukchi Sea. These were woolly mammoths that could survive in very cold conditions, but they also died out around 4,000 years ago.</p>
+            </div>
+
+            <p class="font-medium mb-2 text-sm">What is the main idea of this paragraph?</p>
+            <label class="block mb-2 text-gray-800 text-sm">
+                <input type="checkbox" name="ex3_option" value="to explain where mammoths lived before they became extinct" class="mr-2 rounded text-blue-600 focus:ring-blue-500">
+                to explain where mammoths lived before they became extinct
+            </label>
+            <label class="block mb-2 text-gray-800 text-sm">
+                <input type="checkbox" name="ex3_option" value="to explain when mammoths became extinct" class="mr-2 rounded text-blue-600 focus:ring-blue-500">
+                to explain when mammoths became extinct
+            </label>
+            <label class="block mb-2 text-gray-800 text-sm">
+                <input type="checkbox" name="ex3_option" value="to explain why mammoths became extinct" class="mr-2 rounded text-blue-600 focus:ring-blue-500">
+                to explain why mammoths became extinct
+            </label>
+
+            <button onclick="checkAnswers('exercise3')" class="mt-4 px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                Check Answer
+            </button>
+            <p id="feedback-exercise3" class="mt-2 text-base font-medium"></p>
+        </div>
+
+        <div id="exercise4" class="mb-8 p-6 bg-white rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4 text-blue-700">Unit 2: Exercise 4</h2>
+            <p class="mb-4 text-gray-700 text-sm">In the text about mammoths, there is a range of vocabulary about the natural world and the conservation of animals. Match the words with the definitions.</p>
+
+            <div id="ex4-container"></div>
+
+            <button onclick="checkAnswers('exercise4')" class="mt-4 px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                Check Answer
+            </button>
+            <p id="feedback-exercise4" class="mt-2 text-base font-medium"></p>
+        </div>
+
+        <div id="exercise5" class="mb-8 p-6 bg-white rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4 text-blue-700">Unit 2: Exercise 5</h2>
+            <p class="mb-4 text-gray-700 text-sm">Complete the sentences about the natural world. Use the words in the box.</p>
+
+            <div id="ex5-container"></div>
+
+            <button onclick="checkAnswers('exercise5')" class="mt-4 px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                Check Answer
+            </button>
+            <p id="feedback-exercise5" class="mt-2 text-base font-medium"></p>
+        </div>
+
+        <div id="exercise6" class="mb-8 p-6 bg-white rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4 text-blue-700">Unit 2: Exercise 6</h2>
+            <p class="mb-4 text-gray-700 text-sm">Read the information. Then read the sentences and look at the gaps. What type of information do you need to complete the gaps? Use the words in the box for your predictions.</p>
+            <div class="bg-gray-100 p-4 rounded-md mb-4 text-gray-800 text-xs italic">
+                <p>"In the IELTS Reading sentence completion task, it can be useful to first predict the type of information you should be looking for in the text. To do this, look carefully at the words before and after the gap. If the gap is before a verb + -s (e.g. hunts, falls), then the word in the gap must be a singular noun (e.g. This animal hunts at night) or an uncountable noun (Snow falls all year round.). If the gap is before a verb without -s (e.g. hunt, fall), the word in the gap must be a plural noun (e.g. The men hunt the lions at night.) or a countable noun (e.g. Leaves fall from the trees.). If the gap is after very but before a noun, the word in the gap must be an adjective (e.g. This is a very dangerous animal for the men to hunt.)."</p>
+            </div>
+
+            <div id="ex6-container"></div>
+
+            <button onclick="checkAnswers('exercise6')" class="mt-4 px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                Check Answer
+            </button>
+            <p id="feedback-exercise6" class="mt-2 text-base font-medium"></p>
+        </div>
+
+        <div id="exercise7" class="mb-8 p-6 bg-white rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4 text-blue-700">Unit 2: Exercise 7</h2>
+            <p class="mb-4 text-gray-700 text-sm">In the IELTS Reading test, you will need to be able to recognise words and phrases with a similar meaning (i.e. synonyms and paraphrases). Match the words and phrases with the correct synonyms and paraphrases.</p>
+
+            <div class="flex flex-col lg:flex-row gap-6">
+                <div class="w-full lg:w-1/3 p-4 bg-gray-50 border border-gray-200 rounded-md shadow-inner">
+                    <h3 class="font-semibold text-base mb-3 text-gray-800">Words to Drag</h3>
+                    <div id="ex7-draggable-items" class="flex flex-wrap gap-2">
+                        </div>
+                </div>
+
+                <div class="w-full lg:w-2/3 p-4 bg-gray-50 border border-gray-200 rounded-md shadow-inner">
+                    <h3 class="font-semibold text-base mb-3 text-gray-800">Definitions</h3>
+                    <div id="ex7-drop-targets">
+                        </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex gap-4">
+                <button onclick="checkAnswers('exercise7')" class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                    Check Answer
+                </button>
+                <button onclick="resetExercise7()" class="px-6 py-2 bg-gray-300 text-gray-800 font-semibold rounded-md shadow-md hover:bg-gray-400 transition duration-300 ease-in-out">
+                    Reset
+                </button>
+            </div>
+            <p id="feedback-exercise7" class="mt-2 text-base font-medium"></p>
+        </div>
+
+        <div id="exercise8" class="mb-8 p-6 bg-white rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4 text-blue-700">Unit 2: Exercise 8</h2>
+            <p class="mb-4 text-gray-700 text-sm">Complete the sentences below. Write ONE WORD ONLY from the passage for each answer.</p>
+            <div class="bg-gray-50 p-4 rounded-md mb-4 text-gray-800 border border-gray-200">
+                <h3 class="font-bold text-base mb-2">Bringing the mammoth back to life (Excerpt)</h3>
+                <p id="reading-passage-8" class="text-sm leading-relaxed">"Mammoths once lived in large numbers across Asia, Africa, North America and Europe. However, over time, their numbers fell until the mammoth became extinct. Scientists think this happened for two reasons. Firstly, the mammoths’ natural habitat decreased in size because of climate change. Secondly, many mammoths were killed by people who hunted them. The last population of mammoths lived on Wrangel Island, off north-east Siberia in the Chukchi Sea. These were woolly mammoths that could survive in very cold conditions, but they also died out around 4,000 years ago. Prehistoric cave paintings show us that people ate the woolly mammoths they killed, but also used their bones and tusks. They used these to make simple animal and human figures, an early kind of art, and also to create some basic tools. We also know a lot about the woolly mammoth because the freezing conditions in Alaska and Siberia have preserved them. Researchers have studied their skeletons, their teeth and even the grass and plants that were still inside their stomachs. We know that their fur was an orange-brown colour, they had a thick layer of fat, and they had long, curved tusks. Their ears were short compared to an African or Asian elephant’s we might see today, so they would not lose so much heat or get frostbite. In recent years, some researchers have suggested that we could bring woolly mammoths back to life. Interestingly, not all scientists believe that bringing the mammoth back to life would be a good thing. They think it would be unfair to create a ‘new’ mammoth and then keep it in a small space. They think the right thing to do would be to give it a certain amount of freedom, perhaps in a wildlife park. But where would this be? And the mammoth would also be alone, and like elephants, mammoths were probably social in the way they behaved. This does seem to be a strong reason against bringing the mammoth back to life. Perhaps the ‘new’ mammoth might also develop an ‘old’ disease – and this might have an effect on the ecosystem that scientists cannot predict. Although the idea of bringing the mammoth back seems like an exciting one at first, there are many issues that we need to consider"</p>
+            </div>
+            <div id="ex8-container"></div>
+
+            <button onclick="checkAnswers('exercise8')" class="mt-4 px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                Check Answer
+            </button>
+            <p id="feedback-exercise8" class="mt-2 text-base font-medium"></p>
+        </div>
+
+        <div id="exercise9" class="mb-8 p-6 bg-white rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4 text-blue-700">Unit 2: Exercise 9</h2>
+            <p class="mb-4 text-gray-700 text-sm">Read the information. Then complete the table. Use the nouns in the box.</p>
+            <div class="bg-gray-100 p-4 rounded-md mb-4 text-gray-800 text-xs italic">
+                <p>"In an IELTS Reading sentence completion task, there are often a variety of words used to describe people and experts. These kinds of words are very common and it is important to recognise them."</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-6">
+                <div class="w-full lg:w-1/3 p-4 bg-gray-50 border border-gray-200 rounded-md shadow-inner">
+                    <h3 class="font-semibold text-base mb-3 text-gray-800">Words to Drag</h3>
+                    <div id="ex9-draggable-items" class="flex flex-wrap gap-2">
+                        </div>
+                </div>
+
+                <div class="w-full lg:w-2/3 p-4 bg-gray-50 border border-gray-200 rounded-md shadow-inner">
+                    <h3 class="font-semibold text-base mb-3 text-gray-800">Categories</h3>
+                    <div id="ex9-drop-targets" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex gap-4">
+                <button onclick="checkAnswers('exercise9')" class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                    Check Answer
+                </button>
+                <button onclick="resetExercise9()" class="px-6 py-2 bg-gray-300 text-gray-800 font-semibold rounded-md shadow-md hover:bg-gray-400 transition duration-300 ease-in-out">
+                    Reset
+                </button>
+            </div>
+            <p id="feedback-exercise9" class="mt-2 text-base font-medium"></p>
+        </div>
+
+        <div id="exercise10" class="mb-8 p-6 bg-white rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4 text-blue-700">Unit 2: Exercise 10</h2>
+            <p class="mb-4 text-gray-700 text-sm">Think about what you’ve learnt in this unit. Complete the advice. Use the words in the box.</p>
+
+            <div id="ex10-container"></div>
+
+            <button onclick="checkAnswers('exercise10')" class="mt-4 px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                Check Answer
+            </button>
+            <p id="feedback-exercise10" class="mt-2 text-base font-medium"></p>
+        </div>
+
+    </main>
+
+    <footer class="mt-12 text-center text-gray-500 text-sm">
+        <p>&copy; 2024 Interactive Worksheet. All rights reserved.</p>
+    </footer>
+
+    <div class="highlight-tool">
+        <button class="highlight-color-btn highlight-yellow active" data-color="yellow"></button>
+        <button class="highlight-color-btn highlight-green" data-color="green"></button>
+        <button class="highlight-color-btn highlight-pink" data-color="pink"></button>
+        <button class="highlight-color-btn highlight-blue" data-color="blue"></button>
+        <button class="highlight-color-btn highlight-clear" data-color="clear">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-gray-600">
+                <path fill-rule="evenodd" d="M16.5 4.478a.75.75 0 0 0 .232-.75L15.309 2.207a.75.75 0 0 0-.75-.232H3.501a.75.75 0 0 0-.75.75v10.5a.75.75 0 0 0 .75.75h.375a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-.75.75H3.501a.75.75 0 0 0-.75.75 1.5 1.5 0 0 0 1.5 1.5H15.75a1.5 1.5 0 0 0 1.5-1.5c0-.186-.035-.366-.102-.533A1.501 1.501 0 0 0 18 14.25v-5.69l3.612-2.889a.75.75 0 0 0-.232-1.257L16.5 4.478ZM4.558 4.5h10.392L15.309 3.207 4.558 4.5Zm1.442 1.5v7.5h8.25V6H6ZM17.25 14.25h.008v.008H17.25v-.008ZM18 14.25V8.659l3.116 2.493-3.116 2.492Z" clip-rule="evenodd" />
+            </svg>
+        </button>
+        <button class="highlight-clear-all" onclick="clearAllHighlights()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-white">
+                <path fill-rule="evenodd" d="M16.5 4.478a.75.75 0 0 0 .232-.75L15.309 2.207a.75.75 0 0 0-.75-.232H3.501a.75.75 0 0 0-.75.75v10.5a.75.75 0 0 0 .75.75h.375a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-.75.75H3.501a.75.75 0 0 0-.75.75 1.5 1.5 0 0 0 1.5 1.5H15.75a1.5 1.5 0 0 0 1.5-1.5c0-.186-.035-.366-.102-.533A1.501 1.501 0 0 0 18 14.25v-5.69l3.612-2.889a.75.75 0 0 0-.232-1.257L16.5 4.478ZM4.558 4.5h10.392L15.309 3.207 4.558 4.5Zm1.442 1.5v7.5h8.25V6H6ZM17.25 14.25h.008v.008H17.25v-.008ZM18 14.25V8.659l3.116 2.493-3.116 2.492Z" clip-rule="evenodd" />
+                <path d="M16.5 6.75a.75.75 0 0 1 .75.75v7.5a.75.75 0 0 1-1.5 0v-7.5a.75.75 0 0 1 .75-.75Z" />
+                <path d="M12 6.75a.75.75 0 0 1 .75.75v7.5a.75.75 0 0 1-1.5 0v-7.5a.75.75 0 0 1 .75-.75Z" />
+                <path d="M7.5 6.75a.75.75 0 0 1 .75.75v7.5a.75.75 0 0 1-1.5 0v-7.5a.75.75 0 0 1 .75-.75Z" />
+            </svg>
+        </button>
+    </div>
+
+    <script>
+        // Global state object
+        const appState = {
+            exercise1Answers: { 'ex1_q1': [], 'ex1_q2': [], 'ex1_q3': [] },
+            exercise2Answer: '',
+            exercise3Answer: '',
+            exercise4Answers: {},
+            exercise5Answers: {},
+            exercise6Answers: {},
+            exercise7Answers: {},
+            exercise8Answers: {},
+            exercise9Answers: {},
+            exercise10Answers: {},
+            feedback: {},
+            draggableItems7: [],
+            draggableItems9: [],
+            draggedItem: null // To store the currently dragged item for drag-and-drop
+        };
+
+        // Correct answers for each exercise
+        const correctAnswers = {
+            exercise1: {
+                'ex1_q1': ['orange-brown fur and long tusks'],
+                'ex1_q2': ['4,000 years ago'],
+                'ex1_q3': ['in the ice in Siberia']
+            },
+            exercise2: 'the idea that mammoths might be created again in the future',
+            exercise3: 'to explain why mammoths became extinct',
+            C3: {
+                '1. This happens when a type of bird, animal or plant doesn’t exist any more:': 'to become extinct',
+                '2. to become smaller in size or number:': 'to decrease',
+                '3. to follow and kill an animal for food or for sport:': 'to hunt',
+                '4. to put something (e.g. food) in ice, salt, sugar or chemicals, so it can stay in good condition:': 'to preserve',
+                '5. all the people or animals that live in one place or area:': 'a population',
+                '6. all the living things in an area and the way they affect each other and the environment:': 'an ecosystem',
+                '7. the frame of bones supporting a human or animal body:': 'a skeleton',
+            },
+            exercise5: {
+                'Pollution harms all the plants, fish and animals in the ________ .': 'ecosystem',
+                'The tutor showed the ________ to the medical students and asked which small bones were missing.': 'skeleton',
+                'We expect the number of people living in the countryside will ________ as families move to the cities.': 'decrease',
+                'There are so few polar bears left that it is possible they will soon become ________ .': 'extinct',
+                'The ________ of my city has risen to 8 million people.': 'population',
+                'Lions often ________ other animals at night.': 'hunt',
+                'Nowadays, most people use fridges to ________ their food.': 'preserve',
+            },
+            exercise6: {
+                'The number of mammoths started to fall when their ________ got smaller.': 'a singular noun',
+                'Mammoths had smaller ________ than modern elephants.': 'a plural countable noun',
+                'Mammoths were very ________ animals.': 'an adjective',
+                'The ________ of a baby mammoth was found recently in the Arctic.': 'a singular noun',
+            },
+            exercise7: {
+                '1. build or create': 'make',
+                '2. inside of or within': 'the contents of',
+                '3. a pair of': 'both',
+                '4. not as high as': 'lower (than)',
+                '5. a little or an amount of': 'some',
+                '6. decrease or fall': 'get smaller',
+                '7. might or may': 'a possibility',
+            },
+            exercise8: {
+                'The number of mammoths started to fall when their ________ got smaller.': 'habitat',
+                'Humans used mammoths for food, and to make art and ________ .': 'tools',
+                'Scientists have examined the contents of mammoths’ ________ .': 'stomachs',
+                'Mammoths had smaller ________ than modern elephants.': 'ears',
+                'Some scientists think that a ‘new’ mammoth should have some ________ .': 'freedom',
+                'Both elephants and mammoths are ________ animals.': 'social',
+                'There is a possibility that a ‘new’ mammoth could get a ________ .': 'disease',
+            },
+            exercise9: {
+                'People': ['Society', 'the public', 'individuals'],
+                'Experts': ['scholars', 'academics', 'researchers'],
+            },
+            exercise10: {
+                'Look at the title of the article to help you predict the ________ of the whole article.': 'topic',
+                'Quickly read the whole text first to get a general idea of the ________ of each paragraph.': 'main point',
+                'Read the questions and use your general knowledge to predict the ________ you need to look for.': 'type of information',
+                'Look for key information in the questions and think what ________ you might see in the text.': 'kind of paraphrasing',
+                'Look out for ________ for people and different kinds of expert.': 'synonyms of words',
+                'Only use words from the ________ in your answers.': 'IELTS Reading text',
+                'When you write your answers, make sure you copy the ________ , and don’t forget to use the correct form if the word is plural.': 'spelling correctly',
+            },
+        };
+
+        // --- Highlighting Tool State and Functions ---
+        let currentHighlightColor = 'yellow'; // Default highlight color
+
+        function applyHighlight() {
+            const selection = window.getSelection();
+            if (!selection.rangeCount) return; // No text selected
+
+            const range = selection.getRangeAt(0);
+            if (range.collapsed) return; // Empty selection
+
+            // Ensure highlighting only applies within the main content area
+            const mainContent = document.getElementById('worksheet-content');
+            if (!mainContent.contains(range.commonAncestorContainer)) {
+                return; // Selection is outside the main content area
+            }
+
+            // Function to unwrap a highlight span
+            function unwrapHighlightSpan(spanNode) {
+                if (spanNode.dataset.highlight) {
+                    const parent = spanNode.parentNode;
+                    while (spanNode.firstChild) {
+                        parent.insertBefore(spanNode.firstChild, spanNode);
+                    }
+                    parent.removeChild(spanNode);
+                }
+            }
+
+            // If 'clear' is active, remove highlights from the selection
+            if (currentHighlightColor === 'clear') {
+                const walker = document.createTreeWalker(
+                    range.commonAncestorContainer,
+                    NodeFilter.SHOW_ELEMENT,
+                    {
+                        acceptNode: function(node) {
+                            if (node.dataset.highlight && range.intersectsNode(node)) {
+                                return NodeFilter.FILTER_ACCEPT;
+                            }
+                            return NodeFilter.FILTER_SKIP;
+                        }
+                    },
+                    false
+                );
+
+                const spansToUnwrap = [];
+                let node;
+                while (node = walker.nextNode()) {
+                    spansToUnwrap.push(node);
+                }
+
+                spansToUnwrap.reverse().forEach(span => {
+                    unwrapHighlightSpan(span);
+                });
+
+                selection.removeAllRanges(); // Clear selection after modification
+                return;
+            }
+
+            const colorValue = getHighlightColorValue(currentHighlightColor);
+
+            // Create a document fragment to hold the cloned content
+            const fragment = range.cloneContents();
+            const nodes = Array.from(fragment.childNodes);
+
+            // Recursively process nodes to apply highlighting
+            function processNode(node) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    if (node.textContent.trim() !== '') {
+                        const span = document.createElement('span');
+                        span.style.backgroundColor = colorValue;
+                        span.dataset.highlight = currentHighlightColor;
+                        span.textContent = node.textContent;
+                        return span;
+                    }
+                } else if (node.nodeType === Node.ELEMENT_NODE) {
+                    // If it's already a highlight span, unwrap it first to re-apply new highlight
+                    if (node.dataset.highlight) {
+                        const tempDiv = document.createElement('div');
+                        while (node.firstChild) {
+                            tempDiv.appendChild(node.firstChild);
+                        }
+                        node = tempDiv; // Process its children as if they were direct children
+                    }
+                    const newElement = node.cloneNode(false); // Clone element without children
+                    Array.from(node.childNodes).forEach(child => {
+                        const processedChild = processNode(child);
+                        if (processedChild) {
+                            newElement.appendChild(processedChild);
+                        }
+                    });
+                    return newElement;
+                }
+                return null;
+            }
+
+            const newFragment = document.createDocumentFragment();
+            nodes.forEach(node => {
+                const processedNode = processNode(node);
+                if (processedNode) {
+                    newFragment.appendChild(processedNode);
+                }
+            });
+
+            // Delete the original content and insert the new highlighted content
+            range.deleteContents();
+            range.insertNode(newFragment);
+
+            // Clear the selection after highlighting
+            selection.removeAllRanges();
+        }
+
+
+        function getHighlightColorValue(colorName) {
+            switch (colorName) {
+                case 'yellow': return '#fde047';
+                case 'green': return '#86efac';
+                case 'pink': return '#fbcfe8';
+                case 'blue': return '#bfdbfe';
+                case 'clear': return 'transparent'; // Not actually used for background, but for logic
+                default: return 'transparent';
+            }
+        }
+
+        function setupHighlightTool() {
+            const highlightTool = document.querySelector('.highlight-tool');
+            const colorButtons = highlightTool.querySelectorAll('.highlight-color-btn');
+
+            colorButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Deactivate all buttons
+                    colorButtons.forEach(btn => btn.classList.remove('active'));
+                    // Activate clicked button
+                    button.classList.add('active');
+                    currentHighlightColor = button.dataset.color;
+                });
+            });
+
+            // Apply highlight on mouseup anywhere in the document
+            document.addEventListener('mouseup', applyHighlight);
+        }
+
+        /**
+         * Clears all highlights from the main content area of the worksheet.
+         */
+        function clearAllHighlights() {
+            const mainContent = document.getElementById('worksheet-content');
+            const highlightedSpans = mainContent.querySelectorAll('span[data-highlight]');
+
+            highlightedSpans.forEach(span => {
+                // Replace the span with its text content
+                const parent = span.parentNode;
+                while (span.firstChild) {
+                    parent.insertBefore(span.firstChild, span);
+                }
+                parent.removeChild(span);
+            });
+        }
+
+
+        // --- Helper Functions ---
+
+        /**
+         * Saves the current state of appState to localStorage.
+         */
+        function saveState() {
+            try {
+                localStorage.setItem('ieltsWorksheetState', JSON.stringify(appState));
+                console.log('State saved automatically.');
+            } catch (e) {
+                console.error('Error saving state to localStorage:', e);
+            }
+        }
+
+        /**
+         * Loads the state from localStorage and applies it to appState.
+         * Also re-renders the dynamic exercises to reflect the loaded state.
+         */
+        function loadState() {
+            try {
+                const savedState = localStorage.getItem('ieltsWorksheetState');
+                if (savedState) {
+                    const parsedState = JSON.parse(savedState);
+                    // Merge loaded state with initial state to ensure all properties exist
+                    Object.assign(appState, parsedState);
+
+                    // Re-render relevant parts of the UI based on loaded state
+                    // For static exercises (checkboxes), update their checked status
+                    document.querySelectorAll('#exercise1 input[type="checkbox"]').forEach(checkbox => {
+                        const qKey = checkbox.name;
+                        if (appState.exercise1Answers[qKey] && appState.exercise1Answers[qKey].includes(checkbox.value)) {
+                            checkbox.checked = true;
+                        } else {
+                            checkbox.checked = false;
+                        }
+                    });
+                    document.querySelectorAll('#exercise2 input[type="checkbox"]').forEach(checkbox => {
+                        checkbox.checked = (appState.exercise2Answer === checkbox.value);
+                    });
+                    document.querySelectorAll('#exercise3 input[type="checkbox"]').forEach(checkbox => {
+                        checkbox.checked = (appState.exercise3Answer === checkbox.value);
+                    });
+
+                    // For dynamic exercises, re-render them
+                    renderExercise4();
+                    renderExercise5();
+                    renderExercise6();
+                    renderExercise8();
+                    renderExercise7(); // Re-render drag and drop to reflect removed items
+                    renderExercise9(); // Re-render drag and drop to reflect removed items
+
+                    console.log('State loaded successfully.');
+                }
+            } catch (e) {
+                console.error('Error loading state from localStorage:', e);
+                // If loading fails, reset to initial state to prevent broken UI
+                localStorage.removeItem('ieltsWorksheetState');
+                console.log('Cleared corrupted saved state.');
+            }
+        }
+
+        /**
+         * Updates the feedback message for a given exercise.
+         * @param {string} exerciseId - The ID of the exercise.
+         * @param {number} correctCount - Number of correct answers.
+         * @param {number} totalCount - Total number of questions.
+         */
+        function updateFeedback(exerciseId, correctCount, totalCount) {
+            const feedbackElement = document.getElementById(`feedback-${exerciseId}`);
+            if (feedbackElement) {
+                if (totalCount > 0) {
+                    const isCorrectOverall = (correctCount === totalCount);
+                    feedbackElement.textContent = `${correctCount} out of ${totalCount} correct. ${isCorrectOverall ? 'Well done!' : 'Please try again.'}`;
+                    feedbackElement.className = `mt-2 text-base font-medium ${isCorrectOverall ? 'text-green-600' : 'text-red-600'}`;
+                } else {
+                    feedbackElement.textContent = '';
+                    feedbackElement.className = 'mt-2 text-base font-medium'; // Reset classes
+                }
+            }
+        }
+
+        /**
+         * Checks the answers for a specific exercise.
+         * @param {string} exerciseId - The ID of the exercise to check.
+         */
+        function checkAnswers(exerciseId) {
+            let correctCount = 0;
+            let totalCount = 0;
+
+            switch (exerciseId) {
+                case 'exercise1':
+                    totalCount = 3; // 3 sub-questions
+                    if (compareCheckboxAnswers(appState.exercise1Answers['ex1_q1'], correctAnswers.exercise1['ex1_q1'])) correctCount++;
+                    if (compareCheckboxAnswers(appState.exercise1Answers['ex1_q2'], correctAnswers.exercise1['ex1_q2'])) correctCount++;
+                    if (compareCheckboxAnswers(appState.exercise1Answers['ex1_q3'], correctAnswers.exercise1['ex1_q3'])) correctCount++;
+                    break;
+                case 'exercise2':
+                    totalCount = 1;
+                    if (appState.exercise2Answer === correctAnswers.exercise2) correctCount++;
+                    break;
+                case 'exercise3':
+                    totalCount = 1;
+                    if (appState.exercise3Answer === correctAnswers.exercise3) correctCount++;
+                    break;
+                case 'exercise4':
+                    totalCount = Object.keys(correctAnswers.exercise4).length;
+                    for (const question in correctAnswers.exercise4) {
+                        if (appState.exercise4Answers[question] === correctAnswers.exercise4[question]) {
+                            correctCount++;
+                        }
+                    }
+                    break;
+                case 'exercise5':
+                    totalCount = Object.keys(correctAnswers.exercise5).length;
+                    for (const question in correctAnswers.exercise5) {
+                        if (appState.exercise5Answers[question] === correctAnswers.exercise5[question]) {
+                            correctCount++;
+                        }
+                    }
+                    break;
+                case 'exercise6':
+                    totalCount = Object.keys(correctAnswers.exercise6).length;
+                    for (const question in correctAnswers.exercise6) {
+                        if (appState.exercise6Answers[question] === correctAnswers.exercise6[question]) {
+                            correctCount++;
+                        }
+                    }
+                    break;
+                case 'exercise7':
+                    totalCount = Object.keys(correctAnswers.exercise7).length;
+                    for (const target in correctAnswers.exercise7) {
+                        if (appState.exercise7Answers[target] === correctAnswers.exercise7[target]) {
+                            correctCount++;
+                        }
+                    }
+                    break;
+                case 'exercise8':
+                    totalCount = Object.keys(correctAnswers.exercise8).length;
+                    for (const question in correctAnswers.exercise8) {
+                        const userAnswer = appState.exercise8Answers[question] ? appState.exercise8Answers[question].toLowerCase().trim() : '';
+                        const correctAnswer = correctAnswers.exercise8[question].toLowerCase().trim();
+                        if (userAnswer === correctAnswer) {
+                            correctCount++;
+                        }
+                    }
+                    break;
+                case 'exercise9':
+                    totalCount = 0;
+                    for (const category in correctAnswers.exercise9) {
+                        totalCount += correctAnswers.exercise9[category].length;
+                        const selectedItems = new Set(appState.exercise9Answers[category] || []);
+                        const correctItems = new Set(correctAnswers.exercise9[category]);
+
+                        // Count individual correct items within categories
+                        correctItems.forEach(item => {
+                            if (selectedItems.has(item)) {
+                                correctCount++;
+                            }
+                        });
+                    }
+                    break;
+                case 'exercise10':
+                    totalCount = Object.keys(correctAnswers.exercise10).length;
+                    for (const question in correctAnswers.exercise10) {
+                        if (appState.exercise10Answers[question] === correctAnswers.exercise10[question]) {
+                            correctCount++;
+                        }
+                    }
+                    break;
+            }
+            updateFeedback(exerciseId, correctCount, totalCount);
+        }
+
+        /**
+         * Helper function to compare checkbox answers (handles multiple selections).
+         * @param {Array} userSelections - Array of user selected values.
+         * @param {Array} correctSelections - Array of correct values.
+         * @returns {boolean} True if all correct options are selected and no incorrect ones.
+         */
+        function compareCheckboxAnswers(userSelections, correctSelections) {
+            const userSet = new Set(userSelections);
+            const correctSet = new Set(correctSelections);
+            return userSet.size === correctSet.size && [...userSet].every(item => correctSet.has(item));
+        }
+
+        // --- Exercise 1 Handlers ---
+        function setupExercise1() {
+            const exercise1Div = document.getElementById('exercise1');
+            exercise1Div.addEventListener('change', (e) => {
+                if (e.target.type === 'checkbox' && e.target.name.startsWith('ex1_q')) {
+                    const questionName = e.target.name;
+                    const value = e.target.value;
+                    if (e.target.checked) {
+                        appState.exercise1Answers[questionName].push(value);
+                    } else {
+                        appState.exercise1Answers[questionName] = appState.exercise1Answers[questionName].filter(item => item !== value);
+                    }
+                    // Clear feedback on change (pass 0, 0 to clear)
+                    updateFeedback('exercise1', 0, 0);
+                    saveState(); // Save state
+                }
+            });
+        }
+
+        // --- Exercise 2 Handlers ---
+        function setupExercise2() {
+            const exercise2Div = document.getElementById('exercise2');
+            exercise2Div.addEventListener('change', (e) => {
+                if (e.target.type === 'checkbox' && e.target.name === 'ex2_option') {
+                    // Uncheck all others
+                    exercise2Div.querySelectorAll('input[name="ex2_option"]').forEach(checkbox => {
+                        if (checkbox !== e.target) {
+                            checkbox.checked = false;
+                        }
+                    });
+                    appState.exercise2Answer = e.target.checked ? e.target.value : '';
+                    updateFeedback('exercise2', 0, 0); // Clear feedback on change
+                    saveState(); // Save state
+                }
+            });
+        }
+
+        // --- Exercise 3 Handlers ---
+        function setupExercise3() {
+            const exercise3Div = document.getElementById('exercise3');
+            exercise3Div.addEventListener('change', (e) => {
+                if (e.target.type === 'checkbox' && e.target.name === 'ex3_option') {
+                    // Uncheck all others
+                    exercise3Div.querySelectorAll('input[name="ex3_option"]').forEach(checkbox => {
+                        if (checkbox !== e.target) {
+                            checkbox.checked = false;
+                        }
+                    });
+                    appState.exercise3Answer = e.target.checked ? e.target.value : '';
+                    updateFeedback('exercise3', 0, 0); // Clear feedback on change
+                    saveState(); // Save state
+                }
+            });
+        }
+
+        // --- Exercise 4 Renderer & Handlers ---
+        function renderExercise4() {
+            const container = document.getElementById('ex4-container');
+            container.innerHTML = ''; // Clear previous content
+
+            const definitions = [
+                "1. This happens when a type of bird, animal or plant doesn’t exist any more:",
+                "2. to become smaller in size or number:",
+                "3. to follow and kill an animal for food or for sport:",
+                "4. to put something (e.g. food) in ice, salt, sugar or chemicals, so it can stay in good condition:",
+                "5. all the people or animals that live in one place or area:",
+                "6. all the living things in an area and the way they affect each other and the environment:",
+                "7. the frame of bones supporting a human or animal body:",
+            ];
+            const words = [
+                'a population', 'a skeleton', 'an ecosystem', 'to become extinct', 'to decrease', 'to hunt', 'to preserve'
+            ].sort();
+
+            definitions.forEach((def) => {
+                const div = document.createElement('div');
+                div.className = 'mb-4 flex flex-col sm:flex-row items-start sm:items-center';
+                div.innerHTML = `
+                    <p class="w-full sm:w-2/3 mb-2 sm:mb-0 text-gray-800 text-sm">${def}</p>
+                    <select class="w-full sm:w-1/3 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm">
+                        <option value="">Select...</option>
+                        ${words.map(word => `<option value="${word}">${word}</option>`).join('')}
+                    </select>
+                `;
+                const select = div.querySelector('select');
+                select.value = appState.exercise4Answers[def] || ''; // Set current value
+                select.addEventListener('change', (e) => {
+                    appState.exercise4Answers[def] = e.target.value;
+                    updateFeedback('exercise4', 0, 0); // Clear feedback on change
+                    saveState(); // Save state
+                });
+                container.appendChild(div);
+            });
+        }
+
+        // --- Exercise 5 Renderer & Handlers ---
+        function renderExercise5() {
+            const container = document.getElementById('ex5-container');
+            container.innerHTML = '';
+
+            const sentences = [
+                'Pollution harms all the plants, fish and animals in the ________ .',
+                'The tutor showed the ________ to the medical students and asked which small bones were missing.',
+                'We expect the number of people living in the countryside will ________ as families move to the cities.',
+                'There are so few polar bears left that it is possible they will soon become ________ .',
+                'The ________ of my city has risen to 8 million people.',
+                'Lions often ________ other animals at night.',
+                'Nowadays, most people use fridges to ________ their food.',
+            ];
+            const words = [
+                'Decrease', 'ecosystem', 'extinct', 'hunt', 'population', 'preserve', 'skeleton'
+            ].sort();
+
+            sentences.forEach((sentence) => {
+                const div = document.createElement('div');
+                div.className = 'mb-4 flex flex-col sm:flex-row items-start sm:items-center';
+                div.innerHTML = `
+                    <p class="w-full sm:w-2/3 mb-2 sm:mb-0 text-gray-800 text-sm">${sentence.replace('________', '')}</p>
+                    <select class="w-full sm:w-1/3 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm">
+                        <option value="">Select...</option>
+                        ${words.map(word => `<option value="${word}">${word}</option>`).join('')}
+                    </select>
+                `;
+                const select = div.querySelector('select');
+                select.value = appState.exercise5Answers[sentence] || '';
+                select.addEventListener('change', (e) => {
+                    appState.exercise5Answers[sentence] = e.target.value;
+                    updateFeedback('exercise5', 0, 0);
+                    saveState(); // Save state
+                });
+                container.appendChild(div);
+            });
+        }
+
+        // --- Exercise 6 Renderer & Handlers ---
+        function renderExercise6() {
+            const container = document.getElementById('ex6-container');
+            container.innerHTML = '';
+
+            const questions = [
+                {
+                    text: 'The number of mammoths started to fall when their ________ got smaller.',
+                    prediction: 'This word is probably ________ , e.g. forests or land.'
+                },
+                {
+                    text: 'Mammoths had smaller ________ than modern elephants.',
+                    prediction: 'This word is probably ________ , e.g. feet or eyes.'
+                },
+                {
+                    text: 'Mammoths were very ________ animals.',
+                    prediction: 'This word is probably ________ , e.g. large or intelligent.'
+                },
+                {
+                    text: 'The ________ of a baby mammoth was found recently in the Arctic.',
+                    prediction: 'This word is probably ________ , e.g. body or skeleton.'
+                },
+            ];
+            const options = [
+                'a plural countable noun',
+                'a plural countable noun or an uncountable noun',
+                'an adjective',
+                'a singular noun'
+            ].sort();
+
+            questions.forEach((q) => {
+                const div = document.createElement('div');
+                div.className = 'mb-6 border-b pb-4 border-gray-200 last:border-b-0 last:pb-0';
+                div.innerHTML = `
+                    <p class="font-medium mb-2 text-gray-800 text-sm">${q.text}</p>
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center">
+                        <p class="w-full sm:w-2/3 mb-2 sm:mb-0 text-gray-700 text-sm">${q.prediction.replace('________', '')}</p>
+                        <select class="w-full sm:w-1/3 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm">
+                            <option value="">Select...</option>
+                            ${options.map(option => `<option value="${option}">${option}</option>`).join('')}
+                        </select>
+                    </div>
+                `;
+                const select = div.querySelector('select');
+                select.value = appState.exercise6Answers[q.text] || '';
+                select.addEventListener('change', (e) => {
+                    appState.exercise6Answers[q.text] = e.target.value;
+                    updateFeedback('exercise6', 0, 0);
+                    saveState(); // Save state
+                });
+                container.appendChild(div);
+            });
+        }
+
+        // --- Exercise 7 Renderer & Handlers (Drag and Drop) ---
+        function renderExercise7() {
+            const draggableContainer = document.getElementById('ex7-draggable-items');
+            const dropTargetsContainer = document.getElementById('ex7-drop-targets');
+            draggableContainer.innerHTML = '';
+            dropTargetsContainer.innerHTML = '';
+
+            const targetDefinitions = [
+                '1. build or create',
+                '2. inside of or within',
+                '3. a pair of',
+                '4. not as high as',
+                '5. a little or an amount of',
+                '6. decrease or fall',
+                '7. might or may',
+            ];
+
+            // Render draggable items
+            appState.draggableItems7.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'draggable-item p-3 bg-blue-100 text-blue-800 rounded-md border border-blue-200 shadow-sm hover:bg-blue-200 transition duration-200 ease-in-out text-sm';
+                itemDiv.setAttribute('draggable', 'true');
+                itemDiv.textContent = item;
+                itemDiv.dataset.value = item; // Store the actual value
+                itemDiv.addEventListener('dragstart', (e) => {
+                    appState.draggedItem = item;
+                    e.dataTransfer.setData('text/plain', item);
+                    e.dataTransfer.effectAllowed = 'move';
+                });
+                draggableContainer.appendChild(itemDiv);
+            });
+
+            // Render drop targets
+            targetDefinitions.forEach(def => {
+                const targetDiv = document.createElement('div');
+                targetDiv.className = `mb-3 p-3 border border-dashed rounded-md flex flex-col sm:flex-row items-start sm:items-center min-h-[60px] ${appState.exercise7Answers[def] ? 'border-green-400 bg-green-50' : 'border-gray-300 bg-white'}`;
+                targetDiv.dataset.targetDef = def; // Store the definition for mapping
+
+                const defP = document.createElement('p');
+                defP.className = 'w-full sm:w-2/3 text-gray-800 font-medium mb-1 sm:mb-0 text-sm';
+                defP.textContent = def;
+                targetDiv.appendChild(defP);
+
+                const droppedItemDisplay = document.createElement('div');
+                droppedItemDisplay.className = 'w-full sm:w-1/3 p-2 bg-gray-100 border border-gray-200 rounded-md text-center text-gray-700 font-semibold text-sm';
+                droppedItemDisplay.textContent = appState.exercise7Answers[def] || 'Drop here';
+                targetDiv.appendChild(droppedItemDisplay);
+
+                targetDiv.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                    targetDiv.classList.add('drop-target-hover');
+                });
+
+                targetDiv.addEventListener('dragleave', () => {
+                    targetDiv.classList.remove('drop-target-hover');
+                });
+
+                targetDiv.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    targetDiv.classList.remove('drop-target-hover');
+
+                    const droppedValue = e.dataTransfer.getData('text/plain');
+                    const targetDefinition = targetDiv.dataset.targetDef;
+
+                    // Only allow drop if the target is empty
+                    if (!appState.exercise7Answers[targetDefinition]) {
+                        appState.exercise7Answers[targetDefinition] = droppedValue;
+                        // Remove from draggable items list
+                        appState.draggableItems7 = appState.draggableItems7.filter(item => item !== droppedValue);
+                        renderExercise7(); // Re-render to update UI
+                        updateFeedback('exercise7', 0, 0); // Clear feedback
+                        saveState(); // Save state
+                    }
+                });
+                dropTargetsContainer.appendChild(targetDiv);
+            });
+        }
+
+        function resetExercise7() {
+            appState.draggableItems7 = [
+                'get smaller', 'make', 'a possibility', 'both', 'some', 'lower (than)', 'the contents of'
+            ];
+            const initialAnswers = {};
+            const targetDefinitions = [
+                '1. build or create', '2. inside of or within', '3. a pair of', '4. not as high as',
+                '5. a little or an amount of', '6. decrease or fall', '7. might or may',
+            ];
+            targetDefinitions.forEach(def => { initialAnswers[def] = ''; });
+            appState.exercise7Answers = initialAnswers;
+            renderExercise7(); // Re-render the exercise
+            updateFeedback('exercise7', 0, 0); // Clear feedback
+            saveState(); // Save state
+        }
+
+        // --- Exercise 8 Renderer & Handlers ---
+        function renderExercise8() {
+            const container = document.getElementById('ex8-container');
+            container.innerHTML = '';
+
+            const sentences = [
+                'The number of mammoths started to fall when their ________ got smaller.',
+                'Humans used mammoths for food, and to make art and ________ .',
+                'Scientists have examined the contents of mammoths’ ________ .',
+                'Mammoths had smaller ________ than modern elephants.',
+                'Some scientists think that a ‘new’ mammoth should have some ________ .',
+                'Both elephants and mammoths are ________ animals.',
+                'There is a possibility that a ‘new’ mammoth could get a ________ .',
+            ];
+
+            sentences.forEach((sentence, index) => {
+                const div = document.createElement('div');
+                div.className = 'mb-4';
+                const parts = sentence.split('________');
+                div.innerHTML = `
+                    <p class="mb-2 text-gray-800 text-sm">
+                        ${parts[0]}<input type="text" data-question="${sentence}" value="${appState.exercise8Answers[sentence] || ''}" class="inline-block w-full sm:w-40 p-1 border-b-2 border-blue-300 focus:border-blue-500 outline-none mx-1 text-blue-700 font-medium text-sm" placeholder="Write one word">${parts[1]}
+                    </p>
+                `;
+                const input = div.querySelector('input');
+                input.addEventListener('input', (e) => {
+                    appState.exercise8Answers[sentence] = e.target.value;
+                    updateFeedback('exercise8', 0, 0);
+                    saveState(); // Save state
+                });
+                container.appendChild(div);
+            });
+        }
+
+        // --- Exercise 9 Renderer & Handlers (Drag and Drop) ---
+        function renderExercise9() {
+            const draggableContainer = document.getElementById('ex9-draggable-items');
+            const dropTargetsContainer = document.getElementById('ex9-drop-targets');
+            draggableContainer.innerHTML = '';
+            dropTargetsContainer.innerHTML = '';
+
+            const categories = ['People', 'Experts'];
+
+            // Render draggable items
+            appState.draggableItems9.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'draggable-item p-3 bg-blue-100 text-blue-800 rounded-md border border-blue-200 shadow-sm hover:bg-blue-200 transition duration-200 ease-in-out text-sm';
+                itemDiv.setAttribute('draggable', 'true');
+                itemDiv.textContent = item;
+                itemDiv.dataset.value = item;
+                itemDiv.addEventListener('dragstart', (e) => {
+                    appState.draggedItem = item;
+                    e.dataTransfer.setData('text/plain', item);
+                    e.dataTransfer.effectAllowed = 'move';
+                });
+                draggableContainer.appendChild(itemDiv);
+            });
+
+            // Render drop targets (categories)
+            categories.forEach(category => {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'p-4 border border-dashed border-gray-300 rounded-md bg-white min-h-[120px]';
+                categoryDiv.dataset.category = category;
+
+                const categoryTitle = document.createElement('h4');
+                categoryTitle.className = 'font-semibold text-base mb-2';
+                categoryTitle.textContent = category;
+                categoryDiv.appendChild(categoryTitle);
+
+                const itemsDisplay = document.createElement('div');
+                itemsDisplay.className = 'flex flex-wrap gap-2';
+                (appState.exercise9Answers[category] || []).forEach(item => {
+                    const itemSpan = document.createElement('span');
+                    itemSpan.className = 'p-2 bg-green-100 text-green-800 rounded-md text-xs';
+                    itemSpan.textContent = item;
+                    itemsDisplay.appendChild(itemSpan);
+                });
+                categoryDiv.appendChild(itemsDisplay);
+
+                categoryDiv.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                    categoryDiv.classList.add('drop-target-hover');
+                });
+
+                categoryDiv.addEventListener('dragleave', () => {
+                    categoryDiv.classList.remove('drop-target-hover');
+                });
+
+                categoryDiv.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    categoryDiv.classList.remove('drop-target-hover');
+
+                    const droppedValue = e.dataTransfer.getData('text/plain');
+                    const targetCategory = categoryDiv.dataset.category;
+
+                    if (droppedValue && !(appState.exercise9Answers[targetCategory] || []).includes(droppedValue)) {
+                        appState.exercise9Answers[targetCategory] = [...(appState.exercise9Answers[targetCategory] || []), droppedValue];
+                        appState.draggableItems9 = appState.draggableItems9.filter(item => item !== droppedValue);
+                        renderExercise9(); // Re-render to update UI
+                        updateFeedback('exercise9', 0, 0); // Clear feedback
+                        saveState(); // Save state
+                    }
+                });
+                dropTargetsContainer.appendChild(categoryDiv);
+            });
+        }
+
+        function resetExercise9() {
+            appState.draggableItems9 = [
+                'Society', 'scholars', 'the public', 'academics', 'researchers', 'individuals'
+            ].sort();
+            const initialAnswers = {};
+            const categories = ['People', 'Experts'];
+            categories.forEach(cat => { initialAnswers[cat] = []; });
+            appState.exercise9Answers = initialAnswers;
+            renderExercise9(); // Re-render the exercise
+            updateFeedback('exercise9', 0, 0); // Clear feedback
+            saveState(); // Save state
+        }
+
+
+        // --- Exercise 10 Renderer & Handlers ---
+        function renderExercise10() {
+            const container = document.getElementById('ex10-container');
+            container.innerHTML = '';
+
+            const sentences = [
+                'Look at the title of the article to help you predict the ________ of the whole article.',
+                'Quickly read the whole text first to get a general idea of the ________ of each paragraph.',
+                'Read the questions and use your general knowledge to predict the ________ you need to look for.',
+                'Look for key information in the questions and think what ________ you might see in the text.',
+                'Look out for ________ for people and different kinds of expert.',
+                'Only use words from the ________ in your answers.',
+                'When you write your answers, make sure you copy the ________ , and don’t forget to use the correct form if the word is plural.',
+            ];
+            const words = [
+                'IELTS Reading text', 'kind of paraphrasing', 'main point', 'spelling correctly', 'synonyms of words', 'topic', 'type of information'
+            ].sort();
+
+            sentences.forEach((sentence) => {
+                const div = document.createElement('div');
+                div.className = 'mb-4 flex flex-col sm:flex-row items-start sm:items-center';
+                div.innerHTML = `
+                    <p class="w-full sm:w-2/3 mb-2 sm:mb-0 text-gray-800 text-sm">${sentence.replace('________', '')}</p>
+                    <select class="w-full sm:w-1/3 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm">
+                        <option value="">Select...</option>
+                        ${words.map(word => `<option value="${word}">${word}</option>`).join('')}
+                    </select>
+                `;
+                const select = div.querySelector('select');
+                select.value = appState.exercise10Answers[sentence] || '';
+                select.addEventListener('change', (e) => {
+                    appState.exercise10Answers[sentence] = e.target.value;
+                    updateFeedback('exercise10', 0, 0);
+                    saveState(); // Save state
+                });
+                container.appendChild(div);
+            });
+        }
+
+
+        // --- Initial Setup on Window Load ---
+        window.onload = function() {
+            // Initialize draggable items for Exercise 7 and 9 for the first time or reset
+            appState.draggableItems7 = [
+                'get smaller', 'make', 'a possibility', 'both', 'some', 'lower (than)', 'the contents of'
+            ].sort(); // Ensure sorted for consistent display
+            appState.draggableItems9 = [
+                'Society', 'scholars', 'the public', 'academics', 'researchers', 'individuals'
+            ].sort();
+
+            // Initialize answers for drag and drop exercises for the first time or reset
+            const targetDefinitions7 = [
+                '1. build or create', '2. inside of or within', '3. a pair of', '4. not as high as',
+                '5. a little or an amount of', '6. decrease or fall', '7. might or may',
+            ];
+            targetDefinitions7.forEach(def => { appState.exercise7Answers[def] = ''; });
+
+            const categories9 = ['People', 'Experts'];
+            categories9.forEach(cat => { appState.exercise9Answers[cat] = []; });
+
+            // Load state first, which will populate appState and then re-render
+            loadState();
+
+            // Setup static exercises (checkboxes) - their state is updated by loadState
+            setupExercise1();
+            setupExercise2();
+            setupExercise3();
+
+            // Render dynamic exercises - these are already called by loadState, but calling again for clarity/safety
+            renderExercise4();
+            renderExercise5();
+            renderExercise6();
+            renderExercise8();
+            renderExercise7();
+            renderExercise9();
+            renderExercise10();
+
+            // Setup highlighting tool
+            setupHighlightTool();
+        };
+    </script>
+</body>
+</html>
