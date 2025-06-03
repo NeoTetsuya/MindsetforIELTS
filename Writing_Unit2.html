@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive English Worksheet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .correct-feedback {
+            color: #10B981; /* Green-500 */
+        }
+        .incorrect-feedback {
+            color: #EF4444; /* Red-500 */
+        }
+        .feedback-box {
+            padding: 0.5rem 0.75rem;
+            margin-top: 0.5rem;
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 0.875rem; /* text-sm */
+        }
+        .feedback-box.correct {
+            background-color: #D1FAE5; /* green-100 */
+            border: 1px solid #34D399; /* green-400 */
+        }
+        .feedback-box.incorrect {
+            background-color: #FEE2E2; /* red-100 */
+            border: 1px solid #F87171; /* red-400 */
+        }
+        /* Message Box for Save Confirmation */
+        #message-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #message-box.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100 p-4 font-sans text-gray-800">
+
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">
+            Interactive English Worksheet - Unit 2
+        </h1>
+
+        <div class="flex justify-end mb-6 space-x-2">
+            <button id="clear-all-answers-button" class="px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition duration-200 ease-in-out transform hover:scale-105">
+                Clear All Answers
+            </button>
+        </div>
+
+        <section class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Unit 2: Exercise 1</h2>
+            <p class="mb-4">Look at the six famous locations in London. Match the pictures with the correct places.</p>
+            <div id="exercise1-container" class="grid grid-cols-1 gap-6">
+                </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex1-button" class="px-5 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 1
+                </button>
+            </div>
+        </section>
+
+        <section class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-blue-600 mb-4">Unit 2: Exercise 2</h2>
+            <p class="mb-4">Look at the numbers (1–8) on the map. Then put the letters in the correct order to complete the place names and the directions.</p>
+            <div class="flex justify-center mb-6">
+                <img src="https://i.postimg.cc/mg8sdFB5/Writing-Unit2-Exercise2.jpg" alt="London Map for Exercise 2" class="rounded-lg shadow-md max-w-full h-auto" onerror="this.src='https://placehold.co/600x400/E0E7FF/3B82F6?text=London+Map+Error'">
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="flex flex-col space-y-2">
+                    <p class="font-medium text-lg">Westminster Underground <span class="font-mono text-gray-600">o t t a S i n</span></p>
+                    <input type="text" id="ex2-station" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Type your answer here">
+                    <span id="ex2-feedback-station" class="hidden"></span>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <p class="font-medium text-lg"><span class="font-mono text-gray-600">s W e t</span></p>
+                    <input type="text" id="ex2-west" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Type your answer here">
+                    <span id="ex2-feedback-west" class="hidden"></span>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <p class="font-medium text-lg"><span class="font-mono text-gray-600">t N o h r</span></p>
+                    <input type="text" id="ex2-north" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Type your answer here">
+                    <span id="ex2-feedback-north" class="hidden"></span>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <p class="font-medium text-lg"><span class="font-mono text-gray-600">t a E s</span></p>
+                    <input type="text" id="ex2-east" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Type your answer here">
+                    <span id="ex2-feedback-east" class="hidden"></span>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <p class="font-medium text-lg">The <span class="font-mono text-gray-600">e r i v R</span> Thames</p>
+                    <input type="text" id="ex2-river" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Type your answer here">
+                    <span id="ex2-feedback-river" class="hidden"></span>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <p class="font-medium text-lg">Jubilee <span class="font-mono text-gray-600">i g e r B d</span></p>
+                    <input type="text" id="ex2-bridge" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Type your answer here">
+                    <span id="ex2-feedback-bridge" class="hidden"></span>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <p class="font-medium text-lg">the Sea Life London <span class="font-mono text-gray-600">i a m r q u A u</span></p>
+                    <input type="text" id="ex2-aquarium" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Type your answer here">
+                    <span id="ex2-feedback-aquarium" class="hidden"></span>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <p class="font-medium text-lg">the <span class="font-mono text-gray-600">o h u t S</span> Bank</p>
+                    <input type="text" id="ex2-south" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Type your answer here">
+                    <span id="ex2-feedback-south" class="hidden"></span>
+                </div>
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex2-button" class="px-5 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 2
+                </button>
+            </div>
+        </section>
+
+        <section class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-green-600 mb-4">Unit 2: Exercise 3</h2>
+            <p class="mb-4">Match the prepositions with the correct pictures. Use the prepositions in the box.</p>
+            <div class="mb-4 p-3 bg-green-100 rounded-md border border-green-200">
+                <p class="font-semibold">Prepositions: Between, east of, near, next to, north of, on, opposite, south of, west of</p>
+            </div>
+            <div id="exercise3-container" class="grid grid-cols-1 gap-6">
+                </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex3-button" class="px-5 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 3
+                </button>
+            </div>
+        </section>
+
+        <section class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-purple-600 mb-4">Unit 2: Exercise 4</h2>
+            <p class="mb-4">Look at the map. Then choose the correct options to complete the sentences.</p>
+            <div class="flex justify-center mb-6">
+                <img src="https://i.postimg.cc/7YN86TGZ/Writing-Unit2-Exercise4.jpg" alt="London Map for Exercise 4" class="rounded-lg shadow-md max-w-full h-auto" onerror="this.src='https://placehold.co/600x400/EDE9FE/8B5CF6?text=London+Map+Error'">
+            </div>
+            <div id="exercise4-container">
+                </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex4-button" class="px-5 py-2 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 4
+                </button>
+            </div>
+        </section>
+
+        <section class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Unit 2: Exercise 5</h2>
+            <p class="mb-4">Look at the map. A company wants to open a sandwich shop in this area. It is choosing between two possible positions: Location 1 and Location 2. Complete the descriptions of the two locations. Use the words in the box.</p>
+            <div class="flex justify-center mb-6">
+                <img src="https://i.postimg.cc/kgj0N3yr/Writing-Unit2-Exercise5.png" alt="London Map with Locations 1 and 2" class="rounded-lg shadow-md max-w-full h-auto" onerror="this.src='https://placehold.co/600x400/FFFBEB/F59E0B?text=London+Map+Error'">
+            </div>
+            <div class="mb-4 p-3 bg-yellow-100 rounded-md border border-yellow-200">
+                <p class="font-semibold">Words: Between, east, near, of, on, opposite, to</p>
+            </div>
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-semibold text-yellow-800 mb-3">Location 1:</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-2">
+                            <p>is next</p>
+                            <select id="ex5-loc1_1" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32">
+                                <option value="">___</option>
+                                <option value="Between">Between</option><option value="east">east</option><option value="near">near</option><option value="of">of</option><option value="on">on</option><option value="opposite">opposite</option><option value="to">to</option>
+                            </select>
+                            <p>10 Downing Street and nearby offices.</p>
+                            <span id="ex5-feedback-loc1_1" class="hidden"></span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <p>is east</p>
+                            <select id="ex5-loc1_2" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32">
+                                <option value="">___</option>
+                                <option value="Between">Between</option><option value="east">east</option><option value="near">near</option><option value="of">of</option><option value="on">on</option><option value="opposite">opposite</option><option value="to">to</option>
+                            </select>
+                            <p>Big Ben.</p>
+                            <span id="ex5-feedback-loc1_2" class="hidden"></span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <p>Is</p>
+                            <select id="ex5-loc1_3" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32">
+                                <option value="">___</option>
+                                <option value="Between">Between</option><option value="east">east</option><option value="near">near</option><option value="of">of</option><option value="on">on</option><option value="opposite">opposite</option><option value="to">to</option>
+                            </select>
+                            <p>the London Eye.</p>
+                            <span id="ex5-feedback-loc1_3" class="hidden"></span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <p>Is</p>
+                            <select id="ex5-loc1_4" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32">
+                                <option value="">___</option>
+                                <option value="Between">Between</option><option value="east">east</option><option value="near">near</option><option value="of">of</option><option value="on">on</option><option value="opposite">opposite</option><option value="to">to</option>
+                            </select>
+                            <p>Westminster Underground Station.</p>
+                            <span id="ex5-feedback-loc1_4" class="hidden"></span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <p>Is</p>
+                            <select id="ex5-loc1_5" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32">
+                                <option value="">___</option>
+                                <option value="Between">Between</option><option value="east">east</option><option value="near">near</option><option value="of">of</option><option value="on">on</option><option value="opposite">opposite</option><option value="to">to</option>
+                            </select>
+                            <p>the North Bank.</p>
+                            <span id="ex5-feedback-loc1_5" class="hidden"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-yellow-800 mb-3">Location 2:</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-2">
+                            <p>Is</p>
+                            <select id="ex5-loc2_1" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32">
+                                <option value="">___</option>
+                                <option value="Between">Between</option><option value="east">east</option><option value="near">near</option><option value="of">of</option><option value="on">on</option><option value="opposite">opposite</option><option value="to">to</option>
+                            </select>
+                            <p>the Sea Life London Aquarium and the London Eye.</p>
+                            <span id="ex5-feedback-loc2_1" class="hidden"></span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <p>Is</p>
+                            <select id="ex5-loc2_2" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32">
+                                <option value="">___</option>
+                                <option value="Between">Between</option><option value="east">east</option><option value="near">near</option><option value="of">of</option><option value="on">on</option><option value="opposite">opposite</option><option value="to">to</option>
+                            </select>
+                            <p>of the Sea Life London Aquarium.</p>
+                            <span id="ex5-feedback-loc2_2" class="hidden"></span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <p>isn’t</p>
+                            <select id="ex5-loc2_3" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32">
+                                <option value="">___</option>
+                                <option value="Between">Between</option><option value="east">east</option><option value="near">near</option><option value="of">of</option><option value="on">on</option><option value="opposite">opposite</option><option value="to">to</option>
+                            </select>
+                            <p>10 Downing Street and nearby offices.</p>
+                            <span id="ex5-feedback-loc2_3" class="hidden"></span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <p>is west</p>
+                            <select id="ex5-loc2_4" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32">
+                                <option value="">___</option>
+                                <option value="Between">Between</option><option value="east">east</option><option value="near">near</option><option value="of">of</option><option value="on">on</option><option value="opposite">opposite</option><option value="to">to</option>
+                            </select>
+                            <p>the park.</p>
+                            <span id="ex5-feedback-loc2_4" class="hidden"></span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <p>Is</p>
+                            <select id="ex5-loc2_5" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32">
+                                <option value="">___</option>
+                                <option value="Between">Between</option><option value="east">east</option><option value="near">near</option><option value="of">of</option><option value="on">on</option><option value="opposite">opposite</option><option value="to">to</option>
+                            </select>
+                            <p>the South Bank.</p>
+                            <span id="ex5-feedback-loc2_5" class="hidden"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex5-button" class="px-5 py-2 bg-yellow-600 text-white rounded-lg shadow-md hover:bg-yellow-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 5
+                </button>
+            </div>
+        </section>
+
+        <section class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-red-600 mb-4">Unit 2: Exercise 6</h2>
+            <p class="mb-4">Look at the map. Read the first part of a report comparing the advantages of Location 1 with Location 2 for the sandwich shop. There are five mistakes. Find and correct them.</p>
+            <div class="flex justify-center mb-6">
+                <img src="https://i.postimg.cc/x1TrbTMy/Writing-Unit2-Exercise6.png" alt="London Map for Exercise 6" class="rounded-lg shadow-md max-w-full h-auto" onerror="this.src='https://placehold.co/600x400/FEE2E2/EF4444?text=London+Map+Error'">
+            </div>
+            <div class="bg-white p-4 rounded-md border border-gray-300 mb-4">
+                <p class="font-mono text-gray-700 leading-relaxed">Location 1 is to the North Bank, between Westminster Underground Station and Big Ben. This location is west of Big Ben, the same distance from Westminster Bridge and Jubilee Bridge. It is opposite the Sea Life London Aquarium, which is on the North Bank.</p>
+            </div>
+            <p class="mb-2 font-medium">Type your corrected text below:</p>
+            <textarea id="ex6-user-corrections" class="w-full p-3 border rounded-md focus:ring-red-500 focus:border-red-500 h-32 resize-y" placeholder="Write your corrected sentences here..."></textarea>
+            <div class="mt-4">
+                <div id="ex6-feedback" class="hidden"></div>
+                <p class="text-sm text-gray-600 mt-2">
+                    Note: This check is basic and looks for the presence of corrected phrases.
+                </p>
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex6-button" class="px-5 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 6
+                </button>
+            </div>
+        </section>
+
+        <section class="mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-teal-600 mb-4">Unit 2: Exercise 7</h2>
+            <p class="mb-4">Look at the map. Read the report comparing the advantages of Location 1 and Location 2 for the sandwich shop. Then match the descriptions in the box with the correct parts of the report.</p>
+            <div class="flex justify-center mb-6">
+                <img src="https://i.postimg.cc/3wdPnSLk/Writing-Unit2-Exercise7.png" alt="London Map for Exercise 7" class="rounded-lg shadow-md max-w-full h-auto" onerror="this.src='https://placehold.co/600x400/F0FDFA/14B8A6?text=London+Map+Error'">
+            </div>
+            <div class="mb-4 p-3 bg-teal-100 rounded-md border border-teal-200">
+                <p class="font-semibold">Descriptions: Advantages of Location 1, Advantages of Location 2, Where Location 2 is, Introduction sentence that describes the map, Where Location 1 is</p>
+            </div>
+            <div id="exercise7-container" class="space-y-4">
+                </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex7-button" class="px-5 py-2 bg-teal-600 text-white rounded-lg shadow-md hover:bg-teal-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 7
+                </button>
+            </div>
+        </section>
+
+        <section class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-orange-600 mb-4">Unit 2: Exercise 8</h2>
+            <p class="mb-4">Look at the map. Then match the two halves to complete the sentences.</p>
+            <div class="flex justify-center mb-6">
+                <img src="https://i.postimg.cc/4dcjTKRZ/Writing-Unit2-Exercise8.png" alt="London Map for Exercise 8" class="rounded-lg shadow-md max-w-full h-auto" onerror="this.src='https://placehold.co/600x400/FFF7ED/F97316?text=London+Map+Error'">
+            </div>
+            <div id="exercise8-container" class="space-y-4">
+                </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex8-button" class="px-5 py-2 bg-orange-600 text-white rounded-lg shadow-md hover:bg-orange-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 8
+                </button>
+            </div>
+        </section>
+
+        <section class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-pink-600 mb-4">Unit 2: Exercise 9</h2>
+            <p class="mb-4">Look at the pictures of places in Paris. Then put the letters in the correct order to complete the names of the locations.</p>
+            <div id="exercise9-container" class="grid grid-cols-1 gap-6">
+                </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex9-button" class="px-5 py-2 bg-pink-600 text-white rounded-lg shadow-md hover:bg-pink-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 9
+                </button>
+            </div>
+        </section>
+
+        <section class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Unit 2: Exercise 10 - WRITING TASK 1</h2>
+            <p class="mb-4">You should spend about 20 minutes on this task.</p>
+            <p class="mb-4">The map shows the centre of Paris. A company wants to open a new restaurant in the area. The map shows two possible locations for the restaurant.</p>
+            <div class="flex justify-center mb-6">
+                <img src="https://i.postimg.cc/Bnvyn7fm/Writing-Unit2-Exercise10.png" alt="Paris Restaurant Locations Map" class="rounded-lg shadow-md max-w-full h-auto" onerror="this.src='https://placehold.co/600x400/F9FAFB/6B7280?text=Paris+Map+Error'">
+            </div>
+            <p class="mb-4 font-semibold">Summarise the information by selecting and reporting the main features and make comparisons where relevant. Write at least 150 words.</p>
+            <p class="mb-2 font-medium">Student post:</p>
+            <textarea id="ex10-text" class="w-full p-3 border border-gray-300 rounded-md focus:ring-gray-500 focus:border-gray-500 h-48 resize-y" placeholder="Write your summary here..."></textarea>
+            <div class="mt-4 text-sm text-gray-600">
+                Word count: <span id="ex10-word-count">0</span>
+            </div>
+        </section>
+
+    </div>
+
+    <div id="message-box"></div>
+
+    <script>
+        // Global state object
+        let appState = {
+            exercise1Answers: {},
+            exercise1Feedback: {},
+            exercise2Answers: {},
+            exercise2Feedback: {},
+            exercise3Answers: {},
+            exercise3Feedback: {},
+            exercise4Answers: {},
+            exercise4Feedback: {},
+            exercise5Answers: {},
+            exercise5Feedback: {},
+            exercise6UserCorrections: '',
+            exercise6Feedback: '',
+            exercise7Answers: {},
+            exercise7Feedback: {},
+            exercise8Answers: {},
+            exercise8Feedback: {},
+            exercise9Answers: {},
+            exercise9Feedback: {},
+            exercise10Text: '',
+        };
+
+        // --- Data for Exercises ---
+
+        // Exercise 1 Data - REORDERED TO MATCH USER'S PICTURE MAPPING
+        const exercise1Locations = [
+            // Picture 1: 10 Downing Street (the Prime Minister’s Office)
+            { name: '10 Downing Street', correctDescription: 'the Prime Minister’s Office', image: 'https://i.postimg.cc/xCWYvDnj/Writing-Unit2-Exercise1-Picture1.jpg' },
+            // Picture 2: the Sea Life London Aquarium (a place where you can see fish)
+            { name: 'the Sea Life London Aquarium', correctDescription: 'a place where you can see fish', image: 'https://i.postimg.cc/j5WtndVk/Writing-Unit2-Exercise1-Picture2.jpg' },
+            // Picture 3: the London Eye (a big wheel which takes passengers)
+            { name: 'the London Eye', correctDescription: 'a big wheel which takes passengers', image: 'https://i.postimg.cc/vm2GmxKV/Writing-Unit2-Exercise1-Picture3.jpg' },
+            // Picture 4: the River Thames (the river that flows through London)
+            { name: 'the River Thames', correctDescription: 'the river that flows through London', image: 'https://i.postimg.cc/HWyTpx9r/Writing-Unit2-Exercise1-Picture4.jpg' },
+            // Picture 5: Westminster Underground Station (an underground station)
+            { name: 'Westminster Underground Station', correctDescription: 'an underground station', image: 'https://i.postimg.cc/CLCYqQtY/Writing-Unit2-Exercise1-Picture5.jpg' },
+            // Picture 6: Big Ben (a famous clock tower)
+            { name: 'Big Ben', correctDescription: 'a famous clock tower', image: 'https://i.postimg.cc/90Z218Qd/Writing-Unit2-Exercise1-Picture6.jpg' },
+        ];
+        // The descriptions array is no longer strictly needed for dropdown population but kept for reference if needed elsewhere.
+        const exercise1Descriptions = [
+            'an underground station', 'a famous clock tower', 'a place where you can see fish',
+            'the Prime Minister’s Office', 'a big wheel which takes passengers', 'the river that flows through London',
+        ];
+
+        // Exercise 2 Data
+        const exercise2ScrambledWords = {
+            station: { scrambled: 'o t t a S i n', correct: 'Station' },
+            west: { scrambled: 's W e t', correct: 'West' },
+            north: { scrambled: 't N o h r', correct: 'North' },
+            east: { scrambled: 't a E s', correct: 'East' },
+            river: { scrambled: 'e r i v R', correct: 'River' },
+            bridge: { scrambled: 'i g e r B d', correct: 'Bridge' },
+            aquarium: { scrambled: 'i a m r q u A u', correct: 'Aquarium' },
+            south: { scrambled: 'o h u t S', correct: 'South' },
+        };
+
+        // Exercise 3 Data
+        const exercise3Prepositions = [
+            'Between', 'east of', 'near', 'next to', 'north of', 'on', 'opposite', 'south of', 'west of',
+        ];
+        const exercise3CorrectAnswers = {
+            '1': 'Between',
+            '2': 'east of',
+            '3': 'near',
+            '4': 'next to',
+            '5': 'north of',
+            '6': 'on',
+            '7': 'opposite',
+            '8': 'south of',
+            '9': 'west of',
+        };
+        const exercise3Images = [
+            'https://i.postimg.cc/xTVnq26t/Writing-Unit2-Exercise3-Picture1.jpg',
+            'https://i.postimg.cc/MpWwbY2B/Writing-Unit2-Exercise3-Picture2.jpg',
+            'https://i.postimg.cc/3wqHh5yj/Writing-Unit2-Exercise3-Picture3.jpg',
+            'https://i.postimg.cc/XJy67HFR/Writing-Unit2-Exercise3-Picture4.jpg',
+            'https://i.postimg.cc/fbyh1TbT/Writing-Unit2-Exercise3-Picture5.jpg',
+            'https://i.postimg.cc/6qJJ7rfy/Writing-Unit2-Exercise3-Picture6.jpg',
+            'https://i.postimg.cc/KjPXt10Q/Writing-Unit2-Exercise3-Picture7.jpg',
+            'https://i.postimg.cc/T2gvzsTm/Writing-Unit2-Exercise3-Picture8.jpg',
+            'https://i.postimg.cc/wTzYgkBr/Writing-Unit2-Exercise3-Picture9.jpg',
+        ];
+
+        // Exercise 4 Data
+        const exercise4Sentences = [
+            {
+                text: 'The London Eye is',
+                options: ['near the park.', 'west of the Sea Life London Aquarium.', 'opposite Big Ben.'],
+                correct: ['near the park.', 'opposite Big Ben.'], // Based on map
+            },
+            {
+                text: 'Big Ben is',
+                options: ['on the South Bank.', 'opposite Westminster Underground Station.', 'next to Westminster Bridge.'],
+                correct: ['opposite Westminster Underground Station.', 'next to Westminster Bridge.'],
+            },
+            {
+                text: 'The park is',
+                options: ['near 10 Downing Street and nearby offices.', 'north of Westminster Underground Station.', 'east of the Sea Life London Aquarium.'],
+                correct: ['east of the Sea Life London Aquarium.'],
+            },
+            {
+                text: 'The Sea Life London Aquarium is',
+                options: ['next to Jubilee Bridge.', 'near Westminster Underground Station.', 'on the South Bank.'],
+                correct: ['on the South Bank.'],
+            },
+            {
+                text: '10 Downing Street and nearby offices are',
+                options: ['west of Big Ben.', 'south of the London Eye.', 'on the North Bank.'],
+                correct: ['on the North Bank.'],
+            },
+        ];
+
+        // Exercise 5 Data
+        const exercise5Words = ['Between', 'east', 'near', 'of', 'on', 'opposite', 'to'];
+        const exercise5CorrectAnswers = {
+            loc1_1: 'to',
+            loc1_2: 'of',
+            loc1_3: 'opposite',
+            loc1_4: 'near',
+            loc1_5: 'on',
+            loc2_1: 'Between',
+            loc2_2: 'east', // 'east' is part of 'east of' but the blank is just 'east'
+            loc2_3: 'near', // 'isn’t near'
+            loc2_4: 'of',
+            loc2_5: 'on',
+        };
+
+        // Exercise 6 Data
+        const exercise6OriginalText = `Location 1 is to the North Bank, between Westminster Underground Station and Big Ben. This location is west of Big Ben, the same distance from Westminster Bridge and Jubilee Bridge. It is opposite the Sea Life London Aquarium, which is on the North Bank.`;
+        const exercise6ExpectedCorrections = [
+            { original: 'to the North Bank', corrected: 'on the North Bank' },
+            { original: 'between Westminster Underground Station and Big Ben', corrected: 'between Westminster Underground Station and 10 Downing Street and nearby offices' },
+            { original: 'west of Big Ben', corrected: 'east of Big Ben' },
+            { original: 'opposite the Sea Life London Aquarium', corrected: 'opposite the London Eye' },
+            { original: 'which is on the North Bank', corrected: 'which is on the South Bank' }, // referring to Sea Life London Aquarium
+        ];
+
+        // Exercise 7 Data
+        const exercise7Descriptions = [
+            'Advantages of Location 1', 'Advantages of Location 2', 'Where Location 2 is',
+            'Introduction sentence that describes the map', 'Where Location 1 is',
+        ];
+        const exercise7ReportParts = [
+            { text: 'The map shows two possible locations for a new sandwich shop in central London.', correctDesc: 'Introduction sentence that describes the map' },
+            { text: 'This location is on the North Bank, between Westminster Underground Station and 10 Downing Street with nearby offices. This location is east of Big Ben, the same distance from Westminster Bridge and Jubilee Bridge, and opposite the London Eye, which is on the South Bank.', correctDesc: 'Where Location 1 is' },
+            { text: 'This place would be good for the 2,000 workers who work at 10 Downing Street and nearby offices to buy sandwiches at lunchtime .', correctDesc: 'Advantages of Location 1' },
+            { text: 'This location is on the South Bank of the River Thames between the Sea Life London Aquarium and the London Eye. This place is near Westminster Bridge and west of a park.', correctDesc: 'Where Location 2 is' },
+            { text: 'The benefits of opening the sandwich shop here are that the locations on the South Bank have over 13,000 visitors each day. These visitors could buy a sandwich and walk along the river to the park to eat their lunch.', correctDesc: 'Advantages of Location 2' },
+        ];
+
+        // Exercise 8 Data
+        const exercise8Halves = [
+            { text: 'it is close to the park.', correctFor: ['One advantage of Location 2 is that'] },
+            { text: 'it is near the 2,000 people who work in 10 Downing Street and nearby offices.', correctFor: ['An advantage of Location 1 is that'] },
+            { text: 'using the underground station might buy a sandwich.', correctFor: ['One benefit of Location 1 is that people'] },
+            { text: 'stop to buy a sandwich in Location 2.', correctFor: ['The visitors to the Sea Life London Aquarium could'] },
+            { text: 'visitors to the Sea Life London Aquarium and the London Eye.', correctFor: ['Location 2 would be good for'] },
+        ];
+        const exercise8Sentences = [
+            { start: 'An advantage of Location 1 is that', correctEnd: 'it is near the 2,000 people who work in 10 Downing Street and nearby offices.' },
+            { start: 'One benefit of Location 1 is that people', correctEnd: 'using the underground station might buy a sandwich.' },
+            { start: 'Location 2 would be good for', correctEnd: 'visitors to the Sea Life London Aquarium and the London Eye.' },
+            { start: 'One advantage of Location 2 is that', correctEnd: 'it is close to the park.' },
+            { start: 'The visitors to the Sea Life London Aquarium could', correctEnd: 'stop to buy a sandwich in Location 2.' },
+        ];
+
+        // Exercise 9 Data
+        const exercise9ScrambledWords = {
+            birHakeim: { scrambled: 'r a n t t o o S M I e t', correct: 'Metro Station', image: 'https://i.postimg.cc/43qjM6MB/Writing-Unit2-Exercise9-Picture1.jpg' },
+            eiffelTower: { scrambled: 'r i w E I e T e o f f', correct: 'Eiffel Tower', image: 'https://i.postimg.cc/8cV9k1Tv/Writing-Unit2-Exercise9-Picture2.jpg' },
+            parisAquarium: { scrambled: 'u u a A r m q i', correct: 'Aquarium', image: 'https://i.postimg.cc/59wD7FmS/Writing-Unit2-Exercise9-Picture3.jpg' },
+            quaiBranly: { scrambled: 'e m s m u u', correct: 'Museum', image: 'https://i.postimg.cc/kXqzkX13/Writing-Unit2-Exercise9-Picture4.jpg' },
+            birHakeimBridge: { scrambled: 'e B i g d r', correct: 'Bridge', image: 'https://i.postimg.cc/Wz6KhQ4H/Writing-Unit2-Exercise9-Picture5.jpg' },
+            riverSeine: { scrambled: 'v e R v r n e i E s', correct: 'River Seine', image: 'https://i.postimg.cc/4NPqZkqK/Writing-Unit2-Exercise9-Picture6.jpg' },
+        };
+
+        // --- Helper Functions ---
+        function getElement(id) {
+            return document.getElementById(id);
+        }
+
+        function setFeedback(elementId, isCorrect, correctText = '') {
+            const element = getElement(elementId);
+            if (!element) return;
+            element.classList.remove('hidden');
+            element.classList.remove('correct-feedback', 'incorrect-feedback');
+            element.textContent = ''; // Clear previous text
+
+            if (isCorrect) {
+                element.classList.add('correct-feedback');
+                element.textContent = '✓ Correct!';
+            } else {
+                element.classList.add('incorrect-feedback');
+                element.textContent = `✗ Incorrect`; // Removed correctText here
+            }
+        }
+
+        function clearFeedback(elementId) {
+            const element = getElement(elementId);
+            if (element) {
+                element.classList.add('hidden');
+                element.classList.remove('correct-feedback', 'incorrect-feedback');
+                element.textContent = '';
+            }
+        }
+
+        function clearAllFeedbacks() {
+            document.querySelectorAll('[id^="ex"][id*="-feedback"]').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('correct-feedback', 'incorrect-feedback');
+                el.textContent = '';
+            });
+            document.querySelectorAll('.feedback-box').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('correct', 'incorrect');
+                el.textContent = '';
+            });
+        }
+
+        // Function to show a temporary message
+        function showMessage(message, type = 'success') {
+            const messageBox = getElement('message-box');
+            messageBox.textContent = message;
+            messageBox.className = ''; // Clear previous classes
+            messageBox.classList.add('show');
+            if (type === 'success') {
+                messageBox.style.backgroundColor = '#4CAF50';
+            } else if (type === 'error') {
+                messageBox.style.backgroundColor = '#f44336';
+            }
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+            }, 3000);
+        }
+
+        // --- Save/Load Functions ---
+        function saveAnswers() {
+            try {
+                localStorage.setItem('worksheetAppState', JSON.stringify(appState));
+                // showMessage('Progress saved!', 'success'); // Removed explicit message for automatic save
+            } catch (e) {
+                console.error("Error saving to local storage:", e);
+                // showMessage('Failed to save progress.', 'error'); // Removed explicit message for automatic save
+            }
+        }
+
+        function loadAnswers() {
+            try {
+                const savedState = localStorage.getItem('worksheetAppState');
+                if (savedState) {
+                    appState = JSON.parse(savedState); // Overwrite appState with saved data
+
+                    // Populate Exercise 1 dropdowns
+                    exercise1Locations.forEach(loc => {
+                        const select = getElement(`ex1-select-${loc.name.replace(/\s/g, '-')}`);
+                        if (select && appState.exercise1Answers[loc.name] !== undefined) {
+                            select.value = appState.exercise1Answers[loc.name];
+                        }
+                    });
+
+                    // Populate Exercise 2 inputs
+                    for (const key in exercise2ScrambledWords) {
+                        const input = getElement(`ex2-${key}`);
+                        if (input && appState.exercise2Answers[key] !== undefined) {
+                            input.value = appState.exercise2Answers[key];
+                        }
+                    }
+
+                    // Populate Exercise 3 dropdowns
+                    exercise3Images.forEach((image, index) => {
+                        const num = (index + 1).toString();
+                        const select = getElement(`ex3-select-${num}`);
+                        if (select && appState.exercise3Answers[num] !== undefined) {
+                            select.value = appState.exercise3Answers[num];
+                        }
+                    });
+
+                    // Populate Exercise 4 checkboxes
+                    exercise4Sentences.forEach((sentence, sIndex) => {
+                        const sentenceKey = `sentence${sIndex + 1}`;
+                        if (appState.exercise4Answers[sentenceKey]) {
+                            sentence.options.forEach((optionText, oIndex) => {
+                                const input = getElement(`ex4-${sentenceKey}-option${oIndex}`);
+                                if (input) {
+                                    input.checked = appState.exercise4Answers[sentenceKey].includes(optionText);
+                                }
+                            });
+                        }
+                    });
+
+                    // Populate Exercise 5 dropdowns
+                    const ex5Selects = {
+                        'ex5-loc1_1': 'loc1_1', 'ex5-loc1_2': 'loc1_2', 'ex5-loc1_3': 'loc1_3', 'ex5-loc1_4': 'loc1_4', 'ex5-loc1_5': 'loc1_5',
+                        'ex5-loc2_1': 'loc2_1', 'ex5-loc2_2': 'loc2_2', 'ex5-loc2_3': 'loc2_3', 'ex5-loc2_4': 'loc2_4', 'ex5-loc2_5': 'loc2_5'
+                    };
+                    for (const id in ex5Selects) {
+                        const key = ex5Selects[id];
+                        const select = getElement(id);
+                        if (select && appState.exercise5Answers[key] !== undefined) {
+                            select.value = appState.exercise5Answers[key];
+                        }
+                    }
+
+                    // Populate Exercise 6 textarea
+                    const ex6Textarea = getElement('ex6-user-corrections');
+                    if (ex6Textarea && appState.exercise6UserCorrections !== undefined) {
+                        ex6Textarea.value = appState.exercise6UserCorrections;
+                    }
+
+                    // Populate Exercise 7 dropdowns
+                    exercise7ReportParts.forEach((part, index) => {
+                        const partKey = `part${index + 1}`;
+                        const select = getElement(`ex7-select-${partKey}`);
+                        if (select && appState.exercise7Answers[partKey] !== undefined) {
+                            select.value = appState.exercise7Answers[partKey];
+                        }
+                    });
+
+                    // Populate Exercise 8 dropdowns
+                    exercise8Sentences.forEach((sentence, index) => {
+                        const sentenceKey = `sentence${index + 1}`;
+                        const select = getElement(`ex8-select-${sentenceKey}`);
+                        if (select && appState.exercise8Answers[sentenceKey] !== undefined) {
+                            select.value = appState.exercise8Answers[sentenceKey];
+                        }
+                    });
+
+                    // Populate Exercise 9 inputs
+                    for (const key in exercise9ScrambledWords) {
+                        const input = getElement(`ex9-${key}`);
+                        if (input && appState.exercise9Answers[key] !== undefined) {
+                            input.value = appState.exercise9Answers[key];
+                        }
+                    }
+
+                    // Populate Exercise 10 textarea and word count
+                    const ex10Textarea = getElement('ex10-text');
+                    const ex10WordCount = getElement('ex10-word-count');
+                    if (ex10Textarea && appState.exercise10Text !== undefined) {
+                        ex10Textarea.value = appState.exercise10Text;
+                        ex10WordCount.textContent = ex10Textarea.value.split(/\s+/).filter(word => word.length > 0).length;
+                    }
+                    // showMessage('Progress loaded!', 'success'); // Removed explicit message for automatic load
+                }
+            } catch (e) {
+                console.error("Error loading from local storage:", e);
+                // showMessage('Failed to load previous progress.', 'error'); // Removed explicit message for automatic load
+            }
+        }
+
+
+        // --- Exercise Initialization Functions ---
+
+        function initializeExercise1() {
+            const container = getElement('exercise1-container');
+            exercise1Locations.forEach(loc => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = "grid grid-cols-1 md:grid-cols-2 gap-4 p-4 border border-indigo-200 rounded-md bg-white";
+
+                // Left Panel: Image
+                const imgPanel = document.createElement('div');
+                imgPanel.className = "flex justify-center items-center p-2 bg-indigo-100 rounded-md";
+                const img = document.createElement('img');
+                img.src = loc.image;
+                img.alt = loc.name;
+                img.className = "w-full h-40 object-contain rounded-md shadow-sm";
+                img.onerror = function() { this.src = 'https://placehold.co/150x100/CCCCCC/333333?text=Image+Error'; };
+                imgPanel.appendChild(img);
+                itemDiv.appendChild(imgPanel);
+
+                // Right Panel: Text and Dropdown
+                const rightPanel = document.createElement('div');
+                rightPanel.className = "flex flex-col justify-center space-y-3 p-2 bg-indigo-100 rounded-md";
+
+                const select = document.createElement('select');
+                select.id = `ex1-select-${loc.name.replace(/\s/g, '-')}`;
+                select.className = "p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-full";
+                
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select a description";
+                select.appendChild(defaultOption);
+
+                // Populate options with combined name and description
+                exercise1Locations.forEach(optionLoc => { // Use exercise1Locations to get both name and description
+                    const option = document.createElement('option');
+                    option.value = optionLoc.name; // Value is the name of the location
+                    option.textContent = `${optionLoc.name} (${optionLoc.correctDescription})`; // Display is name (description)
+                    select.appendChild(option);
+                });
+                select.addEventListener('change', (event) => {
+                    // Store the SELECTED LOCATION NAME, not the description
+                    appState.exercise1Answers[loc.name] = event.target.value;
+                    saveAnswers(); // Automatic save
+                });
+                rightPanel.appendChild(select);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex1-feedback-${loc.name.replace(/\s/g, '-')}`;
+                feedbackSpan.className = "hidden";
+                rightPanel.appendChild(feedbackSpan);
+
+                itemDiv.appendChild(rightPanel);
+                container.appendChild(itemDiv);
+            });
+
+            getElement('check-ex1-button').addEventListener('click', checkExercise1);
+        }
+
+        function checkExercise1() {
+            exercise1Locations.forEach(loc => {
+                const userAnswer = appState.exercise1Answers[loc.name] || '';
+                // Compare the selected location name with the current location's name
+                const isCorrect = userAnswer === loc.name;
+                setFeedback(`ex1-feedback-${loc.name.replace(/\s/g, '-')}`, isCorrect);
+                
+                // Update select element border color
+                const selectElement = getElement(`ex1-select-${loc.name.replace(/\s/g, '-')}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) { // Only if an answer was selected
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        function initializeExercise2() {
+            const inputs = {
+                'ex2-station': 'station',
+                'ex2-west': 'west',
+                'ex2-north': 'north',
+                'ex2-east': 'east',
+                'ex2-river': 'river',
+                'ex2-bridge': 'bridge',
+                'ex2-aquarium': 'aquarium',
+                'ex2-south': 'south'
+            };
+            for (const id in inputs) {
+                const key = inputs[id];
+                const inputElement = getElement(id);
+                inputElement.addEventListener('input', (event) => {
+                    appState.exercise2Answers[key] = event.target.value;
+                    saveAnswers(); // Automatic save
+                });
+            }
+            getElement('check-ex2-button').addEventListener('click', checkExercise2);
+        }
+
+        function checkExercise2() {
+            for (const key in exercise2ScrambledWords) {
+                const userAnswer = appState.exercise2Answers[key] || '';
+                const isCorrect = userAnswer.toLowerCase() === exercise2ScrambledWords[key].correct.toLowerCase();
+                setFeedback(`ex2-feedback-${key}`, isCorrect); // Removed correctText here
+
+                // Update input element border color
+                const inputElement = getElement(`ex2-${key}`);
+                inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    inputElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    inputElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    inputElement.classList.add('border-gray-300');
+                }
+            }
+        }
+
+        function initializeExercise3() {
+            const container = getElement('exercise3-container');
+            exercise3Images.forEach((image, index) => {
+                const num = (index + 1).toString();
+                const itemDiv = document.createElement('div');
+                itemDiv.className = "grid grid-cols-1 md:grid-cols-2 gap-4 p-4 border border-green-200 rounded-md bg-white";
+
+                // Left Panel: Image
+                const imgPanel = document.createElement('div');
+                imgPanel.className = "flex justify-center items-center p-2 bg-green-100 rounded-md";
+                const img = document.createElement('img');
+                img.src = image;
+                img.alt = `Preposition example ${num}`;
+                img.className = "w-full h-40 object-contain rounded-md shadow-sm";
+                img.onerror = function() { this.src = 'https://placehold.co/150x100/CCCCCC/333333?text=Image+Error'; };
+                imgPanel.appendChild(img);
+                itemDiv.appendChild(imgPanel);
+
+                // Right Panel: Number and Dropdown
+                const rightPanel = document.createElement('div');
+                rightPanel.className = "flex flex-col justify-center space-y-3 p-2 bg-green-100 rounded-md";
+
+                const numSpan = document.createElement('span');
+                numSpan.className = "font-medium text-lg";
+                numSpan.textContent = `${num}.`;
+                rightPanel.appendChild(numSpan);
+
+                const select = document.createElement('select');
+                select.id = `ex3-select-${num}`;
+                select.className = "p-2 border rounded-md focus:ring-green-500 focus:border-green-500 w-full";
+                
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select a preposition";
+                select.appendChild(defaultOption);
+
+                exercise3Prepositions.forEach(prep => {
+                    const option = document.createElement('option');
+                    option.value = prep;
+                    option.textContent = prep;
+                    select.appendChild(option);
+                });
+                select.addEventListener('change', (event) => {
+                    appState.exercise3Answers[num] = event.target.value;
+                    saveAnswers(); // Automatic save
+                });
+                rightPanel.appendChild(select);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex3-feedback-${num}`;
+                feedbackSpan.className = "hidden";
+                rightPanel.appendChild(feedbackSpan);
+
+                itemDiv.appendChild(rightPanel);
+                container.appendChild(itemDiv);
+            });
+
+            getElement('check-ex3-button').addEventListener('click', checkExercise3);
+        }
+
+        function checkExercise3() {
+            for (const num in exercise3CorrectAnswers) {
+                const userAnswer = appState.exercise3Answers[num] || '';
+                const isCorrect = userAnswer === exercise3CorrectAnswers[num];
+                setFeedback(`ex3-feedback-${num}`, isCorrect);
+
+                // Update select element border color
+                const selectElement = getElement(`ex3-select-${num}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            }
+        }
+
+        function initializeExercise4() {
+            const container = getElement('exercise4-container');
+            exercise4Sentences.forEach((sentence, sIndex) => {
+                const sentenceKey = `sentence${sIndex + 1}`;
+                appState.exercise4Answers[sentenceKey] = []; // Initialize as empty array
+
+                const sentenceDiv = document.createElement('div');
+                sentenceDiv.className = "mb-6 p-4 border border-purple-200 rounded-md bg-purple-100";
+
+                const optionsDiv = document.createElement('div');
+                optionsDiv.className = "flex flex-col space-y-2";
+
+                sentence.options.forEach((optionText, oIndex) => {
+                    const label = document.createElement('label');
+                    label.className = "inline-flex items-center cursor-pointer";
+
+                    const input = document.createElement('input');
+                    input.type = "checkbox";
+                    input.className = "form-checkbox h-5 w-5 text-purple-600 rounded focus:ring-purple-500";
+                    input.id = `ex4-${sentenceKey}-option${oIndex}`;
+                    input.addEventListener('change', (event) => {
+                        if (event.target.checked) {
+                            appState.exercise4Answers[sentenceKey].push(optionText);
+                        } else {
+                            appState.exercise4Answers[sentenceKey] = appState.exercise4Answers[sentenceKey].filter(item => item !== optionText);
+                        }
+                        saveAnswers(); // Automatic save
+                    });
+                    label.appendChild(input);
+
+                    const span = document.createElement('span');
+                    span.className = "ml-2 text-gray-700";
+                    span.textContent = `${sentence.text} ${optionText}`;
+                    label.appendChild(span);
+
+                    optionsDiv.appendChild(label);
+                });
+                sentenceDiv.appendChild(optionsDiv);
+
+                const feedbackDiv = document.createElement('div');
+                feedbackDiv.id = `ex4-feedback-${sentenceKey}`;
+                feedbackDiv.className = "hidden feedback-box mt-3";
+                sentenceDiv.appendChild(feedbackDiv);
+
+                container.appendChild(sentenceDiv);
+            });
+            getElement('check-ex4-button').addEventListener('click', checkExercise4);
+        }
+
+        function checkExercise4() {
+            exercise4Sentences.forEach((sentence, sIndex) => {
+                const sentenceKey = `sentence${sIndex + 1}`;
+                const userSelected = new Set(appState.exercise4Answers[sentenceKey]);
+                const correctOptions = new Set(sentence.correct);
+
+                const isCorrect = sentence.options.every(option => {
+                    const isOptionCorrect = correctOptions.has(option);
+                    const isUserSelected = userSelected.has(option);
+                    return (isOptionCorrect && isUserSelected) || (!isOptionCorrect && !isUserSelected);
+                });
+
+                const feedbackElement = getElement(`ex4-feedback-${sentenceKey}`);
+                feedbackElement.classList.remove('hidden', 'correct', 'incorrect');
+                if (isCorrect) {
+                    feedbackElement.classList.add('correct');
+                    feedbackElement.textContent = 'Correct!';
+                } else {
+                    feedbackElement.classList.add('incorrect');
+                    feedbackElement.textContent = 'Incorrect. Review your selections.';
+                }
+            });
+        }
+
+        function initializeExercise5() {
+            const selects = {
+                'ex5-loc1_1': 'loc1_1', 'ex5-loc1_2': 'loc1_2', 'ex5-loc1_3': 'loc1_3', 'ex5-loc1_4': 'loc1_4', 'ex5-loc1_5': 'loc1_5',
+                'ex5-loc2_1': 'loc2_1', 'ex5-loc2_2': 'loc2_2', 'ex5-loc2_3': 'loc2_3', 'ex5-loc2_4': 'loc2_4', 'ex5-loc2_5': 'loc2_5'
+            };
+            for (const id in selects) {
+                const key = selects[id];
+                const selectElement = getElement(id);
+                selectElement.addEventListener('change', (event) => {
+                    appState.exercise5Answers[key] = event.target.value;
+                    saveAnswers(); // Automatic save
+                });
+            }
+            getElement('check-ex5-button').addEventListener('click', checkExercise5);
+        }
+
+        function checkExercise5() {
+            for (const key in exercise5CorrectAnswers) {
+                const userAnswer = appState.exercise5Answers[key] || '';
+                const isCorrect = userAnswer.toLowerCase() === exercise5CorrectAnswers[key].toLowerCase();
+                setFeedback(`ex5-feedback-${key}`, isCorrect);
+
+                // Update select element border color
+                const selectElement = getElement(`ex5-${key}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            }
+        }
+
+        function initializeExercise6() {
+            const textareaElement = getElement('ex6-user-corrections');
+            textareaElement.addEventListener('input', (event) => {
+                appState.exercise6UserCorrections = event.target.value;
+                saveAnswers(); // Automatic save
+            });
+            getElement('check-ex6-button').addEventListener('click', checkExercise6);
+        }
+
+        function checkExercise6() {
+            let correctCount = 0;
+            let feedbackText = '';
+            const userText = appState.exercise6UserCorrections.trim();
+            const feedbackElement = getElement('ex6-feedback');
+
+            if (!userText) {
+                feedbackElement.classList.remove('hidden', 'correct', 'incorrect');
+                feedbackElement.classList.add('incorrect');
+                feedbackElement.textContent = 'Please type your corrected text to check for mistakes.';
+                return;
+            }
+
+            let allCorrect = true;
+            exercise6ExpectedCorrections.forEach(mistake => {
+                if (userText.includes(mistake.corrected)) {
+                    correctCount++;
+                } else {
+                    allCorrect = false;
+                    feedbackText += `\nMissing correction for: "${mistake.original}" (should be "${mistake.corrected}")`;
+                }
+            });
+
+            feedbackElement.classList.remove('hidden', 'correct', 'incorrect');
+            if (allCorrect && correctCount === exercise6ExpectedCorrections.length) {
+                feedbackElement.classList.add('correct');
+                feedbackElement.textContent = 'Great job! You found and corrected all the mistakes.';
+            } else {
+                feedbackElement.classList.add('incorrect');
+                feedbackElement.textContent = `You corrected ${correctCount} out of ${exercise6ExpectedCorrections.length} mistakes. ${feedbackText}`;
+            }
+        }
+
+        function initializeExercise7() {
+            const container = getElement('exercise7-container');
+            exercise7ReportParts.forEach((part, index) => {
+                const partKey = `part${index + 1}`;
+                const itemDiv = document.createElement('div');
+                itemDiv.className = "flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 p-3 border border-teal-200 rounded-md bg-teal-100";
+
+                const select = document.createElement('select');
+                select.id = `ex7-select-${partKey}`;
+                select.className = "p-2 border rounded-md flex-shrink-0 md:w-64 focus:ring-teal-500 focus:border-teal-500";
+                
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select a description";
+                select.appendChild(defaultOption);
+
+                exercise7Descriptions.forEach(desc => {
+                    const option = document.createElement('option');
+                    option.value = desc;
+                    option.textContent = desc;
+                    select.appendChild(option);
+                });
+                select.addEventListener('change', (event) => {
+                    appState.exercise7Answers[partKey] = event.target.value;
+                    saveAnswers(); // Automatic save
+                });
+                itemDiv.appendChild(select);
+
+                const pText = document.createElement('p');
+                pText.className = "flex-grow text-gray-700";
+                pText.textContent = part.text;
+                itemDiv.appendChild(pText);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex7-feedback-${partKey}`;
+                feedbackSpan.className = "hidden";
+                itemDiv.appendChild(feedbackSpan);
+
+                container.appendChild(itemDiv);
+            });
+            getElement('check-ex7-button').addEventListener('click', checkExercise7);
+        }
+
+        function checkExercise7() {
+            for (const partKey in exercise7ReportParts) { // Iterate over parts to check answers
+                const part = exercise7ReportParts[partKey.replace('part', '') - 1]; // Get the actual part object
+                const userAnswer = appState.exercise7Answers[partKey] || '';
+                const isCorrect = userAnswer === part.correctDesc;
+                setFeedback(`ex7-feedback-${partKey}`, isCorrect);
+
+                const selectElement = getElement(`ex7-select-${partKey}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            }
+        }
+
+        function initializeExercise8() {
+            const container = getElement('exercise8-container');
+            
+            exercise8Sentences.forEach((sentence, index) => {
+                const sentenceKey = `sentence${index + 1}`;
+                const itemDiv = document.createElement('div');
+                itemDiv.className = "flex flex-col space-y-3 p-3 border border-orange-200 rounded-md bg-orange-100";
+
+                const pStart = document.createElement('p');
+                pStart.className = "font-medium text-lg";
+                pStart.textContent = sentence.start;
+                itemDiv.appendChild(pStart);
+
+                const select = document.createElement('select');
+                select.id = `ex8-select-${sentenceKey}`;
+                select.className = "p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500 w-full mt-2";
+                
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select the second half";
+                select.appendChild(defaultOption);
+
+                // Populate options with full combined sentences
+                exercise8Halves.forEach(halfData => {
+                    const option = document.createElement('option');
+                    option.value = halfData.text; // Value is just the second half
+                    option.textContent = sentence.start + ' ' + halfData.text; // Display is the full sentence
+                    select.appendChild(option);
+                });
+                select.addEventListener('change', (event) => {
+                    appState.exercise8Answers[sentenceKey] = event.target.value;
+                    saveAnswers(); // Automatic save
+                });
+                itemDiv.appendChild(select);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex8-feedback-${sentenceKey}`;
+                feedbackSpan.className = "hidden";
+                itemDiv.appendChild(feedbackSpan);
+
+                container.appendChild(itemDiv);
+            });
+            getElement('check-ex8-button').addEventListener('click', checkExercise8);
+        }
+
+        function checkExercise8() {
+            exercise8Sentences.forEach((sentence, index) => {
+                const sentenceKey = `sentence${index + 1}`;
+                const userAnswer = appState.exercise8Answers[sentenceKey] || '';
+                const isCorrect = userAnswer === sentence.correctEnd;
+                setFeedback(`ex8-feedback-${sentenceKey}`, isCorrect);
+
+                // Update select element border color
+                const selectElement = getElement(`ex8-select-${sentenceKey}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        function initializeExercise9() {
+            const container = getElement('exercise9-container');
+            for (const key in exercise9ScrambledWords) {
+                const loc = exercise9ScrambledWords[key];
+                const itemDiv = document.createElement('div');
+                itemDiv.className = "grid grid-cols-1 md:grid-cols-2 gap-4 p-4 border border-pink-200 rounded-md bg-white";
+
+                // Left Panel: Image
+                const imgPanel = document.createElement('div');
+                imgPanel.className = "flex justify-center items-center p-2 bg-pink-100 rounded-md";
+                const img = document.createElement('img');
+                img.src = loc.image;
+                img.alt = `Paris location for ${key}`;
+                img.className = "w-full h-40 object-contain rounded-md shadow-sm";
+                img.onerror = function() { this.src = 'https://placehold.co/150x100/CCCCCC/333333?text=Image+Error'; };
+                imgPanel.appendChild(img);
+                itemDiv.appendChild(imgPanel);
+
+                // Right Panel: Text and Input
+                const rightPanel = document.createElement('div');
+                rightPanel.className = "flex flex-col justify-center space-y-3 p-2 bg-pink-100 rounded-md";
+
+                const pText = document.createElement('p');
+                pText.className = "font-medium text-xl text-gray-900 text-left w-full break-words";
+                let prefix = '';
+                if (key === 'birHakeim') prefix = 'Bir-Hakeim ';
+                else if (key === 'eiffelTower') prefix = 'The ';
+                else if (key === 'parisAquarium') prefix = 'the Paris ';
+                else if (key === 'quaiBranly') prefix = 'the Quai Branly ';
+                else if (key === 'birHakeimBridge') prefix = 'Bir-Hakeim ';
+                else if (key === 'riverSeine') prefix = 'The ';
+                pText.innerHTML = `${prefix}<span class="font-mono text-gray-600">${loc.scrambled}</span>`;
+                rightPanel.appendChild(pText);
+
+                const input = document.createElement('input');
+                input.type = "text";
+                input.id = `ex9-${key}`;
+                input.className = "p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 w-full";
+                input.placeholder = "Type your answer here";
+                input.addEventListener('input', (event) => {
+                    appState.exercise9Answers[key] = event.target.value;
+                    saveAnswers(); // Automatic save
+                });
+                rightPanel.appendChild(input);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex9-feedback-${key}`;
+                feedbackSpan.className = "hidden";
+                rightPanel.appendChild(feedbackSpan);
+
+                itemDiv.appendChild(rightPanel);
+                container.appendChild(itemDiv);
+            }
+            getElement('check-ex9-button').addEventListener('click', checkExercise9);
+        }
+
+        function checkExercise9() {
+            for (const key in exercise9ScrambledWords) {
+                const userAnswer = appState.exercise9Answers[key] || '';
+                const isCorrect = userAnswer.toLowerCase() === exercise9ScrambledWords[key].correct.toLowerCase();
+                setFeedback(`ex9-feedback-${key}`, isCorrect, exercise9ScrambledWords[key].correct);
+
+                // Update input element border color
+                const inputElement = getElement(`ex9-${key}`);
+                inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                inputElement.classList.add('border-gray-300'); // Reset to default
+                if (isCorrect) {
+                    inputElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    inputElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    inputElement.classList.add('border-gray-300');
+                }
+            }
+        }
+
+        function initializeExercise10() {
+            const textarea = getElement('ex10-text');
+            const wordCountSpan = getElement('ex10-word-count');
+
+            textarea.addEventListener('input', (event) => {
+                appState.exercise10Text = event.target.value;
+                const words = event.target.value.split(/\s+/).filter(word => word.length > 0).length;
+                wordCountSpan.textContent = words;
+                saveAnswers(); // Automatic save
+            });
+        }
+
+        function clearAllAnswers() {
+            // Clear Exercise 1 dropdowns and feedback
+            exercise1Locations.forEach(loc => {
+                const select = getElement(`ex1-select-${loc.name.replace(/\s/g, '-')}`);
+                if (select) {
+                    select.value = "";
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise1Answers[loc.name] = '';
+                clearFeedback(`ex1-feedback-${loc.name.replace(/\s/g, '-')}`);
+            });
+
+            // Clear Exercise 2 inputs and feedback
+            for (const key in exercise2ScrambledWords) {
+                const input = getElement(`ex2-${key}`);
+                if (input) {
+                    input.value = "";
+                    input.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    input.classList.add('border-gray-300');
+                }
+                appState.exercise2Answers[key] = '';
+                clearFeedback(`ex2-feedback-${key}`);
+            }
+
+            // Clear Exercise 3 dropdowns and feedback
+            exercise3Images.forEach((image, index) => {
+                const num = (index + 1).toString();
+                const select = getElement(`ex3-select-${num}`);
+                if (select) {
+                    select.value = "";
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise3Answers[num] = '';
+                clearFeedback(`ex3-feedback-${num}`);
+            });
+
+            // Clear Exercise 4 checkboxes and feedback
+            exercise4Sentences.forEach((sentence, sIndex) => {
+                const sentenceKey = `sentence${sIndex + 1}`;
+                document.querySelectorAll(`#ex4-feedback-${sentenceKey}`).forEach(el => clearFeedback(el.id));
+                document.querySelectorAll(`#ex4-feedback-${sentenceKey}`).forEach(el => {
+                    el.classList.add('hidden');
+                    el.classList.remove('correct', 'incorrect');
+                    el.textContent = '';
+                });
+                document.querySelectorAll(`input[id^="ex4-${sentenceKey}-option"]`).forEach(input => {
+                    input.checked = false;
+                });
+                appState.exercise4Answers[sentenceKey] = [];
+            });
+
+            // Clear Exercise 5 dropdowns and feedback
+            for (const key in exercise5CorrectAnswers) {
+                const select = getElement(`ex5-${key}`);
+                if (select) {
+                    select.value = "";
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise5Answers[key] = '';
+                clearFeedback(`ex5-feedback-${key}`);
+            }
+
+            // Clear Exercise 6 textarea and feedback
+            const ex6Textarea = getElement('ex6-user-corrections');
+            if (ex6Textarea) ex6Textarea.value = '';
+            appState.exercise6UserCorrections = '';
+            const ex6FeedbackDiv = getElement('ex6-feedback');
+            if (ex6FeedbackDiv) {
+                ex6FeedbackDiv.classList.add('hidden');
+                ex6FeedbackDiv.classList.remove('correct', 'incorrect');
+                ex6FeedbackDiv.textContent = '';
+            }
+
+            // Clear Exercise 7 dropdowns and feedback
+            exercise7ReportParts.forEach((part, index) => {
+                const partKey = `part${index + 1}`;
+                const select = getElement(`ex7-select-${partKey}`);
+                if (select) {
+                    select.value = "";
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise7Answers[partKey] = '';
+                clearFeedback(`ex7-feedback-${partKey}`);
+            });
+
+            // Clear Exercise 8 dropdowns and feedback
+            exercise8Sentences.forEach((sentence, index) => {
+                const sentenceKey = `sentence${index + 1}`;
+                const select = getElement(`ex8-select-${sentenceKey}`);
+                if (select) {
+                    select.value = "";
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise8Answers[sentenceKey] = '';
+                clearFeedback(`ex8-feedback-${sentenceKey}`);
+            });
+
+            // Clear Exercise 9 inputs and feedback
+            for (const key in exercise9ScrambledWords) {
+                const input = getElement(`ex9-${key}`);
+                if (input) {
+                    input.value = "";
+                    input.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    input.classList.add('border-gray-300');
+                }
+                appState.exercise9Answers[key] = '';
+                clearFeedback(`ex9-feedback-${key}`);
+            }
+
+            // Clear Exercise 10 textarea
+            const ex10Textarea = getElement('ex10-text');
+            if (ex10Textarea) ex10Textarea.value = '';
+            appState.exercise10Text = '';
+            const ex10WordCount = getElement('ex10-word-count');
+            if (ex10WordCount) ex10WordCount.textContent = '0';
+
+            saveAnswers(); // Save the cleared state
+        }
+
+
+        // --- Initialize all exercises on window load ---
+        window.onload = function() {
+            initializeExercise1();
+            initializeExercise2();
+            initializeExercise3();
+            initializeExercise4();
+            initializeExercise5();
+            initializeExercise6();
+            initializeExercise7();
+            initializeExercise8();
+            initializeExercise9();
+            initializeExercise10();
+
+            // Attach event listener for clear all answers
+            getElement('clear-all-answers-button').addEventListener('click', clearAllAnswers);
+            
+            // Load saved answers on page load
+            loadAnswers();
+        };
+    </script>
+</body>
+</html>
