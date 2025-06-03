@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -174,7 +173,7 @@
         /* Styles for regular input blanks (reverted for Exercise 8) */
         .regular-input-blank {
             display: inline-block;
-            width: 160px; /* A reasonable default width, can be adjusted */
+            /* width will be set dynamically by JS */
             padding: 0.6rem 0.8rem;
             border: 1px solid #cbd5e1;
             border-radius: 6px;
@@ -191,13 +190,13 @@
         }
         @media (max-width: 768px) {
             .regular-input-blank {
-                width: 120px;
+                /* width will be set dynamically by JS */
                 font-size: 0.9rem;
             }
         }
         @media (max-width: 480px) {
             .regular-input-blank {
-                width: 90px;
+                /* width will be set dynamically by JS */
                 font-size: 0.85rem;
             }
         }
@@ -240,7 +239,7 @@
                 font-size: 0.85rem;
             }
             .image-item {
-                width: 90px; /* Even smaller width for images */
+                width: 90px;
                 height: 90px;
                 font-size: 0.7rem;
             }
@@ -252,6 +251,9 @@
 </head>
 <body class="p-4">
 <div class="container">
+<h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">
+    Mindset for IELTS 1 - Unit 1 Writing
+</h1>
 <div class="exercise-section" id="exercise1">
 <h2 class="mb-4">Unit 1: Exercise 1</h2>
 <p class="mb-4">Choose the correct answers to the questions.</p>
@@ -259,49 +261,49 @@
 <p>1. How many minutes should you take to complete IELTS Writing Task 1?</p>
 <div class="flex flex-wrap gap-4">
 <label><input name="exercise1_q1" type="radio" value="10"/> 10</label>
-<label><input name="exercise1_q2" type="radio" value="20"/> 20</label>
-<label><input name="exercise1_q3" type="radio" value="30"/> 30</label>
-<label><input name="exercise1_q4" type="radio" value="40"/> 40</label>
+<label><input name="exercise1_q1" type="radio" value="20"/> 20</label>
+<label><input name="exercise1_q1" type="radio" value="30"/> 30</label>
+<label><input name="exercise1_q1" type="radio" value="40"/> 40</label>
 </div>
 <div class="feedback" id="feedback_ex1_q1"></div>
 </div>
 <div class="question-item">
 <p>2. How many words should you write for IELTS Writing Task 1?</p>
 <div class="flex flex-wrap gap-4">
-<label><input name="exercise1_q5" type="radio" value="75"/> 75</label>
-<label><input name="exercise1_q6" type="radio" value="100"/> 100</label>
-<label><input name="exercise1_q7" type="radio" value="150"/> 150</label>
-<label><input name="exercise1_q8" type="radio" value="250"/> 250</label>
+<label><input name="exercise1_q2" type="radio" value="75"/> 75</label>
+<label><input name="exercise1_q2" type="radio" value="100"/> 100</label>
+<label><input name="exercise1_q2" type="radio" value="150"/> 150</label>
+<label><input name="exercise1_q2" type="radio" value="250"/> 250</label>
 </div>
 <div class="feedback" id="feedback_ex1_q2"></div>
 </div>
 <div class="question-item">
 <p>3. In Academic IELTS Writing Task 1 you might have to write:</p>
 <div class="flex flex-wrap gap-4">
-<label><input name="exercise1_q9" type="radio" value="a report"/> a report</label>
-<label><input name="exercise1_q10" type="radio" value="an essay"/> an essay</label>
-<label><input name="exercise1_q11" type="radio" value="a story"/> a story</label>
-<label><input name="exercise1_q12" type="radio" value="a letter"/> a letter</label>
+<label><input name="exercise1_q3" type="radio" value="a report"/> a report</label>
+<label><input name="exercise1_q3" type="radio" value="an essay"/> an essay</label>
+<label><input name="exercise1_q3" type="radio" value="a story"/> a story</label>
+<label><input name="exercise1_q3" type="radio" value="a letter"/> a letter</label>
 </div>
 <div class="feedback" id="feedback_ex1_q3"></div>
 </div>
 <div class="question-item">
 <p>4. In Academic IELTS Writing Task 1 you might describe:</p>
 <div class="flex flex-wrap gap-4">
-<label><input name="exercise1_q13" type="radio" value="a chart"/> a chart</label>
-<label><input name="exercise1_q14" type="radio" value="a line graph"/> a line graph</label>
-<label><input name="exercise1_q15" type="radio" value="a table"/> a table</label>
-<label><input name="exercise1_q16" type="radio" value="all of them"/> all of them</label>
+<label><input name="exercise1_q4" type="radio" value="a chart"/> a chart</label>
+<label><input name="exercise1_q4" type="radio" value="a line graph"/> a line graph</label>
+<label><input name="exercise1_q4" type="radio" value="a table"/> a table</label>
+<label><input name="exercise1_q4" type="radio" value="all of them"/> all of them</label>
 </div>
 <div class="feedback" id="feedback_ex1_q4"></div>
 </div>
 <div class="question-item">
 <p>5. The diagram might describe:</p>
 <div class="flex flex-wrap gap-4">
-<label><input name="exercise1_q17" type="radio" value="a process"/> a process</label>
-<label><input name="exercise1_q18" type="radio" value="an object"/> an object</label>
-<label><input name="exercise1_q19" type="radio" value="an event"/> an event</label>
-<label><input name="exercise1_q16" type="radio" value="all of them"/> all of them</label>
+<label><input name="exercise1_q5" type="radio" value="a process"/> a process</label>
+<label><input name="exercise1_q5" type="radio" value="an object"/> an object</label>
+<label><input name="exercise1_q5" type="radio" value="an event"/> an event</label>
+<label><input name="exercise1_q5" type="radio" value="all of them"/> all of them</label>
 </div>
 <div class="feedback" id="feedback_ex1_q5"></div>
 </div>
@@ -313,31 +315,31 @@
 <p class="mb-2 text-sm text-gray-600">Match the description to the correct stage number.</p>
 <div class="image-container" id="ex2_images">
 <div class="image-item">
-<img alt="Tea Growing Stage 1" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Image+1';" src="https://i.postimg.cc/GhY7YKMq/Tea-Stage1.jpg"/>
+<img alt="Tea Growing Stage 1" onerror="this.onerror=null;this.src='https://i.postimg.cc/GhY7YKMq/Tea-Stage1.jpg';" src="https://i.postimg.cc/GhY7YKMq/Tea-Stage1.jpg"/>
 <p>Stage 1: Tea growing</p>
 </div>
 <div class="image-item">
-<img alt="Tea Picking Stage 2" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Image+2';" src="https://i.postimg.cc/kgmjySz9/Tea-Stage2.jpg"/>
+<img alt="Tea Picking Stage 2" onerror="this.onerror=null;this.src='https://i.postimg.cc/kgmjySz9/Tea-Stage2.jpg';" src="https://i.postimg.cc/kgmjySz9/Tea-Stage2.jpg"/>
 <p>Stage 2: Tea picking</p>
 </div>
 <div class="image-item">
-<img alt="Tea Resting Stage 3" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Image+3';" src="https://i.postimg.cc/VNsDx8zV/Tea-Stage3.jpg"/>
+<img alt="Tea Resting Stage 3" onerror="this.onerror=null;this.src='https://i.postimg.cc/VNsDx8zV/Tea-Stage3.jpg';" src="https://i.postimg.cc/VNsDx8zV/Tea-Stage3.jpg"/>
 <p>Stage 3: Tea resting</p>
 </div>
 <div class="image-item">
-<img alt="Tea Drying Stage 4" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Image+4';" src="https://i.postimg.cc/3xFtfRQG/Tea-Stage4.jpg"/>
+<img alt="Tea Drying Stage 4" onerror="this.onerror=null;this.src='https://i.postimg.cc/3xFtfRQG/Tea-Stage4.jpg';" src="https://i.postimg.cc/3xFtfRQG/Tea-Stage4.jpg"/>
 <p>Stage 4: Tea drying</p>
 </div>
 <div class="image-item">
-<img alt="Tea Packing Stage 5" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Image+5';" src="https://i.postimg.cc/wBW0HGvT/Tea-Stage5.jpg"/>
+<img alt="Tea Packing Stage 5" onerror="this.onerror=null;this.src='https://i.postimg.cc/wBW0HGvT/Tea-Stage5.jpg';" src="https://i.postimg.cc/wBW0HGvT/Tea-Stage5.jpg"/>
 <p>Stage 5: Teabags packed</p>
 </div>
 <div class="image-item">
-<img alt="Tea Delivery Stage 6" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Image+6';" src="https://i.postimg.cc/bJsLv9D0/Tea-Stage6.jpg"/>
+<img alt="Tea Delivery Stage 6" onerror="this.onerror=null;this.src='https://i.postimg.cc/bJsLv9D0/Tea-Stage6.jpg';" src="https://i.postimg.cc/bJsLv9D0/Tea-Stage6.jpg"/>
 <p>Stage 6: Tea delivered</p>
 </div>
 <div class="image-item">
-<img alt="Customer Buys Tea Stage 7" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Image+7';" src="https://i.postimg.cc/pT4C55zw/Tea-Stage7.jpg"/>
+<img alt="Customer Buys Tea Stage 7" onerror="this.onerror=null;this.src='https://i.postimg.cc/pT4C55zw/Tea-Stage7.jpg';" src="https://i.postimg.cc/pT4C55zw/Tea-Stage7.jpg"/>
 <p>Stage 7: Customer buys tea</p>
 </div>
 </div>
@@ -560,7 +562,7 @@
 <p>1. Sun shining a lot.</p>
 <div class="flex gap-4">
 <label><input name="exercise4_q1" type="radio" value="Important"/> Important</label>
-<label><input name="exercise4_q2" type="radio" value="Not important"/> Not important</label>
+<label><input name="exercise4_q1" type="radio" value="Not important"/> Not important</label>
 </div>
 <div class="feedback" id="feedback_ex4_q1"></div>
 </div>
@@ -657,14 +659,14 @@
 <p>1. Has the student used all of the important information?</p>
 <div class="flex gap-4">
 <label><input name="exercise5_q1" type="radio" value="Yes"/> Yes</label>
-<label><input name="exercise5_q2" type="radio" value="No"/> No</label>
+<label><input name="exercise5_q1" type="radio" value="No"/> No</label>
 </div>
 <div class="feedback" id="feedback_ex5_q1"></div>
 </div>
 <div class="question-item">
 <p>2. Has the student given his or her own opinion or used any information that is not important?</p>
 <div class="flex gap-4">
-<label><input name="exercise5_q1" type="radio" value="Yes"/> Yes</label>
+<label><input name="exercise5_q2" type="radio" value="Yes"/> Yes</label>
 <label><input name="exercise5_q2" type="radio" value="No"/> No</label>
 </div>
 <div class="feedback" id="feedback_ex5_q2"></div>
@@ -672,8 +674,8 @@
 <div class="question-item">
 <p>3. Is the report long enough?</p>
 <div class="flex gap-4">
-<label><input name="exercise5_q1" type="radio" value="Yes"/> Yes</label>
-<label><input name="exercise5_q2" type="radio" value="No"/> No</label>
+<label><input name="exercise5_q3" type="radio" value="Yes"/> Yes</label>
+<label><input name="exercise5_q3" type="radio" value="No"/> No</label>
 </div>
 <div class="feedback" id="feedback_ex5_q3"></div>
 </div>
@@ -717,7 +719,7 @@
 <div class="feedback" id="feedback_ex6_q3"></div>
 </div>
 <div class="question-item">
-<p>Paragraph 4: "<span class="highlight-keyword">After this comes the packaging stage. The dried tea is made into teabags and the teabags are put into boxes. The boxes are then packed into lorries. The lorries deliver the tea to the supermarkets. Tea is a healthy drink.</span>"</p>
+<p>Paragraph 4: "<span class="highlight-keyword">After this comes the packaging stage. The dried tea is made into teabags and the teabags are put into boxes. The boxes are then packed into lorries. The lorries are very big. The lorries deliver the tea to the supermarkets. Tea is a healthy drink.</span>"</p>
 <select class="w-full" id="ex6_q4" name="exercise6_q4">
 <option value="">Select Order</option>
 <option value="1">1</option>
@@ -871,7 +873,7 @@
 <p class="mb-4">Look at the diagram. Then label each stage of the process. Select the correct label from the dropdown list.</p>
 <div class="image-container">
 <div class="image-item">
-<img alt="Banana Growing Stage 1" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Banana+1';" src="https://i.postimg.cc/gkXV600p/Banana-step1.png"/>
+<img alt="Banana Growing Stage 1" onerror="this.onerror=null;this.src='https://i.postimg.cc/gkXV600p/Banana-step1.png';" src="https://i.postimg.cc/gkXV600p/Banana-step1.png"/>
 <select class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]" id="ex9_q1" name="exercise9_q1">
 <option value="">Select label</option>
 <option value="Buying Stage">Buying Stage</option>
@@ -885,7 +887,7 @@
 <div class="feedback" id="feedback_ex9_q1"></div>
 </div>
 <div class="image-item">
-<img alt="Banana Picking Stage 2" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Banana+2';" src="https://i.postimg.cc/BQrx5G8K/Banana-step2.png"/>
+<img alt="Banana Picking Stage 2" onerror="this.onerror=null;this.src='https://i.postimg.cc/BQrx5G8K/Banana-step2.png';" src="https://i.postimg.cc/BQrx5G8K/Banana-step2.png"/>
 <select class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]" id="ex9_q2" name="exercise9_q2">
 <option value="">Select label</option>
 <option value="Buying Stage">Buying Stage</option>
@@ -899,7 +901,7 @@
 <div class="feedback" id="feedback_ex9_q2"></div>
 </div>
 <div class="image-item">
-<img alt="Banana Checking Stage 3" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Banana+3';" src="https://i.postimg.cc/tJ7hkqth/Banana-step3.png"/>
+<img alt="Banana Checking Stage 3" onerror="this.onerror=null;this.src='https://i.postimg.cc/tJ7hkqth/Banana-step3.png';" src="https://i.postimg.cc/tJ7hkqth/Banana-step3.png"/>
 <select class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]" id="ex9_q3" name="exercise9_q3">
 <option value="">Select label</option>
 <option value="Buying Stage">Buying Stage</option>
@@ -913,7 +915,7 @@
 <div class="feedback" id="feedback_ex9_q3"></div>
 </div>
 <div class="image-item">
-<img alt="Banana Shipping Stage 4" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Banana+4';" src="https://i.postimg.cc/kGZWh0fL/Banana-step4.png"/>
+<img alt="Banana Shipping Stage 4" onerror="this.onerror=null;this.src='https://i.postimg.cc/kGZWh0fL/Banana-step4.png';" src="https://i.postimg.cc/kGZWh0fL/Banana-step4.png"/>
 <select class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]" id="ex9_q4" name="exercise9_q4">
 <option value="">Select label</option>
 <option value="Buying Stage">Buying Stage</option>
@@ -927,7 +929,7 @@
 <div class="feedback" id="feedback_ex9_q4"></div>
 </div>
 <div class="image-item">
-<img alt="Banana Resting Stage 5" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Banana+5';" src="https://i.postimg.cc/tTB3FZPq/Banana-step5.png"/>
+<img alt="Banana Resting Stage 5" onerror="this.onerror=null;this.src='https://i.postimg.cc/tTB3FZPq/Banana-step5.png';" src="https://i.postimg.cc/tTB3FZPq/Banana-step5.png"/>
 <select class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]" id="ex9_q5" name="exercise9_q5">
 <option value="">Select label</option>
 <option value="Buying Stage">Buying Stage</option>
@@ -941,7 +943,7 @@
 <div class="feedback" id="feedback_ex9_q5"></div>
 </div>
 <div class="image-item">
-<img alt="Banana Delivery Stage 6" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Banana+6';" src="https://i.postimg.cc/d1sR7mhN/Banana-step6.png"/>
+<img alt="Banana Delivery Stage 6" onerror="this.onerror=null;this.src='https://i.postimg.cc/d1sR7mhN/Banana-step6.png';" src="https://i.postimg.cc/d1sR7mhN/Banana-step6.png"/>
 <select class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]" id="ex9_q6" name="exercise9_q6">
 <option value="">Select label</option>
 <option value="Buying Stage">Buying Stage</option>
@@ -955,7 +957,7 @@
 <div class="feedback" id="feedback_ex9_q6"></div>
 </div>
 <div class="image-item">
-<img alt="Banana Buying Stage 7" onerror="this.onerror=null;this.src='https://placehold.co/120x80/cccccc/333333?text=Banana+7';" src="https://i.postimg.cc/nVwKzmpT/Banana-step7.png"/>
+<img alt="Banana Buying Stage 7" onerror="this.onerror=null;this.src='https://i.postimg.cc/nVwKzmpT/Banana-step7.png';" src="https://i.postimg.cc/nVwKzmpT/Banana-step7.png"/>
 <select class="inline-block w-auto border-blue-500 ring-2 ring-blue-200 focus:outline-none rounded-md px-2 py-1 min-w-[120px]" id="ex9_q7" name="exercise9_q7">
 <option value="">Select label</option>
 <option value="Buying Stage">Buying Stage</option>
@@ -976,6 +978,7 @@
 <p class="mb-4">You should spend about 20 minutes on this task. The diagram shows the process of growing bananas for selling in supermarkets. Summarise the information by selecting and reporting the main features and make comparisons where relevant. Write at least 150 words.</p>
 <p class="mb-2 text-sm text-gray-600">Please write your report in the text area below. There is no automated checking for this exercise, as it is a free-form writing task.</p>
 <textarea id="ex10_writing_task" name="exercise10_q1" placeholder="Start writing your report here..." rows="10"></textarea>
+<div class="mt-2 text-sm text-gray-600">Word count: <span id="ex10-word-count">0</span></div>
 </div>
 </div>
 <script>
@@ -1078,7 +1081,7 @@
 
         function checkExercise1() {
             for (let i = 1; i <= 5; i++) {
-                const selectedValue = document.querySelector(`input[name="ex1_q${i}"]:checked`)?.value;
+                const selectedValue = document.querySelector(`input[name="exercise1_q${i}"]:checked`)?.value;
                 const isCorrect = selectedValue === correctAnswers.exercise1[`q${i}`];
                 showFeedback(`feedback_ex1_q${i}`, isCorrect);
             }
@@ -1104,7 +1107,7 @@
 
         function checkExercise4() {
             for (let i = 1; i <= 11; i++) {
-                const selectedValue = document.querySelector(`input[name="ex4_q${i}"]:checked`)?.value;
+                const selectedValue = document.querySelector(`input[name="exercise4_q${i}"]:checked`)?.value;
                 const isCorrect = selectedValue === correctAnswers.exercise4[`q${i}`];
                 showFeedback(`feedback_ex4_q${i}`, isCorrect);
             }
@@ -1112,7 +1115,7 @@
 
         function checkExercise5() {
             for (let i = 1; i <= 3; i++) {
-                const selectedValue = document.querySelector(`input[name="ex5_q${i}"]:checked`)?.value;
+                const selectedValue = document.querySelector(`input[name="exercise5_q${i}"]:checked`)?.value;
                 const isCorrect = selectedValue === correctAnswers.exercise5[`q${i}`];
                 showFeedback(`feedback_ex5_q${i}`, isCorrect);
             }
@@ -1168,6 +1171,15 @@
     </script>
 
 <script>
+function updateWordCount() {
+    const textarea = document.getElementById('ex10_writing_task');
+    const wordCountSpan = document.getElementById('ex10-word-count');
+    if (textarea && wordCountSpan) {
+        const words = textarea.value.split(/\s+/).filter(word => word.length > 0).length;
+        wordCountSpan.textContent = words;
+    }
+}
+
 function saveAnswersToLocalStorage() {
   const inputs = document.querySelectorAll('input, select, textarea');
   const answers = {};
@@ -1181,11 +1193,11 @@ function saveAnswersToLocalStorage() {
     }
   });
 
-  localStorage.setItem('ielts_answers', JSON.stringify(answers));
+  localStorage.setItem('ielts_unit1_answers', JSON.stringify(answers)); // Changed key to avoid conflict
 }
 
 function loadAnswersFromLocalStorage() {
-  const saved = localStorage.getItem('ielts_answers');
+  const saved = localStorage.getItem('ielts_unit1_answers'); // Changed key to avoid conflict
   if (!saved) return;
 
   const answers = JSON.parse(saved);
@@ -1200,15 +1212,24 @@ function loadAnswersFromLocalStorage() {
       if (el) el.value = answers[key];
     }
   });
+  updateWordCount(); // Call updateWordCount after loading answers
 }
 
 function resetSavedAnswers() {
-  localStorage.removeItem('ielts_answers');
+  localStorage.removeItem('ielts_unit1_answers'); // Changed key to avoid conflict
   window.location.reload();
 }
 
-document.addEventListener('DOMContentLoaded', loadAnswersFromLocalStorage);
-document.addEventListener('input', saveAnswersToLocalStorage);
+document.addEventListener('DOMContentLoaded', () => {
+    loadAnswersFromLocalStorage();
+    // Attach input event listener to the textarea for live word count updates
+    const textarea = document.getElementById('ex10_writing_task');
+    if (textarea) {
+        textarea.addEventListener('input', updateWordCount);
+        textarea.addEventListener('input', saveAnswersToLocalStorage); // Ensure save is also triggered
+    }
+    document.addEventListener('input', saveAnswersToLocalStorage); // Generic listener for other inputs
+});
 </script>
 </body>
 </html>
