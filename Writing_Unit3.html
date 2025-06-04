@@ -208,25 +208,36 @@
         <div class="exercise-section">
             <h2 class="exercise-title">Unit 3: Exercise 1</h2>
             <p class="question-text">In IELTS Writing Task 1 you might be asked to write a report about a chart or graph.<br>Match the descriptions with the charts and graphs.</p>
-            <div class="mb-4">
-                <p>This is a pie chart.</p>
-                <p>This is a bar chart.</p>
-                <p>This is a line graph.</p>
-            </div>
+            <!-- Removed the text descriptions as they are now in dropdown options -->
             <div class="space-y-4">
                 <div>
-                    <label for="ex1_q1" class="block text-gray-700 font-medium mb-1">1. (Image 1 - Placeholder for actual image)</label>
-                    <input type="text" id="ex1_q1" class="input-field" placeholder="e.g. This is a bar chart.">
+                    <label for="ex1_q1" class="block text-gray-700 font-medium mb-1">1. <img src="https://i.postimg.cc/gkH4fcPZ/Writing-Unit3-Exercise1-Picture1.png" alt="Bar Chart" class="inline-block w-24 h-auto ml-2"></label>
+                    <select id="ex1_q1" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="This is a bar chart.">This is a bar chart.</option>
+                        <option value="This is a pie chart.">This is a pie chart.</option>
+                        <option value="This is a line graph.">This is a line graph.</option>
+                    </select>
                     <div id="feedback_ex1_q1" class="feedback-message"></div>
                 </div>
                 <div>
-                    <label for="ex1_q2" class="block text-gray-700 font-medium mb-1">2. (Image 2 - Placeholder for actual image)</label>
-                    <input type="text" id="ex1_q2" class="input-field" placeholder="e.g. This is a pie chart.">
+                    <label for="ex1_q2" class="block text-gray-700 font-medium mb-1">2. <img src="https://i.postimg.cc/zBH0MnJz/Writing-Unit3-Exercise1-Picture2.png" alt="Pie Chart" class="inline-block w-24 h-auto ml-2"></label>
+                    <select id="ex1_q2" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="This is a pie chart.">This is a pie chart.</option>
+                        <option value="This is a bar chart.">This is a bar chart.</option>
+                        <option value="This is a line graph.">This is a line graph.</option>
+                    </select>
                     <div id="feedback_ex1_q2" class="feedback-message"></div>
                 </div>
                 <div>
-                    <label for="ex1_q3" class="block text-gray-700 font-medium mb-1">3. (Image 3 - Placeholder for actual image)</label>
-                    <input type="text" id="ex1_q3" class="input-field" placeholder="e.g. This is a line graph.">
+                    <label for="ex1_q3" class="block text-gray-700 font-medium mb-1">3. <img src="https://i.postimg.cc/WzMSpTFx/Writing-Unit3-Exercise1-Picture3.png" alt="Line Graph" class="inline-block w-24 h-auto ml-2"></label>
+                    <select id="ex1_q3" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="This is a line graph.">This is a line graph.</option>
+                        <option value="This is a bar chart.">This is a bar chart.</option>
+                        <option value="This is a pie chart.">This is a pie chart.</option>
+                    </select>
                     <div id="feedback_ex1_q3" class="feedback-message"></div>
                 </div>
             </div>
@@ -244,7 +255,7 @@
                 <span class="drag-item" draggable="true" data-word="money spent">money spent</span>
             </div>
             <div class="image-container">
-                <img src="https://placehold.co/600x400/E0F2FE/3B82F6" alt="Bar Chart for Exercise 2">
+                <img src="https://i.postimg.cc/fy4BhJLx/Writing-Unit3-Exercise2.jpg" alt="Bar Chart for Exercise 2">
             </div>
             <p class="question-text">Imagine the chart has labels for X and Y axis, and for the data bars. Drag and drop the words to the correct descriptions below.</p>
             <div class="space-y-4">
@@ -277,7 +288,7 @@
             <h2 class="exercise-title">Unit 3: Exercise 3</h2>
             <p class="question-text">The bar chart compares the amount of money (in millions of dollars) that people in four different age groups from Seoul, South Korea, spent on going to the cinema, restaurants and music concerts in 2014.<br>Choose the correct answers to complete the statements.</p>
             <div class="image-container">
-                <img src="https://placehold.co/600x400/E0F2FE/3B82F6" alt="Bar Chart for Exercise 3">
+                <img src="https://i.postimg.cc/sfST496K/Writing-Unit3-Exercise3.jpg" alt="Bar Chart for Exercise 3">
             </div>
             <div class="space-y-4">
                 <div>
@@ -293,9 +304,9 @@
                 <div>
                     <p class="question-text">The 18–25 age group spent:</p>
                     <select id="ex3_q2" class="select-field">
-                        <option value="">Select an option</option>
-                        <option value="less than the 26–39 age group">less than the 26–39 age group</option>
+                        <option value="">Select an option</slect>
                         <option value="about $14 million">about $14 million</option>
+                        <option value="less than the 26–39 age group">less than the 26–39 age group</option>
                         <option value="the same as the 56–80 age group">the same as the 56–80 age group</option>
                     </select>
                     <span class="font-medium">on going to music concerts.</span>
@@ -305,9 +316,9 @@
                     <p class="question-text">The 56–80 age group spent the least of their money on going to:</p>
                     <select id="ex3_q3" class="select-field">
                         <option value="">Select an option</option>
+                        <option value="music concerts">music concerts</option>
                         <option value="the cinema">the cinema</option>
                         <option value="restaurants">restaurants</option>
-                        <option value="music concerts">music concerts</option>
                     </select>
                     <div id="feedback_ex3_q3" class="feedback-message"></div>
                 </div>
@@ -315,8 +326,8 @@
                     <p class="question-text">The 26–39 age group spent about the same on going to:</p>
                     <select id="ex3_q4" class="select-field">
                         <option value="">Select an option</option>
-                        <option value="the cinema and restaurants">the cinema and restaurants</option>
                         <option value="the cinema and music concerts">the cinema and music concerts</option>
+                        <option value="the cinema and restaurants">the cinema and restaurants</option>
                         <option value="restaurants and music concerts">restaurants and music concerts</option>
                     </select>
                     <div id="feedback_ex3_q4" class="feedback-message"></div>
@@ -344,7 +355,7 @@
                 <p class="text-blue-800 italic">"When you write a report on a graph or chart for IELTS Writing Task 1, you should try to describe the main features. This means writing about the most important pieces of information on the graph or chart. The main features could be the highest/lowest numbers, the biggest differences, and any similarities."</p>
             </div>
             <div class="image-container">
-                <img src="https://placehold.co/600x400/E0F2FE/3B82F6" alt="Bar Chart for Exercise 4">
+                <img src="https://i.postimg.cc/sfST496K/Writing-Unit3-Exercise3.jpg" alt="Bar Chart for Exercise 4">
             </div>
             <div class="word-bank">
                 <span class="drag-item" draggable="true" data-word="a similarity">a similarity</span>
@@ -376,7 +387,7 @@
             <h2 class="exercise-title">Unit 3: Exercise 5</h2>
             <p class="question-text">The bar chart compares the amount of money (in millions of dollars) that people in four different age groups from Seoul, South Korea, spent on going to the cinema, restaurants and music concerts in 2014.<br>Choose the correct words to complete the student’s report. Use the words in the box.</p>
             <div class="image-container">
-                <img src="https://placehold.co/600x400/E0F2FE/3B82F6" alt="Bar Chart for Exercise 5">
+                <img src="https://i.postimg.cc/sfST496K/Writing-Unit3-Exercise3.jpg" alt="Bar Chart for Exercise 5">
             </div>
             <div class="word-bank">
                 <span class="drag-item" draggable="true" data-word="18-25">18-25</span>
@@ -392,15 +403,15 @@
             <div class="space-y-4">
                 <p class="question-text">The bar chart shows how much South Koreans of different age groups spent on seeing movies, eating out and going to concerts in 2014.</p>
                 <p class="question-text">Overall, the <input type="text" id="ex5_q1" class="input-field inline-block w-32" placeholder="_______"> amount of money was spent on going to restaurants (about $67 million), <input type="text" id="ex5_q2" class="input-field inline-block w-32" placeholder="_______"> with going to the cinema (about $40 million) and music concerts (also about $40 million).</p>
-                <div id="feedback_ex5_q1" class="feedback-message"></div> <!-- Added missing feedback div -->
-                <div id="feedback_ex5_q2" class="feedback-message"></div> <!-- Added missing feedback div -->
+                <div id="feedback_ex5_q1" class="feedback-message"></div>
+                <div id="feedback_ex5_q2" class="feedback-message"></div>
 
-                <p class="question-text">The <input type="text" id="ex5_q3" class="input-field inline-block w-32" placeholder="_______"> age group spent the most on going to restaurants at about $22 million, while the <input type="text" id="ex5_q4" class="input-field inline-block w-32" placeholder="_______"> age group spent the least with only $13 million. With a total <input type="text" id="ex5_q5" class="input-field inline-block w-32" placeholder="_______"> of approximately $12 million, the 26−39 <input type="text" id="ex5_q6" class="input-field inline-block w-32" placeholder="_______"> had the highest spending on going to the cinema while the 56−80s spent the least <input type="text" id="ex5_q7" class="input-field inline-block w-32" placeholder="_______">, at around $8 million.</p>
-                <div id="feedback_ex5_q3" class="feedback-message"></div> <!-- Added missing feedback div -->
-                <div id="feedback_ex5_q4" class="feedback-message"></div> <!-- Added missing feedback div -->
-                <div id="feedback_ex5_q5" class="feedback-message"></div> <!-- Added missing feedback div -->
-                <div id="feedback_ex5_q6" class="feedback-message"></div> <!-- Added missing feedback div -->
-                <div id="feedback_ex5_q7" class="feedback-message"></div> <!-- Added missing feedback div -->
+                <p class="question-text">The <input type="text" id="ex5_q3" class="input-field inline-block w-32" placeholder="_______"> age group spent the most on going to restaurants at about $22 million, while the <input type="text" id="text" id="ex5_q4" class="input-field inline-block w-32" placeholder="_______"> age group spent the least with only $13 million. With a total <input type="text" id="ex5_q5" class="input-field inline-block w-32" placeholder="_______"> of approximately $12 million, the 26−39 <input type="text" id="ex5_q6" class="input-field inline-block w-32" placeholder="_______"> had the highest spending on going to the cinema while the 56−80s spent the least <input type="text" id="ex5_q7" class="input-field inline-block w-32" placeholder="_______">, at around $8 million.</p>
+                <div id="feedback_ex5_q3" class="feedback-message"></div>
+                <div id="feedback_ex5_q4" class="feedback-message"></div>
+                <div id="feedback_ex5_q5" class="feedback-message"></div>
+                <div id="feedback_ex5_q6" class="feedback-message"></div>
+                <div id="feedback_ex5_q7" class="feedback-message"></div>
             </div>
             <button onclick="checkExercise5()" class="check-button mt-6">Check Answers</button>
         </div>
@@ -408,28 +419,9 @@
         <!-- Exercise 6: Choose the correct option to complete each statement. -->
         <div class="exercise-section">
             <h2 class="exercise-title">Unit 3: Exercise 6</h2>
-            <p class="question-text">The pie charts compare what male and female teenagers from Peru prefer to do in their free time.<br>Look at the two charts. Choose the correct option to complete each statement.</p>
+            <p class="question-text">The pie charts compare what male and female teenagers from Peru prefer to do in their free time.<br>Look at the charts. Choose the correct option to complete each statement.</p>
             <div class="image-container flex flex-col md:flex-row justify-center items-center gap-8">
-                <img src="https://placehold.co/300x300/E0F2FE/3B82F6" alt="Pie Chart Free time - Boys">
-                <img src="https://placehold.co/300x300/E0F2FE/3B82F6" alt="Pie Chart Free time - Girls">
-                <div class="text-left text-sm p-4 bg-gray-50 rounded-lg shadow-sm">
-                    <p class="font-semibold mb-2">Free time - Boys</p>
-                    <ul class="list-disc list-inside">
-                        <li>Watching TV: 15%</li>
-                        <li>Using the internet: 30%</li>
-                        <li>Meeting friends: 20%</li>
-                        <li>Playing sport: 25%</li>
-                        <li>Reading: 10%</li>
-                    </ul>
-                    <p class="font-semibold mt-4 mb-2">Free time - Girls</p>
-                    <ul class="list-disc list-inside">
-                        <li>Watching TV: 20%</li>
-                        <li>Using the internet: 25%</li>
-                        <li>Meeting friends: 35%</li>
-                        <li>Playing sport: 5%</li>
-                        <li>Reading: 15%</li>
-                    </ul>
-                </div>
+                <img src="https://i.postimg.cc/xT2txJBQ/Writing-Unit3-Exercise6.jpg" alt="Pie Chart Free time - Boys" class="w-140 h-auto"> <!-- Boys chart -->
             </div>
             <div class="space-y-4">
                 <div>
@@ -450,9 +442,9 @@
                     <p class="question-text">The least popular activities are
                         <select id="ex6_q2" class="select-field inline-block w-auto">
                             <option value="">Select an option</option>
+                            <option value="reading">reading</option>
                             <option value="meeting friends">meeting friends</option>
                             <option value="playing sport">playing sport</option>
-                            <option value="reading">reading</option>
                             <option value="using the internet">using the internet</option>
                             <option value="watching TV">watching TV</option>
                         </select>
@@ -464,11 +456,11 @@
                     <p class="question-text">Girls and boys in Peru liked
                         <select id="ex6_q3" class="select-field inline-block w-auto">
                             <option value="">Select an option</option>
+                            <option value="watching TV">watching TV</option>
                             <option value="meeting friends">meeting friends</option>
                             <option value="playing sport">playing sport</option>
                             <option value="reading">reading</option>
                             <option value="using the internet">using the internet</option>
-                            <option value="watching TV">watching TV</option>
                         </select>
                         about the same with 20% for girls and 5% less for boys.
                     </p>
@@ -508,26 +500,7 @@
             <h2 class="exercise-title">Unit 3: Exercise 7</h2>
             <p class="question-text">Some words or phrases can help you compare or add information in IELTS Writing Task 1.<br>Look at the charts. Then read the student’s report and look at the words in bold. Complete the statements.</p>
             <div class="image-container flex flex-col md:flex-row justify-center items-center gap-8">
-                <img src="https://placehold.co/300x300/E0F2FE/3B82F6" alt="Pie Chart Free time - Boys">
-                <img src="https://placehold.co/300x300/E0F2FE/3B82F6" alt="Pie Chart Free time - Girls">
-                <div class="text-left text-sm p-4 bg-gray-50 rounded-lg shadow-sm">
-                    <p class="font-semibold mb-2">Free time - Boys</p>
-                    <ul class="list-disc list-inside">
-                        <li>Watching TV: 15%</li>
-                        <li>Using the internet: 30%</li>
-                        <li>Meeting friends: 20%</li>
-                        <li>Playing sport: 25%</li>
-                        <li>Reading: 10%</li>
-                    </ul>
-                    <p class="font-semibold mt-4 mb-2">Free time - Girls</p>
-                    <ul class="list-disc list-inside">
-                        <li>Watching TV: 20%</li>
-                        <li>Using the internet: 25%</li>
-                        <li>Meeting friends: 35%</li>
-                        <li>Playing sport: 5%</li>
-                        <li>Reading: 15%</li>
-                    </ul>
-                </div>
+                <img src="https://i.postimg.cc/4x4wZCJF/Writing-Unit3-Exercise7.jpg" alt="Pie Chart Free time - Girls" class="w-140 h-auto"> <!-- Girls chart -->
             </div>
             <div class="bg-blue-50 p-4 rounded-lg border border-blue-200 mb-4">
                 <p class="text-blue-800 italic">It is clear that the most popular activity for boys was using the internet <b>while</b> for girls it was meeting friends. <b>By contrast</b>, the least favourite activity for boys was reading with only 10%. <b>Similarly</b>, the least favourite activity for girls was playing sport, <b>also</b> with a low percentage of 5%.<br>Using the internet was the favourite hobby for just under a third of boys <b>whereas</b> meeting friends was the favourite for more than a third of girls. Reading was not very popular with either boys or girls. 10% of the boys preferred to read and only 5% more of the girls.<br>Girls and boys in Peru liked watching TV about the same. 20% of girls preferred watching TV and, <b>in the same way</b>, 15% of boys. The biggest difference was playing sport. 20% fewer girls than boys preferred it.</p>
@@ -535,12 +508,12 @@
             <div class="space-y-4">
                 <p class="question-text">Words and phrases used for comparing information:</p>
                 <p class="question-text">... while ... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ... <input type="text" id="ex7_q1" class="input-field inline-block w-32" placeholder="_______"> ... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By <input type="text" id="ex7_q2" class="input-field inline-block w-32" placeholder="_______"> , ... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ... but ... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; However, ...</p>
-                <div id="feedback_ex7_q1" class="feedback-message"></div> <!-- Added missing feedback div -->
-                <div id="feedback_ex7_q2" class="feedback-message"></div> <!-- Added missing feedback div -->
+                <div id="feedback_ex7_q1" class="feedback-message"></div>
+                <div id="feedback_ex7_q2" class="feedback-message"></div>
                 <p class="question-text">Words or phrases used for adding information:</p>
                 <p class="question-text"><input type="text" id="ex7_q3" class="input-field inline-block w-32" placeholder="_______"> , ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp; also ... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... in the <input type="text" id="ex7_q4" class="input-field inline-block w-32" placeholder="_______"> way, ... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ... and&nbsp;...</p>
-                <div id="feedback_ex7_q3" class="feedback-message"></div> <!-- Added missing feedback div -->
-                <div id="feedback_ex7_q4" class="feedback-message"></div> <!-- Added missing feedback div -->
+                <div id="feedback_ex7_q3" class="feedback-message"></div>
+                <div id="feedback_ex7_q4" class="feedback-message"></div>
             </div>
             <button onclick="checkExercise7()" class="check-button mt-6">Check Answers</button>
         </div>
@@ -549,48 +522,134 @@
         <div class="exercise-section">
             <h2 class="exercise-title">Unit 3: Exercise 8</h2>
             <p class="question-text">Complete the sentences with the words in the box.</p>
-            <div class="word-bank">
-                <span class="drag-item" draggable="true" data-word="By contrast, Heart of Darkness is very short.">By contrast, Heart of Darkness is very short.</span>
-                <span class="drag-item" draggable="true" data-word="By contrast, my sister always eats in restaurants.">By contrast, my sister always eats in restaurants.</span>
-                <span class="drag-item" draggable="true" data-word="In the same way, about 65% of singers can read it.">In the same way, about 65% of singers can read it.</span>
-                <span class="drag-item" draggable="true" data-word="Similarly, my grandfather also skis every year.">Similarly, my grandfather also skis every year.</span>
-                <span class="drag-item" draggable="true" data-word="whereas all the adults cried.">whereas all the adults cried.</span>
-                <span class="drag-item" draggable="true" data-word="whereas the worst thing is that it’s expensive.">whereas the worst thing is that it’s expensive.</span>
-                <span class="drag-item" draggable="true" data-word="while 65% voted against.">while 65% voted against.</span>
-                <span class="drag-item" draggable="true" data-word="while my least favourite are romantic comedies.">while my least favourite are romantic comedies.</span>
-            </div>
             <div class="space-y-4">
                 <div>
-                    <p class="question-text">45% of yoga teachers voted in support <div id="ex8_drop1" class="drop-target inline-block w-full" data-correct="while 65% voted against.">Drag word here</div></p>
-                    <div id="feedback_ex8_drop1" class="feedback-message"></div>
+                    <p class="question-text">45% of yoga teachers voted in support
+                        <select id="ex8_q1" class="select-field inline-block w-full">
+                            <option value="">Select an option</option>
+                            <option value="By contrast, Heart of Darkness is very short.">By contrast, Heart of Darkness is very short.</option>
+                            <option value="By contrast, my sister always eats in restaurants.">By contrast, my sister always eats in restaurants.</option>
+                            <option value="In the same way, about 65% of singers can read it.">In the same way, about 65% of singers can read it.</option>
+                            <option value="Similarly, my grandfather also skis every year.">Similarly, my grandfather also skis every year.</option>
+                            <option value="whereas all the adults cried.">whereas all the adults cried.</option>
+                            <option value="whereas the worst thing is that it’s expensive.">whereas the worst thing is that it’s expensive.</option>
+                            <option value="while 65% voted against.">while 65% voted against.</option>
+                            <option value="while my least favourite are romantic comedies.">while my least favourite are romantic comedies.</option>
+                        </select>
+                    </p>
+                    <div id="feedback_ex8_q1" class="feedback-message"></div>
                 </div>
                 <div>
-                    <p class="question-text">My brother loves cooking. <div id="ex8_drop2" class="drop-target inline-block w-full" data-correct="By contrast, my sister always eats in restaurants.">Drag word here</div></p>
-                    <div id="feedback_ex8_drop2" class="feedback-message"></div>
+                    <p class="question-text">My brother loves cooking.
+                        <select id="ex8_q2" class="select-field inline-block w-full">
+                            <option value="">Select an option</option>
+                            <option value="By contrast, Heart of Darkness is very short.">By contrast, Heart of Darkness is very short.</option>
+                            <option value="By contrast, my sister always eats in restaurants.">By contrast, my sister always eats in restaurants.</option>
+                            <option value="In the same way, about 65% of singers can read it.">In the same way, about 65% of singers can read it.</option>
+                            <option value="Similarly, my grandfather also skis every year.">Similarly, my grandfather also skis every year.</option>
+                            <option value="whereas all the adults cried.">whereas all the adults cried.</option>
+                            <option value="whereas the worst thing is that it’s expensive.">whereas the worst thing is that it’s expensive.</option>
+                            <option value="while 65% voted against.">while 65% voted against.</option>
+                            <option value="while my least favourite are romantic comedies.">while my least favourite are romantic comedies.</option>
+                        </select>
+                    </p>
+                    <div id="feedback_ex8_q2" class="feedback-message"></div>
                 </div>
                 <div>
-                    <p class="question-text">The best thing about horse riding is that it’s fun <div id="ex8_drop3" class="drop-target inline-block w-full" data-correct="whereas the worst thing is that it’s expensive.">Drag word here</div></p>
-                    <div id="feedback_ex8_drop3" class="feedback-message"></div>
+                    <p class="question-text">The best thing about horse riding is that it’s fun
+                        <select id="ex8_q3" class="select-field inline-block w-full">
+                            <option value="">Select an option</option>
+                            <option value="By contrast, Heart of Darkness is very short.">By contrast, Heart of Darkness is very short.</option>
+                            <option value="By contrast, my sister always eats in restaurants.">By contrast, my sister always eats in restaurants.</option>
+                            <option value="In the same way, about 65% of singers can read it.">In the same way, about 65% of singers can read it.</option>
+                            <option value="Similarly, my grandfather also skis every year.">Similarly, my grandfather also skis every year.</option>
+                            <option value="whereas all the adults cried.">whereas all the adults cried.</option>
+                            <option value="whereas the worst thing is that it’s expensive.">whereas the worst thing is that it’s expensive.</option>
+                            <option value="while 65% voted against.">while 65% voted against.</option>
+                            <option value="while my least favourite are romantic comedies.">while my least favourite are romantic comedies.</option>
+                        </select>
+                    </p>
+                    <div id="feedback_ex8_q3" class="feedback-message"></div>
                 </div>
                 <div>
-                    <p class="question-text">My mother loves skiing. <div id="ex8_drop4" class="drop-target inline-block w-full" data-correct="Similarly, my grandfather also skis every year.">Drag word here</div></p>
-                    <div id="feedback_ex8_drop4" class="feedback-message"></div>
+                    <p class="question-text">My mother loves skiing.
+                        <select id="ex8_q4" class="select-field inline-block w-full">
+                            <option value="">Select an option</option>
+                            <option value="By contrast, Heart of Darkness is very short.">By contrast, Heart of Darkness is very short.</option>
+                            <option value="By contrast, my sister always eats in restaurants.">By contrast, my sister always eats in restaurants.</option>
+                            <option value="In the same way, about 65% of singers can read it.">In the same way, about 65% of singers can read it.</option>
+                            <option value="Similarly, my grandfather also skis every year.">Similarly, my grandfather also skis every year.</option>
+                            <option value="whereas all the adults cried.">whereas all the adults cried.</option>
+                            <option value="whereas the worst thing is that it’s expensive.">whereas the worst thing is that it’s expensive.</option>
+                            <option value="while 65% voted against.">while 65% voted against.</option>
+                            <option value="while my least favourite are romantic comedies.">while my least favourite are romantic comedies.</option>
+                        </select>
+                    </p>
+                    <div id="feedback_ex8_q4" class="feedback-message"></div>
                 </div>
                 <div>
-                    <p class="question-text">Two thirds of guitar players can read music. <div id="ex8_drop5" class="drop-target inline-block w-full" data-correct="In the same way, about 65% of singers can read it.">Drag word here</div></p>
-                    <div id="feedback_ex8_drop5" class="feedback-message"></div>
+                    <p class="question-text">Two thirds of guitar players can read music.
+                        <select id="ex8_q5" class="select-field inline-block w-full">
+                            <option value="">Select an option</option>
+                            <option value="By contrast, Heart of Darkness is very short.">By contrast, Heart of Darkness is very short.</option>
+                            <option value="By contrast, my sister always eats in restaurants.">By contrast, my sister always eats in restaurants.</option>
+                            <option value="In the same way, about 65% of singers can read it.">In the same way, about 65% of singers can read it.</option>
+                            <option value="Similarly, my grandfather also skis every year.">Similarly, my grandfather also skis every year.</option>
+                            <option value="whereas all the adults cried.">whereas all the adults cried.</option>
+                            <option value="whereas the worst thing is that it’s expensive.">whereas the worst thing is that it’s expensive.</option>
+                            <option value="while 65% voted against.">while 65% voted against.</option>
+                            <option value="while my least favourite are romantic comedies.">while my least favourite are romantic comedies.</option>
+                        </select>
+                    </p>
+                    <div id="feedback_ex8_q5" class="feedback-message"></div>
                 </div>
                 <div>
-                    <p class="question-text">My favourite movies are action films <div id="ex8_drop6" class="drop-target inline-block w-full" data-correct="while my least favourite are romantic comedies.">Drag word here</div></p>
-                    <div id="feedback_ex8_drop6" class="feedback-message"></div>
+                    <p class="question-text">My favourite movies are action films
+                        <select id="ex8_q6" class="select-field inline-block w-full">
+                            <option value="">Select an option</option>
+                            <option value="By contrast, Heart of Darkness is very short.">By contrast, Heart of Darkness is very short.</option>
+                            <option value="By contrast, my sister always eats in restaurants.">By contrast, my sister always eats in restaurants.</option>
+                            <option value="In the same way, about 65% of singers can read it.">In the same way, about 65% of singers can read it.</option>
+                            <option value="Similarly, my grandfather also skis every year.">Similarly, my grandfather also skis every year.</option>
+                            <option value="whereas all the adults cried.">whereas all the adults cried.</option>
+                            <option value="whereas the worst thing is that it’s expensive.">whereas the worst thing is that it’s expensive.</option>
+                            <option value="while 65% voted against.">while 65% voted against.</option>
+                            <option value="while my least favourite are romantic comedies.">while my least favourite are romantic comedies.</option>
+                        </select>
+                    </p>
+                    <div id="feedback_ex8_q6" class="feedback-message"></div>
                 </div>
                 <div>
-                    <p class="question-text">All the children laughed <div id="ex8_drop7" class="drop-target inline-block w-full" data-correct="whereas all the adults cried.">Drag word here</div></p>
-                    <div id="feedback_ex8_drop7" class="feedback-message"></div>
+                    <p class="question-text">All the children laughed
+                        <select id="ex8_q7" class="select-field inline-block w-full">
+                            <option value="">Select an option</option>
+                            <option value="By contrast, Heart of Darkness is very short.">By contrast, Heart of Darkness is very short.</option>
+                            <option value="By contrast, my sister always eats in restaurants.">By contrast, my sister always eats in restaurants.</option>
+                            <option value="In the same way, about 65% of singers can read it.">In the same way, about 65% of singers can read it.</option>
+                            <option value="Similarly, my grandfather also skis every year.">Similarly, my grandfather also skis every year.</option>
+                            <option value="whereas all the adults cried.">whereas all the adults cried.</option>
+                            <option value="whereas the worst thing is that it’s expensive.">whereas the worst thing is that it’s expensive.</option>
+                            <option value="while 65% voted against.">while 65% voted against.</option>
+                            <option value="while my least favourite are romantic comedies.">while my least favourite are romantic comedies.</option>
+                        </select>
+                    </p>
+                    <div id="feedback_ex8_q7" class="feedback-message"></div>
                 </div>
                 <div>
-                    <p class="question-text">War and Peace is a very long book. <div id="ex8_drop8" class="drop-target inline-block w-full" data-correct="By contrast, Heart of Darkness is very short.">Drag word here</div></p>
-                    <div id="feedback_ex8_drop8" class="feedback-message"></div>
+                    <p class="question-text">War and Peace is a very long book.
+                        <select id="ex8_q8" class="select-field inline-block w-full">
+                            <option value="">Select an option</option>
+                            <option value="By contrast, Heart of Darkness is very short.">By contrast, Heart of Darkness is very short.</option>
+                            <option value="By contrast, my sister always eats in restaurants.">By contrast, my sister always eats in restaurants.</option>
+                            <option value="In the same way, about 65% of singers can read it.">In the same way, about 65% of singers can read it.</option>
+                            <option value="Similarly, my grandfather also skis every year.">Similarly, my grandfather also skis every year.</option>
+                            <option value="whereas all the adults cried.">whereas all the adults cried.</option>
+                            <option value="whereas the worst thing is that it’s expensive.">whereas the worst thing is that it’s expensive.</option>
+                            <option value="while 65% voted against.">while 65% voted against.</option>
+                            <option value="while my least favourite are romantic comedies.">while my least favourite are romantic comedies.</option>
+                        </select>
+                    </p>
+                    <div id="feedback_ex8_q8" class="feedback-message"></div>
                 </div>
             </div>
             <button onclick="checkExercise8()" class="check-button mt-6">Check Answers</button>
@@ -640,11 +699,12 @@
             <h2 class="exercise-title">Unit 3: Exercise 10 - WRITING TASK 1</h2>
             <p class="question-text">You should spend about 20 minutes on this task. The chart shows the average number of hours each day that Chinese, American, Turkish and Brazilian tourists spent doing leisure activities while on holiday in Greece in August 2015.<br>Summarise the chart by selecting and reporting the main features and make comparisons where relevant.<br>Write at least 150 words.</p>
             <div class="image-container">
-                <img src="https://placehold.co/600x400/E0F2FE/3B82F6" alt="Holiday leisure activities chart">
+                <img src="https://i.postimg.cc/9QxbQx0X/Writing-Unit3-Exercise10.png" alt="Holiday leisure activities chart">
             </div>
             <div class="mb-4">
                 <label for="student_post" class="block text-gray-700 font-medium mb-2">Student post:</label>
                 <textarea id="student_post" class="textarea-field" rows="10" placeholder="Write your summary here..."></textarea>
+                <div id="word_count_display" class="text-sm text-gray-600 mt-1">Word count: 0</div>
             </div>
             <button onclick="submitWritingTask()" class="check-button mt-6">Submit Writing Task</button>
             <div id="feedback_writing_task" class="feedback-message"></div>
@@ -677,8 +737,8 @@
             };
 
             for (const key in answers) {
-                const input = document.getElementById(key);
-                const userAnswer = input.value.trim();
+                const select = document.getElementById(key); // Changed to select
+                const userAnswer = select.value.trim();
                 const correctAnswer = answers[key].trim();
                 if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
                     showFeedback(`feedback_${key}`, true, 'Correct!');
@@ -804,7 +864,7 @@
             });
         });
 
-        document.querySelectorAll('.exercise-section:nth-of-type(4) .drop-target').forEach(target => {
+        document.querySelectorAll('.drop-target').forEach(target => {
             target.addEventListener('dragover', (e) => {
                 e.preventDefault();
                 target.classList.add('hover');
@@ -819,7 +879,7 @@
 
                 if (target.dataset.currentWord) {
                     const existingWord = target.dataset.currentWord;
-                    const existingItem = document.querySelector(`.exercise-section:nth-of-type(4) .drag-item[data-word="${existingWord}"]`);
+                    const existingItem = document.querySelector(`.drag-item[data-word="${existingWord}"]`);
                     if (existingItem) {
                         existingItem.style.display = 'inline-block';
                     }
@@ -922,81 +982,27 @@
             }
         }
 
-        // Exercise 8 Logic (Drag and Drop for full sentences)
-        let draggedSentenceItem = null;
-
-        document.querySelectorAll('.exercise-section:nth-of-type(8) .drag-item').forEach(item => {
-            item.addEventListener('dragstart', (e) => {
-                draggedSentenceItem = e.target;
-                e.dataTransfer.setData('text/plain', e.target.dataset.word);
-                setTimeout(() => {
-                    e.target.style.display = 'none';
-                }, 0);
-            });
-
-            item.addEventListener('dragend', (e) => {
-                setTimeout(() => {
-                    if (draggedSentenceItem) {
-                        draggedSentenceItem.style.display = 'inline-block';
-                    }
-                    draggedSentenceItem = null;
-                }, 0);
-            });
-        });
-
-        document.querySelectorAll('.exercise-section:nth-of-type(8) .drop-target').forEach(target => {
-            target.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                target.classList.add('hover');
-            });
-
-            target.addEventListener('dragleave', () => {
-                target.classList.remove('hover');
-            });
-
-            target.addEventListener('drop', (e) => {
-                e.preventDefault();
-                target.classList.remove('hover');
-                const data = e.dataTransfer.getData('text/plain');
-
-                if (target.dataset.currentWord) {
-                    const existingWord = target.dataset.currentWord;
-                    const existingItem = document.querySelector(`.exercise-section:nth-of-type(8) .drag-item[data-word="${existingWord}"]`);
-                    if (existingItem) {
-                        existingItem.style.display = 'inline-block';
-                    }
-                }
-
-                target.textContent = data;
-                target.dataset.currentWord = data;
-                target.classList.add('filled');
-                if (draggedSentenceItem) {
-                    draggedSentenceItem.style.display = 'none';
-                    draggedSentenceItem = null;
-                }
-            });
-        });
-
+        // Exercise 8 Logic (Dropdowns)
         function checkExercise8() {
-            const dropTargets = {
-                'ex8_drop1': 'while 65% voted against.',
-                'ex8_drop2': 'By contrast, my sister always eats in restaurants.',
-                'ex8_drop3': 'whereas the worst thing is that it’s expensive.',
-                'ex8_drop4': 'Similarly, my grandfather also skis every year.',
-                'ex8_drop5': 'In the same way, about 65% of singers can read it.',
-                'ex8_drop6': 'while my least favourite are romantic comedies.',
-                'ex8_drop7': 'whereas all the adults cried.',
-                'ex8_drop8': 'By contrast, Heart of Darkness is very short.'
+            const answers = {
+                'ex8_q1': 'while 65% voted against.',
+                'ex8_q2': 'By contrast, my sister always eats in restaurants.',
+                'ex8_q3': 'whereas the worst thing is that it’s expensive.',
+                'ex8_q4': 'Similarly, my grandfather also skis every year.',
+                'ex8_q5': 'In the same way, about 65% of singers can read it.',
+                'ex8_q6': 'while my least favourite are romantic comedies.',
+                'ex8_q7': 'whereas all the adults cried.',
+                'ex8_q8': 'By contrast, Heart of Darkness is very short.'
             };
 
-            for (const key in dropTargets) {
-                const target = document.getElementById(key);
-                const userAnswer = target.dataset.currentWord;
-                const correctAnswer = dropTargets[key];
-                if (userAnswer && userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+            for (const key in answers) {
+                const select = document.getElementById(key);
+                const userAnswer = select.value;
+                const correctAnswer = answers[key];
+                if (userAnswer === correctAnswer) {
                     showFeedback(`feedback_${key}`, true, 'Correct!');
                 } else {
-                    showFeedback(`feedback_${key}`, false, `Incorrect. Please try again.`); // Removed correct answer
+                    showFeedback(`feedback_${key}`, false, `Incorrect. Please try again.`);
                 }
             }
         }
@@ -1157,6 +1163,10 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             setupReorderExercise9(); // Call the new setup function for Exercise 9
+            // Setup word count for Exercise 10
+            const studentPostTextarea = document.getElementById('student_post');
+            studentPostTextarea.addEventListener('input', updateWordCount);
+            updateWordCount(); // Initial word count on load
         });
 
         function checkExercise9() {
@@ -1203,13 +1213,24 @@
             }
         }
 
-        // Exercise 10 Logic (Writing Task - Placeholder for LLM feedback)
+        // Exercise 10 Logic (Writing Task - Word Count and AI Feedback)
+        function updateWordCount() {
+            const textarea = document.getElementById('student_post');
+            const wordCountDisplay = document.getElementById('word_count_display');
+            const text = textarea.value.trim();
+            const words = text.split(/\s+/).filter(word => word.length > 0);
+            wordCountDisplay.textContent = `Word count: ${words.length}`;
+        }
+
         async function submitWritingTask() {
             const studentPost = document.getElementById('student_post').value;
             const feedbackElement = document.getElementById('feedback_writing_task');
 
-            if (studentPost.trim().length < 150) {
-                showFeedback('feedback_writing_task', false, 'Please write at least 150 words for your summary.');
+            const text = studentPost.trim();
+            const words = text.split(/\s+/).filter(word => word.length > 0);
+
+            if (words.length < 150) {
+                showFeedback('feedback_writing_task', false, `Your summary is too short. Please write at least 150 words. Current word count: ${words.length}`);
                 return;
             }
 
