@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Deforestation and Desertification</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #f8f9fa;
+  }
+  .left, .right {
+    padding: 30px;
+    overflow-y: auto;
+  }
+  .left {
+    width: 50%;
+    background-color: #ffffff;
+    border-right: 2px solid #dee2e6;
+    box-shadow: inset -5px 0 5px -5px #dee2e6;
+    line-height: 1.6;
+  }
+  .right {
+    width: 50%;
+    background-color: #fdfdfd;
+  }
+  h2 {
+    color: #2c3e50;
+    font-size: 1.75em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+  }
+  p, li {
+    font-size: 1.05em;
+    color: #333;
+  }
+  input[type="text"], select {
+    width: 200px;
+    padding: 6px;
+    font-size: 0.95em;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
+  .explanation {
+    background-color: #eef5e8;
+    padding: 10px;
+    margin-top: 8px;
+    border-left: 4px solid #4CAF50;
+    font-size: 0.95em;
+    color: #333;
+  }
+  .container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+  }
+  .resizer {
+    width: 6px;
+    cursor: col-resize;
+    background-color: #ced4da;
+    transition: background-color 0.3s;
+  }
+  .resizer:hover {
+    background-color: #adb5bd;
+  }
+  .highlighted {
+    background-color: yellow;
+  }
+  .floating-tools {
+    position: fixed;
+    top: 100px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 1000;
+    background-color: rgba(255,255,255,0.2);
+    padding: 2px;
+    border-radius: 4px;
+    transition: opacity 0.3s ease;
+  }
+  #reading-timer {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: #ffc107;
+    color: #000;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    z-index: 1000;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="left" style="padding-left: 50px;">
+    <h2 style="text-align: center; font-size: 2em; margin-top: 0;">Deforestation and Desertification</h2>
+    <p><strong>A.</strong> The Sahel zone lies between the Sahara Desert and the fertile savannahs of northern Nigeria and southern Sudan. The word Sahel comes from Arabic and means marginal or transitional, and this is a good description of these semi-arid lands, which occupy much of the West African countries of Mali, Mauritania, Niger, and Chad.</p>
+    <p><strong>B.</strong> Unfortunately, over the last century, the Sahara Desert has steadily crept southwards, eating into once productive Sahel lands. United Nations surveys show that over 70 per cent of the dry land in agricultural use in Africa has deteriorated over the last 30 years. Droughts have become more prolonged and more severe, the most recent lasting over twenty years in parts of the Sahel region. The same process of desertification is taking place across southern Africa as the Kalahari Desert advances into Botswana and parts of South Africa.</p>
+    <p><strong>C.</strong> One of the major causes of this desert advance is poor agricultural land use, driven by the pressures of increasing population. Overgrazing – keeping too many farm animals on the land – means that grasses and other plants cannot recover, and scarce water supplies are exhausted. Overcultivation – trying to grow too many crops on poor land – results in the soil becoming even less fertile and drier, and beginning to break up. Soil erosion follows, and the land turns into a desert.</p>
+    <p><strong>D.</strong> Another cause of desertification is the loss of tree cover. Trees are cut down for use as fuel and to clear land for agricultural use. Tree roots help to bind the soil together, to conserve moisture, and to provide a habitat for other plants and animals. When trees are cut down, the soil begins to dry and loosen, wind and rain erosion increase, other plant species die, and eventually, the fertile topsoil may be almost entirely lost, leaving only bare rock and dust.</p>
+    <p><strong>E.</strong> The effects of loss of topsoil and increased drought are irreversible. They are, however, preventable. Careful conservation of tree cover and sustainable agricultural land use have been shown to halt the deterioration of soil and lessen the effects of a shortage of rainfall. One project in Kita in south-west Mali funded by the UNDP has involved local communities in the sustainable management of the forest, while at the same time providing a viable agricultural economy based on the production of soaps, beekeeping, and marketing shea nuts. This may be a model for similar projects in other West African countries.</p>
+  </div>
+  <div class="resizer" onmousedown="startResizing(event)"></div>
+  <div class="right">
+    <div id="reading-timer">Time: 0m 0s</div>
+    <h2>Questions</h2>
+    <h3>Sentence Completion</h3>
+    <p>1. The climate of the Sahel is described as:<br><input id="q1" type="text"><div id="q1_result"></div></p>
+    <p>2. In some areas of the Sahel, there has been no rainfall for more than:<br><input id="q2" type="text"><div id="q2_result"></div></p>
+    <p>3. Desertification is caused by overgrazing, but this in turn is due to the pressure from:<br><input id="q3" type="text"><div id="q3_result"></div></p>
+    <p>4. When trees are cut down, the soil is affected, which leads to the death of the surrounding:<br><input id="q4" type="text"><div id="q4_result"></div></p>
+    <p>5. The consequences of the loss of topsoil cannot be reversed, but they are:<br><input id="q5" type="text"><div id="q5_result"></div></p>
+    
+<p><button onclick="checkSentenceCompletion()">Check Sentence Completion</button></p>
+
+    <h3>True / False / Not Given</h3>
+    <p>7. The Sahara has spread slowly northwards into the Sahel region.<br>
+      <select id="q7">
+        <option value="">-- Select --</option>
+        <option value="TRUE">TRUE</option>
+        <option value="FALSE">FALSE</option>
+        <option value="NOT GIVEN">NOT GIVEN</option>
+      </select>
+      <div id="q7_result"></div>
+    </p>
+    <p>8. Just over 70 per cent of the dry land in agricultural use in Africa has deteriorated over the last 30 years.<br>
+      <select id="q8">
+        <option value="">-- Select --</option>
+        <option value="TRUE">TRUE</option>
+        <option value="FALSE">FALSE</option>
+        <option value="NOT GIVEN">NOT GIVEN</option>
+      </select>
+      <div id="q8_result"></div>
+    </p>
+    <p>9. Desertification is taking place faster in southern Africa than in the Sahel.<br>
+      <select id="q9">
+        <option value="">-- Select --</option>
+        <option value="TRUE">TRUE</option>
+        <option value="FALSE">FALSE</option>
+        <option value="NOT GIVEN">NOT GIVEN</option>
+      </select>
+      <div id="q9_result"></div>
+    </p>
+    <p>10. The advance of the desert is not the result of poor agricultural land use.<br>
+      <select id="q10">
+        <option value="">-- Select --</option>
+        <option value="TRUE">TRUE</option>
+        <option value="FALSE">FALSE</option>
+        <option value="NOT GIVEN">NOT GIVEN</option>
+      </select>
+      <div id="q10_result"></div>
+    </p>
+    <p>11. The loss of tree cover is a minor cause of desertification.<br>
+      <select id="q11">
+        <option value="">-- Select --</option>
+        <option value="TRUE">TRUE</option>
+        <option value="FALSE">FALSE</option>
+        <option value="NOT GIVEN">NOT GIVEN</option>
+      </select>
+      <div id="q11_result"></div>
+    </p>
+    <p>12. If there is a loss of tree cover, the deterioration in the soil is halted.<br>
+      <select id="q12">
+        <option value="">-- Select --</option>
+        <option value="TRUE">TRUE</option>
+        <option value="FALSE">FALSE</option>
+        <option value="NOT GIVEN">NOT GIVEN</option>
+      </select>
+      <div id="q12_result"></div>
+    </p>
+    
+<p><button onclick="checkTrueFalse()">Check True/False/Not Given</button></p>
+  </div>
+</div>
+<div class="floating-tools">
+  <button onclick="highlightSelection()" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1)'" title="Highlight" style="background-color: transparent; border: none; font-size: 0.9em; cursor: pointer; transition: transform 0.2s ease; color: #2c3e50;">✏️</button>
+  <button onclick="clearHighlights()" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1)'" title="Clear Highlights" style="background-color: transparent; border: none; font-size: 0.9em; cursor: pointer; transition: transform 0.2s ease; color: #dc3545;">❌</button>
+  <button onclick="translateSelection()" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1)'" title="Translate Selection" style="background-color: transparent; border: none; font-size: 0.9em; cursor: pointer; transition: transform 0.2s ease; color: #007bff;">🌐</button>
+</div>
+<script>
+const left = document.querySelector('.left');
+const right = document.querySelector('.right');
+let isResizing = false;
+function startResizing(e) {
+  isResizing = true;
+  document.body.style.cursor = 'col-resize';
+  document.addEventListener('mousemove', resizePanels);
+  document.addEventListener('mouseup', stopResizing);
+}
+function resizePanels(e) {
+  if (!isResizing) return;
+  const container = document.querySelector('.container');
+  const offsetLeft = container.offsetLeft;
+  const pointerX = e.clientX - offsetLeft;
+  const containerWidth = container.offsetWidth;
+  const leftWidth = (pointerX / containerWidth) * 100;
+  left.style.width = `${leftWidth}%`;
+  right.style.width = `${100 - leftWidth}%`;
+}
+function stopResizing() {
+  isResizing = false;
+  document.body.style.cursor = 'default';
+  document.removeEventListener('mousemove', resizePanels);
+  document.removeEventListener('mouseup', stopResizing);
+}
+let seconds = 0;
+function updateTimer() {
+  seconds++;
+  const minutes = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  document.getElementById('reading-timer').textContent = `Time: ${minutes}m ${secs}s`;
+}
+setInterval(updateTimer, 1000);
+
+function highlightSelection() {
+  const selection = window.getSelection();
+  if (!selection.rangeCount) return;
+  const range = selection.getRangeAt(0);
+  const selectedText = range.toString();
+  if (!selectedText.trim()) return;
+  const span = document.createElement("span");
+  span.className = "highlighted";
+  span.textContent = selectedText;
+  range.deleteContents();
+  range.insertNode(span);
+  selection.removeAllRanges();
+}
+
+function clearHighlights() {
+  const highlights = document.querySelectorAll('.highlighted');
+  highlights.forEach(span => {
+    const textNode = document.createTextNode(span.textContent);
+    span.parentNode.replaceChild(textNode, span);
+  });
+}
+
+function translateSelection() {
+  const selection = window.getSelection().toString().trim();
+  if (!selection) return;
+  const word = encodeURIComponent(selection.split(" ")[0].toLowerCase());
+  const url = `https://www.oxfordlearnersdictionaries.com/definition/english/${word}`;
+  window.open(url, '_blank');
+}
+
+function checkSentenceCompletion() {
+  const textAnswers = {
+    q1: "semi-arid",
+    q2: "twenty years",
+    q3: "increasing population",
+    q4: "plant species",
+    q5: "preventable",
+    q6: "rainfall"
+  };
+  for (const id in textAnswers) {
+    const input = document.getElementById(id);
+    const result = document.getElementById(`${id}_result`);
+    const correct = textAnswers[id].toLowerCase();
+    if (!input.value.trim()) {
+      result.innerHTML = "⚠️ Please enter an answer.";
+    } else if (input.value.trim().toLowerCase() === correct) {
+      result.innerHTML = "✅ Correct";
+      const explanation = document.createElement('div');
+      explanation.className = 'explanation';
+      explanation.textContent = `Explanation: Correct answer is "${textAnswers[id]}".`;
+      result.appendChild(explanation);
+    } else if (input.value.trim()) {
+      result.innerHTML = "❌ Incorrect";
+    } else {
+      result.innerHTML = "";
+    }
+  }
+}
+
+function checkTrueFalse() {
+  const trueFalseAnswers = {
+    q7: "FALSE",
+    q8: "FALSE",
+    q9: "NOT GIVEN",
+    q10: "FALSE",
+    q11: "FALSE",
+    q12: "FALSE",
+    q13: "NOT GIVEN"
+  };
+  for (const id in trueFalseAnswers) {
+    const select = document.getElementById(id);
+    const result = document.getElementById(`${id}_result`);
+    const correct = trueFalseAnswers[id];
+    if (!select.value) {
+      result.innerHTML = "⚠️ Please select an option.";
+    } else if (select.value === correct) {
+      result.innerHTML = "✅ Correct";
+      const explanation = document.createElement('div');
+      explanation.className = 'explanation';
+      explanation.textContent = `Explanation: The correct answer is "${correct}" based on the passage.`;
+      result.appendChild(explanation);
+    } else if (select.value) {
+      result.innerHTML = "❌ Incorrect";
+    } else {
+      result.innerHTML = "";
+    }
+  }
+}
+</script>
+</body>
+</html>

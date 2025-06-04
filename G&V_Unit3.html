@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindset for IELTS 1 - Unit 3 G&V</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global styles for consistent font size and family */
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px; /* Base font size */
+            line-height: 1.6;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        .text-base {
+            font-size: 16px; /* Ensure all text elements adhere to this */
+        }
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .exercise-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            background-color: #fdfefe;
+        }
+        .exercise-section h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c5282;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ebf4ff;
+            padding-bottom: 10px;
+        }
+        .question-text {
+            margin-bottom: 10px;
+        }
+        /* Styling for select (dropdown) and input[type="text"] elements */
+        select, input[type="text"] {
+            padding: 8px 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            font-size: 16px;
+            background-color: #ffffff;
+            transition: border-color 0.2s;
+            min-width: 150px; /* Ensure dropdowns have a minimum width */
+        }
+        /* Highlighted and bolded dropdowns (specific style) */
+        select {
+            font-weight: 600; /* Bold */
+            background-color: #e0f7fa; /* Light cyan background for highlight */
+            border-color: #00bcd4; /* Cyan border */
+            appearance: none; /* Remove default arrow on some browsers */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%20viewBox%3D%220%200%20292.4%20292.4%22%3E%3Cpath%20fill%3D%22%231e293b%22%20d%3D%22M287%2C197.9L146.2%2C57.1L5.4%2C197.9h281.6z%22%2F%3E%3C%2Fsvg%3E'); /* Custom arrow */
+            background-repeat: no-repeat;
+            background-position: right 0.7em top 50%, 0 0;
+            background-size: 0.65em auto, 100%;
+            cursor: pointer;
+        }
+        select:focus {
+            outline: none;
+            border-color: #00bcd4; /* Keep cyan border on focus */
+            box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.3); /* Cyan shadow on focus */
+            background-color: #e0f7fa; /* Keep same background on focus */
+        }
+        /* Styling for correct/incorrect answers */
+        .correct-answer {
+            background-color: #d1fae5; /* Green for correct */
+            border-color: #34d399;
+        }
+        .incorrect-answer {
+            background-color: #fee2e2; /* Red for incorrect */
+            border-color: #ef4444;
+        }
+        .show-answer {
+            background-color: #e0f2fe; /* Blue for shown answer */
+            border-color: #60a5fa;
+        }
+        /* Feedback message styling (Correct! / Incorrect.) */
+        .feedback {
+            margin-top: 10px;
+            font-weight: 600;
+            text-align: right;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block; /* Ensures padding and border apply */
+            min-width: 80px; /* Give it a minimum width */
+            text-align: center;
+        }
+        .feedback.correct {
+            color: #15803d; /* Darker green text */
+            background-color: #dcfce7; /* Lighter green background from image */
+            border: 1px solid #bbf7d0; /* Green border from image */
+        }
+        .feedback.incorrect {
+            color: #b91c1c; /* Darker red text */
+            background-color: #fee2e2; /* Lighter red background from image */
+            border: 1px solid #fca5a5; /* Red border from image */
+        }
+        /* Button styling */
+        .button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-right: 10px;
+        }
+        .button-primary {
+            background-color: #4299e1;
+            color: #ffffff;
+        }
+        .button-primary:hover {
+            background-color: #3182ce;
+            transform: translateY(-1px);
+        }
+        .button-secondary {
+            background-color: #a0aec0;
+            color: #ffffff;
+        }
+        .button-secondary:hover {
+            background-color: #718096;
+            transform: translateY(-1px);
+        }
+
+        /* Drag and Drop Specific Styles - These are now largely unused for Ex6 */
+        .word-bank-for-drag-drop {
+            background-color: #e6fffa;
+            border: 1px solid #81e6d9;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: none; /* Hide if not used */
+        }
+        .draggable-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .draggable, .dragged-item {
+            padding: 10px 15px;
+            background-color: #bee3f8;
+            border: 1px solid #63b3ed;
+            border-radius: 8px;
+            cursor: grab;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            font-size: 16px;
+            transition: background-color 0.2s;
+        }
+        .draggable:hover, .dragged-item:hover {
+            background-color: #90cdf4;
+        }
+        .drop-target {
+            padding: 15px;
+            border: 2px dashed #a0aec0;
+            border-radius: 8px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #edf2f7;
+            transition: border-color 0.2s, background-color 0.2s;
+            font-size: 16px;
+            flex-grow: 1;
+        }
+        .drop-target.drag-over {
+            border-color: #4299e1;
+            background-color: #ebf8ff;
+        }
+        .drop-target-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .hidden-draggable {
+            display: none;
+        }
+        /* Style for bullet points in exercise 1 */
+        .exercise-list {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .exercise-list li {
+            margin-bottom: 8px;
+        }
+        /* Specific styles for Exercise 3 and 5 to improve readability */
+        .exercise-sentence {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 5px;
+            margin-bottom: 8px;
+        }
+        .exercise-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #e2e8f0;
+        }
+        .exercise-feedback {
+            margin-top: 10px;
+            font-weight: 600;
+            text-align: right;
+        }
+        /* Specific input width adjustments for responsiveness */
+        .inline-block.w-40 { width: 160px; }
+        .inline-block.w-96 { width: 384px; }
+        .inline-block.w-64 { width: 256px; }
+
+        @media (max-width: 768px) {
+            .inline-block.w-40 { width: 120px; }
+            .inline-block.w-96 { width: 280px; }
+            .inline-block.w-64 { width: 180px; }
+        }
+        @media (max-width: 480px) {
+            .inline-block.w-40 { width: 90px; }
+            .inline-block.w-96, .inline-block.w-64 { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-3xl font-bold text-center text-blue-800 mb-8">Mindset for IELTS 1 - Unit 3 G&V</h1>
+
+        <!-- Exercise 1 -->
+        <div id="exercise1" class="exercise-section">
+            <h2 class="text-2xl">Unit 3: Exercise 1</h2>
+            <p class="mb-4 text-base">Complete the sentences. Use the words in the box.</p>
+            <p class="text-base">This person …</p>
+            <div class="question-item">
+                <p>looks after people who are ill or hurt: <select id="ex1_q1" class="ex1-select"></select></p>
+                <div class="feedback" id="feedback_ex1_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>designs or builds machines, equipment or roads, etc.: <select id="ex1_q2" class="ex1-select"></select></p>
+                <div class="feedback" id="feedback_ex1_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>cooks food in a restaurant: <select id="ex1_q3" class="ex1-select"></select></p>
+                <div class="feedback" id="feedback_ex1_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>protects his or her country: <select id="ex1_q4" class="ex1-select"></select></p>
+                <div class="feedback" id="feedback_ex1_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>keeps information about money that a company or person receives, pays or owes: <select id="ex1_q5" class="ex1-select"></select></p>
+                <div class="feedback" id="feedback_ex1_q5"></div>
+            </div>
+            <div class="question-item">
+                <p>gives people and businesses advice about the law: <select id="ex1_q6" class="ex1-select"></select></p>
+                <div class="feedback" id="feedback_ex1_q6"></div>
+            </div>
+            <div class="question-item">
+                <p>works in a school or college: <select id="ex1_q7" class="ex1-select"></select></p>
+                <div class="feedback" id="feedback_ex1_q7"></div>
+            </div>
+            <div class="question-item">
+                <p>produces computer programs: <select id="ex1_q8" class="ex1-select"></select></p>
+                <div class="feedback" id="feedback_ex1_q8"></div>
+            </div>
+            <div class="question-item">
+                <p>looks after sick animals: <select id="ex1_q9" class="ex1-select"></select></p>
+                <div class="feedback" id="feedback_ex1_q9"></div>
+            </div>
+            <div class="question-item">
+                <p>is responsible for a team of people or a project: <select id="ex1_q10" class="ex1-select"></select></p>
+                <div class="feedback" id="feedback_ex1_q10"></div>
+            </div>
+            <div class="exercise-footer">
+                <button class="button button-primary check-exercise-btn" data-exercise-id="1">Check Answer</button>
+                <button class="button button-secondary show-exercise-btn" data-exercise-id="1">Show Answer</button>
+                <button class="button button-secondary reset-exercise-btn" data-exercise-id="1">Reset</button>
+            </div>
+            <div id="feedback-ex1" class="exercise-feedback"></div>
+        </div>
+
+        <!-- Exercise 2 -->
+        <div id="exercise2" class="exercise-section">
+            <h2 class="text-2xl">Unit 3: Exercise 2</h2>
+            <p class="mb-4 text-base">Complete the text. Use the words in the box.</p>
+            <div class="question-item">
+                <p>I never did anything interesting in my old job. It was really <select id="ex2_q1" class="ex2-select"></select>.</p>
+                <div class="feedback" id="feedback_ex2_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>I was very <select id="ex2_q2" class="ex2-select"></select> to hear about Maria’s new job. It sounds fascinating.</p>
+                <div class="feedback" id="feedback_ex2_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>My sister’s really <select id="ex2_q3" class="ex2-select"></select> about her new project at work. She can’t wait to start!</p>
+                <div class="feedback" id="feedback_ex2_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>It’s quite <select id="ex2_q4" class="ex2-select"></select> that so many young people are looking for jobs after they leave university.</p>
+                <div class="feedback" id="feedback_ex2_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>I was <select id="ex2_q5" class="ex2-select"></select> when they didn't invite me for a job interview, but I'm sure I'll find a new job soon.</p>
+                <div class="feedback" id="feedback_ex2_q5"></div>
+            </div>
+            <div class="question-item">
+                <p>James works as an engineer building very tall buildings. His work looks absolutely <select id="ex2_q6" class="ex2-select"></select>!</p>
+                <div class="feedback" id="feedback_ex2_q6"></div>
+            </div>
+            <div class="question-item">
+                <p>I was really <select id="ex2_q7" class="ex2-select"></select> when he cancelled the meeting and he didn’t even tell me.</p>
+                <div class="feedback" id="feedback_ex2_q7"></div>
+            </div>
+            <div class="question-item">
+                <p>They treat their workers really badly. I think it’s <select id="ex2_q8" class="ex2-select"></select>.</p>
+                <div class="feedback" id="feedback_ex2_q8"></div>
+            </div>
+            <div class="question-item">
+                <p>I was <select id="ex2_q9" class="ex2-select"></select> when they offered me the job. I didn't think that I'd done very well in the interview.</p>
+                <div class="feedback" id="feedback_ex2_q9"></div>
+            </div>
+            <div class="question-item">
+                <p>I had to work late today and now I’m absolutely <select id="ex2_q10" class="ex2-select"></select>.</p>
+                <div class="feedback" id="feedback_ex2_q10"></div>
+            </div>
+            <div class="exercise-footer">
+                <button class="button button-primary check-exercise-btn" data-exercise-id="2">Check Answer</button>
+                <button class="button button-secondary show-exercise-btn" data-exercise-id="2">Show Answer</button>
+                <button class="button button-secondary reset-exercise-btn" data-exercise-id="2">Reset</button>
+            </div>
+            <div id="feedback-ex2" class="exercise-feedback"></div>
+        </div>
+
+        <!-- Exercise 3 -->
+        <div id="exercise3" class="exercise-section">
+            <h2 class="text-2xl">Unit 3: Exercise 3</h2>
+            <p class="mb-4 text-base">Choose the correct prepositions to complete the text.</p>
+            <div class="question-item">
+                <p class="exercise-sentence">After I left school, I decided to go <select id="ex3_q1" class="ex3-select"></select> university.</p>
+                <div class="feedback" id="feedback_ex3_q1"></div>
+            </div>
+            <div class="question-item">
+                <p class="exercise-sentence">I studied <select id="ex3_q2" class="ex3-select"></select> university for three years.</p>
+                <div class="feedback" id="feedback_ex3_q2"></div>
+            </div>
+            <div class="question-item">
+                <p class="exercise-sentence">I did a degree <select id="ex3_q3" class="ex3-select"></select> marketing.</p>
+                <div class="feedback" id="feedback_ex3_q3"></div>
+            </div>
+            <div class="question-item">
+                <p class="exercise-sentence">It was very interesting. I learnt all <select id="ex3_q4" class="ex3-select"></select> sales and marketing.</p>
+                <div class="feedback" id="feedback_ex3_q4"></div>
+            </div>
+            <div class="question-item">
+                <p class="exercise-sentence">When I graduated <select id="ex3_q5" class="ex3-select"></select> university, I needed to get a job.</p>
+                <div class="feedback" id="feedback_ex3_q5"></div>
+            </div>
+            <div class="question-item">
+                <p class="exercise-sentence">I wanted to work <select id="ex3_q6" class="ex3-select"></select> a large international company.</p>
+                <div class="feedback" id="feedback_ex3_q6"></div>
+            </div>
+            <div class="question-item">
+                <p class="exercise-sentence">I applied <select id="ex3_q7" class="ex3-select"></select> lots of jobs, but it was difficult because I didn’t have any experience.</p>
+                <div class="feedback" id="feedback_ex3_q7"></div>
+            </div>
+            <div class="question-item">
+                <p class="exercise-sentence">In the end, I got a job <select id="ex3_q8" class="ex3-select"></select> a marketing assistant.</p>
+                <div class="feedback" id="feedback_ex3_q8"></div>
+            </div>
+            <div class="question-item">
+                <p class="exercise-sentence">It was a bit boring, but I was very good <select id="ex3_q9" class="ex3-select"></select> my job.</p>
+                <div class="feedback" id="feedback_ex3_q9"></div>
+            </div>
+            <div class="question-item">
+                <p class="exercise-sentence">After a few years, I was offered a job as a marketing manager and was given an increase <select id="ex3_q10" class="ex3-select"></select> salary.</p>
+                <div class="feedback" id="feedback_ex3_q10"></div>
+            </div>
+            <div class="exercise-footer">
+                <button class="button button-primary check-exercise-btn" data-exercise-id="3">Check Answer</button>
+                <button class="button button-secondary show-exercise-btn" data-exercise-id="3">Show Answer</button>
+                <button class="button button-secondary reset-exercise-btn" data-exercise-id="3">Reset</button>
+            </div>
+            <div id="feedback-ex3" class="exercise-feedback"></div>
+        </div>
+
+        <!-- Exercise 4 -->
+        <div id="exercise4" class="exercise-section">
+            <h2 class="text-2xl">Unit 3: Exercise 4</h2>
+            <p class="mb-4 text-base">Match the explanations with the statements.</p>
+            <div class="question-item">
+                <p>I’m grateful for your help. <select id="ex4_q1" class="ex4-select"></select></p>
+                <div class="feedback" id="feedback_ex4_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>I’m nervous about my exam. <select id="ex4_q2" class="ex4-select"></select></p>
+                <div class="feedback" id="feedback_ex4_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>I’m pleased with my results. <select id="ex4_q3" class="ex4-select"></select></p>
+                <div class="feedback" id="feedback_ex4_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>I’m furious with my sister. <select id="ex4_q4" class="ex4-select"></select></p>
+                <div class="feedback" id="feedback_ex4_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>I’m relieved that everything’s OK. <select id="ex4_q5" class="ex4-select"></select></p>
+                <div class="feedback" id="feedback_ex4_q5"></div>
+            </div>
+            <div class="question-item">
+                <p>I’m impressed by your work. <select id="ex4_q6" class="ex4-select"></select></p>
+                <div class="feedback" id="feedback_ex4_q6"></div>
+            </div>
+            <div class="question-item">
+                <p>I’m annoyed about the changes. <select id="ex4_q7" class="ex4-select"></select></p>
+                <div class="feedback" id="feedback_ex4_q7"></div>
+            </div>
+            <div class="question-item">
+                <p>I’m upset about what you said. <select id="ex4_q8" class="ex4-select"></select></p>
+                <div class="feedback" id="feedback_ex4_q8"></div>
+            </div>
+            <div class="question-item">
+                <p>I’m positive about the future. <select id="ex4_q9" class="ex4-select"></select></p>
+                <div class="feedback" id="feedback_ex4_q9"></div>
+            </div>
+            <div class="question-item">
+                <p>I’m scared of my boss. <select id="ex4_q10" class="ex4-select"></select></p>
+                <div class="feedback" id="feedback_ex4_q10"></div>
+            </div>
+            <div class="exercise-footer">
+                <button class="button button-primary check-exercise-btn" data-exercise-id="4">Check Answer</button>
+                <button class="button button-secondary show-exercise-btn" data-exercise-id="4">Show Answer</button>
+                <button class="button button-secondary reset-exercise-btn" data-exercise-id="4">Reset</button>
+            </div>
+            <div id="feedback-ex4" class="exercise-feedback"></div>
+        </div>
+
+        <!-- Exercise 5 -->
+        <div id="exercise5" class="exercise-section">
+            <h2 class="text-2xl">Unit 3: Exercise 5</h2>
+            <p class="mb-4 text-base">Complete the text. Use the words in the box.</p>
+            <div class="question-item">
+                <p class="exercise-sentence">In my country, many very young children go to <select id="ex5_q1" class="ex5-select"></select>, but they don’t have to go.</p>
+                <div class="feedback" id="feedback_ex5_q1"></div>
+            </div>
+            <div class="question-item">
+                <p class="exercise-sentence">The first school you must go to is <select id="ex5_q2" class="ex5-select"></select>.</p>
+                <div class="feedback" id="feedback_ex5_q2"></div>
+            </div>
+            <div class="question-item">
+                <p class="exercise-sentence">This is for children aged five to eleven years old. Older children go to <select id="ex5_q3" class="ex5-select"></select>, where they have lots of homework and exams. Here, they study subjects like Geography, History and IT.</p>
+                <div class="feedback" id="feedback_ex5_q3"></div>
+            </div>
+            <div class="question-item">
+                <p class="exercise-sentence">Some children have <select id="ex5_q4" class="ex5-select"></select>, for example they might have extra English classes, which their parents pay for.</p>
+                <div class="feedback" id="feedback_ex5_q4"></div>
+            </div>
+            <div class="question-item">
+                <p class="exercise-sentence">Some people stop their education after secondary school, but many continue their education by going to <select id="ex5_q5" class="ex5-select"></select>. In my country, they usually study just a few subjects at college.</p>
+                <div class="feedback" id="feedback_ex5_q5"></div>
+            </div>
+            <div class="question-item">
+                <p class="exercise-sentence">You can study for a degree at <select id="ex5_q6" class="ex5-select"></select>.</p>
+                <div class="feedback" id="feedback_ex5_q6"></div>
+            </div>
+            <div class="question-item">
+                <p class="exercise-sentence">Many university courses include a <select id="ex5_q7" class="ex5-select"></select>, where students spend a few months in a place of work and learn some practical skills.</p>
+                <div class="feedback" id="feedback_ex5_q7"></div>
+            </div>
+            <div class="question-item">
+                <p class="exercise-sentence">After graduating from university, some students stay at a university to do a <select id="ex5_q8" class="ex5-select"></select>.</p>
+                <div class="feedback" id="feedback_ex5_q8"></div>
+            </div>
+            <div class="question-item">
+                <p class="exercise-sentence">Education doesn’t stop when you leave school or university. Many people go to <select id="ex5_q9" class="ex5-select"></select> which they attend after a full day at work.</p>
+                <div class="feedback" id="feedback_ex5_q9"></div>
+            </div>
+            <div class="question-item">
+                <p class="exercise-sentence">You can also learn a lot at work by going on <select id="ex5_q10" class="ex5-select"></select>. For example, you might learn how to use new computer software or how to communicate with customers.</p>
+                <div class="feedback" id="feedback_ex5_q10"></div>
+            </div>
+            <div class="exercise-footer">
+                <button class="button button-primary check-exercise-btn" data-exercise-id="5">Check Answer</button>
+                <button class="button button-secondary show-exercise-btn" data-exercise-id="5">Show Answer</button>
+                <button class="button button-secondary reset-exercise-btn" data-exercise-id="5">Reset</button>
+            </div>
+            <div id="feedback-ex5" class="exercise-feedback"></div>
+        </div>
+
+        <!-- Exercise 6 -->
+        <div id="exercise6" class="exercise-section">
+            <h2 class="text-2xl">Unit 3: Exercise 6</h2>
+            <p class="mb-4 text-base">Match the present results (present simple) with the past events (present perfect).</p>
+
+            <div class="space-y-3 text-base">
+                <div class="question-item">
+                    <p>1. I’ve finished university. <select id="ex6_q1" class="ex6-select"></select></p>
+                    <div class="feedback" id="feedback_ex6_q1"></div>
+                </div>
+                <div class="question-item">
+                    <p>2. Andy’s found a new job. <select id="ex6_q2" class="ex6-select"></select></p>
+                    <div class="feedback" id="feedback_ex6_q2"></div>
+                </div>
+                <div class="question-item">
+                    <p>3. I’ve lost my school bag. <select id="ex6_q3" class="ex6-select"></select></p>
+                    <div class="feedback" id="feedback_ex6_q3"></div>
+                </div>
+                <div class="question-item">
+                    <p>4. They’ve offered me a better job. <select id="ex6_q4" class="ex6-select"></select></p>
+                    <div class="feedback" id="feedback_ex6_q4"></div>
+                </div>
+                <div class="question-item">
+                    <p>5. I’ve done all my homework. <select id="ex6_q5" class="ex6-select"></select></p>
+                    <div class="feedback" id="feedback_ex6_q5"></div>
+                </div>
+                <div class="question-item">
+                    <p>6. My grandparents have retired. <select id="ex6_q6" class="ex6-select"></select></p>
+                    <div class="feedback" id="feedback_ex6_q6"></div>
+                </div>
+                <div class="question-item">
+                    <p>7. Daniel’s broken his arm. <select id="ex6_q7" class="ex6-select"></select></p>
+                    <div class="feedback" id="feedback_ex6_q7"></div>
+                </div>
+                <div class="question-item">
+                    <p>8. Helena’s left school. <select id="ex6_q8" class="ex6-select"></select></p>
+                    <div class="feedback" id="feedback_ex6_q8"></div>
+                </div>
+            </div>
+            <div class="exercise-footer">
+                <button class="button button-primary check-exercise-btn" data-exercise-id="6">Check Answer</button>
+                <button class="button button-secondary show-exercise-btn" data-exercise-id="6">Show Answer</button>
+                <button class="button button-secondary reset-exercise-btn" data-exercise-id="6">Reset</button>
+            </div>
+            <div id="feedback-ex6" class="exercise-feedback"></div>
+        </div>
+
+        <!-- Exercise 7 -->
+        <div id="exercise7" class="exercise-section">
+            <h2 class="text-2xl">Unit 3: Exercise 7</h2>
+            <p class="mb-4 text-base">Complete the sentences. Use the past participle of the irregular verbs in brackets.</p>
+            <div class="question-item">
+                <p>He wasn’t very good when he started, but he’s <input type="text" id="ex7_q1" class="ex7-input" placeholder="(become)"> a very good teacher in the last few years.</p>
+                <div class="feedback" id="feedback_ex7_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>Have you <input type="text" id="ex7_q2" class="ex7-input" placeholder="(chose)"> a career yet? Do you know what you want to do when you leave school?</p>
+                <div class="feedback" id="feedback_ex7_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>I studied History for five years at school, but now I’ve <input type="text" id="ex7_q3" class="ex7-input" placeholder="(forget)"> almost everything.</p>
+                <div class="feedback" id="feedback_ex7_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>It’s been a very useful course and you’re a great teacher – you’ve <input type="text" id="ex7_q4" class="ex7-input" placeholder="(teach)"> me a lot.</p>
+                <div class="feedback" id="feedback_ex7_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>I’ve <input type="text" id="ex7_q5" class="ex7-input" placeholder="(send)"> emails to lots of companies asking for a job, but nobody’s offered me one yet.</p>
+                <div class="feedback" id="feedback_ex7_q5"></div>
+            </div>
+            <div class="question-item">
+                <p>Have you <input type="text" id="ex7_q6" class="ex7-input" placeholder="(be)"> on any training courses this year?</p>
+                <div class="feedback" id="feedback_ex7_q6"></div>
+            </div>
+            <div class="question-item">
+                <p>I need to write a 10,000-word essay by the end of my course, but I’ve only <input type="text" id="ex7_q7" class="ex7-input" placeholder="(write)"> 2,500 words so far.</p>
+                <div class="feedback" id="feedback_ex7_q7"></div>
+            </div>
+            <div class="question-item">
+                <p>I studied Business at university, but I’ve <input type="text" id="ex7_q8" class="ex7-input" placeholder="(learn)"> more in my first month at work than in three years at university.</p>
+                <div class="feedback" id="feedback_ex7_q8"></div>
+            </div>
+            <div class="question-item">
+                <p>Sorry I haven’t finished the presentation yet. I haven’t <input type="text" id="ex7_q9" class="ex7-input" placeholder="(have)"> time.</p>
+                <div class="feedback" id="feedback_ex7_q9"></div>
+            </div>
+            <div class="question-item">
+                <p>OK, so now that I’ve <input type="text" id="ex7_q10" class="ex7-input" placeholder="(show)"> you what to do, it’s your turn.</p>
+                <div class="feedback" id="feedback_ex7_q10"></div>
+            </div>
+            <div class="exercise-footer">
+                <button class="button button-primary check-exercise-btn" data-exercise-id="7">Check Answer</button>
+                <button class="button button-secondary show-exercise-btn" data-exercise-id="7">Show Answer</button>
+                <button class="button button-secondary reset-exercise-btn" data-exercise-id="7">Reset</button>
+            </div>
+            <div id="feedback-ex7" class="exercise-feedback"></div>
+        </div>
+
+        <!-- Exercise 8 -->
+        <div id="exercise8" class="exercise-section">
+            <h2 class="text-2xl">Unit 3: Exercise 8</h2>
+            <p class="mb-4 text-base">Choose the correct word ($already$, $yet$, or $just$).</p>
+            <div class="question-item">
+                <p>A: Hey, I’ve <select id="ex8_q1" class="ex8-select"></select> remembered.</p>
+                <div class="feedback" id="feedback_ex8_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>We need to hand in our essays tomorrow. Have you started writing yours <select id="ex8_q2" class="ex8-select"></select>?</p>
+                <div class="feedback" id="feedback_ex8_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>B: Actually, I’ve <select id="ex8_q3" class="ex8-select"></select> started. I started planning it half an hour ago.</p>
+                <div class="feedback" id="feedback_ex8_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>But I haven’t written anything <select id="ex8_q4" class="ex8-select"></select>. I’m still thinking about what to write. What about you?</p>
+                <div class="feedback" id="feedback_ex8_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>A: I started working on it at the weekend. I’ve <select id="ex8_q5" class="ex8-select"></select> written about half of it, but there’s still a lot of work to do.</p>
+                <div class="feedback" id="feedback_ex8_q5"></div>
+            </div>
+            <div class="question-item">
+                <p>B: Oh, that’s not so bad. And have you planned everything <select id="ex8_q6" class="ex8-select"></select>?</p>
+                <div class="feedback" id="feedback_ex8_q6"></div>
+            </div>
+            <div class="question-item">
+                <p>A: No, I haven’t planned the end <select id="ex8_q7" class="ex8-select"></select>. I mean, the first half’s good, but I don’t know what to write for the ending. What about you?</p>
+                <div class="feedback" id="feedback_ex8_q7"></div>
+            </div>
+            <div class="question-item">
+                <p>B: I’ve <select id="ex8_q8" class="ex8-select"></select> told you! I started half an hour ago!</p>
+                <div class="feedback" id="feedback_ex8_q8"></div>
+            </div>
+            <div class="question-item">
+                <p>A: Oh, yes, sorry. And what about David? Has he started <select id="ex8_q9" class="ex8-select"></select>?</p>
+                <div class="feedback" id="feedback_ex8_q9"></div>
+            </div>
+            <div class="question-item">
+                <p>B: Started? He’s <select id="ex8_q10" class="ex8-select"></select> finished! He wrote the whole essay last weekend!</p>
+                <div class="feedback" id="feedback_ex8_q10"></div>
+            </div>
+            <div class="exercise-footer">
+                <button class="button button-primary check-exercise-btn" data-exercise-id="8">Check Answer</button>
+                <button class="button button-secondary show-exercise-btn" data-exercise-id="8">Show Answer</button>
+                <button class="button button-secondary reset-exercise-btn" data-exercise-id="8">Reset</button>
+            </div>
+            <div id="feedback-ex8" class="exercise-feedback"></div>
+        </div>
+
+        <!-- Exercise 9 -->
+        <div id="exercise9" class="exercise-section">
+            <h2 class="text-2xl">Unit 3: Exercise 9</h2>
+            <p class="mb-4 text-base">Complete the sentences. Use the words in brackets with the present perfect. Use contractions where possible (e.g. haven’t). The first one has been done for you.</p>
+            <div class="question-item">
+                <p>My sister’s just started university – it’s her first week this week. (my sister / just / start)</p>
+                <p>I’m really pleased. <input type="text" id="ex9_q1" class="ex9-input" placeholder="(I / pass)"></p>
+                <div class="feedback" id="feedback_ex9_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>We finished our project over a month ago, but our teacher <input type="text" id="ex9_q2" class="ex9-input" placeholder="(not / check / it / yet)"></p>
+                <div class="feedback" id="feedback_ex9_q2"></div>
+            </div>
+            <div class="question-item">
+                <p><input type="text" id="ex9_q3" class="ex9-input" placeholder="(I / already / decide)"> to go to evening classes to learn how to write computer programs.</p>
+                <div class="feedback" id="feedback_ex9_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>Don’t worry. <input type="text" id="ex9_q4" class="ex9-input" placeholder="(I / not / tell)"> anybody your exam results.</p>
+                <div class="feedback" id="feedback_ex9_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>I think the job interview went well, but <input type="text" id="ex9_q5" class="ex9-input" placeholder="(they / not / contact / me / yet)">, so I don’t know if I’ve got the job or not.</p>
+                <div class="feedback" id="feedback_ex9_q5"></div>
+            </div>
+            <div class="question-item">
+                <p>Why are we doing this training course again? <input type="text" id="ex9_q6" class="ex9-input" placeholder="(we / already / do)"> it three times!</p>
+                <div class="feedback" id="feedback_ex9_q6"></div>
+            </div>
+            <div class="question-item">
+                <p>I’m really worried. I think <input type="text" id="ex9_q7" class="ex9-input" placeholder="(I / fail)"> my end-of-course test.</p>
+                <div class="feedback" id="feedback_ex9_q7"></div>
+            </div>
+            <div class="exercise-footer">
+                <button class="button button-primary check-exercise-btn" data-exercise-id="9">Check Answer</button>
+                <button class="button button-secondary show-exercise-btn" data-exercise-id="9">Show Answer</button>
+                <button class="button button-secondary reset-exercise-btn" data-exercise-id="9">Reset</button>
+            </div>
+            <div id="feedback-ex9" class="exercise-feedback"></div>
+        </div>
+
+        <!-- Exercise 10 -->
+        <div id="exercise10" class="exercise-section">
+            <h2 class="text-2xl">Unit 3: Exercise 10</h2>
+            <p class="mb-4 text-base">Correct the questions. Use the present perfect. Use contractions where possible (e.g. hasn’t).</p>
+            <div class="question-item">
+                <p>You take all your exams yet? I’ve already finished mine.</p>
+                <p>Corrected: <input type="text" id="ex10_q1" class="ex10-input" placeholder=""></p>
+                <div class="feedback" id="feedback_ex10_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>Where Lisa go? She was here a second ago.</p>
+                <p>Corrected: <input type="text" id="ex10_q2" class="ex10-input" placeholder=""></p>
+                <div class="feedback" id="feedback_ex10_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>Anybody see my bag? I can’t find it.</p>
+                <p>Corrected: <input type="text" id="ex10_q3" class="ex10-input" placeholder=""></p>
+                <div class="feedback" id="feedback_ex10_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>Why you not finish your report? I asked you to hand it in today.</p>
+                <p>Corrected: <input type="text" id="ex10_q4" class="ex10-input" placeholder=""></p>
+                <div class="feedback" id="feedback_ex10_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>You hear the news? They’ve offered me a promotion!</p>
+                <p>Corrected: <input type="text" id="ex10_q5" class="ex10-input" placeholder=""></p>
+                <div class="feedback" id="feedback_ex10_q5"></div>
+            </div>
+            <div class="question-item">
+                <p>What you do to your hair? It looks terrible!</p>
+                <p>Corrected: <input type="text" id="ex10_q6" class="ex10-input" placeholder=""></p>
+                <div class="feedback" id="feedback_ex10_q6"></div>
+            </div>
+            <div class="exercise-footer">
+                <button class="button button-primary check-exercise-btn" data-exercise-id="10">Check Answer</button>
+                <button class="button button-secondary show-exercise-btn" data-exercise-id="10">Show Answer</button>
+                <button class="button button-secondary reset-exercise-btn" data-exercise-id="10">Reset</button>
+            </div>
+            <div id="feedback-ex10" class="exercise-feedback"></div>
+        </div>
+    </div>
+
+    <script>
+        // Function to normalize text for comparison
+        function normalizeText(text) {
+            if (typeof text !== 'string') {
+                return '';
+            }
+            return text
+                .toLowerCase()
+                .trim()
+                .replace(/[‘’]/g, "'") // curly apostrophes → straight
+                .replace(/[“”]/g, '"') // curly quotes → straight quotes
+                .replace(/–/g, '-'); // en dash to hyphen-minus
+        }
+
+        // Object containing all the correct answers for each exercise and question
+        const exerciseData = {
+            ex1: {
+                options: [
+                    "a chef", "a doctor", "a lawyer", "a manager", "a programmer",
+                    "a soldier", "a teacher", "a vet", "an accountant", "an engineer"
+                ].map(normalizeText), // Normalize options here
+                answers: { // Answers are nested under 'answers'
+                    q1: normalizeText("a doctor"),
+                    q2: normalizeText("an engineer"),
+                    q3: normalizeText("a chef"),
+                    q4: normalizeText("a soldier"),
+                    q5: normalizeText("an accountant"),
+                    q6: normalizeText("a lawyer"),
+                    q7: normalizeText("a teacher"),
+                    q8: normalizeText("a programmer"),
+                    q9: normalizeText("a vet"),
+                    q10: normalizeText("a manager")
+                }
+            },
+            ex2: {
+                options: [
+                    "Annoyed", "boring", "disappointed", "disgusting", "excited",
+                    "exhausted", "Interested", "surprised", "terrifying", "worrying"
+                ].map(normalizeText), // Normalize options here
+                answers: {
+                    q1: normalizeText("boring"),
+                    q2: normalizeText("Interested"),
+                    q3: normalizeText("excited"),
+                    q4: normalizeText("worrying"),
+                    q5: normalizeText("disappointed"),
+                    q6: normalizeText("terrifying"),
+                    q7: normalizeText("Annoyed"),
+                    q8: normalizeText("disgusting"),
+                    q9: normalizeText("surprised"),
+                    q10: normalizeText("exhausted")
+                }
+            },
+            ex3: {
+                options: { // Options for ex3 are arrays, need to map each sub-array
+                    q1: ["at", "on", "to"].map(normalizeText),
+                    q2: ["at", "by", "on"].map(normalizeText),
+                    q3: ["for", "in", "of"].map(normalizeText),
+                    q4: ["about", "on", "over"].map(normalizeText),
+                    q5: ["for", "from", "on"].map(normalizeText),
+                    q6: ["as", "by", "for"].map(normalizeText),
+                    q7: ["for", "on", "with"].map(normalizeText),
+                    q8: ["as", "at", "for"].map(normalizeText),
+                    q9: ["at", "from", "to"].map(normalizeText),
+                    q10: ["as", "in", "of"].map(normalizeText)
+                },
+                answers: {
+                    q1: normalizeText("to"),
+                    q2: normalizeText("at"),
+                    q3: normalizeText("in"),
+                    q4: normalizeText("about"),
+                    q5: normalizeText("from"),
+                    q6: normalizeText("for"),
+                    q7: normalizeText("for"),
+                    q8: normalizeText("as"),
+                    q9: normalizeText("at"),
+                    q10: normalizeText("in")
+                }
+            },
+            ex4: {
+                options: [
+                    "I think it’s good – you’ve done a great job.",
+                    "I want to thank you for it.",
+                    "I was worried, but now I’m not.",
+                    "I'm confident. I think it'll be great.",
+                    "I'm frightened of him/her.",
+                    "It makes me unhappy.",
+                    "I’m angry about them because they make my life difficult.",
+                    "I’m extremely angry with her.",
+                    "I’m happy about them.",
+                    "I’m worried about it."
+                ].map(normalizeText), // Normalize options here
+                answers: { // Answers are nested under 'answers'
+                    q1: normalizeText("I want to thank you for it."),
+                    q2: normalizeText("I’m worried about it."),
+                    q3: normalizeText("I’m happy about them."),
+                    q4: normalizeText("I’m extremely angry with her."),
+                    q5: normalizeText("I was worried, but now I’m not."),
+                    q6: normalizeText("I think it’s good – you’ve done a great job."),
+                    q7: normalizeText("I’m angry about them because they make my life difficult."),
+                    q8: normalizeText("It makes me unhappy."),
+                    q9: normalizeText("I'm confident. I think it'll be great."),
+                    q10: normalizeText("I'm frightened of him/her.")
+                }
+            },
+            ex5: {
+                options: [
+                    "College", "evening classes", "nursery school", "postgraduate course",
+                    "primary school", "private lessons", "secondary school", "training courses",
+                    "university", "work placement"
+                ].map(normalizeText), // Normalize options here
+                answers: {
+                    q1: normalizeText("nursery school"),
+                    q2: normalizeText("primary school"),
+                    q3: normalizeText("secondary school"),
+                    q4: normalizeText("private lessons"),
+                    q5: normalizeText("College"),
+                    q6: normalizeText("university"),
+                    q7: normalizeText("work placement"),
+                    q8: normalizeText("postgraduate course"),
+                    q9: normalizeText("evening classes"),
+                    q10: normalizeText("training courses")
+                }
+            },
+            ex6: {
+                options: [ // These are the present results, now options for the dropdown
+                    "I have a degree.",
+                    "He now works for a bank.",
+                    "I can’t find it anywhere.",
+                    "Do you think I should accept it?",
+                    "I can relax tonight.",
+                    "They don’t go to work any more.",
+                    "He can’t go to school this week.",
+                    "Now she needs to find a job."
+                ].map(normalizeText), // Normalize them for consistency
+                answers: { // These map question number to the correct option
+                    q1: normalizeText("I have a degree."),
+                    q2: normalizeText("He now works for a bank."),
+                    q3: normalizeText("I can’t find it anywhere."),
+                    q4: normalizeText("Do you think I should accept it?"),
+                    q5: normalizeText("I can relax tonight."),
+                    q6: normalizeText("They don’t go to work any more."),
+                    q7: normalizeText("He can’t go to school this week."),
+                    q8: normalizeText("Now she needs to find a job.")
+                }
+            },
+            ex7: {
+                answers: {
+                    q1: normalizeText("become"),
+                    q2: normalizeText("chosen"),
+                    q3: normalizeText("forgotten"),
+                    q4: normalizeText("taught"),
+                    q5: normalizeText("sent"),
+                    q6: normalizeText("been"),
+                    q7: normalizeText("written"),
+                    q8: normalizeText("learnt"), // or learned
+                    q9: normalizeText("had"),
+                    q10: normalizeText("shown")
+                }
+            },
+            ex8: {
+                options: ["already", "just", "yet"], // Options are NOT normalized here, to match raw HTML option text
+                answers: { // Answers are NOT normalized here, to match raw HTML radio values
+                    q1: "just",
+                    q2: "yet",
+                    q3: "just",
+                    q4: "yet",
+                    q5: "already",
+                    q6: "yet",
+                    q7: "yet",
+                    q8: "just",
+                    q9: "yet",
+                    q10: "already"
+                }
+            },
+            ex9: {
+                answers: {
+                    q1: normalizeText("I've passed"),
+                    q2: normalizeText("hasn't checked it yet"),
+                    q3: normalizeText("I've already decided"),
+                    q4: normalizeText("I haven't told"),
+                    q5: normalizeText("they haven't contacted me yet"),
+                    q6: normalizeText("we've already done"),
+                    q7: normalizeText("I've failed")
+                }
+            },
+            ex10: {
+                answers: {
+                    q1: normalizeText("Have you taken all your exams yet?"),
+                    q2: normalizeText("Where has Lisa gone?"),
+                    q3: normalizeText("Has anybody seen my bag?"),
+                    q4: normalizeText("Why haven't you finished your report?"),
+                    q5: normalizeText("Have you heard the news?"),
+                    q6: normalizeText("What have you done to your hair?")
+                }
+            }
+        };
+
+        // Helper function to display feedback (Correct! / Incorrect.)
+        function showFeedback(elementId, isCorrect, fromShowAnswer = false) {
+            const feedbackElement = document.getElementById(elementId);
+            if (feedbackElement) {
+                feedbackElement.classList.remove('correct', 'incorrect');
+                if (!fromShowAnswer) { // Only set text and class if not from 'Show Answer'
+                    if (isCorrect) {
+                        feedbackElement.classList.add('correct');
+                        feedbackElement.textContent = 'Correct!';
+                    } else {
+                        feedbackElement.classList.add('incorrect');
+                        feedbackElement.textContent = 'Incorrect.';
+                    }
+                } else {
+                    feedbackElement.textContent = ''; // Clear text if from 'Show Answer'
+                }
+            } else {
+                console.error(`Feedback element with ID ${elementId} not found.`);
+            }
+        }
+
+        // Function to populate dropdowns
+        function populateDropdown(selectElement, options, includeBlank = true) {
+            selectElement.innerHTML = '';
+            if (includeBlank) {
+                const blankOption = document.createElement('option');
+                blankOption.value = '';
+                blankOption.textContent = '--Select--';
+                selectElement.appendChild(blankOption);
+            }
+            if (Array.isArray(options)) {
+                options.forEach(optionText => {
+                    const option = document.createElement('option');
+                    // For dropdowns, the value should be the normalized text for consistent comparison
+                    // but the textContent should be the original text for display.
+                    option.value = normalizeText(optionText);
+                    option.textContent = optionText;
+                    selectElement.appendChild(option);
+                });
+            }
+        }
+
+        // Function to normalize text for comparison
+        function normalizeText(text) {
+            if (typeof text !== 'string') {
+                return '';
+            }
+            return text
+                .toLowerCase()
+                .trim()
+                .replace(/[‘’]/g, "'") // curly apostrophes → straight
+                .replace(/[“”]/g, '"') // curly quotes → straight quotes
+                .replace(/–/g, '-'); // en dash to hyphen-minus
+        }
+
+        // Main check/show/reset logic for individual exercises
+        function checkExercise(exerciseId) {
+            let correctCount = 0;
+            let totalQuestions = 0;
+            const exerciseSection = document.getElementById(`exercise${exerciseId}`);
+            if (!exerciseSection) return;
+
+            if ([1, 2, 3, 4, 5, 6, 8].includes(exerciseId)) { // Dropdowns
+                const questionItems = exerciseSection.querySelectorAll('.question-item');
+                questionItems.forEach(item => {
+                    const select = item.querySelector(`select[id^="ex${exerciseId}_q"]`);
+                    if (select) {
+                        totalQuestions++;
+                        const questionId = select.id;
+                        const userAnswer = normalizeText(select.value);
+                        const questionKey = questionId.split('_')[1];
+                        const correctAnswer = normalizeText(exerciseData[`ex${exerciseId}`].answers[questionKey]);
+                        showFeedback(`feedback_${questionId}`, userAnswer === correctAnswer);
+                        if (userAnswer === correctAnswer) correctCount++;
+                    }
+                });
+            } else if ([7, 9, 10].includes(exerciseId)) { // Text Inputs
+                const questionItems = exerciseSection.querySelectorAll('.question-item');
+                questionItems.forEach(item => {
+                    const input = item.querySelector(`input[id^="ex${exerciseId}_q"]`);
+                    if (input) {
+                        totalQuestions++;
+                        const questionId = input.id;
+                        const userAnswer = normalizeText(input.value);
+                        const questionKey = questionId.split('_')[1];
+                        const correctAnswer = normalizeText(exerciseData[`ex${exerciseId}`].answers[questionKey]);
+                        showFeedback(`feedback_${questionId}`, userAnswer === correctAnswer);
+                        if (userAnswer === correctAnswer) correctCount++;
+                    }
+                });
+            }
+
+            const feedbackElement = document.getElementById(`feedback-ex${exerciseId}`);
+            if (feedbackElement) {
+                feedbackElement.textContent = `You got ${correctCount} out of ${totalQuestions} questions correct!`;
+                feedbackElement.classList.remove('hidden');
+            }
+        }
+
+        function showExerciseAnswers(exerciseId) {
+            const exerciseSection = document.getElementById(`exercise${exerciseId}`);
+            if (!exerciseSection) return;
+
+            // Clear overall exercise feedback first
+            const overallFeedbackElement = document.getElementById(`feedback-ex${exerciseId}`);
+            if (overallFeedbackElement) {
+                overallFeedbackElement.textContent = '';
+                overallFeedbackElement.classList.add('hidden');
+            }
+
+            if ([1, 2, 3, 4, 5, 6, 8].includes(exerciseId)) { // Dropdowns
+                const questionItems = exerciseSection.querySelectorAll('.question-item');
+                questionItems.forEach(item => {
+                    const select = item.querySelector(`select[id^="ex${exerciseId}_q"]`);
+                    if (select) {
+                        const questionId = select.id;
+                        const questionKey = questionId.split('_')[1];
+                        select.value = normalizeText(exerciseData[`ex${exerciseId}`].answers[questionKey]); // Use the original, un-normalized answer string from answers
+                        select.classList.remove('correct-answer', 'incorrect-answer');
+                        select.classList.add('show-answer');
+                        // Clear individual feedback
+                        const feedbackElement = document.getElementById(`feedback_${questionId}`);
+                        if (feedbackElement) {
+                            feedbackElement.textContent = '';
+                            feedbackElement.classList.remove('correct', 'incorrect');
+                        }
+                    }
+                });
+            } else if ([7, 9, 10].includes(exerciseId)) { // Text Inputs
+                const questionItems = exerciseSection.querySelectorAll('.question-item');
+                questionItems.forEach(item => {
+                    const input = item.querySelector(`input[id^="ex${exerciseId}_q"]`);
+                    if (input) {
+                        const questionId = input.id;
+                        const questionKey = questionId.split('_')[1];
+                        input.value = exerciseData[`ex${exerciseId}`].answers[questionKey];
+                        input.classList.remove('correct-answer', 'incorrect-answer');
+                        input.classList.add('show-answer');
+                        // Clear individual feedback
+                        const feedbackElement = document.getElementById(`feedback_${questionId}`);
+                        if (feedbackElement) {
+                            feedbackElement.textContent = '';
+                            feedbackElement.classList.remove('correct', 'incorrect');
+                        }
+                    }
+                });
+            }
+        }
+
+        function resetExercise(exerciseId) {
+            const exerciseSection = document.getElementById(`exercise${exerciseId}`);
+            if (!exerciseSection) return;
+
+            // Reset inputs and selects
+            exerciseSection.querySelectorAll('input[type="text"], select, textarea').forEach(element => {
+                element.value = '';
+                element.classList.remove('correct-answer', 'incorrect-answer', 'show-answer');
+            });
+
+            // Reset checkboxes and radio buttons
+            exerciseSection.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(element => {
+                element.checked = false;
+                element.classList.remove('correct-answer', 'incorrect-answer', 'show-answer');
+            });
+
+            // Clear feedback messages
+            exerciseSection.querySelectorAll('.feedback').forEach(feedbackEl => {
+                feedbackEl.textContent = '';
+                feedbackEl.classList.remove('correct', 'incorrect');
+            });
+
+            const feedbackElement = document.getElementById(`feedback-ex${exerciseId}`);
+            if (feedbackElement) feedbackElement.classList.add('hidden');
+        }
+
+        // Event listeners for individual exercise buttons
+        document.addEventListener('DOMContentLoaded', () => {
+            // Populate dropdowns for Exercise 1, 2, 3, 4, 5, 6, 8
+            document.querySelectorAll('#exercise1 .ex1-select').forEach(select => populateDropdown(select, exerciseData.ex1.options || []));
+            document.querySelectorAll('#exercise2 .ex2-select').forEach(select => populateDropdown(select, exerciseData.ex2.options || []));
+            for (const key in exerciseData.ex3.options) {
+                const select = document.getElementById(`ex3_${key}`);
+                if (select) populateDropdown(select, exerciseData.ex3.options[key] || []);
+            }
+            document.querySelectorAll('#exercise4 .ex4-select').forEach(select => populateDropdown(select, exerciseData.ex4.options || []));
+            document.querySelectorAll('#exercise5 .ex5-select').forEach(select => populateDropdown(select, exerciseData.ex5.options || []));
+            document.querySelectorAll('#exercise6 .ex6-select').forEach(select => populateDropdown(select, exerciseData.ex6.options || [])); // Added Ex6 here
+            document.querySelectorAll('#exercise8 .ex8-select').forEach(select => populateDropdown(select, exerciseData.ex8.options || []));
+
+
+            // Attach event listeners to all check, show, reset buttons
+            document.querySelectorAll('.check-exercise-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const exerciseId = parseInt(e.target.dataset.exerciseId);
+                    checkExercise(exerciseId);
+                });
+            });
+
+            document.querySelectorAll('.show-exercise-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const exerciseId = parseInt(e.target.dataset.exerciseId);
+                    showExerciseAnswers(exerciseId);
+                });
+            });
+
+            document.querySelectorAll('.reset-exercise-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const exerciseId = parseInt(e.target.dataset.exerciseId);
+                    resetExercise(exerciseId);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
