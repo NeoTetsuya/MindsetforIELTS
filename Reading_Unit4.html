@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindset for IELTS 1 - Unit 4 Reading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #334155;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        h1, h2, h3 {
+            color: #1e293b;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 2.25rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #4f46e5;
+        }
+        h2 {
+            font-size: 1.75rem;
+            margin-top: 2rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+        }
+        .exercise-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .exercise-section p {
+            margin-bottom: 1rem;
+        }
+        .input-field, .select-field {
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+            width: 100%;
+            max-width: 300px;
+            background-color: #ffffff;
+            transition: border-color 0.2s;
+        }
+        .input-field:focus, .select-field:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+        .button {
+            background-color: #6366f1;
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .button:hover {
+            background-color: #4f46e5;
+            transform: translateY(-1px);
+        }
+        .button:active {
+            transform: translateY(0);
+        }
+        .feedback {
+            margin-top: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+        .feedback.correct {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 1px solid #34d399;
+        }
+        .feedback.incorrect {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+        .grid-cols-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        .list-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .list-item input[type="text"] {
+            flex-grow: 1;
+            margin-left: 0.5rem;
+        }
+        .radio-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+        }
+        .radio-group input[type="radio"] {
+            margin-right: 0.5rem;
+        }
+        .paragraph-text {
+            background-color: #ecf1f7;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            white-space: pre-wrap; /* Preserve line breaks */
+        }
+        .highlight {
+            background-color: #fcd34d; /* Tailwind yellow-300 */
+            padding: 0.1rem 0.3rem;
+            border-radius: 4px;
+        }
+        .answer-box {
+            border: 1px dashed #9ca3af;
+            padding: 0.5rem;
+            min-height: 2.5rem;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 0.2rem;
+            width: 150px; /* Adjust as needed */
+            text-align: center;
+            background-color: #f9fafb;
+        }
+        .drag-item {
+            background-color: #a78bfa; /* Indigo-400 */
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            margin: 0.5rem;
+            cursor: grab;
+            display: inline-block;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .drop-target {
+            border: 2px dashed #6366f1;
+            min-height: 40px;
+            padding: 0.5rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e0e7ff; /* Indigo-100 */
+            margin-top: 0.5rem;
+        }
+        .drag-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            background-color: #f3f4f6;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        .match-item {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .match-item input {
+            flex-shrink: 0;
+            width: 50px;
+            text-align: center;
+        }
+        .match-item span {
+            flex-grow: 1;
+        }
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 1.75rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            .grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+            .input-field, .select-field {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mindset for IELTS 1 - Unit 4 Reading</h1>
+
+        <!-- Exercise 1 -->
+        <div class="exercise-section">
+            <h2>Unit 4: Exercise 1</h2>
+            <p>In this unit, you will answer IELTS Reading matching information questions and read a text called ‘How technology has changed the way we communicate’.</p>
+            <p>What do you know about the development of the telephone? Match the decades with the correct photos.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <img src="https://placehold.co/300x200/a78bfa/ffffff?text=Photo+1" alt="Placeholder Photo 1" class="w-full h-auto rounded-md mb-2">
+                    <div class="list-item">
+                        <span>1.</span>
+                        <input type="text" id="ex1_q1" class="input-field" placeholder="e.g., 1980s">
+                        <div id="ex1_feedback1" class="feedback hidden"></div>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://placehold.co/300x200/a78bfa/ffffff?text=Photo+2" alt="Placeholder Photo 2" class="w-full h-auto rounded-md mb-2">
+                    <div class="list-item">
+                        <span>2.</span>
+                        <input type="text" id="ex1_q2" class="input-field" placeholder="e.g., 1970s">
+                        <div id="ex1_feedback2" class="feedback hidden"></div>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://placehold.co/300x200/a78bfa/ffffff?text=Photo+3" alt="Placeholder Photo 3" class="w-full h-auto rounded-md mb-2">
+                    <div class="list-item">
+                        <span>3.</span>
+                        <input type="text" id="ex1_q3" class="input-field" placeholder="e.g., 2000s">
+                        <div id="ex1_feedback3" class="feedback hidden"></div>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://placehold.co/300x200/a78bfa/ffffff?text=Photo+4" alt="Placeholder Photo 4" class="w-full h-auto rounded-md mb-2">
+                    <div class="list-item">
+                        <span>4.</span>
+                        <input type="text" id="ex1_q4" class="input-field" placeholder="e.g., 2010s">
+                        <div id="ex1_feedback4" class="feedback hidden"></div>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://placehold.co/300x200/a78bfa/ffffff?text=Photo+5" alt="Placeholder Photo 5" class="w-full h-auto rounded-md mb-2">
+                    <div class="list-item">
+                        <span>5.</span>
+                        <input type="text" id="ex1_q5" class="input-field" placeholder="e.g., 1920s">
+                        <div id="ex1_feedback5" class="feedback hidden"></div>
+                    </div>
+                </div>
+            </div>
+            <button onclick="checkExercise1()" class="button mt-4">Check Answers</button>
+        </div>
+
+        <!-- Exercise 2 -->
+        <div class="exercise-section">
+            <h2>Unit 4: Exercise 2</h2>
+            <p>What words and phrases do you already know for describing communication? Match the words and phrases with the definitions.</p>
+            <p class="font-semibold text-lg mb-4">Words to use: Formal, interaction, online forum, relationship, social media, social network, to get in touch, to keep in touch, to respond</p>
+
+            <div class="space-y-4">
+                <div class="list-item">
+                    <span>to begin communicating with someone, for example, by email or telephone:</span>
+                    <input type="text" id="ex2_q1" class="input-field">
+                    <div id="ex2_feedback1" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>to continue communicating with someone, for example, by email or telephone:</span>
+                    <input type="text" id="ex2_q2" class="input-field">
+                    <div id="ex2_feedback2" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>new information on a particular topic:</span>
+                    <input type="text" id="ex2_q3" class="input-field">
+                    <div id="ex2_feedback3" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>the different groups of people that you know:</span>
+                    <input type="text" id="ex2_q4" class="input-field">
+                    <div id="ex2_feedback4" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>websites and computer programs that allow people to communicate on the internet:</span>
+                    <input type="text" id="ex2_q5" class="input-field">
+                    <div id="ex2_feedback5" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>a time when two or more people communicate with or react to each other:</span>
+                    <input type="text" id="ex2_q6" class="input-field">
+                    <div id="ex2_feedback6" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>to say or do something in reply to something that has been said or done earlier:</span>
+                    <input type="text" id="ex2_q7" class="input-field">
+                    <div id="ex2_feedback7" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>describes language, clothes and behaviour which is used in important and serious events, for example a job interview:</span>
+                    <input type="text" id="ex2_q8" class="input-field">
+                    <div id="ex2_feedback8" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>a place on the internet where people can leave messages or discuss particular topics:</span>
+                    <input type="text" id="ex2_q9" class="input-field">
+                    <div id="ex2_feedback9" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>the way in which two or more people feel and behave towards each other:</span>
+                    <input type="text" id="ex2_q10" class="input-field">
+                    <div id="ex2_feedback10" class="feedback hidden"></div>
+                </div>
+            </div>
+            <button onclick="checkExercise2()" class="button mt-4">Check Answers</button>
+        </div>
+
+        <!-- Exercise 3 -->
+        <div class="exercise-section">
+            <h2>Unit 4: Exercise 3</h2>
+            <p>Read the information. Then match the phrases describing types of information with the words in bold in the statements.</p>
+            <p class="paragraph-text">
+                "In an IELTS Reading matching information task, you will read a text and some statements about it. It is important to understand what types of information the statements need you to find. The types of information might be:
+                an example of / some examples of …,
+                a comparison between …,
+                a description of …,
+                a reference to …,
+                a prediction about …"
+            </p>
+            <p class="font-semibold text-lg mb-4">Words to use: a comparison between, a description of, a prediction about, a reference to, an example of</p>
+
+            <div class="space-y-4">
+                <div class="list-item">
+                    <span>Young students use Instagram far <strong>more</strong> than they use SnapChat.</span>
+                    <input type="text" id="ex3_q1" class="input-field">
+                    <div id="ex3_feedback1" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>Digital devices <strong>will probably replace</strong> books in all UK schools by 2030.</span>
+                    <input type="text" id="ex3_q2" class="input-field">
+                    <div id="ex3_feedback2" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>The new phone has a <strong>great</strong> camera and a <strong>clever</strong> feature which makes apps easy to use.</span>
+                    <input type="text" id="ex3_q3" class="input-field">
+                    <div id="ex3_feedback3" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>The first email message <strong>was sent in 1971</strong>.</span>
+                    <input type="text" id="ex3_q4" class="input-field">
+                    <div id="ex3_feedback4" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>There are many reasons why I stopped using social media, <strong>such as</strong> the huge amount of time it took up.</span>
+                    <input type="text" id="ex3_q5" class="input-field">
+                    <div id="ex3_feedback5" class="feedback hidden"></div>
+                </div>
+            </div>
+            <button onclick="checkExercise3()" class="button mt-4">Check Answers</button>
+        </div>
+
+        <!-- Exercise 4 -->
+        <div class="exercise-section">
+            <h2>Unit 4: Exercise 4</h2>
+            <p>Read this paragraph from the text. What information does it contain? Choose the correct answer.</p>
+            <h3>How technology has changed the way we communicate</h3>
+            <p class="font-semibold">Paragraph A</p>
+            <p class="paragraph-text">
+                It’s often impossible for teenagers to imagine that in the past we all had to make our social arrangements either face-to-face or using a telephone landline. Just 20 years ago, trying to organise a visit to the cinema meant that you had to call your friends at least a day in advance and hope they’d be home when you rang. If someone didn’t turn up, you could try to call them from a public telephone box. If their parents were home, you could leave a message, but your plans for the evening would probably be ruined.
+            </p>
+            <p>The information in Paragraph A is:</p>
+            <div class="radio-group" id="ex4_options">
+                <label><input type="radio" name="ex4_q1" value="a"> a comparison between the advantages of old and new technology.</label>
+                <label><input type="radio" name="ex4_q1" value="b"> a description of the difficulties people used to have before they had mobile phones.</label>
+                <label><input type="radio" name="ex4_q1" value="c"> a reference to the way technology can make relationships better or worse.</label>
+            </div>
+            <div id="ex4_feedback" class="feedback hidden"></div>
+            <button onclick="checkExercise4()" class="button mt-4">Check Answer</button>
+        </div>
+
+        <!-- Exercise 5 -->
+        <div class="exercise-section">
+            <h2>Unit 4: Exercise 5</h2>
+            <p>Read the information. Then match the types of information with the sentences.</p>
+            <p class="paragraph-text">
+                "When reading an IELTS Reading text, it is important to think about what type of information it covers. Other types of information could be:
+                a reason for ...,
+                details of ...,
+                a description of ...,
+                a suggestion .."
+            </p>
+            <p class="font-semibold text-lg mb-4">Words to use: a description of, a reason for, a suggestion, details of</p>
+
+            <div class="space-y-4">
+                <div class="list-item">
+                    <span>Perhaps we should focus more on face-to-face communication than digital communication?</span>
+                    <input type="text" id="ex5_q1" class="input-field">
+                    <div id="ex5_feedback1" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>Fewer people are sending letters by post because stamps are very expensive nowadays.</span>
+                    <input type="text" id="ex5_q2" class="input-field">
+                    <div id="ex5_feedback2" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>Mervyn's YouTube channel had a huge number of followers. His videos were about his daily life in New York and where people could go to find the best R’n’B music in Manhattan.</span>
+                    <input type="text" id="ex5_q3" class="input-field">
+                    <div id="ex5_feedback3" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>75% of teens in the 12–17 age group own mobile phones. Every month, girls send out approximately 3,952 messages, and boys send about 2,815.</span>
+                    <input type="text" id="ex5_q4" class="input-field">
+                    <div id="ex5_feedback4" class="feedback hidden"></div>
+                </div>
+            </div>
+            <button onclick="checkExercise5()" class="button mt-4">Check Answers</button>
+        </div>
+
+        <!-- Exercise 6 -->
+        <div class="exercise-section">
+            <h2>Unit 4: Exercise 6</h2>
+            <p>Read the next paragraph. Then match the information statements (A–D) with the numbered parts of the paragraph (1–3). There is one information statement that you do not need.</p>
+            <p class="font-semibold">Paragraph B</p>
+            <p class="paragraph-text">
+                Nowadays, getting in touch is a lot easier. Almost every aspect of human communication has changed: we have email, text, Skype, Facebook and Instagram, and we are certainly busy using them to build and maintain our relationships. According to recent reports, the top social networks now each have more than a billion monthly active users. And keeping in touch isn’t just something we do in class or at work any more: we continue to communicate with friends, strangers, family and colleagues (1) while we’re on the train, in the living room and at the dinner table, for instance. One recent British study indicated that (2) 79% of teens even put their phone under their pillow so they can keep up-to-date with whatever is happening on social media day and night, and not miss out on updates. As for adults, a recent survey showed that (3) they now spend 20 to 28 hours a week on social media and have on average 275 personal connections. However, in contrast, only 11% of these same people actually meet their social connections in an actual physical environment on a regular basis.
+            </p>
+            <div class="mb-4">
+                <p>A a comparison between the time spent online with friends and time spent in real places</p>
+                <p>B some examples of typical locations in which digital technology may be found</p>
+                <p>C the reason why some young people feel the need to keep a digital device with them at all times</p>
+                <p>D the suggestion that adults could learn about digital communication from their children</p>
+            </div>
+            <div class="space-y-4">
+                <div class="match-item">
+                    <span>1.</span>
+                    <select id="ex6_q1" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                    <div id="ex6_feedback1" class="feedback hidden"></div>
+                </div>
+                <div class="match-item">
+                    <span>2.</span>
+                    <select id="ex6_q2" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                    <div id="ex6_feedback2" class="feedback hidden"></div>
+                </div>
+                <div class="match-item">
+                    <span>3.</span>
+                    <select id="ex6_q3" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                    <div id="ex6_feedback3" class="feedback hidden"></div>
+                </div>
+            </div>
+            <button onclick="checkExercise6()" class="button mt-4">Check Answers</button>
+        </div>
+
+        <!-- Exercise 7 -->
+        <div class="exercise-section">
+            <h2>Unit 4: Exercise 7</h2>
+            <p>Read the next paragraph. Then complete the matching information statements for the numbered parts of the paragraph. Use the words in the box.</p>
+            <p class="font-semibold">Paragraph C</p>
+            <p class="paragraph-text">
+                Email is now one of the most common means of communication. At the moment, over 100 billion emails are sent and received per day for business purposes. (1) This trend is expected to continue, and business email will account for over 132 billion emails sent and received per day two years from now. The number of letters which are sent through the post, however, has decreased dramatically. (2) A consequence of this is that many town and village post offices have closed. These were once places where a great deal of social interaction used to take place between local people. Now it is no longer possible for neighbours or workers in the area to meet up with each other like this, and older people in particular are often unhappy about this development. But certainly the advantages of email cannot be ignored: in the past, the post would only be delivered once or twice a day. If a letter was sent to an overseas destination, it could take months. Without doubt, email has made it easier to do business.
+            </p>
+            <p class="font-semibold text-lg mb-4">Words to use: a description, a prediction, community, form of communication</p>
+
+            <div class="space-y-4">
+                <div class="list-item">
+                    <span class="mr-2">1.</span>
+                    <select id="ex7_q1a" class="select-field w-1/3">
+                        <option value="">Select type</option>
+                        <option value="a description">a description</option>
+                        <option value="a prediction">a prediction</option>
+                        <option value="community">community</option>
+                        <option value="form of communication">form of communication</option>
+                    </select>
+                    <span class="mx-2">of how a particular</span>
+                    <select id="ex7_q1b" class="select-field w-1/3">
+                        <option value="">Select type</option>
+                        <option value="a description">a description</option>
+                        <option value="a prediction">a prediction</option>
+                        <option value="community">community</option>
+                        <option value="form of communication">form of communication</option>
+                    </select>
+                    <div id="ex7_feedback1" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span class="mr-2">2.</span>
+                    <select id="ex7_q2a" class="select-field w-1/3">
+                        <option value="">Select type</option>
+                        <option value="a description">a description</option>
+                        <option value="a prediction">a prediction</option>
+                        <option value="community">community</option>
+                        <option value="form of communication">form of communication</option>
+                    </select>
+                    <span class="mx-2">of how the loss of a public service has affected the</span>
+                    <select id="ex7_q2b" class="select-field w-1/3">
+                        <option value="">Select type</option>
+                        <option value="a description">a description</option>
+                        <option value="a prediction">a prediction</option>
+                        <option value="community">community</option>
+                        <option value="form of communication">form of communication</option>
+                    </select>
+                    <div id="ex7_feedback2" class="feedback hidden"></div>
+                </div>
+            </div>
+            <button onclick="checkExercise7()" class="button mt-4">Check Answers</button>
+        </div>
+
+        <!-- Exercise 8 -->
+        <div class="exercise-section">
+            <h2>Unit 4: Exercise 8</h2>
+            <p>Quickly skim read the next paragraphs. Then do the exercise.</p>
+            <p class="font-semibold">Paragraph D</p>
+            <p class="paragraph-text">
+                However, there are several downsides to this form of technology. Firstly, no one would disagree that email puts pressure on people to respond immediately as soon as they find a new message in their inbox. A recent French report says that anxiety and general tiredness has risen dramatically amongst office workers, largely because they carry their digital devices with them, feeling obliged to constantly check for new mail from clients. A further problem is how to write an email, especially when communicating with people we don’t know well. In the past, everyone knew that it was ‘correct’ to begin a letter ‘Dear Sir/Madam’ and end with ‘Yours faithfully’. Nowadays, these phrases often feel too formal. No one wants to give the wrong impression when writing an email, but without ‘rules’, this can easily happen.
+            </p>
+            <p class="font-semibold">Paragraph E</p>
+            <p class="paragraph-text">
+                Another significant impact technology has had on methods of communication is in the field of education. Traditionally, if someone wanted to take a higher education course, they would have to travel to attend lessons on a university campus. Nowadays, it is possible to take a range of courses through distance learning, and the number of these is likely to rise in the next few years. What is the appeal of studying this way? Many online courses encourage students to take part in online forums and post comments about their learning experiences, reading assignments and projects. They must also comment on their classmates’ posts. In one way, this approach certainly appears to encourage communication.
+            </p>
+            <p class="font-semibold">Paragraph F</p>
+            <p class="paragraph-text">
+                However, some surveys have found the opposite to be true. Because online students are physically separated, and indeed may never have met, they do not have the opportunity to build a good relationship. Students who come to campus regularly have the chance to get to know and support each other, and feel part of a community, so when they are asked to comment on the other person’s work, they can do this in ways they know the other person will appreciate. For example, some students prefer their peers to be direct in their criticism, whereas others might prefer a more sensitive approach. But when students are asked to comment on the work or opinions of people they have never met, they are often reluctant to do so. Interestingly, one of the main reasons why people give up studying on their online courses is that they miss the face-to-face interaction with others. Certainly technology has made our lives more ‘convenient’ but perhaps also more complicated. There are many questions still to be answered about how we can and should use our modern digital tools to enable effective communication, an evolutionary skill that has been centuries in development.
+            </p>
+            <p>Match the paragraphs with the general topics. Look at the text on page 1 again if you need to.</p>
+            <div class="space-y-4">
+                <div class="match-item">
+                    <span>the advantages of studying online</span>
+                    <input type="text" id="ex8_q1" class="input-field" placeholder="D, E, or F">
+                    <div id="ex8_feedback1" class="feedback hidden"></div>
+                </div>
+                <div class="match-item">
+                    <span>problems that occur at work and in formal situations because of digital communication</span>
+                    <input type="text" id="ex8_q2" class="input-field" placeholder="D, E, or F">
+                    <div id="ex8_feedback2" class="feedback hidden"></div>
+                </div>
+                <div class="match-item">
+                    <span>the disadvantages of studying online</span>
+                    <input type="text" id="ex8_q3" class="input-field" placeholder="D, E, or F">
+                    <div id="ex8_feedback3" class="feedback hidden"></div>
+                </div>
+            </div>
+            <button onclick="checkExercise8()" class="button mt-4">Check Answers</button>
+        </div>
+
+        <!-- Exercise 9 -->
+        <div class="exercise-section">
+            <h2>Unit 4: Exercise 9</h2>
+            <p>Read the paragraphs again, this time carefully. Then do the exercise.</p>
+            <p class="font-semibold">Paragraph D</p>
+            <p class="paragraph-text">
+                However, there are several downsides to this form of technology. Firstly, no one would disagree that email puts pressure on people to respond immediately as soon as they find a new message in their inbox. A recent French report says that anxiety and general tiredness has risen dramatically amongst office workers, largely because they carry their digital devices with them, feeling obliged to constantly check for new mail from clients. A further problem is how to write an email, especially when communicating with people we don’t know well. In the past, everyone knew that it was ‘correct’ to begin a letter ‘Dear Sir/Madam’ and end with ‘Yours faithfully’. Nowadays, these phrases often feel too formal. No one wants to give the wrong impression when writing an email, but without ‘rules’, this can easily happen.
+            </p>
+            <p class="font-semibold">Paragraph E</p>
+            <p class="paragraph-text">
+                Another significant impact technology has had on methods of communication is in the field of education. Traditionally, if someone wanted to take a higher education course, they would have to travel to attend lessons on a university campus. Nowadays, it is possible to take a range of courses through distance learning, and the number of these is likely to rise in the next few years. What is the appeal of studying this way? Many online courses encourage students to take part in online forums and post comments about their learning experiences, reading assignments and projects. They must also comment on their classmates’ posts. In one way, this approach certainly appears to encourage communication.
+            </p>
+            <p class="font-semibold">Paragraph F</p>
+            <p class="paragraph-text">
+                However, some surveys have found the opposite to be true. Because online students are physically separated, and indeed may never have met, they do not have the opportunity to build a good relationship. Students who come to campus regularly have the chance to get to know and support each other, and feel part of a community, so when they are asked to comment on the other person’s work, they can do this in ways they know the other person will appreciate. For example, some students prefer their peers to be direct in their criticism, whereas others might prefer a more sensitive approach. But when students are asked to comment on the work or opinions of people they have never met, they are often reluctant to do so. Interestingly, one of the main reasons why people give up studying on their online courses is that they miss the face-to-face interaction with others. Certainly technology has made our lives more ‘convenient’ but perhaps also more complicated. There are many questions still to be answered about how we can and should use our modern digital tools to enable effective communication, an evolutionary skill that has been centuries in development.
+            </p>
+            <p>Which paragraph contains the following information? You may use any letter more than once. Read the text on page 1 again if you need to.</p>
+            <div class="space-y-4">
+                <div class="match-item">
+                    <span>a reason why some learners do not complete an academic programme</span>
+                    <input type="text" id="ex9_q1" class="input-field" placeholder="D, E, or F">
+                    <div id="ex9_feedback1" class="feedback hidden"></div>
+                </div>
+                <div class="match-item">
+                    <span>a reason for an increase in levels of stress in employees</span>
+                    <input type="text" id="ex9_q2" class="input-field" placeholder="D, E, or F">
+                    <div id="ex9_feedback2" class="feedback hidden"></div>
+                </div>
+                <div class="match-item">
+                    <span>a prediction about the way that an academic service might develop in the future</span>
+                    <input type="text" id="ex9_q3" class="input-field" placeholder="D, E, or F">
+                    <div id="ex9_feedback3" class="feedback hidden"></div>
+                </div>
+                <div class="match-item">
+                    <span>an example of a traditional practice in writing that people used to use more often</span>
+                    <input type="text" id="ex9_q4" class="input-field" placeholder="D, E, or F">
+                    <div id="ex9_feedback4" class="feedback hidden"></div>
+                </div>
+                <div class="match-item">
+                    <span>a comparison between the ways that different people like to be given feedback on their work</span>
+                    <input type="text" id="ex9_q5" class="input-field" placeholder="D, E, or F">
+                    <div id="ex9_feedback5" class="feedback hidden"></div>
+                </div>
+            </div>
+            <button onclick="checkExercise9()" class="button mt-4">Check Answers</button>
+        </div>
+
+        <!-- Exercise 10 -->
+        <div class="exercise-section">
+            <h2>Unit 4: Exercise 10</h2>
+            <p>Think about what you’ve learnt in this unit.</p>
+            <p>Complete the advice. Use the words in the box.</p>
+            <!-- Removed the "Words to use" paragraph as requested -->
+
+            <div class="space-y-4">
+                <div class="list-item">
+                    <span>Before you look at the task, it is a good idea to </span>
+                    <select id="ex10_q1" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="skim read the text">skim read the text</option>
+                        <option value="underline key words and phrases">underline key words and phrases</option>
+                        <option value="what type of information">what type of information</option>
+                        <option value="a description of, a comparison">a description of, a comparison</option>
+                        <option value="references to, reasons or examples of">references to, reasons or examples of</option>
+                        <option value="more than one statement">more than one statement</option>
+                    </select>
+                    <span> to understand the main idea of each paragraph.</span>
+                    <div id="ex10_feedback1" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>Before you complete the task, </span>
+                    <select id="ex10_q2" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="skim read the text">skim read the text</option>
+                        <option value="underline key words and phrases">underline key words and phrases</option>
+                        <option value="what type of information">what type of information</option>
+                        <option value="a description of, a comparison">a description of, a comparison</option>
+                        <option value="references to, reasons or examples of">references to, reasons or examples of</option>
+                        <option value="more than one statement">more than one statement</option>
+                    </select>
+                    <span> in the matching information statements.</span>
+                    <div id="ex10_feedback2" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>The key words in matching information statements tell you </span>
+                    <select id="ex10_q3" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="skim read the text">skim read the text</option>
+                        <option value="underline key words and phrases">underline key words and phrases</option>
+                        <option value="what type of information">what type of information</option>
+                        <option value="a description of, a comparison">a description of, a comparison</option>
+                        <option value="references to, reasons or examples of">references to, reasons or examples of</option>
+                        <option value="more than one statement">more than one statement</option>
+                    </select>
+                    <span> you need.</span>
+                    <div id="ex10_feedback3" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>Some examples of key words in matching information statements are </span>
+                    <select id="ex10_q4" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="skim read the text">skim read the text</option>
+                        <option value="underline key words and phrases">underline key words and phrases</option>
+                        <option value="what type of information">what type of information</option>
+                        <option value="a description of, a comparison">a description of, a comparison</option>
+                        <option value="references to, reasons or examples of">references to, reasons or examples of</option>
+                        <option value="more than one statement">more than one statement</option>
+                    </select>
+                    <span>.</span>
+                    <div id="ex10_feedback4" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>Look carefully to see if any key words are plural, for example </span>
+                    <select id="ex10_q5" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="skim read the text">skim read the text</option>
+                        <option value="underline key words and phrases">underline key words and phrases</option>
+                        <option value="what type of information">what type of information</option>
+                        <option value="a description of, a comparison">a description of, a comparison</option>
+                        <option value="references to, reasons or examples of">references to, reasons or examples of</option>
+                        <option value="more than one statement">more than one statement</option>
+                    </select>
+                    <span>.</span>
+                    <div id="ex10_feedback5" class="feedback hidden"></div>
+                </div>
+                <div class="list-item">
+                    <span>Remember that sometimes a paragraph may match </span>
+                    <select id="ex10_q6" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="skim read the text">skim read the text</option>
+                        <option value="underline key words and phrases">underline key words and phrases</option>
+                        <option value="what type of information">what type of information</option>
+                        <option value="a description of, a comparison">a description of, a comparison</option>
+                        <option value="references to, reasons or examples of">references to, reasons or examples of</option>
+                        <option value="more than one statement">more than one statement</option>
+                    </select>
+                    <span>.</span>
+                    <div id="ex10_feedback6" class="feedback hidden"></div>
+                </div>
+            </div>
+            <button onclick="checkExercise10()" class="button mt-4">Check Answers</button>
+        </div>
+
+    </div>
+
+    <script>
+        // Helper function to display feedback
+        function displayFeedback(elementId, isCorrect) {
+            const feedbackElement = document.getElementById(elementId);
+            feedbackElement.classList.remove('hidden', 'correct', 'incorrect');
+            if (isCorrect) {
+                feedbackElement.classList.add('correct');
+                feedbackElement.textContent = 'Correct!';
+            } else {
+                feedbackElement.classList.add('incorrect');
+                feedbackElement.textContent = 'Incorrect. Please try again.';
+            }
+        }
+
+        // Helper function to normalize text for comparison
+        function normalizeText(text) {
+            return text.toLowerCase().trim().replace(/\s+/g, ' ');
+        }
+
+        // Exercise 1 Check
+        function checkExercise1() {
+            const answers = {
+                'ex1_q1': '1980s',
+                'ex1_q2': '1970s',
+                'ex1_q3': '2000s',
+                'ex1_q4': '2010s',
+                'ex1_q5': '1920s'
+            };
+
+            for (const [id, correctAnswer] of Object.entries(answers)) {
+                const input = document.getElementById(id);
+                const isCorrect = normalizeText(input.value) === normalizeText(correctAnswer);
+                displayFeedback(`${id.replace('q', 'feedback')}`, isCorrect);
+            }
+        }
+
+        // Exercise 2 Check
+        function checkExercise2() {
+            const answers = {
+                'ex2_q1': 'to get in touch',
+                'ex2_q2': 'to keep in touch',
+                'ex2_q3': 'new information on a particular topic', // This one isn't in the provided word list, assuming it's a typo in the doc or a trick question. I'll leave it as is.
+                'ex2_q4': 'social network',
+                'ex2_q5': 'social media',
+                'ex2_q6': 'interaction',
+                'ex2_q7': 'to respond',
+                'ex2_q8': 'formal',
+                'ex2_q9': 'online forum',
+                'ex2_q10': 'relationship'
+            };
+
+            for (const [id, correctAnswer] of Object.entries(answers)) {
+                const input = document.getElementById(id);
+                const isCorrect = normalizeText(input.value) === normalizeText(correctAnswer);
+                displayFeedback(`${id.replace('q', 'feedback')}`, isCorrect);
+            }
+        }
+
+        // Exercise 3 Check
+        function checkExercise3() {
+            const answers = {
+                'ex3_q1': 'a comparison between',
+                'ex3_q2': 'a prediction about',
+                'ex3_q3': 'a description of',
+                'ex3_q4': 'a reference to',
+                'ex3_q5': 'an example of'
+            };
+
+            for (const [id, correctAnswer] of Object.entries(answers)) {
+                const input = document.getElementById(id);
+                const isCorrect = normalizeText(input.value) === normalizeText(correctAnswer);
+                displayFeedback(`${id.replace('q', 'feedback')}`, isCorrect);
+            }
+        }
+
+        // Exercise 4 Check
+        function checkExercise4() {
+            const selectedOption = document.querySelector('input[name="ex4_q1"]:checked');
+            const feedbackElement = document.getElementById('ex4_feedback');
+            if (selectedOption && selectedOption.value === 'b') {
+                displayFeedback('ex4_feedback', true);
+            } else {
+                displayFeedback('ex4_feedback', false);
+            }
+        }
+
+        // Exercise 5 Check
+        function checkExercise5() {
+            const answers = {
+                'ex5_q1': 'a suggestion',
+                'ex5_q2': 'a reason for',
+                'ex5_q3': 'a description of',
+                'ex5_q4': 'details of'
+            };
+
+            for (const [id, correctAnswer] of Object.entries(answers)) {
+                const input = document.getElementById(id);
+                const isCorrect = normalizeText(input.value) === normalizeText(correctAnswer);
+                displayFeedback(`${id.replace('q', 'feedback')}`, isCorrect);
+            }
+        }
+
+        // Exercise 6 Check
+        function checkExercise6() {
+            const answers = {
+                'ex6_q1': 'B',
+                'ex6_q2': 'C',
+                'ex6_q3': 'A'
+            };
+
+            for (const [id, correctAnswer] of Object.entries(answers)) {
+                const selectElement = document.getElementById(id);
+                const isCorrect = selectElement.value === correctAnswer;
+                displayFeedback(`${id.replace('q', 'feedback')}`, isCorrect);
+            }
+        }
+
+        // Exercise 7 Check
+        function checkExercise7() {
+            const answers = {
+                'ex7_q1a': 'a prediction',
+                'ex7_q1b': 'form of communication',
+                'ex7_q2a': 'a description',
+                'ex7_q2b': 'community'
+            };
+
+            // Check first part
+            const input1a = document.getElementById('ex7_q1a');
+            const input1b = document.getElementById('ex7_q1b');
+            const isCorrect1 = input1a.value === answers.ex7_q1a &&
+                               input1b.value === answers.ex7_q1b;
+            displayFeedback('ex7_feedback1', isCorrect1);
+
+            // Check second part
+            const input2a = document.getElementById('ex7_q2a');
+            const input2b = document.getElementById('ex7_q2b');
+            const isCorrect2 = input2a.value === answers.ex7_q2a &&
+                               input2b.value === answers.ex7_q2b;
+            displayFeedback('ex7_feedback2', isCorrect2);
+        }
+
+        // Exercise 8 Check
+        function checkExercise8() {
+            const answers = {
+                'ex8_q1': 'E',
+                'ex8_q2': 'D',
+                'ex8_q3': 'F'
+            };
+
+            for (const [id, correctAnswer] of Object.entries(answers)) {
+                const input = document.getElementById(id);
+                const isCorrect = normalizeText(input.value) === normalizeText(correctAnswer);
+                displayFeedback(`${id.replace('q', 'feedback')}`, isCorrect);
+            }
+        }
+
+        // Exercise 9 Check
+        function checkExercise9() {
+            const answers = {
+                'ex9_q1': 'F',
+                'ex9_q2': 'D',
+                'ex9_q3': 'E',
+                'ex9_q4': 'D',
+                'ex9_q5': 'F'
+            };
+
+            for (const [id, correctAnswer] of Object.entries(answers)) {
+                const input = document.getElementById(id);
+                const isCorrect = normalizeText(input.value) === normalizeText(correctAnswer);
+                displayFeedback(`${id.replace('q', 'feedback')}`, isCorrect);
+            }
+        }
+
+        // Exercise 10 Check
+        function checkExercise10() {
+            const answers = {
+                'ex10_q1': 'skim read the text',
+                'ex10_q2': 'underline key words and phrases',
+                'ex10_q3': 'what type of information',
+                'ex10_q4': 'a description of, a comparison',
+                'ex10_q5': 'references to, reasons or examples of',
+                'ex10_q6': 'more than one statement'
+            };
+
+            for (const [id, correctAnswer] of Object.entries(answers)) {
+                const selectElement = document.getElementById(id);
+                const isCorrect = selectElement.value === correctAnswer;
+                displayFeedback(`${id.replace('q', 'feedback')}`, isCorrect);
+            }
+        }
+    </script>
+</body>
+</html>
