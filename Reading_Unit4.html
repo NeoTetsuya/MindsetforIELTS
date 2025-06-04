@@ -52,12 +52,22 @@
         .exercise-section p {
             margin-bottom: 1rem;
         }
-        .input-field, .select-field {
+        .input-field {
             border: 1px solid #cbd5e1;
             border-radius: 6px;
             padding: 0.6rem 1rem;
             width: 100%;
-            max-width: 300px;
+            max-width: 300px; /* Default max-width for text inputs */
+            background-color: #ffffff;
+            transition: border-color 0.2s;
+        }
+        .select-field { /* Specific styling for select fields */
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+            width: auto; /* Allow width to adjust to content */
+            min-width: 100px; /* Adjusted minimum width */
+            max-width: 200px; /* Adjusted maximum width */
             background-color: #ffffff;
             transition: border-color 0.2s;
         }
@@ -109,10 +119,16 @@
             display: flex;
             align-items: center;
             margin-bottom: 0.5rem;
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
         }
         .list-item input[type="text"] {
-            flex-grow: 1;
+            flex-grow: 1; /* Allow text inputs to grow */
             margin-left: 0.5rem;
+        }
+        .list-item .select-field {
+            flex-grow: 1; /* Allow select fields to grow but respect max-width */
+            margin-left: 0.5rem;
+            max-width: 200px; /* Apply max-width here too */
         }
         .radio-group label {
             display: block;
@@ -180,10 +196,20 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
         }
         .match-item input {
             flex-shrink: 0;
-            width: 50px;
+            width: auto; /* Allow width to adjust */
+            min-width: 50px; /* Smallest sensible width */
+            max-width: 250px; /* Constrain max width */
+            text-align: center;
+        }
+        .match-item .select-field {
+            flex-shrink: 0;
+            width: auto; /* Allow width to adjust */
+            min-width: 100px; /* Adjusted minimum width */
+            max-width: 200px; /* Adjusted maximum width */
             text-align: center;
         }
         .match-item span {
@@ -205,6 +231,11 @@
             }
             .input-field, .select-field {
                 max-width: 100%;
+            }
+            .list-item .select-field,
+            .match-item .select-field {
+                min-width: unset; /* Remove min-width on small screens */
+                max-width: 100%; /* Allow to fill width on small screens */
             }
         }
     </style>
@@ -267,57 +298,177 @@
         <div class="exercise-section">
             <h2>Unit 4: Exercise 2</h2>
             <p>What words and phrases do you already know for describing communication? Match the words and phrases with the definitions.</p>
-            <p class="font-semibold text-lg mb-4">Words to use: Formal, interaction, online forum, relationship, social media, social network, to get in touch, to keep in touch, to respond</p>
+            <!-- Removed Words to use text -->
 
             <div class="space-y-4">
                 <div class="list-item">
                     <span>to begin communicating with someone, for example, by email or telephone:</span>
-                    <input type="text" id="ex2_q1" class="input-field">
+                    <select id="ex2_q1" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="to get in touch">to get in touch</option>
+                        <option value="to keep in touch">to keep in touch</option>
+                        <option value="new information on a particular topic">new information on a particular topic</option>
+                        <option value="social network">social network</option>
+                        <option value="social media">social media</option>
+                        <option value="interaction">interaction</option>
+                        <option value="to respond">to respond</option>
+                        <option value="formal">Formal</option>
+                        <option value="online forum">online forum</option>
+                        <option value="relationship">relationship</option>
+                    </select>
                     <div id="ex2_feedback1" class="feedback hidden"></div>
                 </div>
                 <div class="list-item">
                     <span>to continue communicating with someone, for example, by email or telephone:</span>
-                    <input type="text" id="ex2_q2" class="input-field">
+                    <select id="ex2_q2" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="to get in touch">to get in touch</option>
+                        <option value="to keep in touch">to keep in touch</option>
+                        <option value="new information on a particular topic">new information on a particular topic</option>
+                        <option value="social network">social network</option>
+                        <option value="social media">social media</option>
+                        <option value="interaction">interaction</option>
+                        <option value="to respond">to respond</option>
+                        <option value="formal">Formal</option>
+                        <option value="online forum">online forum</option>
+                        <option value="relationship">relationship</option>
+                    </select>
                     <div id="ex2_feedback2" class="feedback hidden"></div>
                 </div>
                 <div class="list-item">
                     <span>new information on a particular topic:</span>
-                    <input type="text" id="ex2_q3" class="input-field">
+                    <select id="ex2_q3" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="to get in touch">to get in touch</option>
+                        <option value="to keep in touch">to keep in touch</option>
+                        <option value="new information on a particular topic">new information on a particular topic</option>
+                        <option value="social network">social network</option>
+                        <option value="social media">social media</option>
+                        <option value="interaction">interaction</option>
+                        <option value="to respond">to respond</option>
+                        <option value="formal">Formal</option>
+                        <option value="online forum">online forum</option>
+                        <option value="relationship">relationship</option>
+                    </select>
                     <div id="ex2_feedback3" class="feedback hidden"></div>
                 </div>
                 <div class="list-item">
                     <span>the different groups of people that you know:</span>
-                    <input type="text" id="ex2_q4" class="input-field">
+                    <select id="ex2_q4" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="to get in touch">to get in touch</option>
+                        <option value="to keep in touch">to keep in touch</option>
+                        <option value="new information on a particular topic">new information on a particular topic</option>
+                        <option value="social network">social network</option>
+                        <option value="social media">social media</option>
+                        <option value="interaction">interaction</option>
+                        <option value="to respond">to respond</option>
+                        <option value="formal">Formal</option>
+                        <option value="online forum">online forum</option>
+                        <option value="relationship">relationship</option>
+                    </select>
                     <div id="ex2_feedback4" class="feedback hidden"></div>
                 </div>
                 <div class="list-item">
                     <span>websites and computer programs that allow people to communicate on the internet:</span>
-                    <input type="text" id="ex2_q5" class="input-field">
+                    <select id="ex2_q5" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="to get in touch">to get in touch</option>
+                        <option value="to keep in touch">to keep in touch</option>
+                        <option value="new information on a particular topic">new information on a particular topic</option>
+                        <option value="social network">social network</option>
+                        <option value="social media">social media</option>
+                        <option value="interaction">interaction</option>
+                        <option value="to respond">to respond</option>
+                        <option value="formal">Formal</option>
+                        <option value="online forum">online forum</option>
+                        <option value="relationship">relationship</option>
+                    </select>
                     <div id="ex2_feedback5" class="feedback hidden"></div>
                 </div>
                 <div class="list-item">
                     <span>a time when two or more people communicate with or react to each other:</span>
-                    <input type="text" id="ex2_q6" class="input-field">
+                    <select id="ex2_q6" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="to get in touch">to get in touch</option>
+                        <option value="to keep in touch">to keep in touch</option>
+                        <option value="new information on a particular topic">new information on a particular topic</option>
+                        <option value="social network">social network</option>
+                        <option value="social media">social media</option>
+                        <option value="interaction">interaction</option>
+                        <option value="to respond">to respond</option>
+                        <option value="formal">Formal</option>
+                        <option value="online forum">online forum</option>
+                        <option value="relationship">relationship</option>
+                    </select>
                     <div id="ex2_feedback6" class="feedback hidden"></div>
                 </div>
                 <div class="list-item">
                     <span>to say or do something in reply to something that has been said or done earlier:</span>
-                    <input type="text" id="ex2_q7" class="input-field">
+                    <select id="ex2_q7" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="to get in touch">to get in touch</option>
+                        <option value="to keep in touch">to keep in touch</option>
+                        <option value="new information on a particular topic">new information on a particular topic</option>
+                        <option value="social network">social network</option>
+                        <option value="social media">social media</option>
+                        <option value="interaction">interaction</option>
+                        <option value="to respond">to respond</option>
+                        <option value="formal">Formal</option>
+                        <option value="online forum">online forum</option>
+                        <option value="relationship">relationship</option>
+                    </select>
                     <div id="ex2_feedback7" class="feedback hidden"></div>
                 </div>
                 <div class="list-item">
                     <span>describes language, clothes and behaviour which is used in important and serious events, for example a job interview:</span>
-                    <input type="text" id="ex2_q8" class="input-field">
+                    <select id="ex2_q8" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="to get in touch">to get in touch</option>
+                        <option value="to keep in touch">to keep in touch</option>
+                        <option value="new information on a particular topic">new information on a particular topic</option>
+                        <option value="social network">social network</option>
+                        <option value="social media">social media</option>
+                        <option value="interaction">interaction</option>
+                        <option value="to respond">to respond</option>
+                        <option value="formal">Formal</option>
+                        <option value="online forum">online forum</option>
+                        <option value="relationship">relationship</option>
+                    </select>
                     <div id="ex2_feedback8" class="feedback hidden"></div>
                 </div>
                 <div class="list-item">
                     <span>a place on the internet where people can leave messages or discuss particular topics:</span>
-                    <input type="text" id="ex2_q9" class="input-field">
+                    <select id="ex2_q9" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="to get in touch">to get in touch</option>
+                        <option value="to keep in touch">to keep in touch</option>
+                        <option value="new information on a particular topic">new information on a particular topic</option>
+                        <option value="social network">social network</option>
+                        <option value="social media">social media</option>
+                        <option value="interaction">interaction</option>
+                        <option value="to respond">to respond</option>
+                        <option value="formal">Formal</option>
+                        <option value="online forum">online forum</option>
+                        <option value="relationship">relationship</option>
+                    </select>
                     <div id="ex2_feedback9" class="feedback hidden"></div>
                 </div>
                 <div class="list-item">
                     <span>the way in which two or more people feel and behave towards each other:</span>
-                    <input type="text" id="ex2_q10" class="input-field">
+                    <select id="ex2_q10" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="to get in touch">to get in touch</option>
+                        <option value="to keep in touch">to keep in touch</option>
+                        <option value="new information on a particular topic">new information on a particular topic</option>
+                        <option value="social network">social network</option>
+                        <option value="social media">social media</option>
+                        <option value="interaction">interaction</option>
+                        <option value="to respond">to respond</option>
+                        <option value="formal">Formal</option>
+                        <option value="online forum">online forum</option>
+                        <option value="relationship">relationship</option>
+                    </select>
                     <div id="ex2_feedback10" class="feedback hidden"></div>
                 </div>
             </div>
@@ -336,32 +487,67 @@
                 a reference to …,
                 a prediction about …"
             </p>
-            <p class="font-semibold text-lg mb-4">Words to use: a comparison between, a description of, a prediction about, a reference to, an example of</p>
+            <!-- Removed Words to use text -->
 
             <div class="space-y-4">
                 <div class="list-item">
                     <span>Young students use Instagram far <strong>more</strong> than they use SnapChat.</span>
-                    <input type="text" id="ex3_q1" class="input-field">
+                    <select id="ex3_q1" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="a comparison between">a comparison between</option>
+                        <option value="a description of">a description of</option>
+                        <option value="a prediction about">a prediction about</option>
+                        <option value="a reference to">a reference to</option>
+                        <option value="an example of">an example of</option>
+                    </select>
                     <div id="ex3_feedback1" class="feedback hidden"></div>
                 </div>
                 <div class="list-item">
                     <span>Digital devices <strong>will probably replace</strong> books in all UK schools by 2030.</span>
-                    <input type="text" id="ex3_q2" class="input-field">
+                    <select id="ex3_q2" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="a comparison between">a comparison between</option>
+                        <option value="a description of">a description of</option>
+                        <option value="a prediction about">a prediction about</option>
+                        <option value="a reference to">a reference to</option>
+                        <option value="an example of">an example of</option>
+                    </select>
                     <div id="ex3_feedback2" class="feedback hidden"></div>
                 </div>
                 <div class="list-item">
                     <span>The new phone has a <strong>great</strong> camera and a <strong>clever</strong> feature which makes apps easy to use.</span>
-                    <input type="text" id="ex3_q3" class="input-field">
+                    <select id="ex3_q3" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="a comparison between">a comparison between</option>
+                        <option value="a description of">a description of</option>
+                        <option value="a prediction about">a prediction about</option>
+                        <option value="a reference to">a reference to</option>
+                        <option value="an example of">an example of</option>
+                    </select>
                     <div id="ex3_feedback3" class="feedback hidden"></div>
                 </div>
                 <div class="list-item">
                     <span>The first email message <strong>was sent in 1971</strong>.</span>
-                    <input type="text" id="ex3_q4" class="input-field">
+                    <select id="ex3_q4" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="a comparison between">a comparison between</option>
+                        <option value="a description of">a description of</option>
+                        <option value="a prediction about">a prediction about</option>
+                        <option value="a reference to">a reference to</option>
+                        <option value="an example of">an example of</option>
+                    </select>
                     <div id="ex3_feedback4" class="feedback hidden"></div>
                 </div>
                 <div class="list-item">
                     <span>There are many reasons why I stopped using social media, <strong>such as</strong> the huge amount of time it took up.</span>
-                    <input type="text" id="ex3_q5" class="input-field">
+                    <select id="ex3_q5" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="a comparison between">a comparison between</option>
+                        <option value="a description of">a description of</option>
+                        <option value="a prediction about">a prediction about</option>
+                        <option value="a reference to">a reference to</option>
+                        <option value="an example of">an example of</option>
+                    </select>
                     <div id="ex3_feedback5" class="feedback hidden"></div>
                 </div>
             </div>
@@ -378,11 +564,12 @@
                 It’s often impossible for teenagers to imagine that in the past we all had to make our social arrangements either face-to-face or using a telephone landline. Just 20 years ago, trying to organise a visit to the cinema meant that you had to call your friends at least a day in advance and hope they’d be home when you rang. If someone didn’t turn up, you could try to call them from a public telephone box. If their parents were home, you could leave a message, but your plans for the evening would probably be ruined.
             </p>
             <p>The information in Paragraph A is:</p>
-            <div class="radio-group" id="ex4_options">
-                <label><input type="radio" name="ex4_q1" value="a"> a comparison between the advantages of old and new technology.</label>
-                <label><input type="radio" name="ex4_q1" value="b"> a description of the difficulties people used to have before they had mobile phones.</label>
-                <label><input type="radio" name="ex4_q1" value="c"> a reference to the way technology can make relationships better or worse.</label>
-            </div>
+            <select id="ex4_q1" class="select-field">
+                <option value="">Select an option</option>
+                <option value="a">a comparison between the advantages of old and new technology.</option>
+                <option value="b">a description of the difficulties people used to have before they had mobile phones.</option>
+                <option value="c">a reference to the way technology can make relationships better or worse.</option>
+            </select>
             <div id="ex4_feedback" class="feedback hidden"></div>
             <button onclick="checkExercise4()" class="button mt-4">Check Answer</button>
         </div>
@@ -398,27 +585,51 @@
                 a description of ...,
                 a suggestion .."
             </p>
-            <p class="font-semibold text-lg mb-4">Words to use: a description of, a reason for, a suggestion, details of</p>
+            <!-- Removed Words to use text -->
 
             <div class="space-y-4">
                 <div class="list-item">
                     <span>Perhaps we should focus more on face-to-face communication than digital communication?</span>
-                    <input type="text" id="ex5_q1" class="input-field">
+                    <select id="ex5_q1" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="a suggestion">a suggestion</option>
+                        <option value="a reason for">a reason for</option>
+                        <option value="a description of">a description of</option>
+                        <option value="details of">details of</option>
+                    </select>
                     <div id="ex5_feedback1" class="feedback hidden"></div>
                 </div>
                 <div class="list-item">
                     <span>Fewer people are sending letters by post because stamps are very expensive nowadays.</span>
-                    <input type="text" id="ex5_q2" class="input-field">
+                    <select id="ex5_q2" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="a suggestion">a suggestion</option>
+                        <option value="a reason for">a reason for</option>
+                        <option value="a description of">a description of</option>
+                        <option value="details of">details of</option>
+                    </select>
                     <div id="ex5_feedback2" class="feedback hidden"></div>
                 </div>
                 <div class="list-item">
                     <span>Mervyn's YouTube channel had a huge number of followers. His videos were about his daily life in New York and where people could go to find the best R’n’B music in Manhattan.</span>
-                    <input type="text" id="ex5_q3" class="input-field">
+                    <select id="ex5_q3" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="a suggestion">a suggestion</option>
+                        <option value="a reason for">a reason for</option>
+                        <option value="a description of">a description of</option>
+                        <option value="details of">details of</option>
+                    </select>
                     <div id="ex5_feedback3" class="feedback hidden"></div>
                 </div>
                 <div class="list-item">
                     <span>75% of teens in the 12–17 age group own mobile phones. Every month, girls send out approximately 3,952 messages, and boys send about 2,815.</span>
-                    <input type="text" id="ex5_q4" class="input-field">
+                    <select id="ex5_q4" class="select-field">
+                        <option value="">Select an option</option>
+                        <option value="a suggestion">a suggestion</option>
+                        <option value="a reason for">a reason for</option>
+                        <option value="a description of">a description of</option>
+                        <option value="details of">details of</option>
+                    </select>
                     <div id="ex5_feedback4" class="feedback hidden"></div>
                 </div>
             </div>
@@ -753,19 +964,19 @@
             const answers = {
                 'ex2_q1': 'to get in touch',
                 'ex2_q2': 'to keep in touch',
-                'ex2_q3': 'new information on a particular topic', // This one isn't in the provided word list, assuming it's a typo in the doc or a trick question. I'll leave it as is.
+                'ex2_q3': 'new information on a particular topic',
                 'ex2_q4': 'social network',
                 'ex2_q5': 'social media',
                 'ex2_q6': 'interaction',
                 'ex2_q7': 'to respond',
-                'ex2_q8': 'formal',
+                'ex2_q8': 'Formal',
                 'ex2_q9': 'online forum',
                 'ex2_q10': 'relationship'
             };
 
             for (const [id, correctAnswer] of Object.entries(answers)) {
-                const input = document.getElementById(id);
-                const isCorrect = normalizeText(input.value) === normalizeText(correctAnswer);
+                const selectElement = document.getElementById(id);
+                const isCorrect = selectElement.value === correctAnswer;
                 displayFeedback(`${id.replace('q', 'feedback')}`, isCorrect);
             }
         }
@@ -781,17 +992,17 @@
             };
 
             for (const [id, correctAnswer] of Object.entries(answers)) {
-                const input = document.getElementById(id);
-                const isCorrect = normalizeText(input.value) === normalizeText(correctAnswer);
+                const selectElement = document.getElementById(id);
+                const isCorrect = selectElement.value === correctAnswer;
                 displayFeedback(`${id.replace('q', 'feedback')}`, isCorrect);
             }
         }
 
         // Exercise 4 Check
         function checkExercise4() {
-            const selectedOption = document.querySelector('input[name="ex4_q1"]:checked');
+            const selectedOption = document.getElementById('ex4_q1');
             const feedbackElement = document.getElementById('ex4_feedback');
-            if (selectedOption && selectedOption.value === 'b') {
+            if (selectedOption.value === 'b') {
                 displayFeedback('ex4_feedback', true);
             } else {
                 displayFeedback('ex4_feedback', false);
@@ -808,8 +1019,8 @@
             };
 
             for (const [id, correctAnswer] of Object.entries(answers)) {
-                const input = document.getElementById(id);
-                const isCorrect = normalizeText(input.value) === normalizeText(correctAnswer);
+                const selectElement = document.getElementById(id);
+                const isCorrect = selectElement.value === correctAnswer;
                 displayFeedback(`${id.replace('q', 'feedback')}`, isCorrect);
             }
         }
