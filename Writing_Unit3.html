@@ -46,7 +46,7 @@
             border-radius: 6px;
             padding: 0.75rem 1rem;
             font-size: 1rem;
-            width: 100%;
+            width: 35%;
             box-sizing: border-box;
             transition: border-color 0.2s, box-shadow 0.2s;
         }
@@ -211,7 +211,7 @@
             <!-- Removed the text descriptions as they are now in dropdown options -->
             <div class="space-y-4">
                 <div>
-                    <label for="ex1_q1" class="block text-gray-700 font-medium mb-1">1. <img src="https://i.postimg.cc/gkH4fcPZ/Writing-Unit3-Exercise1-Picture1.png" alt="Bar Chart" class="inline-block w-24 h-auto ml-2"></label>
+                    <label for="ex1_q1" class="block text-gray-700 font-medium mb-1">1. <img src="https://i.postimg.cc/gkH4fcPZ/Writing-Unit3-Exercise1-Picture1.png" alt="Bar Chart" class="inline-block w-40 h-auto ml-2"></label>
                     <select id="ex1_q1" class="select-field">
                         <option value="">Select an option</option>
                         <option value="This is a bar chart.">This is a bar chart.</option>
@@ -221,7 +221,7 @@
                     <div id="feedback_ex1_q1" class="feedback-message"></div>
                 </div>
                 <div>
-                    <label for="ex1_q2" class="block text-gray-700 font-medium mb-1">2. <img src="https://i.postimg.cc/zBH0MnJz/Writing-Unit3-Exercise1-Picture2.png" alt="Pie Chart" class="inline-block w-24 h-auto ml-2"></label>
+                    <label for="ex1_q2" class="block text-gray-700 font-medium mb-1">2. <img src="https://i.postimg.cc/zBH0MnJz/Writing-Unit3-Exercise1-Picture2.png" alt="Pie Chart" class="inline-block w-40 h-auto ml-2"></label>
                     <select id="ex1_q2" class="select-field">
                         <option value="">Select an option</option>
                         <option value="This is a pie chart.">This is a pie chart.</option>
@@ -231,7 +231,7 @@
                     <div id="feedback_ex1_q2" class="feedback-message"></div>
                 </div>
                 <div>
-                    <label for="ex1_q3" class="block text-gray-700 font-medium mb-1">3. <img src="https://i.postimg.cc/WzMSpTFx/Writing-Unit3-Exercise1-Picture3.png" alt="Line Graph" class="inline-block w-24 h-auto ml-2"></label>
+                    <label for="ex1_q3" class="block text-gray-700 font-medium mb-1">3. <img src="https://i.postimg.cc/WzMSpTFx/Writing-Unit3-Exercise1-Picture3.png" alt="Line Graph" class="inline-block w-40 h-auto ml-2"></label>
                     <select id="ex1_q3" class="select-field">
                         <option value="">Select an option</option>
                         <option value="This is a line graph.">This is a line graph.</option>
@@ -711,19 +711,7 @@
         </div>
     </div>
 
-    <script type="module">
-        // Firebase imports
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        // Global Firebase variables
-        let app;
-        let db;
-        let auth;
-        let userId;
-        let isAuthReady = false; // Flag to ensure auth is ready before Firestore ops
-
+    <script>
         // Helper function to display feedback
         function showFeedback(elementId, isCorrect, message) {
             const feedbackElement = document.getElementById(elementId);
@@ -740,85 +728,34 @@
             }
         }
 
-        // Firebase Initialization and Authentication
-        document.addEventListener('DOMContentLoaded', async () => {
-            // Firebase initialization
-            const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-            app = initializeApp(firebaseConfig);
-            db = getFirestore(app);
-            auth = getAuth(app);
-
-            onAuthStateChanged(auth, async (user) => {
-                if (user) {
-                    userId = user.uid;
-                } else {
-                    // Sign in anonymously if no user is authenticated
-                    try {
-                        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                            await signInWithCustomToken(auth, __initial_auth_token);
-                            userId = auth.currentUser.uid;
-                        } else {
-                            await signInAnonymously(auth);
-                            userId = auth.currentUser.uid;
-                        }
-                    } catch (error) {
-                        console.error("Firebase authentication failed:", error);
-                        // Fallback to a random UUID if anonymous sign-in also fails
-                        userId = crypto.randomUUID();
-                    }
-                }
-                isAuthReady = true;
-                console.log("Firebase Auth Ready. User ID:", userId);
-                // Load saved data once authentication is ready
-                await loadWorksheetState(); // Await loading to ensure state is set before attaching listeners
-                // Attach event listeners for saving after load
-                attachAutoSaveListeners();
-            });
-
-            setupReorderExercise9(); // Call the new setup function for Exercise 9
-            // Setup word count for Exercise 10
-            const studentPostTextarea = document.getElementById('student_post');
-            studentPostTextarea.addEventListener('input', updateWordCount);
-            updateWordCount(); // Initial word count on load
-        });
-
         // Auto-save function (debounced)
         let saveTimeout;
-        async function saveWorksheetState() {
-            if (!isAuthReady || !userId) {
-                console.warn("Firebase not ready or userId not available for saving.");
-                return;
-            }
-
+        function saveWorksheetState() {
+            console.log("Attempting to save worksheet state..."); // Added log
             clearTimeout(saveTimeout);
-            saveTimeout = setTimeout(async () => {
+            saveTimeout = setTimeout(() => {
                 const worksheetData = {};
 
                 // Collect data from each exercise
-                // Ex1: Dropdowns
                 worksheetData.ex1_q1 = document.getElementById('ex1_q1')?.value || '';
                 worksheetData.ex1_q2 = document.getElementById('ex1_q2')?.value || '';
                 worksheetData.ex1_q3 = document.getElementById('ex1_q3')?.value || '';
 
-                // Ex2: Drag & Drop
                 worksheetData.ex2_drop1 = document.getElementById('ex2_drop1')?.dataset.currentWord || '';
                 worksheetData.ex2_drop2 = document.getElementById('ex2_drop2')?.dataset.currentWord || '';
                 worksheetData.ex2_drop3 = document.getElementById('ex2_drop3')?.dataset.currentWord || '';
                 worksheetData.ex2_drop4 = document.getElementById('ex2_drop4')?.dataset.currentWord || '';
 
-                // Ex3: Dropdowns
                 worksheetData.ex3_q1 = document.getElementById('ex3_q1')?.value || '';
                 worksheetData.ex3_q2 = document.getElementById('ex3_q2')?.value || '';
                 worksheetData.ex3_q3 = document.getElementById('ex3_q3')?.value || '';
                 worksheetData.ex3_q4 = document.getElementById('ex3_q4')?.value || '';
                 worksheetData.ex3_q5 = document.getElementById('ex3_q5')?.value || '';
 
-                // Ex4: Drag & Drop
                 worksheetData.ex4_drop1 = document.getElementById('ex4_drop1')?.dataset.currentWord || '';
                 worksheetData.ex4_drop2 = document.getElementById('ex4_drop2')?.dataset.currentWord || '';
                 worksheetData.ex4_drop3 = document.getElementById('ex4_drop3')?.dataset.currentWord || '';
 
-                // Ex5: Input fields
                 worksheetData.ex5_q1 = document.getElementById('ex5_q1')?.value || '';
                 worksheetData.ex5_q2 = document.getElementById('ex5_q2')?.value || '';
                 worksheetData.ex5_q3 = document.getElementById('ex5_q3')?.value || '';
@@ -827,20 +764,17 @@
                 worksheetData.ex5_q6 = document.getElementById('ex5_q6')?.value || '';
                 worksheetData.ex5_q7 = document.getElementById('ex5_q7')?.value || '';
 
-                // Ex6: Dropdowns
                 worksheetData.ex6_q1 = document.getElementById('ex6_q1')?.value || '';
                 worksheetData.ex6_q2 = document.getElementById('ex6_q2')?.value || '';
                 worksheetData.ex6_q3 = document.getElementById('ex6_q3')?.value || '';
                 worksheetData.ex6_q4 = document.getElementById('ex6_q4')?.value || '';
                 worksheetData.ex6_q5 = document.getElementById('ex6_q5')?.value || '';
 
-                // Ex7: Input fields
                 worksheetData.ex7_q1 = document.getElementById('ex7_q1')?.value || '';
                 worksheetData.ex7_q2 = document.getElementById('ex7_q2')?.value || '';
                 worksheetData.ex7_q3 = document.getElementById('ex7_q3')?.value || '';
                 worksheetData.ex7_q4 = document.getElementById('ex7_q4')?.value || '';
 
-                // Ex8: Dropdowns
                 worksheetData.ex8_q1 = document.getElementById('ex8_q1')?.value || '';
                 worksheetData.ex8_q2 = document.getElementById('ex8_q2')?.value || '';
                 worksheetData.ex8_q3 = document.getElementById('ex8_q3')?.value || '';
@@ -850,7 +784,6 @@
                 worksheetData.ex8_q7 = document.getElementById('ex8_q7')?.value || '';
                 worksheetData.ex8_q8 = document.getElementById('ex8_q8')?.value || '';
 
-                // Ex9: Reorder sentences (store as array of words)
                 for (let i = 1; i <= 5; i++) {
                     const container = document.getElementById(`ex9_order${i}`);
                     if (container) {
@@ -858,41 +791,30 @@
                     }
                 }
 
-                // Ex10: Textarea
                 worksheetData.student_post = document.getElementById('student_post')?.value || '';
 
                 try {
-                    const docRef = doc(db, `artifacts/${__app_id}/users/${userId}/worksheet_data`, 'unit3_writing_state');
-                    await setDoc(docRef, worksheetData);
-                    console.log("Worksheet state saved successfully!");
+                    localStorage.setItem('unit3_writing_state', JSON.stringify(worksheetData));
+                    console.log("Worksheet state saved to local storage!");
+                    console.log("Saved data:", worksheetData); // Log the actual saved data
                 } catch (e) {
-                    console.error("Error saving document: ", e);
+                    console.error("Error saving to local storage: ", e);
                 }
             }, 1000); // Debounce by 1 second
         }
 
-        // Load data function
-        async function loadWorksheetState() {
-            if (!isAuthReady || !userId) {
-                console.warn("Firebase not ready or userId not available for loading.");
-                return;
-            }
-
+        function loadWorksheetState() {
             try {
-                const docRef = doc(db, `artifacts/${__app_id}/users/${userId}/worksheet_data`, 'unit3_writing_state');
-                const docSnap = await getDoc(docRef);
+                const savedData = JSON.parse(localStorage.getItem('unit3_writing_state'));
 
-                if (docSnap.exists()) {
-                    const savedData = docSnap.data();
-                    console.log("Worksheet state loaded successfully!");
+                if (savedData) {
+                    console.log("Worksheet state loaded from local storage!");
+                    console.log("Loaded data:", savedData); // Log the actual loaded data
 
-                    // Restore data for each exercise
-                    // Ex1: Dropdowns
                     if (document.getElementById('ex1_q1')) document.getElementById('ex1_q1').value = savedData.ex1_q1 || '';
                     if (document.getElementById('ex1_q2')) document.getElementById('ex1_q2').value = savedData.ex1_q2 || '';
                     if (document.getElementById('ex1_q3')) document.getElementById('ex1_q3').value = savedData.ex1_q3 || '';
 
-                    // Ex2: Drag & Drop
                     const ex2Drops = ['ex2_drop1', 'ex2_drop2', 'ex2_drop3', 'ex2_drop4'];
                     ex2Drops.forEach(id => {
                         const target = document.getElementById(id);
@@ -900,20 +822,17 @@
                             target.textContent = savedData[id];
                             target.dataset.currentWord = savedData[id];
                             target.classList.add('filled');
-                            // Hide the original item from the word bank if it was dropped
                             const originalItem = document.querySelector(`.exercise-section:nth-of-type(2) .drag-item[data-word="${savedData[id]}"]`);
                             if (originalItem) originalItem.style.display = 'none';
                         }
                     });
 
-                    // Ex3: Dropdowns
                     if (document.getElementById('ex3_q1')) document.getElementById('ex3_q1').value = savedData.ex3_q1 || '';
                     if (document.getElementById('ex3_q2')) document.getElementById('ex3_q2').value = savedData.ex3_q2 || '';
                     if (document.getElementById('ex3_q3')) document.getElementById('ex3_q3').value = savedData.ex3_q3 || '';
                     if (document.getElementById('ex3_q4')) document.getElementById('ex3_q4').value = savedData.ex3_q4 || '';
                     if (document.getElementById('ex3_q5')) document.getElementById('ex3_q5').value = savedData.ex3_q5 || '';
 
-                    // Ex4: Drag & Drop (similar to Ex2)
                     const ex4Drops = ['ex4_drop1', 'ex4_drop2', 'ex4_drop3'];
                     ex4Drops.forEach(id => {
                         const target = document.getElementById(id);
@@ -926,7 +845,6 @@
                         }
                     });
 
-                    // Ex5: Input fields
                     if (document.getElementById('ex5_q1')) document.getElementById('ex5_q1').value = savedData.ex5_q1 || '';
                     if (document.getElementById('ex5_q2')) document.getElementById('ex5_q2').value = savedData.ex5_q2 || '';
                     if (document.getElementById('ex5_q3')) document.getElementById('ex5_q3').value = savedData.ex5_q3 || '';
@@ -935,20 +853,17 @@
                     if (document.getElementById('ex5_q6')) document.getElementById('ex5_q6').value = savedData.ex5_q6 || '';
                     if (document.getElementById('ex5_q7')) document.getElementById('ex5_q7').value = savedData.ex5_q7 || '';
 
-                    // Ex6: Dropdowns
                     if (document.getElementById('ex6_q1')) document.getElementById('ex6_q1').value = savedData.ex6_q1 || '';
                     if (document.getElementById('ex6_q2')) document.getElementById('ex6_q2').value = savedData.ex6_q2 || '';
                     if (document.getElementById('ex6_q3')) document.getElementById('ex6_q3').value = savedData.ex6_q3 || '';
                     if (document.getElementById('ex6_q4')) document.getElementById('ex6_q4').value = savedData.ex6_q4 || '';
                     if (document.getElementById('ex6_q5')) document.getElementById('ex6_q5').value = savedData.ex6_q5 || '';
 
-                    // Ex7: Input fields
                     if (document.getElementById('ex7_q1')) document.getElementById('ex7_q1').value = savedData.ex7_q1 || '';
                     if (document.getElementById('ex7_q2')) document.getElementById('ex7_q2').value = savedData.ex7_q2 || '';
                     if (document.getElementById('ex7_q3')) document.getElementById('ex7_q3').value = savedData.ex7_q3 || '';
                     if (document.getElementById('ex7_q4')) document.getElementById('ex7_q4').value = savedData.ex7_q4 || '';
 
-                    // Ex8: Dropdowns
                     if (document.getElementById('ex8_q1')) document.getElementById('ex8_q1').value = savedData.ex8_q1 || '';
                     if (document.getElementById('ex8_q2')) document.getElementById('ex8_q2').value = savedData.ex8_q2 || '';
                     if (document.getElementById('ex8_q3')) document.getElementById('ex8_q3').value = savedData.ex8_q3 || '';
@@ -958,12 +873,11 @@
                     if (document.getElementById('ex8_q7')) document.getElementById('ex8_q7').value = savedData.ex8_q7 || '';
                     if (document.getElementById('ex8_q8')) document.getElementById('ex8_q8').value = savedData.ex8_q8 || '';
 
-                    // Ex9: Reorder sentences
                     for (let i = 1; i <= 5; i++) {
                         const container = document.getElementById(`ex9_order${i}`);
                         const wordBank = document.getElementById(`ex9_word_bank_s${i}`);
                         if (container && wordBank && savedData[`ex9_order${i}`]) {
-                            container.innerHTML = ''; // Clear current items
+                            container.innerHTML = '';
                             savedData[`ex9_order${i}`].forEach(word => {
                                 const span = document.createElement('span');
                                 span.classList.add('order-item');
@@ -972,13 +886,11 @@
                                 span.textContent = word;
                                 container.appendChild(span);
 
-                                // Hide the original word from the word bank
                                 const originalWordBankItem = wordBank.querySelector(`.order-item[data-word="${word}"]`);
                                 if (originalWordBankItem) {
                                     originalWordBankItem.style.display = 'none';
                                 }
                             });
-                            // Re-attach drag listeners to newly created items
                             container.querySelectorAll('.order-item').forEach(item => {
                                 item.addEventListener('dragstart', (e) => {
                                     draggedElement = e.target;
@@ -998,42 +910,36 @@
                         }
                     }
 
-                    // Ex10: Textarea
                     if (document.getElementById('student_post')) {
                         document.getElementById('student_post').value = savedData.student_post || '';
-                        updateWordCount(); // Update word count after loading
+                        updateWordCount();
                     }
 
                 } else {
-                    console.log("No saved worksheet state found.");
+                    console.log("No saved worksheet state found in local storage.");
                 }
             } catch (e) {
-                console.error("Error loading document: ", e);
+                console.error("Error loading from local storage: ", e);
             }
         }
 
-        // Attach auto-save listeners to relevant elements
         function attachAutoSaveListeners() {
-            // Inputs and Selects
+            console.log("Attaching auto-save listeners..."); // Added log
             document.querySelectorAll('input, select, textarea').forEach(element => {
                 element.addEventListener('input', saveWorksheetState);
                 element.addEventListener('change', saveWorksheetState);
             });
 
-            // For drag and drop exercises (Ex2, Ex4, Ex8, Ex9)
-            // Need to listen to 'drop' events on drop targets/containers
             document.querySelectorAll('.drop-target, .order-container').forEach(element => {
                 element.addEventListener('drop', saveWorksheetState);
             });
         }
 
-
-        // Exercise 1 Logic
-        window.checkExercise1 = function() { // Made global
+        window.checkExercise1 = function() {
             const answers = {
-                'ex1_q1': 'This is a bar chart.', // Assuming image 1 is bar chart
-                'ex1_q2': 'This is a pie chart.', // Assuming image 2 is pie chart
-                'ex1_q3': 'This is a line graph.' // Assuming image 3 is line graph
+                'ex1_q1': 'This is a bar chart.',
+                'ex1_q2': 'This is a line graph.',
+                'ex1_q3': 'This is a pie chart.'
             };
 
             for (const key in answers) {
@@ -1048,7 +954,6 @@
             }
         }
 
-        // Exercise 2 Logic (Drag and Drop)
         let draggedItem = null;
 
         document.querySelectorAll('.drag-item').forEach(item => {
@@ -1103,7 +1008,7 @@
             });
         });
 
-        window.checkExercise2 = function() { // Made global
+        window.checkExercise2 = function() {
             const dropTargets = {
                 'ex2_drop1': 'different age groups',
                 'ex2_drop2': 'money spent',
@@ -1123,8 +1028,7 @@
             }
         }
 
-        // Exercise 3 Logic (Multiple Choice)
-        window.checkExercise3 = function() { // Made global
+        window.checkExercise3 = function() {
             const answers = {
                 'ex3_q1': 'music concerts',
                 'ex3_q2': 'about $14 million',
@@ -1145,55 +1049,7 @@
             }
         }
 
-        // Exercise 4 Logic (Drag and Drop)
-        document.querySelectorAll('.exercise-section:nth-of-type(4) .drag-item').forEach(item => {
-            item.addEventListener('dragstart', (e) => {
-                draggedItem = e.target;
-                e.dataTransfer.setData('text/plain', e.target.dataset.word);
-                setTimeout(() => { e.target.style.display = 'none'; }, 0);
-            });
-            item.addEventListener('dragend', (e) => {
-                setTimeout(() => {
-                    if (draggedItem) {
-                        draggedItem.style.display = 'inline-block';
-                    }
-                    draggedItem = null;
-                }, 0);
-            });
-        });
-
-        document.querySelectorAll('.drop-target').forEach(target => {
-            target.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                target.classList.add('hover');
-            });
-            target.addEventListener('dragleave', () => {
-                target.classList.remove('hover');
-            });
-            target.addEventListener('drop', (e) => {
-                e.preventDefault();
-                target.classList.remove('hover');
-                const data = e.dataTransfer.getData('text/plain');
-
-                if (target.dataset.currentWord) {
-                    const existingWord = target.dataset.currentWord;
-                    const existingItem = document.querySelector(`.drag-item[data-word="${existingWord}"]`);
-                    if (existingItem) {
-                        existingItem.style.display = 'inline-block';
-                    }
-                }
-
-                target.textContent = data;
-                target.dataset.currentWord = data;
-                target.classList.add('filled');
-                if (draggedItem) {
-                    draggedItem.style.display = 'none';
-                    draggedItem = null;
-                }
-            });
-        });
-
-        window.checkExercise4 = function() { // Made global
+        window.checkExercise4 = function() {
             const dropTargets = {
                 'ex4_drop1': 'a main difference',
                 'ex4_drop2': 'a similarity',
@@ -1212,8 +1068,7 @@
             }
         }
 
-        // Exercise 5 Logic (Fill in the blanks with drag-and-drop words)
-        window.checkExercise5 = function() { // Made global
+        window.checkExercise5 = function() {
             const answers = {
                 'ex5_q1': 'highest',
                 'ex5_q2': 'compared',
@@ -1236,8 +1091,7 @@
             }
         }
 
-        // Exercise 6 Logic (Multiple Choice)
-        window.checkExercise6 = function() { // Made global
+        window.checkExercise6 = function() {
             const answers = {
                 'ex6_q1': 'meeting friends',
                 'ex6_q2': 'reading',
@@ -1258,8 +1112,7 @@
             }
         }
 
-        // Exercise 7 Logic (Fill in the blanks)
-        window.checkExercise7 = function() { // Made global
+        window.checkExercise7 = function() {
             const answers = {
                 'ex7_q1': 'whereas',
                 'ex7_q2': 'contrast',
@@ -1279,8 +1132,7 @@
             }
         }
 
-        // Exercise 8 Logic (Dropdowns)
-        window.checkExercise8 = function() { // Made global
+        window.checkExercise8 = function() {
             const answers = {
                 'ex8_q1': 'while 65% voted against.',
                 'ex8_q2': 'By contrast, my sister always eats in restaurants.',
@@ -1304,15 +1156,13 @@
             }
         }
 
-        // Exercise 9 Logic (Reorder sentences using drag and drop)
         let draggedElement = null;
         let originalParent = null;
 
-        // Utility function to shuffle an array
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]]; // ES6 swap
+                [array[i], array[j]] = [array[j], array[i]];
             }
             return array;
         }
@@ -1355,7 +1205,6 @@
                 const wordBank = document.getElementById(sentence.wordBankId);
                 const orderContainer = document.getElementById(sentence.orderContainerId);
 
-                // Create and shuffle items for the word bank
                 let words = sentence.correctOrder.map(word => {
                     const span = document.createElement('span');
                     span.classList.add('order-item');
@@ -1365,22 +1214,19 @@
                     return span;
                 });
 
-                words = shuffleArray(words); // Shuffle the words
+                words = shuffleArray(words);
 
                 words.forEach(word => wordBank.appendChild(word));
 
-                // Add drag event listeners to items in the word bank
                 wordBank.querySelectorAll('.order-item').forEach(item => {
                     item.addEventListener('dragstart', (e) => {
                         draggedElement = e.target;
-                        originalParent = e.target.parentNode; // Store original parent
+                        originalParent = e.target.parentNode;
                         e.dataTransfer.setData('text/plain', e.target.dataset.word);
-                        setTimeout(() => e.target.style.opacity = '0.5', 0); // Hide during drag
+                        setTimeout(() => e.target.style.opacity = '0.5', 0);
                     });
 
                     item.addEventListener('dragend', (e) => {
-                        // If the element is still hidden (meaning it wasn't dropped into a valid target),
-                        // return it to its original parent and make it visible.
                         if (e.target.style.opacity === '0.5') {
                             originalParent.appendChild(e.target);
                             e.target.style.opacity = '1';
@@ -1390,13 +1236,11 @@
                     });
                 });
 
-                // Add drop event listeners to the order container
                 orderContainer.addEventListener('dragover', (e) => {
-                    e.preventDefault(); // Allow drop
+                    e.preventDefault();
                     orderContainer.classList.add('hover');
 
                     if (draggedElement && draggedElement.parentNode !== orderContainer) {
-                        // If dragging from outside this container, don't reorder within it yet.
                         return;
                     }
 
@@ -1419,9 +1263,8 @@
                     orderContainer.classList.remove('hover');
 
                     if (draggedElement && draggedElement.parentNode !== orderContainer) {
-                        // If element is dropped from a word bank into this container
-                        draggedElement.style.opacity = '1'; // Make it visible
-                        orderContainer.appendChild(draggedElement); // Append it first, then reorder
+                        draggedElement.style.opacity = '1';
+                        orderContainer.appendChild(draggedElement);
                         const afterElement = getDragAfterElement(orderContainer, e.clientX);
                         if (afterElement == null) {
                             orderContainer.appendChild(draggedElement);
@@ -1429,15 +1272,13 @@
                             orderContainer.insertBefore(draggedElement, afterElement);
                         }
                     } else if (draggedElement) {
-                        // If element is dropped within the same container (reordering), just make it visible
                         draggedElement.style.opacity = '1';
                     }
                 });
             });
 
-            // Helper for reordering within a container
             function getDragAfterElement(container, x) {
-                const draggableElements = [...container.querySelectorAll('.order-item:not([style*="opacity: 0.5"])')]; // Exclude the currently dragging element
+                const draggableElements = [...container.querySelectorAll('.order-item:not([style*="opacity: 0.5"])')];
                 return draggableElements.reduce((closest, child) => {
                     const box = child.getBoundingClientRect();
                     const offset = x - box.left - box.width / 2;
@@ -1450,7 +1291,6 @@
             }
         }
 
-        // Define correct orders for Exercise 9 (kept for checking)
         const ex9_q1_order = ["65% of", "music teachers", "voted in support", "while", "25% voted against."];
         const ex9_q2_order = ["My mother", "loves swimming.", "By contrast,", "my father hates it."];
         const ex9_q3_order = ["The best thing", "about skiing", "is that it's exciting", "whereas", "the worst thing", "is that it's cold."];
@@ -1459,14 +1299,15 @@
 
 
         document.addEventListener('DOMContentLoaded', () => {
-            setupReorderExercise9(); // Call the new setup function for Exercise 9
-            // Setup word count for Exercise 10
+            setupReorderExercise9();
+            loadWorksheetState();
             const studentPostTextarea = document.getElementById('student_post');
             studentPostTextarea.addEventListener('input', updateWordCount);
-            updateWordCount(); // Initial word count on load
+            updateWordCount();
+            attachAutoSaveListeners(); // Moved here to ensure DOM is fully loaded
         });
 
-        window.checkExercise9 = function() { // Made global
+        window.checkExercise9 = function() {
             const checkOrder = (containerId, correctOrder) => {
                 const container = document.getElementById(containerId);
                 const currentOrderElements = Array.from(container.querySelectorAll('.order-item'));
@@ -1510,7 +1351,6 @@
             }
         }
 
-        // Exercise 10 Logic (Writing Task - Word Count and AI Feedback)
         function updateWordCount() {
             const textarea = document.getElementById('student_post');
             const wordCountDisplay = document.getElementById('word_count_display');
@@ -1519,7 +1359,7 @@
             wordCountDisplay.textContent = `Word count: ${words.length}`;
         }
 
-        window.submitWritingTask = async function() { // Made global
+        window.submitWritingTask = async function() {
             const studentPost = document.getElementById('student_post').value;
             const feedbackElement = document.getElementById('feedback_writing_task');
 
@@ -1535,7 +1375,6 @@
             feedbackElement.className = 'feedback-message bg-blue-100 text-blue-800';
             feedbackElement.style.display = 'block';
 
-            // Simulate LLM call
             const prompt = `Evaluate the following IELTS Writing Task 1 summary based on the provided chart (Holiday leisure activities chart). Focus on Task Achievement (summarizing main features, making comparisons, word count), Coherence and Cohesion, Lexical Resource, and Grammatical Range and Accuracy. Provide constructive feedback.
 
             Chart Description: The chart shows the average number of hours each day that Chinese, American, Turkish and Brazilian tourists spent doing leisure activities (At the beach, Reading books, Visiting places) while on holiday in Greece in August 2015.
@@ -1547,7 +1386,7 @@
                 let chatHistory = [];
                 chatHistory.push({ role: "user", parts: [{ text: prompt }] });
                 const payload = { contents: chatHistory };
-                const apiKey = ""; // Canvas will provide this at runtime
+                const apiKey = "";
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
                 const response = await fetch(apiUrl, {
