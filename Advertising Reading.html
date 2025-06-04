@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advertising Reading UI</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+    .left, .right {
+      padding: 30px;
+      overflow-y: auto;
+    }
+    .left {
+      width: 50%;
+      background-color: #ffffff;
+      border-right: 2px solid #dee2e6;
+      box-shadow: inset -5px 0 5px -5px #dee2e6;
+      line-height: 1.6;
+    }
+    .right {
+      width: 50%;
+      background-color: #fdfdfd;
+    }
+    .resizer {
+      width: 6px;
+      cursor: col-resize;
+      background-color: #ced4da;
+    }
+    .resizer:hover {
+      background-color: #adb5bd;
+    }
+    .toggle-buttons {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+    }
+    .toggle-buttons button {
+      padding: 8px 12px;
+      margin-right: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 4px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+    }
+    .toggle-buttons button:hover {
+      background-color: #0056b3;
+    }
+    .question input[type="text"], .question select {
+      width: 100%;
+      padding: 6px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .question { margin-bottom: 20px; }
+    .check-btn {
+      padding: 6px 14px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.95em;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+    .check-btn:hover { background-color: #218838; }
+    .feedback {
+      margin-top: 5px;
+      font-size: 0.95em;
+    }
+    .correct { color: green; }
+    .incorrect { color: red; }
+    .warning { color: orange; }
+  </style>
+</head>
+<body>
+  <div class="toggle-buttons">
+    <button onclick="showPassage(1)" aria-label="Show Passage 1">Passage 1</button>
+    <button onclick="showPassage(2)" aria-label="Show Passage 2">Passage 2</button>
+  </div>
+  <div class="container">
+    <div class="left" id="reading-passage"></div>
+    <div class="resizer" onmousedown="startResizing(event)"></div>
+    <div class="right" id="question-panel"></div>
+  </div>
+
+<script>
+const passages = [
+  {
+    title: "Advertising Needs Attention",
+    content: `<p>Advertising has become an ever-present part of modern life. From billboards and posters in city streets to pop-up banners and social media campaigns, we are constantly exposed to advertising messages. The sheer volume of advertisements is unprecedented, and many consumers have developed strategies to ignore or block these messages.</p>
+    <p>In traditional forms, advertising relied heavily on newspapers, radio, and television. Today, advertisers have diversified their strategies to include online media, influencer marketing, and product placement. Public transportation stations, waiting areas, and even elevators are now popular spots for displaying ads.</p>
+    <p>This saturation has raised concerns. Critics argue that consumers, especially children, are being overwhelmed by these messages. Others claim that advertising is a vital source of funding for media and entertainment industries.</p>`,
+    questions: `<div class="question"><p>1. People are exposed to fewer advertisements now than in the past.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
+    <div class="question"><p>2. Advertisers today mostly rely on traditional advertising methods.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
+    <div class="question"><p>3. Advertisements in public areas can have a wide reach.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
+    <div class="question"><p>4. People sometimes take measures to avoid seeing advertisements.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
+    <div class="question"><p>5. Product placement can be an example of subtle advertising.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
+    <div class="question"><p>6. Companies are decreasing their advertising budgets.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
+    <div class="question"><p>7. Consumers are becoming less aware of how advertising affects them.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
+    <div class="question"><p>8. Ads in train stations are mainly designed to reach ___.</p><input type="text" /></div>
+    <div class="question"><p>9. Modern advertisements use techniques based on ___.</p><input type="text" /></div>
+    <div class="question"><p>10. Some ads include ___ that may not be noticed immediately.</p><input type="text" /></div>
+    <div class="question"><p>11. Effective ads often create an ___ for the product.</p><input type="text" /></div>
+    <div class="question"><p>12. A common concern about advertising is ___.</p><input type="text" /></div>
+    <div class="question"><p>13. Ads increase especially during the ___.</p><input type="text" /></div>`
+  },
+  {
+    title: "Advertising and Children",
+    content: `<p>Children are considered especially vulnerable to advertising because of their limited ability to understand the persuasive intent behind it. Various studies have shown that children under the age of eight often cannot distinguish between commercials and regular programming.</p>
+    <p>In response to concerns, some countries have implemented regulations that restrict advertising aimed at children. These regulations may limit when and where such advertisements can appear, or prohibit certain types of persuasive techniques.</p>
+    <p>Digital advertising presents new challenges. Online platforms allow targeted advertising based on user behavior, and children are often exposed to ads embedded in games or social media feeds. Calls for stricter rules and better enforcement are growing as awareness of these issues increases.</p>`,
+    questions: `<div class="question"><p>14. Choose the correct heading: Paragraph A</p><select><option value="">--Select--</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option><option>ix</option><option>x</option></select></div>
+    <div class="question"><p>15. Choose the correct heading: Paragraph B</p><select><option value="">--Select--</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option><option>ix</option><option>x</option></select></div>
+    <div class="question"><p>16–26</p><p>YES / NO / NOT GIVEN questions follow the same pattern as above. You can expand this section with full questions.</p></div>`
+  }
+];
+
+const answers = {
+  1: "FALSE", 2: "FALSE", 3: "TRUE", 4: "TRUE", 5: "TRUE", 6: "NOT GIVEN", 7: "NOT GIVEN",
+  8: "COMMUTERS", 9: "PSYCHOLOGY", 10: "HIDDEN MESSAGES", 11: "EMOTIONAL RESPONSE", 12: "OVEREXPOSURE", 13: "HOLIDAY SEASON",
+  14: "v", 15: "iii",
+  16: "NO", 17: "NO", 18: "YES", 19: "YES", 20: "NOT GIVEN", 21: "NO", 22: "NO", 23: "YES", 24: "NO", 25: "NO", 26: "YES"
+};
+
+let currentPassage = 1;
+
+function showPassage(index) {
+  const passage = passages[index - 1];
+  currentPassage = index;
+  document.getElementById('reading-passage').innerHTML = `<h2>${passage.title}</h2>` + passage.content;
+  document.getElementById('question-panel').innerHTML = passage.questions;
+
+  const allQuestions = document.querySelectorAll('.question');
+  const base = currentPassage === 1 ? 1 : 14;
+
+  allQuestions.forEach((q, i) => {
+    const btn = document.createElement("button");
+    btn.textContent = "Check Answer";
+    btn.className = "check-btn";
+    btn.onclick = () => {
+      checkSingleAnswer(q, base + i);
+      saveAnswers();
+    };
+    q.appendChild(btn);
+
+    const fb = document.createElement("div");
+    fb.className = "feedback";
+    fb.id = `feedback-${base + i}`;
+    q.appendChild(fb);
+  });
+
+  loadAnswers();
+}
+
+function checkSingleAnswer(qElem, id) {
+  const input = qElem.querySelector("input, select");
+  const fb = document.getElementById(`feedback-${id}`);
+  const userAns = input.value.trim().toUpperCase();
+  const correct = (answers[id] || "").toUpperCase();
+
+  if (!userAns) {
+    fb.textContent = "⚠️ Please enter/select an answer.";
+    fb.className = "feedback warning";
+  } else if (userAns === correct) {
+    fb.textContent = "✅ Correct";
+    fb.className = "feedback correct";
+  } else {
+    fb.textContent = "❌ Incorrect";
+    fb.className = "feedback incorrect";
+  }
+}
+
+function saveAnswers() {
+  const inputs = document.querySelectorAll('.question input, .question select');
+  const data = {};
+  inputs.forEach((el, i) => {
+    data[i] = el.value;
+  });
+  localStorage.setItem(`passage${currentPassage}_answers`, JSON.stringify(data));
+}
+
+function loadAnswers() {
+  const saved = localStorage.getItem(`passage${currentPassage}_answers`);
+  if (!saved) return;
+  const data = JSON.parse(saved);
+  const inputs = document.querySelectorAll('.question input, .question select');
+  inputs.forEach((el, i) => {
+    if (data[i]) el.value = data[i];
+  });
+}
+
+let isResizing = false;
+function startResizing(e) {
+  isResizing = true;
+  document.body.style.cursor = 'col-resize';
+  document.addEventListener('mousemove', resizePanels);
+  document.addEventListener('mouseup', stopResizing);
+}
+function resizePanels(e) {
+  if (!isResizing) return;
+  const container = document.querySelector('.container');
+  const pointerX = e.clientX - container.offsetLeft;
+  const containerWidth = container.offsetWidth;
+  const leftWidth = (pointerX / containerWidth) * 100;
+  document.querySelector('.left').style.width = `${leftWidth}%`;
+  document.querySelector('.right').style.width = `${100 - leftWidth}%`;
+}
+function stopResizing() {
+  isResizing = false;
+  document.body.style.cursor = 'default';
+  document.removeEventListener('mousemove', resizePanels);
+  document.removeEventListener('mouseup', stopResizing);
+}
+
+window.onload = () => showPassage(1);
+</script>
+</body>
+</html>
