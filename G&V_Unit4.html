@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindset for IELTS 1 - Unit 4 G&V</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #334155;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 90%;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .exercise-section {
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background-color: #f8fafc;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .exercise-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+        }
+        .instruction {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #475569;
+        }
+        .category-box {
+            min-height: 120px;
+            border: 2px dashed #94a3b8;
+            border-radius: 8px;
+            padding: 1rem;
+            background-color: #eff6ff;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-content: flex-start;
+        }
+        .draggable-item {
+            cursor: grab;
+            background-color: #60a5fa;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .draggable-item:active {
+            cursor: grabbing;
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .draggable-item.dragging {
+            opacity: 0.6;
+            transform: scale(0.95);
+        }
+        .dropdown-container {
+            margin-bottom: 1rem;
+        }
+        .dropdown-container label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #334155;
+        }
+        .dropdown-container select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            background-color: #ffffff;
+            font-size: 1rem;
+            color: #334155;
+            appearance: none; /* Remove default arrow */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%20viewBox%3D%220%200%20292.4%20292.4%22%3E%3Cpath%20fill%3D%22%236B7280%22%20d%3D%22M287%20197.6l-131.3-131.3c-4.1-4.1-10.8-4.1-14.9%200L5.4%20197.6c-4.1%204.1-4.1%2010.8%200%2014.9s10.8%204.1%2014.9%200l123.8-123.8%20123.8%20123.8c4.1%204.1%2010.8%204.1%2014.9%200s4.1-10.8%200-14.9z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 0.8em;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .dropdown-container select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+        }
+        /* New style for selected dropdown options */
+        .dropdown-container select.selected-option-style {
+            font-weight: bold;
+            color: #1e40af; /* A darker blue for highlight */
+            background-color: #e0f2fe; /* Light blue background for highlight */
+        }
+        .feedback {
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            display: none; /* Hidden by default */
+        }
+        .feedback.correct {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 1px solid #34d399;
+        }
+        .feedback.incorrect {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+        .check-button, .reset-button {
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .check-button {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+        }
+        .check-button:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        .check-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .reset-button {
+            background-color: #e2e8f0;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+            margin-left: 1rem;
+        }
+        .reset-button:hover {
+            background-color: #cbd5e1;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        .reset-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .answer-highlight {
+            font-weight: 600;
+            color: #3b82f6;
+        }
+        .correct-answer-display {
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            background-color: #e0f2fe;
+            border: 1px solid #93c5fd;
+            border-radius: 8px;
+            color: #1e40af;
+            font-size: 0.95rem;
+            display: none; /* Hidden by default */
+        }
+        .correct-answer-display strong {
+            color: #1d4ed8;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem auto;
+                padding: 1rem;
+            }
+            .exercise-title {
+                font-size: 1.5rem;
+            }
+            .instruction {
+                font-size: 1rem;
+            }
+            .draggable-item {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+            .check-button, .reset-button {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            .button-group {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            .reset-button {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container">
+        <h1 class="text-4xl font-extrabold text-center text-blue-700 mb-8">Mindset for IELTS 1 - Unit 4 G&V</h1>
+
+        <!-- Exercise 1: Drag and Drop -->
+        <div id="exercise1" class="exercise-section">
+            <h2 class="exercise-title">Unit 4: Exercise 1</h2>
+            <p class="instruction">Put the words in the correct categories to complete the table.</p>
+
+            <div class="mb-6">
+                <div id="drag-items" class="flex flex-wrap gap-3 mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                    <div class="draggable-item" draggable="true" data-category="dairy products">Yoghurt</div>
+                    <div class="draggable-item" draggable="true" data-category="meat">Chicken</div>
+                    <div class="draggable-item" draggable="true" data-category="soft drinks">Lemonade</div>
+                    <div class="draggable-item" draggable="true" data-category="soft drinks">Juice</div>
+                    <div class="draggable-item" draggable="true" data-category="side dishes">Bread</div>
+                    <div class="draggable-item" draggable="true" data-category="soft drinks">Milkshake</div>
+                    <div class="draggable-item" draggable="true" data-category="herbs and spices">Chilli</div>
+                    <div class="draggable-item" draggable="true" data-category="side dishes">Salad</div>
+                    <div class="draggable-item" draggable="true" data-category="dairy products">Cheese</div>
+                    <div class="draggable-item" draggable="true" data-category="herbs and spices">Basil</div>
+                    <div class="draggable-item" draggable="true" draggable="true" data-category="vegetables">Cabbage</div>
+                    <div class="draggable-item" draggable="true" data-category="side dishes">Rice</div>
+                    <div class="draggable-item" draggable="true" data-category="meat">Lamb</div>
+                    <div class="draggable-item" draggable="true" data-category="herbs and spices">Salt and pepper</div>
+                    <div class="draggable-item" draggable="true" data-category="vegetables">Onion</div>
+                    <div class="draggable-item" draggable="true" data-category="meat">Beef</div>
+                    <div class="draggable-item" draggable="true" data-category="dairy products">Butter</div>
+                    <div class="draggable-item" draggable="true" data-category="vegetables">Carrot</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Dairy Products <span class="text-sm font-normal text-gray-500">(= foods made from milk)</span></h3>
+                    <div id="dairy-products" class="category-box" data-category="dairy products"></div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Herbs and Spices <span class="text-sm font-normal text-gray-500">(= food that gives strong flavours to other food)</span></h3>
+                    <div id="herbs-and-spices" class="category-box" data-category="herbs and spices"></div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Meat</h3>
+                    <div id="meat" class="category-box" data-category="meat"></div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Side Dishes <span class="text-sm font-normal text-gray-500">(= food that you eat along with the main course)</span></h3>
+                    <div id="side-dishes" class="category-box" data-category="side dishes"></div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Soft Drinks</h3>
+                    <div id="soft-drinks" class="category-box" data-category="soft drinks"></div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Vegetables</h3>
+                    <div id="vegetables" class="category-box" data-category="vegetables"></div>
+                </div>
+            </div>
+            <div class="flex justify-center mt-8 button-group">
+                <button class="check-button" onclick="checkExercise1()">Check Answers</button>
+                <button class="reset-button" onclick="resetExercise1()">Reset</button>
+            </div>
+            <div id="feedback1" class="feedback"></div>
+            <div id="correct-answers1" class="correct-answer-display"></div>
+        </div>
+
+        <!-- Exercise 2: Drop-down list -->
+        <div id="exercise2" class="exercise-section">
+            <h2 class="exercise-title">Unit 4: Exercise 2</h2>
+            <p class="instruction">Complete the definitions. Use the sentence endings in the box.</p>
+            <div class="mb-4 text-gray-700">
+                <p>When you chop vegetables, <select id="ex2-q1" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="you cook it at a temperature below boiling.">you cook it at a temperature below boiling.</option>
+                    <option value="you cook it for too long and it goes black.">you cook it for too long and it goes black.</option>
+                    <option value="you cook it in an oven.">you cook it in an oven.</option>
+                    <option value="you cook it in hot oil or fat.">you cook it in hot oil or fat.</option>
+                    <option value="you cook it under a very hot place.">you cook it under a very hot place.</option>
+                    <option value="you cook them in an oven, using a little oil or fat.">you cook them in an oven, using a little oil or fat.</option>
+                    <option value="you cut it into long, thin pieces.">you cut it into long, thin pieces.</option>
+                    <option value="you cook them in water that is boiling (= very hot).">you cook them in water that is boiling (= very hot).</option>
+                    <option value="you cut them into pieces with a knife.">you cut them into pieces with a knife.</option>
+                    <option value="you put it on plates so that people can eat it.">you put it on plates so that people can eat it.</option>
+                </select></p>
+                <p>When you boil potatoes, <select id="ex2-q2" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="you cook it at a temperature below boiling.">you cook it at a temperature below boiling.</option>
+                    <option value="you cook it for too long and it goes black.">you cook it for too long and it goes black.</option>
+                    <option value="you cook it in an oven.">you cook it in an oven.</option>
+                    <option value="you cook it in hot oil or fat.">you cook it in hot oil or fat.</option>
+                    <option value="you cook it under a very hot place.">you cook it under a very hot place.</option>
+                    <option value="you cook them in an oven, using a little oil or fat.">you cook them in an oven, using a little oil or fat.</option>
+                    <option value="you cut it into long, thin pieces.">you cut it into long, thin pieces.</option>
+                    <option value="you cook them in water that is boiling (= very hot).">you cook them in water that is boiling (= very hot).</option>
+                    <option value="you cut them into pieces with a knife.">you cut them into pieces with a knife.</option>
+                    <option value="you put it on plates so that people can eat it.">you put it on plates so that people can eat it.</option>
+                </select></p>
+                <p>When you fry meat, <select id="ex2-q3" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="you cook it at a temperature below boiling.">you cook it at a temperature below boiling.</option>
+                    <option value="you cook it for too long and it goes black.">you cook it for too long and it goes black.</option>
+                    <option value="you cook it in an oven.">you cook it in an oven.</option>
+                    <option value="you cook it in hot oil or fat.">you cook it in hot oil or fat.</option>
+                    <option value="you cook it under a very hot place.">you cook it under a very hot place.</option>
+                    <option value="you cook them in an oven, using a little oil or fat.">you cook them in an oven, using a little oil or fat.</option>
+                    <option value="you cut it into long, thin pieces.">you cut it into long, thin pieces.</option>
+                    <option value="you cook them in water that is boiling (= very hot).">you cook them in water that is boiling (= very hot).</option>
+                    <option value="you cut them into pieces with a knife.">you cut them into pieces with a knife.</option>
+                    <option value="you put it on plates so that people can eat it.">you put it on plates so that people can eat it.</option>
+                </select></p>
+                <p>When you simmer soup, <select id="ex2-q4" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="you cook it at a temperature below boiling.">you cook it at a temperature below boiling.</option>
+                    <option value="you cook it for too long and it goes black.">you cook it for too long and it goes black.</option>
+                    <option value="you cook it in an oven.">you cook it in an oven.</option>
+                    <option value="you cook it in hot oil or fat.">you cook it in hot oil or fat.</option>
+                    <option value="you cook it under a very hot place.">you cook it under a very hot place.</option>
+                    <option value="you cook them in an oven, using a little oil or fat.">you cook them in an oven, using a little oil or fat.</option>
+                    <option value="you cut it into long, thin pieces.">you cut it into long, thin pieces.</option>
+                    <option value="you cook them in water that is boiling (= very hot).">you cook them in water that is boiling (= very hot).</option>
+                    <option value="you cut them into pieces with a knife.">you cut them into pieces with a knife.</option>
+                    <option value="you put it on plates so that people can eat it.">you put it on plates so that people can eat it.</option>
+                </select></p>
+                <p>When you burn toast, <select id="ex2-q5" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="you cook it at a temperature below boiling.">you cook it at a temperature below boiling.</option>
+                    <option value="you cook it for too long and it goes black.">you cook it for too long and it goes black.</option>
+                    <option value="you cook it in an oven.">you cook it in an oven.</option>
+                    <option value="you cook it in hot oil or fat.">you cook it in hot oil or fat.</option>
+                    <option value="you cook it under a very hot place.">you cook it under a very hot place.</option>
+                    <option value="you cook them in an oven, using a little oil or fat.">you cook them in an oven, using a little oil or fat.</option>
+                    <option value="you cut it into long, thin pieces.">you cut it into long, thin pieces.</option>
+                    <option value="you cook them in water that is boiling (= very hot).">you cook them in water that is boiling (= very hot).</option>
+                    <option value="you cut them into pieces with a knife.">you cut them into pieces with a knife.</option>
+                    <option value="you put it on plates so that people can eat it.">you put it on plates so that people can eat it.</option>
+                </select></p>
+                <p>When you slice cheese, <select id="ex2-q6" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="you cook it at a temperature below boiling.">you cook it at a temperature below boiling.</option>
+                    <option value="you cook it for too long and it goes black.">you cook it for too long and it goes black.</option>
+                    <option value="you cook it in an oven.">you cook it in an oven.</option>
+                    <option value="you cook it in hot oil or fat.">you cook it in hot oil or fat.</option>
+                    <option value="you cook it under a very hot place.">you cook it under a very hot place.</option>
+                    <option value="you cook them in an oven, using a little oil or fat.">you cook them in an oven, using a little oil or fat.</option>
+                    <option value="you cut it into long, thin pieces.">you cut it into long, thin pieces.</option>
+                    <option value="you cook them in water that is boiling (= very hot).">you cook them in water that is boiling (= very hot).</option>
+                    <option value="you cut them into pieces with a knife.">you cut them into pieces with a knife.</option>
+                    <option value="you put it on plates so that people can eat it.">you put it on plates so that people can eat it.</option>
+                </select></p>
+                <p>When you bake a cake, <select id="ex2-q7" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="you cook it at a temperature below boiling.">you cook it at a temperature below boiling.</option>
+                    <option value="you cook it for too long and it goes black.">you cook it for too long and it goes black.</option>
+                    <option value="you cook it in an oven.">you cook it in an oven.</option>
+                    <option value="you cook it in hot oil or fat.">you cook it in hot oil or fat.</option>
+                    <option value="you cook it under a very hot place.">you cook it under a very hot place.</option>
+                    <option value="you cook them in an oven, using a little oil or fat.">you cook them in an oven, using a little oil or fat.</option>
+                    <option value="you cut it into long, thin pieces.">you cut it into long, thin pieces.</option>
+                    <option value="you cook them in water that is boiling (= very hot).">you cook them in water that is boiling (= very hot).</option>
+                    <option value="you cut them into pieces with a knife.">you cut them into pieces with a knife.</option>
+                    <option value="you put it on plates so that people can eat it.">you put it on plates so that people can eat it.</option>
+                </select></p>
+                <p>When you roast potatoes, <select id="ex2-q8" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="you cook it at a temperature below boiling.">you cook it at a temperature below boiling.</option>
+                    <option value="you cook it for too long and it goes black.">you cook it for too long and it goes black.</option>
+                    <option value="you cook it in an oven.">you cook it in an oven.</option>
+                    <option value="you cook it in hot oil or fat.">you cook it in hot oil or fat.</option>
+                    <option value="you cook it under a very hot place.">you cook it under a very hot place.</option>
+                    <option value="you cook them in an oven, using a little oil or fat.">you cook them in an oven, using a little oil or fat.</option>
+                    <option value="you cut it into long, thin pieces.">you cut it into long, thin pieces.</option>
+                    <option value="you cook them in water that is boiling (= very hot).">you cook them in water that is boiling (= very hot).</option>
+                    <option value="you cut them into pieces with a knife.">you cut them into pieces with a knife.</option>
+                    <option value="you put it on plates so that people can eat it.">you put it on plates so that people can eat it.</option>
+                </select></p>
+                <p>When you serve a meal, <select id="ex2-q9" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="you cook it at a temperature below boiling.">you cook it at a temperature below boiling.</option>
+                    <option value="you cook it for too long and it goes black.">you cook it for too long and it goes black.</option>
+                    <option value="you cook it in an oven.">you cook it in an oven.</option>
+                    <option value="you cook it in hot oil or fat.">you cook it in hot oil or fat.</option>
+                    <option value="you cook it under a very hot place.">you cook it under a very hot place.</option>
+                    <option value="you cook them in an oven, using a little oil or fat.">you cook them in an oven, using a little oil or fat.</option>
+                    <option value="you cut it into long, thin pieces.">you cut it into long, thin pieces.</option>
+                    <option value="you cook them in water that is boiling (= very hot).">you cook them in water that is boiling (= very hot).</option>
+                    <option value="you cut them into pieces with a knife.">you cut them into pieces with a knife.</option>
+                    <option value="you put it on plates so that people can eat it.">you put it on plates so that people can eat it.</option>
+                </select></p>
+            </div>
+            <div class="flex justify-center mt-8 button-group">
+                <button class="check-button" onclick="checkExercise2()">Check Answers</button>
+                <button class="reset-button" onclick="resetExercise2()">Reset</button>
+            </div>
+            <div id="feedback2" class="feedback"></div>
+            <div id="correct-answers2" class="correct-answer-display"></div>
+        </div>
+
+        <!-- Exercise 3: Drop-down list -->
+        <div id="exercise3" class="exercise-section">
+            <h2 class="exercise-title">Unit 4: Exercise 3</h2>
+            <p class="instruction">Complete the descriptions. Use the words in the box.</p>
+            <div class="mb-4 text-gray-700">
+                <p>A <select id="ex3-q1" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="frying pan">frying pan</option>
+                    <option value="cutlery">cutlery</option>
+                    <option value="napkin">napkin</option>
+                    <option value="crockery">Crockery</option>
+                    <option value="tin opener">tin opener</option>
+                    <option value="saucepan">saucepan</option>
+                    <option value="scales">scales</option>
+                    <option value="serving dish">serving dish</option>
+                    <option value="utensils">utensils</option>
+                    <option value="kettle">kettle</option>
+                </select> is a wide pan that you use to fry food in.</p>
+                <p>The general name for knives, forks and spoons is <select id="ex3-q2" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="frying pan">frying pan</option>
+                    <option value="cutlery">cutlery</option>
+                    <option value="napkin">napkin</option>
+                    <option value="crockery">Crockery</option>
+                    <option value="tin opener">tin opener</option>
+                    <option value="saucepan">saucepan</option>
+                    <option value="scales">scales</option>
+                    <option value="serving dish">serving dish</option>
+                    <option value="utensils">utensils</option>
+                    <option value="kettle">kettle</option>
+                </select>.</p>
+                <p>A <select id="ex3-q3" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="frying pan">frying pan</option>
+                    <option value="cutlery">cutlery</option>
+                    <option value="napkin">napkin</option>
+                    <option value="crockery">Crockery</option>
+                    <option value="tin opener">tin opener</option>
+                    <option value="saucepan">saucepan</option>
+                    <option value="scales">scales</option>
+                    <option value="serving dish">serving dish</option>
+                    <option value="utensils">utensils</option>
+                    <option value="kettle">kettle</option>
+                </select> is a small piece of cloth or paper used while you're eating to protect your clothes or clean your mouth or fingers.</p>
+                <p>The general name for cups, plates, bowls, etc. is <select id="ex3-q4" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="frying pan">frying pan</option>
+                    <option value="cutlery">cutlery</option>
+                    <option value="napkin">napkin</option>
+                    <option value="crockery">Crockery</option>
+                    <option value="tin opener">tin opener</option>
+                    <option value="saucepan">saucepan</option>
+                    <option value="scales">scales</option>
+                    <option value="serving dish">serving dish</option>
+                    <option value="utensils">utensils</option>
+                    <option value="kettle">kettle</option>
+                </select>.</p>
+                <p>A <select id="ex3-q5" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="frying pan">frying pan</option>
+                    <option value="cutlery">cutlery</option>
+                    <option value="napkin">napkin</option>
+                    <option value="crockery">Crockery</option>
+                    <option value="tin opener">tin opener</option>
+                    <option value="saucepan">saucepan</option>
+                    <option value="scales">scales</option>
+                    <option value="serving dish">serving dish</option>
+                    <option value="utensils">utensils</option>
+                    <option value="kettle">kettle</option>
+                </select> is something that you use to open tins of food.</p>
+                <p>A <select id="ex3-q6" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="frying pan">frying pan</option>
+                    <option value="cutlery">cutlery</option>
+                    <option value="napkin">napkin</option>
+                    <option value="crockery">Crockery</option>
+                    <option value="tin opener">tin opener</option>
+                    <option value="saucepan">saucepan</option>
+                    <option value="scales">scales</option>
+                    <option value="serving dish">serving dish</option>
+                    <option value="utensils">utensils</option>
+                    <option value="kettle">kettle</option>
+                </select> is a deep pan that you use for cooking vegetables or pasta in water.</p>
+                <p>You can use <select id="ex3-q7" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="frying pan">frying pan</option>
+                    <option value="cutlery">cutlery</option>
+                    <option value="napkin">napkin</option>
+                    <option value="crockery">Crockery</option>
+                    <option value="tin opener">tin opener</option>
+                    <option value="saucepan">saucepan</option>
+                    <option value="scales">scales</option>
+                    <option value="serving dish">serving dish</option>
+                    <option value="utensils">utensils</option>
+                    <option value="kettle">kettle</option>
+                </select> to weigh ingredients.</p>
+                <p>A <select id="ex3-q8" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="frying pan">frying pan</option>
+                    <option value="cutlery">cutlery</option>
+                    <option value="napkin">napkin</option>
+                    <option value="crockery">Crockery</option>
+                    <option value="tin opener">tin opener</option>
+                    <option value="saucepan">saucepan</option>
+                    <option value="scales">scales</option>
+                    <option value="serving dish">serving dish</option>
+                    <option value="utensils">utensils</option>
+                    <option value="kettle">kettle</option>
+                </select> is a bowl where you keep food before you put it onto plates.</p>
+                <p>The general name for wooden spoons, kitchen knives and other things that help you cook is kitchen <select id="ex3-q9" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="frying pan">frying pan</option>
+                    <option value="cutlery">cutlery</option>
+                    <option value="napkin">napkin</option>
+                    <option value="crockery">Crockery</option>
+                    <option value="tin opener">tin opener</option>
+                    <option value="saucepan">saucepan</option>
+                    <option value="scales">scales</option>
+                    <option value="serving dish">serving dish</option>
+                    <option value="utensils">utensils</option>
+                    <option value="kettle">kettle</option>
+                </select>.</p>
+            </div>
+            <div class="flex justify-center mt-8 button-group">
+                <button class="check-button" onclick="checkExercise3()">Check Answers</button>
+                <button class="reset-button" onclick="resetExercise3()">Reset</button>
+            </div>
+            <div id="feedback3" class="feedback"></div>
+            <div id="correct-answers3" class="correct-answer-display"></div>
+        </div>
+
+        <!-- Exercise 4: Drop-down list -->
+        <div id="exercise4" class="exercise-section">
+            <h2 class="exercise-title">Unit 4: Exercise 4</h2>
+            <p class="instruction">Complete the sentences. Use the adjectives in the box.</p>
+            <div class="mb-4 text-gray-700">
+                <p>I love <select id="ex4-q1" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="Spicy">Spicy</option>
+                    <option value="mild">mild</option>
+                    <option value="Sweet">Sweet</option>
+                    <option value="savoury">savoury</option>
+                    <option value="hot">hot</option>
+                    <option value="delicious">delicious</option>
+                    <option value="bland">bland</option>
+                    <option value="salty">salty</option>
+                    <option value="raw">raw</option>
+                    <option value="disgusting">disgusting</option>
+                </select> food. It's hot and has lots of strong flavours.</p>
+                <p>I prefer <select id="ex4-q2" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="Spicy">Spicy</option>
+                    <option value="mild">mild</option>
+                    <option value="Sweet">Sweet</option>
+                    <option value="savoury">savoury</option>
+                    <option value="hot">hot</option>
+                    <option value="delicious">delicious</option>
+                    <option value="bland">bland</option>
+                    <option value="salty">salty</option>
+                    <option value="raw">raw</option>
+                    <option value="disgusting">disgusting</option>
+                </select> food. It still tastes good, but it's not hot and the flavours aren't very strong.</p>
+                <p><select id="ex4-q3" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="Spicy">Spicy</option>
+                    <option value="mild">mild</option>
+                    <option value="Sweet">Sweet</option>
+                    <option value="savoury">savoury</option>
+                    <option value="hot">hot</option>
+                    <option value="delicious">delicious</option>
+                    <option value="bland">bland</option>
+                    <option value="salty">salty</option>
+                    <option value="raw">raw</option>
+                    <option value="disgusting">disgusting</option>
+                </select> pies, like apple pie, are popular in many countries.</p>
+                <p><select id="ex4-q4" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="Spicy">Spicy</option>
+                    <option value="mild">mild</option>
+                    <option value="Sweet">Sweet</option>
+                    <option value="savoury">savoury</option>
+                    <option value="hot">hot</option>
+                    <option value="delicious">delicious</option>
+                    <option value="bland">bland</option>
+                    <option value="salty">salty</option>
+                    <option value="raw">raw</option>
+                    <option value="disgusting">disgusting</option>
+                </select> pies, like meat pie, are also popular in some countries.</p>
+                <p>I don't like <select id="ex4-q5" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="Spicy">Spicy</option>
+                    <option value="mild">mild</option>
+                    <option value="Sweet">Sweet</option>
+                    <option value="savoury">savoury</option>
+                    <option value="hot">hot</option>
+                    <option value="delicious">delicious</option>
+                    <option value="bland">bland</option>
+                    <option value="salty">salty</option>
+                    <option value="raw">raw</option>
+                    <option value="disgusting">disgusting</option>
+                </select> chilli. It's too strong for me.</p>
+                <p>This meal is <select id="ex4-q6" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="Spicy">Spicy</option>
+                    <option value="mild">mild</option>
+                    <option value="Sweet">Sweet</option>
+                    <option value="savoury">savoury</option>
+                    <option value="hot">hot</option>
+                    <option value="delicious">delicious</option>
+                    <option value="bland">bland</option>
+                    <option value="salty">salty</option>
+                    <option value="raw">raw</option>
+                    <option value="disgusting">disgusting</option>
+                </select>. It tastes really nice.</p>
+                <p>I don't like mashed potato. It's so <select id="ex4-q7" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="Spicy">Spicy</option>
+                    <option value="mild">mild</option>
+                    <option value="Sweet">Sweet</option>
+                    <option value="savoury">savoury</option>
+                    <option value="hot">hot</option>
+                    <option value="delicious">delicious</option>
+                    <option value="bland">bland</option>
+                    <option value="salty">salty</option>
+                    <option value="raw">raw</option>
+                    <option value="disgusting">disgusting</option>
+                </select> and doesn't really taste of anything.</p>
+                <p>These carrots are very <select id="ex4-q8" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="Spicy">Spicy</option>
+                    <option value="mild">mild</option>
+                    <option value="Sweet">Sweet</option>
+                    <option value="savoury">savoury</option>
+                    <option value="hot">hot</option>
+                    <option value="delicious">delicious</option>
+                    <option value="bland">bland</option>
+                    <option value="salty">salty</option>
+                    <option value="raw">raw</option>
+                    <option value="disgusting">disgusting</option>
+                </select>. There's too much salt on them.</p>
+                <p>This meat is still <select id="ex4-q9" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="Spicy">Spicy</option>
+                    <option value="mild">mild</option>
+                    <option value="Sweet">Sweet</option>
+                    <option value="savoury">savoury</option>
+                    <option value="hot">hot</option>
+                    <option value="delicious">delicious</option>
+                    <option value="bland">bland</option>
+                    <option value="salty">salty</option>
+                    <option value="raw">raw</option>
+                    <option value="disgusting">disgusting</option>
+                </select>! Please cook it a bit longer.</p>
+                <p>The meal was <select id="ex4-q10" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="Spicy">Spicy</option>
+                    <option value="mild">mild</option>
+                    <option value="Sweet">Sweet</option>
+                    <option value="savoury">savoury</option>
+                    <option value="hot">hot</option>
+                    <option value="delicious">delicious</option>
+                    <option value="bland">bland</option>
+                    <option value="salty">salty</option>
+                    <option value="raw">raw</option>
+                    <option value="disgusting">disgusting</option>
+                </select>. It tasted horrible!</p>
+            </div>
+            <div class="flex justify-center mt-8 button-group">
+                <button class="check-button" onclick="checkExercise4()">Check Answers</button>
+                <button class="reset-button" onclick="resetExercise4()">Reset</button>
+            </div>
+            <div id="feedback4" class="feedback"></div>
+            <div id="correct-answers4" class="correct-answer-display"></div>
+        </div>
+
+        <!-- Exercise 5: Drop-down list -->
+        <div id="exercise5" class="exercise-section">
+            <h2 class="exercise-title">Unit 4: Exercise 5</h2>
+            <p class="instruction">Choose the best words to complete the conversation.</p>
+            <div class="mb-4 text-gray-700">
+                <p>A: Come in! Dinner's nearly <select id="ex5-q1" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="ready">ready</option>
+                    <option value="cooking">cooking</option>
+                    <option value="made">made</option>
+                </select>.</p>
+                <p>B: Oh, great. It <select id="ex5-q2" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="smells">smells</option>
+                    <option value="feels">feels</option>
+                    <option value="tastes">tastes</option>
+                </select> lovely. What is it?</p>
+                <p>A: It's Jollof rice. It's a traditional <select id="ex5-q3" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="dish">dish</option>
+                    <option value="meal">meal</option>
+                    <option value="plate">plate</option>
+                </select> from West Africa.</p>
+                <p>B: Oh, right. So what's it made <select id="ex5-q4" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="of">of</option>
+                    <option value="on">on</option>
+                    <option value="to">to</option>
+                </select>?</p>
+                <p>A: Well, the main <select id="ex5-q5" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="ingredient">ingredient</option>
+                    <option value="course">course</option>
+                    <option value="recipe">recipe</option>
+                </select> is rice.</p>
+                <p>B: OK. What else is <select id="ex5-q6" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="in">in</option>
+                    <option value="from">from</option>
+                    <option value="with">with</option>
+                </select> it?</p>
+                <p>A: Well, it also <select id="ex5-q7" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="contains">contains</option>
+                    <option value="holds">holds</option>
+                    <option value="involves">involves</option>
+                </select> fried onions and tomatoes. Plus lots of spices like chilli and pepper to give it a strong <select id="ex5-q8" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="flavour">flavour</option>
+                    <option value="appetite">appetite</option>
+                    <option value="colour">colour</option>
+                </select>. Would you like to <select id="ex5-q9" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="try">try</option>
+                    <option value="fry">fry</option>
+                    <option value="test">test</option>
+                </select> it?</p>
+                <p>B: Yes, please. Oh, that is nice. It <select id="ex5-q10" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="tastes">tastes</option>
+                    <option value="looks">looks</option>
+                    <option value="seems">seems</option>
+                </select> delicious.</p>
+            </div>
+            <div class="flex justify-center mt-8 button-group">
+                <button class="check-button" onclick="checkExercise5()">Check Answers</button>
+                <button class="reset-button" onclick="resetExercise5()">Reset</button>
+            </div>
+            <div id="feedback5" class="feedback"></div>
+            <div id="correct-answers5" class="correct-answer-display"></div>
+        </div>
+
+        <!-- Exercise 6: Drop-down list (New Addition) -->
+        <div id="exercise6" class="exercise-section">
+            <h2 class="exercise-title">Unit 4: Exercise 6</h2>
+            <p class="instruction">Read the information. Then read the sentences and choose the correct answers.</p>
+            <p class="mb-4 text-gray-600"><strong>Countable nouns:</strong> Things that you can count, e.g. one book, two books; one person, two people.</p>
+            <p class="mb-4 text-gray-600"><strong>Uncountable nouns:</strong> Things that we don't normally count, e.g. water, fun.</p>
+            <div class="mb-4 text-gray-700">
+                <p>I went to the shop and bought two ice creams, one for me and one for you.<br>In this sentence, ‘ice cream’ is <select id="ex6-q1" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="Countable">Countable</option>
+                    <option value="Uncountable">Uncountable</option>
+                </select></p>
+                <p>For dessert, we've got ice cream.<br>In this sentence, ‘ice cream’ is <select id="ex6-q2" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="Countable">Countable</option>
+                    <option value="Uncountable">Uncountable</option>
+                </select></p>
+                <p>In my family, we often have pizza for dinner. It's our favourite meal.<br>In this sentence, ‘pizza is <select id="ex6-q3" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="Countable">Countable</option>
+                    <option value="Uncountable">Uncountable</option>
+                </select></p>
+                <p>I ordered a takeaway pizza, but when it arrived, it was really small.<br>In this sentence, ‘pizza is <select id="ex6-q4" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="Countable">Countable</option>
+                    <option value="Uncountable">Uncountable</option>
+                </select></p>
+                <p>Would you like a chocolate?<br>In this sentence, ‘chocolate’ is <select id="ex6-q5" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="Countable">Countable</option>
+                    <option value="Uncountable">Uncountable</option>
+                </select></p>
+                <p>I never eat chocolate. It's too sweet for me.<br>In this sentence, ‘chocolate’ is <select id="ex6-q6" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="Countable">Countable</option>
+                    <option value="Uncountable">Uncountable</option>
+                </select></p>
+                <p>Could we have three coffees, please?<br>In this sentence, ‘coffee’ is <select id="ex6-q7" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="Countable">Countable</option>
+                    <option value="Uncountable">Uncountable</option>
+                </select></p>
+                <p>Do you like coffee?<br>In this sentence, ‘coffee’ is <select id="ex6-q8" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="Countable">Countable</option>
+                    <option value="Uncountable">Uncountable</option>
+                </select></p>
+            </div>
+            <div class="flex justify-center mt-8 button-group">
+                <button class="check-button" onclick="checkExercise6()">Check Answers</button>
+                <button class="reset-button" onclick="resetExercise6()">Reset</button>
+            </div>
+            <div id="feedback6" class="feedback"></div>
+            <div id="correct-answers6" class="correct-answer-display"></div>
+        </div>
+
+        <!-- Exercise 7: Drop-down list -->
+        <div id="exercise7" class="exercise-section">
+            <h2 class="exercise-title">Unit 4: Exercise 7</h2>
+            <p class="instruction">Read the information. Then choose the correct words to complete the sentences.</p>
+            <p class="mb-4 text-gray-600">We use <strong>much</strong> with singular uncountable nouns and <strong>many</strong> with plural nouns.</p>
+            <div class="mb-4 text-gray-700">
+                <p>How <select id="ex7-q1" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="many">many</option>
+                    <option value="much">much</option>
+                </select> meals do you eat every day?</p>
+                <p>We haven't got <select id="ex7-q2" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="much">much</option>
+                    <option value="many">many</option>
+                </select> bread. Can you buy some?</p>
+                <p>There wasn't <select id="ex7-q3" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="much">much</option>
+                    <option value="many">many</option>
+                </select> food at the party, so I'm still hungry!</p>
+                <p>You eat too <select id="ex7-q4" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="many">many</option>
+                    <option value="much">much</option>
+                </select> sweets. They're bad for your teeth.</p>
+                <p>Do you eat <select id="ex7-q5" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="much">much</option>
+                    <option value="many">many</option>
+                </select> fruit?</p>
+                <p>How <select id="ex7-q6" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="much">much</option>
+                    <option value="many">many</option>
+                </select> rice do you want? A lot or just a little?</p>
+                <p>You didn't cook <select id="ex7-q7" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="many">many</option>
+                    <option value="much">much</option>
+                </select> peas. Are you sure there are enough for all of us?</p>
+                <p>I don't want too <select id="ex7-q8" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="much">much</option>
+                    <option value="many">many</option>
+                </select> spaghetti. I'm not really hungry.</p>
+                <p>There's too <select id="ex7-q9" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="much">much</option>
+                    <option value="many">many</option>
+                </select> butter on that toast! It's not healthy.</p>
+                <p>I don't eat <select id="ex7-q10" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="many">many</option>
+                    <option value="much">much</option>
+                </select> eggs. I don't really like them.</p>
+            </div>
+            <div class="flex justify-center mt-8 button-group">
+                <button class="check-button" onclick="checkExercise7()">Check Answers</button>
+                <button class="reset-button" onclick="resetExercise7()">Reset</button>
+            </div>
+            <div id="feedback7" class="feedback"></div>
+            <div id="correct-answers7" class="correct-answer-display"></div>
+        </div>
+
+        <!-- Exercise 8: Drop-down list -->
+        <div id="exercise8" class="exercise-section">
+            <h2 class="exercise-title">Unit 4: Exercise 8</h2>
+            <p class="instruction">Choose the correct words to complete the text.</p>
+            <div class="mb-4 text-gray-700">
+                <p>For breakfast, I usually have <select id="ex8-q1" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="some">some</option>
+                    <option value="a">a</option>
+                    <option value="any">any</option>
+                </select> toast and jam. I don't put <select id="ex8-q2" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="any">any</option>
+                    <option value="a">a</option>
+                    <option value="some">some</option>
+                </select> butter on my toast. I usually just drink <select id="ex8-q3" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="a">a</option>
+                    <option value="any">any</option>
+                    <option value="some">some</option>
+                </select> cup of tea with my breakfast. I don't put <select id="ex8-q4" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="any">any</option>
+                    <option value="a">a</option>
+                    <option value="some">some</option>
+                </select> sugar in my tea – I don't like sweet drinks. At the weekend, I often have <select id="ex8-q5" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="an">an</option>
+                    <option value="a">a</option>
+                    <option value="any">any</option>
+                    <option value="some">some</option>
+                </select> egg for breakfast. Then, at about 11 o'clock, I usually have <select id="ex8-q6" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="a">a</option>
+                    <option value="any">any</option>
+                    <option value="some">some</option>
+                </select> coffee break. I eat <select id="ex8-q7" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="some">some</option>
+                    <option value="a">a</option>
+                    <option value="any">any</option>
+                </select> biscuits – just two or three. Then for lunch, I usually have <select id="ex8-q8" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="a">a</option>
+                    <option value="any">any</option>
+                    <option value="some">some</option>
+                </select> sandwich. I also eat <select id="ex8-q9" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="some">some</option>
+                    <option value="a">a</option>
+                    <option value="any">any</option>
+                </select> fruit, like an apple or an orange. I never eat <select id="ex8-q10" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="any">any</option>
+                    <option value="a">a</option>
+                    <option value="some">some</option>
+                </select> crisps – they're really unhealthy.</p>
+            </div>
+            <div class="flex justify-center mt-8 button-group">
+                <button class="check-button" onclick="checkExercise8()">Check Answers</button>
+                <button class="reset-button" onclick="resetExercise8()">Reset</button>
+            </div>
+            <div id="feedback8" class="feedback"></div>
+            <div id="correct-answers8" class="correct-answer-display"></div>
+        </div>
+
+        <!-- Exercise 9: Drop-down list (New Addition) -->
+        <div id="exercise9" class="exercise-section">
+            <h2 class="exercise-title">Unit 4: Exercise 9</h2>
+            <p class="instruction">Complete the description of how to make scrambled eggs. Use a, the, some or any.</p>
+            <div class="mb-4 text-gray-700">
+                <p>You will need <select id="ex9-q1" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="some">some</option>
+                    <option value="a">a</option>
+                    <option value="the">the</option>
+                    <option value="any">any</option>
+                </select> butter, two or three eggs and <select id="ex9-q2" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="a">a</option>
+                    <option value="the">the</option>
+                    <option value="some">some</option>
+                    <option value="any">any</option>
+                </select> large frying pan.</p>
+                <p>First of all, break <select id="ex9-q3" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="the">the</option>
+                    <option value="a">a</option>
+                    <option value="some">some</option>
+                    <option value="any">any</option>
+                </select> eggs into <select id="ex9-q4" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="a">a</option>
+                    <option value="the">the</option>
+                    <option value="some">some</option>
+                    <option value="any">any</option>
+                </select> bowl.</p>
+                <p>Make sure there aren't <select id="ex9-q5" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="any">any</option>
+                    <option value="a">a</option>
+                    <option value="the">the</option>
+                    <option value="some">some</option>
+                </select> pieces of eggshell in <select id="ex9-q6" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="the">the</option>
+                    <option value="a">a</option>
+                    <option value="some">some</option>
+                    <option value="any">any</option>
+                </select> bowl.</p>
+                <p>Mix <select id="ex9-q7" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="the">the</option>
+                    <option value="a">a</option>
+                    <option value="some">some</option>
+                    <option value="any">any</option>
+                </select> eggs with <select id="ex9-q8" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="a">a</option>
+                    <option value="the">the</option>
+                    <option value="some">some</option>
+                    <option value="any">any</option>
+                </select> fork .</p>
+                <p>Now melt <select id="ex9-q9" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="some">some</option>
+                    <option value="a">a</option>
+                    <option value="the">the</option>
+                    <option value="any">any</option>
+                </select> butter in <select id="ex9-q10" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="the">the</option>
+                    <option value="a">a</option>
+                    <option value="some">some</option>
+                    <option value="any">any</option>
+                </select> frying pan.</p>
+                <p>When <select id="ex9-q11" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="the">the</option>
+                    <option value="a">a</option>
+                    <option value="some">some</option>
+                    <option value="any">any</option>
+                </select> butter has melted, pour <select id="ex9-q12" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="the">the</option>
+                    <option value="a">a</option>
+                    <option value="some">some</option>
+                    <option value="any">any</option>
+                </select> eggs into the frying pan.</p>
+                <p>Use <select id="ex9-q13" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="a">a</option>
+                    <option value="the">the</option>
+                    <option value="some">some</option>
+                    <option value="any">any</option>
+                </select> wooden spoon to stir the eggs in <select id="ex9-q14" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="the">the</option>
+                    <option value="a">a</option>
+                    <option value="some">some</option>
+                    <option value="any">any</option>
+                </select> pan .</p>
+                <p>When it's nearly ready, add <select id="ex9-q15" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="some">some</option>
+                    <option value="a">a</option>
+                    <option value="the">the</option>
+                    <option value="any">any</option>
+                </select> salt and pepper to <select id="ex9-q16" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="the">the</option>
+                    <option value="a">a</option>
+                    <option value="some">some</option>
+                    <option value="any">any</option>
+                </select> eggs.</p>
+                <p>Keep mixing <select id="ex9-q17" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="the">the</option>
+                    <option value="a">a</option>
+                    <option value="some">some</option>
+                    <option value="any">any</option>
+                </select> eggs with <select id="ex9-q18" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="a">a</option>
+                    <option value="the">the</option>
+                    <option value="some">some</option>
+                    <option value="any">any</option>
+                </select> wooden spoon.</p>
+                <p>When it's ready, serve <select id="ex9-q19" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="the">the</option>
+                    <option value="a">a</option>
+                    <option value="some">some</option>
+                    <option value="any">any</option>
+                </select> scrambled eggs with <select id="ex9-q20" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="some">some</option>
+                    <option value="a">a</option>
+                    <option value="the">the</option>
+                    <option value="any">any</option>
+                </select> toast.</p>
+            </div>
+            <div class="flex justify-center mt-8 button-group">
+                <button class="check-button" onclick="checkExercise9()">Check Answers</button>
+                <button class="reset-button" onclick="resetExercise9()">Reset</button>
+            </div>
+            <div id="feedback9" class="feedback"></div>
+            <div id="correct-answers9" class="correct-answer-display"></div>
+        </div>
+
+        <!-- Exercise 10: Drop-down list -->
+        <div id="exercise10" class="exercise-section">
+            <h2 class="exercise-title">Unit 4: Exercise 10</h2>
+            <p class="instruction">Choose the correct answers to complete the sentences.</p>
+            <div class="mb-4 text-gray-700">
+                <p>I eat <select id="ex10-q1" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="a lot of">a lot of</option>
+                    <option value="a few">a few</option>
+                    <option value="a little">a little</option>
+                </select> cheese – too much, really, but I love it.</p>
+                <p>I made <select id="ex10-q2" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="a lot of">a lot of</option>
+                    <option value="a few">a few</option>
+                    <option value="a little">a little</option>
+                </select> sandwiches, but our visitors still ate every single one!</p>
+                <p>When I was younger, I ate a lot of chocolate, but I eat <select id="ex10-q3" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="less">less</option>
+                    <option value="fewer">fewer</option>
+                    <option value="more">more</option>
+                </select> chocolate now – I'm trying to be healthier.</p>
+                <p>We prepared enough food for ten people, but there were a lot <select id="ex10-q4" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="fewer">fewer</option>
+                    <option value="less">less</option>
+                    <option value="more">more</option>
+                </select> people than that at the party. It was really crowded!</p>
+                <p>The extra-large pizza is perfect for four or more people. For <select id="ex10-q5" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="fewer">fewer</option>
+                    <option value="less">less</option>
+                    <option value="more">more</option>
+                </select> people, we recommend a normal pizza.</p>
+                <p>It's better to cook your own food than to buy fast food. Cooking usually takes <select id="ex10-q6" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="less">less</option>
+                    <option value="fewer">fewer</option>
+                    <option value="more">more</option>
+                </select> time, but it's much healthier.</p>
+                <p>A: So who did you invite for dinner? B: Just <select id="ex10-q7" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="a few">a few</option>
+                    <option value="a little">a little</option>
+                    <option value="a lot of">a lot of</option>
+                </select> people – only three.</p>
+                <p>A: Do you want some milk or sugar in your coffee? B: Just <select id="ex10-q8" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="a little">a little</option>
+                    <option value="a few">a few</option>
+                    <option value="a lot of">a lot of</option>
+                </select> milk, please. Not too much.</p>
+                <p>A: How much time do you spend cooking every day? B: <select id="ex10-q9" class="dropdown-container w-auto inline-block mx-1 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">--Select--</option>
+                    <option value="a lot of">a lot of</option>
+                    <option value="a few">a few</option>
+                    <option value="a little">a little</option>
+                </select>! At least three hours every day.</p>
+            </div>
+            <div class="flex justify-center mt-8 button-group">
+                <button class="check-button" onclick="checkExercise10()">Check Answers</button>
+                <button class="reset-button" onclick="resetExercise10()">Reset</button>
+            </div>
+            <div id="feedback10" class="feedback"></div>
+            <div id="correct-answers10" class="correct-answer-display"></div>
+        </div>
+
+    </div>
+
+    <script>
+        // Exercise 1: Drag and Drop Logic
+        const dragItemsContainer = document.getElementById('drag-items');
+        const categoryBoxes = document.querySelectorAll('.category-box');
+        let draggedItem = null;
+
+        // Correct answers for Exercise 1
+        const correctAnswersEx1 = {
+            'dairy products': ['Yoghurt', 'Cheese', 'Butter'],
+            'herbs and spices': ['Chilli', 'Basil', 'Salt and pepper'],
+            'meat': ['Chicken', 'Lamb', 'Beef'],
+            'side dishes': ['Bread', 'Salad', 'Rice'],
+            'soft drinks': ['Lemonade', 'Juice', 'Milkshake'],
+            'vegetables': ['Cabbage', 'Onion', 'Carrot']
+        };
+
+        // Add event listeners for drag and drop
+        dragItemsContainer.addEventListener('dragstart', (e) => {
+            if (e.target.classList.contains('draggable-item')) {
+                draggedItem = e.target;
+                e.dataTransfer.setData('text/plain', e.target.textContent);
+                e.target.classList.add('dragging');
+            }
+        });
+
+        dragItemsContainer.addEventListener('dragend', (e) => {
+            if (e.target.classList.contains('draggable-item')) {
+                e.target.classList.remove('dragging');
+                draggedItem = null;
+            }
+        });
+
+        categoryBoxes.forEach(box => {
+            box.addEventListener('dragover', (e) => {
+                e.preventDefault(); // Allow drop
+                box.classList.add('border-blue-500', 'bg-blue-100');
+            });
+
+            box.addEventListener('dragleave', (e) => {
+                box.classList.remove('border-blue-500', 'bg-blue-100');
+            });
+
+            box.addEventListener('drop', (e) => {
+                e.preventDefault();
+                box.classList.remove('border-blue-500', 'bg-blue-100');
+                if (draggedItem) {
+                    // Check if the item is already in a category box
+                    if (!draggedItem.parentElement.classList.contains('category-box')) {
+                        // If it's from the initial drag-items container, remove it
+                        draggedItem.parentElement.removeChild(draggedItem);
+                    }
+                    box.appendChild(draggedItem);
+                }
+            });
+        });
+
+        function checkExercise1() {
+            let correctCount = 0;
+            let totalItems = 0;
+            let allCorrect = true;
+            let feedbackText = '';
+
+            categoryBoxes.forEach(box => {
+                const category = box.dataset.category;
+                const itemsInBox = Array.from(box.children).map(item => item.textContent.trim());
+                const expectedItems = correctAnswersEx1[category];
+
+                // Check if all expected items are in the box and only expected items
+                const isCategoryCorrect = expectedItems.every(item => itemsInBox.includes(item)) &&
+                                         itemsInBox.every(item => expectedItems.includes(item)) &&
+                                         itemsInBox.length === expectedItems.length;
+
+                if (isCategoryCorrect) {
+                    correctCount += expectedItems.length;
+                    box.style.borderColor = '#34d399'; // Green border for correct
+                } else {
+                    allCorrect = false;
+                    box.style.borderColor = '#ef4444'; // Red border for incorrect
+                }
+                totalItems += expectedItems.length;
+            });
+
+            const feedbackDiv = document.getElementById('feedback1');
+            const correctAnswersDiv = document.getElementById('correct-answers1');
+
+            if (allCorrect) {
+                feedbackDiv.textContent = 'Excellent! All categories are correctly sorted!';
+                feedbackDiv.className = 'feedback correct';
+                correctAnswersDiv.style.display = 'none'; // Hide correct answers
+            } else {
+                feedbackDiv.textContent = `You got ${correctCount} out of ${totalItems} items correctly placed. Keep trying!`;
+                feedbackDiv.className = 'feedback incorrect';
+                correctAnswersDiv.style.display = 'none'; // Hide correct answers
+            }
+            feedbackDiv.style.display = 'block';
+        }
+
+        function resetExercise1() {
+            // Move all items back to the initial drag-items container
+            const allItems = document.querySelectorAll('.category-box .draggable-item');
+            allItems.forEach(item => {
+                dragItemsContainer.appendChild(item);
+            });
+
+            // Reset category box borders
+            categoryBoxes.forEach(box => {
+                box.style.borderColor = '#94a3b8';
+                box.classList.remove('border-blue-500', 'bg-blue-100');
+            });
+
+            // Hide feedback and correct answers
+            document.getElementById('feedback1').style.display = 'none';
+            document.getElementById('correct-answers1').style.display = 'none';
+        }
+
+
+        // Generic function to check dropdown exercises
+        function checkDropdownExercise(exerciseId, correctAnswers) {
+            let correctCount = 0;
+            const totalQuestions = Object.keys(correctAnswers).length;
+            let allCorrect = true;
+
+            try {
+                for (const qId in correctAnswers) {
+                    const selectElement = document.getElementById(`${qId}`); // Use qId directly as it includes the full ID
+                    const selectedValue = selectElement ? selectElement.value : '';
+                    const correctAnswer = correctAnswers[qId];
+
+                    if (selectElement) {
+                        if (selectedValue === correctAnswer) {
+                            correctCount++;
+                            selectElement.classList.remove('border-red-500');
+                            selectElement.classList.add('border-green-500');
+                        } else {
+                            allCorrect = false;
+                            selectElement.classList.remove('border-green-500');
+                            selectElement.classList.add('border-red-500');
+                        }
+                    } else {
+                        console.error(`Element with ID ${qId} not found for exercise ${exerciseId}`);
+                        allCorrect = false; // Mark as incorrect if element is missing
+                    }
+                }
+
+                const feedbackDiv = document.getElementById(`feedback${exerciseId.replace('ex', '')}`);
+                const correctAnswersDiv = document.getElementById(`correct-answers${exerciseId.replace('ex', '')}`);
+
+                if (feedbackDiv) {
+                    if (allCorrect) {
+                        feedbackDiv.textContent = 'Congratulations! All answers are correct!';
+                        feedbackDiv.className = 'feedback correct';
+                    } else {
+                        feedbackDiv.textContent = `You got ${correctCount} out of ${totalQuestions} correct. Review your answers.`;
+                        feedbackDiv.className = 'feedback incorrect';
+                    }
+                    feedbackDiv.style.display = 'block';
+                } else {
+                    console.error(`Feedback div with ID feedback${exerciseId.replace('ex', '')} not found.`);
+                }
+
+                if (correctAnswersDiv) {
+                    correctAnswersDiv.style.display = 'none'; // Keep hints hidden as per user request
+                }
+
+            } catch (error) {
+                console.error(`Error in checkDropdownExercise for ${exerciseId}:`, error);
+                const feedbackDiv = document.getElementById(`feedback${exerciseId.replace('ex', '')}`);
+                if (feedbackDiv) {
+                    feedbackDiv.textContent = `An error occurred while checking answers: ${error.message}`;
+                    feedbackDiv.className = 'feedback incorrect';
+                    feedbackDiv.style.display = 'block';
+                }
+            }
+        }
+
+        // Generic function to reset dropdown exercises
+        function resetDropdownExercise(exerciseId) {
+            const selectElements = document.querySelectorAll(`#${exerciseId} select`);
+            selectElements.forEach(select => {
+                select.value = '';
+                select.classList.remove('border-green-500', 'border-red-500');
+                select.classList.remove('selected-option-style'); // Remove the highlight/bold style
+            });
+            document.getElementById(`feedback${exerciseId.replace('ex', '')}`).style.display = 'none';
+            document.getElementById(`correct-answers${exerciseId.replace('ex', '')}`).style.display = 'none';
+        }
+
+        // Add event listeners to all dropdowns to apply/remove the highlight style
+        document.addEventListener('DOMContentLoaded', () => {
+            const allSelects = document.querySelectorAll('select');
+            allSelects.forEach(select => {
+                // Initial check for pre-selected values (though not expected in this app)
+                if (select.value !== '') {
+                    select.classList.add('selected-option-style');
+                }
+
+                select.addEventListener('change', (event) => {
+                    if (event.target.value !== '') {
+                        event.target.classList.add('selected-option-style');
+                    } else {
+                        event.target.classList.remove('selected-option-style');
+                    }
+                });
+            });
+        });
+
+
+        // Exercise 2 Answers
+        const correctAnswersEx2 = {
+            'ex2-q1': 'you cut them into pieces with a knife.',
+            'ex2-q2': 'you cook them in water that is boiling (= very hot).',
+            'ex2-q3': 'you cook it in hot oil or fat.',
+            'ex2-q4': 'you cook it at a temperature below boiling.',
+            'ex2-q5': 'you cook it for too long and it goes black.',
+            'ex2-q6': 'you cut it into long, thin pieces.',
+            'ex2-q7': 'you cook it in an oven.',
+            'ex2-q8': 'you cook them in an oven, using a little oil or fat.',
+            'ex2-q9': 'you put it on plates so that people can eat it.'
+        };
+
+        function checkExercise2() {
+            checkDropdownExercise('ex2', correctAnswersEx2);
+        }
+
+        function resetExercise2() {
+            resetDropdownExercise('ex2');
+        }
+
+        // Exercise 3 Answers
+        const correctAnswersEx3 = {
+            'ex3-q1': 'frying pan',
+            'ex3-q2': 'cutlery',
+            'ex3-q3': 'napkin',
+            'ex3-q4': 'Crockery',
+            'ex3-q5': 'tin opener',
+            'ex3-q6': 'saucepan',
+            'ex3-q7': 'scales',
+            'ex3-q8': 'serving dish',
+            'ex3-q9': 'utensils'
+        };
+
+        function checkExercise3() {
+            checkDropdownExercise('ex3', correctAnswersEx3);
+        }
+
+        function resetExercise3() {
+            resetDropdownExercise('ex3');
+        }
+
+        // Exercise 4 Answers
+        const correctAnswersEx4 = {
+            'ex4-q1': 'Spicy',
+            'ex4-q2': 'mild',
+            'ex4-q3': 'Sweet',
+            'ex4-q4': 'savoury',
+            'ex4-q5': 'hot', // Based on context "too strong for me" for chilli
+            'ex4-q6': 'delicious',
+            'ex4-q7': 'bland',
+            'ex4-q8': 'salty',
+            'ex4-q9': 'raw',
+            'ex4-q10': 'disgusting'
+        };
+
+        function checkExercise4() {
+            checkDropdownExercise('ex4', correctAnswersEx4);
+        }
+
+        function resetExercise4() {
+            resetDropdownExercise('ex4');
+        }
+
+        // Exercise 5 Answers
+        const correctAnswersEx5 = {
+            'ex5-q1': 'ready',
+            'ex5-q2': 'smells',
+            'ex5-q3': 'dish',
+            'ex5-q4': 'of',
+            'ex5-q5': 'ingredient',
+            'ex5-q6': 'in',
+            'ex5-q7': 'contains',
+            'ex5-q8': 'flavour',
+            'ex5-q9': 'try',
+            'ex5-q10': 'tastes'
+        };
+
+        function checkExercise5() {
+            checkDropdownExercise('ex5', correctAnswersEx5);
+        }
+
+        function resetExercise5() {
+            resetDropdownExercise('ex5');
+        }
+
+        // Exercise 6 Answers (New Addition)
+        const correctAnswersEx6 = {
+            'ex6-q1': 'Countable',
+            'ex6-q2': 'Uncountable',
+            'ex6-q3': 'Uncountable',
+            'ex6-q4': 'Countable',
+            'ex6-q5': 'Countable',
+            'ex6-q6': 'Uncountable',
+            'ex6-q7': 'Countable',
+            'ex6-q8': 'Uncountable'
+        };
+
+        function checkExercise6() {
+            checkDropdownExercise('ex6', correctAnswersEx6);
+        }
+
+        function resetExercise6() {
+            resetDropdownExercise('ex6');
+        }
+
+        // Exercise 7 Answers
+        const correctAnswersEx7 = {
+            'ex7-q1': 'many',
+            'ex7-q2': 'much',
+            'ex7-q3': 'much',
+            'ex7-q4': 'many',
+            'ex7-q5': 'much',
+            'ex7-q6': 'much',
+            'ex7-q7': 'many',
+            'ex7-q8': 'much',
+            'ex7-q9': 'much',
+            'ex7-q10': 'many'
+        };
+
+        function checkExercise7() {
+            checkDropdownExercise('ex7', correctAnswersEx7);
+        }
+
+        function resetExercise7() {
+            resetDropdownExercise('ex7');
+        }
+
+        // Exercise 8 Answers
+        const correctAnswersEx8 = {
+            'ex8-q1': 'some',
+            'ex8-q2': 'any',
+            'ex8-q3': 'a',
+            'ex8-q4': 'any',
+            'ex8-q5': 'an',
+            'ex8-q6': 'a',
+            'ex8-q7': 'some',
+            'ex8-q8': 'a',
+            'ex8-q9': 'some',
+            'ex8-q10': 'any'
+        };
+
+        function checkExercise8() {
+            checkDropdownExercise('ex8', correctAnswersEx8);
+        }
+
+        function resetExercise8() {
+            resetDropdownExercise('ex8');
+        }
+
+        // Exercise 9 Answers (New Addition)
+        const correctAnswersEx9 = {
+            'ex9-q1': 'some',
+            'ex9-q2': 'a',
+            'ex9-q3': 'the',
+            'ex9-q4': 'a',
+            'ex9-q5': 'any',
+            'ex9-q6': 'the',
+            'ex9-q7': 'the',
+            'ex9-q8': 'a',
+            'ex9-q9': 'some',
+            'ex9-q10': 'the',
+            'ex9-q11': 'the',
+            'ex9-q12': 'the',
+            'ex9-q13': 'a',
+            'ex9-q14': 'the',
+            'ex9-q15': 'some',
+            'ex9-q16': 'the',
+            'ex9-q17': 'the',
+            'ex9-q18': 'a',
+            'ex9-q19': 'the',
+            'ex9-q20': 'some'
+        };
+
+        function checkExercise9() {
+            checkDropdownExercise('ex9', correctAnswersEx9);
+        }
+
+        function resetExercise9() {
+            resetDropdownExercise('ex9');
+        }
+
+        // Exercise 10 Answers
+        const correctAnswersEx10 = {
+            'ex10-q1': 'a lot of',
+            'ex10-q2': 'a lot of',
+            'ex10-q3': 'less',
+            'ex10-q4': 'fewer',
+            'ex10-q5': 'fewer',
+            'ex10-q6': 'less',
+            'ex10-q7': 'a few',
+            'ex10-q8': 'a little',
+            'ex10-q9': 'a lot of'
+        };
+
+        function checkExercise10() {
+            checkDropdownExercise('ex10', correctAnswersEx10);
+        }
+
+        function resetExercise10() {
+            resetDropdownExercise('ex10');
+        }
+
+    </script>
+</body>
+</html>
