@@ -157,7 +157,6 @@
             display: inline-block;
             vertical-align: middle;
             margin: 0 0.2rem;
-            width: 150px; /* Adjust as needed */
             text-align: center;
             background-color: #f9fafb;
         }
@@ -215,6 +214,39 @@
         .match-item span {
             flex-grow: 1;
         }
+        /* New styling for images in Exercise 1 to control their size */
+        .exercise-1-image {
+            max-width: 200px; /* Set a maximum width for the images */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Ensures mx-auto works for centering */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .drop-zone {
+            border: 2px dashed #6366f1;
+            border-radius: 8px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            background-color: #e0e7ff; /* light indigo */
+            color: #4338ca; /* darker indigo */
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+        .drag-item.dragging {
+            opacity: 0.5;
+        }
+        .save-load-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
         @media (max-width: 768px) {
             .container {
                 margin: 1rem;
@@ -237,6 +269,13 @@
                 min-width: unset; /* Remove min-width on small screens */
                 max-width: 100%; /* Allow to fill width on small screens */
             }
+            .exercise-1-image {
+                max-width: 100%; /* Allow images to be full width on small screens */
+            }
+            .save-load-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -249,44 +288,80 @@
             <h2>Unit 4: Exercise 1</h2>
             <p>In this unit, you will answer IELTS Reading matching information questions and read a text called ‘How technology has changed the way we communicate’.</p>
             <p>What do you know about the development of the telephone? Match the decades with the correct photos.</p>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <img src="https://placehold.co/300x200/a78bfa/ffffff?text=Photo+1" alt="Placeholder Photo 1" class="w-full h-auto rounded-md mb-2">
+                    <img src="https://i.postimg.cc/289LqgQt/Reading-Unit4-Exercise1-Picture1.jpg" alt="Telephone from 1980s" class="rounded-md mb-2 exercise-1-image">
                     <div class="list-item">
                         <span>1.</span>
-                        <input type="text" id="ex1_q1" class="input-field" placeholder="e.g., 1980s">
+                        <select id="ex1_q1" class="select-field">
+                            <option value="">Select an option</option>
+                            <option value="1980s">1980s</option>
+                            <option value="1970s">1970s</option>
+                            <option value="2000s">2000s</option>
+                            <option value="2010s">2010s</option>
+                            <option value="1920s">1920s</option>
+                        </select>
                         <div id="ex1_feedback1" class="feedback hidden"></div>
                     </div>
                 </div>
                 <div>
-                    <img src="https://placehold.co/300x200/a78bfa/ffffff?text=Photo+2" alt="Placeholder Photo 2" class="w-full h-auto rounded-md mb-2">
+                    <img src="https://i.postimg.cc/rs8RWkZB/Reading-Unit4-Exercise1-Picture2.jpg" alt="Telephone from 1970s" class="rounded-md mb-2 exercise-1-image">
                     <div class="list-item">
                         <span>2.</span>
-                        <input type="text" id="ex1_q2" class="input-field" placeholder="e.g., 1970s">
+                        <select id="ex1_q2" class="select-field">
+                            <option value="">Select an option</option>
+                            <option value="1980s">1980s</option>
+                            <option value="1970s">1970s</option>
+                            <option value="2000s">2000s</option>
+                            <option value="2010s">2010s</option>
+                            <option value="1920s">1920s</option>
+                        </select>
                         <div id="ex1_feedback2" class="feedback hidden"></div>
                     </div>
                 </div>
                 <div>
-                    <img src="https://placehold.co/300x200/a78bfa/ffffff?text=Photo+3" alt="Placeholder Photo 3" class="w-full h-auto rounded-md mb-2">
+                    <img src="https://i.postimg.cc/d34kjxzL/Reading-Unit4-Exercise1-Picture3.jpg" alt="Telephone from 2000s" class="rounded-md mb-2 exercise-1-image">
                     <div class="list-item">
                         <span>3.</span>
-                        <input type="text" id="ex1_q3" class="input-field" placeholder="e.g., 2000s">
+                        <select id="ex1_q3" class="select-field">
+                            <option value="">Select an option</option>
+                            <option value="1980s">1980s</option>
+                            <option value="1970s">1970s</option>
+                            <option value="2000s">2000s</option>
+                            <option value="2010s">2010s</option>
+                            <option value="1920s">1920s</option>
+                        </select>
                         <div id="ex1_feedback3" class="feedback hidden"></div>
                     </div>
                 </div>
                 <div>
-                    <img src="https://placehold.co/300x200/a78bfa/ffffff?text=Photo+4" alt="Placeholder Photo 4" class="w-full h-auto rounded-md mb-2">
+                    <img src="https://i.postimg.cc/bNw2wqtb/Reading-Unit4-Exercise1-Picture4.jpg" alt="Telephone from 2010s" class="rounded-md mb-2 exercise-1-image">
                     <div class="list-item">
                         <span>4.</span>
-                        <input type="text" id="ex1_q4" class="input-field" placeholder="e.g., 2010s">
+                        <select id="ex1_q4" class="select-field">
+                            <option value="">Select an option</option>
+                            <option value="1980s">1980s</option>
+                            <option value="1970s">1970s</option>
+                            <option value="2000s">2000s</option>
+                            <option value="2010s">2010s</option>
+                            <option value="1920s">1920s</option>
+                        </select>
                         <div id="ex1_feedback4" class="feedback hidden"></div>
                     </div>
                 </div>
                 <div>
-                    <img src="https://placehold.co/300x200/a78bfa/ffffff?text=Photo+5" alt="Placeholder Photo 5" class="w-full h-auto rounded-md mb-2">
+                    <img src="https://i.postimg.cc/05fwvzbP/Reading-Unit4-Exercise1-Picture5.jpg" alt="Telephone from 1920s" class="rounded-md mb-2 exercise-1-image">
                     <div class="list-item">
                         <span>5.</span>
-                        <input type="text" id="ex1_q5" class="input-field" placeholder="e.g., 1920s">
+                        <select id="ex1_q5" class="select-field">
+                            <option value="">Select an option</option>
+                            <option value="1980s">1980s</option>
+                            <option value="1970s">1970s</option>
+                            <option value="2000s">2000s</option>
+                            <option value="2010s">2010s</option>
+                            <option value="1920s">1920s</option>
+                        </select>
                         <div id="ex1_feedback5" class="feedback hidden"></div>
                     </div>
                 </div>
@@ -921,19 +996,30 @@
             <button onclick="checkExercise10()" class="button mt-4">Check Answers</button>
         </div>
 
+        <div class="save-load-buttons">
+            <button onclick="saveProgress()" class="button">Save Progress</button>
+            <button onclick="loadProgress()" class="button">Load Progress</button>
+            <div id="saveLoadFeedback" class="feedback hidden"></div>
+        </div>
+
     </div>
 
     <script>
         // Helper function to display feedback
         function displayFeedback(elementId, isCorrect) {
             const feedbackElement = document.getElementById(elementId);
-            feedbackElement.classList.remove('hidden', 'correct', 'incorrect');
-            if (isCorrect) {
-                feedbackElement.classList.add('correct');
-                feedbackElement.textContent = 'Correct!';
+            // Check if feedbackElement is null before accessing its properties
+            if (feedbackElement) {
+                feedbackElement.classList.remove('hidden', 'correct', 'incorrect');
+                if (isCorrect) {
+                    feedbackElement.classList.add('correct');
+                    feedbackElement.textContent = 'Correct!';
+                } else {
+                    feedbackElement.classList.add('incorrect');
+                    feedbackElement.textContent = 'Incorrect. Please try again.';
+                }
             } else {
-                feedbackElement.classList.add('incorrect');
-                feedbackElement.textContent = 'Incorrect. Please try again.';
+                console.error(`Feedback element with ID '${elementId}' not found.`);
             }
         }
 
@@ -942,19 +1028,87 @@
             return text.toLowerCase().trim().replace(/\s+/g, ' ');
         }
 
-        // Exercise 1 Check
+        // Save Progress Function
+        function saveProgress() {
+            const answers = {};
+            // Gather all text inputs
+            document.querySelectorAll('input[type="text"]').forEach(input => {
+                answers[input.id] = input.value;
+            });
+            // Gather all select inputs
+            document.querySelectorAll('select').forEach(select => {
+                answers[select.id] = select.value;
+            });
+
+            console.log('Saving data:', answers); // Debugging line
+
+            try {
+                localStorage.setItem('ieltsWorksheetProgress', JSON.stringify(answers));
+                displaySaveLoadFeedback('Progress saved automatically!', true); // Changed message for autosave
+            } catch (e) {
+                displaySaveLoadFeedback('Error saving progress: ' + e.message, false); // Use e.message for better error info
+                console.error('Error saving to local storage:', e);
+            }
+        }
+
+        // Load Progress Function
+        function loadProgress() {
+            try {
+                const savedProgress = localStorage.getItem('ieltsWorksheetProgress');
+                console.log('Retrieved from localStorage:', savedProgress); // Debugging line
+
+                if (savedProgress) {
+                    const answers = JSON.parse(savedProgress);
+                    console.log('Parsed answers:', answers); // Debugging line
+                    for (const id in answers) {
+                        const element = document.getElementById(id);
+                        if (element) {
+                            element.value = answers[id];
+                        } else {
+                            console.warn(`Element with ID '${id}' not found during load.`); // Warn for missing elements
+                        }
+                    }
+                    displaySaveLoadFeedback('Progress loaded successfully!', true);
+                } else {
+                    displaySaveLoadFeedback('No saved progress found.', false);
+                }
+            } catch (e) {
+                displaySaveLoadFeedback('Error loading progress: ' + e.message, false); // Use e.message
+                console.error('Error loading from local storage:', e);
+            }
+        }
+
+        // Display Save/Load Feedback
+        function displaySaveLoadFeedback(message, isSuccess) {
+            const feedbackElement = document.getElementById('saveLoadFeedback');
+            if (feedbackElement) {
+                feedbackElement.classList.remove('hidden', 'correct', 'incorrect');
+                feedbackElement.textContent = message;
+                if (isSuccess) {
+                    feedbackElement.classList.add('correct');
+                } else {
+                    feedbackElement.classList.add('incorrect');
+                }
+                // Autosave feedback can be less intrusive, or removed if desired
+                setTimeout(() => {
+                    feedbackElement.classList.add('hidden');
+                }, 3000); // Hide after 3 seconds
+            }
+        }
+
+        // Exercise 1 Check - Updated for Dropdown
         function checkExercise1() {
             const answers = {
-                'ex1_q1': '1980s',
+                'ex1_q1': '1920s', // Updated answer
                 'ex1_q2': '1970s',
-                'ex1_q3': '2000s',
-                'ex1_q4': '2010s',
-                'ex1_q5': '1920s'
+                'ex1_q3': '1980s', // Updated answer
+                'ex1_q4': '2000s', // Updated answer
+                'ex1_q5': '2010s'  // Updated answer
             };
 
             for (const [id, correctAnswer] of Object.entries(answers)) {
-                const input = document.getElementById(id);
-                const isCorrect = normalizeText(input.value) === normalizeText(correctAnswer);
+                const selectElement = document.getElementById(id);
+                const isCorrect = selectElement.value === correctAnswer;
                 displayFeedback(`${id.replace('q', 'feedback')}`, isCorrect);
             }
         }
@@ -1113,6 +1267,12 @@
                 displayFeedback(`${id.replace('q', 'feedback')}`, isCorrect);
             }
         }
+
+        // Autosave setup
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProgress(); // Load progress when the page loads
+            setInterval(saveProgress, 5000); // Autosave every 5 seconds
+        });
     </script>
 </body>
 </html>
