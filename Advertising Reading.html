@@ -17,7 +17,7 @@
       height: 100vh;
     }
     .left, .right {
-      padding: 30px;
+      padding: 30px; /* Original padding */
       overflow-y: auto;
     }
     .left {
@@ -26,6 +26,8 @@
       border-right: 2px solid #dee2e6;
       box-shadow: inset -5px 0 5px -5px #dee2e6;
       line-height: 1.6;
+      user-select: text; /* Ensure text is selectable */
+      padding: 50px; /* Increased padding for the reading passage */
     }
     .right {
       width: 50%;
@@ -44,20 +46,61 @@
       top: 10px;
       left: 10px;
       z-index: 1000;
+      display: flex;
+      gap: 10px; /* Space between buttons */
     }
     .toggle-buttons button {
       padding: 8px 12px;
-      margin-right: 10px;
       font-size: 1em;
       cursor: pointer;
       border-radius: 4px;
       border: none;
       background-color: #007bff;
       color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
     }
     .toggle-buttons button:hover {
       background-color: #0056b3;
     }
+    /* New container for highlight button */
+    .highlight-tool-container {
+      position: absolute;
+      top: 50%; /* Center vertically */
+      left: 20px; /* Distance from left */
+      transform: translateY(-50%); /* Adjust to truly center */
+      z-index: 1000;
+    }
+    /* Style for the highlight button specifically */
+    #highlight-btn {
+      padding: 8px; /* Smaller padding for a more compact icon button */
+      background-color: rgba(255, 165, 0, 0.7); /* Orange-ish, slightly transparent */
+      color: white;
+      border: 1px solid rgba(255, 165, 0, 0.9);
+      border-radius: 50%; /* Make it round */
+      width: 40px; /* Fixed width for round button, smaller */
+      height: 40px; /* Fixed height for round button, smaller */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    #highlight-btn.active {
+      background-color: rgba(255, 165, 0, 1); /* More opaque when active */
+      box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    #highlight-btn:hover {
+      background-color: rgba(255, 165, 0, 0.9);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
+    }
+    #highlight-btn svg {
+      width: 20px; /* Adjust SVG size, smaller */
+      height: 20px;
+    }
+
     .question input[type="text"], .question select {
       width: 100%;
       padding: 6px;
@@ -77,6 +120,7 @@
       font-size: 0.95em;
       cursor: pointer;
       margin-top: 4px;
+      margin-bottom: 20px; /* Added margin for spacing */
     }
     .check-btn:hover { background-color: #218838; }
     .feedback {
@@ -86,12 +130,35 @@
     .correct { color: green; }
     .incorrect { color: red; }
     .warning { color: orange; }
+    .question-group {
+      border: 1px solid #e0e0e0;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .question-group h3 {
+      margin-top: 0;
+      color: #333;
+    }
+    /* Style for highlighted text */
+    .highlighted-text {
+      background-color: rgba(255, 255, 0, 0.5); /* Yellow with 50% opacity */
+      border-radius: 3px;
+      padding: 1px 0;
+    }
   </style>
 </head>
 <body>
   <div class="toggle-buttons">
     <button onclick="showPassage(1)" aria-label="Show Passage 1">Passage 1</button>
     <button onclick="showPassage(2)" aria-label="Show Passage 2">Passage 2</button>
+  </div>
+  <div class="highlight-tool-container">
+    <button id="highlight-btn" aria-label="Toggle Highlight Tool">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-highlighter"><path d="m9.06 11.94-2.12 2.12c-2.83 2.83-2.83 7.43 0 10.26v0c2.83 2.83 7.43 2.83 10.26 0l2.12-2.12"/><path d="M11.29 2.71a2.12 2.12 0 0 1 3 3L7 12 2 7l4.29-4.29a2.12 2.12 0 0 1 3 3Z"/></svg>
+    </button>
   </div>
   <div class="container">
     <div class="left" id="reading-passage"></div>
@@ -102,75 +169,186 @@
 <script>
 const passages = [
   {
-    title: "Advertising Needs Attention",
-    content: `<p>Advertising has become an ever-present part of modern life. From billboards and posters in city streets to pop-up banners and social media campaigns, we are constantly exposed to advertising messages. The sheer volume of advertisements is unprecedented, and many consumers have developed strategies to ignore or block these messages.</p>
-    <p>In traditional forms, advertising relied heavily on newspapers, radio, and television. Today, advertisers have diversified their strategies to include online media, influencer marketing, and product placement. Public transportation stations, waiting areas, and even elevators are now popular spots for displaying ads.</p>
-    <p>This saturation has raised concerns. Critics argue that consumers, especially children, are being overwhelmed by these messages. Others claim that advertising is a vital source of funding for media and entertainment industries.</p>`,
-    questions: `<div class="question"><p>1. People are exposed to fewer advertisements now than in the past.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
-    <div class="question"><p>2. Advertisers today mostly rely on traditional advertising methods.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
-    <div class="question"><p>3. Advertisements in public areas can have a wide reach.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
-    <div class="question"><p>4. People sometimes take measures to avoid seeing advertisements.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
-    <div class="question"><p>5. Product placement can be an example of subtle advertising.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
-    <div class="question"><p>6. Companies are decreasing their advertising budgets.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
-    <div class="question"><p>7. Consumers are becoming less aware of how advertising affects them.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
-    <div class="question"><p>8. Ads in train stations are mainly designed to reach ___.</p><input type="text" /></div>
-    <div class="question"><p>9. Modern advertisements use techniques based on ___.</p><input type="text" /></div>
-    <div class="question"><p>10. Some ads include ___ that may not be noticed immediately.</p><input type="text" /></div>
-    <div class="question"><p>11. Effective ads often create an ___ for the product.</p><input type="text" /></div>
-    <div class="question"><p>12. A common concern about advertising is ___.</p><input type="text" /></div>
-    <div class="question"><p>13. Ads increase especially during the ___.</p><input type="text" /></div>`
+    title: "ADVERTISING NEEDS ATTENTION",
+    content: `
+    <p>The harder advertisers try to get your attention, the more your brain ignores them. Rane Raymond, a consumer psychologist at the University of Wales in Bangor, is carefully holding and gazing at a bottle of Chillz mineral water like a baby. Despite being made of clear plastic, it looks as if it has been carved from ice. This simple feature means shoppers are drawn to this bottle over the others on the shelf and cannot resist picking it up, Raymond says. She studies the subtle factors that motivate us to buy what we buy and advises big companies on how powerful an advertisement is, and how it could be designed to stick more firmly in a consumer’s memory. Most of all, she works out how to attract your attention.</p>
+    <p>In today’s fast-paced consumer world, attention is in short supply. Whether we are taking our time shopping in a mall, surfing the Internet for information, or just watching television as a form of passive entertainment, consumers are surrounded by messages every 15 seconds of our waking lives, according to some estimates. Last year, companies worldwide spent $401 billion on advertising, according to the independent World Advertising Research Centre in the UK. But as the graveyard of failed products shows, they usually get it wrong.</p>
+    <p>Nine out of 10 new products meet an early death, says Jamie Rayner, director of research at ID Magasin, a UK consultancy specializing in consumer behaviour. And the reason, he explains, is simple: conventional advertising has ceased to work. Rayner and his colleagues have measured how consumers, in particular regular commuters, react to advertising, and their conclusion should alarm many executives. They used a camera embedded in a pair of glasses to record their gaze as they glanced at advertisements on their journey to and from work. After analysing the recordings and questioning the subjects, they found that most of the advertisements made no impression at all: only about one percent could be recalled without prompting. It seems that although we maybe looking at brands and advertisements all day long, most of the time we’re not taking anything in.</p>
+    <p>Raymond thinks she knows why. Her move from research in visual processing into consumer psychology began in the early 1990s, when she discovered some strange behaviours in the brain’s attentional system. She showed people a stream of letters and numbers on a screen and asked them to look out for a letter X. When she asked her volunteers afterwards what they had seen, she found that if the X appeared up to half a second or so after the letter, or vice versa, people failed to see it. She concluded that the brain cannot take in new information if it is attending to anything else for a short period afterwards. She called this effect the ‘attentional blink’. ‘In short, the reason most advertising doesn’t work is that we’re in a severe state of attentional overload. Unless advertising is presented in a way the brain can absorb, it is simply not seen,’ Raymond says.</p>
+    <p>So what does this mean for advertisers? A typical television advertisement consists of a series of attention-grabbing images interspersed with the product. But unless the scenes in the advertisement are cut to take account of attentional blinks. The brain is likely to ignore the information the advertiser wants to get across. The same applies to magazine advertisements, where viewers often register the main image but fail to pick up on the secondary images-the bits advertisers often desperately want us to see. Raymond says advertisers consistently fail to consider how easily the brain misses the point. It’s not that they haven’t realized that the space and time they have to get their message across has shrunk. But advertisers respond by cramming in ever more complex information. Raymond is opposed to this, and her advice is simple: deliver your message in a straightforward manner and do so slowly, gently and concisely.</p>
+    <p>After her research on the attentional blink, she wondered whether attention would be linked to other processes in the brain, particularly emotion. Could our attentional state influence whether we like or dislike a brand, for example? Today, companies are hugely interested in the emotional value of their brands as they want their products to make us feel good. It is well known that if something elicits positive emotions then you are more likely to take notice of it. But Raymond’s further research also demonstrates that if people are distracted by an image or a brand when performing an intellectually demanding task, they tend to instantly dislike the brands, regardless of its emotional value. So, for example, if you are reading a web page when a banner advertisement starts flashing, or are watching a film with intrusive product placement, it is probable you will come to dislike the brand whatever it is.</p>
+    <p>This contradicts the more-exposure-the-better rule most of the industry follows, says Raymond and means that advertising can backfire horribly. Advertising can backfire horribly. Advertisers tend to buy as much exposure for a product as they can, through television and radio commercials, billboards, whatever they think will attract their target audiences, but again Raymond has found that this doesn’t necessarily work in their favour. Perhaps the most dangerous time, says Raymond, is the holiday season when advertisers are madly competing to grab people’s attention. ‘Marketers don’t realize that humans digest information like they do food. Once they are full, if they are shown anymore food, they’re disgusted,’ she says.</p>
+    `,
+    questionGroups: [
+      {
+        id: "passage1_group1",
+        startId: 1,
+        endId: 7,
+        questionsHtml: `
+          <h3>Questions 1-7</h3>
+          <p>Do the following statements agree with the information given?</p>
+          <p>TRUE &nbsp;if the statement agrees with the information<br>
+          FALSE &nbsp;if the statement disagrees with the information<br>
+          NOT GIVEN &nbsp;if there is no information on this</p>
+          <div class="question" data-question-id="1"><p>1. Jane Raymond states that Chillz mineral water is packaged in a way that is unattractive to consumers.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
+          <div class="question" data-question-id="2"><p>2. Consumers are still exposed to more advertising through television commercials than through the medium of the internet.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
+          <div class="question" data-question-id="3"><p>3. Jamie Rayner says that people are no longer influenced by traditional advertisements.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
+          <div class="question" data-question-id="4"><p>4. According to Jamie Rayner, the reason that most products are discontinued is that advertising fails to attract consumers.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
+          <div class="question" data-question-id="5"><p>5. Jane Raymond believes that commercials should be simpler in their content.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
+          <div class="question" data-question-id="6"><p>6. Advertisements showing unfamiliar brands affect a person's concentration more than ones with familiar brands.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
+          <div class="question" data-question-id="7"><p>7. Jane Raymond suggests that a product should be advertised in as many ways as possible.</p><select><option value="">--Select--</option><option>TRUE</option><option>FALSE</option><option>NOT GIVEN</option></select></div>
+        `
+      },
+      {
+        id: "passage1_group2",
+        startId: 8,
+        endId: 13,
+        questionsHtml: `
+          <h3>Questions 8-13</h3>
+          <p>Answer the questions below.</p>
+          <p>Choose NO MORE THAN THREE WORDS from the passage for each answer.</p>
+          <div class="question" data-question-id="8"><p>8. What group of consumers were specifically targeted in Jamie Rayner’s research?</p><input type="text" /></div>
+          <div class="question" data-question-id="9"><p>9. What subject did Jane Raymond study before focusing on the behaviour of consumers?</p><input type="text" /></div>
+          <div class="question" data-question-id="10"><p>10. According to the writer, what important aspect of an advertisement in print do many people fail to notice?</p><input type="text" /></div>
+          <div class="question" data-question-id="11"><p>11. According to the writer, what do companies today want their products to have in order to make consumers feel positive about themselves?</p><input type="text" /></div>
+          <div class="question" data-question-id="12"><p>12. What does Jane Raymond say will annoy someone watching a movie?</p><input type="text" /></div>
+          <div class="question" data-question-id="13"><p>13. According to Jane Raymond, when do advertisers promote their products most fiercely?</p><input type="text" /></div>
+        `
+      }
+    ]
   },
   {
-    title: "Advertising and Children",
-    content: `<p>Children are considered especially vulnerable to advertising because of their limited ability to understand the persuasive intent behind it. Various studies have shown that children under the age of eight often cannot distinguish between commercials and regular programming.</p>
-    <p>In response to concerns, some countries have implemented regulations that restrict advertising aimed at children. These regulations may limit when and where such advertisements can appear, or prohibit certain types of persuasive techniques.</p>
-    <p>Digital advertising presents new challenges. Online platforms allow targeted advertising based on user behavior, and children are often exposed to ads embedded in games or social media feeds. Calls for stricter rules and better enforcement are growing as awareness of these issues increases.</p>`,
-    questions: `<div class="question"><p>14. Choose the correct heading: Paragraph A</p><select><option value="">--Select--</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option><option>ix</option><option>x</option></select></div>
-    <div class="question"><p>15. Choose the correct heading: Paragraph B</p><select><option value="">--Select--</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option><option>ix</option><option>x</option></select></div>
-    <div class="question"><p>16–26</p><p>YES / NO / NOT GIVEN questions follow the same pattern as above. You can expand this section with full questions.</p></div>`
+    title: "REVIEW OF RESEARCH ON THE EFFECTS OF FOOD PROMOTION TO CHILDREN",
+    content: `
+    <p>This review was commissioned by the Food Standards Agency to examine the current research evidence on: the extent and nature of food promotion to children the effect, if any, that this promotion has on their food knowledge, preferences and behaviour.</p>
+    <p><b>A</b> Children’s food promotion is dominated by television advertising, and the great majority of this promotes the so-called ‘Big Four’ of pre-sugared breakfast cereals, soft-drinks, confectionary and savoury snacks. In the last ten years advertising for fast food outlets has rapidly increased. There is some evidence that the dominance of television has recently begun to wane. The importance of strong, global branding reinforces a need for multi-faceted communications combining television with merchandising, ‘tie-ins’ and point of sale activity. The advertised diet contrasts sharply with that recommended by public health advisors, and themes of fun and fantasy or taste, rather than health and nutrition, are used to promote it to children. Meanwhile,the recommended diet gets little promotional support.</p>
+    <p><b>B</b> There is plenty of evidence that children notice and enjoy food promotion. However, establishing whether this actually influences them is a complex problem. The review tackled it by looking at studies that had examined possible effects on what children know about food, their food preferences, their actual food behaviour (both buying and eating), and their health outcomes (e.g. obesity or cholesterol levels). The majority of studies examined food advertising, but a few examined other forms of food promotion. In terms of nutritional knowledge, food advertising seems to have little influence on children’s general perceptions of what constitutes a healthy diet, but, in certain contexts, it does have an effect on more specific types of nutritional knowledge. For example, seeing soft drink and cereal adverts reduced primary aged children’s ability to determine correctly whether or not certain products contained real fruit.</p>
+    <p><b>C</b> The review also found evidence that food promotion influences children’s food preferences and their purchase behaviour. A study of primary school children, for instance, found that exposure to advertising influenced which foods they claimed to like; and another showed that labelling and signage on a vending machine had an effect on what was bought by secondary school pupils. A number of studies have also shown that food advertising can influence what children eat. One, for example, showed that advertising influenced a primary class’s choice of daily snack at playtime.</p>
+    <p><b>D</b> The next step, of trying to establish whether or not a link exists between food promotion and diet or obesity, is extremely difficult as it requires research to be done in real world settings. A number of studies have attempted this by using amount of television viewing as a proxy for exposure to television advertising. They have established a clear link between television viewing and diet, obesity, and cholesterol levels. It is impossible to say, however, whether this effect is caused by the advertising, the sedentary nature of television viewing or snacking that might take place whilst viewing. One study resolved this problem by taking a detailed diary of children’s viewing habits. This showed that the more food adverts they saw, the more snacks and calories they consumed.</p>
+    <p><b>E</b> Thus the literature does suggest food promotion is influencing children’s diet in a number of ways. This does not amount to proof; as noted above with this kind of research, incontrovertible proof simply isn’t attainable. Nor do all studies point to this conclusion; several have not found an effect. In addition, very few studies have attempted to measure how strong these effects are relative to other factors influencing children’s food choices. Nonetheless, many studies have found clear effects and they have used sophisticated methodologies that make it possible to determine that i) these effects are not just due to chance; ii) they are independent of other factors that may influence diet, such as parents’ eating habits or attitudes; and iii) they occur at a brand and category level.</p>
+    <p><b>F</b> Furthermore, two factors suggest that these findings actually downplay the effect that food promotion has on children. First, the literature focuses principally on television advertising; the cumulative effect of this combined with other forms of promotion and marketing is likely to be significantly greater. Second, the studies have looked at direct effects on individual children and understate indirect influences. For example, promotion for fast food outlets may not only influence the child but also encourage parents to take them for meals and reinforce the idea that this is a normal and desirable behaviour.</p>
+    <p><b>G</b> This does not amount to proof of an effect, but in our view does provide sufficient evidence to conclude that an effect exists. The debate should now shift to what action is needed, and specifically to how the power of commercial marketing can be used to bring about improvements in young people’s eating.</p>
+    `,
+    questionGroups: [
+      {
+        id: "passage2_group1",
+        startId: 14,
+        endId: 20,
+        questionsHtml: `
+          <h3>Questions 1-7</h3>
+          <p>Reading Passage 1 has seven paragraphs, A-G.</p>
+          <p>Choose the most suitable heading for paragraphs A-G from the list of headings below.</p>
+          <p><b>List of Headings</b><br>
+          i &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; General points of agreements and disagreements of researchers<br>
+          ii &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; How much children really know about food<br>
+          iii &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Need to take action<br>
+          iv &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Advertising effects of the “Big Four”<br>
+          v &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Connection of advertising and children’s weight problems<br>
+          vi &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Evidence that advertising affects what children buy to eat<br>
+          vii &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; How parents influence children’s eating habits<br>
+          viii &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Advertising’s focus on unhealthy options<br>
+          ix &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Children often buy what they want<br>
+          x &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Underestimating the effects advertising has on children</p>
+          <div class="question" data-question-id="14"><p>1. Paragraph A</p><select><option value="">--Select--</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option><option>ix</option><option>x</option></select></div>
+          <div class="question" data-question-id="15"><p>2. Paragraph B</p><select><option value="">--Select--</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option><option>ix</option><option>x</option></select></div>
+          <div class="question" data-question-id="16"><p>3. Paragraph C</p><select><option value="">--Select--</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option><option>ix</option><option>x</option></select></div>
+          <div class="question" data-question-id="17"><p>4. Paragraph D</p><select><option value="">--Select--</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option><option>ix</option><option>x</option></select></div>
+          <div class="question" data-question-id="18"><p>5. Paragraph E</p><select><option value="">--Select--</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option><option>ix</option><option>x</option></select></div>
+          <div class="question" data-question-id="19"><p>6. Paragraph F</p><select><option value="">--Select--</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option><option>ix</option><option>x</option></select></div>
+          <div class="question" data-question-id="20"><p>7. Paragraph G</p><select><option value="">--Select--</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option><option>ix</option><option>x</option></select></div>
+        `
+      },
+      {
+        id: "passage2_group2",
+        startId: 21,
+        endId: 26,
+        questionsHtml: `
+          <h3>Questions 8-13</h3>
+          <p>Do the following statements agree with the views of the writer?</p>
+          <p>YES &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if the statement agrees with the views of the writer<br>
+          NO &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if the statement contradicts with the views of the writer<br>
+          NOT &nbsp;GIVEN &nbsp;&nbsp;&nbsp;&nbsp; if it is impossible to say what the writer thinks about this</p>
+          <div class="question" data-question-id="21"><p>8. There is little difference between the number of healthy and unhealthy food.</p><select><option value="">--Select--</option><option>YES</option><option>NO</option><option>NOT GIVEN</option></select></div>
+          <div class="question" data-question-id="22"><p>9. TV advertising has successfully taught children nutritional knowledge about vitamins.</p><select><option value="">--Select--</option><option>YES</option><option>NO</option><option>NOT GIVEN</option></select></div>
+          <div class="question" data-question-id="23"><p>10. It is hard to decide which aspect of TV viewing has caused weight problems of.</p><select><option value="">--Select--</option><option>YES</option><option>NO</option><option>NOT GIVEN</option></select></div>
+          <div class="question" data-question-id="24"><p>11. The preference of food for children is affected by their age and gender.</p><select><option value="">--Select--</option><option>YES</option><option>NO</option><option>NOT GIVEN</option></select></div>
+          <div class="question" data-question-id="25"><p>12. Wealthy parents tend to buy more "sensible food" for their children.</p><select><option value="">--Select--</option><option>YES</option><option>NO</option><option>NOT GIVEN</option></select></div>
+          <div class="question" data-question-id="26"><p>13. There is a lack of investigation on food promotion methods other than TV advertising.</p><select><option value="">--Select--</option><option>YES</option><option>NO</option><option>NOT GIVEN</option></select></div>
+        `
+      }
+    ]
   }
 ];
 
 const answers = {
-  1: "FALSE", 2: "FALSE", 3: "TRUE", 4: "TRUE", 5: "TRUE", 6: "NOT GIVEN", 7: "NOT GIVEN",
-  8: "COMMUTERS", 9: "PSYCHOLOGY", 10: "HIDDEN MESSAGES", 11: "EMOTIONAL RESPONSE", 12: "OVEREXPOSURE", 13: "HOLIDAY SEASON",
-  14: "v", 15: "iii",
-  16: "NO", 17: "NO", 18: "YES", 19: "YES", 20: "NOT GIVEN", 21: "NO", 22: "NO", 23: "YES", 24: "NO", 25: "NO", 26: "YES"
+  // Passage 1 Answers
+  1: "FALSE", 2: "NOT GIVEN", 3: "TRUE", 4: "TRUE", 5: "TRUE", 6: "NOT GIVEN", 7: "FALSE",
+  8: "REGULAR COMMUTERS", 9: "VISUAL PROCESSING", 10: "SECONDARY IMAGES", 11: "EMOTIONAL VALUE", 12: "INTRUSIVE PRODUCT PLACEMENT", 13: "HOLIDAY SEASON",
+  // Passage 2 Answers
+  14: "iv", 15: "ii", 16: "vi", 17: "v", 18: "i", 19: "x", 20: "iii", // Headings for A-G (1-7 in questions)
+  21: "NOT GIVEN", 22: "NO", 23: "YES", 24: "NOT GIVEN", 25: "NOT GIVEN", 26: "YES" // YES/NO/NOT GIVEN (8-13 in questions)
 };
 
 let currentPassage = 1;
+let isHighlightMode = false; // New state for highlight mode
+let highlights = {}; // Stores highlights for each passage: { passageIndex: [{paragraphIndex, startOffset, endOffset, text}] }
+
+// Initialize highlights from localStorage on page load
+if (localStorage.getItem('allHighlights')) {
+  highlights = JSON.parse(localStorage.getItem('allHighlights'));
+}
 
 function showPassage(index) {
   const passage = passages[index - 1];
   currentPassage = index;
-  document.getElementById('reading-passage').innerHTML = `<h2>${passage.title}</h2>` + passage.content;
-  document.getElementById('question-panel').innerHTML = passage.questions;
+  const readingPassageDiv = document.getElementById('reading-passage');
+  readingPassageDiv.innerHTML = `<h2>${passage.title}</h2>` + passage.content;
 
-  const allQuestions = document.querySelectorAll('.question');
-  const base = currentPassage === 1 ? 1 : 14;
+  // Apply saved highlights after content is loaded
+  applySavedHighlights(currentPassage);
 
-  allQuestions.forEach((q, i) => {
-    const btn = document.createElement("button");
-    btn.textContent = "Check Answer";
-    btn.className = "check-btn";
-    btn.onclick = () => {
-      checkSingleAnswer(q, base + i);
-      saveAnswers();
+  const questionPanel = document.getElementById('question-panel');
+  questionPanel.innerHTML = ''; // Clear previous questions
+
+  passage.questionGroups.forEach(group => {
+    const groupDiv = document.createElement('div');
+    groupDiv.className = 'question-group';
+    groupDiv.innerHTML = group.questionsHtml;
+
+    const checkBtn = document.createElement("button");
+    checkBtn.textContent = "Check Answers";
+    checkBtn.className = "check-btn";
+    checkBtn.onclick = () => {
+      checkGroupAnswers(groupDiv, group.startId, group.endId);
     };
-    q.appendChild(btn);
-
-    const fb = document.createElement("div");
-    fb.className = "feedback";
-    fb.id = `feedback-${base + i}`;
-    q.appendChild(fb);
+    groupDiv.appendChild(checkBtn);
+    questionPanel.appendChild(groupDiv);
   });
 
   loadAnswers();
 }
 
+function checkGroupAnswers(groupElement, startId, endId) {
+  for (let i = startId; i <= endId; i++) {
+    // Select the specific question within the group using its data-question-id
+    const qElem = groupElement.querySelector(`.question[data-question-id="${i}"]`);
+    if (qElem) {
+      checkSingleAnswer(qElem, i);
+    }
+  }
+  saveAnswers(); // Save all answers after checking the group
+}
+
 function checkSingleAnswer(qElem, id) {
   const input = qElem.querySelector("input, select");
-  const fb = document.getElementById(`feedback-${id}`);
+  // Ensure feedback div exists or create it
+  let fb = qElem.querySelector(".feedback");
+  if (!fb) {
+    fb = document.createElement("div");
+    fb.className = "feedback";
+    qElem.appendChild(fb);
+  }
+
   const userAns = input.value.trim().toUpperCase();
   const correct = (answers[id] || "").toUpperCase();
 
@@ -181,7 +359,7 @@ function checkSingleAnswer(qElem, id) {
     fb.textContent = "✅ Correct";
     fb.className = "feedback correct";
   } else {
-    fb.textContent = "❌ Incorrect";
+    fb.textContent = `❌ Incorrect. Correct answer: ${correct}`;
     fb.className = "feedback incorrect";
   }
 }
@@ -189,8 +367,11 @@ function checkSingleAnswer(qElem, id) {
 function saveAnswers() {
   const inputs = document.querySelectorAll('.question input, .question select');
   const data = {};
-  inputs.forEach((el, i) => {
-    data[i] = el.value;
+  inputs.forEach((el) => {
+    const questionId = el.closest('.question').dataset.questionId;
+    if (questionId) {
+      data[questionId] = el.value;
+    }
   });
   localStorage.setItem(`passage${currentPassage}_answers`, JSON.stringify(data));
 }
@@ -200,8 +381,11 @@ function loadAnswers() {
   if (!saved) return;
   const data = JSON.parse(saved);
   const inputs = document.querySelectorAll('.question input, .question select');
-  inputs.forEach((el, i) => {
-    if (data[i]) el.value = data[i];
+  inputs.forEach((el) => {
+    const questionId = el.closest('.question').dataset.questionId;
+    if (questionId && data[questionId]) {
+      el.value = data[questionId];
+    }
   });
 }
 
@@ -227,6 +411,183 @@ function stopResizing() {
   document.removeEventListener('mousemove', resizePanels);
   document.removeEventListener('mouseup', stopResizing);
 }
+
+// --- Highlight Tool Logic ---
+
+const highlightBtn = document.getElementById('highlight-btn');
+const readingPassage = document.getElementById('reading-passage');
+
+highlightBtn.addEventListener('click', toggleHighlightMode);
+
+function toggleHighlightMode() {
+  isHighlightMode = !isHighlightMode;
+  highlightBtn.classList.toggle('active', isHighlightMode);
+  readingPassage.style.cursor = isHighlightMode ? 'text' : 'default';
+  // Clear any active selection when toggling mode
+  window.getSelection().removeAllRanges();
+}
+
+readingPassage.addEventListener('mouseup', handleHighlightSelection);
+
+function handleHighlightSelection() {
+  if (!isHighlightMode) return;
+
+  const selection = window.getSelection();
+  if (selection.rangeCount > 0) {
+    const range = selection.getRangeAt(0);
+    // Ensure selection is within the reading passage
+    if (readingPassage.contains(range.commonAncestorContainer)) {
+      applyHighlight(range, selection); // Pass selection object
+    }
+  }
+}
+
+function applyHighlight(range, selection) { // Accept selection as parameter
+  const span = document.createElement('span');
+  span.className = 'highlighted-text';
+  try {
+    range.surroundContents(span);
+    saveCurrentHighlight(span, range); // Pass range to saveCurrentHighlight
+  } catch (e) {
+    // This can happen if the selection is not a single, contiguous block of text nodes
+    // For simplicity, we'll just log the error and not apply highlight in such cases.
+    console.error("Could not surround contents with highlight span:", e);
+    // If surrounding fails, try a simpler approach: get the selected text and wrap it
+    // This is less precise but might work for fragmented selections.
+    const selectedText = range.toString();
+    if (selectedText.length > 0) {
+      const tempSpan = document.createElement('span');
+      tempSpan.className = 'highlighted-text';
+      tempSpan.textContent = selectedText;
+      range.deleteContents();
+      range.insertNode(tempSpan);
+      saveCurrentHighlight(tempSpan, range); // Pass range to saveCurrentHighlight
+    }
+  }
+  selection.removeAllRanges(); // Clear selection after highlighting
+}
+
+function saveCurrentHighlight(highlightSpan, originalRange) { // Accept originalRange
+  const paragraph = highlightSpan.closest('p');
+  if (!paragraph) return; // Only save highlights within paragraphs
+
+  const paragraphs = Array.from(readingPassage.querySelectorAll('p'));
+  const paragraphIndex = paragraphs.indexOf(paragraph);
+
+  if (paragraphIndex === -1) return; // Paragraph not found (shouldn't happen if closest works)
+
+  // Get the text content of the paragraph without the highlight spans for accurate offsets
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = paragraph.innerHTML;
+  Array.from(tempDiv.querySelectorAll('.highlighted-text')).forEach(s => {
+    s.outerHTML = s.textContent; // Replace span with its text content
+  });
+  const paragraphText = tempDiv.textContent;
+
+  // Find the start and end indices of the highlighted text within the paragraph's plain text
+  const highlightedText = highlightSpan.textContent;
+  let startIndex = -1;
+  let endIndex = -1;
+
+  // A more reliable way to get offsets after the highlight is applied:
+  // Temporarily remove the highlight span, get the text, then find the indices
+  const originalParagraphHtml = paragraph.innerHTML; // Store original HTML
+  highlightSpan.outerHTML = highlightSpan.textContent; // Remove the span to get original text
+  const plainText = paragraph.textContent;
+  const foundIndex = plainText.indexOf(highlightedText);
+
+  if (foundIndex !== -1) {
+    startIndex = foundIndex;
+    endIndex = foundIndex + highlightedText.length;
+  } else {
+    // Fallback if direct index not found, maybe due to complex DOM or partial selection
+    console.warn("Could not find exact highlight text in plain paragraph content for saving.");
+    // As a last resort, store the text and paragraph index, but offsets will be approximate
+    startIndex = 0; // Placeholder
+    endIndex = highlightedText.length; // Placeholder
+  }
+
+  // Restore the highlight span in the DOM for display
+  paragraph.innerHTML = originalParagraphHtml;
+
+
+  if (!highlights[currentPassage]) {
+    highlights[currentPassage] = [];
+  }
+
+  // Check for overlapping highlights to avoid duplicates or messy data
+  const newHighlight = {
+    paragraphIndex,
+    startOffset: startIndex,
+    endOffset: endIndex,
+    text: highlightedText
+  };
+
+  // Simple check to avoid adding identical highlights
+  const isDuplicate = highlights[currentPassage].some(h =>
+    h.paragraphIndex === newHighlight.paragraphIndex &&
+    h.startOffset === newHighlight.startOffset &&
+    h.endOffset === newHighlight.endOffset &&
+    h.text === newHighlight.text
+  );
+
+  if (!isDuplicate) {
+    highlights[currentPassage].push(newHighlight);
+    localStorage.setItem('allHighlights', JSON.stringify(highlights));
+  }
+}
+
+function applySavedHighlights(passageIndex) {
+  const savedHighlights = highlights[passageIndex];
+  if (!savedHighlights || savedHighlights.length === 0) return;
+
+  const paragraphs = Array.from(readingPassage.querySelectorAll('p'));
+
+  // Sort highlights to apply them from end to start to avoid offset issues
+  savedHighlights.sort((a, b) => {
+    if (a.paragraphIndex !== b.paragraphIndex) {
+      return a.paragraphIndex - b.paragraphIndex;
+    }
+    return b.startOffset - a.startOffset; // Apply from end to start within a paragraph
+  }).forEach(h => {
+    const paragraph = paragraphs[h.paragraphIndex];
+    if (paragraph) {
+      // Reconstruct the highlight in the paragraph
+      // This is a simplified re-application. For complex nested structures,
+      // a more advanced DOM manipulation would be needed.
+      const originalText = paragraph.textContent; // Get current text content
+      if (h.startOffset !== -1 && h.endOffset !== -1 && h.endOffset <= originalText.length) {
+        const before = originalText.substring(0, h.startOffset);
+        const highlighted = originalText.substring(h.startOffset, h.endOffset);
+        const after = originalText.substring(h.endOffset);
+
+        // Replace the paragraph's content with re-highlighted version
+        // This is a destructive operation and will remove any other DOM structure within the paragraph.
+        // A more robust solution would involve iterating through text nodes.
+        // For this example, we'll assume simple paragraph structures.
+        paragraph.innerHTML = `${escapeHTML(before)}<span class="highlighted-text">${escapeHTML(highlighted)}</span>${escapeHTML(after)}`;
+      } else {
+        console.warn(`Highlight for passage ${passageIndex}, paragraph ${h.paragraphIndex} could not be reapplied due to invalid offsets or text mismatch.`);
+        // Fallback: if offsets are bad, try to find the text and highlight it
+        const foundIndex = paragraph.textContent.indexOf(h.text);
+        if (foundIndex !== -1) {
+          const before = paragraph.textContent.substring(0, foundIndex);
+          const highlighted = h.text;
+          const after = paragraph.textContent.substring(foundIndex + highlighted.length);
+          paragraph.innerHTML = `${escapeHTML(before)}<span class="highlighted-text">${escapeHTML(highlighted)}</span>${escapeHTML(after)}`;
+        }
+      }
+    }
+  });
+}
+
+// Helper to escape HTML to prevent XSS when setting innerHTML
+function escapeHTML(str) {
+    const div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+}
+
 
 window.onload = () => showPassage(1);
 </script>
