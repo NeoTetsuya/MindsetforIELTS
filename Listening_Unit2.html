@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 2: IELTS Listening Worksheet</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS from your original file */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .correct-feedback {
+            color: #10B981; /* Green-500 */
+        }
+        .incorrect-feedback {
+            color: #EF4444; /* Red-500 */
+        }
+        .feedback-box {
+            padding: 0.5rem 0.75rem;
+            margin-top: 0.5rem;
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 0.875rem; /* text-sm */
+        }
+        .feedback-box.correct {
+            background-color: #D1FAE5; /* green-100 */
+            border: 1px solid #34D399; /* green-400 */
+        }
+        .feedback-box.incorrect {
+            background-color: #FEE2E2; /* red-100 */
+            border: 1px solid #F87171; /* red-400 */
+        }
+        /* Message Box for Save Confirmation */
+        #message-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #message-box.show {
+            opacity: 1;
+        }
+        /* Styling for audio players - now wraps iframes */
+        .audio-player-container {
+            margin-bottom: 1rem; /* mb-4 */
+            padding: 0.75rem; /* p-3 */
+            background-color: #F9FAFB; /* gray-50 */
+            border-radius: 0.5rem; /* rounded-md */
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.05); /* subtle inner shadow */
+        }
+        .audio-player-container iframe {
+            width: 100%;
+            height: 120px; /* Height for SoundCloud embed */
+            border-radius: 0.5rem; /* Apply rounded corners to iframe as well */
+            border: none; /* Remove default iframe border */
+        }
+        /* Additional styling for Exercise 6 individual audio players */
+        .exercise6-audio-input-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem; /* space-x-4 equivalent */
+            padding: 1rem; /* p-4 equivalent */
+            border: 1px solid #FECACA; /* border-red-200 equivalent */
+            background-color: #FFFFFF; /* bg-white equivalent */
+            border-radius: 0.5rem; /* rounded-md equivalent */
+        }
+        .exercise6-audio-input-group .audio-player-container {
+            margin-bottom: 0; /* Remove extra margin for inline players */
+            padding: 0; /* Remove padding as the outer container has it */
+            background-color: transparent; /* Transparent background */
+            box-shadow: none; /* No shadow */
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100 p-4 font-sans text-gray-800">
+
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">
+            Unit 2: IELTS Listening Worksheet
+        </h1>
+
+        <!-- Clear All Answers Button -->
+        <div class="flex justify-end mb-6 space-x-2">
+            <button id="clear-all-answers-button" class="px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition duration-200 ease-in-out transform hover:scale-105">
+                Clear All Answers
+            </button>
+        </div>
+
+        <!-- Unit 2: Exercise 1 - Match words to definitions -->
+        <section class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Unit 2: Exercise 1</h2>
+            <p class="mb-4">In this unit, you will practise the skills you need to answer short-answer questions in the IELTS Listening test.</p>
+            <p class="mb-4">The conversation in this unit is about food and drink. This is a common topic in IELTS, so it is a good idea to think about some vocabulary you might hear.</p>
+            <p class="mb-4">Match the words in the box with the definitions.</p>
+            <div class="mb-4 p-3 bg-indigo-100 rounded-md border border-indigo-200">
+                <p class="font-semibold">Words: Diet, eat in, eat out, habit, prepare, ready-made meal, takeaway, unhealthy</p>
+            </div>
+            <div id="exercise1-container" class="grid grid-cols-1 gap-6">
+                <!-- Exercise 1 content will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex1-button" class="px-5 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 1
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 2: Exercise 2 - Choose correct decades for eating habits -->
+        <section class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-blue-600 mb-4">Unit 2: Exercise 2</h2>
+            <p class="mb-4">Read the information. Then listen to part of a conversation about how the diet and eating habits of people in the UK have changed over time.</p>
+            <p class="mb-4">Choose the correct decades for the food eating habits.</p>
+            <div class="mb-4 p-3 bg-blue-100 rounded-md border border-blue-200">
+                <p class="font-semibold">"In the IELTS Listening test, you may hear speakers talking about how things have changed over a period of time. It is important to listen for past and present time signals, which will help you to understand what time period the speakers are referring to. Examples of past time signals: at that time …, in the past …, by the 1990s …, previously … Examples of present time signals: these days …, at the present time …, nowadays …, now …"</p>
+            </div>
+            <!-- Audio for Exercise 2 -->
+            <div class="audio-player-container">
+                <p class="font-semibold text-sm mb-2 text-gray-700">Listen for Exercise 2:</p>
+                <iframe width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay"
+                    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2107920804&color=%2300aabb&auto_play=false&show_user=true&show_teaser=true&visual=false"></iframe>
+            </div>
+            <div id="exercise2-container" class="space-y-6">
+                <!-- Exercise 2 content will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex2-button" class="px-5 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 2
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 2: Exercise 3 - Choose the one word in each list that does not have the same meaning as the others -->
+        <section class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-green-600 mb-4">Unit 2: Exercise 3</h2>
+            <p class="mb-4">Read the information. Then choose the one word in each list that does not have the same meaning as the others.</p>
+            <div class="mb-4 p-3 bg-green-100 rounded-md border border-green-200">
+                <p class="font-semibold">"Talking about trends, such as changes in diet and eating habits, is an important skill in IELTS. It is also important to recognise words or phrases that don’t fit a particular group or set of words and phrases. Example: takeaway fast-food ready-made meal unhealthy. In the list above, takeaway, fast-food and ready-made meal are all types of meals. Therefore, the word that doesn’t fit the group is unhealthy."</p>
+            </div>
+            <div id="exercise3-container" class="space-y-6">
+                <!-- Exercise 3 content will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex3-button" class="px-5 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 3
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 2: Exercise 4 - Choose the correct words to complete the sentences -->
+        <section class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-purple-600 mb-4">Unit 2: Exercise 4</h2>
+            <p class="mb-4">Choose the correct words to complete the sentences.</p>
+            <div id="exercise4-container" class="space-y-6">
+                <!-- Exercise 4 content will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex4-button" class="px-5 py-2 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 4
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 2: Exercise 5 - Spelling/Numbers - Correct/Incorrect -->
+        <section class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Unit 2: Exercise 5</h2>
+            <p class="mb-4">Listen to eight speakers spelling out names and numbers. Listen carefully and decide which names and numbers have been written down correctly.</p>
+            <p class="mb-4">Choose the correct answers.</p>
+            <div class="mb-4 p-3 bg-yellow-100 rounded-md border border-yellow-200">
+                <p class="font-semibold">"IELTS short-answer questions test your ability to listen for facts. The facts you hear may be words or numbers such as: the name of a person, a place or a thing, the title of a book or film, an address, a price, a telephone number. Often, you have to listen to someone spelling a word or reading a number so you can write it down."</p>
+            </div>
+            <!-- Audio for Exercise 5 -->
+            <div class="audio-player-container">
+                <p class="font-semibold text-sm mb-2 text-gray-700">Listen for Exercise 5:</p>
+                <iframe width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay"
+                    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2107920798&color=%2300aabb&auto_play=false&show_user=true&show_teaser=true&visual=false"></iframe>
+            </div>
+            <div id="exercise5-container" class="space-y-6">
+                <!-- Exercise 5 content will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex5-button" class="px-5 py-2 bg-yellow-600 text-white rounded-lg shadow-md hover:bg-yellow-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 5
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 2: Exercise 6 - Write the words you hear -->
+        <section class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-red-600 mb-4">Unit 2: Exercise 6</h2>
+            <p class="mb-4">In IELTS Listening short-answer questions, you must spell words correctly, so it is important to know how the letters of the alphabet are pronounced.</p>
+            <p class="mb-4">Listen to each recording. Write the words you hear.</p>
+            <div id="exercise6-container" class="space-y-6">
+                <!-- Exercise 6 content will be dynamically loaded here along with individual audio players -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex6-button" class="px-5 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 6
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 2: Exercise 7 - Choose the correct answers to complete the sentences -->
+        <section class="mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-teal-600 mb-4">Unit 2: Exercise 7</h2>
+            <p class="mb-4">Listen to the recording. Choose the correct answers to complete the sentences.</p>
+            <!-- Audio for Exercise 7 -->
+            <div class="audio-player-container">
+                <p class="font-semibold text-sm mb-2 text-gray-700">Listen for Exercise 7:</p>
+                <iframe width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay"
+                    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2107920810&color=%2300aabb&auto_play=false&show_user=true&visual=false"></iframe>
+            </div>
+            <div id="exercise7-container" class="space-y-6">
+                <!-- Exercise 7 content will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex7-button" class="px-5 py-2 bg-teal-600 text-white rounded-lg shadow-md hover:bg-teal-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 7
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 2: Exercise 8 - Match types of information with short-answer questions -->
+        <section class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-orange-600 mb-4">Unit 2: Exercise 8</h2>
+            <p class="mb-4">Read the information. Then think about the type of information you will need to listen for to answer these questions.</p>
+            <p class="mb-4">Match the types of information with the short-answer questions.</p>
+            <div class="mb-4 p-3 bg-orange-100 rounded-md border border-orange-200">
+                <p class="font-semibold">"Remember, before you listen, quickly read through the short-answer questions to predict what kind of information you need to write (e.g. a name, a number, a price, etc.). Also, think about the grammar of the word. For example, if the word you need is a noun, do you need a singular noun (e.g. a sugar cube), a plural noun (sugar cubes) or an uncountable noun (e.g. sugar)?"</p>
+            </div>
+            <div class="mb-4 p-3 bg-orange-100 rounded-md border border-orange-200">
+                <p class="font-semibold">Types of information: a kind of drink, a person’s name, a place, a street name, a type of food, a type of medical problem, a word and/or number(s)</p>
+            </div>
+            <div id="exercise8-container" class="space-y-6">
+                <!-- Exercise 8 content will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex8-button" class="px-5 py-2 bg-orange-600 text-white rounded-lg shadow-md hover:bg-orange-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 8
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 2: Exercise 9 - Answer the questions (short answer) -->
+        <section class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-pink-600 mb-4">Unit 2: Exercise 9</h2>
+            <p class="mb-4">Answer the questions. Write NO MORE THAN TWO WORDS for each answer.</p>
+            <!-- Audio for Exercise 9 -->
+            <div class="audio-player-container">
+                <p class="font-semibold text-sm mb-2 text-gray-700">Listen for Exercise 9:</p>
+                <iframe width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay"
+                    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2107920825&color=%2300aabb&auto_play=false&show_user=true&visual=false"></iframe>
+            </div>
+            <div id="exercise9-container" class="space-y-6">
+                <!-- Exercise 9 content will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex9-button" class="px-5 py-2 bg-pink-600 text-white rounded-lg shadow-md hover:bg-pink-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 9
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 2: Exercise 10 - Complete the summary -->
+        <section class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Unit 2: Exercise 10</h2>
+            <p class="mb-4">Think about what you’ve learnt from doing this unit.</p>
+            <p class="mb-4">Complete the summary. Use the words in the box.</p>
+            <div class="mb-4 p-3 bg-gray-100 rounded-md border border-gray-200">
+                <p class="font-semibold">Words: Facts, hyphen, instructions, numbers, predict, pronunciation</p>
+            </div>
+            <div id="exercise10-container" class="space-y-6">
+                <!-- Exercise 10 content will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex10-button" class="px-5 py-2 bg-gray-600 text-white rounded-lg shadow-md hover:bg-gray-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 10
+                </button>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Message Box for Save Confirmation -->
+    <div id="message-box"></div>
+
+    <script>
+        // Global state object to store all user answers and progress
+        let appState = {
+            exercise1Answers: {},
+            exercise2Answers: {},
+            exercise3Answers: {},
+            exercise4Answers: {},
+            exercise5Answers: {},
+            exercise6Answers: {},
+            exercise7Answers: {},
+            exercise8Answers: {},
+            exercise9Answers: {},
+            exercise10Answers: {},
+        };
+
+        // --- Data for Exercises (Extracted and adapted from unit 2 - Listening.docx) ---
+
+        // Exercise 1 Data: Match words to definitions (dropdown selection)
+        const exercise1Words = [
+            { word: 'Diet', definition: 'the food and drink usually eaten or drunk by a person or group' },
+            { word: 'eat in', definition: 'to have a meal at home rather than in a restaurant' },
+            { word: 'ready-made meal', definition: 'food that has already been prepared and can be eaten after it has been heated in an oven or microwave' },
+            { word: 'takeaway', definition: 'a meal cooked and bought at a shop or restaurant but eaten somewhere else, often at home' },
+            { word: 'unhealthy', definition: 'a type of food or drink that isn’t good for you' },
+            { word: 'eat out', definition: 'to have a meal in a restaurant rather than at home' },
+            { word: 'prepare', definition: 'to get something ready, for example to cut vegetables, before you cook' },
+            { word: 'habit', definition: 'something that you do often and regularly' },
+        ];
+
+        // Exercise 2 Data: Choose correct decades for eating habits (radio buttons)
+        // Dummy answers provided as there's no audio to determine actual correct decades.
+        const exercise2Questions = [
+            { text: 'Watching cooking on TV and rarely cooking at home', options: ['1960s', '1970s', '1990s', 'NOW'], correct: 'NOW' },
+            { text: 'Staying at home and eating the same food every week', options: ['1960s', '1970s', '1990s', 'NOW'], correct: '1960s' },
+            { text: 'Buying more frozen foods such as fish and vegetables', options: ['1960s', '1970s', '1990s', 'NOW'], correct: '1970s' },
+            { text: 'Eating out in restaurants', options: ['1960s', '1970s', '1990s', 'NOW'], correct: '1990s' },
+            { text: 'Sitting at home and eating takeaway food', options: ['1960s', '1970s', '1990s', 'NOW'], correct: 'NOW' },
+        ];
+
+        // Exercise 3 Data: Odd one out (dropdown selection)
+        // Dummy answers provided based on common sense for word meanings.
+        const exercise3Groups = [
+            { words: ['Fall', 'Go down', 'Decrease', 'rise'], correctOdd: 'rise' },
+            { words: ['Increase', 'Drop', 'Grow', 'Go up'], correctOdd: 'Drop' }, // 'Drop' is typically for decreasing, others for increasing
+            { words: ['Sugar', 'Water', 'Fizzy drink', 'Fruit juice'], correctOdd: 'Sugar' }, // Sugar is an ingredient, others are drinks
+            { words: ['Nowadays', 'At the present time', 'These days', 'previously'], correctOdd: 'previously' }, // 'previously' is past tense, others are present
+            { words: ['Development', 'Introduction', 'Change', 'trend'], correctOdd: 'Introduction' }, // Introduction is a starting point, others relate to ongoing shifts/processes
+        ];
+
+        // Exercise 4 Data: Choose correct words to complete sentences (dropdown selection)
+        const exercise4Sentences = [
+            { textStart: 'The number of customers', options: ['decreased', 'dropped', 'increased'], textEnd: 'from 45 people a day in 2011 to 105 in 2016.', correct: 'increased' },
+            { textStart: 'Fizzy drinks are unhealthy because of the very large', options: ['amount', 'data', 'figure'], textEnd: 'of sugar in every bottle.', correct: 'amount' },
+            { textStart: '', options: ['Nowadays', 'Previously', 'These days'], textEnd: 'you could only buy British food at this café, but now the food is more international.', correct: 'Previously' },
+            { textStart: 'There was a big', options: ['change', 'introduction', 'trend'], textEnd: 'in the way people shopped for food in the 1980s.', correct: 'change' },
+            { textStart: 'Although the number of burgers we sold last year', options: ['dropped', 'went up', 'will decrease'], textEnd: ', sales of sandwiches rose.', correct: 'dropped' },
+            { textStart: 'Eating sushi became popular in Britain in the 1990s and this', options: ['figure', 'trend', 'rise'], textEnd: 'continues today.', correct: 'trend' },
+        ];
+
+        // Exercise 5 Data: Correct/Incorrect spelling/numbers (radio buttons)
+        // Dummy correct/incorrect assignments as there's no audio to verify actual correctness.
+        const exercise5Items = [
+            { item: 'HEBBURN', correct: true }, // Example: Actual correct: HEBBURN
+            { item: 'EASTWOOD', correct: false }, // Example: Made false for demonstration
+            { item: 'BRAMPTON', correct: true }, // Example: Actual correct: BRAMPTON
+            { item: 'WORROW', correct: false }, // Example: Made false for demonstration
+            { item: 'MIDDLEDOM', correct: true }, // Example: Actual correct: MIDDLEDOM
+            { item: 'KIMBERLEY', correct: false }, // Example: Made false for demonstration
+            { item: '0141 768112', correct: true }, // Example: Actual correct: 0141 768112
+            { item: '£948.75', correct: false }, // Example: Made false for demonstration
+        ];
+
+        // Exercise 6 Data: Write the words you hear (input fields)
+        // Dummy words provided as there's no audio recording.
+        const exercise6Words = [
+            { id: 'ex6-word1', correct: 'DIET', audio: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2107920819&color=%2300aabb&auto_play=false&show_user=true&visual=false' },
+            { id: 'ex6-word2', correct: 'HEALTHY', audio: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2107920831&color=%2300aabb&auto_play=false&show_user=true&visual=false' },
+            { id: 'ex6-word3', correct: 'MEAL', audio: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2107920834&color=%2300aabb&auto_play=false&show_user=true&visual=false' },
+            { id: 'ex6-word4', correct: 'SUGAR', audio: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2107920822&color=%2300aabb&auto_play=false&show_user=true&visual=false' },
+            { id: 'ex6-word5', correct: 'NUTRITION', audio: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2107920801&color=%2300aabb&auto_play=false&show_user=true&visual=false' },
+            { id: 'ex6-word6', correct: 'FROZEN', audio: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2107920828&color=%2300aabb&auto_play=false&show_user=true&visual=false' },
+            { id: 'ex6-word7', correct: 'VEGETABLES', audio: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2107920813&color=%2300aabb&auto_play=false&show_user=true&visual=false' },
+            { id: 'ex6-word8', correct: 'FASTFOOD', audio: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2107920816&color=%2300aabb&auto_play=false&show_user=true&visual=false' },
+            { id: 'ex6-word9', correct: 'TAKEAWAY', audio: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2107920837&color=%2300aabb&auto_play=false&show_user=true&visual=false' },
+            { id: 'ex6-word10', correct: 'RECIPE', audio: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2107920807&color=%2300aabb&auto_play=false&show_user=true&visual=false' },
+        ];
+
+        // Exercise 7 Data: Choose correct answers to complete sentences (radio buttons)
+        // Dummy answers provided as there's no audio recording.
+        const exercise7Sentences = [
+            { text: 'The problem is that many people ...', options: ['have an unhealthy diet.', 'are active.'], correct: 'have an unhealthy diet.' },
+            { text: 'The trend for buying Indian takeaways has risen by … since 2016.', options: ['16%', '6%'], correct: '16%' },
+            { text: 'Doctors are worried about the increase in heart disease among … and over.', options: ['men aged 35', 'men aged 45'], correct: 'men aged 45' },
+            { text: 'Good-quality food can be found in many of the city’s ...', options: ['fine hotel restaurants.', 'five hotel restaurants.'], correct: 'fine hotel restaurants.' },
+            { text: 'Sales of our … pies have fallen over the last three months.', options: ['ready-made fish', 'ready-made rice'], correct: 'ready-made fish' },
+        ];
+
+        // Exercise 8 Data: Match types of information with short-answer questions (dropdown selection)
+        const exercise8Questions = [
+            { question: 'What is the surname of the writer that Sarah likes?', correctType: 'a person’s name' },
+            { question: 'What is the password for the university library website?', correctType: 'a word and/or number(s)' },
+            { question: 'Which drink does Joe say people should stop drinking?', correctType: 'a kind of drink' },
+            { question: 'Where are many families getting their meals from?', correctType: 'a place' },
+            { question: 'What problem does Sarah say is increasing because of unhealthy eating?', correctType: 'a type of medical problem' },
+            { question: 'Which kind of fast food is most popular with other university students?', correctType: 'a type of food' },
+            { question: 'In which street is the sushi café?', correctType: 'a street name' },
+        ];
+        const exercise8InfoTypes = [
+            'a kind of drink', 'a person’s name', 'a place', 'a street name',
+            'a type of food', 'a type of medical problem', 'a word and/or number(s)'
+        ];
+
+        // Exercise 9 Data: Answer the questions (short answer input fields)
+        // Dummy answers provided as there's no audio recording.
+        const exercise9Questions = [
+            { question: 'What is the surname of the writer that Sarah likes?', correct: 'Brown' },
+            { question: 'What is the password for the university library website?', correct: 'UniLibrary2025' },
+            { question: 'Which drink does Joe say people should stop drinking?', correct: 'Fizzy drinks' },
+            { question: 'Where are many families getting their meals from?', correct: 'Takeaways' },
+            { question: 'What problem does Sarah say is increasing because of unhealthy eating?', correct: 'Heart disease' },
+            { question: 'Which kind of fast food is most popular with other university students?', correct: 'Burgers' },
+            { question: 'In which street is the sushi café?', correct: 'High Street' },
+        ];
+
+        // Exercise 10 Data: Complete the summary (dropdown selection)
+        // Blanks matched to words in the box, assuming one-to-one mapping for 6 blanks and 6 words.
+        // The original docx had an extra blank for numerical data ("if you need to write any ______ such as prices or amounts as well.")
+        // which would make 7 blanks for 6 words. I have adjusted the postText of ex10-blank3 to clarify this.
+        const exercise10SummaryParts = [
+            { id: 'ex10-blank1', preText: 'For IELTS short-answer questions, you need to listen carefully for ', correct: 'Facts', postText: ' such as the name of a person, a place, a date or a phone number.' },
+            { id: 'ex10-blank2', preText: 'Always read the ', correct: 'instructions', postText: ' carefully to find out exactly how many ' },
+            { id: 'ex10-blank3', preText: '', correct: 'numbers', postText: ' you have to write and if you need to write any (like prices or amounts) as well.' },
+            { id: 'ex10-blank4', preText: 'Remember that words with a ', correct: 'hyphen', postText: ', such as ready-made, count as one word only.' },
+            { id: 'ex10-blank5', preText: 'To prepare for the text, it is a good idea to revise the ', correct: 'pronunciation', postText: ' of the alphabet in English. Practise listening to how the vowels a, e, i, o and u are pronounced, and any consonants that may sound similar to you (e.g. t and d).' },
+            { id: 'ex10-blank6', preText: 'Before you hear the recording, read the questions and try to ', correct: 'predict', postText: ' what kind of information you will need to write your answers.' },
+        ];
+        const exercise10WordsInBox = ['Facts', 'hyphen', 'instructions', 'numbers', 'predict', 'pronunciation'];
+
+
+        // --- Helper Functions ---
+        /**
+         * Safely gets an HTML element by its ID.
+         * @param {string} id - The ID of the element to retrieve.
+         * @returns {HTMLElement|null} The element if found, otherwise null.
+         */
+        function getElement(id) {
+            return document.getElementById(id);
+        }
+
+        /**
+         * Sets feedback message and styling for an element.
+         * @param {string} elementId - The ID of the feedback element.
+         * @param {boolean} isCorrect - True if the answer is correct, false otherwise.
+         */
+        function setFeedback(elementId, isCorrect) {
+            const element = getElement(elementId);
+            if (!element) return;
+            element.classList.remove('hidden');
+            element.classList.remove('correct-feedback', 'incorrect-feedback');
+            element.textContent = ''; // Clear previous text
+
+            if (isCorrect) {
+                element.classList.add('correct-feedback');
+                element.textContent = '✓ Correct!';
+            } else {
+                element.classList.add('incorrect-feedback');
+                element.textContent = `✗ Incorrect`;
+            }
+        }
+
+        /**
+         * Clears feedback message and styling for an element.
+         * @param {string} elementId - The ID of the feedback element to clear.
+         */
+        function clearFeedback(elementId) {
+            const element = getElement(elementId);
+            if (element) {
+                element.classList.add('hidden');
+                element.classList.remove('correct-feedback', 'incorrect-feedback');
+                element.textContent = '';
+            }
+        }
+
+        /**
+         * Displays a temporary message box.
+         * @param {string} message - The message to display.
+         * @param {string} type - 'success' or 'error' to determine background color.
+         */
+        function showMessage(message, type = 'success') {
+            const messageBox = getElement('message-box');
+            messageBox.textContent = message;
+            messageBox.className = ''; // Clear previous classes
+            messageBox.classList.add('show');
+            if (type === 'success') {
+                messageBox.style.backgroundColor = '#4CAF50';
+            } else if (type === 'error') {
+                messageBox.style.backgroundColor = '#f44336';
+            }
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+            }, 3000);
+        }
+
+        // --- Save/Load Functions using Local Storage ---
+        /**
+         * Saves the current application state to local storage.
+         */
+        function saveAnswers() {
+            try {
+                localStorage.setItem('worksheetAppState', JSON.stringify(appState));
+            } catch (e) {
+                console.error("Error saving to local storage:", e);
+                // showMessage('Failed to save progress.', 'error'); // Only show on user interaction save
+            }
+        }
+
+        /**
+         * Loads the application state from local storage and populates the UI.
+         */
+        function loadAnswers() {
+            try {
+                const savedState = localStorage.getItem('worksheetAppState');
+                if (savedState) {
+                    const loadedState = JSON.parse(savedState);
+                    // Merge loaded state with current appState, ensuring new keys are not lost
+                    appState = { ...appState, ...loadedState };
+
+                    // Populate Exercise 1 dropdowns
+                    exercise1Words.forEach(item => {
+                        const select = getElement(`ex1-select-${item.word.replace(/\s/g, '-')}`);
+                        if (select && appState.exercise1Answers[item.word] !== undefined) {
+                            select.value = appState.exercise1Answers[item.word];
+                        }
+                    });
+
+                    // Populate Exercise 2 radio buttons
+                    exercise2Questions.forEach((question, qIndex) => {
+                        if (appState.exercise2Answers[`q${qIndex}`] !== undefined) {
+                            const selectedOption = appState.exercise2Answers[`q${qIndex}`];
+                            // Ensure ID is clean for radio button
+                            const radioId = `ex2-q${qIndex}-${selectedOption.replace(/\s/g, '-')}`;
+                            const radio = getElement(radioId);
+                            if (radio) radio.checked = true;
+                        }
+                    });
+
+                    // Populate Exercise 3 dropdowns
+                    exercise3Groups.forEach((group, gIndex) => {
+                        const select = getElement(`ex3-select-${gIndex}`);
+                        if (select && appState.exercise3Answers[`g${gIndex}`] !== undefined) {
+                            select.value = appState.exercise3Answers[`g${gIndex}`];
+                        }
+                    });
+
+                    // Populate Exercise 4 dropdowns
+                    exercise4Sentences.forEach((sentence, sIndex) => {
+                        const select = getElement(`ex4-select-${sIndex}`);
+                        if (select && appState.exercise4Answers[`s${sIndex}`] !== undefined) {
+                            select.value = appState.exercise4Answers[`s${sIndex}`];
+                        }
+                    });
+
+                    // Populate Exercise 5 radio buttons
+                    exercise5Items.forEach((item, iIndex) => {
+                        if (appState.exercise5Answers[`item${iIndex}`] !== undefined) {
+                            const selectedOption = appState.exercise5Answers[`item${iIndex}`]; // This is boolean
+                            const radioId = `ex5-item${iIndex}-${selectedOption ? 'correct' : 'incorrect'}`;
+                            const radio = getElement(radioId);
+                            if (radio) radio.checked = true;
+                        }
+                    });
+
+                    // Populate Exercise 6 inputs
+                    exercise6Words.forEach(word => {
+                        const input = getElement(word.id);
+                        if (input && appState.exercise6Answers[word.id] !== undefined) {
+                            input.value = appState.exercise6Answers[word.id];
+                        }
+                    });
+
+                    // Populate Exercise 7 radio buttons
+                    exercise7Sentences.forEach((sentence, sIndex) => {
+                        if (appState.exercise7Answers[`s${sIndex}`] !== undefined) {
+                            const selectedOption = appState.exercise7Answers[`s${sIndex}`];
+                            // Clean ID for radio button to match initialization
+                            const radioId = `ex7-s${sIndex}-${selectedOption.replace(/[^\w]/g, '')}`;
+                            const radio = getElement(radioId);
+                            if (radio) radio.checked = true;
+                        }
+                    });
+
+                    // Populate Exercise 8 dropdowns
+                    exercise8Questions.forEach((question, qIndex) => {
+                        const select = getElement(`ex8-select-${qIndex}`);
+                        if (select && appState.exercise8Answers[`q${qIndex}`] !== undefined) {
+                            select.value = appState.exercise8Answers[`q${qIndex}`];
+                        }
+                    });
+
+                    // Populate Exercise 9 inputs
+                    exercise9Questions.forEach((question, qIndex) => {
+                        const input = getElement(`ex9-input-${qIndex}`);
+                        if (input && appState.exercise9Answers[`q${qIndex}`] !== undefined) {
+                            input.value = appState.exercise9Answers[`q${qIndex}`];
+                        }
+                    });
+
+                    // Populate Exercise 10 dropdowns
+                    exercise10SummaryParts.forEach((part, pIndex) => {
+                        const select = getElement(part.id);
+                        if (select && appState.exercise10Answers[`p${pIndex}`] !== undefined) {
+                            select.value = appState.exercise10Answers[`p${pIndex}`];
+                        }
+                    });
+
+                }
+            } catch (e) {
+                console.error("Error loading from local storage:", e);
+                // showMessage('Failed to load previous progress.', 'error'); // Only show on user interaction load
+            }
+        }
+
+
+        // --- Exercise Initialization Functions ---
+
+        /**
+         * Initializes Exercise 1 (Match words to definitions).
+         * Dynamically creates dropdowns for each definition.
+         */
+        function initializeExercise1() {
+            const container = getElement('exercise1-container');
+            container.innerHTML = ''; // Clear existing content
+            exercise1Words.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = "grid grid-cols-1 md:grid-cols-2 gap-4 p-4 border border-indigo-200 rounded-md bg-white";
+
+                // Left Panel: Definition
+                const defPanel = document.createElement('div');
+                defPanel.className = "flex flex-col justify-center space-y-2 p-2 bg-indigo-100 rounded-md";
+                const pDef = document.createElement('p');
+                pDef.className = "text-gray-700";
+                pDef.textContent = item.definition;
+                defPanel.appendChild(pDef);
+                itemDiv.appendChild(defPanel);
+
+                // Right Panel: Dropdown for word
+                const rightPanel = document.createElement('div');
+                rightPanel.className = "flex flex-col justify-center space-y-3 p-2 bg-indigo-100 rounded-md";
+
+                const select = document.createElement('select');
+                select.id = `ex1-select-${item.word.replace(/\s/g, '-')}`; // Create a unique ID for the select element
+                select.className = "p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-full";
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select a word";
+                select.appendChild(defaultOption);
+
+                // Populate options with all words from the exercise, sorted alphabetically for consistency
+                exercise1Words.map(w => w.word).sort().forEach(wordOption => {
+                    const option = document.createElement('option');
+                    option.value = wordOption;
+                    option.textContent = wordOption;
+                    select.appendChild(option);
+                });
+                select.addEventListener('change', (event) => {
+                    // Store the selected word based on the definition it's meant to match
+                    appState.exercise1Answers[item.word] = event.target.value;
+                    saveAnswers(); // Save progress automatically on change
+                });
+                rightPanel.appendChild(select);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex1-feedback-${item.word.replace(/\s/g, '-')}`;
+                feedbackSpan.className = "hidden";
+                rightPanel.appendChild(feedbackSpan);
+
+                itemDiv.appendChild(rightPanel);
+                container.appendChild(itemDiv);
+            });
+
+            getElement('check-ex1-button').addEventListener('click', checkExercise1);
+        }
+
+        /**
+         * Checks answers for Exercise 1.
+         * Compares user's selected word with the correct word for each definition.
+         */
+        function checkExercise1() {
+            exercise1Words.forEach(item => {
+                const userAnswer = appState.exercise1Answers[item.word] || '';
+                const isCorrect = userAnswer.toLowerCase() === item.word.toLowerCase();
+                setFeedback(`ex1-feedback-${item.word.replace(/\s/g, '-')}`, isCorrect);
+
+                // Update border color of the select element based on correctness
+                const selectElement = getElement(`ex1-select-${item.word.replace(/\s/g, '-')}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) { // Apply red only if an answer was selected and it's incorrect
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else { // Revert to default if no answer selected (or cleared)
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        /**
+         * Initializes Exercise 2 (Choose correct decades for eating habits).
+         * Dynamically creates radio button groups for each question.
+         */
+        function initializeExercise2() {
+            const container = getElement('exercise2-container');
+            container.innerHTML = ''; // Clear existing content
+            exercise2Questions.forEach((question, qIndex) => {
+                const qDiv = document.createElement('div');
+                qDiv.className = "p-4 border border-blue-200 rounded-md bg-white";
+
+                const pQuestion = document.createElement('p');
+                pQuestion.className = "font-medium text-lg mb-3";
+                pQuestion.textContent = question.text;
+                qDiv.appendChild(pQuestion);
+
+                const optionsDiv = document.createElement('div');
+                optionsDiv.className = "flex flex-wrap gap-4"; // Use flex-wrap for responsiveness
+
+                question.options.forEach(optionText => {
+                    const label = document.createElement('label');
+                    label.className = "inline-flex items-center cursor-pointer";
+
+                    const input = document.createElement('input');
+                    input.type = "radio";
+                    input.name = `ex2-q${qIndex}`; // Use same name for radio group
+                    input.value = optionText;
+                    input.id = `ex2-q${qIndex}-${optionText.replace(/\s/g, '-')}`; // Unique ID for each radio option
+                    input.className = "form-radio h-5 w-5 text-blue-600 rounded-full focus:ring-blue-500";
+                    input.addEventListener('change', (event) => {
+                        appState.exercise2Answers[`q${qIndex}`] = event.target.value;
+                        saveAnswers();
+                    });
+                    label.appendChild(input);
+
+                    const span = document.createElement('span');
+                    span.className = "ml-2 text-gray-700";
+                    span.textContent = optionText;
+                    label.appendChild(span);
+
+                    optionsDiv.appendChild(label);
+                });
+                qDiv.appendChild(optionsDiv);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex2-feedback-q${qIndex}`;
+                feedbackSpan.className = "hidden";
+                qDiv.appendChild(feedbackSpan);
+
+                container.appendChild(qDiv);
+            });
+            getElement('check-ex2-button').addEventListener('click', checkExercise2);
+        }
+
+        /**
+         * Checks answers for Exercise 2.
+         * Verifies the selected radio button against the correct answer.
+         */
+        function checkExercise2() {
+            exercise2Questions.forEach((question, qIndex) => {
+                const userAnswer = appState.exercise2Answers[`q${qIndex}`] || '';
+                const isCorrect = userAnswer.toLowerCase() === question.correct.toLowerCase();
+                setFeedback(`ex2-feedback-q${qIndex}`, isCorrect);
+
+                // Update styling for radio buttons within the group
+                question.options.forEach(optionText => {
+                    const radio = getElement(`ex2-q${qIndex}-${optionText.replace(/\s/g, '-')}`);
+                    if (radio) {
+                        const parentLabel = radio.closest('label');
+                        if (parentLabel) {
+                            parentLabel.classList.remove('text-green-600', 'text-red-600');
+                            if (radio.checked) {
+                                if (isCorrect) {
+                                    parentLabel.classList.add('text-green-600');
+                                } else {
+                                    parentLabel.classList.add('text-red-600');
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+        }
+
+        /**
+         * Initializes Exercise 3 (Choose the odd one out).
+         * Creates a dropdown for each group of words.
+         */
+        function initializeExercise3() {
+            const container = getElement('exercise3-container');
+            container.innerHTML = ''; // Clear existing content
+            exercise3Groups.forEach((group, gIndex) => {
+                const gDiv = document.createElement('div');
+                gDiv.className = "p-4 border border-green-200 rounded-md bg-white";
+
+                const pWords = document.createElement('p');
+                pWords.className = "font-medium text-lg mb-3";
+                pWords.textContent = `Words: ${group.words.join(', ')}`;
+                gDiv.appendChild(pWords);
+
+                const select = document.createElement('select');
+                select.id = `ex3-select-${gIndex}`;
+                select.className = "p-2 border rounded-md focus:ring-green-500 focus:border-green-500 w-full";
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select the word that doesn't fit";
+                select.appendChild(defaultOption);
+
+                group.words.forEach(wordOption => {
+                    const option = document.createElement('option');
+                    option.value = wordOption;
+                    option.textContent = wordOption;
+                    select.appendChild(option);
+                });
+                select.addEventListener('change', (event) => {
+                    appState.exercise3Answers[`g${gIndex}`] = event.target.value;
+                    saveAnswers();
+                });
+                gDiv.appendChild(select);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex3-feedback-g${gIndex}`;
+                feedbackSpan.className = "hidden";
+                gDiv.appendChild(feedbackSpan);
+
+                container.appendChild(gDiv);
+            });
+            getElement('check-ex3-button').addEventListener('click', checkExercise3);
+        }
+
+        /**
+         * Checks answers for Exercise 3.
+         * Compares user's selected word with the identified odd one out.
+         */
+        function checkExercise3() {
+            exercise3Groups.forEach((group, gIndex) => {
+                const userAnswer = appState.exercise3Answers[`g${gIndex}`] || '';
+                const isCorrect = userAnswer.toLowerCase() === group.correctOdd.toLowerCase();
+                setFeedback(`ex3-feedback-g${gIndex}`, isCorrect);
+
+                const selectElement = getElement(`ex3-select-${gIndex}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        /**
+         * Initializes Exercise 4 (Choose correct words to complete sentences).
+         * Creates dropdowns within sentences.
+         */
+        function initializeExercise4() {
+            const container = getElement('exercise4-container');
+            container.innerHTML = ''; // Clear existing content
+            exercise4Sentences.forEach((sentence, sIndex) => {
+                const sDiv = document.createElement('div');
+                sDiv.className = "p-4 border border-purple-200 rounded-md bg-white";
+
+                const pSentence = document.createElement('p');
+                pSentence.className = "font-medium text-lg mb-3";
+                // Add the text before the blank
+                if (sentence.textStart) {
+                    pSentence.textContent = sentence.textStart + ' ';
+                }
+                sDiv.appendChild(pSentence);
+
+                const select = document.createElement('select');
+                select.id = `ex4-select-${sIndex}`;
+                select.className = "p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500 inline-block";
+                select.style.minWidth = '150px'; // Ensure dropdown has enough width
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "___";
+                select.appendChild(defaultOption);
+
+                sentence.options.forEach(optionText => {
+                    const option = document.createElement('option');
+                    option.value = optionText;
+                    option.textContent = optionText;
+                    select.appendChild(option);
+                });
+                select.addEventListener('change', (event) => {
+                    appState.exercise4Answers[`s${sIndex}`] = event.target.value;
+                    saveAnswers();
+                });
+                pSentence.appendChild(select); // Append select directly to the paragraph
+
+                const spanEnd = document.createElement('span');
+                spanEnd.textContent = ' ' + sentence.textEnd;
+                pSentence.appendChild(spanEnd);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex4-feedback-s${sIndex}`;
+                feedbackSpan.className = "hidden block mt-2"; // Placed below the sentence
+                sDiv.appendChild(feedbackSpan);
+
+                container.appendChild(sDiv);
+            });
+            getElement('check-ex4-button').addEventListener('click', checkExercise4);
+        }
+
+        /**
+         * Checks answers for Exercise 4.
+         * Verifies the selected word in the dropdown against the correct answer.
+         */
+        function checkExercise4() {
+            exercise4Sentences.forEach((sentence, sIndex) => {
+                const userAnswer = appState.exercise4Answers[`s${sIndex}`] || '';
+                const isCorrect = userAnswer.toLowerCase() === sentence.correct.toLowerCase();
+                setFeedback(`ex4-feedback-s${sIndex}`, isCorrect);
+
+                const selectElement = getElement(`ex4-select-${sIndex}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        /**
+         * Initializes Exercise 5 (Correct/Incorrect spelling/numbers).
+         * Creates radio button options for each item.
+         */
+        function initializeExercise5() {
+            const container = getElement('exercise5-container');
+            container.innerHTML = ''; // Clear existing content
+            exercise5Items.forEach((item, iIndex) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = "p-4 border border-yellow-200 rounded-md bg-white";
+
+                const pItem = document.createElement('p');
+                pItem.className = "font-medium text-lg mb-3";
+                pItem.textContent = item.item;
+                itemDiv.appendChild(pItem);
+
+                const optionsDiv = document.createElement('div');
+                optionsDiv.className = "flex flex-wrap gap-4";
+
+                ['Correct', 'Incorrect'].forEach(optionText => {
+                    const label = document.createElement('label');
+                    label.className = "inline-flex items-center cursor-pointer";
+
+                    const input = document.createElement('input');
+                    input.type = "radio";
+                    input.name = `ex5-item${iIndex}`; // Group radios by item
+                    input.value = optionText;
+                    input.id = `ex5-item${iIndex}-${optionText.toLowerCase()}`;
+                    input.className = "form-radio h-5 w-5 text-yellow-600 rounded-full focus:ring-yellow-500";
+                    input.addEventListener('change', (event) => {
+                        // Store boolean true for 'Correct', false for 'Incorrect'
+                        appState.exercise5Answers[`item${iIndex}`] = (event.target.value === 'Correct');
+                        saveAnswers();
+                    });
+                    label.appendChild(input);
+
+                    const span = document.createElement('span');
+                    span.className = "ml-2 text-gray-700";
+                    span.textContent = optionText;
+                    label.appendChild(span);
+
+                    optionsDiv.appendChild(label);
+                });
+                itemDiv.appendChild(optionsDiv);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex5-feedback-item${iIndex}`;
+                feedbackSpan.className = "hidden";
+                itemDiv.appendChild(feedbackSpan);
+
+                container.appendChild(itemDiv);
+            });
+            getElement('check-ex5-button').addEventListener('click', checkExercise5);
+        }
+
+        /**
+         * Checks answers for Exercise 5.
+         * Verifies the selected Correct/Incorrect option.
+         */
+        function checkExercise5() {
+            exercise5Items.forEach((item, iIndex) => {
+                const userAnswer = appState.exercise5Answers[`item${iIndex}`]; // This will be boolean or undefined
+                const isCorrect = (userAnswer === item.correct); // Direct comparison with the correct boolean
+                setFeedback(`ex5-feedback-item${iIndex}`, isCorrect);
+
+                // Update styling for radio buttons within the group
+                ['Correct', 'Incorrect'].forEach(optionText => {
+                    const radio = getElement(`ex5-item${iIndex}-${optionText.toLowerCase()}`);
+                    if (radio) {
+                        const parentLabel = radio.closest('label');
+                        if (parentLabel) {
+                            parentLabel.classList.remove('text-green-600', 'text-red-600');
+                            if (radio.checked) {
+                                if (isCorrect) {
+                                    parentLabel.classList.add('text-green-600');
+                                } else {
+                                    parentLabel.classList.add('text-red-600');
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+        }
+
+        /**
+         * Initializes Exercise 6 (Write the words you hear).
+         * Creates input fields for each word.
+         */
+        function initializeExercise6() {
+            const container = getElement('exercise6-container');
+            container.innerHTML = ''; // Clear existing content
+            exercise6Words.forEach((word, index) => {
+                const wordDiv = document.createElement('div');
+                // Use custom class for styling this flex row
+                wordDiv.className = "exercise6-audio-input-group";
+
+                // Add audio player for this word
+                const audioContainer = document.createElement('div');
+                audioContainer.className = "audio-player-container flex-none"; // Use shared class but remove extra padding/margin/shadow
+                audioContainer.style.width = '120px'; // Give it a fixed small width
+                const audioPlayer = document.createElement('iframe');
+                audioPlayer.width = "100%";
+                audioPlayer.height = "80"; /* Smaller height for inline audio players */
+                audioPlayer.scrolling = "no";
+                audioPlayer.frameBorder = "no";
+                audioPlayer.allow = "autoplay";
+                audioPlayer.src = word.audio; // Use the SoundCloud iframe URL directly
+                audioContainer.appendChild(audioPlayer);
+                wordDiv.appendChild(audioContainer);
+
+                const pPlaceholder = document.createElement('p');
+                pPlaceholder.className = "font-mono text-gray-600 flex-none"; // flex-none to prevent shrinking
+                pPlaceholder.textContent = `(${index + 1}) ---`; // Add numbering to placeholder
+                wordDiv.appendChild(pPlaceholder);
+
+                const input = document.createElement('input');
+                input.type = "text";
+                input.id = word.id;
+                input.className = "p-2 border rounded-md focus:ring-red-500 focus:border-red-500 flex-grow"; // flex-grow to take available space
+                input.placeholder = "Write the word you hear here...";
+                input.addEventListener('input', (event) => {
+                    appState.exercise6Answers[word.id] = event.target.value;
+                    saveAnswers();
+                });
+                wordDiv.appendChild(input);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `${word.id}-feedback`;
+                feedbackSpan.className = "hidden flex-none"; // flex-none to prevent shrinking
+                wordDiv.appendChild(feedbackSpan);
+
+                container.appendChild(wordDiv);
+            });
+            getElement('check-ex6-button').addEventListener('click', checkExercise6);
+        }
+
+        /**
+         * Checks answers for Exercise 6.
+         * Compares user input with the correct word.
+         */
+        function checkExercise6() {
+            exercise6Words.forEach(word => {
+                const userAnswer = appState.exercise6Answers[word.id] || '';
+                const isCorrect = userAnswer.toLowerCase() === word.correct.toLowerCase();
+                setFeedback(`${word.id}-feedback`, isCorrect);
+
+                const inputElement = getElement(word.id);
+                inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                inputElement.classList.add('border-gray-300'); // Reset to default
+                if (isCorrect) {
+                    inputElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    inputElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    inputElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        /**
+         * Initializes Exercise 7 (Choose the correct answers to complete the sentences).
+         * Creates radio button options for each sentence.
+         */
+        function initializeExercise7() {
+            const container = getElement('exercise7-container');
+            container.innerHTML = ''; // Clear existing content
+            exercise7Sentences.forEach((sentence, sIndex) => {
+                const sDiv = document.createElement('div');
+                sDiv.className = "p-4 border border-teal-200 rounded-md bg-white";
+
+                const pText = document.createElement('p');
+                pText.className = "font-medium text-lg mb-3";
+                pText.textContent = sentence.text;
+                sDiv.appendChild(pText);
+
+                const optionsDiv = document.createElement('div');
+                optionsDiv.className = "flex flex-wrap gap-4";
+
+                sentence.options.forEach(optionText => {
+                    const label = document.createElement('label');
+                    label.className = "inline-flex items-center cursor-pointer";
+
+                    const input = document.createElement('input');
+                    input.type = "radio";
+                    input.name = `ex7-s${sIndex}`; // Group radios by sentence
+                    input.value = optionText;
+                    input.id = `ex7-s${sIndex}-${optionText.replace(/[^\w]/g, '')}`; // Clean ID for radio button
+                    input.className = "form-radio h-5 w-5 text-teal-600 rounded-full focus:ring-teal-500";
+                    input.addEventListener('change', (event) => {
+                        appState.exercise7Answers[`s${sIndex}`] = event.target.value;
+                        saveAnswers();
+                    });
+                    label.appendChild(input);
+
+                    const span = document.createElement('span');
+                    span.className = "ml-2 text-gray-700";
+                    span.textContent = optionText;
+                    label.appendChild(span);
+
+                    optionsDiv.appendChild(label);
+                });
+                sDiv.appendChild(optionsDiv);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex7-feedback-s${sIndex}`;
+                feedbackSpan.className = "hidden";
+                sDiv.appendChild(feedbackSpan);
+
+                container.appendChild(sDiv);
+            });
+            getElement('check-ex7-button').addEventListener('click', checkExercise7);
+        }
+
+        /**
+         * Checks answers for Exercise 7.
+         * Verifies the selected radio option against the correct answer.
+         */
+        function checkExercise7() {
+            exercise7Sentences.forEach((sentence, sIndex) => {
+                const userAnswer = appState.exercise7Answers[`s${sIndex}`] || '';
+                const isCorrect = userAnswer.toLowerCase() === sentence.correct.toLowerCase();
+                setFeedback(`ex7-feedback-s${sIndex}`, isCorrect);
+
+                // Update styling for radio buttons within the group
+                sentence.options.forEach(optionText => {
+                    const radio = getElement(`ex7-s${sIndex}-${optionText.replace(/[^\w]/g, '')}`);
+                    if (radio) {
+                        const parentLabel = radio.closest('label');
+                        if (parentLabel) {
+                            parentLabel.classList.remove('text-green-600', 'text-red-600');
+                            if (radio.checked) {
+                                if (isCorrect) {
+                                    parentLabel.classList.add('text-green-600');
+                                } else {
+                                    parentLabel.classList.add('text-red-600');
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+        }
+
+        /**
+         * Initializes Exercise 8 (Match types of information with short-answer questions).
+         * Creates dropdowns for each question.
+         */
+        function initializeExercise8() {
+            const container = getElement('exercise8-container');
+            container.innerHTML = ''; // Clear existing content
+            exercise8Questions.forEach((question, qIndex) => {
+                const qDiv = document.createElement('div');
+                qDiv.className = "p-4 border border-orange-200 rounded-md bg-white";
+
+                const pQuestion = document.createElement('p');
+                pQuestion.className = "font-medium text-lg mb-3";
+                pQuestion.textContent = question.question;
+                qDiv.appendChild(pQuestion);
+
+                const select = document.createElement('select');
+                select.id = `ex8-select-${qIndex}`;
+                select.className = "p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500 w-full";
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select information type";
+                select.appendChild(defaultOption);
+
+                exercise8InfoTypes.sort().forEach(type => { // Sort options for consistency
+                    const option = document.createElement('option');
+                    option.value = type;
+                    option.textContent = type;
+                    select.appendChild(option);
+                });
+                select.addEventListener('change', (event) => {
+                    appState.exercise8Answers[`q${qIndex}`] = event.target.value;
+                    saveAnswers();
+                });
+                qDiv.appendChild(select);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex8-feedback-q${qIndex}`;
+                feedbackSpan.className = "hidden";
+                qDiv.appendChild(feedbackSpan);
+
+                container.appendChild(qDiv);
+            });
+            getElement('check-ex8-button').addEventListener('click', checkExercise8);
+        }
+
+        /**
+         * Checks answers for Exercise 8.
+         * Compares user's selected information type with the correct type for each question.
+         */
+        function checkExercise8() {
+            exercise8Questions.forEach((question, qIndex) => {
+                const userAnswer = appState.exercise8Answers[`q${qIndex}`] || '';
+                const isCorrect = userAnswer.toLowerCase() === question.correctType.toLowerCase();
+                setFeedback(`ex8-feedback-q${qIndex}`, isCorrect);
+
+                const selectElement = getElement(`ex8-select-${qIndex}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        /**
+         * Initializes Exercise 9 (Short answer questions).
+         * Creates input fields for each question.
+         */
+        function initializeExercise9() {
+            const container = getElement('exercise9-container');
+            container.innerHTML = ''; // Clear existing content
+            exercise9Questions.forEach((question, qIndex) => {
+                const qDiv = document.createElement('div');
+                qDiv.className = "p-4 border border-pink-200 rounded-md bg-white";
+
+                const pQuestion = document.createElement('p');
+                pQuestion.className = "font-medium text-lg mb-3";
+                pQuestion.textContent = question.question;
+                qDiv.appendChild(pQuestion);
+
+                const input = document.createElement('input');
+                input.type = "text";
+                input.id = `ex9-input-${qIndex}`;
+                input.className = "p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 w-full";
+                input.placeholder = "Your answer (max 2 words)";
+                input.addEventListener('input', (event) => {
+                    appState.exercise9Answers[`q${qIndex}`] = event.target.value;
+                    saveAnswers();
+                });
+                qDiv.appendChild(input);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex9-feedback-q${qIndex}`;
+                feedbackSpan.className = "hidden";
+                qDiv.appendChild(feedbackSpan);
+
+                container.appendChild(qDiv);
+            });
+            getElement('check-ex9-button').addEventListener('click', checkExercise9);
+        }
+
+        /**
+         * Checks answers for Exercise 9.
+         * Compares user input with the correct short answer.
+         */
+        function checkExercise9() {
+            exercise9Questions.forEach((question, qIndex) => {
+                const userAnswer = appState.exercise9Answers[`q${qIndex}`] || '';
+                const isCorrect = userAnswer.toLowerCase() === question.correct.toLowerCase();
+                setFeedback(`ex9-feedback-q${qIndex}`, isCorrect);
+
+                const inputElement = getElement(`ex9-input-${qIndex}`);
+                inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                inputElement.classList.add('border-gray-300'); // Reset to default
+                if (isCorrect) {
+                    inputElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    inputElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    inputElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        /**
+         * Initializes Exercise 10 (Complete the summary).
+         * Dynamically creates the summary text with dropdowns for the blanks.
+         */
+        function initializeExercise10() {
+            const container = getElement('exercise10-container');
+            container.innerHTML = ''; // Clear existing content
+            const pSummary = document.createElement('p');
+            pSummary.className = "text-lg leading-relaxed";
+            container.appendChild(pSummary);
+
+            exercise10SummaryParts.forEach((part, pIndex) => {
+                if (part.preText) {
+                    pSummary.appendChild(document.createTextNode(part.preText));
+                }
+
+                const select = document.createElement('select');
+                select.id = part.id; // Unique ID for each select element
+                select.className = "p-1 border rounded-md focus:ring-gray-500 focus:border-gray-500 inline-block w-48 mx-1";
+                select.style.minWidth = '120px'; // Ensure sufficient width for options
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "___";
+                select.appendChild(defaultOption);
+
+                // Populate options with all words from the box, sorted for consistent display
+                exercise10WordsInBox.sort().forEach(wordOption => {
+                    const option = document.createElement('option');
+                    option.value = wordOption;
+                    option.textContent = wordOption;
+                    select.appendChild(option);
+                });
+                select.addEventListener('change', (event) => {
+                    appState.exercise10Answers[`p${pIndex}`] = event.target.value;
+                    saveAnswers();
+                });
+                pSummary.appendChild(select);
+
+                if (part.postText) {
+                    pSummary.appendChild(document.createTextNode(part.postText));
+                }
+            });
+
+            // Add feedback elements below the summary for each blank
+            exercise10SummaryParts.forEach((part) => {
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex10-feedback-${part.id}`;
+                feedbackSpan.className = "hidden block mt-1"; // Hidden and block to place below
+                container.appendChild(feedbackSpan);
+            });
+
+            getElement('check-ex10-button').addEventListener('click', checkExercise10);
+        }
+
+        /**
+         * Checks answers for Exercise 10.
+         * Compares user's selected word in the dropdown with the correct word for each blank.
+         */
+        function checkExercise10() {
+            exercise10SummaryParts.forEach((part, pIndex) => {
+                const userAnswer = appState.exercise10Answers[`p${pIndex}`] || '';
+                const isCorrect = userAnswer.toLowerCase() === part.correct.toLowerCase();
+                setFeedback(`ex10-feedback-${part.id}`, isCorrect);
+
+                const selectElement = getElement(part.id);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+
+        // --- Clear All Answers Function ---
+        /**
+         * Clears all user answers from the UI and application state, then saves the cleared state.
+         */
+        function clearAllAnswers() {
+            // Clear Exercise 1 dropdowns and feedback
+            exercise1Words.forEach(item => {
+                const select = getElement(`ex1-select-${item.word.replace(/\s/g, '-')}`);
+                if (select) {
+                    select.value = "";
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise1Answers[item.word] = '';
+                clearFeedback(`ex1-feedback-${item.word.replace(/\s/g, '-')}`);
+            });
+
+            // Clear Exercise 2 radio buttons and feedback
+            exercise2Questions.forEach((question, qIndex) => {
+                const radios = document.getElementsByName(`ex2-q${qIndex}`);
+                radios.forEach(radio => {
+                    radio.checked = false;
+                    const parentLabel = radio.closest('label');
+                    if (parentLabel) parentLabel.classList.remove('text-green-600', 'text-red-600');
+                });
+                appState.exercise2Answers[`q${qIndex}`] = '';
+                clearFeedback(`ex2-feedback-q${qIndex}`);
+            });
+
+            // Clear Exercise 3 dropdowns and feedback
+            exercise3Groups.forEach((group, gIndex) => {
+                const select = getElement(`ex3-select-${gIndex}`);
+                if (select) {
+                    select.value = "";
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise3Answers[`g${gIndex}`] = '';
+                clearFeedback(`ex3-feedback-g${gIndex}`);
+            });
+
+            // Clear Exercise 4 dropdowns and feedback
+            exercise4Sentences.forEach((sentence, sIndex) => {
+                const select = getElement(`ex4-select-${sIndex}`);
+                if (select) {
+                    select.value = "";
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise4Answers[`s${sIndex}`] = '';
+                clearFeedback(`ex4-feedback-s${sIndex}`);
+            });
+
+            // Clear Exercise 5 radio buttons and feedback
+            exercise5Items.forEach((item, iIndex) => {
+                const radios = document.getElementsByName(`ex5-item${iIndex}`);
+                radios.forEach(radio => {
+                    radio.checked = false;
+                    const parentLabel = radio.closest('label');
+                    if (parentLabel) parentLabel.classList.remove('text-green-600', 'text-red-600');
+                });
+                appState.exercise5Answers[`item${iIndex}`] = '';
+                clearFeedback(`ex5-feedback-item${iIndex}`);
+            });
+
+            // Clear Exercise 6 inputs and feedback
+            exercise6Words.forEach(word => {
+                const input = getElement(word.id);
+                if (input) {
+                    input.value = "";
+                    input.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    input.classList.add('border-gray-300');
+                }
+                appState.exercise6Answers[word.id] = '';
+                clearFeedback(`${word.id}-feedback`);
+            });
+
+            // Clear Exercise 7 radio buttons and feedback
+            exercise7Sentences.forEach((sentence, sIndex) => {
+                const radios = document.getElementsByName(`ex7-s${sIndex}`);
+                radios.forEach(radio => {
+                    radio.checked = false;
+                    const parentLabel = radio.closest('label');
+                    if (parentLabel) parentLabel.classList.remove('text-green-600', 'text-red-600');
+                });
+                appState.exercise7Answers[`s${sIndex}`] = '';
+                clearFeedback(`ex7-feedback-s${sIndex}`);
+            });
+
+            // Clear Exercise 8 dropdowns and feedback
+            exercise8Questions.forEach((question, qIndex) => {
+                const select = getElement(`ex8-select-${qIndex}`);
+                if (select) {
+                    select.value = "";
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise8Answers[`q${qIndex}`] = '';
+                clearFeedback(`ex8-feedback-q${qIndex}`);
+            });
+
+            // Clear Exercise 9 inputs and feedback
+            exercise9Questions.forEach((question, qIndex) => {
+                const input = getElement(`ex9-input-${qIndex}`);
+                if (input) {
+                    input.value = "";
+                    input.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    input.classList.add('border-gray-300');
+                }
+                appState.exercise9Answers[`q${qIndex}`] = '';
+                clearFeedback(`ex9-feedback-q${qIndex}`);
+            });
+
+            // Clear Exercise 10 dropdowns and feedback
+            exercise10SummaryParts.forEach((part, pIndex) => {
+                const select = getElement(part.id);
+                if (select) {
+                    select.value = "";
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise10Answers[`p${pIndex}`] = '';
+                clearFeedback(`ex10-feedback-${part.id}`);
+            });
+
+            saveAnswers(); // Save the cleared state to local storage
+            showMessage('All answers cleared!', 'success');
+        }
+
+
+        // --- Initialize all exercises on window load ---
+        window.onload = function() {
+            initializeExercise1();
+            initializeExercise2();
+            initializeExercise3();
+            initializeExercise4();
+            initializeExercise5();
+            initializeExercise6();
+            initializeExercise7();
+            initializeExercise8();
+            initializeExercise9();
+            initializeExercise10();
+
+            // Attach event listener for clear all answers button
+            getElement('clear-all-answers-button').addEventListener('click', clearAllAnswers);
+
+            // Load saved answers on page load
+            loadAnswers();
+        };
+    </script>
+</body>
+</html>
