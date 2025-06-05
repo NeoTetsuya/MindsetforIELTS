@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unit 5: Grammar & Vocabulary Worksheet</title>
+    <title>Mindset for IELTS 1 - Unit 5 Grammar & Vocabulary</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Inter Font from Google Fonts -->
@@ -78,6 +78,7 @@
             border-radius: 0.375rem;
             display: flex;
             align-items: center;
+            flex-wrap: wrap; /* Allow multiple words to wrap */
             justify-content: flex-start; /* Align dropped word to start */
             padding: 0.5rem;
             margin-bottom: 0.5rem;
@@ -104,6 +105,8 @@
             cursor: default;
             pointer-events: none; /* Make dropped word not draggable itself */
             margin-left: 0.25rem; /* Space after the prefix text */
+            margin-right: 0.25rem; /* Space between words */
+            margin-bottom: 0.25rem; /* Space when wrapping */
         }
         .drop-target .placeholder-text {
             color: #6B7280; /* gray-500 */
@@ -115,7 +118,7 @@
 
     <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
         <h1 class="text-3xl md:text-4xl font-bold text-center text-purple-700 mb-8">
-            Unit 5: Grammar & Vocabulary Worksheet
+            Mindset for IELTS 1 - Unit 5 Grammar & Vocabulary
         </h1>
 
         <div class="flex justify-end mb-6 space-x-2">
@@ -618,10 +621,10 @@
                 'keeper', 'trolley', 'assistant', 'mens', 'basket', 'sports'
             ],
             dropTargets: [
-                { id: 'ex1-target-shop', text: 'Shop...', correctWord: 'assistant' },
-                { id: 'ex1-target-shopping', text: 'Shopping...', correctWord: 'bag' },
-                { id: 'ex1-target-wear', text: '...wear', correctWord: 'mens' },
-                { id: 'ex1-target-store', text: '...store', correctWord: 'department' }
+                { id: 'ex1-target-shop', text: 'Shop...', correctWords: ['assistant', 'keeper', 'manager'] },
+                { id: 'ex1-target-shopping', text: 'Shopping...', correctWords: ['trolley', 'basket', 'bag'] },
+                { id: 'ex1-target-wear', text: '...wear', correctWords: ['mens', 'foot', 'sports'] },
+                { id: 'ex1-target-store', text: '...store', correctWords: ['department', 'convenience', 'online'] }
             ]
         };
         // Shuffling the words for display (optional, but good for D&D)
@@ -819,20 +822,31 @@
                     // Populate Exercise 1 (Drag and Drop)
                     exercise1DragDropData.dropTargets.forEach(target => {
                         const targetElement = getElement(target.id);
-                        if (targetElement && appState.exercise1Answers[target.id]) {
-                            const wordId = appState.exercise1Answers[target.id];
+                        // Check if an array of wordIds is stored, indicating multiple words for the target
+                        const storedWordIds = appState.exercise1Answers[target.id] || [];
+
+                        // Clear any existing children in the drop target (from initial HTML or previous loads)
+                        targetElement.innerHTML = ''; 
+                        const placeholder = document.createElement('span');
+                        placeholder.classList.add('placeholder-text');
+                        placeholder.textContent = 'Drop word here';
+                        targetElement.appendChild(placeholder);
+
+
+                        storedWordIds.forEach(wordId => {
                             const wordElement = getElement(wordId);
                             if (wordElement) {
-                                // Clear placeholder if present
-                                const placeholder = targetElement.querySelector('.placeholder-text');
-                                if (placeholder) placeholder.remove();
+                                // If placeholder exists, remove it before appending the actual word
+                                const currentPlaceholder = targetElement.querySelector('.placeholder-text');
+                                if (currentPlaceholder) currentPlaceholder.remove();
 
                                 targetElement.appendChild(wordElement);
                                 wordElement.classList.remove('draggable-word'); // Make it non-draggable when dropped
                                 wordElement.classList.add('dropped-word');
                                 wordElement.draggable = false;
+                                wordElement.style.display = ''; // Ensure visible
                             }
-                        }
+                        });
                     });
                     // Hide words that are already in drop targets from the draggable container
                     const draggableContainer = getElement('draggable-words-container');
@@ -840,7 +854,9 @@
                         Array.from(draggableContainer.children).forEach(wordElement => {
                             let isDropped = false;
                             for (const targetId in appState.exercise1Answers) {
-                                if (appState.exercise1Answers[targetId] === wordElement.id) {
+                                // Check if this word's ID is in any of the target's stored arrays
+                                if (Array.isArray(appState.exercise1Answers[targetId]) && 
+                                    appState.exercise1Answers[targetId].includes(wordElement.id)) {
                                     isDropped = true;
                                     break;
                                 }
@@ -973,39 +989,23 @@
 
             if (!draggedElement || !dropTarget) return;
 
-            // Check if the drop target already contains a word
-            const existingWord = dropTarget.querySelector('.dropped-word');
-            if (existingWord) {
-                // If so, return it to the draggable container
-                const draggableContainer = getElement('draggable-words-container');
-                existingWord.classList.remove('dropped-word');
-                existingWord.classList.add('draggable-word');
-                existingWord.draggable = true; // Make it draggable again
-                existingWord.style.display = ''; // Make it visible
-                draggableContainer.appendChild(existingWord);
-
-                // Remove from appState
-                for (const key in appState.exercise1Answers) {
-                    if (appState.exercise1Answers[key] === existingWord.id) {
-                        appState.exercise1Answers[key] = null;
-                        break;
-                    }
-                }
-            }
-
-            // Append the new dragged word to the drop target
-            // Remove any placeholder text if it exists
+            // Remove placeholder if present
             const placeholder = dropTarget.querySelector('.placeholder-text');
             if (placeholder) placeholder.remove();
-
+            
+            // Append the dragged word to the drop target
             dropTarget.appendChild(draggedElement);
             draggedElement.classList.remove('draggable-word');
             draggedElement.classList.add('dropped-word');
             draggedElement.draggable = false; // Make it non-draggable when dropped
             draggedElement.style.display = ''; // Ensure visible
 
-            // Update appState
-            appState.exercise1Answers[targetId] = draggedElement.id;
+            // Initialize appState.exercise1Answers[targetId] as an array if it's not already
+            if (!Array.isArray(appState.exercise1Answers[targetId])) {
+                appState.exercise1Answers[targetId] = [];
+            }
+            // Add the new word's ID to the array for this target
+            appState.exercise1Answers[targetId].push(draggedElement.id);
             saveAnswers();
 
             // Clear any previous feedback on this target
@@ -1055,15 +1055,22 @@
                 dropTargetElement.classList.remove('correct-drop', 'incorrect-drop');
                 clearFeedback(feedbackElement.id);
 
-                // Get the text content of the dropped word
-                const droppedWordElement = dropTargetElement.querySelector('.dropped-word');
-                const userAnswer = droppedWordElement ? droppedWordElement.textContent.trim() : '';
-
-                const isCorrect = userAnswer.toLowerCase() === target.correctWord.toLowerCase();
-
-                setFeedback(feedbackElement.id, isCorrect, target.correctWord);
+                // Get all dropped word elements and their text content
+                const droppedWords = Array.from(dropTargetElement.querySelectorAll('.dropped-word'))
+                                        .map(el => el.textContent.trim().toLowerCase());
                 
-                if (droppedWordElement) { // Apply styling to the drop target itself
+                // Convert correctWords to lowercase for comparison
+                const correctWordsLower = target.correctWords.map(word => word.toLowerCase());
+
+                // Check if all dropped words are correct and no extra/missing words
+                const isCorrect = droppedWords.length === correctWordsLower.length &&
+                                  droppedWords.every(word => correctWordsLower.includes(word)) &&
+                                  correctWordsLower.every(word => droppedWords.includes(word));
+
+
+                setFeedback(feedbackElement.id, isCorrect); // No longer show correctText if multiple correct answers exist
+                
+                if (droppedWords.length > 0) { // Apply styling to the drop target itself if words are present
                     if (isCorrect) {
                         dropTargetElement.classList.add('correct-drop');
                     } else {
@@ -1396,9 +1403,9 @@
                     inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
                     inputElement.classList.add('border-gray-300'); // Reset to default
                     if (isCorrect) {
-                        inputElement.classList.add('border-green-500', 'bg-green-50');
+                        selectElement.classList.add('border-green-500', 'bg-green-50');
                     } else if (userAnswer) {
-                        inputElement.classList.add('border-red-500', 'bg-red-50');
+                        selectElement.classList.add('border-red-500', 'bg-red-50');
                     }
                 }
             }
@@ -1422,13 +1429,13 @@
 
         function checkExercise8() {
             for (const key in exercise8CorrectAnswers) {
+                const inputElement = getElement(`ex8-${key}`);
                 const userAnswer = (appState.exercise8Answers[key] || '').toLowerCase().trim();
                 const correctAnswer = exercise8CorrectAnswers[key].toLowerCase().trim();
                 const isCorrect = userAnswer === correctAnswer;
 
                 setFeedback(`ex8-feedback-${key}`, isCorrect, exercise8CorrectAnswers[key]);
 
-                const inputElement = getElement(`ex8-${key}`);
                 if (inputElement) {
                     inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
                     inputElement.classList.add('border-gray-300'); // Reset to default
@@ -1558,14 +1565,16 @@
                 // Return all words from drop targets to the draggable container
                 exercise1DragDropData.dropTargets.forEach(target => {
                     const dropTargetElement = getElement(target.id);
-                    const droppedWord = dropTargetElement ? dropTargetElement.querySelector('.dropped-word') : null;
-                    if (droppedWord) {
+                    // Get all dropped words from the current target
+                    const droppedWords = Array.from(dropTargetElement.querySelectorAll('.dropped-word'));
+                    droppedWords.forEach(droppedWord => {
                         droppedWord.classList.remove('dropped-word');
                         droppedWord.classList.add('draggable-word');
                         droppedWord.draggable = true;
                         droppedWord.style.display = ''; // Make visible again
                         draggableContainer.appendChild(droppedWord); // Move back to pool
-                    }
+                    });
+
                     // Re-add placeholder text if removed
                     if (dropTargetElement && !dropTargetElement.querySelector('.placeholder-text')) {
                         const placeholder = document.createElement('span');
@@ -1578,7 +1587,7 @@
                         dropTargetElement.classList.remove('correct-drop', 'incorrect-drop');
                     }
                 });
-                // Ensure all words in the draggable container are visible and draggable
+                // Ensure all words in the draggable container are visible and draggable (redundant check, but safe)
                 Array.from(draggableContainer.children).forEach(wordElement => {
                     wordElement.classList.remove('dropped-word');
                     wordElement.classList.add('draggable-word');
