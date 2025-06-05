@@ -4,244 +4,160 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mindset for IELTS 1 - Unit 3 G&V</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Global styles for consistent font size and family */
+        /* Custom CSS from your original file */
         body {
             font-family: 'Inter', sans-serif;
-            font-size: 16px; /* Base font size */
-            line-height: 1.6;
-            background-color: #f0f4f8;
-            color: #333;
         }
-        .text-base {
-            font-size: 16px; /* Ensure all text elements adhere to this */
+        .correct-feedback {
+            color: #10B981; /* Green-500 */
         }
-        .container {
-            max-width: 960px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        .incorrect-feedback {
+            color: #EF4444; /* Red-500 */
         }
-        .exercise-section {
-            margin-bottom: 30px;
-            padding: 20px;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            background-color: #fdfefe;
+        .feedback-box {
+            padding: 0.5rem 0.75rem;
+            margin-top: 0.5rem;
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 0.875rem; /* text-sm */
         }
-        .exercise-section h2 {
-            font-size: 24px;
-            font-weight: 600;
-            color: #2c5282;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #ebf4ff;
-            padding-bottom: 10px;
+        .feedback-box.correct {
+            background-color: #D1FAE5; /* green-100 */
+            border: 1px solid #34D399; /* green-400 */
         }
-        .question-text {
-            margin-bottom: 10px;
+        .feedback-box.incorrect {
+            background-color: #FEE2E2; /* red-100 */
+            border: 1px solid #F87171; /* red-400 */
         }
-        /* Styling for select (dropdown) and input[type="text"] elements */
-        select, input[type="text"] {
-            padding: 8px 12px;
-            border: 1px solid #cbd5e0;
-            border-radius: 6px;
-            font-size: 16px;
-            background-color: #ffffff;
-            transition: border-color 0.2s;
-            min-width: 150px; /* Ensure dropdowns have a minimum width */
-        }
-        /* Highlighted and bolded dropdowns (specific style) */
-        select {
-            font-weight: 600; /* Bold */
-            background-color: #e0f7fa; /* Light cyan background for highlight */
-            border-color: #00bcd4; /* Cyan border */
-            appearance: none; /* Remove default arrow on some browsers */
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%20viewBox%3D%220%200%20292.4%20292.4%22%3E%3Cpath%20fill%3D%22%231e293b%22%20d%3D%22M287%2C197.9L146.2%2C57.1L5.4%2C197.9h281.6z%22%2F%3E%3C%2Fsvg%3E'); /* Custom arrow */
-            background-repeat: no-repeat;
-            background-position: right 0.7em top 50%, 0 0;
-            background-size: 0.65em auto, 100%;
-            cursor: pointer;
-        }
-        select:focus {
-            outline: none;
-            border-color: #00bcd4; /* Keep cyan border on focus */
-            box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.3); /* Cyan shadow on focus */
-            background-color: #e0f7fa; /* Keep same background on focus */
-        }
-        /* Styling for correct/incorrect answers */
-        .correct-answer {
-            background-color: #d1fae5; /* Green for correct */
-            border-color: #34d399;
-        }
-        .incorrect-answer {
-            background-color: #fee2e2; /* Red for incorrect */
-            border-color: #ef4444;
-        }
-        .show-answer {
-            background-color: #e0f2fe; /* Blue for shown answer */
-            border-color: #60a5fa;
-        }
-        /* Feedback message styling (Correct! / Incorrect.) */
-        .feedback {
-            margin-top: 10px;
-            font-weight: 600;
-            text-align: right;
-            padding: 5px 10px;
-            border-radius: 4px;
-            display: inline-block; /* Ensures padding and border apply */
-            min-width: 80px; /* Give it a minimum width */
-            text-align: center;
-        }
-        .feedback.correct {
-            color: #15803d; /* Darker green text */
-            background-color: #dcfce7; /* Lighter green background from image */
-            border: 1px solid #bbf7d0; /* Green border from image */
-        }
-        .feedback.incorrect {
-            color: #b91c1c; /* Darker red text */
-            background-color: #fee2e2; /* Lighter red background from image */
-            border: 1px solid #fca5a5; /* Red border from image */
-        }
-        /* Button styling */
-        .button {
+        /* Message Box for Save Confirmation (if needed, though not explicitly used in G&V_Unit3) */
+        #message-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50; /* Green */
+            color: white;
             padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.2s, transform 0.1s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-right: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
         }
-        .button-primary {
-            background-color: #4299e1;
-            color: #ffffff;
-        }
-        .button-primary:hover {
-            background-color: #3182ce;
-            transform: translateY(-1px);
-        }
-        .button-secondary {
-            background-color: #a0aec0;
-            color: #ffffff;
-        }
-        .button-secondary:hover {
-            background-color: #718096;
-            transform: translateY(-1px);
+        #message-box.show {
+            opacity: 1;
         }
 
-        /* Drag and Drop Specific Styles - These are now largely unused for Ex6 */
-        .word-bank-for-drag-drop {
-            background-color: #e6fffa;
-            border: 1px solid #81e6d9;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
-            display: none; /* Hide if not used */
+        /* Styles copied and adapted from G&V_Unit3.html, ensuring compatibility with style.css */
+        .exercise-section {
+            margin-bottom: 2.5rem; /* mb-10 */
+            padding: 1.5rem; /* p-6 */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
         }
-        .draggable-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
+        .exercise-section h2 {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 600; /* font-semibold */
+            margin-bottom: 1rem; /* mb-4 */
         }
-        .draggable, .dragged-item {
-            padding: 10px 15px;
-            background-color: #bee3f8;
-            border: 1px solid #63b3ed;
-            border-radius: 8px;
-            cursor: grab;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-            font-size: 16px;
-            transition: background-color 0.2s;
-        }
-        .draggable:hover, .dragged-item:hover {
-            background-color: #90cdf4;
-        }
-        .drop-target {
-            padding: 15px;
-            border: 2px dashed #a0aec0;
-            border-radius: 8px;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #edf2f7;
-            transition: border-color 0.2s, background-color 0.2s;
-            font-size: 16px;
-            flex-grow: 1;
-        }
-        .drop-target.drag-over {
-            border-color: #4299e1;
-            background-color: #ebf8ff;
-        }
-        .drop-target-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-        .hidden-draggable {
-            display: none;
-        }
-        /* Style for bullet points in exercise 1 */
-        .exercise-list {
-            list-style-type: disc;
-            padding-left: 20px;
-        }
-        .exercise-list li {
-            margin-bottom: 8px;
-        }
-        /* Specific styles for Exercise 3 and 5 to improve readability */
-        .exercise-sentence {
+        .question-item {
+            margin-bottom: 0.5rem; /* mb-2 */
             display: flex;
             flex-wrap: wrap;
             align-items: baseline;
-            gap: 5px;
-            margin-bottom: 8px;
+            gap: 0.5rem; /* gap-2 */
+        }
+        .question-item p {
+            font-size: 1rem; /* text-base */
+        }
+        select, input[type="text"] {
+            padding: 0.5rem 0.75rem; /* p-2 px-3 */
+            border: 1px solid #d1d5db; /* border-gray-300 */
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 1rem; /* text-base */
+            background-color: #ffffff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            flex-grow: 1; /* Allow inputs to grow */
+            min-width: 150px;
+        }
+        select:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: #4f46e5; /* indigo-500 */
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.5); /* ring-indigo-500 */
+        }
+        .feedback {
+            padding: 0.5rem 0.75rem; /* padding: 0.5rem 0.75rem; */
+            margin-top: 0.5rem; /* margin-top: 0.5rem; */
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 600;
+            text-align: right;
+            display: inline-block;
+            min-width: 80px;
+            text-align: center;
+        }
+        .feedback.correct {
+            background-color: #D1FAE5; /* green-100 */
+            border: 1px solid #34D399; /* green-400 */
+            color: #065F46; /* green-700 */
+        }
+        .feedback.incorrect {
+            background-color: #FEE2E2; /* red-100 */
+            border: 1px solid #F87171; /* red-400 */
+            color: #991B1B; /* red-700 */
+        }
+        .show-answer {
+            background-color: #e0f2fe; /* blue-100 */
+            border-color: #60a5fa; /* blue-400 */
+        }
+        .button {
+            padding: 0.625rem 1.25rem; /* px-5 py-2 */
+            border-radius: 0.5rem; /* rounded-lg */
+            font-weight: 600; /* font-semibold */
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s ease-in-out;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); /* shadow-md */
+        }
+        .button-primary {
+            background-color: #4f46e5; /* indigo-600 */
+            color: #ffffff; /* text-white */
+        }
+        .button-primary:hover {
+            background-color: #4338ca; /* indigo-700 */
+            transform: scale(1.05);
+        }
+        .button-secondary {
+            background-color: #6b7280; /* gray-500 */
+            color: #ffffff; /* text-white */
+        }
+        .button-secondary:hover {
+            background-color: #4b5563; /* gray-600 */
+            transform: scale(1.05);
         }
         .exercise-footer {
             display: flex;
             justify-content: flex-end;
-            gap: 10px;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px dashed #e2e8f0;
+            margin-top: 1.5rem; /* mt-6 */
+            gap: 0.5rem; /* space-x-2 */
+            padding-top: 1rem;
+            border-top: 1px dashed #e5e7eb; /* border-t border-gray-200 */
         }
         .exercise-feedback {
-            margin-top: 10px;
-            font-weight: 600;
+            margin-top: 1rem; /* mt-4 */
+            font-size: 0.875rem; /* text-sm */
+            color: #4b5563; /* text-gray-600 */
             text-align: right;
-        }
-        /* Specific input width adjustments for responsiveness */
-        .inline-block.w-40 { width: 160px; }
-        .inline-block.w-96 { width: 384px; }
-        .inline-block.w-64 { width: 256px; }
-
-        @media (max-width: 768px) {
-            .inline-block.w-40 { width: 120px; }
-            .inline-block.w-96 { width: 280px; }
-            .inline-block.w-64 { width: 180px; }
-        }
-        @media (max-width: 480px) {
-            .inline-block.w-40 { width: 90px; }
-            .inline-block.w-96, .inline-block.w-64 { width: 100%; }
+            font-weight: 600;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1 class="text-3xl font-bold text-center text-blue-800 mb-8">Mindset for IELTS 1 - Unit 3 G&V</h1>
+<body class="min-h-screen bg-gray-100 p-4 font-sans text-gray-800">
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">Mindset for IELTS 1 - Unit 3 G&V</h1>
 
-        <!-- Exercise 1 -->
-        <div id="exercise1" class="exercise-section">
-            <h2 class="text-2xl">Unit 3: Exercise 1</h2>
+        <section id="exercise1" class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Unit 3: Exercise 1</h2>
             <p class="mb-4 text-base">Complete the sentences. Use the words in the box.</p>
             <p class="text-base">This person …</p>
             <div class="question-item">
@@ -290,11 +206,10 @@
                 <button class="button button-secondary reset-exercise-btn" data-exercise-id="1">Reset</button>
             </div>
             <div id="feedback-ex1" class="exercise-feedback"></div>
-        </div>
+        </section>
 
-        <!-- Exercise 2 -->
-        <div id="exercise2" class="exercise-section">
-            <h2 class="text-2xl">Unit 3: Exercise 2</h2>
+        <section id="exercise2" class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-blue-600 mb-4">Unit 3: Exercise 2</h2>
             <p class="mb-4 text-base">Complete the text. Use the words in the box.</p>
             <div class="question-item">
                 <p>I never did anything interesting in my old job. It was really <select id="ex2_q1" class="ex2-select"></select>.</p>
@@ -342,11 +257,10 @@
                 <button class="button button-secondary reset-exercise-btn" data-exercise-id="2">Reset</button>
             </div>
             <div id="feedback-ex2" class="exercise-feedback"></div>
-        </div>
+        </section>
 
-        <!-- Exercise 3 -->
-        <div id="exercise3" class="exercise-section">
-            <h2 class="text-2xl">Unit 3: Exercise 3</h2>
+        <section id="exercise3" class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-green-600 mb-4">Unit 3: Exercise 3</h2>
             <p class="mb-4 text-base">Choose the correct prepositions to complete the text.</p>
             <div class="question-item">
                 <p class="exercise-sentence">After I left school, I decided to go <select id="ex3_q1" class="ex3-select"></select> university.</p>
@@ -394,11 +308,10 @@
                 <button class="button button-secondary reset-exercise-btn" data-exercise-id="3">Reset</button>
             </div>
             <div id="feedback-ex3" class="exercise-feedback"></div>
-        </div>
+        </section>
 
-        <!-- Exercise 4 -->
-        <div id="exercise4" class="exercise-section">
-            <h2 class="text-2xl">Unit 3: Exercise 4</h2>
+        <section id="exercise4" class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-purple-600 mb-4">Unit 3: Exercise 4</h2>
             <p class="mb-4 text-base">Match the explanations with the statements.</p>
             <div class="question-item">
                 <p>I’m grateful for your help. <select id="ex4_q1" class="ex4-select"></select></p>
@@ -446,11 +359,10 @@
                 <button class="button button-secondary reset-exercise-btn" data-exercise-id="4">Reset</button>
             </div>
             <div id="feedback-ex4" class="exercise-feedback"></div>
-        </div>
+        </section>
 
-        <!-- Exercise 5 -->
-        <div id="exercise5" class="exercise-section">
-            <h2 class="text-2xl">Unit 3: Exercise 5</h2>
+        <section id="exercise5" class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Unit 3: Exercise 5</h2>
             <p class="mb-4 text-base">Complete the text. Use the words in the box.</p>
             <div class="question-item">
                 <p class="exercise-sentence">In my country, many very young children go to <select id="ex5_q1" class="ex5-select"></select>, but they don’t have to go.</p>
@@ -498,11 +410,10 @@
                 <button class="button button-secondary reset-exercise-btn" data-exercise-id="5">Reset</button>
             </div>
             <div id="feedback-ex5" class="exercise-feedback"></div>
-        </div>
+        </section>
 
-        <!-- Exercise 6 -->
-        <div id="exercise6" class="exercise-section">
-            <h2 class="text-2xl">Unit 3: Exercise 6</h2>
+        <section id="exercise6" class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-red-600 mb-4">Unit 3: Exercise 6</h2>
             <p class="mb-4 text-base">Match the present results (present simple) with the past events (present perfect).</p>
 
             <div class="space-y-3 text-base">
@@ -545,11 +456,10 @@
                 <button class="button button-secondary reset-exercise-btn" data-exercise-id="6">Reset</button>
             </div>
             <div id="feedback-ex6" class="exercise-feedback"></div>
-        </div>
+        </section>
 
-        <!-- Exercise 7 -->
-        <div id="exercise7" class="exercise-section">
-            <h2 class="text-2xl">Unit 3: Exercise 7</h2>
+        <section id="exercise7" class="mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-teal-600 mb-4">Unit 3: Exercise 7</h2>
             <p class="mb-4 text-base">Complete the sentences. Use the past participle of the irregular verbs in brackets.</p>
             <div class="question-item">
                 <p>He wasn’t very good when he started, but he’s <input type="text" id="ex7_q1" class="ex7-input" placeholder="(become)"> a very good teacher in the last few years.</p>
@@ -597,11 +507,10 @@
                 <button class="button button-secondary reset-exercise-btn" data-exercise-id="7">Reset</button>
             </div>
             <div id="feedback-ex7" class="exercise-feedback"></div>
-        </div>
+        </section>
 
-        <!-- Exercise 8 -->
-        <div id="exercise8" class="exercise-section">
-            <h2 class="text-2xl">Unit 3: Exercise 8</h2>
+        <section id="exercise8" class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-orange-600 mb-4">Unit 3: Exercise 8</h2>
             <p class="mb-4 text-base">Choose the correct word ($already$, $yet$, or $just$).</p>
             <div class="question-item">
                 <p>A: Hey, I’ve <select id="ex8_q1" class="ex8-select"></select> remembered.</p>
@@ -649,11 +558,10 @@
                 <button class="button button-secondary reset-exercise-btn" data-exercise-id="8">Reset</button>
             </div>
             <div id="feedback-ex8" class="exercise-feedback"></div>
-        </div>
+        </section>
 
-        <!-- Exercise 9 -->
-        <div id="exercise9" class="exercise-section">
-            <h2 class="text-2xl">Unit 3: Exercise 9</h2>
+        <section id="exercise9" class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-pink-600 mb-4">Unit 3: Exercise 9</h2>
             <p class="mb-4 text-base">Complete the sentences. Use the words in brackets with the present perfect. Use contractions where possible (e.g. haven’t). The first one has been done for you.</p>
             <div class="question-item">
                 <p>My sister’s just started university – it’s her first week this week. (my sister / just / start)</p>
@@ -690,11 +598,10 @@
                 <button class="button button-secondary reset-exercise-btn" data-exercise-id="9">Reset</button>
             </div>
             <div id="feedback-ex9" class="exercise-feedback"></div>
-        </div>
+        </section>
 
-        <!-- Exercise 10 -->
-        <div id="exercise10" class="exercise-section">
-            <h2 class="text-2xl">Unit 3: Exercise 10</h2>
+        <section id="exercise10" class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Unit 3: Exercise 10</h2>
             <p class="mb-4 text-base">Correct the questions. Use the present perfect. Use contractions where possible (e.g. hasn’t).</p>
             <div class="question-item">
                 <p>You take all your exams yet? I’ve already finished mine.</p>
@@ -732,7 +639,7 @@
                 <button class="button button-secondary reset-exercise-btn" data-exercise-id="10">Reset</button>
             </div>
             <div id="feedback-ex10" class="exercise-feedback"></div>
-        </div>
+        </section>
     </div>
 
     <script>
@@ -755,7 +662,7 @@
                 options: [
                     "a chef", "a doctor", "a lawyer", "a manager", "a programmer",
                     "a soldier", "a teacher", "a vet", "an accountant", "an engineer"
-                ].map(normalizeText), // Normalize options here
+                ].map(text => ({ value: normalizeText(text), display: text })),
                 answers: { // Answers are nested under 'answers'
                     q1: normalizeText("a doctor"),
                     q2: normalizeText("an engineer"),
@@ -773,7 +680,7 @@
                 options: [
                     "Annoyed", "boring", "disappointed", "disgusting", "excited",
                     "exhausted", "Interested", "surprised", "terrifying", "worrying"
-                ].map(normalizeText), // Normalize options here
+                ].map(text => ({ value: normalizeText(text), display: text })),
                 answers: {
                     q1: normalizeText("boring"),
                     q2: normalizeText("Interested"),
@@ -789,16 +696,16 @@
             },
             ex3: {
                 options: { // Options for ex3 are arrays, need to map each sub-array
-                    q1: ["at", "on", "to"].map(normalizeText),
-                    q2: ["at", "by", "on"].map(normalizeText),
-                    q3: ["for", "in", "of"].map(normalizeText),
-                    q4: ["about", "on", "over"].map(normalizeText),
-                    q5: ["for", "from", "on"].map(normalizeText),
-                    q6: ["as", "by", "for"].map(normalizeText),
-                    q7: ["for", "on", "with"].map(normalizeText),
-                    q8: ["as", "at", "for"].map(normalizeText),
-                    q9: ["at", "from", "to"].map(normalizeText),
-                    q10: ["as", "in", "of"].map(normalizeText)
+                    q1: ["to", "at", "on"].map(text => ({ value: normalizeText(text), display: text })),
+                    q2: ["at", "by", "on"].map(text => ({ value: normalizeText(text), display: text })),
+                    q3: ["in", "for", "of"].map(text => ({ value: normalizeText(text), display: text })),
+                    q4: ["about", "on", "over"].map(text => ({ value: normalizeText(text), display: text })),
+                    q5: ["from", "for", "on"].map(text => ({ value: normalizeText(text), display: text })),
+                    q6: ["for", "as", "by"].map(text => ({ value: normalizeText(text), display: text })),
+                    q7: ["for", "on", "with"].map(text => ({ value: normalizeText(text), display: text })),
+                    q8: ["as", "at", "for"].map(text => ({ value: normalizeText(text), display: text })),
+                    q9: ["at", "from", "to"].map(text => ({ value: normalizeText(text), display: text })),
+                    q10: ["in", "as", "of"].map(text => ({ value: normalizeText(text), display: text }))
                 },
                 answers: {
                     q1: normalizeText("to"),
@@ -815,17 +722,17 @@
             },
             ex4: {
                 options: [
-                    "I think it’s good – you’ve done a great job.",
                     "I want to thank you for it.",
-                    "I was worried, but now I’m not.",
-                    "I'm confident. I think it'll be great.",
-                    "I'm frightened of him/her.",
-                    "It makes me unhappy.",
-                    "I’m angry about them because they make my life difficult.",
-                    "I’m extremely angry with her.",
+                    "I’m worried about it.",
                     "I’m happy about them.",
-                    "I’m worried about it."
-                ].map(normalizeText), // Normalize options here
+                    "I’m extremely angry with her.",
+                    "I was worried, but now I’m not.",
+                    "I think it’s good – you’ve done a great job.",
+                    "I’m angry about them because they make my life difficult.",
+                    "It makes me unhappy.",
+                    "I'm confident. I think it'll be great.",
+                    "I'm frightened of him/her."
+                ].map(text => ({ value: normalizeText(text), display: text })),
                 answers: { // Answers are nested under 'answers'
                     q1: normalizeText("I want to thank you for it."),
                     q2: normalizeText("I’m worried about it."),
@@ -844,7 +751,7 @@
                     "College", "evening classes", "nursery school", "postgraduate course",
                     "primary school", "private lessons", "secondary school", "training courses",
                     "university", "work placement"
-                ].map(normalizeText), // Normalize options here
+                ].map(text => ({ value: normalizeText(text), display: text })),
                 answers: {
                     q1: normalizeText("nursery school"),
                     q2: normalizeText("primary school"),
@@ -868,7 +775,7 @@
                     "They don’t go to work any more.",
                     "He can’t go to school this week.",
                     "Now she needs to find a job."
-                ].map(normalizeText), // Normalize them for consistency
+                ].map(text => ({ value: normalizeText(text), display: text })),
                 answers: { // These map question number to the correct option
                     q1: normalizeText("I have a degree."),
                     q2: normalizeText("He now works for a bank."),
@@ -895,7 +802,7 @@
                 }
             },
             ex8: {
-                options: ["already", "just", "yet"], // Options are NOT normalized here, to match raw HTML option text
+                options: ["already", "just", "yet"].map(text => ({ value: text, display: text })), // Keep raw values for comparison
                 answers: { // Answers are NOT normalized here, to match raw HTML radio values
                     q1: "just",
                     q2: "yet",
@@ -933,20 +840,16 @@
         };
 
         // Helper function to display feedback (Correct! / Incorrect.)
-        function showFeedback(elementId, isCorrect, fromShowAnswer = false) {
+        function showFeedback(elementId, isCorrect) {
             const feedbackElement = document.getElementById(elementId);
             if (feedbackElement) {
                 feedbackElement.classList.remove('correct', 'incorrect');
-                if (!fromShowAnswer) { // Only set text and class if not from 'Show Answer'
-                    if (isCorrect) {
-                        feedbackElement.classList.add('correct');
-                        feedbackElement.textContent = 'Correct!';
-                    } else {
-                        feedbackElement.classList.add('incorrect');
-                        feedbackElement.textContent = 'Incorrect.';
-                    }
+                if (isCorrect) {
+                    feedbackElement.classList.add('correct');
+                    feedbackElement.textContent = 'Correct!';
                 } else {
-                    feedbackElement.textContent = ''; // Clear text if from 'Show Answer'
+                    feedbackElement.classList.add('incorrect');
+                    feedbackElement.textContent = 'Incorrect.';
                 }
             } else {
                 console.error(`Feedback element with ID ${elementId} not found.`);
@@ -963,28 +866,13 @@
                 selectElement.appendChild(blankOption);
             }
             if (Array.isArray(options)) {
-                options.forEach(optionText => {
+                options.forEach(optionData => { // options now contains { value, display }
                     const option = document.createElement('option');
-                    // For dropdowns, the value should be the normalized text for consistent comparison
-                    // but the textContent should be the original text for display.
-                    option.value = normalizeText(optionText);
-                    option.textContent = optionText;
+                    option.value = optionData.value;
+                    option.textContent = optionData.display;
                     selectElement.appendChild(option);
                 });
             }
-        }
-
-        // Function to normalize text for comparison
-        function normalizeText(text) {
-            if (typeof text !== 'string') {
-                return '';
-            }
-            return text
-                .toLowerCase()
-                .trim()
-                .replace(/[‘’]/g, "'") // curly apostrophes → straight
-                .replace(/[“”]/g, '"') // curly quotes → straight quotes
-                .replace(/–/g, '-'); // en dash to hyphen-minus
         }
 
         // Main check/show/reset logic for individual exercises
@@ -994,7 +882,7 @@
             const exerciseSection = document.getElementById(`exercise${exerciseId}`);
             if (!exerciseSection) return;
 
-            if ([1, 2, 3, 4, 5, 6, 8].includes(exerciseId)) { // Dropdowns
+            if ([1, 2, 4, 5, 6, 8].includes(exerciseId)) { // Dropdowns with single option sets
                 const questionItems = exerciseSection.querySelectorAll('.question-item');
                 questionItems.forEach(item => {
                     const select = item.querySelector(`select[id^="ex${exerciseId}_q"]`);
@@ -1005,9 +893,38 @@
                         const questionKey = questionId.split('_')[1];
                         const correctAnswer = normalizeText(exerciseData[`ex${exerciseId}`].answers[questionKey]);
                         showFeedback(`feedback_${questionId}`, userAnswer === correctAnswer);
-                        if (userAnswer === correctAnswer) correctCount++;
+
+                        select.classList.remove('correct-answer', 'incorrect-answer', 'show-answer');
+                        if (userAnswer === correctAnswer) {
+                            correctCount++;
+                            select.classList.add('correct-answer');
+                        } else if (userAnswer !== '') { // Only mark incorrect if an answer was selected
+                            select.classList.add('incorrect-answer');
+                        }
                     }
                 });
+            } else if (exerciseId === 3) { // Exercise 3 has varying options per question
+                const questionItems = exerciseSection.querySelectorAll('.question-item');
+                questionItems.forEach(item => {
+                    const select = item.querySelector(`select[id^="ex${exerciseId}_q"]`);
+                    if (select) {
+                        totalQuestions++;
+                        const questionId = select.id;
+                        const questionKey = questionId.split('_')[1];
+                        const userAnswer = normalizeText(select.value);
+                        const correctAnswer = normalizeText(exerciseData[`ex${exerciseId}`].answers[questionKey]);
+                        showFeedback(`feedback_${questionId}`, userAnswer === correctAnswer);
+
+                        select.classList.remove('correct-answer', 'incorrect-answer', 'show-answer');
+                        if (userAnswer === correctAnswer) {
+                            correctCount++;
+                            select.classList.add('correct-answer');
+                        } else if (userAnswer !== '') {
+                            select.classList.add('incorrect-answer');
+                        }
+                    }
+                });
+
             } else if ([7, 9, 10].includes(exerciseId)) { // Text Inputs
                 const questionItems = exerciseSection.querySelectorAll('.question-item');
                 questionItems.forEach(item => {
@@ -1019,7 +936,14 @@
                         const questionKey = questionId.split('_')[1];
                         const correctAnswer = normalizeText(exerciseData[`ex${exerciseId}`].answers[questionKey]);
                         showFeedback(`feedback_${questionId}`, userAnswer === correctAnswer);
-                        if (userAnswer === correctAnswer) correctCount++;
+
+                        input.classList.remove('correct-answer', 'incorrect-answer', 'show-answer');
+                        if (userAnswer === correctAnswer) {
+                            correctCount++;
+                            input.classList.add('correct-answer');
+                        } else if (userAnswer !== '') {
+                            input.classList.add('incorrect-answer');
+                        }
                     }
                 });
             }
@@ -1042,14 +966,14 @@
                 overallFeedbackElement.classList.add('hidden');
             }
 
-            if ([1, 2, 3, 4, 5, 6, 8].includes(exerciseId)) { // Dropdowns
+            if ([1, 2, 4, 5, 6, 8].includes(exerciseId)) { // Dropdowns
                 const questionItems = exerciseSection.querySelectorAll('.question-item');
                 questionItems.forEach(item => {
                     const select = item.querySelector(`select[id^="ex${exerciseId}_q"]`);
                     if (select) {
                         const questionId = select.id;
                         const questionKey = questionId.split('_')[1];
-                        select.value = normalizeText(exerciseData[`ex${exerciseId}`].answers[questionKey]); // Use the original, un-normalized answer string from answers
+                        select.value = exerciseData[`ex${exerciseId}`].answers[questionKey]; // Set value to normalized answer
                         select.classList.remove('correct-answer', 'incorrect-answer');
                         select.classList.add('show-answer');
                         // Clear individual feedback
@@ -1060,7 +984,26 @@
                         }
                     }
                 });
-            } else if ([7, 9, 10].includes(exerciseId)) { // Text Inputs
+            } else if (exerciseId === 3) { // Exercise 3 has varying options per question
+                 const questionItems = exerciseSection.querySelectorAll('.question-item');
+                questionItems.forEach(item => {
+                    const select = item.querySelector(`select[id^="ex${exerciseId}_q"]`);
+                    if (select) {
+                        const questionId = select.id;
+                        const questionKey = questionId.split('_')[1];
+                        select.value = exerciseData[`ex${exerciseId}`].answers[questionKey]; // Set value to normalized answer
+                        select.classList.remove('correct-answer', 'incorrect-answer');
+                        select.classList.add('show-answer');
+                        // Clear individual feedback
+                        const feedbackElement = document.getElementById(`feedback_${questionId}`);
+                        if (feedbackElement) {
+                            feedbackElement.textContent = '';
+                            feedbackElement.classList.remove('correct', 'incorrect');
+                        }
+                    }
+                });
+            }
+            else if ([7, 9, 10].includes(exerciseId)) { // Text Inputs
                 const questionItems = exerciseSection.querySelectorAll('.question-item');
                 questionItems.forEach(item => {
                     const input = item.querySelector(`input[id^="ex${exerciseId}_q"]`);
@@ -1086,14 +1029,8 @@
             if (!exerciseSection) return;
 
             // Reset inputs and selects
-            exerciseSection.querySelectorAll('input[type="text"], select, textarea').forEach(element => {
+            exerciseSection.querySelectorAll('input[type="text"], select').forEach(element => {
                 element.value = '';
-                element.classList.remove('correct-answer', 'incorrect-answer', 'show-answer');
-            });
-
-            // Reset checkboxes and radio buttons
-            exerciseSection.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(element => {
-                element.checked = false;
                 element.classList.remove('correct-answer', 'incorrect-answer', 'show-answer');
             });
 
@@ -1109,18 +1046,19 @@
 
         // Event listeners for individual exercise buttons
         document.addEventListener('DOMContentLoaded', () => {
-            // Populate dropdowns for Exercise 1, 2, 3, 4, 5, 6, 8
+            // Populate dropdowns for Exercise 1, 2, 4, 5, 6, 8
             document.querySelectorAll('#exercise1 .ex1-select').forEach(select => populateDropdown(select, exerciseData.ex1.options || []));
             document.querySelectorAll('#exercise2 .ex2-select').forEach(select => populateDropdown(select, exerciseData.ex2.options || []));
+            document.querySelectorAll('#exercise4 .ex4-select').forEach(select => populateDropdown(select, exerciseData.ex4.options || []));
+            document.querySelectorAll('#exercise5 .ex5-select').forEach(select => populateDropdown(select, exerciseData.ex5.options || []));
+            document.querySelectorAll('#exercise6 .ex6-select').forEach(select => populateDropdown(select, exerciseData.ex6.options || []));
+            document.querySelectorAll('#exercise8 .ex8-select').forEach(select => populateDropdown(select, exerciseData.ex8.options || []));
+
+            // Populate dropdowns for Exercise 3 (special case with varying options)
             for (const key in exerciseData.ex3.options) {
                 const select = document.getElementById(`ex3_${key}`);
                 if (select) populateDropdown(select, exerciseData.ex3.options[key] || []);
             }
-            document.querySelectorAll('#exercise4 .ex4-select').forEach(select => populateDropdown(select, exerciseData.ex4.options || []));
-            document.querySelectorAll('#exercise5 .ex5-select').forEach(select => populateDropdown(select, exerciseData.ex5.options || []));
-            document.querySelectorAll('#exercise6 .ex6-select').forEach(select => populateDropdown(select, exerciseData.ex6.options || [])); // Added Ex6 here
-            document.querySelectorAll('#exercise8 .ex8-select').forEach(select => populateDropdown(select, exerciseData.ex8.options || []));
-
 
             // Attach event listeners to all check, show, reset buttons
             document.querySelectorAll('.check-exercise-btn').forEach(button => {
