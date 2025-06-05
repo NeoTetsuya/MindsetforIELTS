@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Speaking Unit 2 Worksheet</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS from your original file */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .correct-feedback {
+            color: #10B981; /* Green-500 */
+        }
+        .incorrect-feedback {
+            color: #EF4444; /* Red-500 */
+        }
+        .feedback-box {
+            padding: 0.5rem 0.75rem;
+            margin-top: 0.5rem;
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 0.875rem; /* text-sm */
+        }
+        .feedback-box.correct {
+            background-color: #D1FAE5; /* green-100 */
+            border: 1px solid #34D399; /* green-400 */
+        }
+        .feedback-box.incorrect {
+            background-color: #FEE2E2; /* red-100 */
+            border: 1px solid #F87171; /* red-400 */
+        }
+        /* Message Box for Save Confirmation */
+        #message-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #message-box.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100 p-4 font-sans text-gray-800">
+
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">
+            IELTS Speaking - Unit 2 Worksheet
+        </h1>
+
+        <div class="flex justify-end mb-6 space-x-2">
+            <button id="clear-all-answers-button" class="px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition duration-200 ease-in-out transform hover:scale-105">
+                Clear All Answers
+            </button>
+        </div>
+
+        <!-- Unit 2: Exercise 1 -->
+        <section class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Unit 2: Exercise 1</h2>
+            <p class="mb-4">In IELTS Speaking Part 2 it is a good idea to avoid repetition. Read the task card, paying attention to the words in bold. Then match the words from the task card with words and phrases that have a similar meaning.</p>
+            <div class="bg-indigo-100 p-4 rounded-md mb-4 border border-indigo-200">
+                <p class="font-medium text-lg mb-2">Describe a place where you had a <span class="font-bold">holiday</span> that you <span class="font-bold">enjoyed</span>.
+                You should <span class="font-bold">say</span>: where the <span class="font-bold">place</span> was when you went there and <span class="font-bold">how long</span> you <span class="font-bold">stayed</span> what you did <span class="font-bold">while</span> you were there and <span class="font-bold">explain why</span> you enjoyed having a holiday at that place.</p>
+                <p class="text-sm">Word bank: length of time, the reason why, vacation, liked, during, location, visited, explain</p>
+            </div>
+            <div id="exercise1-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Exercise 1 content will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex1-button" class="px-5 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 1
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 2: Exercise 2 -->
+        <section class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-blue-600 mb-4">Unit 2: Exercise 2</h2>
+            <p class="mb-4">Read the task card. Then complete the student’s notes. Use the words in the box.</p>
+            <div class="bg-blue-100 p-4 rounded-md mb-4 border border-blue-200">
+                <p class="font-medium text-lg mb-2">Describe a place where you had a holiday that you enjoyed.
+                You should say: where the place was when you went there and how long you stayed what you did while you were there and explain why you enjoyed having a holiday at that place.</p>
+                <p class="text-sm">Words: Bought, had, ran, stayed, was, went, were</p>
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-xl font-semibold text-blue-800">Notes</h3>
+                <p>where the place was</p>
+                <div class="flex items-center space-x-2">
+                    <p>We </p>
+                    <input type="text" id="ex2-had" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 w-32" placeholder="_____">
+                    <p>a holiday in Pingyao, China = historical small town</p>
+                    <span id="ex2-feedback-had" class="hidden text-sm ml-2"></span>
+                </div>
+                <p>when you went there and how long you stayed</p>
+                <div class="flex items-center space-x-2">
+                    <p>It </p>
+                    <input type="text" id="ex2-was" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 w-32" placeholder="_____">
+                    <p>this year (June) / we </p>
+                    <input type="text" id="ex2-stayed" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 w-32" placeholder="_____">
+                    <p>for 2 or 3 days</p>
+                    <span id="ex2-feedback-was" class="hidden text-sm ml-2"></span>
+                    <span id="ex2-feedback-stayed" class="hidden text-sm ml-2"></span>
+                </div>
+                <p>what you did while you were there</p>
+                <div class="flex items-center space-x-2">
+                    <p>We </p>
+                    <input type="text" id="ex2-went" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 w-32" placeholder="_____">
+                    <p>shopping and </p>
+                    <input type="text" id="ex2-bought" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 w-32" placeholder="_____">
+                    <p>some local things</p>
+                    <span id="ex2-feedback-went" class="hidden text-sm ml-2"></span>
+                    <span id="ex2-feedback-bought" class="hidden text-sm ml-2"></span>
+                </div>
+                <p>explain why you enjoyed having a holiday at that place</p>
+                <div class="flex items-center space-x-2">
+                    <p>The people who </p>
+                    <input type="text" id="ex2-ran" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 w-32" placeholder="_____">
+                    <p>the hotel </p>
+                    <input type="text" id="ex2-were" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 w-32" placeholder="_____">
+                    <p>very friendly</p>
+                    <span id="ex2-feedback-ran" class="hidden text-sm ml-2"></span>
+                    <span id="ex2-feedback-were" class="hidden text-sm ml-2"></span>
+                </div>
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex2-button" class="px-5 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 2
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 2: Exercise 3 -->
+        <section class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-green-600 mb-4">Unit 2: Exercise 3</h2>
+            <p class="mb-4">Read the task card again. It asks you to describe a holiday that you <span class="font-bold">enjoyed</span>, so you should use the past simple tense in your answer. Complete the table with the past simple forms of the verbs.</p>
+            <div class="bg-green-100 p-4 rounded-md mb-4 border border-green-200">
+                <p class="font-medium text-lg mb-2">Describe a place where you had a holiday that you enjoyed.
+                You should say: where the place was when you went there and how long you stayed what you did while you were there and explain why you enjoyed having a holiday at that place.</p>
+                <p class="text-sm">Words: Bought, did, enjoyed, had, ran, stayed, went, were</p>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white rounded-md shadow-sm">
+                    <thead>
+                        <tr class="bg-green-200 text-green-800">
+                            <th class="py-2 px-4 text-left">Verb</th>
+                            <th class="py-2 px-4 text-left">Past simple form</th>
+                            <th class="py-2 px-4 text-left">Feedback</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-green-100">
+                            <td class="py-2 px-4">Enjoy</td>
+                            <td class="py-2 px-4">
+                                <input type="text" id="ex3-enjoy" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500 w-full">
+                            </td>
+                            <td class="py-2 px-4"><span id="ex3-feedback-enjoy" class="hidden text-sm"></span></td>
+                        </tr>
+                        <tr class="border-b border-green-100">
+                            <td class="py-2 px-4">Have</td>
+                            <td class="py-2 px-4">
+                                <input type="text" id="ex3-have" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500 w-full">
+                            </td>
+                            <td class="py-2 px-4"><span id="ex3-feedback-have" class="hidden text-sm"></span></td>
+                        </tr>
+                        <tr class="border-b border-green-100">
+                            <td class="py-2 px-4">Be</td>
+                            <td class="py-2 px-4">
+                                Was/ <input type="text" id="ex3-be" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500 w-full">
+                            </td>
+                            <td class="py-2 px-4"><span id="ex3-feedback-be" class="hidden text-sm"></span></td>
+                        </tr>
+                        <tr class="border-b border-green-100">
+                            <td class="py-2 px-4">Go</td>
+                            <td class="py-2 px-4">
+                                <input type="text" id="ex3-go" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500 w-full">
+                            </td>
+                            <td class="py-2 px-4"><span id="ex3-feedback-go" class="hidden text-sm"></span></td>
+                        </tr>
+                        <tr class="border-b border-green-100">
+                            <td class="py-2 px-4">Stay</td>
+                            <td class="py-2 px-4">
+                                <input type="text" id="ex3-stay" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500 w-full">
+                            </td>
+                            <td class="py-2 px-4"><span id="ex3-feedback-stay" class="hidden text-sm"></span></td>
+                        </tr>
+                        <tr class="border-b border-green-100">
+                            <td class="py-2 px-4">Do</td>
+                            <td class="py-2 px-4">
+                                <input type="text" id="ex3-do" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500 w-full">
+                            </td>
+                            <td class="py-2 px-4"><span id="ex3-feedback-do" class="hidden text-sm"></span></td>
+                        </tr>
+                        <tr class="border-b border-green-100">
+                            <td class="py-2 px-4">Buy</td>
+                            <td class="py-2 px-4">
+                                <input type="text" id="ex3-buy" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500 w-full">
+                            </td>
+                            <td class="py-2 px-4"><span id="ex3-feedback-buy" class="hidden text-sm"></span></td>
+                        </tr>
+                        <tr class="border-b border-green-100">
+                            <td class="py-2 px-4">Run</td>
+                            <td class="py-2 px-4">
+                                <input type="text" id="ex3-run" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500 w-full">
+                            </td>
+                            <td class="py-2 px-4"><span id="ex3-feedback-run" class="hidden text-sm"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex3-button" class="px-5 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 3
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 2: Exercise 4 -->
+        <section class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-purple-600 mb-4">Unit 2: Exercise 4</h2>
+            <p class="mb-4">Read the task card. Then watch the video of a student doing IELTS Speaking Part 2. The student makes some mistakes and uses the wrong tense in her answers. Correct the ten mistakes using the past simple form of the verbs. You will get a maximum of 2 points per mistake (1 point for finding the correct part to change, 1 point for making the change correctly).</p>
+            <div class="bg-purple-100 p-4 rounded-md mb-4 border border-purple-200">
+                <p class="font-medium text-lg mb-2">Describe a place where you had a holiday that you enjoyed.
+                You should say: where the place was when you went there and how long you stayed what you did while you were there and explain why you enjoyed having a holiday at that place.</p>
+                <p class="text-sm mb-2 italic">Student's original sentences (with mistakes highlighted in bold for clarity, although user will input full corrected text):</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>I really <span class="font-bold">want</span> to go there. <span class="text-purple-600 text-xs">(Mistake 1)</span></li>
+                    <li>We <span class="font-bold">stay</span> there for two or three days. <span class="text-purple-600 text-xs">(Mistake 2)</span></li>
+                    <li>We <span class="font-bold">travelling</span> there and <span class="font-bold">go</span> around there and … <span class="font-bold">buy</span> some local things. <span class="text-purple-600 text-xs">(Mistakes 3, 4, 5)</span></li>
+                    <li>We <span class="font-bold">have</span> two days in a hotel. <span class="text-purple-600 text-xs">(Mistake 6)</span></li>
+                    <li>It’s quite a small hotel.</li>
+                    <li>I really <span class="font-bold">enjoy</span> this holiday. <span class="text-purple-600 text-xs">(Mistake 7)</span></li>
+                    <li>"After that, we <span class="font-bold">go</span> around another city nearby ..." <span class="text-purple-600 text-xs">(Mistake 8)</span></li>
+                    <li>And then we <span class="font-bold">go</span> back to Beijing. <span class="text-purple-600 text-xs">(Mistake 9)</span></li>
+                </ul>
+                <p class="text-sm mt-4">Type your corrected sentences for the mistakes above, replacing only the bolded words with their past simple forms.</p>
+            </div>
+            <textarea id="ex4-corrections" class="w-full p-3 border rounded-md focus:ring-purple-500 focus:border-purple-500 h-48 resize-y" placeholder="Write your corrected sentences here..."></textarea>
+            <div id="ex4-feedback" class="hidden feedback-box mt-3"></div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex4-button" class="px-5 py-2 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 4
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 2: Exercise 5 -->
+        <section class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Unit 2: Exercise 5</h2>
+            <p class="mb-4">Read the information. Then complete the sentences using the past simple forms of the verbs in brackets.</p>
+            <div class="bg-yellow-100 p-4 rounded-md mb-4 border border-yellow-200">
+                <p class="font-medium text-lg mb-2">The past simple:</p>
+                <p class="mb-1"><strong>Positive form:</strong> subject + past simple verb + object <span class="italic">(Example: You enjoyed the holiday.)</span></p>
+                <p class="mb-1"><strong>Negative form:</strong> subject + did not + past simple verb + object <span class="italic">(Example: You did not (didn't) enjoy the holiday.)</span></p>
+                <p><strong>Question form:</strong> Did + subject + past simple verb + object <span class="italic">(Example: Did you enjoy the holiday?)</span></p>
+            </div>
+            <div class="space-y-4">
+                <div class="flex items-center space-x-2">
+                    <p>Positive: In Greece, we </p>
+                    <input type="text" id="ex5-swim" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32" placeholder="_____">
+                    <p>in the sea every day. (swim)</p>
+                    <span id="ex5-feedback-swim" class="hidden text-sm ml-2"></span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <p>Negative: When I was in Los Angeles I </p>
+                    <input type="text" id="ex5-eat" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32" placeholder="_____">
+                    <p>any hamburgers. (eat)</p>
+                    <span id="ex5-feedback-eat" class="hidden text-sm ml-2"></span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <p>Positive: My friend </p>
+                    <input type="text" id="ex5-speak" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32" placeholder="_____">
+                    <p>Portuguese when we were in Brazil. (speak)</p>
+                    <span id="ex5-feedback-speak" class="hidden text-sm ml-2"></span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <input type="text" id="ex5-visit" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32" placeholder="_____">
+                    <p>the Colosseum when you were in Rome? (visit)</p>
+                    <span id="ex5-feedback-visit" class="hidden text-sm ml-2"></span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <input type="text" id="ex5-leave" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32" placeholder="_____">
+                    <p>your bags at the hotel? (leave)</p>
+                    <span id="ex5-feedback-leave" class="hidden text-sm ml-2"></span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <p>Positive: I </p>
+                    <input type="text" id="ex5-forget" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32" placeholder="_____">
+                    <p>to visit the Fabergé Museum when I was in St. Petersburg. (forget)</p>
+                    <span id="ex5-feedback-forget" class="hidden text-sm ml-2"></span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <input type="text" id="ex5-put" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32" placeholder="_____">
+                    <p>your camera in my suitcase? (put)</p>
+                    <span id="ex5-feedback-put" class="hidden text-sm ml-2"></span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <p>Negative: In Tokyo I </p>
+                    <input type="text" id="ex5-drink" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32" placeholder="_____">
+                    <p>a lot of green tea. (drink)</p>
+                    <span id="ex5-feedback-drink" class="hidden text-sm ml-2"></span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <p>Negative: We </p>
+                    <input type="text" id="ex5-dance" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32" placeholder="_____">
+                    <p>at all when we were in Cuba. (dance)</p>
+                    <span id="ex5-feedback-dance" class="hidden text-sm ml-2"></span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <input type="text" id="ex5-enjoy" class="p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-32" placeholder="_____">
+                    <p>the trip to the zoo? (enjoy)</p>
+                    <span id="ex5-feedback-enjoy" class="hidden text-sm ml-2"></span>
+                </div>
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex5-button" class="px-5 py-2 bg-yellow-600 text-white rounded-lg shadow-md hover:bg-yellow-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 5
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 2: Exercise 6 -->
+        <section class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-red-600 mb-4">Unit 2: Exercise 6</h2>
+            <p class="mb-4">Read the information. Then watch the videos and complete the students’ answers. Use the words from the information box.</p>
+            <div class="bg-red-100 p-4 rounded-md mb-4 border border-red-200">
+                <p class="font-medium text-lg">You can use words like <span class="font-bold">and, or, but, so</span> and <span class="font-bold">because</span> to give more information in your answers.</p>
+            </div>
+            <div class="space-y-4">
+                <div class="flex items-center space-x-2">
+                    <p>1. I’m happy they could choose this period of time to spend with me and my sister, </p>
+                    <input type="text" id="ex6-q1" class="p-2 border rounded-md focus:ring-red-500 focus:border-red-500 w-32" placeholder="_____">
+                    <p>I have good memories of this trip.</p>
+                    <span id="ex6-feedback-q1" class="hidden text-sm ml-2"></span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <p>2. The place where I had a holiday that I enjoyed was in the Maldives, </p>
+                    <input type="text" id="ex6-q2" class="p-2 border rounded-md focus:ring-red-500 focus:border-red-500 w-32" placeholder="_____">
+                    <p>it’s now two years ago.</p>
+                    <span id="ex6-feedback-q2" class="hidden text-sm ml-2"></span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <p>3. It’s a historical place. It’s a very small town, </p>
+                    <input type="text" id="ex6-q3" class="p-2 border rounded-md focus:ring-red-500 focus:border-red-500 w-32" placeholder="_____">
+                    <p>a lot of history has happened there.</p>
+                    <span id="ex6-feedback-q3" class="hidden text-sm ml-2"></span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <p>4. So first we were relaxing </p>
+                    <input type="text" id="ex6-q4" class="p-2 border rounded-md focus:ring-red-500 focus:border-red-500 w-32" placeholder="_____">
+                    <p>the Maldives, ... is a place where you can really relax.</p>
+                    <span id="ex6-feedback-q4" class="hidden text-sm ml-2"></span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <p>5. We stayed there for two days </p>
+                    <input type="text" id="ex6-q5" class="p-2 border rounded-md focus:ring-red-500 focus:border-red-500 w-32" placeholder="_____">
+                    <p>three days.</p>
+                    <span id="ex6-feedback-q5" class="hidden text-sm ml-2"></span>
+                </div>
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex6-button" class="px-5 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 6
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 2: Exercise 7 -->
+        <section class="mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-teal-600 mb-4">Unit 2: Exercise 7</h2>
+            <p class="mb-4">Match the two halves to complete the sentences.</p>
+            <div class="bg-teal-100 p-4 rounded-md mb-4 border border-teal-200">
+                <p class="font-medium text-lg">Word bank: and another thing was the wildlife., so I took a lot of photos on the holiday., so I saw the pyramids., or Arabic, which meant that we had to speak English., but I hated the weather., because the people were so friendly., so I had to cancel my credit card., because they could not speak English.</p>
+            </div>
+            <div id="exercise7-container" class="space-y-4">
+                <!-- Exercise 7 content will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex7-button" class="px-5 py-2 bg-teal-600 text-white rounded-lg shadow-md hover:bg-teal-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 7
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 2: Exercise 8 -->
+        <section class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-orange-600 mb-4">Unit 2: Exercise 8</h2>
+            <p class="mb-4">Watch the video and read the information. Then match the descriptions with the sentences. The sentences include words and phrases that you can use in the IELTS Speaking test to sound more natural.</p>
+            <div class="bg-orange-100 p-4 rounded-md mb-4 border border-orange-200">
+                <p class="font-medium text-lg mb-2">You can use words or phrases like <span class="font-bold">basically, for a start, I mean, now</span> and <span class="font-bold">actually</span> to sound more natural. Did you notice how the student in the video uses <span class="font-bold">actually</span> to talk about a surprising fact?</p>
+                <p class="italic">Example: ... and it was <span class="font-bold">actually</span> the first holiday that we were together.</p>
+                <p class="text-sm mt-2">Descriptions: adds or clarifies information, gives an example, introduces a new topic, shows surprise about a fact, simplifies or summarises information</p>
+            </div>
+            <div id="exercise8-container" class="space-y-4">
+                <!-- Exercise 8 content will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex8-button" class="px-5 py-2 bg-orange-600 text-white rounded-lg shadow-md hover:bg-orange-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 8
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 2: Exercise 9 -->
+        <section class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-pink-600 mb-4">Unit 2: Exercise 9</h2>
+            <p class="mb-4">Choose the correct answers to complete the sentences.</p>
+            <div id="exercise9-container" class="space-y-4">
+                <!-- Exercise 9 content will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex9-button" class="px-5 py-2 bg-pink-600 text-white rounded-lg shadow-md hover:bg-pink-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 9
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 2: Exercise 10 -->
+        <section class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Unit 2: Exercise 10</h2>
+            <p class="mb-4">You are going to do IELTS Speaking Part 2. You will need some paper and a pencil. Listen to the examiner. Record your answer. Play to hear your answer.</p>
+            <div class="bg-gray-100 p-4 rounded-md mb-4 border border-gray-200">
+                <p class="font-medium text-lg mb-2">Describe a place where you had a holiday that you enjoyed.
+                You should say: where the place was when you went there and how long you stayed what you did while you were there and explain why you enjoyed having a holiday at that place.</p>
+            </div>
+            <p class="mb-2 font-medium">Your Answer:</p>
+            <textarea id="ex10-text" class="w-full p-3 border border-gray-300 rounded-md focus:ring-gray-500 focus:border-gray-500 h-48 resize-y" placeholder="Write your answer here..."></textarea>
+            <div class="mt-4 text-sm text-gray-600">
+                Word count: <span id="ex10-word-count">0</span>
+            </div>
+        </section>
+
+    </div>
+
+    <div id="message-box"></div>
+
+    <script>
+        // Global state object for saving/loading answers
+        let appState = {
+            exercise1Answers: {},
+            exercise2Answers: {},
+            exercise3Answers: {},
+            exercise4Corrections: '',
+            exercise5Answers: {},
+            exercise6Answers: {}, // For conjunctions
+            exercise7Answers: {}, // For matching halves
+            exercise8Answers: {}, // For natural phrases
+            exercise9Answers: {}, // For multiple choice
+            exercise10Text: '',
+        };
+
+        // --- Data for Exercises ---
+
+        // Exercise 1 Data
+        const exercise1Mapping = [
+            { question: "1. holiday,", correctMatch: "vacation" },
+            { question: "2. enjoyed,", correctMatch: "liked" },
+            { question: "3. say,", correctMatch: "explain" },
+            { question: "4. place,", correctMatch: "location" },
+            { question: "5. how long,", correctMatch: "length of time" },
+            { question: "6. stayed,", correctMatch: "visited" },
+            { question: "7. while,", correctMatch: "during" },
+            { question: "8. explain why,", correctMatch: "the reason why" },
+        ];
+        const exercise1MatchOptions = ["length of time", "the reason why", "vacation", "liked", "during", "location", "visited", "explain"];
+
+        // Exercise 2 Data
+        const exercise2Words = {
+            'had': 'had',
+            'was': 'was',
+            'stayed': 'stayed',
+            'went': 'went',
+            'bought': 'bought',
+            'ran': 'ran',
+            'were': 'were',
+        };
+
+        // Exercise 3 Data
+        const exercise3Verbs = {
+            'Enjoy': 'enjoyed',
+            'Have': 'had',
+            'Be': 'were', // Assuming 'was' is provided
+            'Go': 'went',
+            'Stay': 'stayed',
+            'Do': 'did',
+            'Buy': 'bought',
+            'Run': 'ran'
+        };
+
+        // Exercise 4 Data (Mistakes and their corrections)
+        const exercise4Mistakes = [
+            { original: 'want', corrected: 'wanted' },
+            { original: 'stay', corrected: 'stayed' },
+            { original: 'travelling', corrected: 'travelled' },
+            { original: 'go', corrected: 'went' },
+            { original: 'buy', corrected: 'bought' },
+            { original: 'have', corrected: 'had' },
+            { original: 'enjoy', corrected: 'enjoyed' },
+            { original: 'go', corrected: 'went' }, // Second 'go'
+            { original: 'go', corrected: 'went' }  // Third 'go'
+            // Total 9 mistakes as per document analysis
+        ];
+
+        // Exercise 5 Data
+        const exercise5Sentences = [
+            { verb: 'swim', correct: 'swam' },
+            { verb: 'eat', correct: 'didn\'t eat' },
+            { verb: 'speak', correct: 'spoke' },
+            { verb: 'visit', correct: 'Did you visit' },
+            { verb: 'leave', correct: 'Did you leave' },
+            { verb: 'forget', correct: 'forgot' },
+            { verb: 'put', correct: 'Did you put' },
+            { verb: 'drink', correct: 'didn\'t drink' },
+            { verb: 'dance', correct: 'didn\'t dance' },
+            { verb: 'enjoy', correct: 'Did you enjoy' },
+        ];
+
+        // Exercise 6 Data (Conjunctions)
+        const exercise6Conjunctions = {
+            'q1': 'so',
+            'q2': 'but',
+            'q3': 'and',
+            'q4': 'because',
+            'q5': 'or'
+        };
+
+        // Exercise 7 Data (Matching halves)
+        const exercise7SentencePairs = [
+            { start: "1. When I was in New York I lost my wallet,", end: "so I had to cancel my credit card." },
+            { start: "2. I loved the food in Germany,", end: "but I hated the weather." },
+            { start: "3. We didn't speak Chinese,", end: "because they could not speak English." },
+            { start: "4. Sometimes people in Warsaw spoke to me in Polish,", end: "or Arabic, which meant that we had to speak English." },
+            { start: "5. I visited Egypt,", end: "so I saw the pyramids." },
+            { start: "6. One thing I liked about Alaska was the scenery,", end: "and another thing was the wildlife." },
+            { start: "7. My father gave me a camera for my birthday,", end: "so I took a lot of photos on the holiday." },
+            { start: "8. I didn't feel lonely in India,", end: "because the people were so friendly." },
+        ];
+        const exercise7Endings = [
+            "and another thing was the wildlife.", "so I took a lot of photos on the holiday.", "so I saw the pyramids.",
+            "or Arabic, which meant that we had to speak English.", "but I hated the weather.", "because the people were so friendly.",
+            "so I had to cancel my credit card.", "because they could not speak English."
+        ];
+
+
+        // Exercise 8 Data (Natural phrases)
+        const exercise8Phrases = [
+            { sentence: "It's a good place to visit. I mean, for a holiday.", correctDescription: "adds or clarifies information" },
+            { sentence: "We spent the whole holiday on the beach. Every day, basically.", correctDescription: "simplifies or summarises information" },
+            { sentence: "There is a lot to see in this city. For a start, there are so many museums.", correctDescription: "gives an example" },
+            { sentence: "Now, let me tell you about the hotel …", correctDescription: "introduces a new topic" },
+            { sentence: "I thought it would be hot but actually it was cold.", correctDescription: "shows surprise about a fact" },
+        ];
+        const exercise8Descriptions = [
+            "adds or clarifies information", "gives an example", "introduces a new topic",
+            "shows surprise about a fact", "simplifies or summarises information"
+        ];
+
+        // Exercise 9 Data (Multiple Choice)
+        const exercise9Choices = [
+            {
+                question: "I expected the weather in Jamaica to be lovely but ________ it was really bad.",
+                options: ["actually", "basically", "for a start", "I mean", "now"],
+                correct: "actually"
+            },
+            {
+                question: "The weather was really bad. ________, it rained every day!",
+                options: ["Actually", "Basically", "For a start", "I mean", "Now"],
+                correct: "Basically"
+            },
+            {
+                question: "Swedish winters are much worse than British winters. ________, it always snows in Sweden, plus it’s a lot colder …",
+                options: ["Actually", "Basically", "For a start", "I mean", "Now"],
+                correct: "For a start"
+            },
+            {
+                question: "We loved the food in Italy. ________, I have to tell you about the ice cream …",
+                options: ["Actually", "Basically", "For a start", "I mean", "Now"],
+                correct: "Now"
+            },
+            {
+                question: "It’s an expensive city. ________, it isn’t as expensive as some other cities, but it’s not cheap.",
+                options: ["Actually", "Basically", "For a start", "I mean", "Now"],
+                correct: "I mean"
+            },
+        ];
+
+        // --- Helper Functions ---
+        function getElement(id) {
+            return document.getElementById(id);
+        }
+
+        function setFeedback(elementId, isCorrect, correctText = '') {
+            const element = getElement(elementId);
+            if (!element) return;
+            element.classList.remove('hidden');
+            element.classList.remove('correct-feedback', 'incorrect-feedback');
+            element.textContent = ''; // Clear previous text
+
+            if (isCorrect) {
+                element.classList.add('correct-feedback');
+                element.textContent = '✓ Correct!';
+            } else {
+                element.classList.add('incorrect-feedback');
+                element.textContent = `✗ Incorrect. ${correctText ? `Correct: ${correctText}` : ''}`;
+            }
+        }
+
+        function clearFeedback(elementId) {
+            const element = getElement(elementId);
+            if (element) {
+                element.classList.add('hidden');
+                element.classList.remove('correct-feedback', 'incorrect-feedback');
+                element.textContent = '';
+            }
+        }
+
+        function clearAllFeedbacks() {
+            document.querySelectorAll('[id^="ex"][id*="-feedback"]').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('correct-feedback', 'incorrect-feedback');
+                el.textContent = '';
+            });
+            document.querySelectorAll('.feedback-box').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('correct', 'incorrect');
+                el.textContent = '';
+            });
+        }
+
+        // Function to show a temporary message
+        function showMessage(message, type = 'success') {
+            const messageBox = getElement('message-box');
+            messageBox.textContent = message;
+            messageBox.className = ''; // Clear previous classes
+            messageBox.classList.add('show');
+            if (type === 'success') {
+                messageBox.style.backgroundColor = '#4CAF50';
+            } else if (type === 'error') {
+                messageBox.style.backgroundColor = '#f44336';
+            }
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+            }, 3000);
+        }
+
+        // --- Save/Load Functions ---
+        function saveAnswers() {
+            try {
+                localStorage.setItem('ieltsSpeakingWorksheetAppState', JSON.stringify(appState));
+            } catch (e) {
+                console.error("Error saving to local storage:", e);
+            }
+        }
+
+        function loadAnswers() {
+            try {
+                const savedState = localStorage.getItem('ieltsSpeakingWorksheetAppState');
+                if (savedState) {
+                    appState = JSON.parse(savedState); // Overwrite appState with saved data
+
+                    // Populate Exercise 1 dropdowns
+                    exercise1Mapping.forEach((item, index) => {
+                        const select = getElement(`ex1-select-${index}`);
+                        if (select && appState.exercise1Answers[`q${index + 1}`] !== undefined) {
+                            select.value = appState.exercise1Answers[`q${index + 1}`];
+                        }
+                    });
+
+                    // Populate Exercise 2 inputs
+                    for (const key in exercise2Words) {
+                        const input = getElement(`ex2-${key}`);
+                        if (input && appState.exercise2Answers[key] !== undefined) {
+                            input.value = appState.exercise2Answers[key];
+                        }
+                    }
+
+                    // Populate Exercise 3 inputs
+                    for (const key in exercise3Verbs) {
+                        const input = getElement(`ex3-${key.toLowerCase()}`);
+                        if (input && appState.exercise3Answers[key.toLowerCase()] !== undefined) {
+                            input.value = appState.exercise3Answers[key.toLowerCase()];
+                        }
+                    }
+
+                    // Populate Exercise 4 textarea
+                    const ex4Textarea = getElement('ex4-corrections');
+                    if (ex4Textarea && appState.exercise4Corrections !== undefined) {
+                        ex4Textarea.value = appState.exercise4Corrections;
+                    }
+
+                    // Populate Exercise 5 inputs
+                    exercise5Sentences.forEach((item, index) => {
+                        const input = getElement(`ex5-${item.verb.toLowerCase()}`);
+                        if (input && appState.exercise5Answers[item.verb.toLowerCase()] !== undefined) {
+                            input.value = appState.exercise5Answers[item.verb.toLowerCase()];
+                        }
+                    });
+
+                    // Populate Exercise 6 inputs
+                    for (const key in exercise6Conjunctions) {
+                        const input = getElement(`ex6-${key}`);
+                        if (input && appState.exercise6Answers[key] !== undefined) {
+                            input.value = appState.exercise6Answers[key];
+                        }
+                    }
+
+                    // Populate Exercise 7 dropdowns
+                    exercise7SentencePairs.forEach((item, index) => {
+                        const select = getElement(`ex7-select-${index}`);
+                        if (select && appState.exercise7Answers[`q${index + 1}`] !== undefined) {
+                            select.value = appState.exercise7Answers[`q${index + 1}`];
+                        }
+                    });
+
+                    // Populate Exercise 8 dropdowns
+                    exercise8Phrases.forEach((item, index) => {
+                        const select = getElement(`ex8-select-${index}`);
+                        if (select && appState.exercise8Answers[`q${index + 1}`] !== undefined) {
+                            select.value = appState.exercise8Answers[`q${index + 1}`];
+                        }
+                    });
+
+                    // Populate Exercise 9 dropdowns
+                    exercise9Choices.forEach((item, index) => {
+                        const select = getElement(`ex9-select-${index}`);
+                        if (select && appState.exercise9Answers[`q${index + 1}`] !== undefined) {
+                            select.value = appState.exercise9Answers[`q${index + 1}`];
+                        }
+                    });
+
+                    // Populate Exercise 10 textarea and word count
+                    const ex10Textarea = getElement('ex10-text');
+                    const ex10WordCount = getElement('ex10-word-count');
+                    if (ex10Textarea && appState.exercise10Text !== undefined) {
+                        ex10Textarea.value = appState.exercise10Text;
+                        ex10WordCount.textContent = ex10Textarea.value.split(/\s+/).filter(word => word.length > 0).length;
+                    }
+                }
+            } catch (e) {
+                console.error("Error loading from local storage:", e);
+            }
+        }
+
+        // --- Exercise Initialization Functions ---
+
+        function initializeExercise1() {
+            const container = getElement('exercise1-container');
+            container.innerHTML = ''; // Clear existing content
+
+            exercise1Mapping.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = "flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 p-3 border border-indigo-200 rounded-md bg-indigo-100";
+
+                const questionP = document.createElement('p');
+                questionP.className = "flex-grow text-gray-700 font-medium";
+                questionP.textContent = item.question;
+                itemDiv.appendChild(questionP);
+
+                const select = document.createElement('select');
+                select.id = `ex1-select-${index}`;
+                select.className = "p-2 border rounded-md flex-shrink-0 md:w-64 focus:ring-indigo-500 focus:border-indigo-500";
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select a match";
+                select.appendChild(defaultOption);
+
+                exercise1MatchOptions.forEach(optionText => {
+                    const option = document.createElement('option');
+                    option.value = optionText;
+                    option.textContent = optionText;
+                    select.appendChild(option);
+                });
+
+                select.addEventListener('change', (event) => {
+                    appState.exercise1Answers[`q${index + 1}`] = event.target.value;
+                    saveAnswers();
+                });
+                itemDiv.appendChild(select);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex1-feedback-${index}`;
+                feedbackSpan.className = "hidden text-sm ml-2";
+                itemDiv.appendChild(feedbackSpan);
+
+                container.appendChild(itemDiv);
+            });
+            getElement('check-ex1-button').addEventListener('click', checkExercise1);
+        }
+
+        function checkExercise1() {
+            exercise1Mapping.forEach((item, index) => {
+                const userAnswer = appState.exercise1Answers[`q${index + 1}`] || '';
+                const isCorrect = userAnswer.toLowerCase() === item.correctMatch.toLowerCase();
+                setFeedback(`ex1-feedback-${index}`, isCorrect, item.correctMatch);
+
+                const selectElement = getElement(`ex1-select-${index}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        function initializeExercise2() {
+            const inputs = {
+                'ex2-had': 'had',
+                'ex2-was': 'was',
+                'ex2-stayed': 'stayed',
+                'ex2-went': 'went',
+                'ex2-bought': 'bought',
+                'ex2-ran': 'ran',
+                'ex2-were': 'were'
+            };
+            for (const id in inputs) {
+                const key = inputs[id];
+                const inputElement = getElement(id);
+                inputElement.addEventListener('input', (event) => {
+                    appState.exercise2Answers[key] = event.target.value;
+                    saveAnswers();
+                });
+            }
+            getElement('check-ex2-button').addEventListener('click', checkExercise2);
+        }
+
+        function checkExercise2() {
+            for (const key in exercise2Words) {
+                const userAnswer = appState.exercise2Answers[key] || '';
+                const isCorrect = userAnswer.toLowerCase() === exercise2Words[key].toLowerCase();
+                setFeedback(`ex2-feedback-${key}`, isCorrect, exercise2Words[key]);
+
+                const inputElement = getElement(`ex2-${key}`);
+                inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    inputElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    inputElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    inputElement.classList.add('border-gray-300');
+                }
+            }
+        }
+
+        function initializeExercise3() {
+            const inputs = {
+                'ex3-enjoy': 'enjoyed',
+                'ex3-have': 'had',
+                'ex3-be': 'were',
+                'ex3-go': 'went',
+                'ex3-stay': 'stayed',
+                'ex3-do': 'did',
+                'ex3-buy': 'bought',
+                'ex3-run': 'ran'
+            };
+            for (const id in inputs) {
+                const key = id.replace('ex3-', '');
+                const inputElement = getElement(id);
+                inputElement.addEventListener('input', (event) => {
+                    appState.exercise3Answers[key] = event.target.value;
+                    saveAnswers();
+                });
+            }
+            getElement('check-ex3-button').addEventListener('click', checkExercise3);
+        }
+
+        function checkExercise3() {
+            for (const key in exercise3Verbs) {
+                const userAnswer = appState.exercise3Answers[key.toLowerCase()] || '';
+                const isCorrect = userAnswer.toLowerCase() === exercise3Verbs[key].toLowerCase();
+                setFeedback(`ex3-feedback-${key.toLowerCase()}`, isCorrect, exercise3Verbs[key]);
+
+                const inputElement = getElement(`ex3-${key.toLowerCase()}`);
+                inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    inputElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    inputElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    inputElement.classList.add('border-gray-300');
+                }
+            }
+        }
+
+        function initializeExercise4() {
+            const textareaElement = getElement('ex4-corrections');
+            textareaElement.addEventListener('input', (event) => {
+                appState.exercise4Corrections = event.target.value;
+                saveAnswers();
+            });
+            getElement('check-ex4-button').addEventListener('click', checkExercise4);
+        }
+
+        function checkExercise4() {
+            let correctCount = 0;
+            const userText = appState.exercise4Corrections.toLowerCase();
+            const feedbackElement = getElement('ex4-feedback');
+
+            if (!userText) {
+                feedbackElement.classList.remove('hidden', 'correct', 'incorrect');
+                feedbackElement.classList.add('incorrect');
+                feedbackElement.textContent = 'Please type your corrected text to check for mistakes.';
+                return;
+            }
+
+            let allFound = true;
+            exercise4Mistakes.forEach(mistake => {
+                if (userText.includes(mistake.corrected.toLowerCase())) {
+                    correctCount++;
+                } else {
+                    allFound = false;
+                }
+            });
+
+            feedbackElement.classList.remove('hidden', 'correct', 'incorrect');
+            if (correctCount === exercise4Mistakes.length && allFound) {
+                feedbackElement.classList.add('correct');
+                feedbackElement.textContent = `Great job! You corrected all ${exercise4Mistakes.length} mistakes.`;
+            } else {
+                feedbackElement.classList.add('incorrect');
+                feedbackElement.textContent = `You found ${correctCount} out of ${exercise4Mistakes.length} corrections. Please review the missing ones.`;
+            }
+        }
+
+        function initializeExercise5() {
+            exercise5Sentences.forEach((item, index) => {
+                const inputElement = getElement(`ex5-${item.verb.toLowerCase()}`);
+                inputElement.addEventListener('input', (event) => {
+                    appState.exercise5Answers[item.verb.toLowerCase()] = event.target.value;
+                    saveAnswers();
+                });
+            });
+            getElement('check-ex5-button').addEventListener('click', checkExercise5);
+        }
+
+        function checkExercise5() {
+            exercise5Sentences.forEach((item, index) => {
+                const userAnswer = appState.exercise5Answers[item.verb.toLowerCase()] || '';
+                const isCorrect = userAnswer.toLowerCase() === item.correct.toLowerCase();
+                setFeedback(`ex5-feedback-${item.verb.toLowerCase()}`, isCorrect, item.correct);
+
+                const inputElement = getElement(`ex5-${item.verb.toLowerCase()}`);
+                inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    inputElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    inputElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    inputElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        function initializeExercise6() {
+            for (const key in exercise6Conjunctions) {
+                const inputElement = getElement(`ex6-${key}`);
+                inputElement.addEventListener('input', (event) => {
+                    appState.exercise6Answers[key] = event.target.value;
+                    saveAnswers();
+                });
+            }
+            getElement('check-ex6-button').addEventListener('click', checkExercise6);
+        }
+
+        function checkExercise6() {
+            for (const key in exercise6Conjunctions) {
+                const userAnswer = appState.exercise6Answers[key] || '';
+                const isCorrect = userAnswer.toLowerCase() === exercise6Conjunctions[key].toLowerCase();
+                setFeedback(`ex6-feedback-${key}`, isCorrect, exercise6Conjunctions[key]);
+
+                const inputElement = getElement(`ex6-${key}`);
+                inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    inputElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    inputElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    inputElement.classList.add('border-gray-300');
+                }
+            }
+        }
+
+        function initializeExercise7() {
+            const container = getElement('exercise7-container');
+            container.innerHTML = ''; // Clear existing content
+
+            exercise7SentencePairs.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = "flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 p-3 border border-teal-200 rounded-md bg-teal-100";
+
+                const questionP = document.createElement('p');
+                questionP.className = "flex-grow text-gray-700 font-medium";
+                questionP.textContent = item.start;
+                itemDiv.appendChild(questionP);
+
+                const select = document.createElement('select');
+                select.id = `ex7-select-${index}`;
+                select.className = "p-2 border rounded-md flex-shrink-0 md:w-64 focus:ring-teal-500 focus:border-teal-500";
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select a match";
+                select.appendChild(defaultOption);
+
+                exercise7Endings.forEach(optionText => {
+                    const option = document.createElement('option');
+                    option.value = optionText;
+                    option.textContent = optionText;
+                    select.appendChild(option);
+                });
+
+                select.addEventListener('change', (event) => {
+                    appState.exercise7Answers[`q${index + 1}`] = event.target.value;
+                    saveAnswers();
+                });
+                itemDiv.appendChild(select);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex7-feedback-${index}`;
+                feedbackSpan.className = "hidden text-sm ml-2";
+                itemDiv.appendChild(feedbackSpan);
+
+                container.appendChild(itemDiv);
+            });
+            getElement('check-ex7-button').addEventListener('click', checkExercise7);
+        }
+
+        function checkExercise7() {
+            exercise7SentencePairs.forEach((item, index) => {
+                const userAnswer = appState.exercise7Answers[`q${index + 1}`] || '';
+                const isCorrect = userAnswer.toLowerCase() === item.end.toLowerCase();
+                setFeedback(`ex7-feedback-${index}`, isCorrect, item.end);
+
+                const selectElement = getElement(`ex7-select-${index}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        function initializeExercise8() {
+            const container = getElement('exercise8-container');
+            container.innerHTML = ''; // Clear existing content
+
+            exercise8Phrases.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = "flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 p-3 border border-orange-200 rounded-md bg-orange-100";
+
+                const questionP = document.createElement('p');
+                questionP.className = "flex-grow text-gray-700 font-medium";
+                questionP.textContent = item.sentence;
+                itemDiv.appendChild(questionP);
+
+                const select = document.createElement('select');
+                select.id = `ex8-select-${index}`;
+                select.className = "p-2 border rounded-md flex-shrink-0 md:w-64 focus:ring-orange-500 focus:border-orange-500";
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select a description";
+                select.appendChild(defaultOption);
+
+                exercise8Descriptions.forEach(optionText => {
+                    const option = document.createElement('option');
+                    option.value = optionText;
+                    option.textContent = optionText;
+                    select.appendChild(option);
+                });
+
+                select.addEventListener('change', (event) => {
+                    appState.exercise8Answers[`q${index + 1}`] = event.target.value;
+                    saveAnswers();
+                });
+                itemDiv.appendChild(select);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex8-feedback-${index}`;
+                feedbackSpan.className = "hidden text-sm ml-2";
+                itemDiv.appendChild(feedbackSpan);
+
+                container.appendChild(itemDiv);
+            });
+            getElement('check-ex8-button').addEventListener('click', checkExercise8);
+        }
+
+        function checkExercise8() {
+            exercise8Phrases.forEach((item, index) => {
+                const userAnswer = appState.exercise8Answers[`q${index + 1}`] || '';
+                const isCorrect = userAnswer.toLowerCase() === item.correctDescription.toLowerCase();
+                setFeedback(`ex8-feedback-${index}`, isCorrect, item.correctDescription);
+
+                const selectElement = getElement(`ex8-select-${index}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        function initializeExercise9() {
+            const container = getElement('exercise9-container');
+            container.innerHTML = ''; // Clear existing content
+
+            exercise9Choices.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = "flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 p-3 border border-pink-200 rounded-md bg-pink-100";
+
+                const questionP = document.createElement('p');
+                questionP.className = "flex-grow text-gray-700 font-medium";
+                questionP.textContent = item.question;
+                itemDiv.appendChild(questionP);
+
+                const select = document.createElement('select');
+                select.id = `ex9-select-${index}`;
+                select.className = "p-2 border rounded-md flex-shrink-0 md:w-64 focus:ring-pink-500 focus:border-pink-500";
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select an answer";
+                select.appendChild(defaultOption);
+
+                item.options.forEach(optionText => {
+                    const option = document.createElement('option');
+                    option.value = optionText;
+                    option.textContent = optionText;
+                    select.appendChild(option);
+                });
+
+                select.addEventListener('change', (event) => {
+                    appState.exercise9Answers[`q${index + 1}`] = event.target.value;
+                    saveAnswers();
+                });
+                itemDiv.appendChild(select);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex9-feedback-${index}`;
+                feedbackSpan.className = "hidden text-sm ml-2";
+                itemDiv.appendChild(feedbackSpan);
+
+                container.appendChild(itemDiv);
+            });
+            getElement('check-ex9-button').addEventListener('click', checkExercise9);
+        }
+
+        function checkExercise9() {
+            exercise9Choices.forEach((item, index) => {
+                const userAnswer = appState.exercise9Answers[`q${index + 1}`] || '';
+                const isCorrect = userAnswer.toLowerCase() === item.correct.toLowerCase();
+                setFeedback(`ex9-feedback-${index}`, isCorrect, item.correct);
+
+                const selectElement = getElement(`ex9-select-${index}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        function initializeExercise10() {
+            const textarea = getElement('ex10-text');
+            const wordCountSpan = getElement('ex10-word-count');
+
+            textarea.addEventListener('input', (event) => {
+                appState.exercise10Text = event.target.value;
+                const words = event.target.value.split(/\s+/).filter(word => word.length > 0).length;
+                wordCountSpan.textContent = words;
+                saveAnswers();
+            });
+        }
+
+        function clearAllAnswers() {
+            // Clear Exercise 1
+            exercise1Mapping.forEach((item, index) => {
+                const select = getElement(`ex1-select-${index}`);
+                if (select) {
+                    select.value = "";
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise1Answers[`q${index + 1}`] = '';
+                clearFeedback(`ex1-feedback-${index}`);
+            });
+
+            // Clear Exercise 2
+            for (const key in exercise2Words) {
+                const input = getElement(`ex2-${key}`);
+                if (input) {
+                    input.value = "";
+                    input.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    input.classList.add('border-gray-300');
+                }
+                appState.exercise2Answers[key] = '';
+                clearFeedback(`ex2-feedback-${key}`);
+            }
+
+            // Clear Exercise 3
+            for (const key in exercise3Verbs) {
+                const input = getElement(`ex3-${key.toLowerCase()}`);
+                if (input) {
+                    input.value = "";
+                    input.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    input.classList.add('border-gray-300');
+                }
+                appState.exercise3Answers[key.toLowerCase()] = '';
+                clearFeedback(`ex3-feedback-${key.toLowerCase()}`);
+            }
+
+            // Clear Exercise 4
+            const ex4Textarea = getElement('ex4-corrections');
+            if (ex4Textarea) ex4Textarea.value = '';
+            appState.exercise4Corrections = '';
+            const ex4FeedbackDiv = getElement('ex4-feedback');
+            if (ex4FeedbackDiv) {
+                ex4FeedbackDiv.classList.add('hidden');
+                ex4FeedbackDiv.classList.remove('correct', 'incorrect');
+                ex4FeedbackDiv.textContent = '';
+            }
+
+            // Clear Exercise 5
+            exercise5Sentences.forEach((item, index) => {
+                const input = getElement(`ex5-${item.verb.toLowerCase()}`);
+                if (input) {
+                    input.value = "";
+                    input.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    input.classList.add('border-gray-300');
+                }
+                appState.exercise5Answers[item.verb.toLowerCase()] = '';
+                clearFeedback(`ex5-feedback-${item.verb.toLowerCase()}`);
+            });
+
+            // Clear Exercise 6
+            for (const key in exercise6Conjunctions) {
+                const input = getElement(`ex6-${key}`);
+                if (input) {
+                    input.value = "";
+                    input.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    input.classList.add('border-gray-300');
+                }
+                appState.exercise6Answers[key] = '';
+                clearFeedback(`ex6-feedback-${key}`);
+            }
+
+            // Clear Exercise 7
+            exercise7SentencePairs.forEach((item, index) => {
+                const select = getElement(`ex7-select-${index}`);
+                if (select) {
+                    select.value = "";
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise7Answers[`q${index + 1}`] = '';
+                clearFeedback(`ex7-feedback-${index}`);
+            });
+
+            // Clear Exercise 8
+            exercise8Phrases.forEach((item, index) => {
+                const select = getElement(`ex8-select-${index}`);
+                if (select) {
+                    select.value = "";
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise8Answers[`q${index + 1}`] = '';
+                clearFeedback(`ex8-feedback-${index}`);
+            });
+
+            // Clear Exercise 9
+            exercise9Choices.forEach((item, index) => {
+                const select = getElement(`ex9-select-${index}`);
+                if (select) {
+                    select.value = "";
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise9Answers[`q${index + 1}`] = '';
+                clearFeedback(`ex9-feedback-${index}`);
+            });
+
+            // Clear Exercise 10
+            const ex10Textarea = getElement('ex10-text');
+            if (ex10Textarea) ex10Textarea.value = '';
+            appState.exercise10Text = '';
+            const ex10WordCount = getElement('ex10-word-count');
+            if (ex10WordCount) ex10WordCount.textContent = '0';
+
+            saveAnswers(); // Save the cleared state
+        }
+
+
+        // --- Initialize all exercises on window load ---
+        window.onload = function() {
+            initializeExercise1();
+            initializeExercise2();
+            initializeExercise3();
+            initializeExercise4();
+            initializeExercise5();
+            initializeExercise6();
+            initializeExercise7();
+            initializeExercise8();
+            initializeExercise9();
+            initializeExercise10();
+
+            // Attach event listener for clear all answers
+            getElement('clear-all-answers-button').addEventListener('click', clearAllAnswers);
+
+            // Load saved answers on page load
+            loadAnswers();
+        };
+    </script>
+</body>
+</html>
