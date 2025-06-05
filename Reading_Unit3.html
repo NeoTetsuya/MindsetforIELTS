@@ -1,25 +1,29 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mindset for IELTS 1 - Unit 3 Reading</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mindset for IELTS 1 - Unit 3 Reading (Styled)</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Inter Font from Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        /* Styles from Reading_Unit3.html */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8;
+            background-color: #f0f4f8; /* Keep light background */
             color: #334155;
             line-height: 1.6;
         }
         .container {
-            max-width: 900px;
-            margin: 2rem auto;
+            max-width: 768px; /* Adjusted to be narrower, like the image */
+            margin: 1rem auto;
             padding: 1.5rem;
             background-color: #ffffff;
             border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Slightly softer shadow */
         }
         h1, h2, h3 {
             color: #1e293b;
@@ -27,26 +31,23 @@
             margin-bottom: 1rem;
         }
         h1 {
-            font-size: 3.5rem; /* Increased font size */
+            font-size: 2.5rem; /* Adjusted font size to look like the image */
             text-align: center;
-            color: #0000FF; /* Changed to a more vibrant blue */
-            font-weight: 700; /* Ensure bold */
-            margin-bottom: 1.5rem; /* More space below title */
-            background-color: #e0f2fe; /* Very light blue background to highlight */
-            padding: 1rem; /* Add padding for background visibility */
-            border-radius: 8px; /* Rounded corners for the background */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            color: #3730A3; /* Deep indigo for the main title */
+            font-weight: 700;
+            margin-bottom: 2rem; /* More space below title */
+            /* Removed background-color, padding, border-radius, box-shadow from h1 */
         }
         h2 {
-            font-size: 1.9rem; /* Slightly larger for h2 */
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 0.5rem;
+            font-size: 1.5rem; /* Adjusted font size for h2 */
+            border-bottom: none; /* Removed border-bottom */
+            padding-bottom: initial; /* Removed padding-bottom */
             margin-top: 2rem;
-            color: #0f3460; /* Darker blue color for h2 as well */
-            font-weight: 700; /* Ensure bold for h2 */
-            background-color: #eef2ff; /* Light purple background for h2 */
-            padding: 0.75rem 1rem; /* Add padding for background visibility */
-            border-radius: 6px; /* Rounded corners for the background */
+            color: #4338CA; /* Indigo color for h2, similar to image */
+            font-weight: 700;
+            background-color: #EEF2FF; /* Light background for h2 */
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
         }
         h3 {
             font-size: 1.25rem;
@@ -55,10 +56,11 @@
         }
         .exercise-section {
             padding: 1.5rem;
-            background-color: #f8fafc;
+            background-color: #F8FAFC; /* Very light blue/grey, similar to image sections */
             border-radius: 8px;
             margin-bottom: 1.5rem;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Subtle shadow for sections */
         }
         .question-group {
             margin-bottom: 1.25rem;
@@ -90,15 +92,15 @@
         /* Base styling for all select elements */
         select {
             padding: 0.75rem;
-            border: 3px solid #3b82f6; /* Thicker, more prominent border */
+            border: 1px solid #D1D5DB; /* Lighter grey border */
             border-radius: 8px; /* Slightly more rounded corners */
-            background-color: #93c5fd; /* Stronger highlight background color */
+            background-color: #F9FAFB; /* Very light grey background */
             font-size: 1.1rem; /* Slightly larger font size */
-            color: #0f172a; /* Darker text color for better contrast */
-            font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+            color: #4B5563; /* Darker text color for better contrast */
+            font-weight: normal; /* Less bold */
+            box-shadow: none; /* Remove subtle box shadow */
             appearance: none; /* Remove default arrow */
-            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%230f172a%22%20d%3D%22M287%2C197.3L159.1%2C69.5c-3.2-3.2-8.4-3.2-11.6%2C0L5.4%2C197.3c-3.2%2C3.2-3.2%2C8.4%2C0%2C11.6l11.6%2C11.6c3.2%2C3.2%2C8.4%2C3.2%2C11.6%2C0l120.3-120.3l120.3%2C120.3c3.2%2C3.2%2C8.4%2C3.2%2C11.6%2C0l11.6-11.6C290.2%2C205.7%2C290.2%2C200.5%2C287%2C197.3z%22%2F%3E%3C%2Fsvg%3E'); /* Custom arrow */
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%234B5563%22%20d%3D%22M287%2C197.3L159.1%2C69.5c-3.2-3.2-8.4-3.2-11.6%2C0L5.4%2C197.3c-3.2%2C3.2-3.2%2C8.4%2C0%2C11.6l11.6%2C11.6c3.2%2C3.2%2C8.4%2C3.2%2C11.6%2C0l120.3-120.3l120.3%2C120.3c3.2%2C3.2%2C8.4%2C3.2%2C11.6%2C0l11.6-11.6C290.2%2C205.7%2C290.2%2C200.5%2C287%2C197.3z%22%2F%3E%3C%2Fsvg%3E'); /* Custom arrow color */
             background-repeat: no-repeat;
             background-position: right 0.75rem top 50%;
             background-size: 0.65em auto;
@@ -177,12 +179,12 @@
         .fill-in-the-blank input[type="text"] {
             width: 250px; /* Increased width */
             padding: 0.6rem 0.75rem; /* Increased padding for height */
-            border: 2px solid #4f46e5; /* More prominent border */
+            border: 1px solid #D1D5DB; /* Lighter border */
             border-radius: 6px;
-            background-color: #eef2ff; /* Light background for visibility */
+            background-color: #F9FAFB; /* Lighter background */
             font-size: 1.05rem; /* Slightly larger font */
-            color: #1e293b; /* Darker text for contrast */
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            color: #4B5563; /* Darker text for contrast */
+            box-shadow: none; /* Remove shadow */
             flex-grow: 0; /* Prevent it from growing too much */
             flex-shrink: 0; /* Prevent it from shrinking too much */
         }
@@ -195,12 +197,24 @@
         .fill-in-the-blank span {
             margin-right: 0.5rem;
         }
+        #clear-all-answers-button {
+            background-color: #EF4444; /* Red-500 */
+            color: white;
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 0.5rem 1rem; /* px-4 py-2 */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+        #clear-all-answers-button:hover {
+            background-color: #DC2626; /* Red-600 */
+            transform: scale(1.05);
+        }
         .check-button {
             display: block;
             width: fit-content;
             margin-top: 1rem;
             padding: 0.75rem 1.5rem;
-            background-color: #4f46e5;
+            background-color: #4F46E5; /* Indigo-600 */
             color: #ffffff;
             border: none;
             border-radius: 8px;
@@ -211,7 +225,7 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
         .check-button:hover {
-            background-color: #4338ca;
+            background-color: #4338CA; /* Darker indigo on hover */
         }
         .result-message {
             margin-top: 0.75rem;
@@ -221,11 +235,11 @@
             /* display: none; */ /* Removed display: none to always show score */
         }
         .result-message.correct {
-            background-color: #d1fae5;
+            background-color: #D1FAE5; /* Updated to match style.css */
             color: #065f46;
         }
         .result-message.incorrect {
-            background-color: #fee2e2;
+            background-color: #FEE2E2; /* Updated to match style.css */
             color: #991b1b;
         }
         .text-block {
@@ -271,321 +285,345 @@
             object-fit: cover;
             border-radius: 8px;
             margin-bottom: 0.5rem;
-            border: 1px solid #cbd5e1;
+            border: 1px solid #E2E8F0; /* Lighter border for images */
         }
         .image-item-label {
             font-weight: bold;
             margin-bottom: 0.5rem;
             color: #334155;
         }
+
+        /* Custom CSS from original style.css */
+        .correct-feedback {
+            color: #10B981; /* Green-500 */
+        }
+        .incorrect-feedback {
+            color: #EF4444; /* Red-500 */
+        }
+        .feedback-box {
+            padding: 0.5rem 0.75rem;
+            margin-top: 0.5rem;
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 0.875rem; /* text-sm */
+        }
+        .feedback-box.correct {
+            background-color: #D1FAE5; /* green-100 */
+            border: 1px solid #34D399; /* green-400 */
+        }
+        .feedback-box.incorrect {
+            background-color: #FEE2E2; /* red-100 */
+            border: 1px solid #F87171; /* red-400 */
+        }
+        /* Message Box for Save Confirmation */
+        #message-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #message-box.show {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Mindset for IELTS 1 - Unit 3 Reading</h1>
-
-        <div class="text-block">
-            <p>In this unit, you will read a text called ‘Cities of the future’. In the text, there are some opinions given about problems our societies may face.</p>
-        </div>
-
-        <!-- Exercise 1 -->
-        <div class="exercise-section">
-            <h2>Unit 3: Exercise 1</h2>
-            <p class="question-text">Match the topics with the correct pictures.</p>
-            <div class="image-row">
-                <div class="image-item">
-                    <div class="image-item-label">Picture 1</div>
-                    <img src="https://i.postimg.cc/85SgQjgM/Reading-Unit3-Exercise1-Picture1.jpg" alt="Traffic Jam" onerror="this.onerror=null;this.src='https://placehold.co/120x120/a78bfa/ffffff?text=Image+1+Error';">
-                    <select id="ex1-q1" class="rounded-md">
-                        <option value="">Select Topic</option>
-                        <option value="population">population</option>
-                        <option value="building materials">building materials</option>
-                        <option value="traffic jam">traffic jam</option>
-                        <option value="pollution">pollution</option>
-                        <option value="new technology">new technology</option>
-                    </select>
-                </div>
-                <div class="image-item">
-                    <div class="image-item-label">Picture 2</div>
-                    <img src="https://i.postimg.cc/cCFpnhgB/Reading-Unit3-Exercise1-Picture2.jpg" alt="Pollution" onerror="this.onerror=null;this.src='https://placehold.co/120x120/a78bfa/ffffff?text=Image+2+Error';">
-                    <select id="ex1-q2" class="rounded-md">
-                        <option value="">Select Topic</option>
-                        <option value="population">population</option>
-                        <option value="building materials">building materials</option>
-                        <option value="traffic jam">traffic jam</option>
-                        <option value="pollution">pollution</option>
-                        <option value="new technology">new technology</option>
-                    </select>
-                </div>
-                <div class="image-item">
-                    <div class="image-item-label">Picture 3</div>
-                    <img src="https://i.postimg.cc/Y28KZrnL/Reading-Unit3-Exercise1-Picture3.jpg" alt="Population" onerror="this.onerror=null;this.src='https://placehold.co/120x120/a78bfa/ffffff?text=Image+3+Error';">
-                    <select id="ex1-q3" class="rounded-md">
-                        <option value="">Select Topic</option>
-                        <option value="population">population</option>
-                        <option value="building materials">building materials</option>
-                        <option value="traffic jam">traffic jam</option>
-                        <option value="pollution">pollution</option>
-                        <option value="new technology">new technology</option>
-                    </select>
-                </div>
-                <div class="image-item">
-                    <div class="image-item-label">Picture 4</div>
-                    <img src="https://i.postimg.cc/63fJ9tBS/Reading-Unit3-Exercise1-Picture4.jpg" alt="Building Materials" onerror="this.onerror=null;this.src='https://placehold.co/120x120/a78bfa/ffffff?text=Image+4+Error';">
-                    <select id="ex1-q4" class="rounded-md">
-                        <option value="">Select Topic</option>
-                        <option value="population">population</option>
-                        <option value="building materials">building materials</option>
-                        <option value="traffic jam">traffic jam</option>
-                        <option value="pollution">pollution</option>
-                        <option value="new technology">new technology</option>
-                    </select>
-                </div>
-                <div class="image-item">
-                    <div class="image-item-label">Picture 5</div>
-                    <img src="https://i.postimg.cc/kGMrGz45/Reading-Unit3-Exercise1-Picture5.jpg" alt="New Technology" onerror="this.onerror=null;this.src='https://placehold.co/120x120/a78bfa/ffffff?text=Image+5+Error';">
-                    <select id="ex1-q5" class="rounded-md">
-                        <option value="">Select Topic</option>
-                        <option value="population">population</option>
-                        <option value="building materials">building materials</option>
-                        <option value="traffic jam">traffic jam</option>
-                        <option value="pollution">pollution</option>
-                        <option value="new technology">new technology</option>
-                    </select>
-                </div>
-            </div>
-            <button class="check-button" onclick="checkExercise1()">Check Exercise 1</button>
-            <div id="ex1-result" class="result-message"></div>
-        </div>
-
-        <!-- Text for Paragraph A -->
-        <div class="text-block">
-            <h3>Paragraph A</h3>
-            <p>"Researchers recently gave 1,000 people a questionnaire about ‘Cities of The Future’. To answer the questions, the people had to imagine and describe what they thought our cities might look like in the year 2050. Interestingly, a large number of people were anxious that they would become ‘dark, dangerous places’, which had endless traffic jams and very few green spaces. This group also predicted an increase in the level of pollution and thought people would always need to wear facemasks in order to breathe. They also believed that it would be less safe to walk on the street as there would be ‘more stealing’ and other criminal behaviour. A smaller number thought cities might become a lot cleaner, and might be built from more interesting materials. They were also looking forward to new technology such as flying cars and moving pavements. In general, they believed that the cities of the future would offer a much more convenient way of living. A few people were uncertain; for example, they thought the size of apartments might reduce as the population of the city grew, but they also thought that public transport would become better."</p>
-        </div>
-
-        <!-- Exercise 2 -->
-        <div class="exercise-section">
-            <h2>Unit 3: Exercise 2</h2>
-            <p class="question-text">Quickly read the first paragraph of the text ‘Cities of the future’. How many people talked about each of these topics in the questionnaire? Choose the correct answers for the topics.</p>
-            <div class="question-group">
-                <p>building materials <select id="ex2-q1" class="rounded-md"><option value="">Select</option><option value="some people">some people</option><option value="most people">most people</option><option value="not many people">not many people</option></select>.</p>
-                <p>criminal behavior <select id="ex2-q2" class="rounded-md"><option value="">Select</option><option value="some people">some people</option><option value="most people">most people</option><option value="not many people">not many people</option></select>.</p>
-                <p>new technology <select id="ex2-q3" class="rounded-md"><option value="">Select</option><option value="some people">some people</option><option value="most people">most people</option><option value="not many people">not many people</option></select>.</p>
-                <p>pollution <select id="ex2-q4" class="rounded-md"><option value="">Select</option><option value="some people">some people</option><option value="most people">most people</option><option value="not many people">not many people</option></select>.</p>
-                <p>population <select id="ex2-q5" class="rounded-md"><option value="">Select</option><option value="some people">some people</option><option value="most people">most people</option><option value="not many people">not many people</option></select>.</p>
-                <p>traffic jams <select id="ex2-q6" class="rounded-md"><option value="">Select</option><option value="some people">some people</option><option value="most people">most people</option><option value="not many people">not many people</option></select>.</p>
-            </div>
-            <button class="check-button" onclick="checkExercise2()">Check Exercise 2</button>
-            <div id="ex2-result" class="result-message"></div>
-        </div>
-
-        <!-- Exercise 3 -->
-        <div class="exercise-section">
-            <h2>Unit 3: Exercise 3</h2>
-            <div class="text-block">
-                <p>"When you answer questions about a paragraph or paragraphs, you must read very carefully (and sometimes more than once). Try to think about how the information in the paragraph is organised. This will help you to quickly find the information you need to answer multiple choice questions."</p>
-            </div>
-            <p class="question-text">Read the question and choose the best answer. Read the text on page 1 again if you need to.</p>
-            <div class="question-group">
-                <p class="question-text">How is the information in the paragraph organised?</p>
-                <div class="options-container">
-                    <label><input type="radio" name="ex3-q1" value="A"> By describing all the negative things about future cities (e.g. crime) and then all the positive things (e.g. better public transport).</label>
-                    <label><input type="radio" name="ex3-q1" value="B"> By the most popular answers to the questionnaire (i.e. which questions had the most answers).</label>
-                    <label><input type="radio" name="ex3-q1" value="C"> By the topics in the questionnaire (e.g. transport problems, pollution, crime, etc.).</label>
-                </div>
-            </div>
-            <button class="check-button" onclick="checkExercise3()">Check Exercise 3</button>
-            <div id="ex3-result" class="result-message"></div>
-        </div>
-
-        <!-- Exercise 4 -->
-        <div class="exercise-section">
-            <h2>Unit 3: Exercise 4</h2>
-            <p class="question-text">Read the paragraph again carefully. Choose the correct answer to the question.</p>
-            <div class="question-group">
-                <p class="question-text">What do the results of the questionnaire show?</p>
-                <div class="options-container">
-                    <label><input type="radio" name="ex4-q1" value="A"> Most people feel worried rather than pleased about the way that cities will develop.</label>
-                    <label><input type="radio" name="ex4-q1" value="B"> People imagined that no one would use their own vehicles any more.</label>
-                    <label><input type="radio" name="ex4-q1" value="C"> People think that crime will be the worst problem that future cities will have.</label>
-                    <label><input type="radio" name="ex4-q1" value="D"> Some people believe that there will not be enough houses in the city for everyone.</label>
-                </div>
-            </div>
-            <button class="check-button" onclick="checkExercise4()">Check Exercise 4</button>
-            <div id="ex4-result" class="result-message"></div>
-        </div>
-
-        <!-- Exercise 5 -->
-        <div class="exercise-section">
-            <h2>Unit 3: Exercise 5</h2>
-            <p class="question-text">Read the information. Then read the paragraph again. Which of the numbered parts in bold (1–4) in the text do the options A–D relate to? Match the options and the numbered parts.</p>
-            <div class="text-block">
-                <p>"When you answer an IELTS Reading four-option multiple choice question, you should remember that:</p>
-                <p>each option (A, B, C, D) is usually connected to a piece of information in the same paragraph</p>
-                <p>only one option says exactly the same thing as a piece of information in the text</p>
-                <p>three options say something slightly different to the pieces of information in the text</p>
-                <p>the options do NOT always come in the same order as the pieces of information in the text."</p>
-            </div>
-            <div class="text-block">
-                <h3>Paragraph A (with numbered parts)</h3>
-                <p>Researchers recently gave 1,000 people a questionnaire about ‘Cities of The Future’. To answer the questions, the people had to imagine and describe what they thought our cities might look like in the year 2050. <span class="font-bold">(1) Interestingly, a large number of people were anxious that they would become ‘dark, dangerous places’, which had endless traffic jams and very few green spaces.</span> This group also predicted an increase in the level of pollution and thought people would always need to wear facemasks in order to breathe. <span class="font-bold">(2) They also believed that it would be less safe to walk on the street as there would be ‘more stealing’ and other criminal behaviour.</span> A smaller number thought cities might become a lot cleaner, and might be built from more interesting materials. They were also looking forward to new technology such as flying cars and moving pavements. In general, they believed that the cities of the future would offer a much more convenient way of living. A few people were uncertain; for example, <span class="font-bold">(3) they thought the size of apartments might reduce as the population of the city grew,</span> but <span class="font-bold">(4) they also thought that public transport would become better.</span></p>
-            </div>
-            <div class="question-group">
-                <p>A Some people believe that there will not be enough houses in the city for everyone. <select id="ex5-qA" class="rounded-md"><option value="">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></p>
-                <p>B People think that crime will be the worst problem that future cities will have. <select id="ex5-qB" class="rounded-md"><option value="">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></p>
-                <p>C Most people feel worried rather than pleased about the way that cities will develop. <select id="ex5-qC" class="rounded-md"><option value="">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></p>
-                <p>D People imagined that no one would use their own vehicle any more. <select id="ex5-qD" class="rounded-md"><option value="">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></p>
-            </div>
-            <button class="check-button" onclick="checkExercise5()">Check Exercise 5</button>
-            <div id="ex5-result" class="result-message"></div>
-        </div>
-
-        <!-- Exercise 6 -->
-        <div class="exercise-section">
-            <h2>Unit 3: Exercise 6</h2>
-            <p class="question-text">Read the paragraph again. Which of the options A–D is correct? Choose the correct answers.</p>
-            <div class="question-group">
-                <div class="exercise-6-question-item">
-                    <p class="question-text-line">A Some people believe that there will not be enough houses in the city for everyone.</p>
-                    <div class="exercise-6-options-container">
-                        <label><input type="radio" name="ex6-qA" value="Correct"> Correct</label>
-                        <label><input type="radio" name="ex6-qA" value="Incorrect"> Incorrect</label>
-                    </div>
-                </div>
-                <div class="exercise-6-question-item">
-                    <p class="question-text-line">B People think that crime will be the worst problem that future cities will have.</p>
-                    <div class="exercise-6-options-container">
-                        <label><input type="radio" name="ex6-qB" value="Correct"> Correct</label>
-                        <label><input type="radio" name="ex6-qB" value="Incorrect"> Incorrect</label>
-                    </div>
-                </div>
-                <div class="exercise-6-question-item">
-                    <p class="question-text-line">C Most people feel worried rather than pleased about the way that cities will develop.</p>
-                    <div class="exercise-6-options-container">
-                        <label><input type="radio" name="ex6-qC" value="Correct"> Correct</label>
-                        <label><input type="radio" name="ex6-qC" value="Incorrect"> Incorrect</label>
-                    </div>
-                </div>
-                <div class="exercise-6-question-item">
-                    <p class="question-text-line">D People imagined that no one would use their own vehicle any more.</p>
-                    <div class="exercise-6-options-container">
-                        <label><input type="radio" name="ex6-qD" value="Correct"> Correct</label>
-                        <label><input type="radio" name="ex6-qD" value="Incorrect"> Incorrect</label>
-                    </div>
-                </div>
-            </div>
-            <button class="check-button" onclick="checkExercise6()">Check Exercise 6</button>
-            <div id="ex6-result" class="result-message"></div>
-        </div>
-
-        <!-- Paragraphs B-E -->
-        <div class="text-block">
-            <h3>Paragraph B</h3>
-            <p>What do the results from this questionnaire tell us? In a way, we shouldn’t be amazed by the descriptions of the largest group. So many Hollywood films show cities of the future as frightening places. Online newspapers are also responsible for spreading this same belief. Headlines such as ‘Global population rises – cities become crowded’ are becoming more frequent. Journalists rarely discuss how future cities might be a good place to live.</p>
-
-            <h3>Paragraph C</h3>
-            <p>The facts are these: 50% of people now live in cities, even though cities only occupy 2% of the world’s land. By 2050, it is predicted that the number of people living there will rise to 70%. Some people are worried that villages in the countryside will become empty as everyone leaves for the city, and so traditional ways of life will be lost. This may be true, but we have to accept changes like this as part of human development. Rather than being negative, we should be hopeful that we can improve people’s lives as they move to cities. The way to do this is through intelligent planning.</p>
-
-            <h3>Paragraph D</h3>
-            <p>Architects have a big role to play in our future cities. In the past, the architects who were responsible for planning our cities often designed buildings that they were interested in; but now it is time for them to listen carefully to what people living in cities are asking for. In many countries around the world, people are choosing to have smaller families or to wait longer before they start a family. For this reason, not everyone needs a large house. Smaller and cheaper houses are what they need. But ‘small’ doesn’t have to be the same as ‘ugly’ or ‘boring’. Western architects could perhaps look at some of the architecture in Japanese cities, where very stylish houses are built on small pieces of unused land.</p>
-
-            <h3>Paragraph E</h3>
-            <p>And what might cities of the future be made from? Engineering companies have produced some interesting new products, for example, wood-like material made from recycled newspapers or old drink cartons. One engineering team are even working on a project that uses mushrooms to create a hard building material. These new materials may seem strange, but we should remember that plastic was only invented in 1907 – at the time people thought that this was an unusual product, but now it is something we cannot manage without. Building a city of the future requires imagination and an open mind.</p>
-        </div>
-
-        <!-- Exercise 7 -->
-        <div class="exercise-section">
-            <h2>Unit 3: Exercise 7</h2>
-            <div class="text-block">
-                <p>"In an IELTS Reading test, it is a good idea to very quickly skim through a text to get a general idea of the overall topic, and also the particular topics of each paragraph."</p>
-            </div>
-            <p class="question-text">Look at the paragraphs on page 1 again. In which paragraphs are the topics below mentioned? Choose the correct answers.</p>
-            <div class="question-group">
-                <p>the duties and responsibilities of the people who design our cities <select id="ex7-q1" class="rounded-md"><option value="">Select</option><option value="Paragraph B">Paragraph B</option><option value="Paragraph C">Paragraph C</option><option value="Paragraph D">Paragraph D</option><option value="Paragraph E">Paragraph E</option></select></p>
-                <p>the influence of cinema and the media on people’s view of the future <select id="ex7-q2" class="rounded-md"><option value="">Select</option><option value="Paragraph B">Paragraph B</option><option value="Paragraph C">Paragraph C</option><option value="Paragraph D">Paragraph D</option><option value="Paragraph E">Paragraph E</option></select></p>
-                <p>the types of material that future buildings might be made from <select id="ex7-q3" class="rounded-md"><option value="">Select</option><option value="Paragraph B">Paragraph B</option><option value="Paragraph C">Paragraph C</option><option value="Paragraph D">Paragraph D</option><option value="Paragraph E">Paragraph E</option></select></p>
-                <p>some information and opinions about people living in cities and living in the countryside <select id="ex7-q4" class="rounded-md"><option value="">Select</option><option value="Paragraph B">Paragraph B</option><option value="Paragraph C">Paragraph C</option><option value="Paragraph D">Paragraph D</option><option value="Paragraph E">Paragraph E</option></select></p>
-            </div>
-            <button class="check-button" onclick="checkExercise7()">Check Exercise 7</button>
-            <div id="ex7-result" class="result-message"></div>
-        </div>
-
-        <!-- Exercise 8 -->
-        <div class="exercise-section">
-            <h2>Unit 3: Exercise 8</h2>
-            <p class="question-text">Read Paragraphs B–E again, then answer the questions.</p>
-            <div class="question-group">
-                <p class="question-text">What is the writer doing in Paragraph B?</p>
-                <div class="options-container">
-                    <label><input type="radio" name="ex8-q1" value="A"> Explaining why many people will probably prefer to live in cities in the future.</label>
-                    <label><input type="radio" name="ex8-q1" value="B"> Giving a reason why many people feel negative about cities of the future.</label>
-                    <label><input type="radio" name="ex8-q1" value="C"> Suggesting that newspapers show a more realistic view of future cities than films.</label>
-                </div>
-            </div>
-            <div class="question-group">
-                <p class="question-text">What point does the writer make in Paragraph C?</p>
-                <div class="options-container">
-                    <label><input type="radio" name="ex8-q2" value="A"> It is important to encourage some people to stay in their villages.</label>
-                    <label><input type="radio" name="ex8-q2" value="B"> It is possible to maintain traditional village customs after moving to cities.</label>
-                    <label><input type="radio" name="ex8-q2" value="C"> It is necessary to think in a creative way about city design.</label>
-                </div>
-            </div>
-            <div class="question-group">
-                <p class="question-text">Paragraph D: In the writer’s opinion, architects who are responsible for planning cities</p>
-                <div class="options-container">
-                    <label><input type="radio" name="ex8-q3" value="A"> often make houses that are unattractive.</label>
-                    <label><input type="radio" name="ex8-q3" value="B"> must make buildings based on people’s needs.</label>
-                    <label><input type="radio" name="ex8-q3" value="C"> should get experience by working in foreign cities.</label>
-                </div>
-            </div>
-            <div class="question-group">
-                <p class="question-text">Paragraph E: The writer refers to the invention of plastic to make the point that</p>
-                <div class="options-container">
-                    <label><input type="radio" name="ex8-q4" value="A"> we can expect building materials to be very different in the future.</label>
-                    <label><input type="radio" name="ex8-q4" value="B"> we must accept that good-quality materials take a long time to create.</label>
-                    <label><input type="radio" name="ex8-q4" value="C"> we should use a variety of building materials to make our cities interesting.</label>
-                </div>
-            </div>
-            <button class="check-button" onclick="checkExercise8()">Check Exercise 8</button>
-            <div id="ex8-result" class="result-message"></div>
-        </div>
-
-        <!-- Exercise 9 -->
-        <div class="exercise-section">
-            <h2>Unit 3: Exercise 9</h2>
-            <p class="question-text">In an IELTS Reading text about the future, you are likely to see words and phrases that are used to make predictions. Match the meanings with the underlined words and phrases. Use the words in the box.</p>
-            </div>
-            <div class="question-group">
-                <p>1. We could see more robots in people's homes by 2050. <select id="ex9-q1" class="rounded-md"><option value="">Select</option><option value="possible">possible</option><option value="probable">probable</option><option value="certain">certain</option><option value="impossible">impossible</option><option value="uncertain">uncertain</option></select></p>
-                <p>2. There is a very good chance that there will be no more oil by 2050. <select id="ex9-q2" class="rounded-md"><option value="">Select</option><option value="possible">possible</option><option value="probable">probable</option><option value="certain">certain</option><option value="impossible">impossible</option><option value="uncertain">uncertain</option></select></p>
-                <p>3. Driverless cars will be very popular – but not with taxi drivers! <select id="ex9-q3" class="rounded-md"><option value="">Select</option><option value="possible">possible</option><option value="probable">probable</option><option value="certain">certain</option><option value="impossible">impossible</option><option value="uncertain">uncertain</option></select></p>
-                <p>4. There is no possibility of people living on Mars by 2050. <select id="ex9-q4" class="rounded-md"><option value="">Select</option><option value="possible">possible</option><option value="probable">probable</option><option value="certain">certain</option><option value="impossible">impossible</option><option value="uncertain">uncertain</option></select></p>
-                <p>5. It is not clear whether in the future people would consider going back to the countryside from cities. <select id="ex9-q5" class="rounded-md"><option value="">Select</option><option value="possible">possible</option><option value="probable">probable</option><option value="certain">certain</option><option value="impossible">impossible</option><option value="uncertain">uncertain</option></select></p>
-            </div>
-            <button class="check-button" onclick="checkExercise9()">Check Exercise 9</button>
-            <div id="ex9-result" class="result-message"></div>
-        </div>
-
-        <!-- Exercise 10 -->
-        <div class="exercise-section">
-            <h2>Unit 3: Exercise 10</h2>
-            <p class="question-text">Think about what you’ve learnt in this unit. Complete the advice. Use the words in the box.</p>
-            <div class="text-block">
-                <p><strong>Words:</strong> appear in the same order, find information quickly, the same information, topic of each paragraph</p>
-            </div>
-            <div class="question-group">
-                <p class="fill-in-the-blank">For an IELTS Reading multiple choice task, first read the whole text quickly to get an idea of the <input type="text" id="ex10-q1" class="rounded-md"> .</p>
-                <p class="fill-in-the-blank">Thinking about how a paragraph is organised can help you <input type="text" id="ex10-q2" class="rounded-md">.</p>
-                <p class="fill-in-the-blank">Make sure the option you choose as correct provides exactly <input type="text" id="ex10-q3" class="rounded-md"> as the text.</p>
-                <p class="fill-in-the-blank">Remember that the options do not always <input type="text" id="ex10-q4" class="rounded-md"> as the pieces of information in the text.</p>
-            </div>
-            <button class="check-button" onclick="checkExercise10()">Check Exercise 10</button>
-            <div id="ex10-result" class="result-message"></div>
-        </div>
-    </div>
-
-    <script>
+<div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
+<h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">Mindset for IELTS 1 - Unit 3 Reading</h1>
+<div class="text-block">
+<p>In this unit, you will read a text called ‘Cities of the future’. In the text, there are some opinions given about problems our societies may face.</p>
+</div>
+<!-- Exercise 1 -->
+<div class="exercise-section">
+<h2>Unit 3: Exercise 1</h2>
+<p class="question-text">Match the topics with the correct pictures.</p>
+<div class="image-row">
+<div class="image-item">
+<div class="image-item-label">Picture 1</div>
+<img alt="Traffic Jam" onerror="this.onerror=null;this.src='https://placehold.co/120x120/a78bfa/ffffff?text=Image+1+Error';" src="https://i.postimg.cc/85SgQjgM/Reading-Unit3-Exercise1-Picture1.jpg"/>
+<select class="rounded-md" id="ex1-q1">
+<option value="">Select Topic</option>
+<option value="population">population</option>
+<option value="building materials">building materials</option>
+<option value="traffic jam">traffic jam</option>
+<option value="pollution">pollution</option>
+<option value="new technology">new technology</option>
+</select>
+</div>
+<div class="image-item">
+<div class="image-item-label">Picture 2</div>
+<img alt="Pollution" onerror="this.onerror=null;this.src='https://placehold.co/120x120/a78bfa/ffffff?text=Image+2+Error';" src="https://i.postimg.cc/cCFpnhgB/Reading-Unit3-Exercise1-Picture2.jpg"/>
+<select class="rounded-md" id="ex1-q2">
+<option value="">Select Topic</option>
+<option value="population">population</option>
+<option value="building materials">building materials</option>
+<option value="traffic jam">traffic jam</option>
+<option value="pollution">pollution</option>
+<option value="new technology">new technology</option>
+</select>
+</div>
+<div class="image-item">
+<div class="image-item-label">Picture 3</div>
+<img alt="Population" onerror="this.onerror=null;this.src='https://placehold.co/120x120/a78bfa/ffffff?text=Image+3+Error';" src="https://i.postimg.cc/Y28KZrnL/Reading-Unit3-Exercise1-Picture3.jpg"/>
+<select class="rounded-md" id="ex1-q3">
+<option value="">Select Topic</option>
+<option value="population">population</option>
+<option value="building materials">building materials</option>
+<option value="traffic jam">traffic jam</option>
+<option value="pollution">pollution</option>
+<option value="new technology">new technology</option>
+</select>
+</div>
+<div class="image-item">
+<div class="image-item-label">Picture 4</div>
+<img alt="Building Materials" onerror="this.onerror=null;this.src='https://placehold.co/120x120/a78bfa/ffffff?text=Image+4+Error';" src="https://i.postimg.cc/63fJ9tBS/Reading-Unit3-Exercise1-Picture4.jpg"/>
+<select class="rounded-md" id="ex1-q4">
+<option value="">Select Topic</option>
+<option value="population">population</option>
+<option value="building materials">building materials</option>
+<option value="traffic jam">traffic jam</option>
+<option value="pollution">pollution</option>
+<option value="new technology">new technology</option>
+</select>
+</div>
+<div class="image-item">
+<div class="image-item-label">Picture 5</div>
+<img alt="New Technology" onerror="this.onerror=null;this.src='https://placehold.co/120x120/a78bfa/ffffff?text=Image+5+Error';" src="https://i.postimg.cc/kGMrGz45/Reading-Unit3-Exercise1-Picture5.jpg"/>
+<select class="rounded-md" id="ex1-q5">
+<option value="">Select Topic</option>
+<option value="population">population</option>
+<option value="building materials">building materials</option>
+<option value="traffic jam">traffic jam</option>
+<option value="pollution">pollution</option>
+<option value="new technology">new technology</option>
+</select>
+</div>
+</div>
+<button class="check-button" onclick="checkExercise1()">Check Exercise 1</button>
+<div class="result-message" id="ex1-result"></div>
+</div>
+<!-- Text for Paragraph A -->
+<div class="text-block">
+<h3>Paragraph A</h3>
+<p>"Researchers recently gave 1,000 people a questionnaire about ‘Cities of The Future’. To answer the questions, the people had to imagine and describe what they thought our cities might look like in the year 2050. Interestingly, a large number of people were anxious that they would become ‘dark, dangerous places’, which had endless traffic jams and very few green spaces. This group also predicted an increase in the level of pollution and thought people would always need to wear facemasks in order to breathe. They also believed that it would be less safe to walk on the street as there would be ‘more stealing’ and other criminal behaviour. A smaller number thought cities might become a lot cleaner, and might be built from more interesting materials. They were also looking forward to new technology such as flying cars and moving pavements. In general, they believed that the cities of the future would offer a much more convenient way of living. A few people were uncertain; for example, they thought the size of apartments might reduce as the population of the city grew, but they also thought that public transport would become better."</p>
+</div>
+<!-- Exercise 2 -->
+<div class="exercise-section">
+<h2>Unit 3: Exercise 2</h2>
+<p class="question-text">Quickly read the first paragraph of the text ‘Cities of the future’. How many people talked about each of these topics in the questionnaire? Choose the correct answers for the topics.</p>
+<div class="question-group">
+<p>building materials <select class="rounded-md" id="ex2-q1"><option value="">Select</option><option value="some people">some people</option><option value="most people">most people</option><option value="not many people">not many people</option></select>.</p>
+<p>criminal behavior <select class="rounded-md" id="ex2-q2"><option value="">Select</option><option value="some people">some people</option><option value="most people">most people</option><option value="not many people">not many people</option></select>.</p>
+<p>new technology <select class="rounded-md" id="ex2-q3"><option value="">Select</option><option value="some people">some people</option><option value="most people">most people</option><option value="not many people">not many people</option></select>.</p>
+<p>pollution <select class="rounded-md" id="ex2-q4"><option value="">Select</option><option value="some people">some people</option><option value="most people">most people</option><option value="not many people">not many people</option></select>.</p>
+<p>population <select class="rounded-md" id="ex2-q5"><option value="">Select</option><option value="some people">some people</option><option value="most people">most people</option><option value="not many people">not many people</option></select>.</p>
+<p>traffic jams <select class="rounded-md" id="ex2-q6"><option value="">Select</option><option value="some people">some people</option><option value="most people">most people</option><option value="not many people">not many people</option></select>.</p>
+</div>
+<button class="check-button" onclick="checkExercise2()">Check Exercise 2</button>
+<div class="result-message" id="ex2-result"></div>
+</div>
+<!-- Exercise 3 -->
+<div class="exercise-section">
+<h2>Unit 3: Exercise 3</h2>
+<div class="text-block">
+<p>"When you answer questions about a paragraph or paragraphs, you must read very carefully (and sometimes more than once). Try to think about how the information in the paragraph is organised. This will help you to quickly find the information you need to answer multiple choice questions."</p>
+</div>
+<p class="question-text">Read the question and choose the best answer. Read the text on page 1 again if you need to.</p>
+<div class="question-group">
+<p class="question-text">How is the information in the paragraph organised?</p>
+<div class="options-container">
+<label><input name="ex3-q1" type="radio" value="A"/> By describing all the negative things about future cities (e.g. crime) and then all the positive things (e.g. better public transport).</label>
+<label><input name="ex3-q1" type="radio" value="B"/> By the most popular answers to the questionnaire (i.e. which questions had the most answers).</label>
+<label><input name="ex3-q1" type="radio" value="C"/> By the topics in the questionnaire (e.g. transport problems, pollution, crime, etc.).</label>
+</div>
+</div>
+<button class="check-button" onclick="checkExercise3()">Check Exercise 3</button>
+<div class="result-message" id="ex3-result"></div>
+</div>
+<!-- Exercise 4 -->
+<div class="exercise-section">
+<h2>Unit 3: Exercise 4</h2>
+<p class="question-text">Read the paragraph again carefully. Choose the correct answer to the question.</p>
+<div class="question-group">
+<p class="question-text">What do the results of the questionnaire show?</p>
+<div class="options-container">
+<label><input name="ex4-q1" type="radio" value="A"/> Most people feel worried rather than pleased about the way that cities will develop.</label>
+<label><input name="ex4-q1" type="radio" value="B"/> People imagined that no one would use their own vehicles any more.</label>
+<label><input name="ex4-q1" type="radio" value="C"/> People think that crime will be the worst problem that future cities will have.</label>
+<label><input name="ex4-q1" type="radio" value="D"/> Some people believe that there will not be enough houses in the city for everyone.</label>
+</div>
+</div>
+<button class="check-button" onclick="checkExercise4()">Check Exercise 4</button>
+<div class="result-message" id="ex4-result"></div>
+</div>
+<!-- Exercise 5 -->
+<div class="exercise-section">
+<h2>Unit 3: Exercise 5</h2>
+<p class="question-text">Read the information. Then read the paragraph again. Which of the numbered parts in bold (1–4) in the text do the options A–D relate to? Match the options and the numbered parts.</p>
+<div class="text-block">
+<p>"When you answer an IELTS Reading four-option multiple choice question, you should remember that:</p>
+<p>each option (A, B, C, D) is usually connected to a piece of information in the same paragraph</p>
+<p>only one option says exactly the same thing as a piece of information in the text</p>
+<p>three options say something slightly different to the pieces of information in the text</p>
+<p>the options do NOT always come in the same order as the pieces of information in the text."</p>
+</div>
+<div class="text-block">
+<h3>Paragraph A (with numbered parts)</h3>
+<p>Researchers recently gave 1,000 people a questionnaire about ‘Cities of The Future’. To answer the questions, the people had to imagine and describe what they thought our cities might look like in the year 2050. <span class="font-bold">(1) Interestingly, a large number of people were anxious that they would become ‘dark, dangerous places’, which had endless traffic jams and very few green spaces.</span> This group also predicted an increase in the level of pollution and thought people would always need to wear facemasks in order to breathe. <span class="font-bold">(2) They also believed that it would be less safe to walk on the street as there would be ‘more stealing’ and other criminal behaviour.</span> A smaller number thought cities might become a lot cleaner, and might be built from more interesting materials. They were also looking forward to new technology such as flying cars and moving pavements. In general, they believed that the cities of the future would offer a much more convenient way of living. A few people were uncertain; for example, they thought the size of apartments might reduce as the population of the city grew, but they also thought that public transport would become better.</p>
+</div>
+<div class="question-group">
+<p>A Some people believe that there will not be enough houses in the city for everyone. <select class="rounded-md" id="ex5-qA"><option value="">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></p>
+<p>B People think that crime will be the worst problem that future cities will have. <select class="rounded-md" id="ex5-qB"><option value="">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></p>
+<p>C Most people feel worried rather than pleased about the way that cities will develop. <select class="rounded-md" id="ex5-qC"><option value="">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></p>
+<p>D People imagined that no one would use their own vehicle any more. <select class="rounded-md" id="ex5-qD"><option value="">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></p>
+</div>
+<button class="check-button" onclick="checkExercise5()">Check Exercise 5</button>
+<div class="result-message" id="ex5-result"></div>
+</div>
+<!-- Exercise 6 -->
+<div class="exercise-section">
+<h2>Unit 3: Exercise 6</h2>
+<p class="question-text">Read the paragraph again. Which of the options A–D is correct? Choose the correct answers.</p>
+<div class="question-group">
+<div class="exercise-6-question-item">
+<p class="question-text-line">A Some people believe that there will not be enough houses in the city for everyone.</p>
+<div class="exercise-6-options-container">
+<label><input name="ex6-qA" type="radio" value="Correct"/> Correct</label>
+<label><input name="ex6-qA" type="radio" value="Incorrect"/> Incorrect</label>
+</div>
+</div>
+<div class="exercise-6-question-item">
+<p class="question-text-line">B People think that crime will be the worst problem that future cities will have.</p>
+<div class="exercise-6-options-container">
+<label><input name="ex6-qB" type="radio" value="Correct"/> Correct</label>
+<label><input name="ex6-qB" type="radio" value="Incorrect"/> Incorrect</label>
+</div>
+</div>
+<div class="exercise-6-question-item">
+<p class="question-text-line">C Most people feel worried rather than pleased about the way that cities will develop.</p>
+<div class="exercise-6-options-container">
+<label><input name="ex6-qC" type="radio" value="Correct"/> Correct</label>
+<label><input name="ex6-qC" type="radio" value="Incorrect"/> Incorrect</label>
+</div>
+</div>
+<div class="exercise-6-question-item">
+<p class="question-text-line">D People imagined that no one would use their own vehicle any more.</p>
+<div class="exercise-6-options-container">
+<label><input name="ex6-qD" type="radio" value="Correct"/> Correct</label>
+<label><input name="ex6-qD" type="radio" value="Incorrect"/> Incorrect</label>
+</div>
+</div>
+</div>
+<button class="check-button" onclick="checkExercise6()">Check Exercise 6</button>
+<div class="result-message" id="ex6-result"></div>
+</div>
+<!-- Paragraphs B-E -->
+<div class="text-block">
+<h3>Paragraph B</h3>
+<p>What do the results from this questionnaire tell us? In a way, we shouldn’t be amazed by the descriptions of the largest group. So many Hollywood films show cities of the future as frightening places. Online newspapers are also responsible for spreading this same belief. Headlines such as ‘Global population rises – cities become crowded’ are becoming more frequent. Journalists rarely discuss how future cities might be a good place to live.</p>
+<h3>Paragraph C</h3>
+<p>The facts are these: 50% of people now live in cities, even though cities only occupy 2% of the world’s land. By 2050, it is predicted that the number of people living there will rise to 70%. Some people are worried that villages in the countryside will become empty as everyone leaves for the city, and so traditional ways of life will be lost. This may be true, but we have to accept changes like this as part of human development. Rather than being negative, we should be hopeful that we can improve people’s lives as they move to cities. The way to do this is through intelligent planning.</p>
+<h3>Paragraph D</h3>
+<p>Architects have a big role to play in our future cities. In the past, the architects who were responsible for planning our cities often designed buildings that they were interested in; but now it is time for them to listen carefully to what people living in cities are asking for. In many countries around the world, people are choosing to have smaller families or to wait longer before they start a family. For this reason, not everyone needs a large house. Smaller and cheaper houses are what they need. But ‘small’ doesn’t have to be the same as ‘ugly’ or ‘boring’. Western architects could perhaps look at some of the architecture in Japanese cities, where very stylish houses are built on small pieces of unused land.</p>
+<h3>Paragraph E</h3>
+<p>And what might cities of the future be made from? Engineering companies have produced some interesting new products, for example, wood-like material made from recycled newspapers or old drink cartons. One engineering team are even working on a project that uses mushrooms to create a hard building material. These new materials may seem strange, but we should remember that plastic was only invented in 1907 – at the time people thought that this was an unusual product, but now it is something we cannot manage without. Building a city of the future requires imagination and an open mind.</p>
+</div>
+<!-- Exercise 7 -->
+<div class="exercise-section">
+<h2>Unit 3: Exercise 7</h2>
+<div class="text-block">
+<p>"In an IELTS Reading test, it is a good idea to very quickly skim through a text to get a general idea of the overall topic, and also the particular topics of each paragraph."</p>
+</div>
+<p class="question-text">Look at the paragraphs on page 1 again. In which paragraphs are the topics below mentioned? Choose the correct answers.</p>
+<div class="question-group">
+<p>the duties and responsibilities of the people who design our cities <select class="rounded-md" id="ex7-q1"><option value="">Select</option><option value="Paragraph B">Paragraph B</option><option value="Paragraph C">Paragraph C</option><option value="Paragraph D">Paragraph D</option><option value="Paragraph E">Paragraph E</option></select></p>
+<p>the influence of cinema and the media on people’s view of the future <select class="rounded-md" id="ex7-q2"><option value="">Select</option><option value="Paragraph B">Paragraph B</option><option value="Paragraph C">Paragraph C</option><option value="Paragraph D">Paragraph D</option><option value="Paragraph E">Paragraph E</option></select></p>
+<p>the types of material that future buildings might be made from <select class="rounded-md" id="ex7-q3"><option value="">Select</option><option value="Paragraph B">Paragraph B</option><option value="Paragraph C">Paragraph C</option><option value="Paragraph D">Paragraph D</option><option value="Paragraph E">Paragraph E</option></select></p>
+<p>some information and opinions about people living in cities and living in the countryside <select class="rounded-md" id="ex7-q4"><option value="">Select</option><option value="Paragraph B">Paragraph B</option><option value="Paragraph C">Paragraph C</option><option value="Paragraph D">Paragraph D</option><option value="Paragraph E">Paragraph E</option></select></p>
+</div>
+<button class="check-button" onclick="checkExercise7()">Check Exercise 7</button>
+<div class="result-message" id="ex7-result"></div>
+</div>
+<!-- Exercise 8 -->
+<div class="exercise-section">
+<h2>Unit 3: Exercise 8</h2>
+<p class="question-text">Read Paragraphs B–E again, then answer the questions.</p>
+<div class="question-group">
+<p class="question-text">What is the writer doing in Paragraph B?</p>
+<div class="options-container">
+<label><input name="ex8-q1" type="radio" value="A"/> Explaining why many people will probably prefer to live in cities in the future.</label>
+<label><input name="ex8-q1" type="radio" value="B"/> Giving a reason why many people feel negative about cities of the future.</label>
+<label><input name="ex8-q1" type="radio" value="C"/> Suggesting that newspapers show a more realistic view of future cities than films.</label>
+</div>
+</div>
+<div class="question-group">
+<p class="question-text">What point does the writer make in Paragraph C?</p>
+<div class="options-container">
+<label><input name="ex8-q2" type="radio" value="A"/> It is important to encourage some people to stay in their villages.</label>
+<label><input name="ex8-q2" type="radio" value="B"/> It is possible to maintain traditional village customs after moving to cities.</label>
+<label><input name="ex8-q2" type="radio" value="C"/> It is necessary to think in a creative way about city design.</label>
+</div>
+</div>
+<div class="question-group">
+<p class="question-text">Paragraph D: In the writer’s opinion, architects who are responsible for planning cities</p>
+<div class="options-container">
+<label><input name="ex8-q3" type="radio" value="A"/> often make houses that are unattractive.</label>
+<label><input name="ex8-q3" type="radio" value="B"/> must make buildings based on people’s needs.</label>
+<label><input name="ex8-q3" type="radio" value="C"/> should get experience by working in foreign cities.</label>
+</div>
+</div>
+<div class="question-group">
+<p class="question-text">Paragraph E: The writer refers to the invention of plastic to make the point that</p>
+<div class="options-container">
+<label><input name="ex8-q4" type="radio" value="A"/> we can expect building materials to be very different in the future.</label>
+<label><input name="ex8-q4" type="radio" value="B"/> we must accept that good-quality materials take a long time to create.</label>
+<label><input name="ex8-q4" type="radio" value="C"/> we should use a variety of building materials to make our cities interesting.</label>
+</div>
+</div>
+<button class="check-button" onclick="checkExercise8()">Check Exercise 8</button>
+<div class="result-message" id="ex8-result"></div>
+</div>
+<!-- Exercise 9 -->
+<div class="exercise-section">
+<h2>Unit 3: Exercise 9</h2>
+<p class="question-text">In an IELTS Reading text about the future, you are likely to see words and phrases that are used to make predictions. Match the meanings with the underlined words and phrases. Use the words in the box.</p>
+<div class="text-block">
+<p><strong>Words:</strong> Certain, impossible, possible, probable, uncertain</p>
+</div>
+<div class="question-group">
+<p>1. We could see more robots in people's homes by 2050. <select class="rounded-md" id="ex9-q1"><option value="">Select</option><option value="possible">possible</option><option value="probable">probable</option><option value="certain">certain</option><option value="impossible">impossible</option><option value="uncertain">uncertain</option></select></p>
+<p>2. There is a very good chance that there will be no more oil by 2050. <select class="rounded-md" id="ex9-q2"><option value="">Select</option><option value="possible">possible</option><option value="probable">probable</option><option value="certain">certain</option><option value="impossible">impossible</option><option value="uncertain">uncertain</option></select></p>
+<p>3. Driverless cars will be very popular – but not with taxi drivers! <select class="rounded-md" id="ex9-q3"><option value="">Select</option><option value="possible">possible</option><option value="probable">probable</option><option value="certain">certain</option><option value="impossible">impossible</option><option value="uncertain">uncertain</option></select></p>
+<p>4. There is no possibility of people living on Mars by 2050. <select class="rounded-md" id="ex9-q4"><option value="">Select</option><option value="possible">possible</option><option value="probable">probable</option><option value="certain">certain</option><option value="impossible">impossible</option><option value="uncertain">uncertain</option></select></p>
+<p>5. It is not clear whether in the future people would consider going back to the countryside from cities. <select class="rounded-md" id="ex9-q5"><option value="">Select</option><option value="possible">possible</option><option value="probable">probable</option><option value="certain">certain</option><option value="impossible">impossible</option><option value="uncertain">uncertain</option></select></p>
+</div>
+<button class="check-button" onclick="checkExercise9()">Check Exercise 9</button>
+<div class="result-message" id="ex9-result"></div>
+</div>
+<!-- Exercise 10 -->
+<div class="exercise-section">
+<h2>Unit 3: Exercise 10</h2>
+<p class="question-text">Think about what you’ve learnt in this unit. Complete the advice. Use the words in the box.</p>
+<div class="text-block">
+<p><strong>Words:</strong> appear in the same order, find information quickly, the same information, topic of each paragraph</p>
+</div>
+<div class="question-group">
+<p class="fill-in-the-blank">For an IELTS Reading multiple choice task, first read the whole text quickly to get an idea of the <input class="rounded-md" id="ex10-q1" type="text"/> .</p>
+<p class="fill-in-the-blank">Thinking about how a paragraph is organised can help you <input class="rounded-md" id="ex10-q2" type="text"/>.</p>
+<p class="fill-in-the-blank">Make sure the option you choose as correct provides exactly <input class="rounded-md" id="ex10-q3" type="text"/> as the text.</p>
+<p class="fill-in-the-blank">Remember that the options do not always <input class="rounded-md" id="ex10-q4" type="text"/> as the pieces of information in the text.</p>
+</div>
+<button class="check-button" onclick="checkExercise10()">Check Exercise 10</button>
+<div class="result-message" id="ex10-result"></div>
+</div>
+</div>
+<script>
         /**
          * Displays the result message for an exercise, including correct count.
          * @param {string} elementId The ID of the div element to display the result in.
