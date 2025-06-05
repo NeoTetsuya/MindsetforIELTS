@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindset for IELTS 1 - Unit 6 Grammar & Vocabulary</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS from your original file */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .correct-feedback {
+            color: #10B981; /* Green-500 */
+        }
+        .incorrect-feedback {
+            color: #EF4444; /* Red-500 */
+        }
+        .feedback-box {
+            padding: 0.5rem 0.75rem;
+            margin-top: 0.5rem;
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 0.875rem; /* text-sm */
+        }
+        .feedback-box.correct {
+            background-color: #D1FAE5; /* green-100 */
+            border: 1px solid #34D399; /* green-400 */
+        }
+        .feedback-box.incorrect {
+            background-color: #FEE2E2; /* red-100 */
+            border: 1px solid #F87171; /* red-400 */
+        }
+        /* Message Box for Save Confirmation */
+        #message-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #message-box.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100 p-4 font-sans text-gray-800">
+
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-blue-700 mb-8">
+            Mindset for IELTS 1 - Unit 6 Grammar & Vocabulary
+        </h1>
+
+        <div class="flex justify-end mb-6 space-x-2">
+            <button id="clear-all-answers-button" class="px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition duration-200 ease-in-out transform hover:scale-105">
+                Clear All Answers
+            </button>
+        </div>
+
+        <!-- Unit 6: Exercise 1 -->
+        <section class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Unit 6: Exercise 1</h2>
+            <p class="mb-4">Find the answers to the questions.</p>
+            <div id="exercise1-container" class="space-y-4">
+                <!-- Questions will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex1-button" class="px-5 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 1
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 6: Exercise 2 -->
+        <section class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-blue-600 mb-4">Unit 6: Exercise 2</h2>
+            <p class="mb-4">Complete the descriptions.</p>
+            <div id="exercise2-container" class="space-y-4">
+                <!-- Questions will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex2-button" class="px-5 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 2
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 6: Exercise 3 -->
+        <section class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-green-600 mb-4">Unit 6: Exercise 3</h2>
+            <p class="mb-4">Choose the correct verbs to complete the sentences.</p>
+            <div id="exercise3-container" class="space-y-4">
+                <!-- Questions will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex3-button" class="px-5 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 3
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 6: Exercise 4 -->
+        <section class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-purple-600 mb-4">Unit 6: Exercise 4</h2>
+            <p class="mb-4">Read the information. Then complete the sentences with the correct prepositions of place.</p>
+            <div class="mb-4 p-3 bg-purple-100 rounded-md border border-purple-200">
+                <p class="font-semibold">We use prepositions of place to show where something is (e.g. on / in / near).</p>
+                <p class="font-semibold">Example: In tennis, the umpire (the person who is in charge) sits in a high seat above the court, so that he or she can see clearly what is happening and decide who wins each point.</p>
+            </div>
+            <div id="exercise4-container" class="space-y-4">
+                <!-- Questions will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex4-button" class="px-5 py-2 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 4
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 6: Exercise 5 -->
+        <section class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Unit 6: Exercise 5</h2>
+            <p class="mb-4">Complete the sentences. Use the prepositions in the box.</p>
+            <div class="mb-4 p-3 bg-yellow-100 rounded-md border border-yellow-200">
+                <p class="font-semibold">Words: Across, along, at, away from, into, out of, over, past, Through, towards</p>
+            </div>
+            <div id="exercise5-container" class="space-y-4">
+                <!-- Questions will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex5-button" class="px-5 py-2 bg-yellow-600 text-white rounded-lg shadow-md hover:bg-yellow-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 5
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 6: Exercise 6 -->
+        <section class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-red-600 mb-4">Unit 6: Exercise 6</h2>
+            <p class="mb-4">Read the information. Then choose the correct words to complete the sentences.</p>
+            <div class="mb-4 p-3 bg-red-100 rounded-md border border-red-200">
+                <p class="font-semibold">We use comparatives (e.g. better, slower, more important) and superlatives (e.g. the best, the slowest, the most important) to compare things.</p>
+                <p class="font-semibold">With short adjectives, we usually add -er / -est.</p>
+                <p class="font-semibold">With long adjectives, we usually add most / more.</p>
+            </div>
+            <div id="exercise6-container" class="space-y-4">
+                <!-- Questions will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex6-button" class="px-5 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 6
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 6: Exercise 7 -->
+        <section class="mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-teal-600 mb-4">Unit 6: Exercise 7</h2>
+            <p class="mb-4">Read the information. Then change the adjectives in the sentences to the correct comparative form where necessary.</p>
+            <div class="mb-4 p-3 bg-teal-100 rounded-md border border-teal-200">
+                <p class="font-semibold">Spelling -er forms:</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>We can make -er comparatives from most short adjectives (e.g. clean) and some short adverbs (e.g. soon).</li>
+                    <li>Word ends in -e, add -r (e.g. nice → nicer).</li>
+                    <li>Word ends in consonant + -y, change -y to -ier (e.g. angry → angrier).</li>
+                    <li>Word ends in one vowel + one consonant, double the consonant (e.g. hot → hotter).</li>
+                </ul>
+                <p class="font-semibold mt-2">Irregular forms:</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>good / well → better</li>
+                    <li>bad / badly → worse</li>
+                    <li>far → further / farther</li>
+                </ul>
+            </div>
+            <div id="exercise7-container" class="space-y-4">
+                <!-- Questions will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex7-button" class="px-5 py-2 bg-teal-600 text-white rounded-lg shadow-md hover:bg-teal-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 7
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 6: Exercise 8 -->
+        <section class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-orange-600 mb-4">Unit 6: Exercise 8</h2>
+            <p class="mb-4">Use the correct form of the words in brackets to complete the sentences.</p>
+            <div id="exercise8-container" class="space-y-4">
+                <!-- Questions will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex8-button" class="px-5 py-2 bg-orange-600 text-white rounded-lg shadow-md hover:bg-orange-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 8
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 6: Exercise 9 -->
+        <section class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-pink-600 mb-4">Unit 6: Exercise 9</h2>
+            <p class="mb-4">Put the phrases in the correct categories to complete the table.</p>
+            <div class="mb-4 p-3 bg-pink-100 rounded-md border border-pink-200">
+                <p class="font-semibold">Try to use these phrases to help link sentences, paragraphs, ideas, etc. in your writing.</p>
+                <p class="font-semibold">Phrases: On the other hand, … In my view, … There has been a lot of discussion recently about … In my opinion, … Overall, … Also, … In addition, … Secondly, … In conclusion … First of all, … For this reason … For instance, … Some people believe that … As a result, … In contrast, … For example, …</p>
+            </div>
+            <div id="exercise9-container" class="space-y-4">
+                <!-- Questions will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex9-button" class="px-5 py-2 bg-pink-600 text-white rounded-lg shadow-md hover:bg-pink-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 9
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 6: Exercise 10 -->
+        <section class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Unit 6: Exercise 10</h2>
+            <p class="mb-4">Complete the text.</p>
+            <div id="exercise10-container" class="space-y-4">
+                <!-- Text with blanks will be dynamically loaded here -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex10-button" class="px-5 py-2 bg-gray-600 text-white rounded-lg shadow-md hover:bg-gray-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 10
+                </button>
+            </div>
+        </section>
+
+    </div>
+
+    <div id="message-box"></div>
+
+    <script>
+        // Global state object for storing user answers
+        let appState = {
+            exercise1Answers: {},
+            exercise2Answers: {},
+            exercise3Answers: {},
+            exercise4Answers: {},
+            exercise5Answers: {},
+            exercise6Answers: {},
+            exercise7Answers: {},
+            exercise8Answers: {},
+            exercise9Answers: {},
+            exercise10Answers: {},
+        };
+
+        // --- Data for Exercises ---
+
+        // Exercise 1 Data
+        const exercise1Questions = [
+            { question: 'In which sport do players try to score goals by kicking a ball into a net?', correct: 'football (soccer)' },
+            { question: 'In which sport do players use sticks to try to score goals, either on grass or on ice?', correct: 'hockey' },
+            { question: 'In which sport do two or four players hit a small ball over a net on a table with small bats?', correct: 'table tennis' },
+            { question: 'In which sport do players try to hit a ball into nine or 18 holes using a long thin stick (called a club)?', correct: 'golf' },
+            { question: 'In which sport do players hit a ball over a high net with their hands and arms?', correct: 'volleyball' },
+            { question: 'In which sport do players hit a small ball against a wall using rackets?', correct: 'squash' },
+            { question: 'In which sport do players try to score points by throwing a ball through a high hoop?', correct: 'basketball' },
+            { question: 'In which sport do players try to hit a ball as far as possible using a bat and then run between two sets of wooden posts?', correct: 'cricket' },
+            { question: 'In which sport do two or four players hit a ball over a net with rackets?', correct: 'tennis' },
+        ];
+        const exercise1Options = ['Basketball', 'cricket', 'football (soccer)', 'golf', 'hockey', 'squash', 'table tennis', 'tennis', 'volleyball'].sort(); // Sorted for consistent display
+
+        // Exercise 2 Data
+        const exercise2Blanks = [
+            { text: 'An area of grass where you play football, hockey or cricket is called a ___________   .', correct: 'pitch' },
+            { text: 'Major sports events (and musical performances) take place in a ___________   .', correct: 'Stadium' },
+            { text: 'In some sports, like golf and horse racing, the area of land or water you move along, from the start to the finish, is called a ___________   .', correct: 'course' },
+            { text: 'In athletics, runners run around a ___________   .', correct: 'track' },
+            { text: 'Events like ice skating and ice hockey take place in an ice ___________   .', correct: 'rink' },
+            { text: 'A sports ___________  is smaller than a stadium, but it includes a pitch and an area for people to sit.', correct: 'ground' },
+            { text: 'If you want to have a swimming race, or play water polo (a game where swimmers try to get a ball into a goal), you’ll need a swimming ___________  .', correct: 'pool' },
+            { text: 'In schools, the large room for sports is called the _____________  . It is the same word for places where people go to get fit.', correct: 'gym' },
+            { text: 'You play indoor sports like basketball and squash, or outdoor sports like tennis, on a ___________   .', correct: 'court' },
+            { text: 'A boxing ____________  is a square, not a circle.', correct: 'ring' },
+        ];
+        const exercise2Options = ['Course', 'court', 'ground', 'gym', 'pitch', 'pool', 'ring', 'rink', 'Stadium', 'track'].sort(); // Sorted for consistent display
+
+        // Exercise 3 Data
+        const exercise3Questions = [
+            { text: 'It was difficult to beat/draw/win our opponents (the people you play against), but in the end we won the match 13–11.', options: ['beat', 'draw', 'win'], correct: 'win' },
+            { text: 'In karate, you have to hit your opponent with your hands or beat /kick/miss them with your feet.', options: ['beat', 'kick', 'miss'], correct: 'kick' },
+            { text: 'We didn’t break/shoot/win the tournament, but we came third, so we still won a bronze medal.', options: ['break', 'shoot', 'win'], correct: 'win' },
+            { text: 'We created a lot of good chances, but we couldn’t kick/score/shoot a goal, so the final score was 0–0.', options: ['kick', 'score', 'shoot'], correct: 'score' },
+            { text: 'Don’t just keep the ball to yourself. Don’t forget to beat/pass/save it to other players in your team.', options: ['beat', 'pass', 'save'], correct: 'pass' },
+            { text: 'I took a shot, but I was too far away and I hit/missed/scored the basketball hoop by a few centimetres.', options: ['hit', 'missed', 'score'], correct: 'missed' },
+            { text: 'He ran 100 metres in 16.2 seconds, which broke/hit/won the school record. The previous best time was 16.7 seconds.', options: ['broke', 'hit', 'won'], correct: 'broke' },
+            { text: 'Unfortunately, we lost/missed/past the match. Our opponents were better than us and they scored more goals.', options: ['lost', 'missed', 'past'], correct: 'lost' },
+            { text: 'In football, if the ball goes off the pitch, one of the players hits/scores/ throws it back onto the pitch.', options: ['hits', 'scores', 'throws'], correct: 'throws' },
+            { text: 'Some tennis players can hit/push/save the ball at over 250 kilometres per hour.', options: ['hit', 'push', 'save'], correct: 'hit' },
+        ];
+
+        // Exercise 4 Data
+        const exercise4Questions = [
+            { text: 'We had great seats ___________ the pitch, so we could see all the action really clearly.', options: ['between', 'beyond', 'next to'], correct: 'next to' },
+            { text: 'In volleyball, there is a high net ___________ the two halves of the court.', options: ['along', 'between', 'opposite'], correct: 'between' },
+            { text: 'When you serve in squash, you can’t hit the ball ___________ the line on the wall.', options: ['below', 'between', 'beyond'], correct: 'below' },
+            { text: 'The other player was standing right ___________ me, so I couldn’t get past him.', options: ['behind', 'in front of', 'outside'], correct: 'in front of' },
+            { text: 'In football, the goalkeeper is only allowed to use his or her hands ___________ the penalty area (the area within the white lines in front of the goal).', options: ['below', 'inside', 'over'], correct: 'inside' },
+            { text: 'The golfer was careful not to hit the ball too far. Just ___________ the hole there was a small lake.', options: ['around', 'beneath', 'beyond'], correct: 'beyond' },
+            { text: 'In tennis, the players stand ___________ each other, on either side of the net.', options: ['below', 'opposite', 'outside'], correct: 'opposite' },
+            { text: 'We couldn’t see much of the match – we were sitting ___________ some people who kept standing up.', options: ['behind', 'in front of', 'on top of'], correct: 'behind' },
+        ];
+
+        // Exercise 5 Data
+        const exercise5Questions = [
+            { text: 'In golf, players try to hit the ball ____________ a series of nine or 18 holes.', correct: 'into', options: ['Across', 'along', 'at', 'away from', 'into', 'out of', 'over', 'past', 'Through', 'towards'] },
+            { text: 'In horse racing, horses race _____________ a course to the finishing line.', correct: 'along', options: ['Across', 'along', 'at', 'away from', 'into', 'out of', 'over', 'past', 'Through', 'towards'] },
+            { text: 'In archery, people shoot arrows ____________ a target.', correct: 'at', options: ['Across', 'along', 'at', 'away from', 'into', 'out of', 'over', 'past', 'Through', 'towards'] },
+            { text: 'In basketball, you only get points if the ball goes ______________ the hoop.', correct: 'through', options: ['Across', 'along', 'at', 'away from', 'into', 'out of', 'over', 'past', 'Through', 'towards'] },
+            { text: 'The footballer got the ball _____________ five players from the other team, but then she fell over without scoring a goal.', correct: 'past', options: ['Across', 'along', 'at', 'away from', 'into', 'out of', 'over', 'past', 'Through', 'towards'] },
+            { text: 'The runner made a good start and got ____________ the others quickly, so he won the race.', correct: 'across', options: ['Across', 'along', 'at', 'away from', 'into', 'out of', 'over', 'past', 'Through', 'towards'] },
+            { text: 'The cricketer hit the ball so hard that it flew ___________', correct: 'over', options: ['Across', 'along', 'at', 'away from', 'into', 'out of', 'over', 'past', 'Through', 'towards'] },
+            { text: 'I saw all the other rugby players running ______________ me and I got scared, so I kicked the ball away.', correct: 'towards', options: ['Across', 'along', 'at', 'away from', 'into', 'out of', 'over', 'past', 'Through', 'towards'] },
+            { text: 'Today’s your first tennis lesson, so just try to hit the ball _____________ the net.', correct: 'over', options: ['Across', 'along', 'at', 'away from', 'into', 'out of', 'over', 'past', 'Through', 'towards'] },
+            { text: 'The football pitch is in the middle of the running track, so you have to walk ______________ some of the track to get to the pitch.', correct: 'through', options: ['Across', 'along', 'at', 'away from', 'into', 'out of', 'over', 'past', 'Through', 'towards'] },
+        ];
+
+
+        // Exercise 6 Data
+        const exercise6Questions = [
+            { text: 'Boxing is one of the oldest/most old/more old/older sports in the world.', options: ['oldest', 'most old', 'more old', 'older'], correct: 'oldest' },
+            { text: 'I like running, but it’s a bit boring. Team games like football are the most exciting/ most exciting/ more exciting .', options: ['the most exciting', 'most exciting', 'more exciting'], correct: 'more exciting' }, // Corrected options based on usual comparative/superlative forms. The document had a duplicate "most exciting"
+            { text: 'Crazy golf is a fun, short version of golf. It’s a lot the most easy/ easiest/ easier/ more easy than real golf.', options: ['the most easy', 'easiest', 'easier', 'more easy'], correct: 'easier' },
+            { text: 'Formula 1® racing is one of most dangerous/ more dangerous/ the most dangerous sports in the world.', options: ['most dangerous', 'more dangerous', 'the most dangerous'], correct: 'the most dangerous' },
+            { text: 'In the USA, sports like baseball and American football are a lot more popular/ the most popular/ most popular than soccer.', options: ['more popular', 'the most popular', 'most popular'], correct: 'more popular' },
+            { text: 'Table tennis is a lot more fast/fastest / most fast/faster than normal tennis – it’s hard to see the ball most of the time!', options: ['more fast', 'fastest', 'most fast', 'faster'], correct: 'faster' },
+            { text: 'Most sports have become safest/safer / most safe/more safe in the last 100 years, but there are still a lot of accidents and injuries.', options: ['safest', 'safer', 'most safe', 'more safe'], correct: 'safer' },
+            { text: 'Most expensive/ The most expensive/ More expensive footballer in the world cost £89 million.', options: ['Most expensive', 'The most expensive', 'More expensive'], correct: 'The most expensive' },
+            { text: 'The most cheap / cheapest/ cheaper/ more cheap sport is probably running – you don’t need to buy anything and you can do it wherever you like!', options: ['most cheap', 'cheapest', 'cheaper', 'more cheap'], correct: 'cheapest' },
+            { text: 'You should do some more exercise! It’s a lot Healthiest / most healthy/ healthier/ healthier than sitting and watching TV all day.', options: ['Healthiest', 'most healthy', 'healthier'], correct: 'healthier' }, // Corrected options based on usual comparative/superlative forms. The document had a duplicate "healthier"
+        ];
+
+
+        // Exercise 7 Data
+        const exercise7Questions = [
+            { text: '1. I’m quite good at most sports, but my sister’s good than me at everything.', originalWord: 'good', correct: 'better' },
+            { text: '2. I can run quite far, but she always runs far than me.', originalWord: 'far', correct: ['further', 'farther'] },
+            { text: '3. I can lift heavy weights, but she can lift much heavy things than I can.', originalWord: 'heavy', correct: 'heavier' },
+            { text: '4. I can jump quite high, but she always jumps high than me.', originalWord: 'high', correct: 'higher' },
+            { text: '5. I’m quite tall, but my sister’s a lot tall.', originalWord: 'tall', correct: 'taller' },
+            { text: '6. I’m quite fit, but she’s much fit than me.', originalWord: 'fit', correct: 'fitter' },
+            { text: '7. When we throw the ball in basketball, hers is always close to the hoop than mine.', originalWord: 'close', correct: 'closer' },
+            { text: '8. She says I’m lazy, but she’s even lazy than me. She never practises sports, but she’s still really good at them.', originalWord: 'lazy', correct: 'lazier' },
+            { text: '9. There’s only one sport she’s bad at, and that’s tennis. She’s terrible, but I’m even bad than her.', originalWord: 'bad', correct: 'worse' },
+        ];
+
+
+        // Exercise 8 Data
+        const exercise8Questions = [
+            { text: 'I can run 10 km quite easily, but a marathon is much _____________ (hard) .', correct: 'harder' },
+            { text: 'Most basketball players are much ____________  Most basketball players are much', correct: 'taller' }, // Assuming (tall)
+            { text: 'What’s _____________  sport, in your opinion? Which do you think is the hardest? (difficult)', correct: 'the most difficult' },
+            { text: 'Skiing is a lot ____________ in mountainous countries like Switzerland than it is in flatter countries like England. (popular)', correct: 'more popular' },
+            { text: 'Who’s ____________ runner in the world? (fast)', correct: 'the fastest' },
+            { text: 'Motor racing is a lot _____________  than it was, but it’s still really dangerous. (safe)', correct: 'safer' },
+            { text: 'I don’t think he’s better or ______________  than you. You’re both as good as each other. (bad)', correct: 'worse' },
+            { text: 'The least ____________  thing you can do is watch sports on TV all day! (healthy)', correct: 'healthy' }, // "least healthy" is the superlative
+            { text: 'That was the _______________ goal ever! It was fantastic! (good)', correct: 'best' },
+            { text: 'I’m quite good at volleyball, but I’m not quite as good as my brother. He’s a bit _____________  than me. (good)', correct: 'better' },
+        ];
+
+        // Exercise 9 Data
+        const exercise9Categories = [
+            "Introducing a topic", "Saying what you think", "Listing points in order", "Giving an example",
+            "Introducing a contrast (e.g. the opposite view)", "Introducing a result", "Adding a point to support an argument",
+            "Summarising all your points at the end and reaching a conclusion"
+        ];
+
+        const exercise9Phrases = [
+            { phrase: "On the other hand, …", correctCategory: ["Introducing a contrast (e.g. the opposite view)", "Introducing a topic"] },
+            { phrase: "In my view, …", correctCategory: "Saying what you think" },
+            { phrase: "There has been a lot of discussion recently about …", correctCategory: "Introducing a topic" },
+            { phrase: "In my opinion, …", correctCategory: "Saying what you think" },
+            { phrase: "Overall, …", correctCategory: "Summarising all your points at the end and reaching a conclusion" },
+            { phrase: "Also, …", correctCategory: "Adding a point to support an argument" },
+            { phrase: "In addition, …", correctCategory: "Adding a point to support an argument" },
+            { phrase: "Secondly, …", correctCategory: "Listing points in order" },
+            { phrase: "In conclusion …", correctCategory: "Summarising all your points at the end and reaching a conclusion" },
+            { phrase: "First of all, …", correctCategory: "Listing points in order" },
+            { phrase: "For this reason …", correctCategory: "Introducing a result" },
+            { phrase: "For instance, …", correctCategory: "Giving an example" },
+            { phrase: "Some people believe that …", correctCategory: "Introducing a topic" },
+            { phrase: "As a result, …", correctCategory: "Introducing a result" },
+            { phrase: "In contrast, …", correctCategory: "Introducing a contrast (e.g. the opposite view)" },
+            { phrase: "For example, …", correctCategory: "Giving an example" },
+        ];
+
+
+        // Exercise 10 Data
+        const exercise10Text = `There has been a lot of ___________ recently about the role of money in sport. Some ________________ believe that sport has become a business and, therefore, that we are forgetting the original meaning of sport as a game.
+In my _____________ , however, money is good for the world of sport for two reasons. First of _____________ , money allows the best sportsmen and sportswomen to spend all their time practising their sports. They don’t have to do other jobs just to earn money. As a _______________ , they can become a lot better at their chosen sports.
+_______________ , when there is more money, sports might become a lot safer. For _______________ , sports teams could then afford more full-time doctors to take care of their players. On the other ______________ , there is a risk that money gives the richest people, teams and countries an unfair advantage. For this ________________ , most people from poorer teams or countries rarely have the chance of reaching the top of their sports.
+________________ , however, I believe that more money generally makes sport better.`;
+
+        const exercise10CorrectAnswers = [
+            'discussion', 'people', 'opinion', 'all', 'result', 'Secondly', 'example', 'hand', 'reason', 'Overall'
+        ];
+        const exercise10Options = ['All', 'discussion', 'example', 'hand', 'opinion', 'overall', 'people', 'Reason', 'result', 'secondly'].sort(); // Sorted for consistent display
+
+
+        // --- Helper Functions ---
+        function getElement(id) {
+            return document.getElementById(id);
+        }
+
+        function setFeedback(elementId, isCorrect, correctText = '') {
+            const element = getElement(elementId);
+            if (!element) return;
+            element.classList.remove('hidden');
+            element.classList.remove('correct-feedback', 'incorrect-feedback');
+            element.textContent = ''; // Clear previous text
+
+            if (isCorrect) {
+                element.classList.add('correct-feedback');
+                element.textContent = '✓ Correct!';
+            } else {
+                element.classList.add('incorrect-feedback');
+                element.textContent = `✗ Incorrect.`; // Removed correctText here to make feedback generic
+            }
+        }
+
+        function clearFeedback(elementId) {
+            const element = getElement(elementId);
+            if (element) {
+                element.classList.add('hidden');
+                element.classList.remove('correct-feedback', 'incorrect-feedback');
+                element.textContent = '';
+            }
+        }
+
+        function showMessage(message, type = 'success') {
+            const messageBox = getElement('message-box');
+            messageBox.textContent = message;
+            messageBox.className = ''; // Clear previous classes
+            messageBox.classList.add('show');
+            if (type === 'success') {
+                messageBox.style.backgroundColor = '#4CAF50';
+            } else if (type === 'error') {
+                messageBox.style.backgroundColor = '#f44336';
+            }
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+            }, 3000);
+        }
+
+        // --- Save/Load Functions ---
+        function saveAnswers() {
+            try {
+                localStorage.setItem('unit6WorksheetAppState', JSON.stringify(appState));
+                // showMessage('Progress saved!', 'success'); // Optional: show save message
+            } catch (e) {
+                console.error("Error saving to local storage:", e);
+                // showMessage('Failed to save progress.', 'error'); // Optional: show error message
+            }
+        }
+
+        function loadAnswers() {
+            try {
+                const savedState = localStorage.getItem('unit6WorksheetAppState');
+                if (savedState) {
+                    appState = JSON.parse(savedState);
+                    
+                    // Populate Exercise 1 dropdowns
+                    exercise1Questions.forEach((q, index) => {
+                        const select = getElement(`ex1-q${index}`);
+                        if (select && appState.exercise1Answers[`q${index}`] !== undefined) {
+                            select.value = appState.exercise1Answers[`q${index}`];
+                        }
+                    });
+
+                    // Populate Exercise 2 dropdowns
+                    exercise2Blanks.forEach((b, index) => {
+                        const select = getElement(`ex2-q${index}`);
+                        if (select && appState.exercise2Answers[`q${index}`] !== undefined) {
+                            select.value = appState.exercise2Answers[`q${index}`];
+                        }
+                    });
+
+                    // Populate Exercise 3 dropdowns
+                    exercise3Questions.forEach((q, index) => {
+                        const select = getElement(`ex3-q${index}`);
+                        if (select && appState.exercise3Answers[`q${index}`] !== undefined) {
+                            select.value = appState.exercise3Answers[`q${index}`];
+                        }
+                    });
+
+                    // Populate Exercise 4 dropdowns
+                    exercise4Questions.forEach((q, index) => {
+                        const select = getElement(`ex4-q${index}`);
+                        if (select && appState.exercise4Answers[`q${index}`] !== undefined) {
+                            select.value = appState.exercise4Answers[`q${index}`];
+                        }
+                    });
+
+                    // Populate Exercise 5 dropdowns
+                    exercise5Questions.forEach((q, index) => {
+                        const select = getElement(`ex5-q${index}`);
+                        if (select && appState.exercise5Answers[`q${index}`] !== undefined) {
+                            select.value = appState.exercise5Answers[`q${index}`];
+                        }
+                    });
+
+                    // Populate Exercise 6 dropdowns
+                    exercise6Questions.forEach((q, index) => {
+                        const select = getElement(`ex6-q${index}`);
+                        if (select && appState.exercise6Answers[`q${index}`] !== undefined) {
+                            select.value = appState.exercise6Answers[`q${index}`];
+                        }
+                    });
+
+                    // Populate Exercise 7 inputs
+                    exercise7Questions.forEach((q, index) => {
+                        const input = getElement(`ex7-q${index}`);
+                        if (input && appState.exercise7Answers[`q${index}`] !== undefined) {
+                            input.value = appState.exercise7Answers[`q${index}`];
+                        }
+                    });
+
+                    // Populate Exercise 8 inputs
+                    exercise8Questions.forEach((q, index) => {
+                        const input = getElement(`ex8-q${index}`);
+                        if (input && appState.exercise8Answers[`q${index}`] !== undefined) {
+                            input.value = appState.exercise8Answers[`q${index}`];
+                        }
+                    });
+
+                    // Populate Exercise 9 dropdowns
+                    exercise9Phrases.forEach((p, index) => {
+                        const select = getElement(`ex9-q${index}`);
+                        if (select && appState.exercise9Answers[`q${index}`] !== undefined) {
+                            select.value = appState.exercise9Answers[`q${index}`];
+                        }
+                    });
+
+                    // Populate Exercise 10 dropdowns
+                    exercise10CorrectAnswers.forEach((ans, index) => {
+                        const select = getElement(`ex10-q${index}`);
+                        if (select && appState.exercise10Answers[`q${index}`] !== undefined) {
+                            select.value = appState.exercise10Answers[`q${index}`];
+                        }
+                    });
+
+                }
+            } catch (e) {
+                console.error("Error loading from local storage:", e);
+                // showMessage('Failed to load previous progress.', 'error');
+            }
+        }
+
+        // --- Exercise Initialization Functions ---
+
+        function initializeExercise1() {
+            const container = getElement('exercise1-container');
+            exercise1Questions.forEach((q, index) => {
+                const div = document.createElement('div');
+                div.className = 'flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 p-3 border border-indigo-200 rounded-md bg-white';
+
+                const questionP = document.createElement('p');
+                questionP.className = 'flex-grow text-gray-700';
+                questionP.textContent = `${index + 1}. ${q.question}`;
+                div.appendChild(questionP);
+
+                const select = document.createElement('select');
+                select.id = `ex1-q${index}`;
+                select.className = 'p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 md:w-1/3';
+                
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select a sport";
+                select.appendChild(defaultOption);
+
+                exercise1Options.forEach(option => {
+                    const opt = document.createElement('option');
+                    opt.value = option;
+                    opt.textContent = option;
+                    select.appendChild(opt);
+                });
+                select.addEventListener('change', (event) => {
+                    appState.exercise1Answers[`q${index}`] = event.target.value;
+                    saveAnswers();
+                });
+                div.appendChild(select);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex1-feedback-q${index}`;
+                feedbackSpan.className = 'hidden';
+                div.appendChild(feedbackSpan);
+
+                container.appendChild(div);
+            });
+            getElement('check-ex1-button').addEventListener('click', checkExercise1);
+        }
+
+        function checkExercise1() {
+            exercise1Questions.forEach((q, index) => {
+                const userAnswer = (appState.exercise1Answers[`q${index}`] || '').trim().toLowerCase();
+                const isCorrect = userAnswer === q.correct.toLowerCase();
+                setFeedback(`ex1-feedback-q${index}`, isCorrect);
+
+                const selectElement = getElement(`ex1-q${index}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        function initializeExercise2() {
+            const container = getElement('exercise2-container');
+            exercise2Blanks.forEach((b, index) => {
+                const div = document.createElement('div');
+                div.className = 'flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 p-3 border border-blue-200 rounded-md bg-white';
+
+                const textParts = b.text.split('___________');
+                const p = document.createElement('p');
+                p.className = 'flex-grow text-gray-700';
+                p.innerHTML = textParts[0];
+
+                const select = document.createElement('select');
+                select.id = `ex2-q${index}`;
+                select.className = 'p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 md:w-1/3';
+                
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select a place";
+                select.appendChild(defaultOption);
+
+                exercise2Options.forEach(option => {
+                    const opt = document.createElement('option');
+                    opt.value = option;
+                    opt.textContent = option;
+                    select.appendChild(opt);
+                });
+                select.addEventListener('change', (event) => {
+                    appState.exercise2Answers[`q${index}`] = event.target.value;
+                    saveAnswers();
+                });
+                
+                p.appendChild(select);
+                if (textParts[1]) {
+                    p.innerHTML += textParts[1];
+                }
+                div.appendChild(p);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex2-feedback-q${index}`;
+                feedbackSpan.className = 'hidden';
+                div.appendChild(feedbackSpan);
+
+                container.appendChild(div);
+            });
+            getElement('check-ex2-button').addEventListener('click', checkExercise2);
+        }
+
+        function checkExercise2() {
+            exercise2Blanks.forEach((b, index) => {
+                const userAnswer = (appState.exercise2Answers[`q${index}`] || '').trim().toLowerCase();
+                const isCorrect = userAnswer === b.correct.toLowerCase();
+                setFeedback(`ex2-feedback-q${index}`, isCorrect);
+
+                const selectElement = getElement(`ex2-q${index}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        function initializeExercise3() {
+            const container = getElement('exercise3-container');
+            exercise3Questions.forEach((q, index) => {
+                const div = document.createElement('div');
+                div.className = 'flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 p-3 border border-green-200 rounded-md bg-white';
+
+                const questionText = q.text.replace(/\/(.*?)\//g, '___________'); // Replace original options with blank
+                const p = document.createElement('p');
+                p.className = 'flex-grow text-gray-700';
+                p.innerHTML = `${index + 1}. ${questionText.split('___________')[0]}`; // Text before the blank
+
+                const select = document.createElement('select');
+                select.id = `ex3-q${index}`;
+                select.className = 'p-2 border rounded-md focus:ring-green-500 focus:border-green-500 md:w-1/4';
+                
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select a verb";
+                select.appendChild(defaultOption);
+
+                q.options.forEach(option => {
+                    const opt = document.createElement('option');
+                    opt.value = option;
+                    opt.textContent = option;
+                    select.appendChild(opt);
+                });
+                select.addEventListener('change', (event) => {
+                    appState.exercise3Answers[`q${index}`] = event.target.value;
+                    saveAnswers();
+                });
+                p.appendChild(select);
+                p.innerHTML += questionText.split('___________')[1] || ''; // Text after the blank
+                
+                div.appendChild(p);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex3-feedback-q${index}`;
+                feedbackSpan.className = 'hidden';
+                div.appendChild(feedbackSpan);
+
+                container.appendChild(div);
+            });
+            getElement('check-ex3-button').addEventListener('click', checkExercise3);
+        }
+
+        function checkExercise3() {
+            exercise3Questions.forEach((q, index) => {
+                const userAnswer = (appState.exercise3Answers[`q${index}`] || '').trim().toLowerCase();
+                const isCorrect = userAnswer === q.correct.toLowerCase();
+                setFeedback(`ex3-feedback-q${index}`, isCorrect);
+
+                const selectElement = getElement(`ex3-q${index}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        function initializeExercise4() {
+            const container = getElement('exercise4-container');
+            exercise4Questions.forEach((q, index) => {
+                const div = document.createElement('div');
+                div.className = 'flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 p-3 border border-purple-200 rounded-md bg-white';
+
+                const questionText = q.text.replace('___________', '<span class="blank-placeholder"></span>');
+                const p = document.createElement('p');
+                p.className = 'flex-grow text-gray-700';
+                p.innerHTML = `${index + 1}. ${questionText.split('<span class="blank-placeholder"></span>')[0]}`;
+
+                const select = document.createElement('select');
+                select.id = `ex4-q${index}`;
+                select.className = 'p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500 md:w-1/4';
+                
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select a preposition";
+                select.appendChild(defaultOption);
+
+                q.options.forEach(option => {
+                    const opt = document.createElement('option');
+                    opt.value = option;
+                    opt.textContent = option;
+                    select.appendChild(opt);
+                });
+                select.addEventListener('change', (event) => {
+                    appState.exercise4Answers[`q${index}`] = event.target.value;
+                    saveAnswers();
+                });
+                p.appendChild(select);
+                p.innerHTML += questionText.split('<span class="blank-placeholder"></span>')[1] || '';
+                
+                div.appendChild(p);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex4-feedback-q${index}`;
+                feedbackSpan.className = 'hidden';
+                div.appendChild(feedbackSpan);
+
+                container.appendChild(div);
+            });
+            getElement('check-ex4-button').addEventListener('click', checkExercise4);
+        }
+
+        function checkExercise4() {
+            exercise4Questions.forEach((q, index) => {
+                const userAnswer = (appState.exercise4Answers[`q${index}`] || '').trim().toLowerCase();
+                const isCorrect = userAnswer === q.correct.toLowerCase();
+                setFeedback(`ex4-feedback-q${index}`, isCorrect);
+
+                const selectElement = getElement(`ex4-q${index}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        function initializeExercise5() {
+            const container = getElement('exercise5-container');
+            exercise5Questions.forEach((q, index) => {
+                const div = document.createElement('div');
+                div.className = 'flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 p-3 border border-yellow-200 rounded-md bg-white';
+
+                const textParts = q.text.split('____________'); // Split by blank
+                const p = document.createElement('p');
+                p.className = 'flex-grow text-gray-700';
+                p.innerHTML = `${index + 1}. ${textParts[0]}`;
+
+                const select = document.createElement('select');
+                select.id = `ex5-q${index}`;
+                select.className = 'p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 md:w-1/4';
+                
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select a preposition";
+                select.appendChild(defaultOption);
+
+                q.options.forEach(option => {
+                    const opt = document.createElement('option');
+                    opt.value = option;
+                    opt.textContent = option;
+                    select.appendChild(opt);
+                });
+                select.addEventListener('change', (event) => {
+                    appState.exercise5Answers[`q${index}`] = event.target.value;
+                    saveAnswers();
+                });
+                p.appendChild(select);
+                p.innerHTML += textParts[1] || '';
+                
+                div.appendChild(p);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex5-feedback-q${index}`;
+                feedbackSpan.className = 'hidden';
+                div.appendChild(feedbackSpan);
+
+                container.appendChild(div);
+            });
+            getElement('check-ex5-button').addEventListener('click', checkExercise5);
+        }
+
+        function checkExercise5() {
+            exercise5Questions.forEach((q, index) => {
+                const userAnswer = (appState.exercise5Answers[`q${index}`] || '').trim().toLowerCase();
+                const isCorrect = userAnswer === q.correct.toLowerCase();
+                setFeedback(`ex5-feedback-q${index}`, isCorrect);
+
+                const selectElement = getElement(`ex5-q${index}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        function initializeExercise6() {
+            const container = getElement('exercise6-container');
+            exercise6Questions.forEach((q, index) => {
+                const div = document.createElement('div');
+                div.className = 'flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 p-3 border border-red-200 rounded-md bg-white';
+
+                // Find the placeholder for options (e.g., "oldest/most old/more old/older")
+                const textWithPlaceholder = q.text.replace(q.options.join('/'), '___________');
+
+                const p = document.createElement('p');
+                p.className = 'flex-grow text-gray-700';
+                p.innerHTML = `${index + 1}. ${textWithPlaceholder.split('___________')[0]}`;
+
+                const select = document.createElement('select');
+                select.id = `ex6-q${index}`;
+                select.className = 'p-2 border rounded-md focus:ring-red-500 focus:border-red-500 md:w-1/4';
+                
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select an option";
+                select.appendChild(defaultOption);
+
+                q.options.forEach(option => {
+                    const opt = document.createElement('option');
+                    opt.value = option;
+                    opt.textContent = option;
+                    select.appendChild(opt);
+                });
+                select.addEventListener('change', (event) => {
+                    appState.exercise6Answers[`q${index}`] = event.target.value;
+                    saveAnswers();
+                });
+                p.appendChild(select);
+                p.innerHTML += q.text.split(q.options.join('/'))[1] || ''; // Add text after options
+
+                div.appendChild(p);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex6-feedback-q${index}`;
+                feedbackSpan.className = 'hidden';
+                div.appendChild(feedbackSpan);
+
+                container.appendChild(div);
+            });
+            getElement('check-ex6-button').addEventListener('click', checkExercise6);
+        }
+
+        function checkExercise6() {
+            exercise6Questions.forEach((q, index) => {
+                const userAnswer = (appState.exercise6Answers[`q${index}`] || '').trim().toLowerCase();
+                const isCorrect = userAnswer === q.correct.toLowerCase();
+                setFeedback(`ex6-feedback-q${index}`, isCorrect);
+
+                const selectElement = getElement(`ex6-q${index}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        function initializeExercise7() {
+            const container = getElement('exercise7-container');
+            exercise7Questions.forEach((q, index) => {
+                const div = document.createElement('div');
+                div.className = 'flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 p-3 border border-teal-200 rounded-md bg-white';
+
+                // Find the original word in parentheses
+                const originalWordMatch = q.text.match(/\b(good|far|heavy|high|tall|fit|close|lazy|bad)\b/i);
+                const originalWord = originalWordMatch ? originalWordMatch[0] : '';
+                
+                const questionText = q.text.replace(originalWord, '___________'); // Replace original word with blank
+
+                const p = document.createElement('p');
+                p.className = 'flex-grow text-gray-700';
+                p.innerHTML = `${questionText.split('___________')[0]}`;
+
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.id = `ex7-q${index}`;
+                input.className = 'p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500 md:w-1/4';
+                input.placeholder = `e.g., ${q.correct instanceof Array ? q.correct[0] : q.correct}`;
+                input.addEventListener('input', (event) => {
+                    appState.exercise7Answers[`q${index}`] = event.target.value;
+                    saveAnswers();
+                });
+                
+                p.appendChild(input);
+                p.innerHTML += questionText.split('___________')[1] || '';
+                
+                div.appendChild(p);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex7-feedback-q${index}`;
+                feedbackSpan.className = 'hidden';
+                div.appendChild(feedbackSpan);
+
+                container.appendChild(div);
+            });
+            getElement('check-ex7-button').addEventListener('click', checkExercise7);
+        }
+
+        function checkExercise7() {
+            exercise7Questions.forEach((q, index) => {
+                const userAnswer = (appState.exercise7Answers[`q${index}`] || '').trim().toLowerCase();
+                let isCorrect = false;
+                if (q.correct instanceof Array) {
+                    isCorrect = q.correct.some(ans => ans.toLowerCase() === userAnswer);
+                } else {
+                    isCorrect = userAnswer === q.correct.toLowerCase();
+                }
+                setFeedback(`ex7-feedback-q${index}`, isCorrect);
+
+                const inputElement = getElement(`ex7-q${index}`);
+                inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    inputElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    inputElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    inputElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        function initializeExercise8() {
+            const container = getElement('exercise8-container');
+            exercise8Questions.forEach((q, index) => {
+                const div = document.createElement('div');
+                div.className = 'flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 p-3 border border-orange-200 rounded-md bg-white';
+
+                const textParts = q.text.split('_____________'); // Split by blank
+                const p = document.createElement('p');
+                p.className = 'flex-grow text-gray-700';
+                p.innerHTML = `${index + 1}. ${textParts[0]}`;
+
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.id = `ex8-q${index}`;
+                input.className = 'p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500 md:w-1/4';
+                input.placeholder = `e.g., ${q.correct}`;
+                input.addEventListener('input', (event) => {
+                    appState.exercise8Answers[`q${index}`] = event.target.value;
+                    saveAnswers();
+                });
+                
+                p.appendChild(input);
+                p.innerHTML += textParts[1] || ''; // Add text after blank
+                
+                div.appendChild(p);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex8-feedback-q${index}`;
+                feedbackSpan.className = 'hidden';
+                div.appendChild(feedbackSpan);
+
+                container.appendChild(div);
+            });
+            getElement('check-ex8-button').addEventListener('click', checkExercise8);
+        }
+
+        function checkExercise8() {
+            exercise8Questions.forEach((q, index) => {
+                const userAnswer = (appState.exercise8Answers[`q${index}`] || '').trim().toLowerCase();
+                const isCorrect = userAnswer === q.correct.toLowerCase();
+                setFeedback(`ex8-feedback-q${index}`, isCorrect);
+
+                const inputElement = getElement(`ex8-q${index}`);
+                inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    inputElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    inputElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    inputElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        function initializeExercise9() {
+            const container = getElement('exercise9-container');
+            exercise9Phrases.forEach((p, index) => {
+                const div = document.createElement('div');
+                div.className = 'flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 p-3 border border-pink-200 rounded-md bg-white';
+
+                const phraseP = document.createElement('p');
+                phraseP.className = 'flex-grow text-gray-700';
+                phraseP.textContent = p.phrase;
+                div.appendChild(phraseP);
+
+                const select = document.createElement('select');
+                select.id = `ex9-q${index}`;
+                select.className = 'p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 md:w-1/2';
+                
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select a category";
+                select.appendChild(defaultOption);
+
+                exercise9Categories.forEach(category => {
+                    const opt = document.createElement('option');
+                    opt.value = category;
+                    opt.textContent = category;
+                    select.appendChild(opt);
+                });
+                select.addEventListener('change', (event) => {
+                    appState.exercise9Answers[`q${index}`] = event.target.value;
+                    saveAnswers();
+                });
+                div.appendChild(select);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex9-feedback-q${index}`;
+                feedbackSpan.className = 'hidden';
+                div.appendChild(feedbackSpan);
+
+                container.appendChild(div);
+            });
+            getElement('check-ex9-button').addEventListener('click', checkExercise9);
+        }
+
+        function checkExercise9() {
+            exercise9Phrases.forEach((p, index) => {
+                const userAnswer = (appState.exercise9Answers[`q${index}`] || '').trim().toLowerCase();
+                let isCorrect = false;
+                if (p.correctCategory instanceof Array) {
+                    isCorrect = p.correctCategory.some(category => category.toLowerCase() === userAnswer);
+                } else {
+                    isCorrect = userAnswer === p.correctCategory.toLowerCase();
+                }
+                setFeedback(`ex9-feedback-q${index}`, isCorrect);
+
+                const selectElement = getElement(`ex9-q${index}`);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        function initializeExercise10() {
+            const container = getElement('exercise10-container');
+            const paragraphs = exercise10Text.split('\n').filter(p => p.trim() !== '');
+            let blankCounter = 0;
+
+            paragraphs.forEach(paragraph => {
+                const pDiv = document.createElement('div');
+                pDiv.className = 'mb-4 text-gray-700';
+
+                const parts = paragraph.split('___________');
+                let htmlContent = '';
+                parts.forEach((part, index) => {
+                    htmlContent += part;
+                    if (index < parts.length - 1) {
+                        const selectId = `ex10-q${blankCounter}`;
+                        htmlContent += `<select id="${selectId}" class="inline-block mx-1 p-1 border rounded-md focus:ring-gray-500 focus:border-gray-500 w-32">`;
+                        htmlContent += `<option value="">---</option>`; // Default blank option
+                        exercise10Options.forEach(option => {
+                            htmlContent += `<option value="${option}">${option}</option>`;
+                        });
+                        htmlContent += `</select>`;
+                        htmlContent += `<span id="ex10-feedback-${selectId}" class="hidden text-sm ml-1"></span>`;
+                        
+                        blankCounter++;
+                    }
+                });
+                pDiv.innerHTML = htmlContent;
+                container.appendChild(pDiv);
+            });
+
+            // Attach event listeners after innerHTML is set and elements exist
+            for (let i = 0; i < blankCounter; i++) {
+                const selectElement = getElement(`ex10-q${i}`);
+                if (selectElement) {
+                    selectElement.addEventListener('change', (event) => {
+                        appState.exercise10Answers[`q${i}`] = event.target.value;
+                        saveAnswers();
+                    });
+                }
+            }
+            getElement('check-ex10-button').addEventListener('click', checkExercise10);
+        }
+
+        function checkExercise10() {
+            exercise10CorrectAnswers.forEach((correctAnswer, index) => {
+                const selectId = `ex10-q${index}`;
+                const userAnswer = (appState.exercise10Answers[`q${index}`] || '').trim().toLowerCase();
+                const isCorrect = userAnswer === correctAnswer.toLowerCase();
+                setFeedback(`ex10-feedback-${selectId}`, isCorrect);
+
+                const selectElement = getElement(selectId);
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+
+        function clearAllAnswers() {
+            // Reset appState
+            appState = {
+                exercise1Answers: {},
+                exercise2Answers: {},
+                exercise3Answers: {},
+                exercise4Answers: {},
+                exercise5Answers: {},
+                exercise6Answers: {},
+                exercise7Answers: {},
+                exercise8Answers: {},
+                exercise9Answers: {},
+                exercise10Answers: {},
+            };
+
+            // Clear all input/select fields and remove feedback styling
+            document.querySelectorAll('input[type="text"], select').forEach(element => {
+                element.value = '';
+                element.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                element.classList.add('border-gray-300');
+            });
+
+            // Clear all feedback spans
+            document.querySelectorAll('[id$="-feedback-q0"], [id^="ex"][id*="-feedback-q"]').forEach(span => {
+                span.textContent = '';
+                span.classList.add('hidden');
+            });
+
+            // For Exercise 4 checkboxes (special handling)
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            document.querySelectorAll('[id^="ex4-feedback-"]').forEach(feedbackDiv => {
+                feedbackDiv.classList.add('hidden');
+                feedbackDiv.classList.remove('correct', 'incorrect');
+                feedbackDiv.textContent = '';
+            });
+
+            saveAnswers(); // Save the cleared state
+            showMessage('All answers cleared!', 'success');
+        }
+
+
+        // --- Initialize all exercises on window load ---
+        window.onload = function() {
+            initializeExercise1();
+            initializeExercise2();
+            initializeExercise3();
+            initializeExercise4();
+            initializeExercise5();
+            initializeExercise6();
+            initializeExercise7();
+            initializeExercise8();
+            initializeExercise9();
+            initializeExercise10();
+
+            // Attach event listener for clear all answers
+            getElement('clear-all-answers-button').addEventListener('click', clearAllAnswers);
+            
+            // Load saved answers on page load
+            loadAnswers();
+        };
+    </script>
+</body>
+</html>
