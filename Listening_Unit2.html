@@ -275,9 +275,12 @@
             <h2 class="text-2xl font-semibold text-gray-700 mb-4">Unit 2: Exercise 10</h2>
             <p class="mb-4">Think about what you’ve learnt from doing this unit.</p>
             <p class="mb-4">Complete the summary. Use the words in the box.</p>
+            <!-- The following section has been removed as per your request -->
+            <!--
             <div class="mb-4 p-3 bg-gray-100 rounded-md border border-gray-200">
                 <p class="font-semibold">Words: Facts, hyphen, instructions, numbers, predict, pronunciation</p>
             </div>
+            -->
             <div id="exercise10-container" class="space-y-6">
                 <!-- Exercise 10 content will be dynamically loaded here -->
             </div>
@@ -747,7 +750,7 @@
                 const feedbackSpan = document.createElement('span');
                 feedbackSpan.id = `ex2-feedback-q${qIndex}`;
                 feedbackSpan.className = "hidden";
-                qDiv.appendChild(feedbackSpan);
+                qDiv.appendChild(feedbackSpan); /* Corrected from feedbackBspan */
 
                 container.appendChild(qDiv);
             });
