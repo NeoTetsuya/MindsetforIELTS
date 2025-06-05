@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mindset for IELTS 1 - Unit 5 Grammar & Vocabulary</title>
+    <title>Unit 5: Grammar & Vocabulary Worksheet</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Inter Font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Custom CSS from your original file */
+        /* Custom CSS - Inherited from style.css for consistent look and feel */
         body {
             font-family: 'Inter', sans-serif;
         }
@@ -51,47 +51,71 @@
             opacity: 1;
         }
 
-        /* Drag and Drop specific styles */
+        /* Drag and Drop Specific Styles */
         .draggable-word {
-            @apply bg-white px-4 py-2 rounded-md shadow-sm border border-gray-300 cursor-grab text-center;
-            touch-action: none; /* Prevent default touch behavior for better drag */
+            cursor: grab;
+            padding: 0.5rem 1rem;
+            background-color: #BFDBFE; /* blue-200 */
+            border-radius: 0.375rem; /* rounded-md */
+            margin: 0.25rem;
+            font-weight: 600;
+            user-select: none; /* Prevent text selection during drag */
+            display: inline-block; /* For proper spacing in flex container */
+            border: 1px solid #93C5FD; /* blue-300 */
+            transition: background-color 0.2s, border-color 0.2s;
         }
-        .draggable-word:active {
-            cursor: grabbing;
+        .draggable-word:hover {
+            background-color: #93C5FD; /* blue-300 */
         }
-        /* Adjusted droppable-area to look more like a line/slot */
-        .droppable-area {
-            @apply border-b-2 border-dashed border-gray-300 bg-gray-50 p-2 rounded-md min-h-[2.5rem] flex flex-wrap gap-2 items-center; /* Adjusted padding and min-height */
-            margin-bottom: 0.5rem; /* Space between lines */
-            min-width: 150px; /* Ensure slots have a minimum width */
+        .draggable-word.dragging {
+            opacity: 0.5;
+            border: 2px dashed #3B82F6; /* blue-500 */
         }
-        .droppable-area.drag-over {
-            @apply border-indigo-500 bg-indigo-100;
+        .drop-target {
+            min-height: 48px; /* Ensure a decent height for dropping */
+            border: 2px dashed #9CA3AF; /* gray-400 */
+            background-color: #F3F4F6; /* gray-100 */
+            border-radius: 0.375rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Align dropped word to start */
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .drop-target.hovered {
+            background-color: #DBEAFE; /* blue-100 */
+            border-color: #3B82F6; /* blue-500 */
+        }
+        .drop-target.correct-drop {
+            border-color: #10B981; /* Green-500 */
+            background-color: #D1FAE5; /* green-100 */
+        }
+        .drop-target.incorrect-drop {
+            border-color: #EF4444; /* Red-500 */
+            background-color: #FEE2E2; /* red-100 */
         }
         .dropped-word {
-            @apply bg-indigo-200 text-indigo-800 px-3 py-1 rounded-full text-sm shadow-inner;
+            background-color: #60A5FA; /* blue-400 */
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            cursor: default;
+            pointer-events: none; /* Make dropped word not draggable itself */
+            margin-left: 0.25rem; /* Space after the prefix text */
         }
-        .draggable-list {
-            @apply flex flex-wrap gap-2 p-4 bg-gray-100 rounded-md border border-gray-200;
-        }
-
-        /* Styling for the category containers to better resemble lines/slots */
-        .category-container {
-            @apply border border-gray-200 rounded-md p-4 bg-white shadow-sm;
-        }
-        .category-item {
-            @apply flex flex-col sm:flex-row sm:items-center mb-2;
-        }
-        .category-label {
-            @apply font-medium text-lg text-gray-700 mr-2 min-w-[80px]; /* Min-width for alignment */
+        .drop-target .placeholder-text {
+            color: #6B7280; /* gray-500 */
+            font-style: italic;
         }
     </style>
 </head>
 <body class="min-h-screen bg-gray-100 p-4 font-sans text-gray-800">
 
     <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
-        <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">
-            Mindset for IELTS 1 - Unit 5 Grammar & Vocabulary
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-purple-700 mb-8">
+            Unit 5: Grammar & Vocabulary Worksheet
         </h1>
 
         <div class="flex justify-end mb-6 space-x-2">
@@ -101,747 +125,466 @@
         </div>
 
         <!-- Unit 5: Exercise 1 - Drag and Drop -->
-        <section class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
-            <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Unit 5: Exercise 1</h2>
-            <p class="mb-4">Look at the words in the table. Which words can you add to them to make new words? Drag and drop the words from the box into the correct categories.</p>
-
-            <!-- Draggable Words List -->
-            <div class="mb-6">
-                <p class="font-semibold mb-2">Words to combine:</p>
-                <div id="draggable-words-container" class="draggable-list">
-                    <!-- Draggable words will be populated here by JavaScript -->
+        <section class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Unit 5: Exercise 1</h2>
+            <p class="mb-4">Look at the words in the table. Drag and drop the correct words to complete the new words.</p>
+            
+            <div class="mb-6 p-4 bg-blue-100 rounded-md border border-blue-200">
+                <p class="font-semibold mb-2">Drag these words:</p>
+                <div id="draggable-words-container" class="flex flex-wrap gap-2 justify-center">
+                    <!-- Draggable words will be injected here by JS -->
                 </div>
             </div>
 
-            <div class="space-y-6 category-container">
-                <!-- Shop... Category -->
-                <div>
-                    <h3 class="font-semibold mb-2">Shop...</h3>
-                    <div id="ex1-shop-inputs-wrapper" class="flex flex-col">
-                        <!-- Individual droppable slots for Shop... -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Drop Target: Shop... -->
+                <div class="flex flex-col space-y-2">
+                    <p class="font-medium text-lg">Shop<span class="font-mono text-gray-600">…</span></p>
+                    <div id="ex1-target-shop" class="drop-target" 
+                         ondragover="allowDrop(event)" 
+                         ondrop="drop(event, 'ex1-target-shop')"
+                         ondragenter="handleDragEnter(event)"
+                         ondragleave="handleDragLeave(event)">
+                        <span class="placeholder-text">Drop word here</span>
                     </div>
-                    <span id="ex1-feedback-Shop" class="hidden feedback-box mt-2"></span>
+                    <span id="ex1-feedback-shop" class="hidden"></span>
                 </div>
-                <!-- Shopping... Category -->
-                <div>
-                    <h3 class="font-semibold mb-2">Shopping...</h3>
-                    <div id="ex1-shopping-inputs-wrapper" class="flex flex-col">
-                        <!-- Individual droppable slots for Shopping... -->
+                <!-- Drop Target: Shopping... -->
+                <div class="flex flex-col space-y-2">
+                    <p class="font-medium text-lg">Shopping<span class="font-mono text-gray-600">…</span></p>
+                    <div id="ex1-target-shopping" class="drop-target"
+                         ondragover="allowDrop(event)" 
+                         ondrop="drop(event, 'ex1-target-shopping')"
+                         ondragenter="handleDragEnter(event)"
+                         ondragleave="handleDragLeave(event)">
+                        <span class="placeholder-text">Drop word here</span>
                     </div>
-                    <span id="ex1-feedback-Shopping" class="hidden feedback-box mt-2"></span>
+                    <span id="ex1-feedback-shopping" class="hidden"></span>
                 </div>
-                <!-- ...-wear Category -->
-                <div>
-                    <h3 class="font-semibold mb-2">...-wear</h3>
-                    <div id="ex1-wear-inputs-wrapper" class="flex flex-col">
-                        <!-- Individual droppable slots for ...-wear -->
+                <!-- Drop Target: ...wear -->
+                <div class="flex flex-col space-y-2">
+                    <p class="font-medium text-lg"><span class="font-mono text-gray-600">…</span>wear</p>
+                    <div id="ex1-target-wear" class="drop-target"
+                         ondragover="allowDrop(event)" 
+                         ondrop="drop(event, 'ex1-target-wear')"
+                         ondragenter="handleDragEnter(event)"
+                         ondragleave="handleDragLeave(event)">
+                        <span class="placeholder-text">Drop word here</span>
                     </div>
-                    <span id="ex1-feedback-wear" class="hidden feedback-box mt-2"></span>
+                    <span id="ex1-feedback-wear" class="hidden"></span>
                 </div>
-                <!-- ...store Category -->
-                <div>
-                    <h3 class="font-semibold mb-2">...store</h3>
-                    <div id="ex1-store-inputs-wrapper" class="flex flex-col">
-                        <!-- Individual droppable slots for ...store -->
+                <!-- Drop Target: ...store -->
+                <div class="flex flex-col space-y-2">
+                    <p class="font-medium text-lg"><span class="font-mono text-gray-600">…</span>store</p>
+                    <div id="ex1-target-store" class="drop-target"
+                         ondragover="allowDrop(event)" 
+                         ondrop="drop(event, 'ex1-target-store')"
+                         ondragenter="handleDragEnter(event)"
+                         ondragleave="handleDragLeave(event)">
+                        <span class="placeholder-text">Drop word here</span>
                     </div>
-                    <span id="ex1-feedback-store" class="hidden feedback-box mt-2"></span>
+                    <span id="ex1-feedback-store" class="hidden"></span>
                 </div>
             </div>
             <div class="flex justify-end mt-6">
-                <button id="check-ex1-button" class="px-5 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-200 ease-in-out transform hover:scale-105">
+                <button id="check-ex1-button" class="px-5 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-200 ease-in-out transform hover:scale-105">
                     Check Exercise 1
                 </button>
             </div>
         </section>
 
-        <!-- Unit 5: Exercise 2 -->
-        <section class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
-            <h2 class="text-2xl font-semibold text-blue-600 mb-4">Unit 5: Exercise 2</h2>
+        <!-- Unit 5: Exercise 2 - Dropdown list -->
+        <section class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-green-700 mb-4">Unit 5: Exercise 2</h2>
             <p class="mb-4">Complete the descriptions. Use the words in the box.</p>
-            <div class="mb-4 p-3 bg-blue-100 rounded-md border border-blue-200">
+            <div class="mb-4 p-3 bg-green-100 rounded-md border border-green-200">
                 <p class="font-semibold">Words: DIY store, bakery, bookshop, butcher's, chemist's, greengrocer's, Newsagent's, travel agency</p>
             </div>
-            <div class="space-y-4">
-                <div class="flex flex-col space-y-2">
-                    <p class="font-medium">You can buy meat in a <input type="text" id="ex2-q1" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Type answer here"></p>
-                    <span id="ex2-feedback-q1" class="hidden"></span>
-                </div>
-                <div class="flex flex-col space-y-2">
-                    <p class="font-medium">You can buy bread and cakes in a <input type="text" id="ex2-q2" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Type answer here"></p>
-                    <span id="ex2-feedback-q2" class="hidden"></span>
-                </div>
-                <div class="flex flex-col space-y-2">
-                    <p class="font-medium">You buy books in a <input type="text" id="ex2-q3" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Type answer here"></p>
-                    <span id="ex2-feedback-q3" class="hidden"></span>
-                </div>
-                <div class="flex flex-col space-y-2">
-                    <p class="font-medium">You buy newspapers and magazines in a <input type="text" id="ex2-q4" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Type answer here"></p>
-                    <span id="ex2-feedback-q4" class="hidden"></span>
-                </div>
-                <div class="flex flex-col space-y-2">
-                    <p class="font-medium">You book a holiday in a <input type="text" id="ex2-q5" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Type answer here"></p>
-                    <span id="ex2-feedback-q5" class="hidden"></span>
-                </div>
-                <div class="flex flex-col space-y-2">
-                    <p class="font-medium">You buy fruit and vegetables in a <input type="text" id="ex2-q6" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Type answer here"></p>
-                    <span id="ex2-feedback-q6" class="hidden"></span>
-                </div>
-                <div class="flex flex-col space-y-2">
-                    <p class="font-medium">You buy things to help you build and fix things around the house in a <input type="text" id="ex2-q7" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Type answer here"></p>
-                    <span id="ex2-feedback-q7" class="hidden"></span>
-                </div>
-                <div class="flex flex-col space-y-2">
-                    <p class="font-medium">You get medicines in a <input type="text" id="ex2-q8" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Type answer here"></p>
-                    <span id="ex2-feedback-q8" class="hidden"></span>
-                </div>
+            <div id="ex2-dropdown-container" class="grid grid-cols-1 gap-4">
+                <!-- Dropdowns will be dynamically generated here -->
             </div>
             <div class="flex justify-end mt-6">
-                <button id="check-ex2-button" class="px-5 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-200 ease-in-out transform hover:scale-105">
+                <button id="check-ex2-button" class="px-5 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition duration-200 ease-in-out transform hover:scale-105">
                     Check Exercise 2
                 </button>
             </div>
         </section>
 
-        <!-- Unit 5: Exercise 3 -->
-        <section class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
-            <h2 class="text-2xl font-semibold text-green-600 mb-4">Unit 5: Exercise 3</h2>
+        <!-- Unit 5: Exercise 3 - Dropdown list -->
+        <section class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-purple-700 mb-4">Unit 5: Exercise 3</h2>
             <p class="mb-4">Choose the correct words to complete the story.</p>
             <div class="space-y-4">
                 <p>The department store in my town was having a
-                    <select id="ex3-q1" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500">
-                        <option value="">---</option>
-                        <option value="discount">discount</option>
-                        <option value="sale">sale</option>
-                        <option value="sell">sell</option>
-                    </select>
-                    last week – everything was 25% cheaper than usual.
-                    <span id="ex3-feedback-q1" class="hidden"></span>
+                    <select id="ex3-q1" class="p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select> last week – everything was 25% cheaper than usual. So I went to find some
+                    <select id="ex3-q2" class="p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select>. I love buying things that are cheaper than they should be.
+                    <span id="ex3-feedback-q1" class="hidden"></span> <span id="ex3-feedback-q2" class="hidden"></span>
                 </p>
-                <p>So I went to find some
-                    <select id="ex3-q2" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500">
-                        <option value="">---</option>
-                        <option value="bargains">bargains</option>
-                        <option value="discount">discount</option>
-                        <option value="sell">sell</option>
-                    </select>
-                    . I love buying things that are cheaper than they should be. In the footwear and bags department, I found a lovely bag, with a 40%
-                    <select id="ex3-q3" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500">
-                        <option value="">---</option>
-                        <option value="discount">discount</option>
-                        <option value="off">off</option>
-                        <option value="sale">sale</option>
-                    </select>
-                    .
-                    <span id="ex3-feedback-q2" class="hidden"></span>
-                    <span id="ex3-feedback-q3" class="hidden"></span>
-                </p>
-                <p>It had a two-year
-                    <select id="ex3-q4" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500">
-                        <option value="">---</option>
-                        <option value="fitting room">fitting room</option>
-                        <option value="guarantee">guarantee</option>
-                        <option value="receipt">receipt</option>
-                    </select>
-                    , so I could get my money back if it broke.
-                    <span id="ex3-feedback-q4" class="hidden"></span>
+                <p>In the footwear and bags department, I found a lovely bag, with a 40%
+                    <select id="ex3-q3" class="p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select>. It had a two-year
+                    <select id="ex3-q4" class="p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select>, so I could get my money back if it broke.
+                    <span id="ex3-feedback-q3" class="hidden"></span> <span id="ex3-feedback-q4" class="hidden"></span>
                 </p>
                 <p>Then I went to the womenswear department and found some nice trousers on
-                    <select id="ex3-q5" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500">
-                        <option value="">---</option>
-                        <option value="discounts">discounts</option>
-                        <option value="refund">refund</option>
-                        <option value="special offer">special offer</option>
-                    </select>
-                    .
-                    <span id="ex3-feedback-q5" class="hidden"></span>
+                    <select id="ex3-q5" class="p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select>. They were 50% of the normal price. I wanted to go to the
+                    <select id="ex3-q6" class="p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select> to try them on, but there was a long
+                    <select id="ex3-q7" class="p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select> – there were about ten other people waiting – and I didn’t want to wait. So I went to the
+                    <select id="ex3-q8" class="p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select> and paid for everything.
+                    <span id="ex3-feedback-q5" class="hidden"></span> <span id="ex3-feedback-q6" class="hidden"></span>
+                    <span id="ex3-feedback-q7" class="hidden"></span> <span id="ex3-feedback-q8" class="hidden"></span>
                 </p>
-                <p>They were 50% of the normal price. I wanted to go to the
-                    <select id="ex3-q6" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500">
-                        <option value="">---</option>
-                        <option value="fitting room">fitting room</option>
-                        <option value="queue">queue</option>
-                        <option value="till">till</option>
-                    </select>
-                    to try them on, but there was a long
-                    <select id="ex3-q7" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500">
-                        <option value="">---</option>
-                        <option value="bargain">bargain</option>
-                        <option value="queue">queue</option>
-                        <option value="sale">sale</option>
-                    </select>
-                    – there were about ten other people waiting – and I didn’t want to wait.
-                    <span id="ex3-feedback-q6" class="hidden"></span>
-                    <span id="ex3-feedback-q7" class="hidden"></span>
+                <p>When I got home, I tried the trousers on. They were the right size, but they didn’t
+                    <select id="ex3-q9" class="p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select> me at all – they looked terrible on me. So I decided to take them back and ask for a
+                    <select id="ex3-q10" class="p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select>. But I couldn’t find my
+                    <select id="ex3-q11" class="p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select>, so the shop assistant said he couldn’t give me my money back. Next time, I’ll be more careful when I shop at the sales.
+                    <span id="ex3-feedback-q9" class="hidden"></span> <span id="ex3-feedback-q10" class="hidden"></span> <span id="ex3-feedback-q11" class="hidden"></span>
                 </p>
-                <p>So I went to the
-                    <select id="ex3-q8" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500">
-                        <option value="">---</option>
-                        <option value="cash machine">cash machine</option>
-                        <option value="fitting room">fitting room</option>
-                        <option value="till">till</option>
-                    </select>
-                    and paid for everything. When I got home, I tried the trousers on.
-                    <span id="ex3-feedback-q8" class="hidden"></span>
-                </p>
-                <p>They were the right size, but they didn’t
-                    <select id="ex3-q9" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500">
-                        <option value="">---</option>
-                        <option value="fit">fit</option>
-                        <option value="pass">pass</option>
-                        <option value="suit">suit</option>
-                    </select>
-                    me at all – they looked terrible on me.
-                    <span id="ex3-feedback-q9" class="hidden"></span>
-                </p>
-                <p>So I decided to take them back and ask for a
-                    <select id="ex3-q10" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500">
-                        <option value="">---</option>
-                        <option value="receipt">receipt</option>
-                        <option value="refund">refund</option>
-                        <option value="return">return</option>
-                    </select>
-                    .
-                    <span id="ex3-feedback-q10" class="hidden"></span>
-                </p>
-                <p>But I couldn’t find my
-                    <select id="ex3-q11" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500">
-                        <option value="">---</option>
-                        <option value="footwear">footwear</option>
-                        <option value="receipt">receipt</option>
-                        <option value="shopping bag">shopping bag</option>
-                    </select>
-                    , so the shop assistant said he couldn’t give me my money back.
-                    <span id="ex3-feedback-q11" class="hidden"></span>
-                </p>
-                <p>Next time, I’ll be more careful when I shop at the sales.</p>
             </div>
             <div class="flex justify-end mt-6">
-                <button id="check-ex3-button" class="px-5 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition duration-200 ease-in-out transform hover:scale-105">
+                <button id="check-ex3-button" class="px-5 py-2 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-200 ease-in-out transform hover:scale-105">
                     Check Exercise 3
                 </button>
             </div>
         </section>
 
-        <!-- Unit 5: Exercise 4 -->
-        <section class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
-            <h2 class="text-2xl font-semibold text-purple-600 mb-4">Unit 5: Exercise 4</h2>
-            <p class="mb-4">Complete the phrases. Use the words in the box.</p>
-            <div class="mb-4 p-3 bg-purple-100 rounded-md border border-purple-200">
-                <p class="font-semibold">Words: Book, Eat, Go, Meet, Spend, Take, Try, Watch</p>
-            </div>
-            <div class="space-y-4">
-                <div class="flex flex-col space-y-2">
-                    <p class="font-medium"><input type="text" id="ex4-q1" class="p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500" placeholder="Type answer here"></p>
-                    <span id="ex4-feedback-q1" class="hidden"></span>
-                </div>
-                <div class="flex flex-col space-y-2">
-                    <p class="font-medium"><input type="text" id="ex4-q2" class="p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500" placeholder="Type answer here"></p>
-                    <span id="ex4-feedback-q2" class="hidden"></span>
-                </div>
-                <div class="flex flex-col space-y-2">
-                    <p class="font-medium"><input type="text" id="ex4-q3" class="p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500" placeholder="Type answer here"> out some money from a cash machine.</p>
-                    <span id="ex4-feedback-q3" class="hidden"></span>
-                </div>
-                <div class="flex flex-col space-y-2">
-                    <p class="font-medium"><input type="text" id="ex4-q4" class="p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500" placeholder="Type answer here"> a film.</p>
-                    <span id="ex4-feedback-q4" class="hidden"></span>
-                </div>
-                <div class="flex flex-col space-y-2">
-                    <p class="font-medium"><input type="text" id="ex4-q5" class="p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500" placeholder="Type answer here"> fast food.</p>
-                    <span id="ex4-feedback-q5" class="hidden"></span>
-                </div>
-                <div class="flex flex-col space-y-2">
-                    <p class="font-medium"><input type="text" id="ex4-q6" class="p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500" placeholder="Type answer here"> on some clothes to see if they fit you.</p>
-                    <span id="ex4-feedback-q6" class="hidden"></span>
-                </div>
-                <div class="flex flex-col space-y-2">
-                    <p class="font-medium"><input type="text" id="ex4-q7" class="p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500" placeholder="Type answer here"> a holiday.</p>
-                    <span id="ex4-feedback-q7" class="hidden"></span>
-                </div>
-                <div class="flex flex-col space-y-2">
-                    <p class="font-medium"><input type="text" id="ex4-q8" class="p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500" placeholder="Type answer here"> money.</p>
-                    <span id="ex4-feedback-q8" class="hidden"></span>
-                </div>
+        <!-- Unit 5: Exercise 4 - Dropdown list -->
+        <section class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Unit 5: Exercise 4</h2>
+            <p class="mb-4">Complete the phrases.</p>
+            <!-- Removed the Words box for Exercise 4 as requested -->
+            <div id="ex4-dropdown-container" class="grid grid-cols-1 gap-4">
+                <!-- Dropdowns will be dynamically generated here -->
             </div>
             <div class="flex justify-end mt-6">
-                <button id="check-ex4-button" class="px-5 py-2 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-200 ease-in-out transform hover:scale-105">
+                <button id="check-ex4-button" class="px-5 py-2 bg-yellow-600 text-white rounded-lg shadow-md hover:bg-yellow-700 transition duration-200 ease-in-out transform hover:scale-105">
                     Check Exercise 4
                 </button>
             </div>
         </section>
 
         <!-- Unit 5: Exercise 5 -->
-        <section class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
-            <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Unit 5: Exercise 5</h2>
-            <p class="mb-4">Read the conversations. Then choose the correct reason for Speaker B using will + infinitive or going to + infinitive each time.</p>
+        <section class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-red-700 mb-4">Unit 5: Exercise 5</h2>
+            <p class="mb-4">Read the conversations. Then choose the correct reason for Speaker B using <i>will + infinitive</i> or <i>going to + infinitive</i> each time. The first one has been done for you.</p>
             <div class="space-y-6">
-                <div>
-                    <p class="font-semibold mb-2">1. A: Hmm, it’s a lovely jumper, but I can’t buy it today. I haven’t got enough money.</p>
-                    <p class="font-semibold mb-2">B: That’s OK. I’ll lend you the money. How much do you need?</p>
-                    <div class="flex flex-col space-y-2">
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q1" value="decision_help" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use will to make a decision while we’re speaking, or to ask another person for a decision.</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q1" value="prediction_opinion" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use will to make a prediction (= a guess about the future) based on our own opinions.</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q1" value="promise" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use will to make a promise to another person.</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q1" value="offer_help" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use will to offer help to another person, or to ask for help.</span>
-                        </label>
-                    </div>
-                    <span id="ex5-feedback-q1" class="hidden"></span>
+                <div class="p-4 border border-red-200 rounded-md bg-red-100">
+                    <p class="font-medium text-lg">1. A: Hmm, it’s a lovely jumper, but I can’t buy it today. I haven’t got enough money.<br>B: That’s OK. I’ll lend you the money. How much do you need?</p>
+                    <p class="mt-2 text-sm text-gray-700">We often use <i>will</i> to offer help to another person, or to ask for help. (Example, already filled)</p>
                 </div>
-
-                <div>
-                    <p class="font-semibold mb-2">2. A: These trainers are quite expensive. Are you sure you need them?</p>
-                    <p class="font-semibold mb-2">B: Yes, Mum. Don’t worry – I’ll wear them every day. Trust me!</p>
-                    <div class="flex flex-col space-y-2">
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q2" value="decision_help" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use will to make a decision while we’re speaking, or to ask another person for a decision.</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q2" value="prediction_opinion" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use will to make a prediction (= a guess about the future) based on our own opinions.</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q2" value="promise" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use will to make a promise to another person.</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q2" value="offer_help" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use will to offer help to another person, or to ask for help.</span>
-                        </label>
+                <div class="p-4 border border-red-200 rounded-md bg-red-100">
+                    <p class="font-medium text-lg">2. A: These trainers are quite expensive. Are you sure you need them?<br>B: Yes, Mum. Don’t worry – I’ll wear them every day. Trust me!</p>
+                    <div class="flex flex-col mt-2 space-y-1">
+                        <label class="inline-flex items-center"><input type="radio" name="ex5-q2" value="promise" class="form-radio text-red-600"> <span class="ml-2 text-gray-700 text-base">We often use <i>will</i> to make a promise to another person.</span></label>
+                        <label class="inline-flex items-center"><input type="radio" name="ex5-q2" value="decision" class="form-radio text-red-600"> <span class="ml-2 text-gray-700 text-base">We often use <i>will</i> to make a decision while we’re speaking, or to ask another person for a decision.</span></label>
+                        <label class="inline-flex items-center"><input type="radio" name="ex5-q2" value="prediction" class="form-radio text-red-600"> <span class="ml-2 text-gray-700 text-base">We often use <i>will</i> to make a prediction (= a guess about the future) based on our own opinions.</span></label>
+                        <label class="inline-flex items-center"><input type="radio" name="ex5-q2" value="offer" class="form-radio text-red-600"> <span class="ml-2 text-gray-700 text-base">We often use <i>will</i> to offer help to another person, or to ask for help.</span></label>
                     </div>
                     <span id="ex5-feedback-q2" class="hidden"></span>
                 </div>
-
-                <div>
-                    <p class="font-semibold mb-2">3. A: I’m sorry, but we don’t accept credit cards at this till.</p>
-                    <p class="font-semibold mb-2">B: Really? OK, I’ll pay by cash.</p>
-                    <div class="flex flex-col space-y-2">
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q3" value="decision_help" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use will to make a decision while we’re speaking, or to ask another person for a decision.</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q3" value="prediction_opinion" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use will to make a prediction (= a guess about the future) based on our own opinions.</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q3" value="promise" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use will to make a promise to another person.</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q3" value="offer_help" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use will to offer help to another person, or to ask for help.</span>
-                        </label>
+                <div class="p-4 border border-red-200 rounded-md bg-red-100">
+                    <p class="font-medium text-lg">3. A: I’m sorry, but we don’t accept credit cards at this till.<br>B: Really? OK, I’ll pay by cash.</p>
+                    <div class="flex flex-col mt-2 space-y-1">
+                        <label class="inline-flex items-center"><input type="radio" name="ex5-q3" value="decision" class="form-radio text-red-600"> <span class="ml-2 text-gray-700 text-base">We often use <i>will</i> to make a decision while we’re speaking, or to ask another person for a decision.</span></label>
+                        <label class="inline-flex items-center"><input type="radio" name="ex5-q3" value="prediction" class="form-radio text-red-600"> <span class="ml-2 text-gray-700 text-base">We often use <i>will</i> to make a prediction (= a guess about the future) based on our own opinions.</span></label>
+                        <label class="inline-flex items-center"><input type="radio" name="ex5-q3" value="promise" class="form-radio text-red-600"> <span class="ml-2 text-gray-700 text-base">We often use <i>will</i> to make a promise to another person.</span></label>
+                        <label class="inline-flex items-center"><input type="radio" name="ex5-q3" value="offer" class="form-radio text-red-600"> <span class="ml-2 text-gray-700 text-base">We often use <i>will</i> to offer help to another person, or to ask for help.</span></label>
                     </div>
                     <span id="ex5-feedback-q3" class="hidden"></span>
                 </div>
-
-                <div>
-                    <p class="font-semibold mb-2">4. A: This phone looks great, and it’s really cheap.</p>
-                    <p class="font-semibold mb-2">B: Yes, a bit too cheap. I’m worried that it’ll stop working after a few weeks.</p>
-                    <div class="flex flex-col space-y-2">
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q4" value="decision_help" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use will to make a decision while we’re speaking, or to ask another person for a decision.</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q4" value="prediction_opinion" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use will to make a prediction (= a guess about the future) based on our own opinions.</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q4" value="promise" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use will to make a promise to another person.</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q4" value="offer_help" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use will to offer help to another person, or to ask for help.</span>
-                        </label>
+                <div class="p-4 border border-red-200 rounded-md bg-red-100">
+                    <p class="font-medium text-lg">4. A: This phone looks great, and it’s really cheap.<br>B: Yes, a bit too cheap. I’m worried that it’ll stop working after a few weeks.</p>
+                    <div class="flex flex-col mt-2 space-y-1">
+                        <label class="inline-flex items-center"><input type="radio" name="ex5-q4" value="prediction" class="form-radio text-red-600"> <span class="ml-2 text-gray-700 text-base">We often use <i>will</i> to make a prediction (= a guess about the future) based on our own opinions.</span></label>
+                        <label class="inline-flex items-center"><input type="radio" name="ex5-q4" value="decision" class="form-radio text-red-600"> <span class="ml-2 text-gray-700 text-base">We often use <i>will</i> to make a decision while we’re speaking, or to ask another person for a decision.</span></label>
+                        <label class="inline-flex items-center"><input type="radio" name="ex5-q4" value="promise" class="form-radio text-red-600"> <span class="ml-2 text-gray-700 text-base">We often use <i>will</i> to make a promise to another person.</span></label>
+                        <label class="inline-flex items-center"><input type="radio" name="ex5-q4" value="offer" class="form-radio text-red-600"> <span class="ml-2 text-gray-700 text-base">We often use <i>will</i> to offer help to another person, or to ask for help.</span></label>
                     </div>
                     <span id="ex5-feedback-q4" class="hidden"></span>
                 </div>
-
-                <div>
-                    <p class="font-semibold mb-2">5. A: Have you booked your holiday yet?</p>
-                    <p class="font-semibold mb-2">B: Yes, we’ve just been to the travel agency and bought our tickets. We’re going to go to Thailand.</p>
-                    <div class="flex flex-col space-y-2">
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q5" value="prediction_know" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use going to to make a prediction based on what we know or can see.</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q5" value="plans_decisions_earlier" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use going to to talk about plans and decisions that we made earlier.</span>
-                        </label>
+                <div class="p-4 border border-red-200 rounded-md bg-red-100">
+                    <p class="font-medium text-lg">5. A: Have you booked your holiday yet?<br>B: Yes, we’ve just been to the travel agency and bought our tickets. We’re going to go to Thailand.</p>
+                    <div class="flex flex-col mt-2 space-y-1">
+                        <label class="inline-flex items-center"><input type="radio" name="ex5-q5" value="plans_going_to" class="form-radio text-red-600"> <span class="ml-2 text-gray-700 text-base">We often use <i>going to</i> to talk about plans and decisions that we made earlier.</span></label>
+                        <label class="inline-flex items-center"><input type="radio" name="ex5-q5" value="prediction_going_to" class="form-radio text-red-600"> <span class="ml-2 text-gray-700 text-base">We often use <i>going to</i> to make a prediction based on what we know or can see.</span></label>
                     </div>
                     <span id="ex5-feedback-q5" class="hidden"></span>
                 </div>
-
-                <div>
-                    <p class="font-semibold mb-2">6. A: Can we go home soon? I’m bored.</p>
-                    <p class="font-semibold mb-2">B: I want to try on this blouse, but there’s a long queue for the fitting rooms. It’s going to be at least half an hour before we can go home.</p>
-                    <div class="flex flex-col space-y-2">
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q6" value="prediction_know" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use going to to make a prediction based on what we know or can see.</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="ex5-q6" value="plans_decisions_earlier" class="form-radio text-yellow-600">
-                            <span class="ml-2">We often use going to to talk about plans and decisions that we made earlier.</span>
-                        </label>
+                <div class="p-4 border border-red-200 rounded-md bg-red-100">
+                    <p class="font-medium text-lg">6. A: Can we go home soon? I’m bored.<br>B: I want to try on this blouse, but there’s a long queue for the fitting rooms. It’s going to be at least half an hour before we can go home.</p>
+                    <div class="flex flex-col mt-2 space-y-1">
+                        <label class="inline-flex items-center"><input type="radio" name="ex5-q6" value="prediction_going_to" class="form-radio text-red-600"> <span class="ml-2 text-gray-700 text-base">We often use <i>going to</i> to make a prediction based on what we know or can see.</span></label>
+                        <label class="inline-flex items-center"><input type="radio" name="ex5-q6" value="plans_going_to" class="form-radio text-red-600"> <span class="ml-2 text-gray-700 text-base">We often use <i>going to</i> to talk about plans and decisions that we made earlier.</span></label>
                     </div>
                     <span id="ex5-feedback-q6" class="hidden"></span>
                 </div>
             </div>
             <div class="flex justify-end mt-6">
-                <button id="check-ex5-button" class="px-5 py-2 bg-yellow-600 text-white rounded-lg shadow-md hover:bg-yellow-700 transition duration-200 ease-in-out transform hover:scale-105">
+                <button id="check-ex5-button" class="px-5 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition duration-200 ease-in-out transform hover:scale-105">
                     Check Exercise 5
                 </button>
             </div>
         </section>
 
         <!-- Unit 5: Exercise 6 -->
-        <section class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
-            <h2 class="text-2xl font-semibold text-red-600 mb-4">Unit 5: Exercise 6</h2>
-            <p class="mb-4">Read the conversations and correct Speaker B’s answers by using the correct form of will + infinitive. Use contractions where possible (e.g. he’ll). The first one has been done for you.</p>
+        <section class="mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-teal-700 mb-4">Unit 5: Exercise 6</h2>
+            <p class="mb-4">Read the conversations and correct Speaker B’s answers by using the correct form of <i>will + infinitive</i>. Use contractions where possible (e.g. <i>he’ll</i>). The first one has been done for you.</p>
             <div class="space-y-4">
+                <p class="text-lg">1. A: Look what I’ve found. A lovely shirt for you. Do you want to see if it fits you?<br>B: OK, I try <span class="font-bold">I'll try</span> it on.</p>
                 <div class="flex flex-col space-y-2">
-                    <p class="font-medium">1. A: Look what I’ve found. A lovely shirt for you. Do you want to see if it fits you?</p>
-                    <p class="font-medium">B: OK, I try <span class="font-bold italic">I'll try</span> it on.</p>
-                </div>
-                <div class="flex flex-col space-y-2">
-                    <p class="font-medium">2. A: The lift’s broken.</p>
-                    <p class="font-medium">B: OK, I <input type="text" id="ex6-q2" class="p-2 border rounded-md focus:ring-red-500 focus:border-red-500" placeholder="Type correction here"></p>
+                    <p class="font-medium text-lg">2. A: The lift’s broken.<br>B: OK, I take the stairs.</p>
+                    <input type="text" id="ex6-q2" class="p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500" placeholder="">
                     <span id="ex6-feedback-q2" class="hidden"></span>
                 </div>
                 <div class="flex flex-col space-y-2">
-                    <p class="font-medium">3. A: Wow, I can’t believe I’ve bought so much today!</p>
-                    <p class="font-medium">B: How <input type="text" id="ex6-q3" class="p-2 border rounded-md focus:ring-red-500 focus:border-red-500" placeholder="Type correction here"> you get home with all those bags?</p>
+                    <p class="font-medium text-lg">3. A: Wow, I can’t believe I’ve bought so much today!<br>B: How do you get home with all those bags?</p>
+                    <input type="text" id="ex6-q3" class="p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500" placeholder="">
                     <span id="ex6-feedback-q3" class="hidden"></span>
                 </div>
                 <div class="flex flex-col space-y-2">
-                    <p class="font-medium">4. A: Can I tell you a secret? My ‘expensive’ dress was actually really cheap. I only paid £10 for it.</p>
-                    <p class="font-medium">B: Wow! Don’t worry. I <input type="text" id="ex6-q4" class="p-2 border rounded-md focus:ring-red-500 focus:border-red-500" placeholder="Type correction here"></p>
+                    <p class="font-medium text-lg">4. A: Can I tell you a secret? My ‘expensive’ dress was actually really cheap. I only paid £10 for it.<br>B: Wow! Don’t worry. I don’t tell anyone.</p>
+                    <input type="text" id="ex6-q4" class="p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500" placeholder="">
                     <span id="ex6-feedback-q4" class="hidden"></span>
                 </div>
                 <div class="flex flex-col space-y-2">
-                    <p class="font-medium">5. A: I ordered some books online yesterday, but they haven’t arrived yet.</p>
-                    <p class="font-medium">B: Don’t worry. They probably <input type="text" id="ex6-q5" class="p-2 border rounded-md focus:ring-red-500 focus:border-red-500" placeholder="Type correction here"></p>
+                    <p class="font-medium text-lg">5. A: I ordered some books online yesterday, but they haven’t arrived yet.<br>B: Don’t worry. They probably arrive next week.</p>
+                    <input type="text" id="ex6-q5" class="p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500" placeholder="">
                     <span id="ex6-feedback-q5" class="hidden"></span>
                 </div>
                 <div class="flex flex-col space-y-2">
-                    <p class="font-medium">6. A: You should take those shoes back if they don’t fit and ask for a refund.</p>
-                    <p class="font-medium">B: I know, but I’m a bit nervous. <input type="text" id="ex6-q6" class="p-2 border rounded-md focus:ring-red-500 focus:border-red-500" placeholder="Type correction here"></p>
+                    <p class="font-medium text-lg">6. A: You should take those shoes back if they don’t fit and ask for a refund.<br>B: I know, but I’m a bit nervous. Do you come with me?</p>
+                    <input type="text" id="ex6-q6" class="p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500" placeholder="">
                     <span id="ex6-feedback-q6" class="hidden"></span>
                 </div>
                 <div class="flex flex-col space-y-2">
-                    <p class="font-medium">7. A: Can you wait here? I just need to go to a few shops.</p>
-                    <p class="font-medium">B: OK. <input type="text" id="ex6-q7" class="p-2 border rounded-md focus:ring-red-500 focus:border-red-500" placeholder="Type correction here"></p>
+                    <p class="font-medium text-lg">7. A: Can you wait here? I just need to go to a few shops.<br>B: OK. Are you long?</p>
+                    <input type="text" id="ex6-q7" class="p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500" placeholder="">
                     <span id="ex6-feedback-q7" class="hidden"></span>
                 </div>
                 <div class="flex flex-col space-y-2">
-                    <p class="font-medium">8. A: I don’t want to go to the shopping centre tomorrow. It’s always really crowded.</p>
-                    <p class="font-medium">B: Don’t worry. It <input type="text" id="ex6-q8" class="p-2 border rounded-md focus:ring-red-500 focus:border-red-500" placeholder="Type correction here"></p>
+                    <p class="font-medium text-lg">8. A: I don’t want to go to the shopping centre tomorrow. It’s always really crowded.<br>B: Don’t worry. It isn’t be crowded tomorrow morning.</p>
+                    <input type="text" id="ex6-q8" class="p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500" placeholder="">
                     <span id="ex6-feedback-q8" class="hidden"></span>
                 </div>
             </div>
             <div class="flex justify-end mt-6">
-                <button id="check-ex6-button" class="px-5 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition duration-200 ease-in-out transform hover:scale-105">
+                <button id="check-ex6-button" class="px-5 py-2 bg-teal-600 text-white rounded-lg shadow-md hover:bg-teal-700 transition duration-200 ease-in-out transform hover:scale-105">
                     Check Exercise 6
                 </button>
             </div>
         </section>
 
         <!-- Unit 5: Exercise 7 -->
-        <section class="mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
-            <h2 class="text-2xl font-semibold text-teal-600 mb-4">Unit 5: Exercise 7</h2>
+        <section class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-orange-700 mb-4">Unit 5: Exercise 7</h2>
             <p class="mb-4">Put the words in the correct order to complete the sentences and questions.</p>
-            <div class="space-y-6">
-                <div>
-                    <p class="font-mono text-gray-600 mb-2">It'll think expensive I quite be</p>
-                    <input type="text" id="ex7-q1" class="w-full p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500" placeholder="Rearrange words here">
+            <div class="space-y-4">
+                <div class="flex flex-col space-y-2">
+                    <p class="font-mono text-gray-600 text-lg">It'll think expensive I quite be</p>
+                    <input type="text" id="ex7-q1" class="p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500" placeholder="Your reordered sentence">
                     <span id="ex7-feedback-q1" class="hidden"></span>
                 </div>
-                <div>
-                    <p class="font-mono text-gray-600 mb-2">You'll think film enjoy the Do you</p>
-                    <input type="text" id="ex7-q2" class="w-full p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500" placeholder="Rearrange words here">
+                <div class="flex flex-col space-y-2">
+                    <p class="font-mono text-gray-600 text-lg">You'll think film enjoy the Do you</p>
+                    <input type="text" id="ex7-q2" class="p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500" placeholder="Your reordered sentence">
                     <span id="ex7-feedback-q2" class="hidden"></span>
                 </div>
-                <div>
-                    <p class="font-mono text-gray-600 mb-2">We'll stay I think don't long</p>
-                    <input type="text" id="ex7-q3" class="w-full p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500" placeholder="Rearrange words here">
+                <div class="flex flex-col space-y-2">
+                    <p class="font-mono text-gray-600 text-lg">We'll stay I think don't long</p>
+                    <input type="text" id="ex7-q3" class="p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500" placeholder="Your reordered sentence">
                     <span id="ex7-feedback-q3" class="hidden"></span>
                 </div>
-                <div>
-                    <p class="font-mono text-gray-600 mb-2">Think cost How it'll do you much</p>
-                    <input type="text" id="ex7-q4" class="w-full p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500" placeholder="Rearrange words here">
+                <div class="flex flex-col space-y-2">
+                    <p class="font-mono text-gray-600 text-lg">Think cost How it'll do you much</p>
+                    <input type="text" id="ex7-q4" class="p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500" placeholder="Your reordered sentence">
                     <span id="ex7-feedback-q4" class="hidden"></span>
                 </div>
-                <div>
-                    <p class="font-mono text-gray-600 mb-2">Need think I'll a I trolley</p>
-                    <input type="text" id="ex7-q5" class="w-full p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500" placeholder="Rearrange words here">
+                <div class="flex flex-col space-y-2">
+                    <p class="font-mono text-gray-600 text-lg">Need think I'll a I trolley</p>
+                    <input type="text" id="ex7-q5" class="p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500" placeholder="Your reordered sentence">
                     <span id="ex7-feedback-q5" class="hidden"></span>
                 </div>
-                <div>
-                    <p class="font-mono text-gray-600 mb-2">To think don't need I you'll pay</p>
-                    <input type="text" id="ex7-q6" class="w-full p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500" placeholder="Rearrange words here">
+                <div class="flex flex-col space-y-2">
+                    <p class="font-mono text-gray-600 text-lg">To think don't need I you'll pay</p>
+                    <input type="text" id="ex7-q6" class="p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500" placeholder="Your reordered sentence">
                     <span id="ex7-feedback-q6" class="hidden"></span>
                 </div>
-                <div>
-                    <p class="font-mono text-gray-600 mb-2">Do think go you shopping we'll When again</p>
-                    <input type="text" id="ex7-q7" class="w-full p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500" placeholder="Rearrange words here">
+                <div class="flex flex-col space-y-2">
+                    <p class="font-mono text-gray-600 text-lg">Do think go you shopping we'll When again</p>
+                    <input type="text" id="ex7-q7" class="p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500" placeholder="Your reordered sentence">
                     <span id="ex7-feedback-q7" class="hidden"></span>
                 </div>
-                <div>
-                    <p class="font-mono text-gray-600 mb-2">There'll many you people think Do be</p>
-                    <input type="text" id="ex7-q8" class="w-full p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500" placeholder="Rearrange words here">
+                <div class="flex flex-col space-y-2">
+                    <p class="font-mono text-gray-600 text-lg">There'll many you people think Do be</p>
+                    <input type="text" id="ex7-q8" class="p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500" placeholder="Your reordered sentence">
                     <span id="ex7-feedback-q8" class="hidden"></span>
                 </div>
             </div>
             <div class="flex justify-end mt-6">
-                <button id="check-ex7-button" class="px-5 py-2 bg-teal-600 text-white rounded-lg shadow-md hover:bg-teal-700 transition duration-200 ease-in-out transform hover:scale-105">
+                <button id="check-ex7-button" class="px-5 py-2 bg-orange-600 text-white rounded-lg shadow-md hover:bg-orange-700 transition duration-200 ease-in-out transform hover:scale-105">
                     Check Exercise 7
                 </button>
             </div>
         </section>
 
         <!-- Unit 5: Exercise 8 -->
-        <section class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
-            <h2 class="text-2xl font-semibold text-orange-600 mb-4">Unit 5: Exercise 8</h2>
-            <p class="mb-4">Complete the conversation with the correct forms of the words in brackets. Use going to + infinitive in all your answers. Use contractions where possible (e.g. isn’t).</p>
+        <section class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-pink-700 mb-4">Unit 5: Exercise 8</h2>
+            <p class="mb-4">Complete the conversation with the correct forms of the words in brackets. Use <i>going to + infinitive</i> in all your answers. Use contractions where possible (e.g. <i>isn’t</i>).</p>
             <div class="space-y-4">
-                <p class="mb-2">A: Hurry up!</p>
-                <p class="mb-2">You need to decide. The <input type="text" id="ex8-q1" class="p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500" placeholder="(shop / close)"></p>
-                <span id="ex8-feedback-q1" class="hidden"></span>
-                <p class="mb-2">Which laptop <input type="text" id="ex8-q2" class="p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500" placeholder="(you / buy)"></p>
-                <span id="ex8-feedback-q2" class="hidden"></span>
-                <p class="mb-2">B: <input type="text" id="ex8-q3" class="p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500" placeholder="(I / not / buy)"></p>
+                <p>A: Hurry up! You need to decide. The
+                    <input type="text" id="ex8-q1" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 w-full md:w-auto inline-block" placeholder="(shop / close)"> in a minute. Which laptop
+                    <input type="text" id="ex8-q2" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 w-full md:w-auto inline-block" placeholder="(you / buy)">?</p>
+                <span id="ex8-feedback-q1" class="hidden"></span> <span id="ex8-feedback-q2" class="hidden"></span>
+                <p>B:
+                    <input type="text" id="ex8-q3" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 w-full md:w-auto inline-block" placeholder="(I / not / buy)"> one here.</p>
                 <span id="ex8-feedback-q3" class="hidden"></span>
-                <p class="mb-2">A: Why not?</p>
-                <p class="mb-2">Your old laptop’s broken and you’ve got a business trip next week. <input type="text" id="ex8-q4" class="p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500" placeholder="(you / need)"></p>
+                <p>A: Why not? Your old laptop’s broken and you’ve got a business trip next week.
+                    <input type="text" id="ex8-q4" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 w-full md:w-auto inline-block" placeholder="(you / need)"> one when you’re away.</p>
                 <span id="ex8-feedback-q4" class="hidden"></span>
-                <p class="mb-2">B: I know, but <input type="text" id="ex8-q5" class="p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500" placeholder="(I / get)"></p>
+                <p>B: I know, but
+                    <input type="text" id="ex8-q5" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 w-full md:w-auto inline-block" placeholder="(I / get)"> a new laptop online instead.</p>
                 <span id="ex8-feedback-q5" class="hidden"></span>
-                <p class="mb-2">A: Well, don’t forget your flight’s on Monday morning, so that doesn’t leave you a lot of time.</p>
-                <p class="mb-2">B: Don’t worry. <input type="text" id="ex8-q6" class="p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500" placeholder="(I / order)"></p>
+                <p>A: Well, don’t forget your flight’s on Monday morning, so that doesn’t leave you a lot of time.<br>B: Don’t worry.
+                    <input type="text" id="ex8-q6" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 w-full md:w-auto inline-block" placeholder="(I / order)"> it tonight. It won’t take more than three days to arrive.</p>
                 <span id="ex8-feedback-q6" class="hidden"></span>
-                <p class="mb-2">A: <input type="text" id="ex8-q7" class="p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500" placeholder="(you / feel)"></p>
+                <p>A:
+                    <input type="text" id="ex8-q7" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 w-full md:w-auto inline-block" placeholder="(you / feel)"> pretty stupid at your business meeting next week if you don’t get your new laptop by then.</p>
                 <span id="ex8-feedback-q7" class="hidden"></span>
-                <p class="mb-2">B: Don’t worry. It’ll be fine.</p>
+                <p>B: Don’t worry. It’ll be fine.</p>
             </div>
             <div class="flex justify-end mt-6">
-                <button id="check-ex8-button" class="px-5 py-2 bg-orange-600 text-white rounded-lg shadow-md hover:bg-orange-700 transition duration-200 ease-in-out transform hover:scale-105">
+                <button id="check-ex8-button" class="px-5 py-2 bg-pink-600 text-white rounded-lg shadow-md hover:bg-pink-700 transition duration-200 ease-in-out transform hover:scale-105">
                     Check Exercise 8
                 </button>
             </div>
         </section>
 
-        <!-- Unit 5: Exercise 9 -->
-        <section class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
-            <h2 class="text-2xl font-semibold text-pink-600 mb-4">Unit 5: Exercise 9</h2>
+        <!-- Unit 5: Exercise 9 - Dropdown list -->
+        <section class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Unit 5: Exercise 9</h2>
             <p class="mb-4">Read the information. Then choose the best answers to complete the sentences.</p>
-            <div class="mb-4 p-3 bg-pink-100 rounded-md border border-pink-200">
-                <p class="font-semibold">Rules:</p>
-                <ul class="list-disc list-inside">
-                    <li>We often use will to make a decision while we’re speaking, or to ask another person for a decision.</li>
-                    <li>We often use will to make a prediction (= a guess about the future) based on our own opinions.</li>
-                    <li>We often use will to make a promise to another person.</li>
-                    <li>We often use will to offer help to another person, or to ask for help.</li>
-                    <li>We often use going to to talk about plans and decisions. Often the plan/decision has already been made.</li>
-                    <li>We often use going to to make a prediction based on what we know or can see.</li>
-                </ul>
+            <div class="mb-4 p-3 bg-gray-100 rounded-md border border-gray-200 text-sm">
+                <p class="text-base">"We often use <i>will</i> to make a decision while we’re speaking, or to ask another person for a decision."</p>
+                <p class="text-base">We often use <i>will</i> to make a prediction (= a guess about the future) based on our own opinions.</p>
+                <p class="text-base">We often use <i>will</i> to make a promise to another person.</p>
+                <p class="text-base">"We often use <i>will</i> to offer help to another person, or to ask for help."</p>
+                <p class="text-base">We often use <i>going to</i> to talk about plans and decisions. Often the plan/decision has already been made.</p>
+                <p class="text-base">We often use <i>going to</i> to make a prediction based on what we know or can see.</p>
             </div>
             <div class="space-y-4">
                 <p>This laptop comes with a five-year guarantee. That means that if it stops working in the next five years,
-                    <select id="ex9-q1" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500">
-                        <option value="">---</option>
-                        <option value="you’re going to">you’re going to</option>
-                        <option value="you’ll">you’ll</option>
-                    </select>
-                    get your money back.
-                    <span id="ex9-feedback-q1" class="hidden"></span>
-                </p>
+                    <select id="ex9-q1" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select> get your money back.</p>
+                <span id="ex9-feedback-q1" class="hidden"></span>
                 <p>I’ve just bought some new running shoes because
-                    <select id="ex9-q2" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500">
-                        <option value="">---</option>
-                        <option value="I’m going to">I’m going to</option>
-                        <option value="I’ll">I’ll</option>
-                    </select>
-                    start running every day from tomorrow.
-                    <span id="ex9-feedback-q2" class="hidden"></span>
-                </p>
+                    <select id="ex9-q2" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select> start running every day from tomorrow.</p>
+                <span id="ex9-feedback-q2" class="hidden"></span>
                 <p>Oh no! We’ve spent too long in the shops.
-                    <select id="ex9-q3" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500">
-                        <option value="">---</option>
-                        <option value="We’re going to">We’re going to</option>
-                        <option value="We’ll">We’ll</option>
-                    </select>
-                    miss the last bus home. Look – it’s leaving now.
-                    <span id="ex9-feedback-q3" class="hidden"></span>
-                </p>
-                <p>We
-                    <select id="ex9-q4" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500">
-                        <option value="">---</option>
-                        <option value="aren’t going to">aren’t going to</option>
-                        <option value="won’t">won’t</option>
-                    </select>
-                    buy anything. We didn’t bring any money. We only came here to do some window-shopping.
-                    <span id="ex9-feedback-q4" class="hidden"></span>
-                </p>
-                <p>A: What are you going to have for lunch?</p>
-                <p>B:
-                    <select id="ex9-q5" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500">
-                        <option value="">---</option>
-                        <option value="I’m going to">I’m going to</option>
-                        <option value="I’ll">I’ll</option>
-                    </select>
-                    have a burger. I haven’t had one for ages.
-                    <span id="ex9-feedback-q5" class="hidden"></span>
-                </p>
-                <p>A: We’ve just bought our wedding rings.</p>
-                <p>B: Really? When
-                    <select id="ex9-q6" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500">
-                        <option value="">---</option>
-                        <option value="are you going to">are you going to</option>
-                        <option value="will you">will you</option>
-                    </select>
-                    get married?
-                    <span id="ex9-feedback-q6" class="hidden"></span>
-                </p>
+                    <select id="ex9-q3" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select> miss the last bus home. Look – it’s leaving now.</p>
+                <span id="ex9-feedback-q3" class="hidden"></span>
+                <p>
+                    <select id="ex9-q4" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select> buy anything. We didn’t bring any money. We only came here to do some window-shopping.</p>
+                <span id="ex9-feedback-q4" class="hidden"></span>
+                <p>A: What are you going to have for lunch? B:
+                    <select id="ex9-q5" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select> have a burger. I haven’t had one for ages.</p>
+                <span id="ex9-feedback-q5" class="hidden"></span>
+                <p>A: We’ve just bought our wedding rings. B: Really? When
+                    <select id="ex9-q6" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select> get married?</p>
+                <span id="ex9-feedback-q6" class="hidden"></span>
                 <p>A: I can’t carry all these bags.
-                    <select id="ex9-q7" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500">
-                        <option value="">---</option>
-                        <option value="Are you going to">Are you going to</option>
-                        <option value="Will you">Will you</option>
-                    </select>
-                    help me, please?</p>
-                <p>B: Yes, of course.</p>
+                    <select id="ex9-q7" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select> help me, please? B: Yes, of course.</p>
                 <span id="ex9-feedback-q7" class="hidden"></span>
             </div>
             <div class="flex justify-end mt-6">
-                <button id="check-ex9-button" class="px-5 py-2 bg-pink-600 text-white rounded-lg shadow-md hover:bg-pink-700 transition duration-200 ease-in-out transform hover:scale-105">
+                <button id="check-ex9-button" class="px-5 py-2 bg-gray-600 text-white rounded-lg shadow-md hover:bg-gray-700 transition duration-200 ease-in-out transform hover:scale-105">
                     Check Exercise 9
                 </button>
             </div>
         </section>
 
-        <!-- Unit 5: Exercise 10 -->
-        <section class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md">
-            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Unit 5: Exercise 10</h2>
-            <p class="mb-4">Do the advantages of online shopping outweigh the disadvantages?</p>
-            <p class="mb-4">Choose the best words to complete the student’s answer.</p>
+        <!-- Unit 5: Exercise 10 - Dropdown list -->
+        <section class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-indigo-700 mb-4">Unit 5: Exercise 10</h2>
+            <p class="mb-4">Do the advantages of online shopping outweigh the disadvantages? Choose the best words to complete the student’s answer.</p>
             <div class="space-y-4">
                 <p>In my view, the main
-                    <select id="ex10-q1" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500">
-                        <option value="">---</option>
-                        <option value="advantage">advantage</option>
-                        <option value="disadvantage">disadvantage</option>
-                        <option value="positive aspects">positive aspects</option>
-                    </select>
-                    of online shopping is that it is convenient – you can buy things in your own home, at any time of day or night.
-                    <span id="ex10-feedback-q1" class="hidden"></span>
-                </p>
-                <p>Another
-                    <select id="ex10-q2" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500">
-                        <option value="">---</option>
-                        <option value="benefit">benefit</option>
-                        <option value="drawback">drawback</option>
-                        <option value="negative aspects">negative aspects</option>
-                    </select>
-                    is that online stores are often cheaper than traditional shops.
-                    <span id="ex10-feedback-q2" class="hidden"></span>
-                </p>
-                <p>
-                    <select id="ex10-q3" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500">
-                        <option value="">---</option>
-                        <option value="All things considered">All things considered</option>
-                        <option value="Moreover">Moreover</option>
-                        <option value="Overall">Overall</option>
-                    </select>
-                    , they usually have a wider range of sizes and colours.
-                    <span id="ex10-feedback-q3" class="hidden"></span>
+                    <select id="ex10-q1" class="p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select> of online shopping is that it is convenient – you can buy things in your own home, at any time of day or night. Another
+                    <select id="ex10-q2" class="p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select> is that online stores are often cheaper than traditional shops.
+                    <select id="ex10-q3" class="p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select>, they usually have a wider range of sizes and colours.
+                    <span id="ex10-feedback-q1" class="hidden"></span> <span id="ex10-feedback-q2" class="hidden"></span> <span id="ex10-feedback-q3" class="hidden"></span>
                 </p>
                 <p>However, there are also some important
-                    <select id="ex10-q4" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500">
-                        <option value="">---</option>
-                        <option value="advantages">advantages</option>
-                        <option value="benefits">benefits</option>
-                        <option value="drawbacks">drawbacks</option>
-                    </select>
-                    to online shopping.
-                    <span id="ex10-feedback-q4" class="hidden"></span>
+                    <select id="ex10-q4" class="p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select> to online shopping.
+                    <select id="ex10-q5" class="p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select>, you have to wait a few days, or even weeks, for your shopping to arrive.
+                    <select id="ex10-q6" class="p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select>, you can’t try on clothes before buying them.
+                    <select id="ex10-q7" class="p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select>, you sometimes need to pay extra for postage. Many online shops do try to
+                    <select id="ex10-q8" class="p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select> the disadvantages by offering free delivery for any clothes that you want to return, for example.
+                    <span id="ex10-feedback-q4" class="hidden"></span> <span id="ex10-feedback-q5" class="hidden"></span> <span id="ex10-feedback-q6" class="hidden"></span> <span id="ex10-feedback-q7" class="hidden"></span> <span id="ex10-feedback-q8" class="hidden"></span>
                 </p>
                 <p>
-                    <select id="ex10-q5" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500">
-                        <option value="">---</option>
-                        <option value="For one thing">For one thing</option>
-                        <option value="Overall">Overall</option>
-                        <option value="Personally">Personally</option>
-                    </select>
-                    , you have to wait a few days, or even weeks, for your shopping to arrive.
-                    <span id="ex10-feedback-q5" class="hidden"></span>
-                </p>
-                <p>
-                    <select id="ex10-q6" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500">
-                        <option value="">---</option>
-                        <option value="However">However</option>
-                        <option value="In my view">In my view</option>
-                        <option value="What’s more">What’s more</option>
-                    </select>
-                    , you can’t try on clothes before buying them.
-                    <span id="ex10-feedback-q6" class="hidden"></span>
-                </p>
-                <p>
-                    <select id="ex10-q7" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500">
-                        <option value="">---</option>
-                        <option value="Because">Because</option>
-                        <option value="However">However</option>
-                        <option value="In addition">In addition</option>
-                    </select>
-                    , you sometimes need to pay extra for postage.
-                    <span id="ex10-feedback-q7" class="hidden"></span>
-                </p>
-                <p>Many online shops do try to
-                    <select id="ex10-q8" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500">
-                        <option value="">---</option>
-                        <option value="deal with">deal with</option>
-                        <option value="suffer">suffer</option>
-                        <option value="outweigh">outweigh</option>
-                    </select>
-                    the disadvantages by offering free delivery for any clothes that you want to return, for example.
-                    <span id="ex10-feedback-q8" class="hidden"></span>
-                </p>
-                <p>
-                    <select id="ex10-q9" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500">
-                        <option value="">---</option>
-                        <option value="For instance">For instance</option>
-                        <option value="Overall">Overall</option>
-                        <option value="So">So</option>
-                    </select>
-                    , I believe the benefits of online shopping
-                    <select id="ex10-q10" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500">
-                        <option value="">---</option>
-                        <option value="deal with">deal with</option>
-                        <option value="outweigh">outweigh</option>
-                        <option value="suffer">suffer</option>
-                    </select>
-                    the disadvantages.
-                    <span id="ex10-feedback-q9" class="hidden"></span>
-                    <span id="ex10-feedback-q10" class="hidden"></span>
+                    <select id="ex10-q9" class="p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select>, I believe the benefits of online shopping
+                    <select id="ex10-q10" class="p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-48 text-base">
+                        <option value="">Select...</option>
+                    </select> the disadvantages.
+                    <span id="ex10-feedback-q9" class="hidden"></span> <span id="ex10-feedback-q10" class="hidden"></span>
                 </p>
             </div>
             <div class="flex justify-end mt-6">
-                <button id="check-ex10-button" class="px-5 py-2 bg-gray-600 text-white rounded-lg shadow-md hover:bg-gray-700 transition duration-200 ease-in-out transform hover:scale-105">
+                <button id="check-ex10-button" class="px-5 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-200 ease-in-out transform hover:scale-105">
                     Check Exercise 10
                 </button>
             </div>
@@ -852,14 +595,9 @@
     <div id="message-box"></div>
 
     <script>
-        // Global state object
+        // Global state object for saving/loading answers
         let appState = {
-            exercise1Answers: {
-                'Shop': Array(7).fill(null), // Initialize with nulls for each slot
-                'Shopping': Array(3).fill(null),
-                'wear': Array(1).fill(null),
-                'store': Array(3).fill(null)
-            },
+            exercise1Answers: {}, // Stores which wordId is in which dropTargetId
             exercise2Answers: {},
             exercise3Answers: {},
             exercise4Answers: {},
@@ -873,118 +611,147 @@
 
         // --- Data for Exercises ---
 
-        // Exercise 1 Data for draggable words and their correct categories
-        const exercise1DraggableWords = [
-            'Bag', 'foot', 'manager', 'online', 'department', 'convenience',
-            'keeper', 'trolley', 'assistant', 'mens', 'basket', 'sports'
-        ];
-
-        const exercise1CorrectMappings = {
-            'Shop': ['Bag', 'foot', 'manager', 'online', 'keeper', 'assistant', 'sports'],
-            'Shopping': ['Bag', 'trolley', 'basket'],
-            'wear': ['mens'],
-            'store': ['department', 'convenience', 'online']
+        // Exercise 1 Data (Updated for Drag and Drop)
+        const exercise1DragDropData = {
+            draggableWords: [
+                'Bag', 'foot', 'manager', 'online', 'department', 'convenience',
+                'keeper', 'trolley', 'assistant', 'mens', 'basket', 'sports'
+            ],
+            dropTargets: [
+                { id: 'ex1-target-shop', text: 'Shop...', correctWord: 'assistant' },
+                { id: 'ex1-target-shopping', text: 'Shopping...', correctWord: 'bag' },
+                { id: 'ex1-target-wear', text: '...wear', correctWord: 'mens' },
+                { id: 'ex1-target-store', text: '...store', correctWord: 'department' }
+            ]
         };
+        // Shuffling the words for display (optional, but good for D&D)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
 
 
-        const exercise2CorrectAnswers = {
-            'ex2-q1': 'butcher\'s',
-            'ex2-q2': 'bakery',
-            'ex2-q3': 'bookshop',
-            'ex2-q4': 'Newsagent\'s',
-            'ex2-q5': 'travel agency',
-            'ex2-q6': 'greengrocer\'s',
-            'ex2-q7': 'DIY store',
-            'ex2-q8': 'chemist\'s',
+        // Exercise 2 Data (Updated for Dropdown)
+        const exercise2Descriptions = {
+            meat: 'butcher\'s',
+            bread: 'bakery',
+            books: 'bookshop',
+            news: 'Newsagent\'s',
+            holiday: 'travel agency',
+            fruit: 'greengrocer\'s',
+            diy: 'DIY store',
+            medicines: 'chemist\'s',
         };
+        const exercise2Options = [
+            'DIY store', 'bakery', 'bookshop', 'butcher\'s', 'chemist\'s',
+            'greengrocer\'s', 'Newsagent\'s', 'travel agency'
+        ].sort(); // Sort options alphabetically for consistency
 
-        const exercise3CorrectAnswers = {
-            'ex3-q1': 'sale',
-            'ex3-q2': 'bargains',
-            'ex3-q3': 'off',
-            'ex3-q4': 'guarantee',
-            'ex3-q5': 'special offer',
-            'ex3-q6': 'fitting room',
-            'ex3-q7': 'queue',
-            'ex3-q8': 'till',
-            'ex3-q9': 'suit',
-            'ex3-q10': 'refund',
-            'ex3-q11': 'receipt',
+
+        // Exercise 3 Data (Dropdown list) - Updated for dropdown
+        const exercise3Questions = {
+            'q1': { prefix: 'The department store in my town was having a ', suffix: ' last week – everything was 25% cheaper than usual. So I went to find some ', options: ['discount', 'sale', 'sell'], correct: 'sale' },
+            'q2': { prefix: '', suffix: '. I love buying things that are cheaper than they should be.', options: ['bargains', 'discount', 'sell'], correct: 'bargains' },
+            'q3': { prefix: 'In the footwear and bags department, I found a lovely bag, with a 40% ', suffix: '. It had a two-year ', options: ['discount', 'off', 'sale'], correct: 'off' },
+            'q4': { prefix: '', suffix: ', so I could get my money back if it broke.', options: ['fitting room', 'guarantee', 'receipt'], correct: 'guarantee' },
+            'q5': { prefix: 'Then I went to the womenswear department and found some nice trousers on ', suffix: '. They were 50% of the normal price. I wanted to go to the ', options: ['discounts', 'refund', 'special offer'], correct: 'special offer' },
+            'q6': { prefix: '', suffix: ' to try them on, but there was a long ', options: ['fitting room', 'queue', 'till'], correct: 'fitting room' },
+            'q7': { prefix: '', suffix: ' – there were about ten other people waiting – and I didn’t want to wait. So I went to the ', options: ['bargain', 'queue', 'sale'], correct: 'queue' },
+            'q8': { prefix: '', suffix: ' and paid for everything.', options: ['cash machine', 'fitting room', 'till'], correct: 'till' },
+            'q9': { prefix: 'When I got home, I tried the trousers on. They were the right size, but they didn’t ', suffix: ' me at all – they looked terrible on me. So I decided to take them back and ask for a ', options: ['fit', 'pass', 'suit'], correct: 'suit' },
+            'q10': { prefix: '', suffix: '. But I couldn’t find my ', options: ['receipt', 'refund', 'return'], correct: 'refund' },
+            'q11': { prefix: '', suffix: ', so the shop assistant said he couldn’t give me my money back. Next time, I’ll be more careful when I shop at the sales.', options: ['footwear', 'receipt', 'shopping bag'], correct: 'receipt' },
         };
+        
 
-        const exercise4CorrectAnswers = {
-            'ex4-q1': 'Meet',
-            'ex4-q2': 'Go',
-            'ex4-q3': 'Take',
-            'ex4-q4': 'Watch',
-            'ex4-q5': 'Eat',
-            'ex4-q6': 'Try',
-            'ex4-q7': 'Book',
-            'ex4-q8': 'Spend',
+        // Exercise 4 Data (Updated for Dropdown)
+        const exercise4Phrases = {
+            q1: 'up with friends.',
+            q2: 'bowling.',
+            q3: 'out some money from a cash machine.',
+            q4: 'a film.',
+            q5: 'fast food.',
+            q6: 'on some clothes to see if they fit you.',
+            q7: 'a holiday.',
+            q8: 'money.',
         };
+        const exercise4Options = [
+            'Book', 'Eat', 'Go', 'Meet', 'Spend', 'Take', 'Try', 'Watch'
+        ].sort(); // Sort options alphabetically for consistency
 
+
+        // Exercise 5 Data (radio buttons) - Reviewed, no change needed in data itself
         const exercise5CorrectAnswers = {
-            'ex5-q1': 'offer_help',
             'ex5-q2': 'promise',
-            'ex5-q3': 'decision_help',
-            'ex5-q4': 'prediction_opinion',
-            'ex5-q5': 'plans_decisions_earlier',
-            'ex5-q6': 'prediction_know',
+            'ex5-q3': 'decision',
+            'ex5-q4': 'prediction',
+            'ex5-q5': 'plans_going_to',
+            'ex5-q6': 'prediction_going_to',
         };
 
+        // Exercise 6 Data (text inputs for will + infinitive corrections) - No change needed in data itself
         const exercise6CorrectAnswers = {
-            'ex6-q2': 'I\'ll take',
-            'ex6-q3': 'will',
-            'ex6-q4': 'won\'t',
-            'ex6-q5': 'will arrive',
-            'ex6-q6': 'Will',
-            'ex6-q7': 'Will',
-            'ex6-q8': 'won\'t',
+            q2: ["I'll take the stairs", "I will take the stairs"],
+            q3: ["How will you get home with all those bags?", "How will you get home with all those bags"],
+            q4: ["I won't tell anyone", "I will not tell anyone"],
+            q5: ["They'll probably arrive next week", "They will probably arrive next week"],
+            q6: ["Will you come with me?", "Will you come with me"],
+            q7: ["Will you be long?", "Will you be long"],
+            q8: ["It won't be crowded tomorrow morning", "It will not be crowded tomorrow morning"],
         };
 
+
+        // Exercise 7 Data (reordering words) - No change needed in data itself
         const exercise7CorrectAnswers = {
-            'ex7-q1': 'I think it\'ll be quite expensive.',
-            'ex7-q2': 'Do you think you\'ll enjoy the film?',
-            'ex7-q3': 'I don\'t think we\'ll stay long.',
-            'ex7-q4': 'How much do you think it\'ll cost?',
-            'ex7-q5': 'I think I\'ll need a trolley.',
-            'ex7-q6': 'I don\'t think you\'ll need to pay.',
-            'ex7-q7': 'When do you think we\'ll go shopping again?',
-            'ex7-q8': 'Do you think there\'ll be many people?',
+            q1: "I think it'll be quite expensive.",
+            q2: "Do you think you'll enjoy the film?",
+            q3: "I don't think we'll stay long.",
+            q4: "How much do you think it'll cost?",
+            q5: "I think I'll need a trolley.",
+            q6: "I don't think you'll need to pay.",
+            q7: "When do you think we'll go shopping again?",
+            q8: "Do you think there'll be many people?",
         };
 
+        // Exercise 8 Data (going to + infinitive completions) - No change needed in data itself
         const exercise8CorrectAnswers = {
-            'ex8-q1': 'shop is going to close',
-            'ex8-q2': 'are you going to buy',
-            'ex8-q3': 'I\'m not going to buy',
-            'ex8-q4': 'you\'re going to need',
-            'ex8-q5': 'I\'m going to get',
-            'ex8-q6': 'I\'m going to order',
-            'ex8-q7': 'you\'re going to feel',
+            q1: "shop is going to close",
+            q2: "are you going to buy",
+            q3: "I'm not going to buy",
+            q4: "you're going to need",
+            q5: "I'm going to get",
+            q6: "I'm going to order",
+            q7: "you're going to feel",
         };
 
-        const exercise9CorrectAnswers = {
-            'ex9-q1': 'you’ll',
-            'ex9-q2': 'I’m going to',
-            'ex9-q3': 'We’re going to',
-            'ex9-q4': 'aren’t going to',
-            'ex9-q5': 'I’ll',
-            'ex9-q6': 'are you going to',
-            'ex9-q7': 'Will you',
+        // Exercise 9 Data (Dropdown list) - Updated for dropdown
+        const exercise9Questions = {
+            'q1': { prefix: 'This laptop comes with a five-year guarantee. That means that if it stops working in the next five years, ', suffix: ' get your money back.', options: ['you’re going to', 'you’ll'], correct: 'you’ll' },
+            'q2': { prefix: 'I’ve just bought some new running shoes because ', suffix: ' start running every day from tomorrow.', options: ['I’m going to', 'I’ll'], correct: 'I’m going to' },
+            'q3': { prefix: 'Oh no! We’ve spent too long in the shops. ', suffix: ' miss the last bus home. Look – it’s leaving now.', options: ['We’re going to', 'We’ll'], correct: 'We’re going to' },
+            'q4': { prefix: '', suffix: ' buy anything. We didn’t bring any money. We only came here to do some window-shopping.', options: ['We aren’t going to', 'won’t'], correct: 'won’t' },
+            'q5': { prefix: 'A: What are you going to have for lunch? B: ', suffix: ' have a burger. I haven’t had one for ages.', options: ['I’m going to', 'I’ll'], correct: 'I’m going to' },
+            'q6': { prefix: 'A: We’ve just bought our wedding rings. B: Really? When ', suffix: ' get married?', options: ['are you going to', 'will you'], correct: 'are you going to' },
+            'q7': { prefix: 'A: I can’t carry all these bags. ', suffix: ' help me, please? B: Yes, of course.', options: ['Are you going to', 'Will you'], correct: 'Will you' },
         };
 
-        const exercise10CorrectAnswers = {
-            'ex10-q1': 'advantage',
-            'ex10-q2': 'benefit',
-            'ex10-q3': 'Moreover',
-            'ex10-q4': 'drawbacks',
-            'ex10-q5': 'For one thing',
-            'ex10-q6': 'What’s more',
-            'ex10-q7': 'In addition',
-            'ex10-q8': 'deal with',
-            'ex10-q9': 'Overall',
-            'ex10-q10': 'outweigh',
+        // Exercise 10 Data (Dropdown list) - Updated for dropdown
+        const exercise10Questions = {
+            'q1': { prefix: 'In my view, the main ', suffix: ' of online shopping is that it is convenient – you can buy things in your own home, at any time of day or night. Another ', options: ['advantage', 'disadvantage', 'positive aspects'], correct: 'advantage' },
+            'q2': { prefix: '', suffix: ' is that online stores are often cheaper than traditional shops. ', options: ['benefit', 'drawback', 'negative aspects'], correct: 'benefit' },
+            'q3': { prefix: '', suffix: ', they usually have a wider range of sizes and colours.', options: ['All things considered', 'Moreover', 'Overall'], correct: 'Moreover' },
+            'q4': { prefix: 'However, there are also some important ', suffix: ' to online shopping. ', options: ['advantages', 'benefits', 'drawbacks'], correct: 'drawbacks' },
+            'q5': { prefix: '', suffix: ', you have to wait a few days, or even weeks, for your shopping to arrive. ', options: ['For one thing', 'Overall', 'Personally'], correct: 'For one thing' },
+            'q6': { prefix: '', suffix: ', you can’t try on clothes before buying them. ', options: ['However', 'In my view', 'What’s more'], correct: 'What’s more' },
+            'q7': { prefix: '', suffix: ', you sometimes need to pay extra for postage. Many online shops do try to ', options: ['Because', 'However', 'In addition'], correct: 'In addition' },
+            'q8': { prefix: '', suffix: ' the disadvantages by offering free delivery for any clothes that you want to return, for example.', options: ['deal with', 'suffer', 'outweigh'], correct: 'deal with' },
+            'q9': { prefix: '', suffix: ', I believe the benefits of online shopping ', options: ['For instance', 'Overall', 'So'], correct: 'Overall' },
+            'q10': { prefix: '', suffix: ' the disadvantages.', options: ['deal with', 'outweigh', 'suffer'], correct: 'outweigh' },
         };
+
 
         // --- Helper Functions ---
         function getElement(id) {
@@ -1003,7 +770,7 @@
                 element.textContent = '✓ Correct!';
             } else {
                 element.classList.add('incorrect-feedback');
-                element.textContent = `✗ Incorrect. ${correctText ? 'Correct: ' + correctText : ''}`;
+                element.textContent = `✗ Incorrect.`; // Removed correctText for incorrect answers
             }
         }
 
@@ -1014,19 +781,6 @@
                 element.classList.remove('correct-feedback', 'incorrect-feedback');
                 element.textContent = '';
             }
-        }
-
-        function clearAllFeedbacks() {
-            document.querySelectorAll('[id^="ex"][id*="-feedback"]').forEach(el => {
-                el.classList.add('hidden');
-                el.classList.remove('correct-feedback', 'incorrect-feedback');
-                el.textContent = '';
-            });
-            document.querySelectorAll('.feedback-box').forEach(el => {
-                el.classList.add('hidden');
-                el.classList.remove('correct', 'incorrect');
-                el.textContent = '';
-            });
         }
 
         // Function to show a temporary message
@@ -1048,509 +802,507 @@
         // --- Save/Load Functions ---
         function saveAnswers() {
             try {
-                localStorage.setItem('worksheetAppState_Unit5', JSON.stringify(appState));
+                localStorage.setItem('unit5WorksheetAppState', JSON.stringify(appState));
+                // showMessage('Progress saved!', 'success'); // Optional: show save message
             } catch (e) {
                 console.error("Error saving to local storage:", e);
+                // showMessage('Failed to save progress.', 'error'); // Optional: show error message
             }
         }
 
         function loadAnswers() {
             try {
-                const savedState = localStorage.getItem('worksheetAppState_Unit5');
+                const savedState = localStorage.getItem('unit5WorksheetAppState');
                 if (savedState) {
-                    appState = JSON.parse(savedState);
+                    appState = JSON.parse(savedState); // Overwrite appState with saved data
 
-                    // Restore Exercise 1 draggable words and dropped items
+                    // Populate Exercise 1 (Drag and Drop)
+                    exercise1DragDropData.dropTargets.forEach(target => {
+                        const targetElement = getElement(target.id);
+                        if (targetElement && appState.exercise1Answers[target.id]) {
+                            const wordId = appState.exercise1Answers[target.id];
+                            const wordElement = getElement(wordId);
+                            if (wordElement) {
+                                // Clear placeholder if present
+                                const placeholder = targetElement.querySelector('.placeholder-text');
+                                if (placeholder) placeholder.remove();
+
+                                targetElement.appendChild(wordElement);
+                                wordElement.classList.remove('draggable-word'); // Make it non-draggable when dropped
+                                wordElement.classList.add('dropped-word');
+                                wordElement.draggable = false;
+                            }
+                        }
+                    });
+                    // Hide words that are already in drop targets from the draggable container
                     const draggableContainer = getElement('draggable-words-container');
-                    draggableContainer.innerHTML = ''; // Clear existing draggables first
-
-                    // Create a temporary list of all words that are currently dropped somewhere
-                    const droppedWordsInState = new Set();
-                    for (const category in appState.exercise1Answers) {
-                        appState.exercise1Answers[category].forEach(word => {
-                            if (word !== null) droppedWordsInState.add(word);
+                    if (draggableContainer) {
+                        Array.from(draggableContainer.children).forEach(wordElement => {
+                            let isDropped = false;
+                            for (const targetId in appState.exercise1Answers) {
+                                if (appState.exercise1Answers[targetId] === wordElement.id) {
+                                    isDropped = true;
+                                    break;
+                                }
+                            }
+                            if (isDropped) {
+                                wordElement.style.display = 'none'; // Hide if already dropped
+                            } else {
+                                wordElement.style.display = ''; // Ensure visible if not dropped
+                            }
                         });
                     }
 
-                    // Re-populate draggable container first with words not currently dropped
-                    exercise1DraggableWords.forEach(word => {
-                        if (!droppedWordsInState.has(word)) {
-                            const draggableDiv = document.createElement('div');
-                            draggableDiv.id = `drag-${word.toLowerCase().replace(/\s/g, '-')}`;
-                            draggableDiv.textContent = word;
-                            draggableDiv.className = 'draggable-word';
-                            draggableDiv.setAttribute('draggable', 'true');
-                            draggableDiv.dataset.originalParent = 'draggable-words-container';
-                            draggableDiv.addEventListener('dragstart', handleDragStart);
-                            draggableDiv.addEventListener('dragend', handleDragEnd);
-                            draggableContainer.appendChild(draggableDiv);
-                        }
-                    });
-
-                    // Then populate droppable areas with words that were dropped
-                    for (const category in exercise1CorrectMappings) { // Iterate over expected categories
-                        const numSlots = exercise1CorrectMappings[category].length;
-                        for(let i = 0; i < numSlots; i++) {
-                            const targetSlotId = `ex1-${category.toLowerCase()}-inputs-slot${i}`;
-                            const targetSlot = getElement(targetSlotId);
-                            if(targetSlot && appState.exercise1Answers[category] && appState.exercise1Answers[category][i]) {
-                                const word = appState.exercise1Answers[category][i];
-                                const wordId = `drag-${word.toLowerCase().replace(/\s/g, '-')}`;
-                                const droppedDiv = document.createElement('div');
-                                droppedDiv.id = wordId;
-                                droppedDiv.textContent = word;
-                                droppedDiv.className = 'dropped-word';
-                                droppedDiv.setAttribute('draggable', 'true');
-                                droppedDiv.dataset.originalParent = targetSlotId;
-                                droppedDiv.addEventListener('dragstart', handleDragStart);
-                                droppedDiv.addEventListener('dragend', handleDragEnd);
-                                targetSlot.appendChild(droppedDiv);
-                            }
+                    // Populate Exercise 2 dropdowns
+                    for (const key in appState.exercise2Answers) {
+                        const select = getElement(`ex2-${key}`);
+                        if (select && appState.exercise2Answers[key] !== undefined) {
+                            select.value = appState.exercise2Answers[key];
                         }
                     }
 
-                    // Populate other exercises (rest of your loadAnswers logic)
-                    for (const key in exercise2CorrectAnswers) {
-                        const input = getElement(key);
-                        if (input && appState.exercise2Answers[key] !== undefined) {
-                            input.value = appState.exercise2Answers[key];
+                    // Populate Exercise 3 dropdowns
+                    for (const qKey in appState.exercise3Answers) {
+                        const select = getElement(`ex3-${qKey}`);
+                        if (select && appState.exercise3Answers[qKey] !== undefined) {
+                            select.value = appState.exercise3Answers[qKey];
                         }
                     }
 
-                    for (const key in exercise3CorrectAnswers) {
-                        const select = getElement(key);
-                        if (select && appState.exercise3Answers[key] !== undefined) {
-                            select.value = appState.exercise3Answers[key];
+                    // Populate Exercise 4 dropdowns
+                    for (const key in appState.exercise4Answers) {
+                        const select = getElement(`ex4-${key}`);
+                        if (select && appState.exercise4Answers[key] !== undefined) {
+                            select.value = appState.exercise4Answers[key];
                         }
                     }
 
-                    for (const key in exercise4CorrectAnswers) {
-                        const input = getElement(key);
-                        if (input && appState.exercise4Answers[key] !== undefined) {
-                            input.value = appState.exercise4Answers[key];
-                        }
+                    // Populate Exercise 5 radio buttons
+                    for (const qKey in appState.exercise5Answers) {
+                        const selectedValue = appState.exercise5Answers[qKey];
+                        const radio = document.querySelector(`input[name="${qKey}"][value="${selectedValue}"]`);
+                        if (radio) radio.checked = true;
                     }
 
-                    for (const qKey in exercise5CorrectAnswers) {
-                        if (appState.exercise5Answers[qKey]) {
-                            const selectedRadio = document.querySelector(`input[name="${qKey}"][value="${appState.exercise5Answers[qKey]}"]`);
-                            if (selectedRadio) {
-                                selectedRadio.checked = true;
-                            }
-                        }
-                    }
-
-                    for (const key in exercise6CorrectAnswers) {
-                        const input = getElement(key);
+                    // Populate Exercise 6 inputs
+                    for (const key in appState.exercise6Answers) {
+                        const input = getElement(`ex6-${key}`);
                         if (input && appState.exercise6Answers[key] !== undefined) {
                             input.value = appState.exercise6Answers[key];
                         }
                     }
 
-                    for (const key in exercise7CorrectAnswers) {
-                        const input = getElement(key);
+                    // Populate Exercise 7 inputs
+                    for (const key in appState.exercise7Answers) {
+                        const input = getElement(`ex7-${key}`);
                         if (input && appState.exercise7Answers[key] !== undefined) {
                             input.value = appState.exercise7Answers[key];
                         }
                     }
 
-                    for (const key in exercise8CorrectAnswers) {
-                        const input = getElement(key);
+                    // Populate Exercise 8 inputs
+                    for (const key in appState.exercise8Answers) {
+                        const input = getElement(`ex8-${key}`);
                         if (input && appState.exercise8Answers[key] !== undefined) {
                             input.value = appState.exercise8Answers[key];
                         }
                     }
 
-                    for (const key in exercise9CorrectAnswers) {
-                        const select = getElement(key);
-                        if (select && appState.exercise9Answers[key] !== undefined) {
-                            select.value = appState.exercise9Answers[key];
+                    // Populate Exercise 9 dropdowns
+                    for (const qKey in appState.exercise9Answers) {
+                        const select = getElement(`ex9-${qKey}`);
+                        if (select && appState.exercise9Answers[qKey] !== undefined) {
+                            select.value = appState.exercise9Answers[qKey];
                         }
                     }
 
-                    for (const key in exercise10CorrectAnswers) {
-                        const select = getElement(key);
-                        if (select && appState.exercise10Answers[key] !== undefined) {
-                            select.value = appState.exercise10Answers[key];
+                    // Populate Exercise 10 dropdowns
+                    for (const qKey in appState.exercise10Answers) {
+                        const select = getElement(`ex10-${qKey}`);
+                        if (select && appState.exercise10Answers[qKey] !== undefined) {
+                            select.value = appState.exercise10Answers[qKey];
                         }
                     }
                 }
             } catch (e) {
                 console.error("Error loading from local storage:", e);
+                // showMessage('Failed to load previous progress.', 'error');
             }
         }
 
 
-        // --- Drag and Drop Handlers for Exercise 1 ---
-        let draggedItem = null;
+        // --- Exercise 1 Drag and Drop Functions ---
+        let draggedId = null;
 
-        function handleDragStart(e) {
-            draggedItem = e.target;
-            e.dataTransfer.setData('text/plain', e.target.id);
-            setTimeout(() => {
-                e.target.classList.add('opacity-50');
-            }, 0);
+        function allowDrop(event) {
+            event.preventDefault(); // Prevent default to allow drop
         }
 
-        function handleDragOver(e) {
-            e.preventDefault();
-            const targetArea = e.target.closest('.droppable-area');
-            const draggableContainer = e.target.closest('#draggable-words-container');
-
-            if (targetArea) {
-                targetArea.classList.add('drag-over');
-            } else if (draggableContainer) {
-                draggableContainer.classList.add('drag-over');
-            }
+        function handleDragStart(event) {
+            draggedId = event.target.id;
+            event.dataTransfer.setData('text/plain', draggedId);
+            event.target.classList.add('dragging');
         }
 
-        function handleDragLeave(e) {
-            const targetArea = e.target.closest('.droppable-area');
-            const draggableContainer = e.target.closest('#draggable-words-container');
+        function handleDragEnd(event) {
+            event.target.classList.remove('dragging');
+        }
 
-            if (targetArea) {
-                targetArea.classList.remove('drag-over');
-            } else if (draggableContainer) {
-                draggableContainer.classList.remove('drag-over');
+        function handleDragEnter(event) {
+            // Add a visual cue to the drop target when an item is dragged over it
+            if (event.target.classList.contains('drop-target')) {
+                event.target.classList.add('hovered');
             }
         }
 
-        function handleDrop(e) {
-            e.preventDefault();
-            const targetArea = e.target.closest('.droppable-area');
-            const draggableContainer = e.target.closest('#draggable-words-container');
-
-            if (!draggedItem || (!targetArea && !draggableContainer)) {
-                if (draggedItem) draggedItem.classList.remove('opacity-50');
-                draggedItem = null;
-                return;
+        function handleDragLeave(event) {
+            // Remove the visual cue when the item leaves the drop target
+            if (event.target.classList.contains('drop-target')) {
+                event.target.classList.remove('hovered');
             }
-
-            if (targetArea) {
-                targetArea.classList.remove('drag-over');
-            } else if (draggableContainer) {
-                draggableContainer.classList.remove('drag-over');
-            }
-
-            const data = e.dataTransfer.getData('text/plain');
-            const droppedElement = document.getElementById(data);
-
-            if (!droppedElement) {
-                if (draggedItem) draggedItem.classList.remove('opacity-50');
-                draggedItem = null;
-                return;
-            }
-
-            const droppedWordText = droppedElement.textContent.trim();
-
-            // Store current position of the word being dragged
-            const oldParent = droppedElement.parentNode;
-            let oldCategoryKey = null;
-            let oldSlotIndex = -1;
-
-            if (oldParent && oldParent.classList.contains('droppable-area')) {
-                oldCategoryKey = oldParent.dataset.category;
-                oldSlotIndex = Array.from(oldParent.parentNode.children).indexOf(oldParent);
-            }
+        }
 
 
-            // Handle dropping back to the main draggable list
-            if (draggableContainer && (targetArea === draggableContainer || targetArea === null)) {
-                if (oldCategoryKey && oldSlotIndex !== -1 && appState.exercise1Answers[oldCategoryKey]) {
-                    // Remove from old category's state at specific index
-                    appState.exercise1Answers[oldCategoryKey][oldSlotIndex] = null; // Set to null
-                }
-                droppedElement.classList.remove('dropped-word');
-                droppedElement.classList.add('draggable-word');
-                droppedElement.dataset.originalParent = 'draggable-words-container';
-                draggableContainer.appendChild(droppedElement);
-                saveAnswers();
-            }
-            // Handle dropping into a specific category slot
-            else if (targetArea && targetArea.classList.contains('droppable-area')) {
-                // If dropping into a slot that already has a word, move the existing word back to the draggable list
-                if (targetArea.children.length > 0 && targetArea.children[0] !== droppedElement) {
-                    const existingWordInSlot = targetArea.children[0];
-                    const existingWordText = existingWordInSlot.textContent.trim();
-                    const existingWordOldCategory = targetArea.dataset.category;
-                    const existingWordOldSlotIndex = Array.from(targetArea.parentNode.children).indexOf(targetArea);
+        function drop(event, targetId) {
+            event.preventDefault();
+            const data = event.dataTransfer.getData('text/plain');
+            const draggedElement = getElement(data);
+            const dropTarget = getElement(targetId);
 
-                    // Move existing word back to draggable container
-                    existingWordInSlot.classList.remove('dropped-word');
-                    existingWordInSlot.classList.add('draggable-word');
-                    existingWordInSlot.dataset.originalParent = 'draggable-words-container';
-                    getElement('draggable-words-container').appendChild(existingWordInSlot);
+            dropTarget.classList.remove('hovered'); // Remove hover effect
 
-                    // Update appState: remove existing word from its slot
-                    if (existingWordOldCategory && existingWordOldSlotIndex !== -1 && appState.exercise1Answers[existingWordOldCategory]) {
-                        appState.exercise1Answers[existingWordOldCategory][existingWordOldSlotIndex] = null;
+            if (!draggedElement || !dropTarget) return;
+
+            // Check if the drop target already contains a word
+            const existingWord = dropTarget.querySelector('.dropped-word');
+            if (existingWord) {
+                // If so, return it to the draggable container
+                const draggableContainer = getElement('draggable-words-container');
+                existingWord.classList.remove('dropped-word');
+                existingWord.classList.add('draggable-word');
+                existingWord.draggable = true; // Make it draggable again
+                existingWord.style.display = ''; // Make it visible
+                draggableContainer.appendChild(existingWord);
+
+                // Remove from appState
+                for (const key in appState.exercise1Answers) {
+                    if (appState.exercise1Answers[key] === existingWord.id) {
+                        appState.exercise1Answers[key] = null;
+                        break;
                     }
                 }
-
-                const newCategory = targetArea.dataset.category;
-                const newSlotIndex = Array.from(targetArea.parentNode.children).indexOf(targetArea);
-
-                // Remove from old parent's appState if it was previously in another slot
-                if (oldCategoryKey && oldSlotIndex !== -1 && appState.exercise1Answers[oldCategoryKey]) {
-                    appState.exercise1Answers[oldCategoryKey][oldSlotIndex] = null;
-                }
-
-                // Append to new slot
-                droppedElement.classList.remove('draggable-word');
-                droppedElement.classList.add('dropped-word');
-                targetArea.appendChild(droppedElement);
-                droppedElement.dataset.originalParent = targetArea.id;
-
-                // Update appState for the new category and slot
-                if (!appState.exercise1Answers[newCategory]) {
-                    // This should ideally not happen if appState is initialized correctly with nulls
-                    appState.exercise1Answers[newCategory] = Array(exercise1CorrectMappings[newCategory].length).fill(null);
-                }
-                // Ensure the array has enough nulls to reach the target index
-                while (appState.exercise1Answers[newCategory].length <= newSlotIndex) {
-                    appState.exercise1Answers[newCategory].push(null);
-                }
-                appState.exercise1Answers[newCategory][newSlotIndex] = droppedWordText;
-                saveAnswers();
             }
-            draggedItem.classList.remove('opacity-50');
-            draggedItem = null;
-        }
 
-        function handleDragEnd(e) {
-            e.target.classList.remove('opacity-50');
-            draggedItem = null;
+            // Append the new dragged word to the drop target
+            // Remove any placeholder text if it exists
+            const placeholder = dropTarget.querySelector('.placeholder-text');
+            if (placeholder) placeholder.remove();
+
+            dropTarget.appendChild(draggedElement);
+            draggedElement.classList.remove('draggable-word');
+            draggedElement.classList.add('dropped-word');
+            draggedElement.draggable = false; // Make it non-draggable when dropped
+            draggedElement.style.display = ''; // Ensure visible
+
+            // Update appState
+            appState.exercise1Answers[targetId] = draggedElement.id;
+            saveAnswers();
+
+            // Clear any previous feedback on this target
+            clearFeedback(`ex1-feedback-${targetId.replace('ex1-target-', '')}`);
+
+            // Remove any specific correct/incorrect drop styling
+            dropTarget.classList.remove('correct-drop', 'incorrect-drop');
         }
 
 
         // --- Exercise Initialization Functions ---
 
         function initializeExercise1() {
-            const draggableWordsContainer = getElement('draggable-words-container');
-            draggableWordsContainer.innerHTML = ''; // Clear previous content, will be re-populated by loadAnswers
+            const draggableContainer = getElement('draggable-words-container');
+            if (!draggableContainer) return;
 
-            // Define the structure for droppable slots within each category
-            const categories = {
-                'Shop': { idPrefix: 'ex1-shop', numSlots: exercise1CorrectMappings['Shop'].length },
-                'Shopping': { idPrefix: 'ex1-shopping', numSlots: exercise1CorrectMappings['Shopping'].length },
-                'wear': { idPrefix: 'ex1-wear', numSlots: exercise1CorrectMappings['wear'].length },
-                'store': { idPrefix: 'ex1-store', numSlots: exercise1CorrectMappings['store'].length }
-            };
+            // Clear previous words (if any)
+            draggableContainer.innerHTML = '';
 
-            for (const categoryName in categories) {
-                const { idPrefix, numSlots } = categories[categoryName];
-                const wrapperId = `${idPrefix}-inputs-wrapper`;
-                const wrapper = getElement(wrapperId);
-                if (wrapper) {
-                    wrapper.innerHTML = ''; // Clear existing slots before re-creating
+            // Create draggable words and add them to the container
+            const wordsToDisplay = shuffleArray([...exercise1DragDropData.draggableWords]);
 
-                    for (let i = 0; i < numSlots; i++) {
-                        const slotId = `${idPrefix}-inputs-slot${i}`;
-                        const slotDiv = document.createElement('div');
-                        slotDiv.id = slotId;
-                        slotDiv.className = 'droppable-area';
-                        slotDiv.dataset.category = categoryName; // Store category name in dataset
-                        slotDiv.addEventListener('dragover', handleDragOver);
-                        slotDiv.addEventListener('dragleave', handleDragLeave);
-                        slotDiv.addEventListener('drop', handleDrop);
-                        wrapper.appendChild(slotDiv);
-                    }
-                }
+            wordsToDisplay.forEach(word => {
+                const wordElement = document.createElement('span');
+                const wordId = `draggable-${word.toLowerCase().replace(/\s/g, '-')}`;
+                wordElement.id = wordId;
+                wordElement.textContent = word;
+                wordElement.classList.add('draggable-word');
+                wordElement.draggable = true;
+                wordElement.addEventListener('dragstart', handleDragStart);
+                wordElement.addEventListener('dragend', handleDragEnd);
+                draggableContainer.appendChild(wordElement);
+            });
+
+            const checkButton = getElement('check-ex1-button');
+            if (checkButton) {
+                checkButton.addEventListener('click', checkExercise1);
             }
-
-            // Add drop event listeners to the main draggable container (for words dragged back)
-            draggableWordsContainer.addEventListener('dragover', handleDragOver);
-            draggableWordsContainer.addEventListener('dragleave', handleDragLeave);
-            draggableWordsContainer.addEventListener('drop', handleDrop);
-
-
-            getElement('check-ex1-button').addEventListener('click', checkExercise1);
         }
 
-
         function checkExercise1() {
-            clearAllFeedbacks(); // Clear previous feedbacks for Exercise 1
+            exercise1DragDropData.dropTargets.forEach(target => {
+                const dropTargetElement = getElement(target.id);
+                const feedbackElement = getElement(`ex1-feedback-${target.id.replace('ex1-target-', '')}`);
+                
+                // Remove previous feedback classes
+                dropTargetElement.classList.remove('correct-drop', 'incorrect-drop');
+                clearFeedback(feedbackElement.id);
 
-            let allCorrectOverall = true; // Use a distinct variable name
+                // Get the text content of the dropped word
+                const droppedWordElement = dropTargetElement.querySelector('.dropped-word');
+                const userAnswer = droppedWordElement ? droppedWordElement.textContent.trim() : '';
 
-            for (const category in exercise1CorrectMappings) {
-                const categoryCorrectWords = exercise1CorrectMappings[category].map(w => w.toLowerCase());
-                const numCorrectWordsExpected = categoryCorrectWords.length;
+                const isCorrect = userAnswer.toLowerCase() === target.correctWord.toLowerCase();
 
-                const droppableWrapperId = `ex1-${category.toLowerCase()}-inputs-wrapper`;
-                const droppableWrapper = getElement(droppableWrapperId);
-                const feedbackElementId = `ex1-feedback-${category}`;
-                let feedbackElement = getElement(feedbackElementId);
-
-                if (!feedbackElement) {
-                     feedbackElement = document.createElement('span');
-                     feedbackElement.id = feedbackElementId;
-                     feedbackElement.className = "hidden feedback-box mt-2";
-                     droppableWrapper.parentNode.appendChild(feedbackElement);
+                setFeedback(feedbackElement.id, isCorrect, target.correctWord);
+                
+                if (droppedWordElement) { // Apply styling to the drop target itself
+                    if (isCorrect) {
+                        dropTargetElement.classList.add('correct-drop');
+                    } else {
+                        dropTargetElement.classList.add('incorrect-drop');
+                    }
                 } else {
-                    clearFeedback(feedbackElementId);
+                    // If no word is dropped, ensure no correct/incorrect styling on target
+                    dropTargetElement.classList.remove('correct-drop', 'incorrect-drop');
                 }
-
-                let currentCategoryCorrect = true;
-                let categoryFeedbackText = '';
-
-                // Keep track of which correct words have been matched to avoid duplicate checking/feedback
-                const matchedCorrectWords = new Set();
-                const usedSlots = new Set(); // Keep track of slots that have a word
-
-                // Check each slot
-                const slots = droppableWrapper.querySelectorAll('.droppable-area');
-                let droppedWordsInSlots = []; // To check for unexpected extra words
-
-                slots.forEach((slot, index) => {
-                    slot.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
-                    slot.classList.add('border-gray-300'); // Reset to default
-
-                    if (slot.children.length > 0) {
-                        const droppedWord = slot.children[0].textContent.trim().toLowerCase();
-                        droppedWordsInSlots.push(droppedWord);
-                        usedSlots.add(index);
-
-                        if (categoryCorrectWords.includes(droppedWord)) {
-                            // Check if this correct word has already been matched in another slot
-                            if (matchedCorrectWords.has(droppedWord)) {
-                                slot.classList.add('border-red-500', 'bg-red-50');
-                                currentCategoryCorrect = false;
-                                categoryFeedbackText += `"${droppedWord}" is duplicated. `;
-                            } else {
-                                slot.classList.add('border-green-500', 'bg-green-50');
-                                matchedCorrectWords.add(droppedWord);
-                            }
-                        } else {
-                            slot.classList.add('border-red-500', 'bg-red-50');
-                            currentCategoryCorrect = false;
-                            categoryFeedbackText += `"${droppedWord}" is incorrectly placed. `;
-                        }
-                    }
-                });
-
-                // Check for missing correct words
-                for (const correctWord of categoryCorrectWords) {
-                    if (!matchedCorrectWords.has(correctWord)) {
-                        currentCategoryCorrect = false;
-                        categoryFeedbackText += `Missing: "${correctWord}". `;
-                    }
-                }
-
-                // Check if the number of dropped words matches the number of correct words
-                if (droppedWordsInSlots.length !== numCorrectWordsExpected) {
-                    currentCategoryCorrect = false;
-                    if (!categoryFeedbackText.includes('Incorrect number of words dropped')) { // Avoid redundant messages
-                        categoryFeedbackText += `Incorrect number of words dropped. Expected ${numCorrectWordsExpected}, found ${droppedWordsInSlots.length}. `;
-                    }
-                }
-
-
-                if (currentCategoryCorrect) {
-                    setFeedback(feedbackElementId, true);
-                } else {
-                    setFeedback(feedbackElementId, false, categoryFeedbackText.trim());
-                    allCorrectOverall = false; // If any category is incorrect, the overall is incorrect
-                }
-            }
-
-            if (allCorrectOverall) {
-                showMessage('All Exercise 1 answers are correct!', 'success');
-            } else {
-                showMessage('Some Exercise 1 answers are incorrect. Please review.', 'error');
-            }
+            });
         }
 
 
         function initializeExercise2() {
-            for (const key in exercise2CorrectAnswers) {
-                const inputElement = getElement(key);
-                inputElement.addEventListener('input', (event) => {
+            const exerciseContainers = {
+                meat: 'You can buy meat in a',
+                bread: 'You can buy bread and cakes in a',
+                books: 'You buy books in a',
+                news: 'You buy newspapers and magazines in a',
+                holiday: 'You book a holiday in a',
+                fruit: 'You buy fruit and vegetables in a',
+                diy: 'You buy things to help you build and fix things around the house in a',
+                medicines: 'You get medicines in a',
+            };
+
+            const dropdownContainer = getElement('ex2-dropdown-container');
+            if (!dropdownContainer) return;
+
+            dropdownContainer.innerHTML = ''; // Clear existing content
+
+            let questionNumber = 1;
+            for (const key in exerciseContainers) {
+                const div = document.createElement('div');
+                div.className = "flex items-center space-x-2";
+
+                // Re-added the <p> tag with the descriptive text
+                const p = document.createElement('p');
+                p.textContent = `${questionNumber}. ${exerciseContainers[key]}`;
+                div.appendChild(p);
+
+                const select = document.createElement('select');
+                select.id = `ex2-${key}`;
+                select.className = "p-2 border rounded-md focus:ring-green-500 focus:border-green-500 flex-grow";
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select...";
+                select.appendChild(defaultOption);
+
+                exercise2Options.forEach(optionText => {
+                    const option = document.createElement('option');
+                    option.value = optionText;
+                    option.textContent = optionText;
+                    select.appendChild(option);
+                });
+                select.addEventListener('change', (event) => {
                     appState.exercise2Answers[key] = event.target.value;
                     saveAnswers();
                 });
+                div.appendChild(select);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex2-feedback-${key}`;
+                feedbackSpan.className = "hidden";
+                div.appendChild(feedbackSpan);
+
+                dropdownContainer.appendChild(div);
+                questionNumber++;
             }
-            getElement('check-ex2-button').addEventListener('click', checkExercise2);
+            const checkButton = getElement('check-ex2-button');
+            if (checkButton) {
+                checkButton.addEventListener('click', checkExercise2);
+            }
         }
 
         function checkExercise2() {
-            for (const key in exercise2CorrectAnswers) {
+            for (const key in exercise2Descriptions) {
+                const selectElement = getElement(`ex2-${key}`);
                 const userAnswer = (appState.exercise2Answers[key] || '').toLowerCase().trim();
-                const isCorrect = userAnswer === exercise2CorrectAnswers[key].toLowerCase();
-                setFeedback(`ex2-feedback-${key.split('-')[1]}`, isCorrect, exercise2CorrectAnswers[key]);
+                const correctAnswer = exercise2Descriptions[key].toLowerCase().trim();
+                const isCorrect = userAnswer === correctAnswer;
 
-                const inputElement = getElement(key);
-                inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
-                if (isCorrect) {
-                    inputElement.classList.add('border-green-500', 'bg-green-50');
-                } else if (userAnswer) {
-                    inputElement.classList.add('border-red-500', 'bg-red-50');
-                } else {
-                    inputElement.classList.add('border-gray-300');
+                setFeedback(`ex2-feedback-${key}`, isCorrect, exercise2Descriptions[key]);
+
+                if (selectElement) {
+                    selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    selectElement.classList.add('border-gray-300'); // Reset to default
+                    if (isCorrect) {
+                        selectElement.classList.add('border-green-500', 'bg-green-50');
+                    } else if (userAnswer) { // Only if an answer was selected
+                        selectElement.classList.add('border-red-500', 'bg-red-50');
+                    }
                 }
             }
         }
 
         function initializeExercise3() {
-            for (const key in exercise3CorrectAnswers) {
-                const selectElement = getElement(key);
+            // No direct HTML container for Ex3 dropdowns as they are inline
+            // We only need to iterate through the questions and populate their selects
+            for (const qKey in exercise3Questions) {
+                const selectElement = getElement(`ex3-${qKey}`);
+                if (!selectElement) continue;
+
+                // Clear existing options (if any)
+                selectElement.innerHTML = '';
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select...";
+                selectElement.appendChild(defaultOption);
+
+                // Add options from the data, sorted alphabetically for consistency
+                const sortedOptions = [...exercise3Questions[qKey].options].sort();
+                sortedOptions.forEach(optionText => {
+                    const option = document.createElement('option');
+                    option.value = optionText;
+                    option.textContent = optionText;
+                    selectElement.appendChild(option);
+                });
+
                 selectElement.addEventListener('change', (event) => {
-                    appState.exercise3Answers[key] = event.target.value;
+                    appState.exercise3Answers[qKey] = event.target.value;
                     saveAnswers();
                 });
             }
-            getElement('check-ex3-button').addEventListener('click', checkExercise3);
+            const checkButton = getElement('check-ex3-button');
+            if (checkButton) {
+                checkButton.addEventListener('click', checkExercise3);
+            }
         }
 
         function checkExercise3() {
-            for (const key in exercise3CorrectAnswers) {
-                const userAnswer = (appState.exercise3Answers[key] || '').toLowerCase().trim();
-                const isCorrect = userAnswer === exercise3CorrectAnswers[key].toLowerCase();
-                setFeedback(`ex3-feedback-${key.split('-')[1]}`, isCorrect, exercise3CorrectAnswers[key]);
+            for (const qKey in exercise3Questions) {
+                const selectElement = getElement(`ex3-${qKey}`);
+                const userAnswer = (appState.exercise3Answers[qKey] || '');
+                const correctAnswer = exercise3Questions[qKey].correct;
+                const isCorrect = userAnswer === correctAnswer;
 
-                const selectElement = getElement(key);
-                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
-                if (isCorrect) {
-                    selectElement.classList.add('border-green-500', 'bg-green-50');
-                } else if (userAnswer) {
-                    selectElement.classList.add('border-red-500', 'bg-red-50');
-                } else {
-                    selectElement.classList.add('border-gray-300');
+                setFeedback(`ex3-feedback-${qKey}`, isCorrect, correctAnswer);
+
+                if (selectElement) {
+                    selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    selectElement.classList.add('border-gray-300'); // Reset to default
+                    if (isCorrect) {
+                        selectElement.classList.add('border-green-500', 'bg-green-50');
+                    } else if (userAnswer) { // Only if an answer was selected
+                        selectElement.classList.add('border-red-500', 'bg-red-50');
+                    }
                 }
             }
         }
 
         function initializeExercise4() {
-            for (const key in exercise4CorrectAnswers) {
-                const inputElement = getElement(key);
-                inputElement.addEventListener('input', (event) => {
+            const exerciseContainers = {
+                q1: 'up with friends.',
+                q2: 'bowling.',
+                q3: 'out some money from a cash machine.',
+                q4: 'a film.',
+                q5: 'fast food.',
+                q6: 'on some clothes to see if they fit you.',
+                q7: 'a holiday.',
+                q8: 'money.',
+            };
+
+            const dropdownContainer = getElement('ex4-dropdown-container'); // Corrected ID
+            if (!dropdownContainer) return; // Ensure container exists
+
+            // Clear existing dropdowns (if any)
+            dropdownContainer.innerHTML = '';
+
+            let questionNumber = 1; // Start question numbering
+            for (const key in exerciseContainers) {
+                const div = document.createElement('div');
+                div.className = "flex items-center space-x-2";
+
+                const select = document.createElement('select');
+                select.id = `ex4-${key}`;
+                select.className = "p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500 w-48"; // Added w-48 here
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select...";
+                select.appendChild(defaultOption);
+
+                exercise4Options.forEach(optionText => {
+                    const option = document.createElement('option');
+                    option.value = optionText;
+                    option.textContent = optionText;
+                    select.appendChild(option);
+                });
+                select.addEventListener('change', (event) => {
                     appState.exercise4Answers[key] = event.target.value;
                     saveAnswers();
                 });
+                div.appendChild(select);
+
+                const p = document.createElement('p'); // Re-added the p tag for the second part of the phrase
+                p.textContent = `${questionNumber}. ${exerciseContainers[key]}`; // Add question number and text
+                div.appendChild(p);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex4-feedback-${key}`;
+                feedbackSpan.className = "hidden";
+                div.appendChild(feedbackSpan);
+
+                dropdownContainer.appendChild(div); // Append to the correct container
+                questionNumber++; // Increment question number
             }
-            getElement('check-ex4-button').addEventListener('click', checkExercise4);
+            const checkButton = getElement('check-ex4-button');
+            if (checkButton) {
+                checkButton.addEventListener('click', checkExercise4);
+            }
         }
 
         function checkExercise4() {
-            for (const key in exercise4CorrectAnswers) {
+            for (const key in exercise4Phrases) {
+                const selectElement = getElement(`ex4-${key}`);
                 const userAnswer = (appState.exercise4Answers[key] || '').toLowerCase().trim();
-                const isCorrect = userAnswer === exercise4CorrectAnswers[key].toLowerCase();
-                setFeedback(`ex4-feedback-${key.split('-')[1]}`, isCorrect, exercise4CorrectAnswers[key]);
+                const correctAnswer = exercise4Phrases[key].toLowerCase().trim();
+                const isCorrect = userAnswer === correctAnswer;
 
-                const inputElement = getElement(key);
-                inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
-                if (isCorrect) {
-                    inputElement.classList.add('border-green-500', 'bg-green-50');
-                } else if (userAnswer) {
-                    inputElement.classList.add('border-red-500', 'bg-red-50');
-                } else {
-                    inputElement.classList.add('border-gray-300');
+                setFeedback(`ex4-feedback-${key}`, isCorrect, exercise4Phrases[key]);
+
+                if (selectElement) {
+                    selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    selectElement.classList.add('border-gray-300'); // Reset to default
+                    if (isCorrect) {
+                        selectElement.classList.add('border-green-500', 'bg-green-50');
+                    } else if (userAnswer) { // Only if an answer was selected
+                        selectElement.classList.add('border-red-500', 'bg-red-50');
+                    }
                 }
             }
         }
 
         function initializeExercise5() {
-            const radioGroups = ['ex5-q1', 'ex5-q2', 'ex5-q3', 'ex5-q4', 'ex5-q5', 'ex5-q6'];
+            const radioGroups = [
+                'ex5-q2', 'ex5-q3', 'ex5-q4', 'ex5-q5', 'ex5-q6'
+            ];
             radioGroups.forEach(groupName => {
                 document.querySelectorAll(`input[name="${groupName}"]`).forEach(radio => {
                     radio.addEventListener('change', (event) => {
@@ -1559,327 +1311,390 @@
                     });
                 });
             });
-            getElement('check-ex5-button').addEventListener('click', checkExercise5);
+            const checkButton = getElement('check-ex5-button');
+            if (checkButton) {
+                checkButton.addEventListener('click', checkExercise5);
+            }
         }
 
         function checkExercise5() {
-            for (const key in exercise5CorrectAnswers) {
-                const userAnswer = appState.exercise5Answers[key];
-                const isCorrect = userAnswer === exercise5CorrectAnswers[key];
-                setFeedback(`ex5-feedback-${key}`, isCorrect);
+            for (const qKey in exercise5CorrectAnswers) {
+                const selectedRadio = document.querySelector(`input[name="${qKey}"]:checked`);
+                const userAnswer = selectedRadio ? selectedRadio.value : '';
+                const correctAnswer = exercise5CorrectAnswers[qKey];
+                const isCorrect = userAnswer === correctAnswer;
 
-                // Update styling for radio buttons within the group
-                document.querySelectorAll(`input[name="${key}"]`).forEach(radio => {
-                    const label = radio.closest('label');
-                    if (label) {
-                        label.classList.remove('text-green-700', 'text-red-700');
-                        if (radio.checked) {
-                            if (isCorrect) {
-                                label.classList.add('text-green-700');
-                            } else {
-                                label.classList.add('text-red-700');
-                            }
-                        }
-                    }
-                });
+                setFeedback(`${qKey}-feedback`, isCorrect, `Correct choice for this question`); // Generic feedback
             }
         }
 
         function initializeExercise6() {
             for (const key in exercise6CorrectAnswers) {
-                const inputElement = getElement(key);
-                inputElement.addEventListener('input', (event) => {
-                    appState.exercise6Answers[key] = event.target.value;
-                    saveAnswers();
-                });
+                const inputElement = getElement(`ex6-${key}`);
+                if (inputElement) {
+                    inputElement.addEventListener('input', (event) => {
+                        appState.exercise6Answers[key] = event.target.value;
+                        saveAnswers();
+                    });
+                    // Removed the hint text by setting placeholder to empty string
+                    inputElement.placeholder = ""; 
+                }
             }
-            getElement('check-ex6-button').addEventListener('click', checkExercise6);
+            const checkButton = getElement('check-ex6-button');
+            if (checkButton) {
+                checkButton.addEventListener('click', checkExercise6);
+            }
         }
 
         function checkExercise6() {
             for (const key in exercise6CorrectAnswers) {
                 const userAnswer = (appState.exercise6Answers[key] || '').toLowerCase().trim();
-                const isCorrect = userAnswer === exercise6CorrectAnswers[key].toLowerCase();
-                setFeedback(`ex6-feedback-${key.split('-')[1]}`, isCorrect, exercise6CorrectAnswers[key]);
+                const possibleCorrectAnswers = exercise6CorrectAnswers[key].map(ans => ans.toLowerCase().trim());
+                const isCorrect = possibleCorrectAnswers.includes(userAnswer);
 
-                const inputElement = getElement(key);
-                inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
-                if (isCorrect) {
-                    inputElement.classList.add('border-green-500', 'bg-green-50');
-                } else if (userAnswer) {
-                    inputElement.classList.add('border-red-500', 'bg-red-50');
-                } else {
-                    inputElement.classList.add('border-gray-300');
+                setFeedback(`ex6-feedback-${key}`, isCorrect, possibleCorrectAnswers[0]); // Show first possible correct answer
+
+                const inputElement = getElement(`ex6-${key}`);
+                if (inputElement) {
+                    inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    inputElement.classList.add('border-gray-300'); // Reset to default
+                    if (isCorrect) {
+                        inputElement.classList.add('border-green-500', 'bg-green-50');
+                    } else if (userAnswer) {
+                        inputElement.classList.add('border-red-500', 'bg-red-50');
+                    }
                 }
             }
         }
 
         function initializeExercise7() {
             for (const key in exercise7CorrectAnswers) {
-                const inputElement = getElement(key);
-                inputElement.addEventListener('input', (event) => {
-                    appState.exercise7Answers[key] = event.target.value;
-                    saveAnswers();
-                });
+                const inputElement = getElement(`ex7-${key}`);
+                if (inputElement) {
+                    inputElement.addEventListener('input', (event) => {
+                        appState.exercise7Answers[key] = event.target.value;
+                        saveAnswers();
+                    });
+                }
             }
-            getElement('check-ex7-button').addEventListener('click', checkExercise7);
+            const checkButton = getElement('check-ex7-button');
+            if (checkButton) {
+                checkButton.addEventListener('click', checkExercise7);
+            }
         }
 
         function checkExercise7() {
             for (const key in exercise7CorrectAnswers) {
-                const userAnswer = (appState.exercise7Answers[key] || '').toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/\s{2,}/g," ").trim(); // Normalize user input
-                const correctAnswer = exercise7CorrectAnswers[key].toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/\s{2,}/g," ").trim(); // Normalize correct answer
-
+                const userAnswer = (appState.exercise7Answers[key] || '').toLowerCase().trim();
+                const correctAnswer = exercise7CorrectAnswers[key].toLowerCase().trim();
                 const isCorrect = userAnswer === correctAnswer;
-                setFeedback(`ex7-feedback-${key.split('-')[1]}`, isCorrect, exercise7CorrectAnswers[key]);
 
-                const inputElement = getElement(key);
-                inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
-                if (isCorrect) {
-                    inputElement.classList.add('border-green-500', 'bg-green-50');
-                } else if (userAnswer) {
-                    inputElement.classList.add('border-red-500', 'bg-red-50');
-                } else {
-                    inputElement.classList.add('border-gray-300');
+                setFeedback(`ex7-feedback-${key}`, isCorrect, exercise7CorrectAnswers[key]);
+
+                const inputElement = getElement(`ex7-${key}`);
+                if (inputElement) {
+                    inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    inputElement.classList.add('border-gray-300'); // Reset to default
+                    if (isCorrect) {
+                        inputElement.classList.add('border-green-500', 'bg-green-50');
+                    } else if (userAnswer) {
+                        inputElement.classList.add('border-red-500', 'bg-red-50');
+                    }
                 }
             }
         }
 
         function initializeExercise8() {
             for (const key in exercise8CorrectAnswers) {
-                const inputElement = getElement(key);
-                inputElement.addEventListener('input', (event) => {
-                    appState.exercise8Answers[key] = event.target.value;
-                    saveAnswers();
-                });
+                const inputElement = getElement(`ex8-${key}`);
+                if (inputElement) {
+                    inputElement.addEventListener('input', (event) => {
+                        appState.exercise8Answers[key] = event.target.value;
+                        saveAnswers();
+                    });
+                }
             }
-            getElement('check-ex8-button').addEventListener('click', checkExercise8);
+            const checkButton = getElement('check-ex8-button');
+            if (checkButton) {
+                checkButton.addEventListener('click', checkExercise8);
+            }
         }
 
         function checkExercise8() {
             for (const key in exercise8CorrectAnswers) {
                 const userAnswer = (appState.exercise8Answers[key] || '').toLowerCase().trim();
-                const isCorrect = userAnswer === exercise8CorrectAnswers[key].toLowerCase();
-                setFeedback(`ex8-feedback-${key.split('-')[1]}`, isCorrect, exercise8CorrectAnswers[key]);
+                const correctAnswer = exercise8CorrectAnswers[key].toLowerCase().trim();
+                const isCorrect = userAnswer === correctAnswer;
 
-                const inputElement = getElement(key);
-                inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
-                if (isCorrect) {
-                    inputElement.classList.add('border-green-500', 'bg-green-50');
-                } else if (userAnswer) {
-                    inputElement.classList.add('border-red-500', 'bg-red-50');
-                } else {
-                    inputElement.classList.add('border-gray-300');
+                setFeedback(`ex8-feedback-${key}`, isCorrect, exercise8CorrectAnswers[key]);
+
+                const inputElement = getElement(`ex8-${key}`);
+                if (inputElement) {
+                    inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    inputElement.classList.add('border-gray-300'); // Reset to default
+                    if (isCorrect) {
+                        inputElement.classList.add('border-green-500', 'bg-green-50');
+                    } else if (userAnswer) {
+                        inputElement.classList.add('border-red-500', 'bg-red-50');
+                    }
                 }
             }
         }
 
         function initializeExercise9() {
-            // For Exercise 9, using dropdowns to select the correct reason for will/going to
-            const questions = ['ex9-q1', 'ex9-q2', 'ex9-q3', 'ex9-q4', 'ex9-q5', 'ex9-q6', 'ex9-q7'];
-            questions.forEach(qId => {
-                const selectElement = getElement(qId);
+            // Iterate through questions and populate their dropdowns
+            for (const qKey in exercise9Questions) {
+                const selectElement = getElement(`ex9-${qKey}`);
+                if (!selectElement) continue;
+
+                // Clear existing options (if any)
+                selectElement.innerHTML = '';
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select...";
+                selectElement.appendChild(defaultOption);
+
+                // Add options from the data, sorted alphabetically for consistency
+                const sortedOptions = [...exercise9Questions[qKey].options].sort();
+                sortedOptions.forEach(optionText => {
+                    const option = document.createElement('option');
+                    option.value = optionText;
+                    option.textContent = optionText;
+                    selectElement.appendChild(option);
+                });
+
                 selectElement.addEventListener('change', (event) => {
-                    appState.exercise9Answers[qId] = event.target.value;
+                    appState.exercise9Answers[qKey] = event.target.value;
                     saveAnswers();
                 });
-            });
-            getElement('check-ex9-button').addEventListener('click', checkExercise9);
+            }
+            const checkButton = getElement('check-ex9-button');
+            if (checkButton) {
+                checkButton.addEventListener('click', checkExercise9);
+            }
         }
 
-
         function checkExercise9() {
-            for (const key in exercise9CorrectAnswers) {
-                const userAnswer = appState.exercise9Answers[key] || '';
-                const isCorrect = userAnswer === exercise9CorrectAnswers[key];
-                setFeedback(`ex9-feedback-${key.split('-')[1]}`, isCorrect, exercise9CorrectAnswers[key]);
+            for (const qKey in exercise9Questions) {
+                const selectElement = getElement(`ex9-${qKey}`);
+                const userAnswer = (appState.exercise9Answers[qKey] || '');
+                const correctAnswer = exercise9Questions[qKey].correct;
+                const isCorrect = userAnswer === correctAnswer;
 
-                const selectElement = getElement(key);
-                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
-                if (isCorrect) {
-                    selectElement.classList.add('border-green-500', 'bg-green-50');
-                } else if (userAnswer) {
-                    selectElement.classList.add('border-red-500', 'bg-red-50');
-                } else {
-                    selectElement.classList.add('border-gray-300');
+                setFeedback(`ex9-feedback-${qKey}`, isCorrect, correctAnswer);
+
+                if (selectElement) {
+                    selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    selectElement.classList.add('border-gray-300'); // Reset to default
+                    if (isCorrect) {
+                        selectElement.classList.add('border-green-500', 'bg-green-50');
+                    } else if (userAnswer) { // Only if an answer was selected
+                        selectElement.classList.add('border-red-500', 'bg-red-50');
+                    }
                 }
             }
         }
 
         function initializeExercise10() {
-            for (const key in exercise10CorrectAnswers) {
-                const selectElement = getElement(key);
+            // Iterate through questions and populate their dropdowns
+            for (const qKey in exercise10Questions) {
+                const selectElement = getElement(`ex10-${qKey}`);
+                if (!selectElement) continue;
+
+                // Clear existing options (if any)
+                selectElement.innerHTML = '';
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select...";
+                selectElement.appendChild(defaultOption);
+
+                // Add options from the data, sorted alphabetically for consistency
+                const sortedOptions = [...exercise10Questions[qKey].options].sort();
+                sortedOptions.forEach(optionText => {
+                    const option = document.createElement('option');
+                    option.value = optionText;
+                    option.textContent = optionText;
+                    selectElement.appendChild(option);
+                });
+
                 selectElement.addEventListener('change', (event) => {
-                    appState.exercise10Answers[key] = event.target.value;
+                    appState.exercise10Answers[qKey] = event.target.value;
                     saveAnswers();
                 });
             }
-            getElement('check-ex10-button').addEventListener('click', checkExercise10);
+            const checkButton = getElement('check-ex10-button');
+            if (checkButton) {
+                checkButton.addEventListener('click', checkExercise10);
+            }
         }
 
         function checkExercise10() {
-            for (const key in exercise10CorrectAnswers) {
-                const userAnswer = appState.exercise10Answers[key] || '';
-                const isCorrect = userAnswer === exercise10CorrectAnswers[key];
-                setFeedback(`ex10-feedback-${key.split('-')[1]}`, isCorrect, exercise10CorrectAnswers[key]);
+            for (const qKey in exercise10Questions) {
+                const selectElement = getElement(`ex10-${qKey}`);
+                const userAnswer = (appState.exercise10Answers[qKey] || '');
+                const correctAnswer = exercise10Questions[qKey].correct;
+                const isCorrect = userAnswer === correctAnswer;
 
-                const selectElement = getElement(key);
-                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
-                if (isCorrect) {
-                    selectElement.classList.add('border-green-500', 'bg-green-50');
-                } else if (userAnswer) {
-                    selectElement.classList.add('border-red-500', 'bg-red-50');
-                } else {
-                    selectElement.classList.add('border-gray-300');
+                setFeedback(`ex10-feedback-${qKey}`, isCorrect, correctAnswer);
+
+                if (selectElement) {
+                    selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    selectElement.classList.add('border-gray-300'); // Reset to default
+                    if (isCorrect) {
+                        selectElement.classList.add('border-green-500', 'bg-green-50');
+                    } else if (userAnswer) { // Only if an answer was selected
+                        selectElement.classList.add('border-red-500', 'bg-red-50');
+                    }
                 }
             }
         }
 
         function clearAllAnswers() {
-            // Clear Exercise 1 drag and drop
-            for (const category in appState.exercise1Answers) {
-                // Set all slots in appState to null
-                if (appState.exercise1Answers[category]) {
-                    appState.exercise1Answers[category] = appState.exercise1Answers[category].map(() => null);
-                }
-
-                const droppableWrapperId = `ex1-${category.toLowerCase()}-inputs-wrapper`;
-                const droppableWrapper = getElement(droppableWrapperId);
-
-                if (droppableWrapper) {
-                    // Move dropped items from all slots within this category back to the draggable list
-                    Array.from(droppableWrapper.querySelectorAll('.droppable-area .dropped-word')).forEach(droppedItem => {
-                        const draggableContainer = getElement('draggable-words-container');
-                        droppedItem.classList.remove('dropped-word');
-                        droppedItem.classList.add('draggable-word');
-                        droppedItem.dataset.originalParent = 'draggable-words-container';
-                        // Add event listeners back if they were lost during removal (though unlikely with this method)
-                        droppedItem.addEventListener('dragstart', handleDragStart);
-                        droppedItem.addEventListener('dragend', handleDragEnd);
-                        draggableContainer.appendChild(droppedItem);
-                    });
-
-                    // Reset styling of all slots within this category
-                    Array.from(droppableWrapper.querySelectorAll('.droppable-area')).forEach(slot => {
-                        slot.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
-                        slot.classList.add('border-gray-300'); // Reset to default border
-                    });
-                }
-                clearFeedback(`ex1-feedback-${category}`); // Clear category-specific feedback
-            }
-
-
-            // Clear Exercise 2 inputs and feedback
-            for (const key in exercise2CorrectAnswers) {
-                const input = getElement(key);
-                if (input) {
-                    input.value = "";
-                    input.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
-                    input.classList.add('border-gray-300');
-                }
-                appState.exercise2Answers[key] = '';
-                clearFeedback(`ex2-feedback-${key.split('-')[1]}`);
-            }
-
-            // Clear Exercise 3 dropdowns and feedback
-            for (const key in exercise3CorrectAnswers) {
-                const select = getElement(key);
-                if (select) {
-                    select.value = "";
-                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
-                    select.classList.add('border-gray-300');
-                }
-                appState.exercise3Answers[key] = '';
-                clearFeedback(`ex3-feedback-${key.split('-')[1]}`);
-            }
-
-            // Clear Exercise 4 inputs and feedback
-            for (const key in exercise4CorrectAnswers) {
-                const input = getElement(key);
-                if (input) {
-                    input.value = "";
-                    input.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
-                    input.classList.add('border-gray-300');
-                }
-                appState.exercise4Answers[key] = '';
-                clearFeedback(`ex4-feedback-${key.split('-')[1]}`);
-            }
-
-            // Clear Exercise 5 radio buttons and feedback
-            const radioGroups = ['ex5-q1', 'ex5-q2', 'ex5-q3', 'ex5-q4', 'ex5-q5', 'ex5-q6'];
-            radioGroups.forEach(groupName => {
-                document.querySelectorAll(`input[name="${groupName}"]`).forEach(radio => {
-                    radio.checked = false;
-                    const label = radio.closest('label');
-                    if (label) {
-                        label.classList.remove('text-green-700', 'text-red-700');
+            // Clear Exercise 1 (Drag and Drop)
+            const draggableContainer = getElement('draggable-words-container');
+            if (draggableContainer) {
+                // Return all words from drop targets to the draggable container
+                exercise1DragDropData.dropTargets.forEach(target => {
+                    const dropTargetElement = getElement(target.id);
+                    const droppedWord = dropTargetElement ? dropTargetElement.querySelector('.dropped-word') : null;
+                    if (droppedWord) {
+                        droppedWord.classList.remove('dropped-word');
+                        droppedWord.classList.add('draggable-word');
+                        droppedWord.draggable = true;
+                        droppedWord.style.display = ''; // Make visible again
+                        draggableContainer.appendChild(droppedWord); // Move back to pool
+                    }
+                    // Re-add placeholder text if removed
+                    if (dropTargetElement && !dropTargetElement.querySelector('.placeholder-text')) {
+                        const placeholder = document.createElement('span');
+                        placeholder.classList.add('placeholder-text');
+                        placeholder.textContent = 'Drop word here';
+                        dropTargetElement.appendChild(placeholder);
+                    }
+                    // Clear any specific drop styling
+                    if (dropTargetElement) {
+                        dropTargetElement.classList.remove('correct-drop', 'incorrect-drop');
                     }
                 });
-                appState.exercise5Answers[groupName] = '';
-                clearFeedback(`ex5-feedback-${groupName}`);
+                // Ensure all words in the draggable container are visible and draggable
+                Array.from(draggableContainer.children).forEach(wordElement => {
+                    wordElement.classList.remove('dropped-word');
+                    wordElement.classList.add('draggable-word');
+                    wordElement.draggable = true;
+                    wordElement.style.display = ''; // Make visible
+                });
+            }
+            appState.exercise1Answers = {}; // Clear saved answers for Ex1
+            exercise1DragDropData.dropTargets.forEach(target => {
+                clearFeedback(`ex1-feedback-${target.id.replace('ex1-target-', '')}`);
             });
 
 
+            // Clear Exercise 2 dropdowns and feedback
+            for (const key in exercise2Descriptions) {
+                const select = getElement(`ex2-${key}`);
+                if (select) {
+                    select.value = ""; // Reset to default "Select..." option
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise2Answers[key] = '';
+                clearFeedback(`ex2-feedback-${key}`);
+            }
+
+            // Clear Exercise 3 dropdowns and feedback
+            for (const qKey in exercise3Questions) {
+                const select = getElement(`ex3-${qKey}`);
+                if (select) {
+                    select.value = ""; // Reset to default "Select..." option
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise3Answers[qKey] = '';
+                clearFeedback(`ex3-feedback-${qKey}`);
+            }
+
+            // Clear Exercise 4 dropdowns and feedback
+            for (const key in exercise4Phrases) {
+                const select = getElement(`ex4-${key}`);
+                if (select) {
+                    select.value = ""; // Reset to default "Select..." option
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise4Answers[key] = '';
+                clearFeedback(`ex4-feedback-${key}`);
+            }
+
+            // Clear Exercise 5 radio buttons and feedback
+            const ex5RadioGroups = ['ex5-q2', 'ex5-q3', 'ex5-q4', 'ex5-q5', 'ex5-q6'];
+            ex5RadioGroups.forEach(groupName => {
+                document.querySelectorAll(`input[name="${groupName}"]`).forEach(radio => radio.checked = false);
+                appState.exercise5Answers[groupName] = '';
+                clearFeedback(`${groupName}-feedback`);
+            });
+
             // Clear Exercise 6 inputs and feedback
             for (const key in exercise6CorrectAnswers) {
-                const input = getElement(key);
+                const input = getElement(`ex6-${key}`);
                 if (input) {
                     input.value = "";
                     input.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
                     input.classList.add('border-gray-300');
                 }
                 appState.exercise6Answers[key] = '';
-                clearFeedback(`ex6-feedback-${key.split('-')[1]}`);
+                clearFeedback(`ex6-feedback-${key}`);
             }
 
             // Clear Exercise 7 inputs and feedback
             for (const key in exercise7CorrectAnswers) {
-                const input = getElement(key);
+                const input = getElement(`ex7-${key}`);
                 if (input) {
                     input.value = "";
                     input.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
                     input.classList.add('border-gray-300');
                 }
                 appState.exercise7Answers[key] = '';
-                clearFeedback(`ex7-feedback-${key.split('-')[1]}`);
+                clearFeedback(`ex7-feedback-${key}`);
             }
 
             // Clear Exercise 8 inputs and feedback
             for (const key in exercise8CorrectAnswers) {
-                const input = getElement(key);
+                const input = getElement(`ex8-${key}`);
                 if (input) {
                     input.value = "";
                     input.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
                     input.classList.add('border-gray-300');
                 }
                 appState.exercise8Answers[key] = '';
-                clearFeedback(`ex8-feedback-${key.split('-')[1]}`);
+                clearFeedback(`ex8-feedback-${key}`);
             }
 
             // Clear Exercise 9 dropdowns and feedback
-            for (const key in exercise9CorrectAnswers) {
-                const select = getElement(key);
+            for (const qKey in exercise9Questions) {
+                const select = getElement(`ex9-${qKey}`);
                 if (select) {
-                    select.value = "";
+                    select.value = ""; // Reset to default "Select..." option
                     select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
                     select.classList.add('border-gray-300');
                 }
-                appState.exercise9Answers[key] = '';
-                clearFeedback(`ex9-feedback-${key.split('-')[1]}`);
+                appState.exercise9Answers[qKey] = '';
+                clearFeedback(`ex9-feedback-${qKey}`);
             }
 
             // Clear Exercise 10 dropdowns and feedback
-            for (const key in exercise10CorrectAnswers) {
-                const select = getElement(key);
+            for (const qKey in exercise10Questions) {
+                const select = getElement(`ex10-${qKey}`);
                 if (select) {
-                    select.value = "";
+                    select.value = ""; // Reset to default "Select..." option
                     select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
                     select.classList.add('border-gray-300');
                 }
-                appState.exercise10Answers[key] = '';
-                clearFeedback(`ex10-feedback-${key.split('-')[1]}`);
+                appState.exercise10Answers[qKey] = '';
+                clearFeedback(`ex10-feedback-${qKey}`);
             }
-
 
             saveAnswers(); // Save the cleared state
             showMessage('All answers cleared!', 'success');
@@ -1898,11 +1713,14 @@
             initializeExercise8();
             initializeExercise9();
             initializeExercise10();
-
+            
             // Attach event listener for clear all answers
-            getElement('clear-all-answers-button').addEventListener('click', clearAllAnswers);
-
-            // Load saved answers on page load
+            const clearAllButton = getElement('clear-all-answers-button');
+            if (clearAllButton) {
+                clearAllButton.addEventListener('click', clearAllAnswers);
+            }
+            
+            // Load saved answers on page load - MUST be called AFTER initialization
             loadAnswers();
         };
     </script>
