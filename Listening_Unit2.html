@@ -98,6 +98,11 @@
             overflow: hidden; /* Ensures rounded corners are respected */
         }
 
+        /* Use JS to add 'active' class to parent .dropdown for visibility */
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+
         .dropdown-content a {
             color: black;
             padding: 12px 16px;
@@ -108,10 +113,6 @@
 
         .dropdown-content a:hover {
             background-color: #f1f1f1;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
         }
 
         .dropdown-button {
@@ -156,8 +157,8 @@
             </h1>
             <div class="flex-none flex items-center space-x-2">
                 <!-- Navigation Dropdown -->
-                <div class="dropdown">
-                    <button class="dropdown-button">
+                <div class="dropdown" id="exercise-dropdown">
+                    <button class="dropdown-button" id="exercise-dropdown-button">
                         Exercises
                         <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -824,7 +825,7 @@
                 const feedbackSpan = document.createElement('span');
                 feedbackSpan.id = `ex2-feedback-q${qIndex}`;
                 feedbackSpan.className = "hidden";
-                qDiv.appendChild(feedbackSpan); /* Corrected `feedbackBspan` to `feedbackSpan` */
+                qDiv.appendChild(feedbackSpan);
 
                 container.appendChild(qDiv);
             });
@@ -1626,11 +1627,33 @@
                 link.onclick = function(event) {
                     event.preventDefault(); // Prevent default anchor jump
                     showExercise(sectionId); // Call the new showExercise function
-                    // Optional: Close dropdown after selection if desired
-                    this.closest('.dropdown-content').style.display = 'none';
+                    closeDropdown(); // Close dropdown after selection
                 };
                 dropdownContent.appendChild(link);
             });
+
+            // Toggle dropdown visibility when the button is clicked
+            const dropdownButton = getElement('exercise-dropdown-button');
+            const dropdown = getElement('exercise-dropdown');
+            dropdownButton.addEventListener('click', function(event) {
+                event.stopPropagation(); // Prevent document click from closing it immediately
+                dropdown.classList.toggle('active');
+            });
+
+            // Close dropdown if clicked outside
+            document.addEventListener('click', function(event) {
+                if (!dropdown.contains(event.target)) {
+                    closeDropdown();
+                }
+            });
+        }
+
+        // --- Function to close the dropdown ---
+        function closeDropdown() {
+            const dropdown = getElement('exercise-dropdown');
+            if (dropdown) {
+                dropdown.classList.remove('active');
+            }
         }
 
         // --- Function to show only the selected exercise ---
