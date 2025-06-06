@@ -80,24 +80,104 @@
             background-color: transparent; /* Transparent background */
             box-shadow: none; /* No shadow */
         }
+
+        /* Styles for navigation dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 0.5rem;
+            overflow: hidden; /* Ensures rounded corners are respected */
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-button {
+            background-color: #4F46E5; /* Indigo-600 */
+            color: white;
+            padding: 0.75rem 1.25rem; /* py-3 px-5 */
+            border-radius: 0.5rem; /* rounded-lg */
+            font-weight: 600; /* font-semibold */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            transform: scale(1);
+        }
+
+        .dropdown-button:hover {
+            background-color: #4338CA; /* Indigo-700 */
+            transform: scale(1.05);
+        }
+
+        .dropdown-button svg {
+            margin-left: 0.5rem;
+        }
+
+        /* Hide all sections by default */
+        section {
+            display: none;
+        }
+        /* Make the currently active section visible */
+        section.active-exercise {
+            display: block;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gray-100 p-4 font-sans text-gray-800">
 
     <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
-        <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">
-            Mindset for IELTS 1 - Unit 2 Listening
-        </h1>
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-indigo-700 text-center flex-grow">
+                Mindset for IELTS 1 - Unit 2 Listening
+            </h1>
+            <div class="flex-none flex items-center space-x-2">
+                <!-- Navigation Dropdown -->
+                <div class="dropdown">
+                    <button class="dropdown-button">
+                        Exercises
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="exercise-nav-dropdown" class="dropdown-content">
+                        <!-- Dropdown links will be dynamically populated here -->
+                    </div>
+                </div>
 
-        <!-- Clear All Answers Button -->
-        <div class="flex justify-end mb-6 space-x-2">
-            <button id="clear-all-answers-button" class="px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition duration-200 ease-in-out transform hover:scale-105">
-                Clear All Answers
-            </button>
+                <!-- Clear All Answers Button -->
+                <button id="clear-all-answers-button" class="px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition duration-200 ease-in-out transform hover:scale-105">
+                    Clear All Answers
+                </button>
+            </div>
         </div>
 
+
         <!-- Unit 2: Exercise 1 - Match words to definitions -->
-        <section class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
+        <section id="exercise-1" class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Unit 2: Exercise 1</h2>
             <p class="mb-4">In this unit, you will practise the skills you need to answer short-answer questions in the IELTS Listening test.</p>
             <p class="mb-4">The conversation in this unit is about food and drink. This is a common topic in IELTS, so it is a good idea to think about some vocabulary you might hear.</p>
@@ -116,7 +196,7 @@
         </section>
 
         <!-- Unit 2: Exercise 2 - Choose correct decades for eating habits -->
-        <section class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
+        <section id="exercise-2" class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-blue-600 mb-4">Unit 2: Exercise 2</h2>
             <p class="mb-4">Read the information. Then listen to part of a conversation about how the diet and eating habits of people in the UK have changed over time.</p>
             <p class="mb-4">Choose the correct decades for the food eating habits.</p>
@@ -140,7 +220,7 @@
         </section>
 
         <!-- Unit 2: Exercise 3 - Choose the one word in each list that does not have the same meaning as the others -->
-        <section class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
+        <section id="exercise-3" class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-green-600 mb-4">Unit 2: Exercise 3</h2>
             <p class="mb-4">Read the information. Then choose the one word in each list that does not have the same meaning as the others.</p>
             <div class="mb-4 p-3 bg-green-100 rounded-md border border-green-200">
@@ -157,7 +237,7 @@
         </section>
 
         <!-- Unit 2: Exercise 4 - Choose the correct words to complete the sentences -->
-        <section class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
+        <section id="exercise-4" class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-purple-600 mb-4">Unit 2: Exercise 4</h2>
             <p class="mb-4">Choose the correct words to complete the sentences.</p>
             <div id="exercise4-container" class="space-y-6">
@@ -171,7 +251,7 @@
         </section>
 
         <!-- Unit 2: Exercise 5 - Spelling/Numbers - Correct/Incorrect -->
-        <section class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
+        <section id="exercise-5" class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Unit 2: Exercise 5</h2>
             <p class="mb-4">Listen to eight speakers spelling out names and numbers. Listen carefully and decide which names and numbers have been written down correctly.</p>
             <p class="mb-4">Choose the correct answers.</p>
@@ -195,7 +275,7 @@
         </section>
 
         <!-- Unit 2: Exercise 6 - Write the words you hear -->
-        <section class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
+        <section id="exercise-6" class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-red-600 mb-4">Unit 2: Exercise 6</h2>
             <p class="mb-4">In IELTS Listening short-answer questions, you must spell words correctly, so it is important to know how the letters of the alphabet are pronounced.</p>
             <p class="mb-4">Listen to each recording. Write the words you hear.</p>
@@ -210,7 +290,7 @@
         </section>
 
         <!-- Unit 2: Exercise 7 - Choose the correct answers to complete the sentences -->
-        <section class="mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
+        <section id="exercise-7" class="mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-teal-600 mb-4">Unit 2: Exercise 7</h2>
             <p class="mb-4">Listen to the recording. Choose the correct answers to complete the sentences.</p>
             <!-- Audio for Exercise 7 -->
@@ -230,7 +310,7 @@
         </section>
 
         <!-- Unit 2: Exercise 8 - Match types of information with short-answer questions -->
-        <section class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
+        <section id="exercise-8" class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-orange-600 mb-4">Unit 2: Exercise 8</h2>
             <p class="mb-4">Read the information. Then think about the type of information you will need to listen for to answer these questions.</p>
             <p class="mb-4">Match the types of information with the short-answer questions.</p>
@@ -251,7 +331,7 @@
         </section>
 
         <!-- Unit 2: Exercise 9 - Answer the questions (short answer) -->
-        <section class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
+        <section id="exercise-9" class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-pink-600 mb-4">Unit 2: Exercise 9</h2>
             <p class="mb-4">Answer the questions. Write NO MORE THAN TWO WORDS for each answer.</p>
             <!-- Audio for Exercise 9 -->
@@ -271,16 +351,10 @@
         </section>
 
         <!-- Unit 2: Exercise 10 - Complete the summary -->
-        <section class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md">
+        <section id="exercise-10" class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-gray-700 mb-4">Unit 2: Exercise 10</h2>
             <p class="mb-4">Think about what you’ve learnt from doing this unit.</p>
             <p class="mb-4">Complete the summary. Use the words in the box.</p>
-            <!-- The following section has been removed as per your request -->
-            <!--
-            <div class="mb-4 p-3 bg-gray-100 rounded-md border border-gray-200">
-                <p class="font-semibold">Words: Facts, hyphen, instructions, numbers, predict, pronunciation</p>
-            </div>
-            -->
             <div id="exercise10-container" class="space-y-6">
                 <!-- Exercise 10 content will be dynamically loaded here -->
             </div>
@@ -750,7 +824,7 @@
                 const feedbackSpan = document.createElement('span');
                 feedbackSpan.id = `ex2-feedback-q${qIndex}`;
                 feedbackSpan.className = "hidden";
-                qDiv.appendChild(feedbackSpan); /* Corrected from feedbackBspan */
+                qDiv.appendChild(feedbackSpan); /* Corrected `feedbackBspan` to `feedbackSpan` */
 
                 container.appendChild(qDiv);
             });
@@ -1532,7 +1606,44 @@
 
             // Load saved answers on page load
             loadAnswers();
+            populateExerciseNavigation(); // Populate navigation on load
+            showExercise('exercise-1'); // Show the first exercise on initial load
         };
+
+        // --- Navigation Function ---
+        function populateExerciseNavigation() {
+            const dropdownContent = getElement('exercise-nav-dropdown');
+            const sections = document.querySelectorAll('section[id^="exercise-"]');
+            
+            sections.forEach((section, index) => {
+                const sectionId = section.id;
+                const sectionTitle = section.querySelector('h2').textContent;
+                
+                const link = document.createElement('a');
+                link.href = `#${sectionId}`;
+                link.textContent = sectionTitle;
+                link.className = "px-4 py-2 hover:bg-gray-100"; // Tailwind classes for styling links
+                link.onclick = function(event) {
+                    event.preventDefault(); // Prevent default anchor jump
+                    showExercise(sectionId); // Call the new showExercise function
+                    // Optional: Close dropdown after selection if desired
+                    this.closest('.dropdown-content').style.display = 'none';
+                };
+                dropdownContent.appendChild(link);
+            });
+        }
+
+        // --- Function to show only the selected exercise ---
+        function showExercise(exerciseIdToShow) {
+            const sections = document.querySelectorAll('section[id^="exercise-"]');
+            sections.forEach(section => {
+                if (section.id === exerciseIdToShow) {
+                    section.classList.add('active-exercise');
+                } else {
+                    section.classList.remove('active-exercise');
+                }
+            });
+        }
     </script>
 </body>
 </html>
