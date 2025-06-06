@@ -118,7 +118,7 @@
 
     <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
         <h1 class="text-3xl md:text-4xl font-bold text-center text-purple-700 mb-8">
-            Unit 5: Grammar & Vocabulary Worksheet
+            Mindset for IELTS 1 - Unit 5 Grammar & Vocabulary
         </h1>
 
         <div class="flex justify-end mb-6 space-x-2">
@@ -1309,15 +1309,25 @@
                 const correctAnswer = exercise4CorrectAnswers[key].toLowerCase().trim(); // Use the dedicated correct answers for Exercise 4
                 const isCorrect = userAnswer === correctAnswer;
 
-                setFeedback(`ex4-feedback-${key}`, isCorrect); // Removed correctText for incorrect answers
+                // Check if no selection has been made explicitly
+                if (userAnswer === "") {
+                    setFeedback(`ex4-feedback-${key}`, false); // Mark as incorrect if nothing selected
+                    if (selectElement) {
+                        selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                        selectElement.classList.add('border-gray-300'); // Keep default styling
+                    }
+                    // No return here, so it continues to process other questions
+                } else {
+                    setFeedback(`ex4-feedback-${key}`, isCorrect); // Removed correctText for incorrect answers
 
-                if (selectElement) {
-                    selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
-                    selectElement.classList.add('border-gray-300'); // Reset to default
-                    if (isCorrect) {
-                        selectElement.classList.add('border-green-500', 'bg-green-50');
-                    } else if (userAnswer) { // Only if an answer was selected
-                        selectElement.classList.add('border-red-500', 'bg-red-50');
+                    if (selectElement) {
+                        selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                        selectElement.classList.add('border-gray-300'); // Reset to default
+                        if (isCorrect) {
+                            selectElement.classList.add('border-green-500', 'bg-green-50');
+                        } else { // Only if an answer was selected and it's incorrect
+                            selectElement.classList.add('border-red-500', 'bg-red-50');
+                        }
                     }
                 }
             }
@@ -1382,15 +1392,25 @@
                 const correctAnswer = exercise5Questions[qKey].correct;
                 const isCorrect = userAnswer === correctAnswer;
 
-                setFeedback(`ex5-feedback-${qKey}`, isCorrect); // Removed correctText for incorrect answers
+                // Check if no selection has been made explicitly
+                if (userAnswer === "") {
+                    setFeedback(`ex5-feedback-${qKey}`, false); // Mark as incorrect if nothing selected
+                    if (selectElement) {
+                        selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                        selectElement.classList.add('border-gray-300'); // Keep default styling
+                    }
+                    // No return here, so it continues to process other questions
+                } else {
+                    setFeedback(`ex5-feedback-${qKey}`, isCorrect); // Removed correctText for incorrect answers
 
-                if (selectElement) {
-                    selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
-                    selectElement.classList.add('border-gray-300'); // Reset to default
-                    if (isCorrect) {
-                        selectElement.classList.add('border-green-500', 'bg-green-50');
-                    } else if (userAnswer) { // Only if an answer was selected
-                        selectElement.classList.add('border-red-500', 'bg-red-50');
+                    if (selectElement) {
+                        selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                        selectElement.classList.add('border-gray-300'); // Reset to default
+                        if (isCorrect) {
+                            selectElement.classList.add('border-green-500', 'bg-green-50');
+                        } else { // Only if an answer was selected and it's incorrect
+                            selectElement.classList.add('border-red-500', 'bg-red-50');
+                        }
                     }
                 }
             }
@@ -1503,7 +1523,7 @@
                     if (isCorrect) {
                         inputElement.classList.add('border-green-500', 'bg-green-50');
                     } else if (userAnswer) {
-                        inputElement.classList.add('border-red-500', 'bg-red-50');
+                        selectElement.classList.add('border-red-500', 'bg-red-50');
                     }
                 }
             }
@@ -1550,15 +1570,25 @@
                 const correctAnswer = exercise9Questions[qKey].correct;
                 const isCorrect = userAnswer === correctAnswer;
 
-                setFeedback(`ex9-feedback-${qKey}`, isCorrect); // Removed correctText for incorrect answers
+                // Check if no selection has been made explicitly
+                if (userAnswer === "") {
+                    setFeedback(`ex9-feedback-${qKey}`, false); // Mark as incorrect if nothing selected
+                    if (selectElement) {
+                        selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                        selectElement.classList.add('border-gray-300'); // Keep default styling
+                    }
+                    // No return here, so it continues to process other questions
+                } else {
+                    setFeedback(`ex9-feedback-${qKey}`, isCorrect); // Removed correctText for incorrect answers
 
-                if (selectElement) {
-                    selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
-                    selectElement.classList.add('border-gray-300'); // Reset to default
-                    if (isCorrect) {
-                        selectElement.classList.add('border-green-500', 'bg-green-50');
-                    } else if (userAnswer) { // Only if an answer was selected
-                        selectElement.classList.add('border-red-500', 'bg-red-50');
+                    if (selectElement) {
+                        selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                        selectElement.classList.add('border-gray-300'); // Reset to default
+                        if (isCorrect) {
+                            selectElement.classList.add('border-green-500', 'bg-green-50');
+                        } else { // Only if an answer was selected and it's incorrect
+                            selectElement.classList.add('border-red-500', 'bg-red-50');
+                        }
                     }
                 }
             }
@@ -1605,15 +1635,25 @@
                 const correctAnswer = exercise10Questions[qKey].correct;
                 const isCorrect = userAnswer === correctAnswer;
 
-                setFeedback(`ex10-feedback-${qKey}`, isCorrect); // Removed correctText for incorrect answers
+                // Check if no selection has been made explicitly
+                if (userAnswer === "") {
+                    setFeedback(`ex10-feedback-${qKey}`, false); // Mark as incorrect if nothing selected
+                    if (selectElement) {
+                        selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                        selectElement.classList.add('border-gray-300'); // Keep default styling
+                    }
+                    // No return here, so it continues to process other questions
+                } else {
+                    setFeedback(`ex10-feedback-${qKey}`, isCorrect); // Removed correctText for incorrect answers
 
-                if (selectElement) {
-                    selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
-                    selectElement.classList.add('border-gray-300'); // Reset to default
-                    if (isCorrect) {
-                        selectElement.classList.add('border-green-500', 'bg-green-50');
-                    } else if (userAnswer) { // Only if an answer was selected
-                        selectElement.classList.add('border-red-500', 'bg-red-50');
+                    if (selectElement) {
+                        selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                        selectElement.classList.add('border-gray-300'); // Reset to default
+                        if (isCorrect) {
+                            selectElement.classList.add('border-green-500', 'bg-green-50');
+                        } else { // Only if an answer was selected and it's incorrect
+                            selectElement.classList.add('border-red-500', 'bg-red-50');
+                        }
                     }
                 }
             }
