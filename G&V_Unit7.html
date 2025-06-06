@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindset for IELTS 1 - Unit 7 Grammar & Vocabulary</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS for the Worksheet */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .correct-feedback {
+            color: #10B981; /* Green-500 */
+        }
+        .incorrect-feedback {
+            color: #EF4444; /* Red-500 */
+        }
+        .feedback-box {
+            padding: 0.5rem 0.75rem;
+            margin-top: 0.5rem;
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 0.875rem; /* text-sm */
+        }
+        .feedback-box.correct {
+            background-color: #D1FAE5; /* green-100 */
+            border: 1px solid #34D399; /* green-400 */
+        }
+        .feedback-box.incorrect {
+            background-color: #FEE2E2; /* red-100 */
+            border: 1px solid #F87171; /* red-400 */
+        }
+        /* Message Box for Save Confirmation */
+        #message-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #message-box.show {
+            opacity: 1;
+        }
+        /* Ensure inline inputs/selects don't break lines awkwardly */
+        .inline-block {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        /* Styling for the new exercise menu */
+        #exercise-menu-container {
+            position: fixed; /* Changed to fixed for persistent visibility */
+            top: 1rem;
+            left: 1rem;
+            z-index: 50;
+        }
+        #exercise-menu {
+            position: absolute;
+            top: calc(100% + 0.5rem); /* Position below the button with a small gap */
+            left: 0;
+            background-color: white;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
+            padding: 0.5rem 0;
+            min-width: 12rem; /* Tailwind w-48 */
+            max-height: 80vh; /* Limit height to prevent overflow on smaller screens */
+            overflow-y: auto; /* Enable scrolling for long lists */
+            display: none; /* Hidden by default */
+        }
+        #exercise-menu.show {
+            display: block; /* Show when 'show' class is added */
+        }
+        #exercise-menu a {
+            display: block;
+            padding: 0.75rem 1rem; /* py-3 px-4 */
+            font-size: 0.875rem; /* text-sm */
+            color: #4B5563; /* text-gray-700 */
+            text-decoration: none;
+        }
+        #exercise-menu a:hover {
+            background-color: #F3F4F6; /* bg-gray-100 */
+            color: #1F2937; /* text-gray-900 */
+        }
+        /* Hide all sections by default, JavaScript will show the active one */
+        section[id^="exercise-"] { /* Changed selector to match new ID format */
+            display: none;
+        }
+        section.active-exercise {
+            display: block;
+        }
+
+        /* Adjustments for select element width based on previous conversations */
+        select {
+            width: fit-content;
+            max-width: 100%;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .select-long-option {
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100 p-4 font-sans text-gray-800">
+
+    <div id="exercise-menu-container">
+        <button id="menu-button" class="flex items-center px-4 py-2 bg-indigo-700 text-white rounded-lg shadow-md hover:bg-indigo-800 transition duration-200 ease-in-out transform hover:scale-105">
+            Exercises
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <nav id="exercise-menu">
+            <!-- Links will be dynamically inserted here by JavaScript -->
+        </nav>
+    </div>
+
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">
+            Mindset for IELTS 1 - Unit 7 Grammar & Vocabulary
+        </h1>
+
+        <div class="flex justify-end mb-6 space-x-2">
+            <button id="clear-all-answers-button" class="px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition duration-200 ease-in-out transform hover:scale-105">
+                Clear All Answers
+            </button>
+            <button id="save-all-answers-button" class="px-4 py-2 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-600 transition duration-200 ease-in-out transform hover:scale-105">
+                Save All Answers
+            </button>
+        </div>
+
+        <!-- Unit 7: Exercise 1 -->
+        <section id="exercise-1" class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md active-exercise">
+            <h2 class="text-2xl font-semibold text-blue-600 mb-4">Unit 7: Exercise 1</h2>
+            <p class="mb-4">Complete the descriptions with the words and phrases in the box.</p>
+            <div class="mb-4 p-3 bg-blue-100 rounded-md border border-blue-200">
+                <p class="font-semibold">Words: Celebrity, fan, film star, lead singer, paparazzi, reporter, role model, supporter</p>
+            </div>
+            <div class="space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <select id="ex1-q1" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="Celebrity">Celebrity</option>
+                        <option value="fan">fan</option>
+                        <option value="film star">film star</option>
+                        <option value="lead singer">lead singer</option>
+                        <option value="paparazzi">paparazzi</option>
+                        <option value="reporter">reporter</option>
+                        <option value="role model">role model</option>
+                        <option value="supporter">supporter</option>
+                    </select>
+                    <p>is someone who is famous.</p>
+                    <span id="ex1-q1-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p>A</p>
+                    <select id="ex1-q2" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="Celebrity">Celebrity</option>
+                        <option value="fan">fan</option>
+                        <option value="film star">film star</option>
+                        <option value="lead singer">lead singer</option>
+                        <option value="paparazzi">paparazzi</option>
+                        <option value="reporter">reporter</option>
+                        <option value="role model">role model</option>
+                        <option value="supporter">supporter</option>
+                    </select>
+                    <p>is a famous movie actor.</p>
+                    <span id="ex1-q2-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p>The</p>
+                    <select id="ex1-q3" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="Celebrity">Celebrity</option>
+                        <option value="fan">fan</option>
+                        <option value="film star">film star</option>
+                        <option value="lead singer">lead singer</option>
+                        <option value="paparazzi">paparazzi</option>
+                        <option value="reporter">reporter</option>
+                        <option value="role model">role model</option>
+                        <option value="supporter">supporter</option>
+                    </select>
+                    <p>of a band is the main (and sometimes the only) singer.</p>
+                    <span id="ex1-q3-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p>A</p>
+                    <select id="ex1-q4" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="Celebrity">Celebrity</option>
+                        <option value="fan">fan</option>
+                        <option value="film star">film star</option>
+                        <option value="lead singer">lead singer</option>
+                        <option value="paparazzi">paparazzi</option>
+                        <option value="reporter">reporter</option>
+                        <option value="role model">role model</option>
+                        <option value="supporter">supporter</option>
+                    </select>
+                    <p>is someone who really likes a particular person, group or team.</p>
+                    <span id="ex1-q4-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p>Your</p>
+                    <select id="ex1-q5" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="Celebrity">Celebrity</option>
+                        <option value="fan">fan</option>
+                        <option value="film star">film star</option>
+                        <option value="lead singer">lead singer</option>
+                        <option value="paparazzi">paparazzi</option>
+                        <option value="reporter">reporter</option>
+                        <option value="role model">role model</option>
+                        <option value="supporter">supporter</option>
+                    </select>
+                    <p>is a person who you like and want to be like.</p>
+                    <span id="ex1-q5-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p>A</p>
+                    <select id="ex1-q6" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="Celebrity">Celebrity</option>
+                        <option value="fan">fan</option>
+                        <option value="film star">film star</option>
+                        <option value="lead singer">lead singer</option>
+                        <option value="paparazzi">paparazzi</option>
+                        <option value="reporter">reporter</option>
+                        <option value="role model">role model</option>
+                        <option value="supporter">supporter</option>
+                    </select>
+                    <p>is someone who likes a particular sports team, person or group and wants them to do well.</p>
+                    <span id="ex1-q6-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p>A</p>
+                    <select id="ex1-q7" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="Celebrity">Celebrity</option>
+                        <option value="fan">fan</option>
+                        <option value="film star">film star</option>
+                        <option value="lead singer">lead singer</option>
+                        <option value="paparazzi">paparazzi</option>
+                        <option value="reporter">reporter</option>
+                        <option value="role model">role model</option>
+                        <option value="supporter">supporter</option>
+                    </select>
+                    <p>is a person whose job is to find information about news events and describe them for a newspaper, on TV, etc.</p>
+                    <span id="ex1-q7-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p>The</p>
+                    <select id="ex1-q8" class="p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="Celebrity">Celebrity</option>
+                        <option value="fan">fan</option>
+                        <option value="film star">film star</option>
+                        <option value="lead singer">lead singer</option>
+                        <option value="paparazzi">paparazzi</option>
+                        <option value="reporter">reporter</option>
+                        <option value="role model">role model</option>
+                        <option value="supporter">supporter</option>
+                    </select>
+                    <p>are photographers who follow famous people and try to take photos of them.</p>
+                    <span id="ex1-q8-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+            </div>
+            <div class="flex justify-end mt-6 w-full">
+                <button id="check-ex1-button" class="px-5 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 1
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 7: Exercise 2 -->
+        <section id="exercise-2" class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-green-600 mb-4">Unit 7: Exercise 2</h2>
+            <p class="mb-4">Choose the best words to complete the sentences.</p>
+            <div class="space-y-4">
+                <div class="flex flex-col space-y-2">
+                    <p>Everybody knows his name. He’s really <select id="ex2-q1" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="well-known">well-known</option>
+                        <option value="talented">talented</option>
+                        <option value="rich">rich</option>
+                    </select>.</p>
+                    <span id="ex2-q1-feedback" class="hidden text-sm"></span>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <p>He’s a really good-looking actor. He’s so <select id="ex2-q2" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="handsome">handsome</option>
+                        <option value="popular">popular</option>
+                        <option value="famous">famous</option>
+                    </select>.</p>
+                    <span id="ex2-q2-feedback" class="hidden text-sm"></span>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <p>She’s very attractive. She’s such a <select id="ex2-q3" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="beautiful">beautiful</option>
+                        <option value="talented">talented</option>
+                        <option value="well-known">well-known</option>
+                    </select> woman.</p>
+                    <span id="ex2-q3-feedback" class="hidden text-sm"></span>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <p>Everybody loves that band. They’re really <select id="ex2-q4" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="popular">popular</option>
+                        <option value="attractive">attractive</option>
+                        <option value="pretty">pretty</option>
+                    </select> at the moment. </p>
+                    <span id="ex2-q4-feedback" class="hidden text-sm"></span>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <p>She’s got lots of money. She’s extremely <select id="ex2-q5" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="wealthy">wealthy</option>
+                        <option value="popular">popular</option>
+                        <option value="well-known">well-known</option>
+                    </select>.</p>
+                    <span id="ex2-q5-feedback" class="hidden text-sm"></span>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <p>He can do amazing things that other people find difficult. He’s so <select id="ex2-q6" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="talented">talented</option>
+                        <option value="stylish">stylish</option>
+                        <option value="attractive">attractive</option>
+                    </select></p>
+                    <span id="ex2-q6-feedback" class="hidden text-sm"></span>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <p>Her clothes are always really cool. She’s very <select id="ex2-q7" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="fashionable">fashionable</option>
+                        <option value="handsome">handsome</option>
+                        <option value="famous">famous</option>
+                    </select>.</p>
+                    <span id="ex2-q7-feedback" class="hidden text-sm"></span>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <p>They wear beautiful clothes. They look very <select id="ex2-q8" class="p-2 border rounded-md focus:ring-green-500 focus:border-green-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="stylish">stylish</option>
+                        <option value="rich">rich</option>
+                        <option value="talented">talented</option>
+                    </select>.</p>
+                    <span id="ex2-q8-feedback" class="hidden text-sm"></span>
+                </div>
+            </div>
+            <div class="flex justify-end mt-6 w-full">
+                <button id="check-ex2-button" class="px-5 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 2
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 7: Exercise 3 -->
+        <section id="exercise-3" class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-purple-600 mb-4">Unit 7: Exercise 3</h2>
+            <p class="mb-4">Complete the text. Use the words in the box.</p>
+            <div class="mb-4 p-3 bg-purple-100 rounded-md border border-purple-200">
+                <p class="font-semibold">Words: Appear, attend, earn, own, passed on, present, recognize, sign, Star, take</p>
+            </div>
+            <div class="space-y-4">
+                <p>I’m going to be famous when I’m older. I’m going to <select id="ex3-q1" class="inline-block p-1 border rounded-md w-auto focus:ring-purple-500 focus:border-purple-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Appear">Appear</option>
+                        <option value="attend">attend</option>
+                        <option value="earn">earn</option>
+                        <option value="own">own</option>
+                        <option value="passed on">passed on</option>
+                        <option value="present">present</option>
+                        <option value="recognize">recognize</option>
+                        <option value="sign">sign</option>
+                        <option value="Star">Star</option>
+                        <option value="take">take</option>
+                    </select> a TV programme about films.
+                    <span id="ex3-q1-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>Later, they’ll ask me to <select id="ex3-q2" class="inline-block p-1 border rounded-md w-auto focus:ring-purple-500 focus:border-purple-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Appear">Appear</option>
+                        <option value="attend">attend</option>
+                        <option value="earn">earn</option>
+                        <option value="own">own</option>
+                        <option value="passed on">passed on</option>
+                        <option value="present">present</option>
+                        <option value="recognize">recognize</option>
+                        <option value="sign">sign</option>
+                        <option value="Star">Star</option>
+                        <option value="take">take</option>
+                    </select> in films and I’ll have my name in big letters on movie posters.
+                    <span id="ex3-q2-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>I’ll <select id="ex3-q3" class="inline-block p-1 border rounded-md w-auto focus:ring-purple-500 focus:border-purple-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Appear">Appear</option>
+                        <option value="attend">attend</option>
+                        <option value="earn">earn</option>
+                        <option value="own">own</option>
+                        <option value="passed on">passed on</option>
+                        <option value="present">present</option>
+                        <option value="recognize">recognize</option>
+                        <option value="sign">sign</option>
+                        <option value="Star">Star</option>
+                        <option value="take">take</option>
+                    </select> a fortune for every film I make and I’ll be incredibly rich.
+                    <span id="ex3-q3-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>I’ll also <select id="ex3-q4" class="inline-block p-1 border rounded-md w-auto focus:ring-purple-500 focus:border-purple-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Appear">Appear</option>
+                        <option value="attend">attend</option>
+                        <option value="earn">earn</option>
+                        <option value="own">own</option>
+                        <option value="passed on">passed on</option>
+                        <option value="present">present</option>
+                        <option value="recognize">recognize</option>
+                        <option value="sign">sign</option>
+                        <option value="Star">Star</option>
+                        <option value="take">take</option>
+                    </select> a luxury yacht and perhaps I’ll have my own private island.
+                    <span id="ex3-q4-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>My photo will <select id="ex3-q5" class="inline-block p-1 border rounded-md w-auto focus:ring-purple-500 focus:border-purple-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Appear">Appear</option>
+                        <option value="attend">attend</option>
+                        <option value="earn">earn</option>
+                        <option value="own">own</option>
+                        <option value="passed on">passed on</option>
+                        <option value="present">present</option>
+                        <option value="recognize">recognize</option>
+                        <option value="sign">sign</option>
+                        <option value="Star">Star</option>
+                        <option value="take">take</option>
+                    </select> on the cover of lots of magazines.
+                    <span id="ex3-q5-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>I’ll <select id="ex3-q6" class="inline-block p-1 border rounded-md w-auto focus:ring-purple-500 focus:border-purple-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Appear">Appear</option>
+                        <option value="attend">attend</option>
+                        <option value="earn">earn</option>
+                        <option value="own">own</option>
+                        <option value="passed on">passed on</option>
+                        <option value="present">present</option>
+                        <option value="recognize">recognize</option>
+                        <option value="sign">sign</option>
+                        <option value="Star">Star</option>
+                        <option value="take">take</option>
+                    </select> film premieres (and see movies before anyone else), where I’ll wear stylish clothes.
+                    <span id="ex3-q6-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>Of course, it won’t be so nice if thousands of people <select id="ex3-q7" class="inline-block p-1 border rounded-md w-auto focus:ring-purple-500 focus:border-purple-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Appear">Appear</option>
+                        <option value="attend">attend</option>
+                        <option value="earn">earn</option>
+                        <option value="own">own</option>
+                        <option value="passed on">passed on</option>
+                        <option value="present">present</option>
+                        <option value="recognize">recognize</option>
+                        <option value="sign">sign</option>
+                        <option value="Star">Star</option>
+                        <option value="take">take</option>
+                    </select> me in the street.
+                    <span id="ex3-q7-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>I don’t really want to <select id="ex3-q8" class="inline-block p-1 border rounded-md w-auto focus:ring-purple-500 focus:border-purple-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Appear">Appear</option>
+                        <option value="attend">attend</option>
+                        <option value="earn">earn</option>
+                        <option value="own">own</option>
+                        <option value="passed on">passed on</option>
+                        <option value="present">present</option>
+                        <option value="recognize">recognize</option>
+                        <option value="sign">sign</option>
+                        <option value="Star">Star</option>
+                        <option value="take">take</option>
+                    </select> hundreds of autographs every day.
+                    <span id="ex3-q8-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>It’d be horrible if newspapers and magazines <select id="ex3-q9" class="inline-block p-1 border rounded-md w-auto focus:ring-purple-500 focus:border-purple-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Appear">Appear</option>
+                        <option value="attend">attend</option>
+                        <option value="earn">earn</option>
+                        <option value="own">own</option>
+                        <option value="passed on">passed on</option>
+                        <option value="present">present</option>
+                        <option value="recognize">recognize</option>
+                        <option value="sign">sign</option>
+                        <option value="Star">Star</option>
+                        <option value="take">take</option>
+                    </select> rumours and gossip about my private life.
+                    <span id="ex3-q9-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>I also don’t think I’d like to <select id="ex3-q10" class="inline-block p-1 border rounded-md w-auto focus:ring-purple-500 focus:border-purple-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Appear">Appear</option>
+                        <option value="attend">attend</option>
+                        <option value="earn">earn</option>
+                        <option value="own">own</option>
+                        <option value="passed on">passed on</option>
+                        <option value="present">present</option>
+                        <option value="recognize">recognize</option>
+                        <option value="sign">sign</option>
+                        <option value="Star">Star</option>
+                        <option value="take">take</option>
+                    </select> part in lots of boring interviews and press conferences.
+                    <span id="ex3-q10-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>Maybe being famous wouldn’t be so nice after all.</p>
+            </div>
+            <div class="flex justify-end mt-6 w-full">
+                <button id="check-ex3-button" class="px-5 py-2 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 3
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 7: Exercise 4 -->
+        <section id="exercise-4" class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Unit 7: Exercise 4</h2>
+            <p class="mb-4">Complete the sentences. Use the words in the box.</p>
+            <div class="mb-4 p-3 bg-yellow-100 rounded-md border border-yellow-200">
+                <p class="font-semibold">Words: Blogs, broadcasting, internet, magazines, media, movies, newspapers, Radio, social media, television</p>
+            </div>
+            <div class="space-y-4">
+                <p>The <select id="ex4-q1" class="inline-block p-1 border rounded-md w-auto focus:ring-yellow-500 focus:border-yellow-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Blogs">Blogs</option>
+                        <option value="broadcasting">broadcasting</option>
+                        <option value="internet">internet</option>
+                        <option value="magazines">magazines</option>
+                        <option value="media">media</option>
+                        <option value="movies">movies</option>
+                        <option value="newspapers">newspapers</option>
+                        <option value="Radio">Radio</option>
+                        <option value="social media">social media</option>
+                        <option value="television">television</option>
+                    </select> is the general name for the group which includes the internet, newspapers, magazines, television, etc.
+                    <span id="ex4-q1-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>One of the oldest branches of the media is <select id="ex4-q2" class="inline-block p-1 border rounded-md w-auto focus:ring-yellow-500 focus:border-yellow-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Blogs">Blogs</option>
+                        <option value="broadcasting">broadcasting</option>
+                        <option value="internet">internet</option>
+                        <option value="magazines">magazines</option>
+                        <option value="media">media</option>
+                        <option value="movies">movies</option>
+                        <option value="newspapers">newspapers</option>
+                        <option value="Radio">Radio</option>
+                        <option value="social media">social media</option>
+                        <option value="television">television</option>
+                    </select> . They are written by journalists and then printed on printing presses or can be read online.
+                    <span id="ex4-q2-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p><select id="ex4-q3" class="inline-block p-1 border rounded-md w-auto focus:ring-yellow-500 focus:border-yellow-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Blogs">Blogs</option>
+                        <option value="broadcasting">broadcasting</option>
+                        <option value="internet">internet</option>
+                        <option value="magazines">magazines</option>
+                        <option value="media">media</option>
+                        <option value="movies">movies</option>
+                        <option value="newspapers">newspapers</option>
+                        <option value="Radio">Radio</option>
+                        <option value="social media">social media</option>
+                        <option value="television">television</option>
+                    </select> are similar to newspapers, but they’re generally more colourful and entertaining. They are usually weekly or monthly.
+                    <span id="ex4-q3-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>Films became popular around the beginning of the 20th century, when people visited cinemas to watch moving pictures (or ‘ <select id="ex4-q4" class="inline-block p-1 border rounded-md w-auto focus:ring-yellow-500 focus:border-yellow-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Blogs">Blogs</option>
+                        <option value="broadcasting">broadcasting</option>
+                        <option value="internet">internet</option>
+                        <option value="magazines">magazines</option>
+                        <option value="media">media</option>
+                        <option value="movies">movies</option>
+                        <option value="newspapers">newspapers</option>
+                        <option value="Radio">Radio</option>
+                        <option value="social media">social media</option>
+                        <option value="television">television</option>
+                    </select> ’) for the first time.
+                    <span id="ex4-q4-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>The 20th century was the age of <select id="ex4-q5" class="inline-block p-1 border rounded-md w-auto focus:ring-yellow-500 focus:border-yellow-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Blogs">Blogs</option>
+                        <option value="broadcasting">broadcasting</option>
+                        <option value="internet">internet</option>
+                        <option value="magazines">magazines</option>
+                        <option value="media">media</option>
+                        <option value="movies">movies</option>
+                        <option value="newspapers">newspapers</option>
+                        <option value="Radio">Radio</option>
+                        <option value="social media">social media</option>
+                        <option value="television">television</option>
+                    </select> – sending programmes to lots of people at the same time, using, for example, television or radio.
+                    <span id="ex4-q5-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p><select id="ex4-q6" class="inline-block p-1 border rounded-md w-auto focus:ring-yellow-500 focus:border-yellow-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Blogs">Blogs</option>
+                        <option value="broadcasting">broadcasting</option>
+                        <option value="internet">internet</option>
+                        <option value="magazines">magazines</option>
+                        <option value="media">media</option>
+                        <option value="movies">movies</option>
+                        <option value="newspapers">newspapers</option>
+                        <option value="Radio">Radio</option>
+                        <option value="social media">social media</option>
+                        <option value="television">television</option>
+                    </select> was the first way of broadcasting spoken words and music, and it continues to be popular today.
+                    <span id="ex4-q6-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>In the middle of the 20th century, as <select id="ex4-q7" class="inline-block p-1 border rounded-md w-auto focus:ring-yellow-500 focus:border-yellow-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Blogs">Blogs</option>
+                        <option value="broadcasting">broadcasting</option>
+                        <option value="internet">internet</option>
+                        <option value="magazines">magazines</option>
+                        <option value="media">media</option>
+                        <option value="movies">movies</option>
+                        <option value="newspapers">newspapers</option>
+                        <option value="Radio">Radio</option>
+                        <option value="social media">social media</option>
+                        <option value="television">television</option>
+                    </select> sets became cheaper, TV took over from radio as the most popular form of broadcast media.
+                    <span id="ex4-q7-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>At the end of the 20th century, the <select id="ex4-q8" class="inline-block p-1 border rounded-md w-auto focus:ring-yellow-500 focus:border-yellow-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Blogs">Blogs</option>
+                        <option value="broadcasting">broadcasting</option>
+                        <option value="internet">internet</option>
+                        <option value="magazines">magazines</option>
+                        <option value="media">media</option>
+                        <option value="movies">movies</option>
+                        <option value="newspapers">newspapers</option>
+                        <option value="Radio">Radio</option>
+                        <option value="social media">social media</option>
+                        <option value="television">television</option>
+                    </select> added a new way of providing traditional media, such as news, music and films.
+                    <span id="ex4-q8-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>However, in the early 21st century, millions of ordinary people started creating their own online ‘newspapers’, where they reported whatever they found interesting in their web logs (later shortened to ‘ <select id="ex4-q9" class="inline-block p-1 border rounded-md w-auto focus:ring-yellow-500 focus:border-yellow-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Blogs">Blogs</option>
+                        <option value="broadcasting">broadcasting</option>
+                        <option value="internet">internet</option>
+                        <option value="magazines">magazines</option>
+                        <option value="media">media</option>
+                        <option value="movies">movies</option>
+                        <option value="newspapers">newspapers</option>
+                        <option value="Radio">Radio</option>
+                        <option value="social media">social media</option>
+                        <option value="television">television</option>
+                    </select> ’).
+                    <span id="ex4-q9-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>Later, thanks to <select id="ex4-q10" class="inline-block p-1 border rounded-md w-auto focus:ring-yellow-500 focus:border-yellow-500">
+                        <option value="">--- Select ---</option>
+                        <option value="Blogs">Blogs</option>
+                        <option value="broadcasting">broadcasting</option>
+                        <option value="internet">internet</option>
+                        <option value="magazines">magazines</option>
+                        <option value="media">media</option>
+                        <option value="movies">movies</option>
+                        <option value="newspapers">newspapers</option>
+                        <option value="Radio">Radio</option>
+                        <option value="social media">social media</option>
+                        <option value="television">television</option>
+                    </select> sites like YouTube, Facebook and Twitter, everybody could broadcast everything to the world, instantly.
+                    <span id="ex4-q10-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+            </div>
+            <div class="flex justify-end mt-6 w-full">
+                <button id="check-ex4-button" class="px-5 py-2 bg-yellow-600 text-white rounded-lg shadow-md hover:bg-yellow-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 4
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 7: Exercise 5 -->
+        <section id="exercise-5" class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-red-600 mb-4">Unit 7: Exercise 5</h2>
+            <p class="mb-4">Read the information. Then complete the sentences. Use the idioms in the box.</p>
+            <div class="mb-4 p-3 bg-red-100 rounded-md border border-red-200">
+                <p class="italic text-gray-700">"An idiom is a group of words in a fixed order which has its own meaning. Even when you know the meaning of each of the words in an idiom, you still need to learn the meaning of the whole idiom."</p>
+            </div>
+            <div class="mb-4 p-3 bg-red-100 rounded-md border border-red-200">
+                <p class="font-semibold">Idioms: are in the public eye, claim to fame, make it big, paying the price, rising star, victim of her own success</p>
+            </div>
+            <div class="space-y-4">
+                <p>I don’t know why she’s famous. Her only <select id="ex5-q1" class="inline-block p-1 border rounded-md w-auto focus:ring-red-500 focus:border-red-500">
+                        <option value="">--- Select ---</option>
+                        <option value="are in the public eye">are in the public eye</option>
+                        <option value="claim to fame">claim to fame</option>
+                        <option value="make it big">make it big</option>
+                        <option value="paying the price">paying the price</option>
+                        <option value="rising star">rising star</option>
+                        <option value="victim of her own success">victim of her own success</option>
+                    </select> is that her dad was a famous singer.
+                    <span id="ex5-q1-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>I don’t feel too sorry for celebrities who complain about the paparazzi. They’re just <select id="ex5-q2" class="inline-block p-1 border rounded-md w-auto focus:ring-red-500 focus:border-red-500">
+                        <option value="">--- Select ---</option>
+                        <option value="are in the public eye">are in the public eye</option>
+                        <option value="claim to fame">claim to fame</option>
+                        <option value="make it big">make it big</option>
+                        <option value="paying the price">paying the price</option>
+                        <option value="rising star">rising star</option>
+                        <option value="victim of her own success">victim of her own success</option>
+                    </select> for being famous.
+                    <span id="ex5-q2-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>This singer isn’t famous yet, but she’s been on TV a few times, so she’s definitely a <select id="ex5-q3" class="inline-block p-1 border rounded-md w-auto focus:ring-red-500 focus:border-red-500">
+                        <option value="">--- Select ---</option>
+                        <option value="are in the public eye">are in the public eye</option>
+                        <option value="claim to fame">claim to fame</option>
+                        <option value="make it big">make it big</option>
+                        <option value="paying the price">paying the price</option>
+                        <option value="rising star">rising star</option>
+                        <option value="victim of her own success">victim of her own success</option>
+                    </select> – I’m sure everyone will know her name this time next year.
+                    <span id="ex5-q3-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>I think all people who <select id="ex5-q4" class="inline-block p-1 border rounded-md w-auto focus:ring-red-500 focus:border-red-500">
+                        <option value="">--- Select ---</option>
+                        <option value="are in the public eye">are in the public eye</option>
+                        <option value="claim to fame">claim to fame</option>
+                        <option value="make it big">make it big</option>
+                        <option value="paying the price">paying the price</option>
+                        <option value="rising star">rising star</option>
+                        <option value="victim of her own success">victim of her own success</option>
+                    </select> should be very careful about what they say and do in public – many people look up to them and copy their actions.
+                    <span id="ex5-q4-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>She was a great songwriter before she was famous, when she was poor and angry. But now she’s rich and happy, she’s got nothing to write about! She’s a <select id="ex5-q5" class="inline-block p-1 border rounded-md w-auto focus:ring-red-500 focus:border-red-500">
+                        <option value="">--- Select ---</option>
+                        <option value="are in the public eye">are in the public eye</option>
+                        <option value="claim to fame">claim to fame</option>
+                        <option value="make it big">make it big</option>
+                        <option value="paying the price">paying the price</option>
+                        <option value="rising star">rising star</option>
+                        <option value="victim of her own success">victim of her own success</option>
+                    </select> .
+                    <span id="ex5-q5-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>It’s very difficult to <select id="ex5-q6" class="inline-block p-1 border rounded-md w-auto focus:ring-red-500 focus:border-red-500">
+                        <option value="">--- Select ---</option>
+                        <option value="are in the public eye">are in the public eye</option>
+                        <option value="claim to fame">claim to fame</option>
+                        <option value="make it big">make it big</option>
+                        <option value="paying the price">paying the price</option>
+                        <option value="rising star">rising star</option>
+                        <option value="victim of her own success">victim of her own success</option>
+                    </select> in the music business. Many people try, but only a small number succeed.
+                    <span id="ex5-q6-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+            </div>
+            <div class="flex justify-end mt-6 w-full">
+                <button id="check-ex5-button" class="px-5 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 5
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 7: Exercise 6 -->
+        <section id="exercise-6" class="mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-teal-600 mb-4">Unit 7: Exercise 6</h2>
+            <p class="mb-4">Match the sentence endings with the correct beginnings.</p>
+            <div class="mb-4 p-3 bg-teal-100 rounded-md border border-teal-200">
+                <p class="font-semibold">Endings: It’ll be the best day of my life. , do you ask them for an autograph?, their fans won’t be happy at all. , there aren’t any tickets?, they go on tour. , they keep printing private pictures of celebrities.</p>
+            </div>
+            <div class="space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">I’ll definitely go and see them in concert if</p>
+                    <select id="ex6-q1" class="p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="they go on tour.">they go on tour.</option>
+                        <option value="It’ll be the best day of my life.">It’ll be the best day of my life.</option>
+                        <option value="do you ask them for an autograph?">do you ask them for an autograph?</option>
+                        <option value="their fans won’t be happy at all.">their fans won’t be happy at all.</option>
+                        <option value="there aren’t any tickets?">there aren’t any tickets?</option>
+                        <option value="they keep printing private pictures of celebrities.">they keep printing private pictures of celebrities.</option>
+                    </select>
+                    <span id="ex6-q1-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">If you see famous people,</p>
+                    <select id="ex6-q2" class="p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="they go on tour.">they go on tour.</option>
+                        <option value="It’ll be the best day of my life.">It’ll be the best day of my life.</option>
+                        <option value="do you ask them for an autograph?">do you ask them for an autograph?</option>
+                        <option value="their fans won’t be happy at all.">their fans won’t be happy at all.</option>
+                        <option value="there aren’t any tickets?">there aren’t any tickets?</option>
+                        <option value="they keep printing private pictures of celebrities.">they keep printing private pictures of celebrities.</option>
+                    </select>
+                    <span id="ex6-q2-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">If the lead singer leaves the band,</p>
+                    <select id="ex6-q3" class="p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="they go on tour.">they go on tour.</option>
+                        <option value="It’ll be the best day of my life.">It’ll be the best day of my life.</option>
+                        <option value="do you ask them for an autograph?">do you ask them for an autograph?</option>
+                        <option value="their fans won’t be happy at all.">their fans won’t be happy at all.</option>
+                        <option value="there aren’t any tickets?">there aren’t any tickets?</option>
+                        <option value="they keep printing private pictures of celebrities.">they keep printing private pictures of celebrities.</option>
+                    </select>
+                    <span id="ex6-q3-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">I’m going to see my idol next week!</p>
+                    <select id="ex6-q4" class="p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="they go on tour.">they go on tour.</option>
+                        <option value="It’ll be the best day of my life.">It’ll be the best day of my life.</option>
+                        <option value="do you ask them for an autograph?">do you ask them for an autograph?</option>
+                        <option value="their fans won’t be happy at all.">their fans won’t be happy at all.</option>
+                        <option value="there aren’t any tickets?">there aren’t any tickets?</option>
+                        <option value="they keep printing private pictures of celebrities.">they keep printing private pictures of celebrities.</option>
+                    </select>
+                    <span id="ex6-q4-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">What will you do if</p>
+                    <select id="ex6-q5" class="p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="they go on tour.">they go on tour.</option>
+                        <option value="It’ll be the best day of my life.">It’ll be the best day of my life.</option>
+                        <option value="do you ask them for an autograph?">do you ask them for an autograph?</option>
+                        <option value="their fans won’t be happy at all.">their fans won’t be happy at all.</option>
+                        <option value="there aren’t any tickets?">there aren’t any tickets?</option>
+                        <option value="they keep printing private pictures of celebrities.">they keep printing private pictures of celebrities.</option>
+                    </select>
+                    <span id="ex6-q5-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">I won’t buy that magazine again if</p>
+                    <select id="ex6-q6" class="p-2 border rounded-md focus:ring-teal-500 focus:border-teal-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="they go on tour.">they go on tour.</option>
+                        <option value="It’ll be the best day of my life.">It’ll be the best day of my life.</option>
+                        <option value="do you ask them for an autograph?">do you ask them for an autograph?</option>
+                        <option value="their fans won’t be happy at all.">their fans won’t be happy at all.</option>
+                        <option value="there aren’t any tickets?">there aren’t any tickets?</option>
+                        <option value="they keep printing private pictures of celebrities.">they keep printing private pictures of celebrities.</option>
+                    </select>
+                    <span id="ex6-q6-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+            </div>
+            <div class="flex justify-end mt-6 w-full">
+                <button id="check-ex6-button" class="px-5 py-2 bg-teal-600 text-white rounded-lg shadow-md hover:bg-teal-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 6
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 7: Exercise 7 -->
+        <section id="exercise-7" class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-orange-600 mb-4">Unit 7: Exercise 7</h2>
+            <p class="mb-4">Correct the first conditional sentences by changing the incorrect use of <span class="font-bold">will</span>. Use contractions where possible. The first one has been done for you.</p>
+            <div class="space-y-4">
+                <p>I’m going to start writing about my life on social media. If it<span class="font-bold text-gray-600">’ll be</span> <input type="text" id="ex7-q1" class="inline-block p-1 border rounded-md w-24 focus:ring-orange-500 focus:border-orange-500" value="it’s"> interesting, I’m sure people will want to follow me.
+                    <span id="ex7-q1-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>If I<span class="font-bold text-gray-600">’ll get</span> <input type="text" id="ex7-q2" class="inline-block p-1 border rounded-md w-24 focus:ring-orange-500 focus:border-orange-500"> lots of followers, I’ll start my own YouTube channel and make funny videos.
+                    <span id="ex7-q2-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>All my followers will watch my YouTube channel if I<span class="font-bold text-gray-600">’ll tell</span> <input type="text" id="ex7-q3" class="inline-block p-1 border rounded-md w-24 focus:ring-orange-500 focus:border-orange-500"> them about my funny videos.
+                    <span id="ex7-q3-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>If they<span class="font-bold text-gray-600">’ll like</span> <input type="text" id="ex7-q4" class="inline-block p-1 border rounded-md w-24 focus:ring-orange-500 focus:border-orange-500"> my videos, they’ll keep coming back for more.
+                    <span id="ex7-q4-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>If enough people <span class="font-bold text-gray-600">will watch</span> <input type="text" id="ex7-q5" class="inline-block p-1 border rounded-md w-24 focus:ring-orange-500 focus:border-orange-500"> my videos and share the links on social media, they’ll go viral – thousands of people all over the world will watch them.
+                    <span id="ex7-q5-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>TV and newspaper reporters will notice if my videos <span class="font-bold text-gray-600">will go</span> <input type="text" id="ex7-q6" class="inline-block p-1 border rounded-md w-24 focus:ring-orange-500 focus:border-orange-500"> viral, and they’ll tell even more people about them.
+                    <span id="ex7-q6-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>If a TV or film producer <span class="font-bold text-gray-600">will hear</span> <input type="text" id="ex7-q7" class="inline-block p-1 border rounded-md w-24 focus:ring-orange-500 focus:border-orange-500"> about my videos, he/she will pay me to make professional films or TV programmes.
+                    <span id="ex7-q7-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>I’ll make a fortune if that<span class="font-bold text-gray-600">’ll happen</span> <input type="text" id="ex7-q8" class="inline-block p-1 border rounded-md w-24 focus:ring-orange-500 focus:border-orange-500">.
+                    <span id="ex7-q8-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>On the other hand, if nobody <span class="font-bold text-gray-600">will follow</span> <input type="text" id="ex7-q9" class="inline-block p-1 border rounded-md w-24 focus:ring-orange-500 focus:border-orange-500"> me on social media, none of those things will happen.
+                    <span id="ex7-q9-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+                <p>But if I <span class="font-bold text-gray-600">won’t try</span> <input type="text" id="ex7-q10" class="inline-block p-1 border rounded-md w-24 focus:ring-orange-500 focus:border-orange-500">, I’ll never know!
+                    <span id="ex7-q10-feedback" class="hidden text-sm ml-2"></span>
+                </p>
+            </div>
+            <div class="flex justify-end mt-6 w-full">
+                <button id="check-ex7-button" class="px-5 py-2 bg-orange-600 text-white rounded-lg shadow-md hover:bg-orange-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 7
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 7: Exercise 8 -->
+        <section id="exercise-8" class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-pink-600 mb-4">Unit 7: Exercise 8</h2>
+            <p class="mb-4">Read the information. Then match the situations with the examples.</p>
+            <div class="mb-4 p-3 bg-pink-100 rounded-md border border-pink-200 text-sm">
+                <p class="font-bold">"Can, could, may and might"</p>
+                <p class="font-semibold mt-2">Talking about ability</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Present: can / can’t</li>
+                    <li>Past: could / couldn’t</li>
+                    <li>Future: will be able to / won’t be able to</li>
+                </ul>
+                <p class="font-semibold mt-2">Asking for permission</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Formal: May / Could I / we … ?</li>
+                    <li>Less formal: Can I / we … ?</li>
+                </ul>
+                <p class="font-semibold mt-2">Giving permission (saying ‘yes’) and refusing permission (saying ‘no’)</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Very formal: You may / may not …</li>
+                    <li>Less formal: You can / can’t …</li>
+                </ul>
+                <p class="font-semibold mt-2">Asking for help</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Formal: Could you … ?</li>
+                    <li>Less formal: Can you … ?</li>
+                </ul>
+                <p class="font-semibold mt-2">Offering help</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>I can … / Can I (help) … ?</li>
+                </ul>
+                <p class="font-semibold mt-2">Talking about things that aren’t certain in the future</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Positive: It may / might / could happen.</li>
+                    <li>Negative: It may not happen / It might not happen.</li>
+                </ul>
+            </div>
+            <div class="mb-4 p-3 bg-pink-100 rounded-md border border-pink-200">
+                <p class="font-semibold">Situations: Asking for help, Asking for permission, Giving permission, Offering help, Refusing permission, Talking about future ability, Talking about past ability, Talking about present ability, Talking about something that’s not certain in the future</p>
+            </div>
+            <div class="space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">May I leave early, please?</p>
+                    <select id="ex8-q1" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="Asking for help">Asking for help</option>
+                        <option value="Asking for permission">Asking for permission</option>
+                        <option value="Giving permission">Giving permission</option>
+                        <option value="Offering help">Offering help</option>
+                        <option value="Refusing permission">Refusing permission</option>
+                        <option value="Talking about future ability">Talking about future ability</option>
+                        <option value="Talking about past ability">Talking about past ability</option>
+                        <option value="Talking about present ability">Talking about present ability</option>
+                        <option value="Talking about something that’s not certain in the future">Talking about something that’s not certain in the future</option>
+                    </select>
+                    <span id="ex8-q1-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">You can leave when you’re ready.</p>
+                    <select id="ex8-q2" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="Asking for help">Asking for help</option>
+                        <option value="Asking for permission">Asking for permission</option>
+                        <option value="Giving permission">Giving permission</option>
+                        <option value="Offering help">Offering help</option>
+                        <option value="Refusing permission">Refusing permission</option>
+                        <option value="Talking about future ability">Talking about future ability</option>
+                        <option value="Talking about past ability">Talking about past ability</option>
+                        <option value="Talking about present ability">Talking about present ability</option>
+                        <option value="Talking about something that’s not certain in the future">Talking about something that’s not certain in the future</option>
+                    </select>
+                    <span id="ex8-q2-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">I’m afraid you can’t sit there.</p>
+                    <select id="ex8-q3" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="Asking for help">Asking for help</option>
+                        <option value="Asking for permission">Asking for permission</option>
+                        <option value="Giving permission">Giving permission</option>
+                        <option value="Offering help">Offering help</option>
+                        <option value="Refusing permission">Refusing permission</option>
+                        <option value="Talking about future ability">Talking about future ability</option>
+                        <option value="Talking about past ability">Talking about past ability</option>
+                        <option value="Talking about present ability">Talking about present ability</option>
+                        <option value="Talking about something that’s not certain in the future">Talking about something that’s not certain in the future</option>
+                    </select>
+                    <span id="ex8-q3-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">I didn’t enjoy the concert because I couldn’t see the stage.</p>
+                    <select id="ex8-q4" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="Asking for help">Asking for help</option>
+                        <option value="Asking for permission">Asking for permission</option>
+                        <option value="Giving permission">Giving permission</option>
+                        <option value="Offering help">Offering help</option>
+                        <option value="Refusing permission">Refusing permission</option>
+                        <option value="Talking about future ability">Talking about future ability</option>
+                        <option value="Talking about past ability">Talking about past ability</option>
+                        <option value="Talking about present ability">Talking about present ability</option>
+                        <option value="Talking about something that’s not certain in the future">Talking about something that’s not certain in the future</option>
+                    </select>
+                    <span id="ex8-q4-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">She isn’t talented – she can’t even sing!</p>
+                    <select id="ex8-q5" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="Asking for help">Asking for help</option>
+                        <option value="Asking for permission">Asking for permission</option>
+                        <option value="Giving permission">Giving permission</option>
+                        <option value="Offering help">Offering help</option>
+                        <option value="Refusing permission">Refusing permission</option>
+                        <option value="Talking about future ability">Talking about future ability</option>
+                        <option value="Talking about past ability">Talking about past ability</option>
+                        <option value="Talking about present ability">Talking about present ability</option>
+                        <option value="Talking about something that’s not certain in the future">Talking about something that’s not certain in the future</option>
+                    </select>
+                    <span id="ex8-q5-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">Don’t phone me when I’m at the concert later. I won’t be able to talk to you.</p>
+                    <select id="ex8-q6" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="Asking for help">Asking for help</option>
+                        <option value="Asking for permission">Asking for permission</option>
+                        <option value="Giving permission">Giving permission</option>
+                        <option value="Offering help">Offering help</option>
+                        <option value="Refusing permission">Refusing permission</option>
+                        <option value="Talking about future ability">Talking about future ability</option>
+                        <option value="Talking about past ability">Talking about past ability</option>
+                        <option value="Talking about present ability">Talking about present ability</option>
+                        <option value="Talking about something that’s not certain in the future">Talking about something that’s not certain in the future</option>
+                    </select>
+                    <span id="ex8-q6-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">I might go to the cinema tonight – I haven’t decided yet.</p>
+                    <select id="ex8-q7" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="Asking for help">Asking for help</option>
+                        <option value="Asking for permission">Asking for permission</option>
+                        <option value="Giving permission">Giving permission</option>
+                        <option value="Offering help">Offering help</option>
+                        <option value="Refusing permission">Refusing permission</option>
+                        <option value="Talking about future ability">Talking about future ability</option>
+                        <option value="Talking about past ability">Talking about past ability</option>
+                        <option value="Talking about present ability">Talking about present ability</option>
+                        <option value="Talking about something that’s not certain in the future">Talking about something that’s not certain in the future</option>
+                    </select>
+                    <span id="ex8-q7-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">Could you hold my camera for me?</p>
+                    <select id="ex8-q8" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="Asking for help">Asking for help</option>
+                        <option value="Asking for permission">Asking for permission</option>
+                        <option value="Giving permission">Giving permission</option>
+                        <option value="Offering help">Offering help</option>
+                        <option value="Refusing permission">Refusing permission</option>
+                        <option value="Talking about future ability">Talking about future ability</option>
+                        <option value="Talking about past ability">Talking about past ability</option>
+                        <option value="Talking about present ability">Talking about present ability</option>
+                        <option value="Talking about something that’s not certain in the future">Talking about something that’s not certain in the future</option>
+                    </select>
+                    <span id="ex8-q8-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">Can I help you with your bags?</p>
+                    <select id="ex8-q9" class="p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="Asking for help">Asking for help</option>
+                        <option value="Asking for permission">Asking for permission</option>
+                        <option value="Giving permission">Giving permission</option>
+                        <option value="Offering help">Offering help</option>
+                        <option value="Refusing permission">Refusing permission</option>
+                        <option value="Talking about future ability">Talking about future ability</option>
+                        <option value="Talking about past ability">Talking about past ability</option>
+                        <option value="Talking about present ability">Talking about present ability</option>
+                        <option value="Talking about something that’s not certain in the future">Talking about something that’s not certain in the future</option>
+                    </select>
+                    <span id="ex8-q9-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+            </div>
+            <div class="flex justify-end mt-6 w-full">
+                <button id="check-ex8-button" class="px-5 py-2 bg-pink-600 text-white rounded-lg shadow-md hover:bg-pink-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 8
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 7: Exercise 9 -->
+        <section id="exercise-9" class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Unit 7: Exercise 9</h2>
+            <p class="mb-4">Read the information again. Then choose the correct modal verbs to complete the sentences.</p>
+            <div class="mb-4 p-3 bg-indigo-100 rounded-md border border-indigo-200 text-sm">
+                <p class="font-bold">"Can, could, may and might"</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Present: can / can’t</li>
+                    <li>Past: could / couldn’t</li>
+                    <li>Future: will be able to / won’t be able to</li>
+                </ul>
+                <p class="font-semibold mt-2">Asking for permission</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Formal: May / Could I / we … ?</li>
+                    <li>Less formal: Can I / we … ?</li>
+                </ul>
+                <p class="font-semibold mt-2">Giving permission (saying ‘yes’) and refusing permission (saying ‘no’)</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Very formal: You may / may not …</li>
+                    <li>Less formal: You can / can’t …</li>
+                </ul>
+                <p class="font-semibold mt-2">Asking for help</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Formal: Could you … ?</li>
+                    <li>Less formal: Can you … ?</li>
+                </ul>
+                <p class="font-semibold mt-2">Offering help</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>I can … / Can I (help) … ?</li>
+                </ul>
+                <p class="font-semibold mt-2">Talking about things that aren’t certain in the future</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Positive: It may / might / could happen.</li>
+                    <li>Negative: It may not happen / It might not happen.</li>
+                </ul>
+            </div>
+            <div class="space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">Do you/ /Will I be able to have your autograph, please?</p>
+                    <select id="ex9-q1" class="p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="May I">May I</option>
+                        <option value="Do you">Do you</option>
+                        <option value="Will I be able to">Will I be able to</option>
+                    </select>
+                    <span id="ex9-q1-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">I’m sure I get into the concert tomorrow without a ticket.</p>
+                    <select id="ex9-q2" class="p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="won’t be able to">won’t be able to</option>
+                        <option value="may not">may not</option>
+                        <option value="might">might</option>
+                    </select>
+                    <span id="ex9-q2-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">Let’s go to the party – it be quite good.</p>
+                    <select id="ex9-q3" class="p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="might">might</option>
+                        <option value="can">can</option>
+                        <option value="couldn't">couldn't</option>
+                    </select>
+                    <span id="ex9-q3-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">I’m afraid you take photos inside the cinema – it’s against the rules.</p>
+                    <select id="ex9-q4" class="p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="can't">can't</option>
+                        <option value="couldn't">couldn't</option>
+                        <option value="might not">might not</option>
+                    </select>
+                    <span id="ex9-q4-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">When the film star said ‘Hello’, I think of anything to say, so I just smiled.</p>
+                    <select id="ex9-q5" class="p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="couldn’t">couldn’t</option>
+                        <option value="might not">might not</option>
+                        <option value="won’t be able to">won’t be able to</option>
+                    </select>
+                    <span id="ex9-q5-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">I know lots of famous sports stars. I get you their autographs if you like.</p>
+                    <select id="ex9-q6" class="p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="can">can</option>
+                        <option value="I’ll be able to">I’ll be able to</option>
+                        <option value="I may not">I may not</option>
+                    </select>
+                    <span id="ex9-q6-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0"> you be quiet, please? I’m trying to listen to the radio.</p>
+                    <select id="ex9-q7" class="p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="Could">Could</option>
+                        <option value="May">May</option>
+                        <option value="Might">Might</option>
+                    </select>
+                    <span id="ex9-q7-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">I’m not sure about my plans for next weekend. I do anything.</p>
+                    <select id="ex9-q8" class="p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="might not">might not</option>
+                        <option value="couldn’t">couldn’t</option>
+                        <option value="won’t be able">won’t be able</option>
+                    </select>
+                    <span id="ex9-q8-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">The TV programme is on again tomorrow evening, so if you miss it tonight, watch it tomorrow.</p>
+                    <select id="ex9-q9" class="p-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 w-auto">
+                        <option value="">--- Select ---</option>
+                        <option value="you’ll be able to">you’ll be able to</option>
+                        <option value="may">may</option>
+                        <option value="you could">you could</option>
+                    </select>
+                    <span id="ex9-q9-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+            </div>
+            <div class="flex justify-end mt-6 w-full">
+                <button id="check-ex9-button" class="px-5 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 9
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 7: Exercise 10 -->
+        <section id="exercise-10" class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Unit 7: Exercise 10</h2>
+            <p class="mb-4">Match the sentence endings with the correct beginnings.</p>
+            <div class="mb-4 p-3 bg-gray-100 rounded-md border border-gray-200">
+                <p class="font-semibold">Endings: they put the price up again. , you become famous? , you can send me a text and I’ll come and find you. , you manage to get tickets for the concert? , you might be famous one day. </p>
+            </div>
+            <div class="space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">I might stop buying that magazine if</p>
+                    <select id="ex10-q1" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="they put the price up again.">they put the price up again.</option>
+                        <option value="you become famous?">you become famous?</option>
+                        <option value="you can send me a text and I’ll come and find you.">you can send me a text and I’ll come and find you.</option>
+                        <option value="you manage to get tickets for the concert?">you manage to get tickets for the concert?</option>
+                        <option value="you might be famous one day.">you might be famous one day.</option>
+                    </select>
+                    <span id="ex10-q1-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">If you can’t find the concert hall,</p>
+                    <select id="ex10-q2" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="they put the price up again.">they put the price up again.</option>
+                        <option value="you become famous?">you become famous?</option>
+                        <option value="you can send me a text and I’ll come and find you.">you can send me a text and I’ll come and find you.</option>
+                        <option value="you manage to get tickets for the concert?">you manage to get tickets for the concert?</option>
+                        <option value="you might be famous one day.">you might be famous one day.</option>
+                    </select>
+                    <span id="ex10-q2-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">If you work really hard and practise every day,</p>
+                    <select id="ex10-q3" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="they put the price up again.">they put the price up again.</option>
+                        <option value="you become famous?">you become famous?</option>
+                        <option value="you can send me a text and I’ll come and find you.">you can send me a text and I’ll come and find you.</option>
+                        <option value="you manage to get tickets for the concert?">you manage to get tickets for the concert?</option>
+                        <option value="you might be famous one day.">you might be famous one day.</option>
+                    </select>
+                    <span id="ex10-q3-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">Will you still be able to have a normal life if</p>
+                    <select id="ex10-q4" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="they put the price up again.">they put the price up again.</option>
+                        <option value="you become famous?">you become famous?</option>
+                        <option value="you can send me a text and I’ll come and find you.">you can send me a text and I’ll come and find you.</option>
+                        <option value="you manage to get tickets for the concert?">you manage to get tickets for the concert?</option>
+                        <option value="you might be famous one day.">you might be famous one day.</option>
+                    </select>
+                    <span id="ex10-q4-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">Could you send me a text if</p>
+                    <select id="ex10-q5" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="they put the price up again.">they put the price up again.</option>
+                        <option value="you become famous?">you become famous?</option>
+                        <option value="you can send me a text and I’ll come and find you.">you can send me a text and I’ll come and find you.</option>
+                        <option value="you manage to get tickets for the concert?">you manage to get tickets for the concert?</option>
+                        <option value="you might be famous one day.">you might be famous one day.</option>
+                    </select>
+                    <span id="ex10-q5-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <p class="flex-shrink-0">Do you enjoy being famous, if</p>
+                    <select id="ex10-q6" class="p-2 border rounded-md focus:ring-gray-500 focus:border-gray-500 w-auto select-long-option">
+                        <option value="">--- Select ---</option>
+                        <option value="they put the price up again.">they put the price up again.</option>
+                        <option value="you become famous?">you become famous?</option>
+                        <option value="you can send me a text and I’ll come and find you.">you can send me a text and I’ll come and find you.</option>
+                        <option value="you manage to get tickets for the concert?">you manage to get tickets for the concert?</option>
+                        <option value="you might be famous one day.">you might be famous one day.</option>
+                    </select>
+                    <span id="ex10-q6-feedback" class="hidden text-sm md:ml-auto"></span>
+                </div>
+            </div>
+            <div class="flex justify-end mt-6 w-full">
+                <button id="check-ex10-button" class="px-5 py-2 bg-gray-600 text-white rounded-lg shadow-md hover:bg-gray-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 10
+                </button>
+            </div>
+        </section>
+
+    </div>
+
+    <div id="message-box"></div>
+
+    <script>
+        // Global state object for storing user answers
+        let appState = {
+            exercise1Answers: {},
+            exercise2Answers: {},
+            exercise3Answers: {},
+            exercise4Answers: {},
+            exercise5Answers: {},
+            exercise6Answers: {}, // This will store the selected endings
+            exercise7Answers: {}, // This will store the corrected words for exercise 7
+            exercise8Answers: {}, // This will store the selected situations
+            exercise9Answers: {}, // This will store the selected modals
+            exercise10Answers: {}, // This will store the selected endings
+        };
+
+        // --- Data for Exercises (Correct Answers) ---
+
+        // Exercise 1: Complete the descriptions with the words and phrases in the box.
+        const exercise1CorrectAnswers = {
+            "ex1-q1": "Celebrity", // A __________ is someone who is famous.
+            "ex1-q2": "film star", // A __________ is a famous movie actor.
+            "ex1-q3": "lead singer", // The ______________ of a band is the main (and sometimes the only) singer.
+            "ex1-q4": "fan", // A __________ is someone who really likes a particular person, group or team.
+            "ex1-q5": "role model", // Your ____________ is a person who you like and want to be like.
+            "ex1-q6": "supporter", // A __________ is someone who likes a particular sports team, person or group and wants them to do well.
+            "ex1-q7": "reporter", // A __________ is a person whose job is to find information about news events and describe them for a newspaper, on TV, etc.
+            "ex1-q8": "paparazzi", // The ______________ are photographers who follow famous people and try to take photos of them.
+        };
+
+        // Exercise 2: Choose the best words to complete the sentences.
+        const exercise2CorrectAnswers = {
+            "ex2-q1": "well-known",
+            "ex2-q2": "handsome",
+            "ex2-q3": "beautiful",
+            "ex2-q4": "popular",
+            "ex2-q5": "wealthy",
+            "ex2-q6": "talented",
+            "ex2-q7": "fashionable",
+            "ex2-q8": "stylish",
+        };
+
+        // Exercise 3: Complete the text. Use the words in the box.
+        const exercise3Words = ["Appear", "attend", "earn", "own", "passed on", "present", "recognize", "sign", "Star", "take"];
+        const exercise3CorrectAnswers = {
+            "ex3-q1": "present",
+            "ex3-q2": "appear",
+            "ex3-q3": "earn",
+            "ex3-q4": "own",
+            "ex3-q5": "appear", // Note: 'appear' is used twice in the original text, once for TV and once for photo. Assuming it's the same word based on typical exercises. If not, needs clarification.
+            "ex3-q6": "attend",
+            "ex3-q7": "recognize",
+            "ex3-q8": "sign",
+            "ex3-q9": "passed on",
+            "ex3-q10": "take",
+        };
+
+        // Exercise 4: Complete the sentences. Use the words in the box. (Media related)
+        const exercise4Words = ["Blogs", "broadcasting", "internet", "magazines", "media", "movies", "newspapers", "Radio", "social media", "television"];
+        const exercise4CorrectAnswers = {
+            "ex4-q1": "media",
+            "ex4-q2": "newspapers",
+            "ex4-q3": "Magazines",
+            "ex4-q4": "movies",
+            "ex4-q5": "broadcasting",
+            "ex4-q6": "Radio",
+            "ex4-q7": "television",
+            "ex4-q8": "internet",
+            "ex4-q9": "blogs",
+            "ex4-q10": "social media",
+        };
+
+        // Exercise 5: Complete sentences with idioms.
+        const exercise5Words = ["are in the public eye", "claim to fame", "make it big", "paying the price", "rising star", "victim of her own success"];
+        const exercise5CorrectAnswers = {
+            "ex5-q1": "claim to fame",
+            "ex5-q2": "paying the price",
+            "ex5-q3": "rising star",
+            "ex5-q4": "are in the public eye",
+            "ex5-q5": "victim of her own success",
+            "ex5-q6": "make it big",
+        };
+
+        // Exercise 6: Match sentence endings with correct beginnings (First Conditional)
+        const exercise6CorrectAnswers = {
+            "ex6-q1": "they go on tour.",
+            "ex6-q2": "do you ask them for an autograph?",
+            "ex6-q3": "their fans won’t be happy at all.",
+            "ex6-q4": "It’ll be the best day of my life.",
+            "ex6-q5": "there aren’t any tickets?",
+            "ex6-q6": "they keep printing private pictures of celebrities.",
+        };
+
+        // Exercise 7: Correct the first conditional sentences (changing incorrect 'will')
+        const exercise7CorrectAnswers = {
+            "ex7-q1": "it’s", // Given as example
+            "ex7-q2": "I get",
+            "ex7-q3": "I tell",
+            "ex7-q4": "they like",
+            "ex7-q5": "watch",
+            "ex7-q6": "go",
+            "ex7-q7": "hears", // Or 'hears' or 'will hear' (grammatically correct would be 'hears')
+            "ex7-q8": "happens",
+            "ex7-q9": "follows", // Or 'will follow' is technically not a mistake here if it means "will not follow"
+            "ex7-q10": "don’t try",
+        };
+        const exercise7RefinedCorrectAnswers = {
+            "ex7-q1": "it’s", // Given
+            "ex7-q2": "I get",
+            "ex7-q3": "I tell",
+            "ex7-q4": "they like",
+            "ex7-q5": "watch", // Should be 'watch' (present simple for if clause)
+            "ex7-q6": "go",    // Should be 'go' (present simple for if clause)
+            "ex7-q7": "hears", // Should be 'hears' (present simple for if clause)
+            "ex7-q8": "happens", // Should be 'happens' (present simple for if clause)
+            "ex7-q9": "follows", // If nobody 'follows' (present simple)
+            "ex7-q10": "don’t try", // If I 'don't try' (present simple)
+        };
+
+        // Exercise 8: Match situations with examples (Modals)
+        const exercise8CorrectAnswers = {
+            "ex8-q1": "Asking for permission",
+            "ex8-q2": "Giving permission",
+            "ex8-q3": "Refusing permission",
+            "ex8-q4": "Talking about past ability",
+            "ex8-q5": "Talking about present ability",
+            "ex8-q6": "Talking about future ability",
+            "ex8-q7": "Talking about something that’s not certain in the future",
+            "ex8-q8": "Asking for help",
+            "ex8-q9": "Offering help",
+        };
+
+        // Exercise 9: Choose the correct modal verbs to complete the sentences.
+        const exercise9CorrectAnswers = {
+            "ex9-q1": "May I",
+            "ex9-q2": "won’t be able to",
+            "ex9-q3": "might",
+            "ex9-q4": "can't",
+            "ex9-q5": "couldn’t",
+            "ex9-q6": "can",
+            "ex9-q7": "Could",
+            "ex9-q8": "might not",
+            "ex9-q9": "you’ll be able to",
+        };
+
+        // Exercise 10: Match the sentence endings with the correct beginnings.
+        const exercise10CorrectAnswers = {
+            "ex10-q1": "they put the price up again.",
+            "ex10-q2": "you can send me a text and I’ll come and find you.",
+            "ex10-q3": "you might be famous one day.",
+            "ex10-q4": "you become famous?",
+            "ex10-q5": "you manage to get tickets for the concert?",
+            "ex10-q6": "you become famous?", // Duplicate beginning from 'Do you enjoy being famous, if you become famous?'
+        };
+
+        // --- Helper Functions ---
+        function getElement(id) {
+            return document.getElementById(id);
+        }
+
+        function setFeedback(elementId, isCorrect) {
+            const element = getElement(elementId);
+            if (!element) return;
+            element.classList.remove('hidden');
+            element.classList.remove('correct-feedback', 'incorrect-feedback');
+            element.textContent = '';
+
+            if (isCorrect) {
+                element.classList.add('correct-feedback');
+                element.textContent = '✓ Correct!';
+            } else {
+                element.classList.add('incorrect-feedback');
+                element.textContent = `✗ Incorrect`;
+            }
+        }
+
+        function clearFeedback(elementId) {
+            const element = getElement(elementId);
+            if (element) {
+                element.classList.add('hidden');
+                element.classList.remove('correct-feedback', 'incorrect-feedback');
+                element.textContent = '';
+            }
+        }
+
+        function showMessage(message, type = 'success') {
+            const messageBox = getElement('message-box');
+            messageBox.textContent = message;
+            messageBox.className = '';
+            messageBox.classList.add('show');
+            if (type === 'success') {
+                messageBox.style.backgroundColor = '#4CAF50';
+            } else if (type === 'error') {
+                messageBox.style.backgroundColor = '#f44336';
+            }
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+            }, 3000);
+        }
+
+        // --- Save/Load Functions ---
+        function saveAnswers() {
+            try {
+                localStorage.setItem('worksheetAppState_Unit7', JSON.stringify(appState));
+            }
+            catch (e) {
+                console.error("Error saving to local storage:", e);
+            }
+        }
+
+        function loadAnswers() {
+            try {
+                const savedState = localStorage.getItem('worksheetAppState_Unit7');
+                if (savedState) {
+                    appState = JSON.parse(savedState);
+                    // Populate dropdowns and inputs based on saved state
+                    const allQuestionIds = [
+                        ...Object.keys(exercise1CorrectAnswers),
+                        ...Object.keys(exercise2CorrectAnswers),
+                        ...Object.keys(exercise3CorrectAnswers),
+                        ...Object.keys(exercise4CorrectAnswers),
+                        ...Object.keys(exercise5CorrectAnswers),
+                        ...Object.keys(exercise6CorrectAnswers),
+                        ...Object.keys(exercise7RefinedCorrectAnswers),
+                        ...Object.keys(exercise8CorrectAnswers),
+                        ...Object.keys(exercise9CorrectAnswers),
+                        ...Object.keys(exercise10CorrectAnswers),
+                    ];
+
+                    allQuestionIds.forEach(id => {
+                        const element = getElement(id);
+                        const exNum = id.split('-')[0]; // e.g., 'ex1', 'ex2'
+                        const exKey = `exercise${exNum.replace('ex','')}` + 'Answers';
+
+                        if (element && appState[exKey] && appState[exKey][id] !== undefined) {
+                            if (element.tagName === 'SELECT' || element.type === 'text') {
+                                // For ex7-q1, only load if it's different from the default 'it’s' or it's not the first load.
+                                // The initial value should be set in HTML for ex7-q1.
+                                if (id === 'ex7-q1') {
+                                    // Do nothing, as it's pre-filled. If the user changed it and then reloaded, this logic won't affect it.
+                                    // The value attribute in HTML for ex7-q1 handles its initial state.
+                                } else {
+                                    element.value = appState[exKey][id];
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+            catch (e) {
+                console.error("Error loading from local storage:", e);
+            }
+        }
+
+        // --- Exercise Check Functions ---
+        function checkExercise(exerciseNum, correctAnswers, inputType = 'select') {
+            let allCorrect = true;
+            for (const qId in correctAnswers) {
+                let userAnswer;
+                const element = getElement(qId);
+                if (!element) continue;
+
+                if (element.tagName === 'SELECT') { // Handle select elements
+                    userAnswer = element.value;
+                }
+                else if (element.type === 'text') { // Handle text inputs
+                    userAnswer = element.value.trim();
+                }
+
+                const isCorrect = userAnswer.toLowerCase() === correctAnswers[qId].toLowerCase();
+                setFeedback(`${qId}-feedback`, isCorrect);
+
+                element.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                element.classList.add('border-gray-300');
+                if (isCorrect) {
+                    element.classList.add('border-green-500', 'bg-green-50');
+                }
+                else if (userAnswer) {
+                    element.classList.add('border-red-500', 'bg-red-50');
+                }
+                else {
+                    element.classList.add('border-gray-300');
+                }
+
+                if (!isCorrect) {
+                    allCorrect = false;
+                }
+            }
+            if (allCorrect) {
+                showMessage(`Exercise ${exerciseNum} is correct!`, 'success');
+            }
+            else {
+                showMessage(`Exercise ${exerciseNum} has some incorrect answers.`, 'error');
+            }
+        }
+
+        // --- Clear All Answers Function ---
+        function clearAllAnswers() {
+            const allQuestionIds = [
+                ...Object.keys(exercise1CorrectAnswers),
+                ...Object.keys(exercise2CorrectAnswers),
+                ...Object.keys(exercise3CorrectAnswers),
+                ...Object.keys(exercise4CorrectAnswers),
+                ...Object.keys(exercise5CorrectAnswers),
+                ...Object.keys(exercise6CorrectAnswers),
+                ...Object.keys(exercise7RefinedCorrectAnswers),
+                ...Object.keys(exercise8CorrectAnswers),
+                ...Object.keys(exercise9CorrectAnswers),
+                ...Object.keys(exercise10CorrectAnswers),
+            ];
+
+            allQuestionIds.forEach(id => {
+                const element = getElement(id);
+                const exNum = id.split('-')[0];
+                const exKey = `exercise${exNum.replace('ex','')}` + 'Answers';
+
+                if (element) {
+                    if (element.tagName === 'SELECT') {
+                        element.value = ""; // Reset dropdown
+                    }
+                    else if (element.type === 'text') {
+                        if (id !== 'ex7-q1') { // Don't clear pre-filled ex7-q1
+                            element.value = ""; // Clear text input
+                        }
+                    }
+                    element.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    element.classList.add('border-gray-300');
+                }
+                // Reset appState for this question
+                if (appState[exKey]) {
+                    appState[exKey][id] = (id === 'ex7-q1' ? 'it’s' : ''); // Keep default for ex7-q1
+                }
+                clearFeedback(`${id}-feedback`);
+            });
+
+            saveAnswers();
+            showMessage('All answers cleared!', 'success');
+        }
+
+        // --- Event Listeners and Initialization ---
+        function showExercise(exerciseNumber) {
+            console.log(`Attempting to show exercise-${exerciseNumber}`);
+            // Hide all exercise sections
+            document.querySelectorAll('section[id^="exercise-"]').forEach(section => {
+                section.classList.remove('active-exercise');
+            });
+
+            // Show the selected exercise section
+            const selectedExercise = getElement(`exercise-${exerciseNumber}`);
+            if (selectedExercise) {
+                selectedExercise.classList.add('active-exercise');
+                console.log(`Exercise ${exerciseNumber} shown.`);
+            } else {
+                console.error(`Exercise section with ID 'exercise-${exerciseNumber}' not found.`);
+            }
+            // Hide the menu after selection
+            getElement('exercise-menu').classList.remove('show');
+        }
+
+        window.onload = function() {
+            console.log("Window loaded. Initializing worksheet.");
+
+            // Attach event listeners for each exercise's check button
+            getElement('check-ex1-button').addEventListener('click', () => checkExercise(1, exercise1CorrectAnswers, 'select'));
+            getElement('check-ex2-button').addEventListener('click', () => checkExercise(2, exercise2CorrectAnswers, 'select'));
+            getElement('check-ex3-button').addEventListener('click', () => checkExercise(3, exercise3CorrectAnswers, 'select'));
+            getElement('check-ex4-button').addEventListener('click', () => checkExercise(4, exercise4CorrectAnswers, 'select'));
+            getElement('check-ex5-button').addEventListener('click', () => checkExercise(5, exercise5CorrectAnswers, 'select'));
+            getElement('check-ex6-button').addEventListener('click', () => checkExercise(6, exercise6CorrectAnswers, 'select'));
+            getElement('check-ex7-button').addEventListener('click', () => checkExercise(7, exercise7RefinedCorrectAnswers, 'text'));
+            getElement('check-ex8-button').addEventListener('click', () => checkExercise(8, exercise8CorrectAnswers, 'select'));
+            getElement('check-ex9-button').addEventListener('click', () => checkExercise(9, exercise9CorrectAnswers, 'select'));
+            getElement('check-ex10-button').addEventListener('click', () => checkExercise(10, exercise10CorrectAnswers, 'select'));
+
+            // Attach event listener for clear all answers
+            getElement('clear-all-answers-button').addEventListener('click', clearAllAnswers);
+            getElement('save-all-answers-button').addEventListener('click', () => {
+                saveAnswers();
+                showMessage('All answers manually saved!', 'success');
+            });
+
+            // Attach input/change listeners for auto-saving
+            document.querySelectorAll('select[id^="ex"]').forEach(select => {
+                select.addEventListener('change', (event) => {
+                    const id = event.target.id;
+                    const [exNum] = id.split('-');
+                    const exKey = `exercise${exNum.replace('ex','')}` + 'Answers';
+                    if (!appState[exKey]) appState[exKey] = {};
+                    appState[exKey][id] = event.target.value;
+                    saveAnswers();
+                });
+            });
+
+            document.querySelectorAll('input[type="text"][id^="ex"]').forEach(input => {
+                input.addEventListener('input', (event) => {
+                    const id = event.target.id;
+                    const [exNum] = id.split('-');
+                    const exKey = `exercise${exNum.replace('ex','')}` + 'Answers';
+                    if (!appState[exKey]) appState[exKey] = {};
+                    appState[exKey][id] = event.target.value;
+                    saveAnswers();
+                });
+            });
+
+            // Dynamically populate exercise menu
+            const exerciseMenu = getElement('exercise-menu');
+            if (exerciseMenu) {
+                for (let i = 1; i <= 10; i++) {
+                    const link = document.createElement('a');
+                    link.href = `#exercise-${i}`;
+                    link.textContent = `Exercise ${i}`;
+                    link.onclick = (event) => {
+                        event.preventDefault(); // Prevent page jump
+                        showExercise(i);
+                    };
+                    exerciseMenu.appendChild(link);
+                }
+                console.log("Exercise menu populated.");
+            } else {
+                console.error("Exercise menu element not found.");
+            }
+
+            // Toggle menu visibility
+            const menuButton = getElement('menu-button');
+            if (menuButton) {
+                menuButton.addEventListener('click', () => {
+                    console.log("Menu button clicked!");
+                    getElement('exercise-menu').classList.toggle('show');
+                });
+                console.log("Menu button event listener attached.");
+            } else {
+                console.error("Menu button element not found.");
+            }
+
+            // Load saved answers on page load
+            loadAnswers();
+
+            // Initially show the first exercise
+            showExercise(1);
+        };
+    </script>
+</body>
+</html>
