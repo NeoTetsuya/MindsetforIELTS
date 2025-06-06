@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindset for IELTS 1 - Unit 4 Writing Worksheet</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS from your original file */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .correct-feedback {
+            color: #10B981; /* Green-500 */
+        }
+        .incorrect-feedback {
+            color: #EF4444; /* Red-500 */
+        }
+        .feedback-box {
+            padding: 0.5rem 0.75rem;
+            margin-top: 0.5rem;
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 0.875rem; /* text-sm */
+        }
+        .feedback-box.correct {
+            background-color: #D1FAE5; /* green-100 */
+            border: 1px solid #34D399; /* green-400 */
+        }
+        .feedback-box.incorrect {
+            background-color: #FEE2E2; /* red-100 */
+            border: 1px solid #F87171; /* red-400 */
+        }
+        /* Message Box for Save Confirmation */
+        #message-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #message-box.show {
+            opacity: 1;
+        }
+        /* Ensure inline inputs/selects don't break lines awkwardly */
+        .inline-block {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        /* Styling for the new exercise menu */
+        #exercise-menu-container {
+            position: fixed; /* Changed to fixed for persistent visibility */
+            top: 1rem;
+            left: 1rem;
+            z-index: 50;
+        }
+        #exercise-menu {
+            position: absolute;
+            top: calc(100% + 0.5rem); /* Position below the button with a small gap */
+            left: 0;
+            background-color: white;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
+            padding: 0.5rem 0;
+            min-width: 12rem; /* Tailwind w-48 */
+            max-height: 80vh; /* Limit height to prevent overflow on smaller screens */
+            overflow-y: auto; /* Enable scrolling for long lists */
+            display: none; /* Hidden by default */
+        }
+        #exercise-menu.show {
+            display: block; /* Show when 'show' class is added */
+        }
+        #exercise-menu a {
+            display: block;
+            padding: 0.75rem 1rem; /* py-3 px-4 */
+            font-size: 0.875rem; /* text-sm */
+            color: #4B5563; /* text-gray-700 */
+            text-decoration: none;
+        }
+        #exercise-menu a:hover {
+            background-color: #F3F4F6; /* bg-gray-100 */
+            color: #1F2937; /* text-gray-900 */
+        }
+        /* Hide all sections by default, JavaScript will show the active one */
+        section[id^="exercise"] {
+            display: none;
+        }
+        section.active-exercise {
+            display: block;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100 p-4 font-sans text-gray-800">
+
+    <!-- Navigation Menu Button and Dropdown -->
+    <div id="exercise-menu-container">
+        <button id="menu-button" class="px-4 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-200 ease-in-out transform hover:scale-105">
+            Exercises <span class="ml-2">&#9660;</span> <!-- Dropdown arrow -->
+        </button>
+        <div id="exercise-menu" class="hidden">
+            <!-- Exercise links will be populated here by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Main container for the worksheet content -->
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg mt-16 md:mt-8"> <!-- Adjusted margin-top to account for fixed menu -->
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">
+            Mindset for IELTS 1 - Unit 4 Writing
+        </h1>
+
+        <!-- Clear All Answers Button -->
+        <div class="flex justify-end mb-6 space-x-2">
+            <button id="clear-all-answers-button" class="px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition duration-200 ease-in-out transform hover:scale-105">
+                Clear All Answers
+            </button>
+        </div>
+
+        <!-- Unit 4: Exercise 1 -->
+        <section id="exercise1-section" class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Unit 4: Exercise 1</h2>
+            <p class="mb-4">Look at the graphs and charts. Then choose the correct descriptions.</p>
+            <!-- Images and questions for Exercise 1 are now dynamically loaded by JavaScript -->
+            <div id="exercise1-container" class="space-y-6">
+                <!-- Exercise 1 content will be dynamically loaded here by JavaScript -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex1-button" class="px-5 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 1
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 4: Exercise 2 -->
+        <section id="exercise2-section" class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-blue-600 mb-4">Unit 4: Exercise 2</h2>
+            <p class="mb-4">Look at the graph. Then choose the correct answers to complete the statements.</p>
+            <div class="flex justify-center mb-6">
+                <img src="https://i.postimg.cc/htdyfYkV/Writing-Unit4-Exercise2.jpg" alt="London Map for Exercise 2" class="rounded-lg shadow-md max-w-full h-auto" onerror="this.src='https://placehold.co/600x400/E0E7FF/3B82F6?text=London+Map+Error'">
+            </div>
+            <div id="exercise2-container" class="space-y-4">
+                <!-- Exercise 2 content will be dynamically loaded here by JavaScript -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex2-button" class="px-5 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 2
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 4: Exercise 3 -->
+        <section id="exercise3-section" class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-green-600 mb-4">Unit 4: Exercise 3</h2>
+            <p class="mb-4">Look at the graph. Choose the correct verb forms to complete the sentences.</p>
+            <div class="flex justify-center mb-6">
+                <img src="https://i.postimg.cc/NMgpCj5x/Writing-Unit4-Exercise3.jpg" alt="Graph for Exercise 3" class="rounded-lg shadow-md max-w-full h-auto" onerror="this.src='https://placehold.co/600x400/D1FAE5/34D399?text=Graph+Error'">
+            </div>
+            <div id="exercise3-container" class="space-y-4">
+                <!-- Exercise 3 content will be dynamically loaded here by JavaScript -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex3-button" class="px-5 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 3
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 4: Exercise 4 -->
+        <section id="exercise4-section" class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-purple-600 mb-4">Unit 4: Exercise 4</h2>
+            <p class="mb-4">Put the words in the correct columns to complete the table.</p>
+            <div class="mb-4 p-3 bg-purple-100 rounded-md border border-purple-200">
+                <p class="font-semibold">Categories: Decrease, Rise, Stay the same</p>
+            </div>
+            <div id="exercise4-container" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Exercise 4 content will be dynamically loaded here by JavaScript -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex4-button" class="px-5 py-2 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 4
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 4: Exercise 5 -->
+        <section id="exercise5-section" class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Unit 4: Exercise 5</h2>
+            <p class="mb-4">Complete the table below with the correct verb forms.</p>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-yellow-200 rounded-md shadow-sm">
+                    <thead>
+                        <tr class="bg-yellow-100 border-b border-yellow-200">
+                            <th class="px-4 py-2 text-left text-sm font-semibold text-yellow-800 uppercase tracking-wider">Verb</th>
+                            <th class="px-4 py-2 text-left text-sm font-semibold text-yellow-800 uppercase tracking-wider">Past simple</th>
+                            <th class="px-4 py-2 text-left text-sm font-semibold text-yellow-800 uppercase tracking-wider">Present perfect</th>
+                        </tr>
+                    </thead>
+                    <tbody id="exercise5-tbody">
+                        <!-- Exercise 5 content will be dynamically loaded here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex5-button" class="px-5 py-2 bg-yellow-600 text-white rounded-lg shadow-md hover:bg-yellow-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 5
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 4: Exercise 6 -->
+        <section id="exercise6-section" class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-red-600 mb-4">Unit 4: Exercise 6</h2>
+            <p class="mb-4">Look at the graph and read the student’s report. Then complete the report with the correct form of the verbs in brackets.</p>
+            <div class="flex justify-center mb-6">
+                <img src="https://i.postimg.cc/Bv5mCKQ6/Writing-Unit4-Exercise6.jpg" alt="Graph for Exercise 6" class="rounded-lg shadow-md max-w-full h-auto" onerror="this.src='https://placehold.co/600x400/FEE2E2/EF4444?text=Graph+Error'">
+            </div>
+            <div class="bg-white p-4 rounded-md border border-gray-300 mb-4 text-gray-700 leading-relaxed">
+                <p>The line graph compares the number of people living in five cities in the world between 1970 and the present.</p>
+                <p>On the whole, the population of these cities <input type="text" id="ex6-verb-1" class="inline-block w-28 p-1 border rounded-md focus:ring-red-500 focus:border-red-500 text-center" placeholder="(grow)"> <span id="ex6-verb-1-feedback" class="hidden text-sm ml-1"></span> (grow) a lot since 1970. The number of residents in Lagos and Beijing <input type="text" id="ex6-verb-2" class="inline-block w-28 p-1 border rounded-md focus:ring-red-500 focus:border-red-500 text-center" placeholder="(rise)"> <span id="ex6-verb-2-feedback" class="hidden text-sm ml-1"></span> (rise) the most, while the number in Moscow and Tehran <input type="text" id="ex6-verb-3" class="inline-block w-28 p-1 border rounded-md focus:ring-red-500 focus:border-red-500 text-center" placeholder="(increase)"> <span id="ex6-verb-3-feedback" class="hidden text-sm ml-1"></span> (increase) too.</p>
+                <p>In Lagos, the number of residents <input type="text" id="ex6-verb-4" class="inline-block w-28 p-1 border rounded-md focus:ring-red-500 focus:border-red-500 text-center" placeholder="(rise)"> <span id="ex6-verb-4-feedback" class="hidden text-sm ml-1"></span> (rise) from about 1 million in 1970 to 2 million in 1975, but since then the population <input type="text" id="ex6-verb-5" class="inline-block w-28 p-1 border rounded-md focus:ring-red-500 focus:border-red-500 text-center" placeholder="(grow)"> <span id="ex6-verb-5-feedback" class="hidden text-sm ml-1"></span> (grow) quickly from 2 million in 1975 to 18 million at the present time. Similarly, the number of people living in Beijing also <input type="text" id="ex6-verb-6" class="inline-block w-28 p-1 border rounded-md focus:ring-red-500 focus:border-red-500 text-center" placeholder="(increase)"> <span id="ex6-verb-6-feedback" class="hidden text-sm ml-1"></span> (increase) from 8 million in 1970 to just under 20 million in 2010.</p>
+                <p>By contrast, the population of New York City <input type="text" id="ex6-verb-7" class="inline-block w-28 p-1 border rounded-md focus:ring-red-500 focus:border-red-500 text-center" placeholder="(stay)"> <span id="ex6-verb-7-feedback" class="hidden text-sm ml-1"></span> (stay) the same since 1970. During the 1970s it <input type="text" id="ex6-verb-8" class="inline-block w-28 p-1 border rounded-md focus:ring-red-500 focus:border-red-500 text-center" placeholder="(fall)"> <span id="ex6-verb-8-feedback" class="hidden text-sm ml-1"></span> (fall) from 8 million to about 6.5 million. The number of residents then <input type="text" id="ex6-verb-9" class="inline-block w-28 p-1 border rounded-md focus:ring-red-500 focus:border-red-500 text-center" placeholder="(remain)"> <span id="ex6-verb-9-feedback" class="hidden text-sm ml-1"></span> (remain) at about 7.5 million between 2000 and 2010, and since then it <input type="text" id="ex6-verb-10" class="inline-block w-28 p-1 border rounded-md focus:ring-red-500 focus:border-red-500 text-center" placeholder="(grow)"> <span id="ex6-verb-10-feedback" class="hidden text-sm ml-1"></span> (grow) slowly to around 8 million people at the present time.</p>
+            </div>
+            <div class="mt-4">
+                <div id="ex6-feedback" class="hidden feedback-box"></div>
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex6-button" class="px-5 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 6
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 4: Exercise 7 -->
+        <section id="exercise7-section" class="mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-teal-600 mb-4">Unit 4: Exercise 7</h2>
+            <p class="mb-4">Choose the correct prepositions to complete the student’s report.</p>
+            <div class="flex justify-center mb-6">
+                <img src="https://i.postimg.cc/vmwP9zyk/Writing-Unit4-Exercise7.jpg" alt="Age of population of Ireland graph" class="rounded-lg shadow-md max-w-full h-auto" onerror="this.src='https://placehold.co/600x400/F0FDFA/14B8A6?text=Ireland+Population+Graph+Error'">
+            </div>
+            <div class="bg-white p-4 rounded-md border border-gray-300 mb-4 text-gray-700 leading-relaxed">
+                The bar chart compares the different ages of people living in Ireland between 1980 and 2010.
+                All in all, the size of the 25 – 54 age group increased the most <select id="ex7-prep-1" class="inline-block p-1 border rounded-md focus:ring-teal-500 focus:border-teal-500">
+                    <option value="">...</option><option value="about">about</option><option value="over">over</option>
+                </select> <span id="ex7-prep-1-feedback" class="hidden text-sm ml-1"></span> the period while the size of the two younger age groups decreased a little bit. The number of people <select id="ex7-prep-2" class="inline-block p-1 border rounded-md focus:ring-teal-500 focus:border-teal-500">
+                    <option value="">...</option><option value="in">in</option><option value="to">to</option>
+                </select> <span id="ex7-prep-2-feedback" class="hidden text-sm ml-1"></span> the two older age groups stayed about the same.
+                The 25 – 54 age group grew <select id="ex7-prep-3" class="inline-block p-1 border rounded-md focus:ring-teal-500 focus:border-teal-500">
+                    <option value="">...</option><option value="from">from</option><option value="over">over</option>
+                </select> <span id="ex7-prep-3-feedback" class="hidden text-sm ml-1"></span> approximately a third of the population in 1980 to nearly half of the population in 2010. By contrast, the 0 – 14 age group fell <select id="ex7-prep-4" class="inline-block p-1 border rounded-md focus:ring-teal-500 focus:border-teal-500">
+                    <option value="">...</option><option value="from">from</option><option value="in">in</option>
+                </select> <span id="ex7-prep-4-feedback" class="hidden text-sm ml-1"></span> just over 25% in 1980 <select id="ex7-prep-5" class="inline-block p-1 border rounded-md focus:ring-teal-500 focus:border-teal-500">
+                    <option value="">...</option><option value="from">from</option><option value="to">to</option>
+                </select> <span id="ex7-prep-5-feedback" class="hidden text-sm ml-1"></span> just under 20% in 2010. Similarly, the 15 – 24 age group dropped from just over 20% of the population in 1980 to <select id="ex7-prep-6" class="inline-block p-1 border rounded-md focus:ring-teal-500 focus:border-teal-500">
+                    <option value="">...</option><option value="just over">just over</option><option value="just under">just under</option>
+                </select> <span id="ex7-prep-6-feedback" class="hidden text-sm ml-1"></span> 10% of the population in 2010.
+                The older two age groups did not increase or decrease much. The size of the 65 and over age group remained <select id="ex7-prep-7" class="inline-block p-1 border rounded-md focus:ring-teal-500 focus:border-teal-500">
+                    <option value="">...</option><option value="at">at</option><option value="in">in</option>
+                </select> <span id="ex7-prep-7-feedback" class="hidden text-sm ml-1"></span> about 12%, whereas the size of the 55 – 64 age group only fell <select id="ex7-prep-8" class="inline-block p-1 border rounded-md focus:ring-teal-500 focus:border-teal-500">
+                    <option value="">...</option><option value="from">from</option><option value="under">under</option>
+                </select> <span id="ex7-prep-8-feedback" class="hidden text-sm ml-1"></span> about 12% <select id="ex7-prep-9" class="inline-block p-1 border rounded-md focus:ring-teal-500 focus:border-teal-500">
+                    <option value="">...</option><option value="at">at</option><option value="to">to</option>
+                </select> <span id="ex7-prep-9-feedback" class="hidden text-sm ml-1"></span> about 10% of the population.
+            </div>
+            <div class="mt-4">
+                <div id="ex7-feedback" class="hidden feedback-box"></div>
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex7-button" class="px-5 py-2 bg-teal-600 text-white rounded-lg shadow-md hover:bg-teal-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 7
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 4: Exercise 8 -->
+        <section id="exercise8-section" class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-orange-600 mb-4">Unit 4: Exercise 8</h2>
+            <p class="mb-4">Read the information. Then look at the graph. Put the paragraphs in the correct order to complete the report.</p>
+            <div class="mb-4 p-3 bg-orange-100 rounded-md border border-orange-200">
+                <p class="font-semibold">The report should have:</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>an introduction that includes 2 or 3 main features of the chart.</li>
+                    <li>two paragraphs that provide details of the main features mentioned in the introduction. (The main features are the most important pieces of information on the chart.)</li>
+                </ul>
+            </div>
+            <div class="flex justify-center mb-6">
+                <img src="https://i.postimg.cc/vmwP9zyk/Writing-Unit4-Exercise7.jpg" alt="Age of population of Ireland graph" class="rounded-lg shadow-md max-w-full h-auto" onerror="this.src='https://placehold.co/600x400/FFF7ED/F97316?text=Ireland+Population+Graph+Error'">
+            </div>
+            <div id="exercise8-container" class="space-y-4">
+                <!-- Exercise 8 content will be dynamically loaded here by JavaScript -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex8-button" class="px-5 py-2 bg-orange-600 text-white rounded-lg shadow-md hover:bg-orange-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 8
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 4: Exercise 9 -->
+        <section id="exercise9-section" class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-pink-600 mb-4">Unit 4: Exercise 9</h2>
+            <p class="mb-4">Look at the line graph. Then complete the statements with the phrases in the box.</p>
+            <div class="flex justify-center mb-6">
+                <img src="https://i.postimg.cc/1tJMk1F1/Writing-Unit4-Exercise9.jpg" alt="Museum Visitors Line Graph" class="rounded-lg shadow-md max-w-full h-auto" onerror="this.src='https://placehold.co/600x400/FCE7F3/EC4899?text=Museum+Visitors+Graph+Error'">
+            </div>
+            <div class="mb-4 p-3 bg-pink-100 rounded-md border border-pink-200">
+                <p class="font-semibold">Phrases: between 1980 and 1985., each had more than 9 million visitors in 2015., from just over 4 million in 1980 to around 2 million in 2015., from just under 4 million in 1980 to just over 3 million in 2000., from just under 5 million in 1980 to around 9 million in 2015., over the thirty-five year period., with between approximately 8 and 9 million visitors each year., with no more than 4 million visitors each year.</p>
+            </div>
+            <div id="exercise9-container" class="space-y-4">
+                <!-- Exercise 9 content will be dynamically loaded here by JavaScript -->
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="check-ex9-button" class="px-5 py-2 bg-pink-600 text-white rounded-lg shadow-md hover:bg-pink-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    Check Exercise 9
+                </button>
+            </div>
+        </section>
+
+        <!-- Unit 4: Exercise 10 -->
+        <section id="exercise10-section" class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Unit 4: Exercise 10 - WRITING TASK 1</h2>
+            <p class="mb-4">You should spend about 20 minutes on this task.</p>
+            <p class="mb-4">The graph shows the number of visitors to four international museums between 1980 and 2015.</p>
+            <div class="flex justify-center mb-6">
+                <img src="https://i.postimg.cc/RhZphZm0/Writing-Unit4-Exercise10.png" alt="Museum Visitors Line Graph" class="rounded-lg shadow-md max-w-full h-auto" onerror="this.src='https://placehold.co/600x400/F9FAFB/6B7280?text=Museum+Visitors+Graph+Error'">
+            </div>
+            <p class="mb-4 font-semibold">Summarise the information by selecting and reporting the main features and make comparisons where relevant. Write at least 150 words.</p>
+            <p class="mb-2 font-medium">Student post:</p>
+            <textarea id="ex10-text" class="w-full p-3 border border-gray-300 rounded-md focus:ring-gray-500 focus:border-gray-500 h-48 resize-y" placeholder="Write your summary here..."></textarea>
+            <div class="mt-4 text-sm text-gray-600">
+                Word count: <span id="ex10-word-count">0</span>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Message box for user feedback (e.g., "Answers saved!") -->
+    <div id="message-box"></div>
+
+    <script>
+        // Global state object for saving/loading answers across exercises
+        let appState = {
+            exercise1Answers: {}, // Stores answers for Exercise 1 (radio buttons)
+            exercise2Answers: {}, // Stores answers for Exercise 2 (dropdowns)
+            exercise3Answers: {}, // Stores answers for Exercise 3 (dropdowns)
+            exercise4Answers: {}, // Stores answers for Exercise 4 (dropdowns for categories)
+            exercise5Answers: {}, // Stores answers for Exercise 5 (text inputs for verb forms)
+            exercise6Answers: {}, // Stores answers for Exercise 6 (text inputs for verb forms in report)
+            exercise7Answers: {}, // Stores answers for Exercise 7 (dropdowns for prepositions)
+            exercise8Answers: {}, // Stores answers for Exercise 8 (dropdowns for paragraph order)
+            exercise9Answers: {}, // Stores answers for Exercise 9 (dropdowns for phrases)
+            exercise10Text: '',   // Stores text for Exercise 10 (textarea)
+        };
+
+        // --- Data for Exercises (based on Unit 4 - Writing.docx) ---
+
+        // Exercise 1 Data: Graphs and Charts descriptions
+        const exercise1Questions = [
+            {
+                id: 'q1',
+                image: 'https://i.postimg.cc/ydPr7Sw5/Writing-Unit4-Exercise1-1.jpg',
+                text: 'This chart compares the number of visitors to five different holiday destinations in Mexico.',
+                options: [
+                    { value: 'same-point-time', text: 'at the same point in time.' },
+                    { value: 'period-of-time', text: 'over a period of time.' }
+                ],
+                correct: 'same-point-time'
+            },
+            {
+                id: 'q2',
+                image: 'https://i.postimg.cc/D0pjX3fP/Writing-Unit4-Exercise1-2.jpg',
+                text: 'This graph compares the populations of five different cities in the world.',
+                options: [
+                    { value: 'same-time', text: 'at the same time.' },
+                    { value: 'period-of-time', text: 'over a period of time.' }
+                ],
+                correct: 'period-of-time'
+            },
+            {
+                id: 'q3',
+                image: 'https://i.postimg.cc/xj6F7MGN/Writing-Unit4-Exercise1-3.png',
+                text: 'This chart shows the numbers of different types of animal in the Maasai Mara National Reserve in Kenya.',
+                options: [
+                    { value: 'same-point-time', text: 'at the same point in time.' },
+                    { value: 'period-of-time', text: 'over a period of time.' }
+                ],
+                correct: 'same-point-time'
+            },
+            {
+                id: 'q4',
+                image: 'https://i.postimg.cc/fTkghy52/Writing-Unit4-Exercise1-4.png',
+                text: 'This chart compares the ages of the population of Ireland.',
+                options: [
+                    { value: 'same-point-time', text: 'at the same point in time.' },
+                    { value: 'period-of-time', text: 'over a period of time.' }
+                ],
+                correct: 'period-of-time'
+            }
+        ];
+
+        // Exercise 2 Data: Graph statements with options
+        const exercise2Statements = [
+            {
+                id: 's1',
+                text: 'The population of Lagos',
+                options: [
+                    'increased by just under 4 million between 1970 and 1980.',
+                    'decreased by just over 8 million between 1970 and 1980.',
+                    'stayed about the same between 1970 and 1980.'
+                ],
+                correct: 'increased by just under 4 million between 1970 and 1980.'
+            },
+            {
+                id: 's2',
+                text: 'The population of New York City',
+                options: [
+                    'increased by just over 2 million between 1970 and 1980.',
+                    'decreased by about 1 million between 1970 and 1980.',
+                    'stayed about the same between 1970 and 1980.'
+                ],
+                correct: 'decreased by about 1 million between 1970 and 1980.'
+            },
+            {
+                id: 's3',
+                text: 'The population of Moscow',
+                options: [
+                    'increased by about 2 million between 1990 and 2000.',
+                    'decreased by about 2 million between 1990 and 2000.',
+                    'stayed about the same between 1990 and 2000.'
+                ],
+                correct: 'decreased by about 2 million between 1990 and 2000.'
+            },
+            {
+                id: 's4',
+                text: 'The population of New York City',
+                options: [
+                    'increased by about 6 million between 1990 and 2010.',
+                    'decreased by about 2 million between 1990 and 2010.',
+                    'stayed about the same between 1990 and 2010.'
+                ],
+                correct: 'stayed about the same between 1990 and 2010.'
+            },
+            {
+                id: 's5',
+                text: 'The population of Tehran',
+                options: [
+                    'has increased by about 5 million between 1970 and now.',
+                    'has decreased by about 2 million between 1970 and now.',
+                    'has stayed about the same between 1970 and now.'
+                ],
+                correct: 'has increased by about 5 million between 1970 and now.'
+            }
+        ];
+
+        // Exercise 3 Data: Verb forms
+        const exercise3Sentences = [
+            {
+                id: 's1',
+                text: 'The population of Moscow',
+                options: ['increased', 'has increased'],
+                trailingText: 'by about 2 million between 1990 and 2000.',
+                correct: 'has increased'
+            },
+            {
+                id: 's2',
+                text: 'The population of Tehran',
+                options: ['increased', 'has increased'],
+                trailingText: 'by approximately 5 million between 1970 and the present time.',
+                correct: 'has increased'
+            },
+            {
+                id: 's3',
+                text: 'Between 1975 and 1980 the number of people living in Lagos',
+                options: ['rose', 'has risen'],
+                trailingText: 'by nearly 3 million.',
+                correct: 'rose'
+            },
+            {
+                id: 's4',
+                text: 'The population of Beijing at the present time',
+                options: ['is', 'has been'],
+                trailingText: 'about 22 million.',
+                correct: 'is'
+            }
+        ];
+
+        // Exercise 4 Data: Word categorization
+        const exercise4Words = [
+            { word: 'drop', category: 'Decrease' },
+            { word: 'remain', category: 'Stay the same' },
+            { word: 'rise', category: 'Rise' },
+            { word: 'grown', category: 'Rise' },
+            { word: 'increase', category: 'Rise' },
+            { word: 'stay the same', category: 'Stay the same' },
+            { word: 'fall', category: 'Decrease' },
+            { word: 'go up', category: 'Rise' },
+            { word: 'go down', category: 'Decrease' },
+            { word: 'no change', category: 'Stay the same' }
+        ];
+        const exercise4Categories = ['Decrease', 'Rise', 'Stay the same'];
+
+        // Exercise 5 Data: Verb conjugation table (with inferred correct answers for blanks)
+        const exercise5Verbs = [
+            { verb: 'Fall', pastSimple: 'fell', presentPerfect: 'Has/have fallen' },
+            { verb: 'drop', pastSimple: 'dropped', presentPerfect: 'Has/have dropped' },
+            { verb: 'decrease', pastSimple: 'decreased', presentPerfect: 'Has/have decreased' },
+            { verb: 'Go down', pastSimple: 'went down', presentPerfect: 'Has gone down' },
+            { verb: 'Rise', pastSimple: 'rose', presentPerfect: 'Has/have risen' },
+            { verb: 'grow', pastSimple: 'grew', presentPerfect: 'Has/have grown' },
+            { verb: 'increase', pastSimple: 'increased', presentPerfect: 'Has/have increased' }
+        ];
+
+        // Exercise 6 Data: Report with verbs in brackets (with inferred correct answers)
+        const exercise6CorrectForms = {
+            'ex6-verb-1': 'has grown',
+            'ex6-verb-2': 'have risen',
+            'ex6-verb-3': 'have increased',
+            'ex6-verb-4': 'rose',
+            'ex6-verb-5': 'has grown',
+            'ex6-verb-6': 'has increased',
+            'ex6-verb-7': 'has stayed',
+            'ex6-verb-8': 'fell',
+            'ex6-verb-9': 'remained',
+            'ex6-verb-10': 'has grown'
+        };
+
+        // Exercise 7 Data: Prepositions in report (using provided image and text)
+        const exercise7Prepositions = {
+            'ex7-prep-1': { options: ['about', 'over'], correct: 'over' },
+            'ex7-prep-2': { options: ['in', 'to'], correct: 'in' },
+            'ex7-prep-3': { options: ['from', 'over'], correct: 'from' },
+            'ex7-prep-4': { options: ['from', 'in'], correct: 'from' },
+            'ex7-prep-5': { options: ['from', 'to'], correct: 'to' },
+            'ex7-prep-6': { options: ['just over', 'just under'], correct: 'just under' },
+            'ex7-prep-7': { options: ['at', 'in'], correct: 'at' },
+            'ex7-prep-8': { options: ['from', 'under'], correct: 'from' },
+            'ex7-prep-9': { options: ['at', 'to'], correct: 'to' }
+        };
+
+        // Exercise 8 Data: Paragraph reordering (using provided image and text)
+        const exercise8Paragraphs = [
+            { id: 'p1', text: '"The older two age groups did not increase or decrease much. The size of the 65 and over age group remained at about 12%, whereas the size of the 55 -64 age group only fell from about 12% to about 10% of the population."' },
+            { id: 'p2', text: 'The bar chart compares the different ages of people living in Ireland between 1980 and 2010.' },
+            { id: 'p3', text: '"All in all, the size of the 25-54 age group increased the most over the period while the size of the two younger age groups decreased a little bit. The number of people in the two older age groups stayed about the same."' },
+            { id: 'p4', text: '"By contrast, the 0-14 age group fell from just over 25% in 1980 to just under 20% in 2010. Similarly, the 15-24 age group dropped from just over 20% of the population in 1980 to just under 10% of the population in 2010."' },
+            { id: 'p5', text: 'The 25-54 age group grew from approximately a third of the population in 1980 to nearly half of the population in 2010.' }
+        ];
+        // Correct order based on typical report structure: Introduction, Overall Trends, Detailed Trends (Increasing), Detailed Trends (Decreasing/Stable)
+        const exercise8CorrectOrder = ['p2', 'p3', 'p5', 'p4', 'p1'];
+
+        // Exercise 9 Data: Museum visitors (using provided image and text)
+        const exercise9Statements = [
+            {
+                id: 's1',
+                text: 'The Egyptian Museum was the most popular,',
+                correct: 'with between approximately 8 and 9 million visitors each year.'
+            },
+            {
+                id: 's2',
+                text: 'The number of visitors to the Hermitage stayed about the same',
+                correct: 'with no more than 4 million visitors each year.'
+            },
+            {
+                id: 's3',
+                text: 'The Egyptian Museum and the Tokyo National Museum',
+                correct: 'each had more than 9 million visitors in 2015.'
+            },
+            {
+                id: 's4',
+                text: 'The number of visitors to the Hermitage fell',
+                correct: 'from just under 4 million in 1980 to just over 3 million in 2000.'
+            },
+            {
+                id: 's5',
+                text: 'The number of visitors to the National Museum of Anthropology stayed the same',
+                correct: 'with no more than 4 million visitors each year.'
+            },
+            {
+                id: 's6',
+                text: 'The number of visitors to the Tokyo National Museum increased',
+                correct: 'over the thirty-five year period.'
+            },
+            {
+                id: 's7',
+                text: 'The least popular were the Hermitage and the National Museum of Anthropology,',
+                correct: 'with no more than 4 million visitors each year.'
+            },
+            {
+                id: 's8',
+                text: 'The visitors to the National Museum of Anthropology decreased slowly',
+                correct: 'from just over 4 million in 1980 to around 2 million in 2015.'
+            }
+        ];
+        // Full list of phrases from the box in the document, for populating dropdowns
+        const exercise9Phrases = [
+            'between 1980 and 1985.',
+            'each had more than 9 million visitors in 2015.',
+            'from just over 4 million in 1980 to around 2 million in 2015.',
+            'from just under 4 million in 1980 to just over 3 million in 2000.',
+            'from just under 5 million in 1980 to around 9 million in 2015.',
+            'over the thirty-five year period.',
+            'with between approximately 8 and 9 million visitors each year.',
+            'with no more than 4 million visitors each year.'
+        ];
+
+
+        // --- Helper Functions ---
+
+        /**
+         * Safely gets a DOM element by its ID.
+         * @param {string} id The ID of the element.
+         * @returns {HTMLElement|null} The element, or null if not found.
+         */
+        function getElement(id) {
+            return document.getElementById(id);
+        }
+
+        /**
+         * Sets the feedback message and styling for an element.
+         * @param {string} elementId The ID of the feedback span element.
+         * @param {boolean} isCorrect True for correct feedback, false for incorrect.
+         */
+        function setFeedback(elementId, isCorrect) {
+            const element = getElement(elementId);
+            if (!element) {
+                console.warn(`Feedback element with ID ${elementId} not found.`);
+                return;
+            }
+            element.classList.remove('hidden', 'correct-feedback', 'incorrect-feedback');
+            element.textContent = ''; // Clear previous text
+
+            if (isCorrect) {
+                element.classList.add('correct-feedback');
+                element.textContent = '✓ Correct!';
+            } else {
+                element.classList.add('incorrect-feedback');
+                element.textContent = `✗ Incorrect`;
+            }
+        }
+
+        /**
+         * Clears the feedback message and styling for an element.
+         * @param {string} elementId The ID of the feedback span/div element.
+         */
+        function clearFeedback(elementId) {
+            const element = getElement(elementId);
+            if (element) {
+                element.classList.add('hidden');
+                element.classList.remove('correct-feedback', 'incorrect-feedback', 'correct', 'incorrect');
+                element.textContent = '';
+            }
+        }
+
+        /**
+         * Shows a temporary message box for user feedback.
+         * @param {string} message The message to display.
+         * @param {'success'|'error'} type The type of message (influences background color).
+         */
+        function showMessage(message, type = 'success') {
+            const messageBox = getElement('message-box');
+            if (!messageBox) return;
+            messageBox.textContent = message;
+            messageBox.className = ''; // Clear previous classes
+            messageBox.classList.add('show');
+            if (type === 'success') {
+                messageBox.style.backgroundColor = '#4CAF50';
+            } else if (type === 'error') {
+                messageBox.style.backgroundColor = '#f44336';
+            }
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+            }, 3000); // Hide after 3 seconds
+        }
+
+        // --- Save/Load Functions ---
+
+        /**
+         * Saves the current state of answers to local storage.
+         */
+        function saveAnswers() {
+            try {
+                localStorage.setItem('worksheetAppStateUnit4', JSON.stringify(appState));
+            } catch (e) {
+                console.error("Error saving to local storage:", e);
+                showMessage('Failed to save progress.', 'error');
+            }
+        }
+
+        /**
+         * Loads saved answers from local storage and populates the worksheet.
+         */
+        function loadAnswers() {
+            try {
+                const savedState = localStorage.getItem('worksheetAppStateUnit4');
+                if (savedState) {
+                    appState = JSON.parse(savedState); // Overwrite global appState with saved data
+
+                    // Populate Exercise 1 radio buttons
+                    exercise1Questions.forEach(q => {
+                        const selectedOption = appState.exercise1Answers[q.id];
+                        if (selectedOption !== undefined) {
+                            const radio = getElement(`ex1-${q.id}-${selectedOption}`);
+                            if (radio) radio.checked = true;
+                        }
+                    });
+
+                    // Populate Exercise 2 dropdowns
+                    exercise2Statements.forEach(s => {
+                        const select = getElement(`ex2-select-${s.id}`);
+                        if (select && appState.exercise2Answers[s.id] !== undefined) {
+                            select.value = appState.exercise2Answers[s.id];
+                        }
+                    });
+
+                    // Populate Exercise 3 dropdowns
+                    exercise3Sentences.forEach(s => {
+                        const select = getElement(`ex3-select-${s.id}`);
+                        if (select && appState.exercise3Answers[s.id] !== undefined) {
+                            select.value = appState.exercise3Answers[s.id];
+                        }
+                    });
+
+                    // Populate Exercise 4 dropdowns
+                    exercise4Words.forEach(wordObj => {
+                        const select = getElement(`ex4-select-${wordObj.word.replace(/\s/g, '-')}`);
+                        if (select && appState.exercise4Answers[wordObj.word] !== undefined) {
+                            select.value = appState.exercise4Answers[wordObj.word];
+                        }
+                    });
+
+                    // Populate Exercise 5 text inputs
+                    exercise5Verbs.forEach((verb, index) => {
+                        const verbId = `verb${index + 1}`;
+                        const inputPastSimple = getElement(`ex5-${verbId}-past`);
+                        const inputPresentPerfect = getElement(`ex5-${verbId}-present`);
+
+                        if (inputPastSimple && appState.exercise5Answers[`${verbId}-past`] !== undefined) {
+                            inputPastSimple.value = appState.exercise5Answers[`${verbId}-past`];
+                        }
+                        if (inputPresentPerfect && appState.exercise5Answers[`${verbId}-present`] !== undefined) {
+                            inputPresentPerfect.value = appState.exercise5Answers[`${verbId}-present`];
+                        }
+                    });
+
+                    // Populate Exercise 6 text inputs
+                    for (const key in exercise6CorrectForms) {
+                        const input = getElement(key);
+                        if (input && appState.exercise6Answers[key] !== undefined) {
+                            input.value = appState.exercise6Answers[key];
+                        }
+                    }
+
+                    // Populate Exercise 7 dropdowns
+                    for (const key in exercise7Prepositions) {
+                        const select = getElement(key);
+                        if (select && appState.exercise7Answers[key] !== undefined) {
+                            select.value = appState.exercise7Answers[key];
+                        }
+                    }
+
+                    // Populate Exercise 8 dropdowns
+                    exercise8CorrectOrder.forEach((correctParagraphId, index) => {
+                        const positionId = `pos-${index + 1}`;
+                        const select = getElement(`ex8-select-${positionId}`);
+                        if (select && appState.exercise8Answers[positionId] !== undefined) {
+                            select.value = appState.exercise8Answers[positionId];
+                        }
+                    });
+
+                    // Populate Exercise 9 dropdowns
+                    exercise9Statements.forEach(s => {
+                        const select = getElement(`ex9-select-${s.id}`);
+                        if (select && appState.exercise9Answers[s.id] !== undefined) {
+                            select.value = appState.exercise9Answers[s.id];
+                        }
+                    });
+
+                    // Populate Exercise 10 textarea and update word count
+                    const ex10Textarea = getElement('ex10-text');
+                    const ex10WordCount = getElement('ex10-word-count');
+                    if (ex10Textarea && appState.exercise10Text !== undefined) {
+                        ex10Textarea.value = appState.exercise10Text;
+                        // Update word count if textarea has content
+                        ex10WordCount.textContent = ex10Textarea.value.split(/\s+/).filter(word => word.length > 0).length;
+                    }
+                }
+            } catch (e) {
+                console.error("Error loading from local storage:", e);
+                showMessage('Failed to load previous progress.', 'error');
+            }
+        }
+
+
+        // --- Exercise Initialization Functions ---
+
+        /**
+         * Dynamically creates the content for Exercise 1.
+         */
+        function initializeExercise1() {
+            const container = getElement('exercise1-container');
+            if (!container) return; // Exit if container not found
+
+            container.innerHTML = ''; // Clear previous content if any
+
+            exercise1Questions.forEach(q => {
+                const questionDiv = document.createElement('div');
+                // Use grid for image and question content for better layout on wider screens
+                questionDiv.className = "grid grid-cols-1 md:grid-cols-2 gap-4 p-4 border border-indigo-200 rounded-md bg-white items-center";
+
+                // Left side: Image
+                const imageContainer = document.createElement('div');
+                imageContainer.className = "flex justify-center items-center p-2"; // Centering image
+                const img = document.createElement('img');
+                img.src = q.image;
+                img.alt = `Graph for ${q.text}`;
+                // Adjusted image sizing for better fit
+                img.className = "w-full h-48 object-contain rounded-md shadow-sm";
+                img.onerror = function() { this.src = 'https://placehold.co/250x180/E0E7FF/3B82F6?text=Image+Error'; }; // Placeholder size adjusted
+                imageContainer.appendChild(img);
+                questionDiv.appendChild(imageContainer);
+
+                // Right side: Question text and options
+                const contentContainer = document.createElement('div');
+                contentContainer.className = "flex flex-col justify-center space-y-2 p-2"; // Vertical spacing for text elements
+
+                const p = document.createElement('p');
+                p.className = "font-medium text-lg mb-2";
+                p.textContent = q.text;
+                contentContainer.appendChild(p);
+
+                q.options.forEach(option => {
+                    const label = document.createElement('label');
+                    label.className = "inline-flex items-center mt-2 cursor-pointer";
+
+                    const input = document.createElement('input');
+                    input.type = "radio";
+                    input.name = `ex1-q-${q.id}`; // Group radio buttons for a question
+                    input.value = option.value;
+                    input.id = `ex1-${q.id}-${option.value}`;
+                    input.className = "form-radio h-5 w-5 text-indigo-600 focus:ring-indigo-500";
+                    input.addEventListener('change', (event) => {
+                        appState.exercise1Answers[q.id] = event.target.value; // Store selected value
+                        saveAnswers(); // Save state on change
+                    });
+                    label.appendChild(input);
+
+                    const span = document.createElement('span');
+                    span.className = "ml-2 text-gray-700";
+                    span.textContent = option.text;
+                    label.appendChild(span);
+
+                    contentContainer.appendChild(label);
+                });
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex1-feedback-${q.id}`;
+                feedbackSpan.className = "hidden block mt-2"; // Hidden by default
+                contentContainer.appendChild(feedbackSpan);
+
+                questionDiv.appendChild(contentContainer);
+                container.appendChild(questionDiv);
+            });
+            getElement('check-ex1-button')?.addEventListener('click', checkExercise1);
+        }
+
+        /**
+         * Checks the answers for Exercise 1 and provides feedback.
+         */
+        function checkExercise1() {
+            exercise1Questions.forEach(q => {
+                const userAnswer = appState.exercise1Answers[q.id];
+                const isCorrect = userAnswer === q.correct;
+                setFeedback(`ex1-feedback-${q.id}`, isCorrect); // Set feedback for the question
+
+                // Update radio button styling based on correctness
+                q.options.forEach(option => {
+                    const radio = getElement(`ex1-${q.id}-${option.value}`);
+                    if (!radio) return; // Ensure radio button exists
+                    const label = radio.parentElement; // Get the parent label for styling
+                    label.classList.remove('text-green-700', 'text-red-700', 'font-bold');
+
+                    if (radio.checked) {
+                        // If this radio button is checked, apply color based on correctness
+                        if (isCorrect) {
+                            label.classList.add('text-green-700', 'font-bold');
+                        } else {
+                            label.classList.add('text-red-700', 'font-bold');
+                        }
+                    } else if (option.value === q.correct) {
+                        // If not checked, but it's the correct option, highlight it (if user got it wrong)
+                        label.classList.add('text-green-700');
+                    }
+                });
+            });
+        }
+
+        /**
+         * Dynamically creates the content for Exercise 2.
+         */
+        function initializeExercise2() {
+            const container = getElement('exercise2-container');
+            if (!container) return;
+
+            exercise2Statements.forEach(s => {
+                const statementDiv = document.createElement('div');
+                statementDiv.className = "p-4 border border-blue-200 rounded-md bg-white flex flex-wrap items-center space-x-2";
+
+                const pStart = document.createElement('span');
+                pStart.className = "font-medium text-lg";
+                pStart.textContent = s.text + ' ';
+                statementDiv.appendChild(pStart);
+
+                const select = document.createElement('select');
+                select.id = `ex2-select-${s.id}`;
+                select.className = "p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 flex-grow max-w-xs";
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select an option";
+                select.appendChild(defaultOption);
+
+                // Populate dropdown with options
+                s.options.forEach(optionText => {
+                    const option = document.createElement('option');
+                    option.value = optionText;
+                    option.textContent = optionText;
+                    select.appendChild(option);
+                });
+                select.addEventListener('change', (event) => {
+                    appState.exercise2Answers[s.id] = event.target.value; // Store selected value
+                    saveAnswers();
+                });
+                statementDiv.appendChild(select);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex2-feedback-${s.id}`;
+                feedbackSpan.className = "hidden ml-auto mt-2 md:mt-0";
+                statementDiv.appendChild(feedbackSpan);
+
+                container.appendChild(statementDiv);
+            });
+            getElement('check-ex2-button')?.addEventListener('click', checkExercise2);
+        }
+
+        /**
+         * Checks the answers for Exercise 2 and provides feedback.
+         */
+        function checkExercise2() {
+            exercise2Statements.forEach(s => {
+                const userAnswer = appState.exercise2Answers[s.id] || '';
+                const isCorrect = userAnswer === s.correct;
+                setFeedback(`ex2-feedback-${s.id}`, isCorrect); // Set feedback for the statement
+
+                const selectElement = getElement(`ex2-select-${s.id}`);
+                if (!selectElement) return;
+                // Update dropdown border/background based on correctness
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) { // If an answer was selected but it's incorrect
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else { // If no answer was selected
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        /**
+         * Dynamically creates the content for Exercise 3.
+         */
+        function initializeExercise3() {
+            const container = getElement('exercise3-container');
+            if (!container) return;
+
+            exercise3Sentences.forEach(s => {
+                const sentenceDiv = document.createElement('div');
+                sentenceDiv.className = "p-4 border border-green-200 rounded-md bg-white flex flex-wrap items-center space-x-2";
+
+                const pStart = document.createElement('span');
+                pStart.className = "font-medium text-lg";
+                pStart.textContent = s.text + ' ';
+                sentenceDiv.appendChild(pStart);
+
+                const select = document.createElement('select');
+                select.id = `ex3-select-${s.id}`;
+                select.className = "p-2 border rounded-md focus:ring-green-500 focus:border-green-500 flex-grow-0"; // flex-grow-0 to prevent stretching
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select form";
+                select.appendChild(defaultOption);
+
+                // Populate dropdown with options (verb forms)
+                s.options.forEach(optionText => {
+                    const option = document.createElement('option');
+                    option.value = optionText;
+                    option.textContent = optionText;
+                    select.appendChild(option);
+                });
+                select.addEventListener('change', (event) => {
+                    appState.exercise3Answers[s.id] = event.target.value; // Store selected value
+                    saveAnswers();
+                });
+                sentenceDiv.appendChild(select);
+
+                const pEnd = document.createElement('span');
+                pEnd.className = "font-medium text-lg";
+                pEnd.textContent = ' ' + s.trailingText; // Add trailing text after dropdown
+                sentenceDiv.appendChild(pEnd);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex3-feedback-${s.id}`;
+                feedbackSpan.className = "hidden ml-auto mt-2 md:mt-0"; // Position feedback
+                sentenceDiv.appendChild(feedbackSpan);
+
+                container.appendChild(sentenceDiv);
+            });
+            getElement('check-ex3-button')?.addEventListener('click', checkExercise3);
+        }
+
+        /**
+         * Checks the answers for Exercise 3 and provides feedback.
+         */
+        function checkExercise3() {
+            exercise3Sentences.forEach(s => {
+                const userAnswer = appState.exercise3Answers[s.id] || '';
+                const isCorrect = userAnswer === s.correct;
+                setFeedback(`ex3-feedback-${s.id}`, isCorrect);
+
+                const selectElement = getElement(`ex3-select-${s.id}`);
+                if (!selectElement) return;
+                // Update dropdown border/background based on correctness
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        /**
+         * Dynamically creates the content for Exercise 4.
+         */
+        function initializeExercise4() {
+            const container = getElement('exercise4-container');
+            if (!container) return;
+
+            exercise4Words.forEach(wordObj => {
+                const wordDiv = document.createElement('div');
+                wordDiv.className = "p-3 border border-purple-200 rounded-md bg-white flex flex-col space-y-2";
+
+                const wordP = document.createElement('p');
+                wordP.className = "font-semibold text-lg text-gray-800";
+                wordP.textContent = wordObj.word;
+                wordDiv.appendChild(wordP);
+
+                const select = document.createElement('select');
+                select.id = `ex4-select-${wordObj.word.replace(/\s/g, '-')}`; // Create unique ID for each select
+                select.className = "p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500 w-full";
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select category";
+                select.appendChild(defaultOption);
+
+                // Populate dropdown with predefined categories
+                exercise4Categories.forEach(category => {
+                    const option = document.createElement('option');
+                    option.value = category;
+                    option.textContent = category;
+                    select.appendChild(option);
+                });
+                select.addEventListener('change', (event) => {
+                    appState.exercise4Answers[wordObj.word] = event.target.value; // Store selected category for the word
+                    saveAnswers();
+                });
+                wordDiv.appendChild(select);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex4-feedback-${wordObj.word.replace(/\s/g, '-')}`; // Unique feedback ID
+                feedbackSpan.className = "hidden text-sm mt-1";
+                wordDiv.appendChild(feedbackSpan);
+
+                container.appendChild(wordDiv);
+            });
+            getElement('check-ex4-button')?.addEventListener('click', checkExercise4);
+        }
+
+        /**
+         * Checks the answers for Exercise 4 and provides feedback.
+         */
+        function checkExercise4() {
+            exercise4Words.forEach(wordObj => {
+                const userAnswer = appState.exercise4Answers[wordObj.word] || '';
+                const isCorrect = userAnswer === wordObj.category;
+                setFeedback(`ex4-feedback-${wordObj.word.replace(/\s/g, '-')}`, isCorrect);
+
+                const selectElement = getElement(`ex4-select-${wordObj.word.replace(/\s/g, '-')}`);
+                if (!selectElement) return;
+                // Update dropdown border/background based on correctness
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        /**
+         * Dynamically creates the content for Exercise 5 (verb table).
+         */
+        function initializeExercise5() {
+            const tbody = getElement('exercise5-tbody');
+            if (!tbody) return;
+
+            exercise5Verbs.forEach((verb, index) => {
+                const verbId = `verb${index + 1}`; // Unique ID for each verb row
+                const row = document.createElement('tr');
+                row.className = "border-b border-yellow-200 last:border-b-0 hover:bg-yellow-50";
+
+                const tdVerb = document.createElement('td');
+                tdVerb.className = "px-4 py-3 font-medium text-gray-700";
+                tdVerb.textContent = verb.verb;
+                row.appendChild(tdVerb);
+
+                // Past Simple column - if blank, create input; otherwise, display text
+                const tdPastSimple = document.createElement('td');
+                tdPastSimple.className = "px-4 py-3";
+                if (!verb.pastSimple || verb.pastSimple === '') { // If pastSimple is meant to be filled
+                    const input = document.createElement('input');
+                    input.type = "text";
+                    input.id = `ex5-${verbId}-past`; // Unique ID for this input
+                    input.className = "w-full p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500";
+                    input.placeholder = "Enter past simple";
+                    input.addEventListener('input', (event) => {
+                        appState.exercise5Answers[`${verbId}-past`] = event.target.value; // Store input value
+                        saveAnswers();
+                    });
+                    tdPastSimple.appendChild(input);
+                    const feedbackSpan = document.createElement('span');
+                    feedbackSpan.id = `ex5-feedback-${verbId}-past`; // Feedback for this specific input
+                    feedbackSpan.className = "hidden block text-sm mt-1";
+                    tdPastSimple.appendChild(feedbackSpan);
+                } else {
+                    tdPastSimple.textContent = verb.pastSimple;
+                }
+                row.appendChild(tdPastSimple);
+
+                // Present Perfect column - if blank, create input; otherwise, display text
+                const tdPresentPerfect = document.createElement('td');
+                tdPresentPerfect.className = "px-4 py-3";
+                if (!verb.presentPerfect || verb.presentPerfect === '') { // If presentPerfect is meant to be filled
+                    const input = document.createElement('input');
+                    input.type = "text";
+                    input.id = `ex5-${verbId}-present`; // Unique ID for this input
+                    input.className = "w-full p-2 border rounded-md focus:ring-yellow-500 focus:border-yellow-500";
+                    input.placeholder = "Enter present perfect";
+                    input.addEventListener('input', (event) => {
+                        appState.exercise5Answers[`${verbId}-present`] = event.target.value; // Store input value
+                        saveAnswers();
+                    });
+                    tdPresentPerfect.appendChild(input);
+                    const feedbackSpan = document.createElement('span');
+                    feedbackSpan.id = `ex5-feedback-${verbId}-present`; // Feedback for this specific input
+                    feedbackSpan.className = "hidden block text-sm mt-1";
+                    tdPresentPerfect.appendChild(feedbackSpan);
+                } else {
+                    tdPresentPerfect.textContent = verb.presentPerfect;
+                }
+                row.appendChild(tdPresentPerfect);
+
+                tbody.appendChild(row);
+            });
+            getElement('check-ex5-button')?.addEventListener('click', checkExercise5);
+        }
+
+        /**
+         * Checks the answers for Exercise 5 and provides feedback.
+         */
+        function checkExercise5() {
+            exercise5Verbs.forEach((verb, index) => {
+                const verbId = `verb${index + 1}`;
+
+                // Check Past Simple input if it exists
+                const inputPastSimple = getElement(`ex5-${verbId}-past`);
+                if (inputPastSimple) {
+                    const userAnswer = inputPastSimple.value.trim().toLowerCase();
+                    const isCorrect = userAnswer === verb.pastSimple.toLowerCase(); // Compare with correct answer from data
+                    setFeedback(`ex5-feedback-${verbId}-past`, isCorrect);
+
+                    // Apply styling to input based on correctness
+                    inputPastSimple.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                    if (isCorrect) {
+                        inputPastSimple.classList.add('border-green-500', 'bg-green-50');
+                    } else if (userAnswer) {
+                        inputPastSimple.classList.add('border-red-500', 'bg-red-50');
+                    } else {
+                        inputPastSimple.classList.add('border-gray-300');
+                    }
+                }
+
+                // Check Present Perfect input if it exists
+                const inputPresentPerfect = getElement(`ex5-${verbId}-present`);
+                if (inputPresentPerfect) {
+                    const userAnswer = inputPresentPerfect.value.trim().toLowerCase();
+                    const isCorrect = userAnswer === verb.presentPerfect.toLowerCase(); // Compare with correct answer from data
+                    setFeedback(`ex5-feedback-${verbId}-present`, isCorrect);
+
+                    // Apply styling to input based on correctness
+                    inputPresentPerfect.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                    if (isCorrect) {
+                        inputPresentPerfect.classList.add('border-green-500', 'bg-green-50');
+                    } else if (userAnswer) {
+                        inputPresentPerfect.classList.add('border-red-500', 'bg-red-50');
+                    } else {
+                        inputPresentPerfect.classList.add('border-gray-300');
+                    }
+                }
+            });
+        }
+
+        /**
+         * Initializes event listeners for Exercise 6 inputs.
+         */
+        function initializeExercise6() {
+            for (const key in exercise6CorrectForms) {
+                const inputElement = getElement(key);
+                if (inputElement) {
+                    inputElement.addEventListener('input', (event) => {
+                        appState.exercise6Answers[key] = event.target.value; // Store input value by its ID
+                        saveAnswers();
+                    });
+                }
+            }
+            getElement('check-ex6-button')?.addEventListener('click', checkExercise6);
+        }
+
+        /**
+         * Checks the answers for Exercise 6 and provides feedback for each input and an overall message.
+         */
+        function checkExercise6() {
+            let allCorrect = true;
+            for (const key in exercise6CorrectForms) {
+                const inputElement = getElement(key);
+                if (inputElement) {
+                    const userAnswer = inputElement.value.trim().toLowerCase();
+                    const correctValue = exercise6CorrectForms[key].toLowerCase();
+                    const isCorrect = userAnswer === correctValue;
+                    // Set feedback for each individual input
+                    setFeedback(`${key}-feedback`, isCorrect);
+
+                    // Apply styling to input based on correctness
+                    inputElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                    if (isCorrect) {
+                        inputElement.classList.add('border-green-500', 'bg-green-50');
+                    } else if (userAnswer) {
+                        inputElement.classList.add('border-red-500', 'bg-red-50');
+                    } else {
+                        inputElement.classList.add('border-gray-300');
+                    }
+
+                    if (!isCorrect) {
+                        allCorrect = false;
+                    }
+                }
+            }
+            // Set overall feedback message
+            const overallFeedback = getElement('ex6-feedback');
+            if (overallFeedback) {
+                overallFeedback.classList.remove('hidden', 'correct', 'incorrect');
+                if (allCorrect) {
+                    overallFeedback.classList.add('correct');
+                    overallFeedback.textContent = 'All answers are correct!';
+                } else {
+                    overallFeedback.classList.add('incorrect');
+                    overallFeedback.textContent = 'Some answers are incorrect. Please review.';
+                }
+            }
+        }
+
+        /**
+         * Initializes event listeners for Exercise 7 inputs.
+         */
+        function initializeExercise7() {
+            for (const key in exercise7Prepositions) {
+                const selectElement = getElement(key);
+                if (selectElement) {
+                    selectElement.addEventListener('change', (event) => {
+                        appState.exercise7Answers[key] = event.target.value; // Store selected value
+                        saveAnswers();
+                    });
+                }
+            }
+            getElement('check-ex7-button')?.addEventListener('click', checkExercise7);
+        }
+
+        /**
+         * Checks the answers for Exercise 7 and provides feedback for each dropdown and an overall message.
+         */
+        function checkExercise7() {
+            let allCorrect = true;
+            for (const key in exercise7Prepositions) {
+                const selectElement = getElement(key);
+                if (selectElement) {
+                    const userAnswer = selectElement.value;
+                    const correctValue = exercise7Prepositions[key].correct;
+                    const isCorrect = userAnswer === correctValue;
+                    // Set feedback for each individual dropdown
+                    setFeedback(`${key}-feedback`, isCorrect);
+
+                    // Apply styling to dropdown based on correctness
+                    selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                    if (isCorrect) {
+                        selectElement.classList.add('border-green-500', 'bg-green-50');
+                    } else if (userAnswer) {
+                        selectElement.classList.add('border-red-500', 'bg-red-50');
+                    } else {
+                        selectElement.classList.add('border-gray-300');
+                    }
+
+                    if (!isCorrect) {
+                        allCorrect = false;
+                    }
+                }
+            }
+            // Set overall feedback message
+            const overallFeedback = getElement('ex7-feedback');
+            if (overallFeedback) {
+                overallFeedback.classList.remove('hidden', 'correct', 'incorrect');
+                if (allCorrect) {
+                    overallFeedback.classList.add('correct');
+                    overallFeedback.textContent = 'All answers are correct!';
+                } else {
+                    overallFeedback.classList.add('incorrect');
+                    overallFeedback.textContent = 'Some answers are incorrect. Please review.';
+                }
+            }
+        }
+
+        /**
+         * Dynamically creates the content for Exercise 8 (paragraph reordering).
+         */
+        function initializeExercise8() {
+            const container = getElement('exercise8-container');
+            if (!container) return;
+
+            // Create a dropdown for each position in the report
+            for (let i = 0; i < exercise8CorrectOrder.length; i++) {
+                const position = i + 1;
+                const positionId = `pos-${position}`; // Unique ID for each position dropdown
+
+                const positionDiv = document.createElement('div');
+                positionDiv.className = "p-4 border border-orange-200 rounded-md bg-white flex flex-col space-y-2";
+
+                const pNumber = document.createElement('p');
+                pNumber.className = "font-semibold text-lg text-orange-800";
+                pNumber.textContent = `${position}.`;
+                positionDiv.appendChild(pNumber);
+
+                const select = document.createElement('select');
+                select.id = `ex8-select-${positionId}`; // Unique ID for the select element
+                select.className = "p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500 w-full";
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select a paragraph";
+                select.appendChild(defaultOption);
+
+                // Populate dropdown with all available paragraphs
+                exercise8Paragraphs.forEach(p => {
+                    const option = document.createElement('option');
+                    option.value = p.id; // Store the paragraph's ID
+                    option.textContent = p.text.substring(0, 70) + (p.text.length > 70 ? '...' : ''); // Show a snippet
+                    select.appendChild(option);
+                });
+                select.addEventListener('change', (event) => {
+                    appState.exercise8Answers[positionId] = event.target.value; // Store the selected paragraph ID for this position
+                    saveAnswers();
+                });
+                positionDiv.appendChild(select);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex8-feedback-${positionId}`; // Feedback for this specific position dropdown
+                feedbackSpan.className = "hidden block text-sm mt-1";
+                positionDiv.appendChild(feedbackSpan);
+
+                container.appendChild(positionDiv);
+            }
+            getElement('check-ex8-button')?.addEventListener('click', checkExercise8);
+        }
+
+        /**
+         * Checks the answers for Exercise 8 and provides feedback.
+         */
+        function checkExercise8() {
+            let allCorrect = true;
+            for (let i = 0; i < exercise8CorrectOrder.length; i++) {
+                const positionId = `pos-${i + 1}`;
+                const userAnswer = appState.exercise8Answers[positionId] || '';
+                const isCorrect = userAnswer === exercise8CorrectOrder[i]; // Compare user's selection with the correct paragraph ID for this position
+                setFeedback(`ex8-feedback-${positionId}`, isCorrect);
+
+                const selectElement = getElement(`ex8-select-${positionId}`);
+                if (!selectElement) return;
+                // Apply styling to dropdown based on correctness
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+
+                if (!isCorrect) {
+                    allCorrect = false;
+                }
+            }
+            // Set overall feedback message (creating it if it doesn't exist)
+            let overallFeedback = getElement('ex8-feedback-overall');
+            if (!overallFeedback) {
+                const btnContainer = getElement('check-ex8-button')?.parentElement;
+                if (btnContainer) {
+                    overallFeedback = document.createElement('div');
+                    overallFeedback.id = 'ex8-feedback-overall';
+                    overallFeedback.className = 'hidden feedback-box mt-3';
+                    btnContainer.insertAdjacentElement('beforebegin', overallFeedback); // Insert before the check button
+                }
+            }
+            if (overallFeedback) {
+                overallFeedback.classList.remove('hidden', 'correct', 'incorrect');
+                if (allCorrect) {
+                    overallFeedback.classList.add('correct');
+                    overallFeedback.textContent = 'All paragraphs are in the correct order!';
+                } else {
+                    overallFeedback.classList.add('incorrect');
+                    overallFeedback.textContent = 'Some paragraphs are in the incorrect order. Please review.';
+                }
+            }
+        }
+
+        /**
+         * Dynamically creates the content for Exercise 9.
+         */
+        function initializeExercise9() {
+            const container = getElement('exercise9-container');
+            if (!container) return;
+
+            exercise9Statements.forEach(s => {
+                const statementDiv = document.createElement('div');
+                statementDiv.className = "p-4 border border-pink-200 rounded-md bg-white flex flex-col space-y-2";
+
+                const pStart = document.createElement('span');
+                pStart.className = "font-medium text-lg";
+                pStart.textContent = s.text + ' '; // Display the beginning of the statement
+                statementDiv.appendChild(pStart);
+
+                const select = document.createElement('select');
+                select.id = `ex9-select-${s.id}`; // Unique ID for each select
+                select.className = "p-2 border rounded-md focus:ring-pink-500 focus:border-pink-500 w-full";
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select a phrase";
+                select.appendChild(defaultOption);
+
+                // Populate dropdown with all available phrases
+                exercise9Phrases.forEach(phraseText => {
+                    const option = document.createElement('option');
+                    option.value = phraseText;
+                    option.textContent = phraseText;
+                    select.appendChild(option);
+                });
+                select.addEventListener('change', (event) => {
+                    appState.exercise9Answers[s.id] = event.target.value; // Store selected phrase
+                    saveAnswers();
+                });
+                statementDiv.appendChild(select);
+
+                const feedbackSpan = document.createElement('span');
+                feedbackSpan.id = `ex9-feedback-${s.id}`; // Feedback for this statement
+                feedbackSpan.className = "hidden block text-sm mt-1";
+                statementDiv.appendChild(feedbackSpan);
+
+                container.appendChild(statementDiv);
+            });
+            getElement('check-ex9-button')?.addEventListener('click', checkExercise9);
+        }
+
+        /**
+         * Checks the answers for Exercise 9 and provides feedback.
+         */
+        function checkExercise9() {
+            exercise9Statements.forEach(s => {
+                const userAnswer = appState.exercise9Answers[s.id] || '';
+                const isCorrect = userAnswer === s.correct;
+                setFeedback(`ex9-feedback-${s.id}`, isCorrect);
+
+                const selectElement = getElement(`ex9-select-${s.id}`);
+                if (!selectElement) return;
+                // Apply styling to dropdown based on correctness
+                selectElement.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50', 'border-gray-300');
+                if (isCorrect) {
+                    selectElement.classList.add('border-green-500', 'bg-green-50');
+                } else if (userAnswer) {
+                    selectElement.classList.add('border-red-500', 'bg-red-50');
+                } else {
+                    selectElement.classList.add('border-gray-300');
+                }
+            });
+        }
+
+        /**
+         * Initializes event listeners for Exercise 10 (Writing Task 1).
+         * Updates word count and saves text automatically.
+         */
+        function initializeExercise10() {
+            const textarea = getElement('ex10-text');
+            const wordCountSpan = getElement('ex10-word-count');
+            if (!textarea || !wordCountSpan) return;
+
+            textarea.addEventListener('input', (event) => {
+                appState.exercise10Text = event.target.value; // Store textarea content
+                // Calculate word count: split by whitespace, filter empty strings
+                const words = event.target.value.split(/\s+/).filter(word => word.length > 0).length;
+                wordCountSpan.textContent = words;
+                saveAnswers(); // Save state on input
+            });
+        }
+
+        /**
+         * Clears all answers and feedback across all exercises.
+         */
+        function clearAllAnswers() {
+            // Clear Exercise 1 radio buttons and feedback
+            exercise1Questions.forEach(q => {
+                const radioInputs = document.querySelectorAll(`input[name="ex1-q-${q.id}"]`);
+                radioInputs.forEach(radio => {
+                    radio.checked = false;
+                    // Reset parent label styling
+                    radio.parentElement?.classList.remove('text-green-700', 'text-red-700', 'font-bold');
+                });
+                appState.exercise1Answers[q.id] = '';
+                clearFeedback(`ex1-feedback-${q.id}`);
+            });
+
+            // Clear Exercise 2 dropdowns and feedback
+            exercise2Statements.forEach(s => {
+                const select = getElement(`ex2-select-${s.id}`);
+                if (select) {
+                    select.value = "";
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise2Answers[s.id] = '';
+                clearFeedback(`ex2-feedback-${s.id}`);
+            });
+
+            // Clear Exercise 3 dropdowns and feedback
+            exercise3Sentences.forEach(s => {
+                const select = getElement(`ex3-select-${s.id}`);
+                if (select) {
+                    select.value = "";
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise3Answers[s.id] = '';
+                clearFeedback(`ex3-feedback-${s.id}`);
+            });
+
+            // Clear Exercise 4 dropdowns and feedback
+            exercise4Words.forEach(wordObj => {
+                const select = getElement(`ex4-select-${wordObj.word.replace(/\s/g, '-')}`);
+                if (select) {
+                    select.value = "";
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise4Answers[wordObj.word] = '';
+                clearFeedback(`ex4-feedback-${wordObj.word.replace(/\s/g, '-')}`);
+            });
+
+            // Clear Exercise 5 text inputs and feedback
+            exercise5Verbs.forEach((verb, index) => {
+                const verbId = `verb${index + 1}`;
+                const inputPastSimple = getElement(`ex5-${verbId}-past`);
+                const inputPresentPerfect = getElement(`ex5-${verbId}-present`);
+
+                if (inputPastSimple) {
+                    inputPastSimple.value = '';
+                    inputPastSimple.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    inputPastSimple.classList.add('border-gray-300');
+                    clearFeedback(`ex5-feedback-${verbId}-past`);
+                }
+                if (inputPresentPerfect) {
+                    inputPresentPerfect.value = '';
+                    inputPresentPerfect.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    inputPresentPerfect.classList.add('border-gray-300');
+                    clearFeedback(`ex5-feedback-${verbId}-present`);
+                }
+                appState.exercise5Answers[`${verbId}-past`] = '';
+                appState.exercise5Answers[`${verbId}-present`] = '';
+            });
+
+            // Clear Exercise 6 text inputs and feedback
+            for (const key in exercise6CorrectForms) {
+                const input = getElement(key);
+                if (input) {
+                    input.value = '';
+                    input.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    input.classList.add('border-gray-300');
+                    clearFeedback(`${key}-feedback`);
+                }
+                appState.exercise6Answers[key] = '';
+            }
+            clearFeedback('ex6-feedback'); // Clear overall feedback
+
+            // Clear Exercise 7 dropdowns and feedback
+            for (const key in exercise7Prepositions) {
+                const select = getElement(key);
+                if (select) {
+                    select.value = '';
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                    clearFeedback(`${key}-feedback`);
+                }
+                appState.exercise7Answers[key] = '';
+            }
+            clearFeedback('ex7-feedback'); // Clear overall feedback
+
+            // Clear Exercise 8 dropdowns and feedback
+            exercise8CorrectOrder.forEach((_, index) => {
+                const positionId = `pos-${index + 1}`;
+                const select = getElement(`ex8-select-${positionId}`);
+                if (select) {
+                    select.value = '';
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                    clearFeedback(`ex8-feedback-${positionId}`);
+                }
+                appState.exercise8Answers[positionId] = '';
+            });
+            clearFeedback('ex8-feedback-overall'); // Clear overall feedback
+
+            // Clear Exercise 9 dropdowns and feedback
+            exercise9Statements.forEach(s => {
+                const select = getElement(`ex9-select-${s.id}`);
+                if (select) {
+                    select.value = "";
+                    select.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                    select.classList.add('border-gray-300');
+                }
+                appState.exercise9Answers[s.id] = '';
+                clearFeedback(`ex9-feedback-${s.id}`);
+            });
+
+            // Clear Exercise 10 textarea and word count
+            const ex10Textarea = getElement('ex10-text');
+            if (ex10Textarea) ex10Textarea.value = '';
+            appState.exercise10Text = '';
+            const ex10WordCount = getElement('ex10-word-count');
+            if (ex10WordCount) ex10WordCount.textContent = '0';
+
+            saveAnswers(); // Save the cleared state to local storage
+            showMessage('All answers cleared!', 'success');
+        }
+
+        /**
+         * Shows a specific exercise section and hides all others.
+         * Updates the URL hash.
+         * @param {number} exerciseNumber The number of the exercise to show (1-10).
+         */
+        function showExercise(exerciseNumber) {
+            // Hide all exercise sections
+            document.querySelectorAll('section[id^="exercise"]').forEach(section => {
+                section.classList.remove('active-exercise');
+            });
+
+            // Show the selected exercise section
+            const targetSectionId = `exercise${exerciseNumber}-section`;
+            const targetSection = getElement(targetSectionId);
+            if (targetSection) {
+                targetSection.classList.add('active-exercise');
+                // Update URL hash without causing a page reload
+                history.pushState(null, '', `#exercise${exerciseNumber}`);
+                // Scroll to the top of the content area for better UX
+                document.querySelector('.max-w-4xl.mx-auto').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            // Hide the menu after selection
+            getElement('exercise-menu')?.classList.remove('show');
+        }
+
+        /**
+         * Initializes the exercise navigation menu.
+         */
+        function initializeExerciseMenu() {
+            const menuButton = getElement('menu-button');
+            const exerciseMenu = getElement('exercise-menu');
+
+            if (!menuButton || !exerciseMenu) {
+                console.error("Menu button or exercise menu element not found.");
+                return;
+            }
+
+            // Populate the menu with links to each exercise section
+            for (let i = 1; i <= 10; i++) {
+                const link = document.createElement('a');
+                link.href = `#exercise${i}`; // Use hash for internal navigation
+                link.textContent = `Exercise ${i}`;
+                link.className = "hover:bg-gray-100 px-4 py-3 text-sm block rounded-md"; // Tailwind classes
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default anchor jump (handled by showExercise)
+                    showExercise(i);
+                });
+                exerciseMenu.appendChild(link);
+            }
+
+            // Toggle menu visibility when the button is clicked
+            menuButton.addEventListener('click', (event) => {
+                event.stopPropagation(); // Prevent document click listener from immediately closing it
+                exerciseMenu.classList.toggle('show');
+            });
+
+            // Close the menu if clicked outside
+            document.addEventListener('click', (event) => {
+                const isClickInsideMenu = exerciseMenu.contains(event.target);
+                const isClickOnButton = menuButton.contains(event.target);
+                if (!isClickInsideMenu && !isClickOnButton && exerciseMenu.classList.contains('show')) {
+                    exerciseMenu.classList.remove('show');
+                }
+            });
+        }
+
+
+        // --- Initialize all exercises on window load ---
+        window.onload = function() {
+            // Initialize each exercise by dynamically creating its content and attaching event listeners
+            initializeExercise1();
+            initializeExercise2();
+            initializeExercise3();
+            initializeExercise4();
+            initializeExercise5();
+            initializeExercise6();
+            initializeExercise7();
+            initializeExercise8();
+            initializeExercise9();
+            initializeExercise10();
+
+            // Attach event listener for the "Clear All Answers" button
+            getElement('clear-all-answers-button')?.addEventListener('click', clearAllAnswers);
+
+            // Populate and set up the exercise menu
+            initializeExerciseMenu();
+            
+            // Load saved answers from local storage when the page loads
+            loadAnswers();
+
+            // Check URL hash to show the correct exercise on initial load or refresh
+            const hash = window.location.hash;
+            if (hash && hash.startsWith('#exercise')) {
+                const exerciseNum = parseInt(hash.replace('#exercise', ''), 10);
+                if (exerciseNum >= 1 && exerciseNum <= 10) {
+                    showExercise(exerciseNum);
+                } else {
+                    showExercise(1); // Default to Exercise 1 if hash is invalid
+                }
+            } else {
+                showExercise(1); // Default to Exercise 1 if no hash
+            }
+        };
+    </script>
+</body>
+</html>
