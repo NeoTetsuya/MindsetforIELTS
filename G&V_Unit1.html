@@ -42,6 +42,8 @@
             background-color: #fdfefe; /* Adjusted from f8fafc */
             border-radius: 10px; /* Adjusted from 8px */
             border: 1px solid #e2e8f0;
+            /* Initially hide all exercise sections */
+            display: none;
         }
         /* Question item styling */
         .question-item {
@@ -396,39 +398,33 @@
     </style>
 </head>
 <body>
-<div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
-    <div class="relative flex justify-between items-center mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 flex-grow">Mindset for IELTS 1 - Unit 1 Grammar &amp; Vocabulary</h1>
-        <!-- Navigation Dropdown -->
-        <div class="relative inline-block text-left">
-            <div>
-                <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="exercises-menu-button" aria-expanded="true" aria-haspopup="true">
-                    Exercises
-                    <!-- Heroicon for dropdown arrow -->
-                    <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </button>
-            </div>
+<div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg relative">
+    <div class="absolute top-6 left-6 z-10"> <!-- Adjusted positioning to top-left -->
+        <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="exercises-menu-button" aria-expanded="true" aria-haspopup="true">
+            Exercises
+            <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+        </button>
 
-            <!-- Dropdown menu, show/hide based on menu state. -->
-            <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden" role="menu" aria-orientation="vertical" aria-labelledby="exercises-menu-button" tabindex="-1" id="exercises-dropdown-menu">
-                <div class="py-1" role="none">
-                    <a href="#exercise1" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-0">Exercise 1</a>
-                    <a href="#exercise2" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-1">Exercise 2</a>
-                    <a href="#exercise3" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-2">Exercise 3</a>
-                    <a href="#exercise4" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-3">Exercise 4</a>
-                    <a href="#exercise5" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-4">Exercise 5</a>
-                    <a href="#exercise6" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-5">Exercise 6</a>
-                    <a href="#exercise7" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-6">Exercise 7</a>
-                    <a href="#exercise8" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-7">Exercise 8</a>
-                    <a href="#exercise9" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-8">Exercise 9</a>
-                    <a href="#exercise10" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-9">Exercise 10</a>
-                </div>
+        <div class="origin-top-left absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden" role="menu" aria-orientation="vertical" aria-labelledby="exercises-menu-button" tabindex="-1" id="exercises-dropdown-menu">
+            <div class="py-1" role="none">
+                <a href="#exercise1" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" data-exercise-id="1">Exercise 1</a>
+                <a href="#exercise2" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" data-exercise-id="2">Exercise 2</a>
+                <a href="#exercise3" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" data-exercise-id="3">Exercise 3</a>
+                <a href="#exercise4" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" data-exercise-id="4">Exercise 4</a>
+                <a href="#exercise5" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" data-exercise-id="5">Exercise 5</a>
+                <a href="#exercise6" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" data-exercise-id="6">Exercise 6</a>
+                <a href="#exercise7" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" data-exercise-id="7">Exercise 7</a>
+                <a href="#exercise8" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" data-exercise-id="8">Exercise 8</a>
+                <a href="#exercise9" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" data-exercise-id="9">Exercise 9</a>
+                <a href="#exercise10" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" data-exercise-id="10">Exercise 10</a>
             </div>
         </div>
     </div>
 
+    <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">Mindset for IELTS 1 - Unit 1 Grammar &amp; Vocabulary</h1>
+    
     <!-- Clear All Answers Button -->
     <div class="flex justify-end mb-6 space-x-2">
         <button id="clear-all-answers-button" class="px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition duration-200 ease-in-out transform hover:scale-105">
@@ -914,7 +910,7 @@
                 <option value="is happy to help other people">is happy to help other people</option>
                 <option value="is happy to meet new people">is happy to meet new people</option>
                 <option value="thinks only of themselves, and doesn’t care about other people">thinks only of themselves, and doesn’t care about other people</option>
-                <option value="will do what they say they will do">will do what they say they will do</option>
+                <option value="will do what they say they will do">will do what they will do</option>
             </select></p>
             <div class="feedback" id="feedback_ex5_q4"></div>
         </div>
@@ -956,7 +952,7 @@
                 <option value="is happy to help other people">is happy to help other people</option>
                 <option value="is happy to meet new people">is happy to meet new people</option>
                 <option value="thinks only of themselves, and doesn’t care about other people">thinks only of themselves, and doesn’t care about other people</option>
-                <option value="will do what they say they will do">will do what they say they will do</option>
+                <option value="will do what they say they will do">will do what they will do</option>
             </select></p>
             <div class="feedback" id="feedback_ex5_q7"></div>
         </div>
@@ -970,7 +966,7 @@
                 <option value="is happy to help other people">is happy to help other people</option>
                 <option value="is happy to meet new people">is happy to meet new people</option>
                 <option value="thinks only of themselves, and doesn’t care about other people">thinks only of themselves, and doesn’t care about other people</option>
-                <option value="will do what they say they will do">will do what they say they will do</option>
+                <option value="will do what they say they will do">will do what they will do</option>
             </select></p>
             <div class="feedback" id="feedback_ex5_q8"></div>
         </div>
@@ -1418,6 +1414,7 @@
         exercise8Answers: {},
         exercise9Answers: {},
         exercise10Text: '',
+        currentExerciseId: 'exercise1' // Added to keep track of the currently displayed exercise
     };
 
     // Helper function to display feedback (Correct/Incorrect)
@@ -1484,7 +1481,6 @@
             if (savedStateStr) {
                 const loadedState = JSON.parse(savedStateStr);
                 // Defensively merge loaded state with default appState to ensure all properties exist
-                // This prevents 'undefined' errors if a property was missing in savedState
                 appState = {
                     ...appState, // Start with default structure
                     ...loadedState // Overlay saved values
@@ -1494,7 +1490,6 @@
                 document.querySelectorAll('#exercise1 .question-item').forEach((item, index) => {
                     const questionNum = index + 1;
                     const checkboxes = item.querySelectorAll(`input[name="ex1_q${questionNum}"]`);
-                    // Access with a defensive fallback for the inner property
                     const savedSelections = appState.exercise1Answers[`q${questionNum}`] || [];
                     checkboxes.forEach(cb => {
                         cb.checked = savedSelections.includes(cb.value);
@@ -1519,7 +1514,7 @@
                     });
                 });
 
-                // Restore Exercise 4 (Checkboxes)
+                // Restore Exercise 4 (Dropdowns)
                 document.querySelectorAll('#exercise4 .question-item').forEach((item, sIndex) => {
                     const selectElement = item.querySelector(`select[id^="ex4_q"]`);
                     if (selectElement) {
@@ -1533,7 +1528,6 @@
 
                 // Restore Exercise 5 (Dropdowns)
                 document.querySelectorAll('#exercise5 select').forEach(select => {
-                    // Keys for Ex5 are like 'loc1_1', 'loc2_1'
                     const questionKey = select.id.replace('ex5-', ''); 
                     if (appState.exercise5Answers[questionKey] !== undefined) {
                         select.value = appState.exercise5Answers[questionKey];
@@ -1563,7 +1557,6 @@
 
                 // Restore Exercise 8 (Radio Buttons)
                 document.querySelectorAll('#exercise8 .question-item').forEach((item) => {
-                    // Correctly identify the name of the radio group
                     const radioGroupName = item.querySelector('input[type="radio"]').name; 
                     const savedSelection = appState.exercise8Answers[radioGroupName];
                     item.querySelectorAll(`input[name="${radioGroupName}"]`).forEach(radio => {
@@ -1575,7 +1568,7 @@
 
                 // Restore Exercise 9 (Text Inputs)
                 document.querySelectorAll('#exercise9 input[type="text"]').forEach(input => {
-                    const questionKey = input.id.split('-')[1]; // ex9-birHakeim -> birHakeim
+                    const questionKey = input.id.split('-')[1]; 
                     if (appState.exercise9Answers[questionKey] !== undefined) {
                         input.value = appState.exercise9Answers[questionKey];
                     }
@@ -1585,16 +1578,22 @@
                 const ex10Textarea = document.getElementById('ex10-text');
                 if (ex10Textarea && appState.exercise10Text !== undefined) {
                     ex10Textarea.value = appState.exercise10Text;
-                    // Update word count
                     const words = ex10Textarea.value.split(/\s+/).filter(word => word.length > 0).length;
                     document.getElementById('ex10-word-count').textContent = words;
                 }
 
-                // showMessage('Progress loaded!', 'success'); // Optional: show message on load
+                // Show the last viewed exercise or Exercise 1 by default
+                showOnlyExercise(appState.currentExerciseId);
+
+            } else {
+                // If no saved state, ensure only Exercise 1 is visible
+                showOnlyExercise('exercise1');
             }
         } catch (e) {
             console.error("Error loading from local storage:", e);
             showMessage('Failed to load previous progress. Your browser might be in private mode or storage is full or data is corrupted.', 'error');
+            // Fallback: show only exercise 1 if loading fails
+            showOnlyExercise('exercise1');
         }
     }
 
@@ -1832,7 +1831,7 @@
     function clearExerciseFeedback(exerciseId) {
         // Clear individual question feedback messages (feedback_exX_qY)
         document.querySelectorAll(`#exercise${exerciseId} [id^="feedback_ex${exerciseId}_q"]`).forEach(feedbackEl => {
-            if (feedbackEl) { // Defensive check, though should exist
+            if (feedbackEl) { 
                 feedbackEl.textContent = '';
                 feedbackEl.classList.remove('correct', 'incorrect');
             }
@@ -1842,8 +1841,8 @@
         const overallFeedbackElement = document.getElementById(`feedback-ex${exerciseId}`);
         if (overallFeedbackElement) {
             overallFeedbackElement.textContent = '';
-            overallFeedbackElement.classList.add('hidden'); // Hide overall feedback
-            overallFeedbackElement.classList.remove('correct', 'incorrect'); // Also remove color classes
+            overallFeedbackElement.classList.add('hidden'); 
+            overallFeedbackElement.classList.remove('correct', 'incorrect'); 
         }
     }
 
@@ -1873,13 +1872,11 @@
             appState[`exercise${exerciseId}Answers`] = {};
         } else if (exerciseId === 2 || exerciseId === 5) { // Dropdowns
             appState[`exercise${exerciseId}Answers`] = {};
-        } else if (exerciseId === 4) { // Checkboxes (in HTML it's dropdowns, but in correctAnswers it's defined for checkboxes)
-            // Assuming HTML uses selects, so clearing select values
+        } else if (exerciseId === 4) { // Exercise 4 uses dropdowns
             document.querySelectorAll('#exercise4 select').forEach(select => {
                 select.value = '';
             });
-            // Also ensure corresponding appState is cleared correctly if it were checkboxes as per original `correctAnswers`
-            appState.exercise4Answers = {}; // Clear this as it maps to sentence keys if it were checkboxes
+            appState.exercise4Answers = {}; 
         } else if (exerciseId === 6) { // Text inputs and textarea
             appState.exercise6UserInputs = {};
             appState.exercise6UserCorrections = '';
@@ -1892,6 +1889,22 @@
             document.getElementById('ex10-word-count').textContent = '0';
         }
         saveAnswers(); // Save the cleared state
+    }
+
+    // Function to hide all exercise sections and then show a specific one
+    function showOnlyExercise(exerciseIdToShow) {
+        // Hide all exercise sections
+        document.querySelectorAll('.exercise-section').forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Show the requested exercise section
+        const targetSection = document.getElementById(exerciseIdToShow);
+        if (targetSection) {
+            targetSection.style.display = 'block';
+            appState.currentExerciseId = exerciseIdToShow; // Update current exercise in appState
+            saveAnswers(); // Save the current visible exercise
+        }
     }
 
     // Function to clear all answers across all exercises
@@ -1922,18 +1935,17 @@
             });
         });
         document.querySelectorAll('#exercise4 select').forEach(select => {
-            // Exercise 4 in the HTML uses select elements, this populates them.
-            populateDropdown(select, correctAnswers.exercise4.options || []); // Uses Ex4 options
+            populateDropdown(select, correctAnswers.exercise4.options || []);
             select.addEventListener('change', (e) => {
                 const questionKey = e.target.id.split('_')[1];
-                appState.exercise4Answers[questionKey] = e.target.value; // Save dropdown value
+                appState.exercise4Answers[questionKey] = e.target.value; 
                 saveAnswers();
             });
         });
         document.querySelectorAll('#exercise5 select').forEach(select => {
             populateDropdown(select, correctAnswers.exercise5.options || []);
             select.addEventListener('change', (e) => {
-                const questionKey = e.target.id.replace('ex5-', ''); // e.g., loc1_1
+                const questionKey = e.target.id.replace('ex5-', ''); 
                 appState.exercise5Answers[questionKey] = e.target.value;
                 saveAnswers();
             });
@@ -1972,7 +1984,7 @@
                     const questionKey = e.target.id.split('_')[1];
                     appState.exercise7Answers[questionKey] = e.target.value;
                 } else if (exerciseId === 9) {
-                    const questionKey = e.target.id.split('-')[1]; // ex9-birHakeim -> birHakeim
+                    const questionKey = e.target.id.split('-')[1]; 
                     appState.exercise9Answers[questionKey] = e.target.value;
                 }
                 saveAnswers();
@@ -1983,7 +1995,7 @@
             checkbox.addEventListener('change', (e) => {
                 const exerciseId = parseInt(e.target.closest('.exercise-section').id.replace('exercise', ''));
                 const value = e.target.value;
-                const questionName = e.target.name; // e.g., ex1_q1 or ex3_q1
+                const questionName = e.target.name; 
 
                 if (exerciseId === 1 || exerciseId === 3) {
                     if (!appState[`exercise${exerciseId}Answers`][questionName]) {
@@ -1998,7 +2010,6 @@
                         appState[`exercise${exerciseId}Answers`][questionName] = targetArray.filter(val => val !== value);
                     }
                 }
-                // Note: Exercise 4 in HTML uses selects, so no checkbox saving needed here for Ex4
                 saveAnswers();
             });
         });
@@ -2006,7 +2017,7 @@
         document.querySelectorAll('input[type="radio"]').forEach(radio => {
             radio.addEventListener('change', (e) => {
                 const exerciseId = parseInt(e.target.closest('.exercise-section').id.replace('exercise', ''));
-                const questionName = e.target.name; // e.g., ex8_q1
+                const questionName = e.target.name; 
                 if (exerciseId === 8) { 
                     appState.exercise8Answers[questionName] = e.target.value;
                 }
@@ -2021,7 +2032,7 @@
                     appState.exercise10Text = e.target.value;
                     const words = e.target.value.split(/\s+/).filter(word => word.length > 0).length;
                     document.getElementById('ex10-word-count').textContent = words;
-                } else if (e.target.id === 'ex6-user-corrections') { // Specific check for Exercise 6 textarea
+                } else if (e.target.id === 'ex6-user-corrections') { 
                     appState.exercise6UserCorrections = e.target.value;
                 }
                 saveAnswers();
@@ -2051,20 +2062,15 @@
                 }
             });
 
-            // Smooth scroll to exercise section when a menu item is clicked
-            exercisesDropdownMenu.querySelectorAll('a[href^="#exercise"]').forEach(anchor => {
+            // Show only the selected exercise when a menu item is clicked
+            exercisesDropdownMenu.querySelectorAll('a[data-exercise-id]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    e.preventDefault(); // Prevent default hash behavior
-                    exercisesDropdownMenu.classList.add('hidden'); // Hide dropdown after click
+                    e.preventDefault(); 
+                    exercisesDropdownMenu.classList.add('hidden'); 
 
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
+                    const exerciseId = `exercise${this.dataset.exercise-id}`;
+                    showOnlyExercise(exerciseId); 
+                    window.scrollTo(0, 0); 
                 });
             });
         }
