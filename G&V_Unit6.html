@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unit 6: Grammar & Vocabulary Worksheet</title>
+    <title>Mindset for IELTS 1 - Unit 6 Grammar & Vocabulary</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Inter Font from Google Fonts -->
@@ -50,23 +50,115 @@
         #message-box.show {
             opacity: 1;
         }
+
+        /* Custom Dropdown Navigation Styles */
+        .dropdown-container {
+            position: relative;
+            display: inline-block; /* Allows the button and dropdown to be side-by-side or for button width to fit content */
+            z-index: 100; /* Ensure dropdown appears above other content */
+        }
+
+        .dropdown-button {
+            background-color: #6366F1; /* Indigo-500 */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .dropdown-button:hover {
+            background-color: #4F46E5; /* Indigo-600 */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-button svg {
+            margin-left: 0.5rem;
+            height: 1.25rem;
+            width: 1.25rem;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            background-color: white;
+            min-width: 200px; /* Adjust width as needed */
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            border-radius: 0.5rem;
+            overflow: hidden; /* Ensures rounded corners apply to content */
+            max-height: 300px; /* Limit height for scrollbar */
+            overflow-y: auto; /* Add scrollbar if content exceeds max-height */
+            margin-top: 0.5rem; /* Space below button */
+            display: none; /* Hidden by default */
+            z-index: 1;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            color: #1F2937; /* Gray-900 */
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            font-weight: 500;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        }
+
+        .dropdown-item:hover {
+            background-color: #E0E7FF; /* Indigo-100 */
+            color: #4338CA; /* Indigo-700 */
+        }
+
+        .dropdown-item.active {
+            background-color: #C7D2FE; /* Indigo-200 */
+            color: #4338CA; /* Indigo-700 */
+            font-weight: 700;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gray-100 p-4 font-sans text-gray-800">
 
     <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
         <h1 class="text-3xl md:text-4xl font-bold text-center text-blue-700 mb-8">
-            Unit 6: Grammar & Vocabulary
+            Mindset for IELTS 1 - Unit 6 Grammar & Vocabulary
         </h1>
 
-        <div class="flex justify-end mb-6 space-x-2">
+        <!-- Navigation System (Custom Dropdown) -->
+        <div class="flex justify-between items-center mb-6">
+            <div class="dropdown-container">
+                <button id="dropdown-button" class="dropdown-button">
+                    Exercises
+                    <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <div id="dropdown-menu" class="dropdown-menu">
+                    <a href="#" class="dropdown-item active" data-target="exercise1-section">Exercise 1</a>
+                    <a href="#" class="dropdown-item" data-target="exercise2-section">Exercise 2</a>
+                    <a href="#" class="dropdown-item" data-target="exercise3-section">Exercise 3</a>
+                    <a href="#" class="dropdown-item" data-target="exercise4-section">Exercise 4</a>
+                    <a href="#" class="dropdown-item" data-target="exercise5-section">Exercise 5</a>
+                    <a href="#" class="dropdown-item" data-target="exercise6-section">Exercise 6</a>
+                    <a href="#" class="dropdown-item" data-target="exercise7-section">Exercise 7</a>
+                    <a href="#" class="dropdown-item" data-target="exercise8-section">Exercise 8</a>
+                    <a href="#" class="dropdown-item" data-target="exercise9-section">Exercise 9</a>
+                    <a href="#" class="dropdown-item" data-target="exercise10-section">Exercise 10</a>
+                </div>
+            </div>
+
             <button id="clear-all-answers-button" class="px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition duration-200 ease-in-out transform hover:scale-105">
                 Clear All Answers
             </button>
         </div>
 
         <!-- Unit 6: Exercise 1 -->
-        <section class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
+        <section id="exercise1-section" class="exercise-section mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Unit 6: Exercise 1</h2>
             <p class="mb-4">Find the answers to the questions.</p>
             <div id="exercise1-container" class="space-y-4">
@@ -80,7 +172,7 @@
         </section>
 
         <!-- Unit 6: Exercise 2 -->
-        <section class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
+        <section id="exercise2-section" class="exercise-section mb-10 p-6 bg-blue-50 rounded-lg shadow-md hidden">
             <h2 class="text-2xl font-semibold text-blue-600 mb-4">Unit 6: Exercise 2</h2>
             <p class="mb-4">Complete the descriptions.</p>
             <div id="exercise2-container" class="space-y-4">
@@ -94,7 +186,7 @@
         </section>
 
         <!-- Unit 6: Exercise 3 -->
-        <section class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
+        <section id="exercise3-section" class="exercise-section mb-10 p-6 bg-green-50 rounded-lg shadow-md hidden">
             <h2 class="text-2xl font-semibold text-green-600 mb-4">Unit 6: Exercise 3</h2>
             <p class="mb-4">Choose the correct verbs to complete the sentences.</p>
             <div id="exercise3-container" class="space-y-4">
@@ -108,7 +200,7 @@
         </section>
 
         <!-- Unit 6: Exercise 4 -->
-        <section class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
+        <section id="exercise4-section" class="exercise-section mb-10 p-6 bg-purple-50 rounded-lg shadow-md hidden">
             <h2 class="text-2xl font-semibold text-purple-600 mb-4">Unit 6: Exercise 4</h2>
             <p class="mb-4">Read the information. Then complete the sentences with the correct prepositions of place.</p>
             <div class="mb-4 p-3 bg-purple-100 rounded-md border border-purple-200">
@@ -126,7 +218,7 @@
         </section>
 
         <!-- Unit 6: Exercise 5 -->
-        <section class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
+        <section id="exercise5-section" class="exercise-section mb-10 p-6 bg-yellow-50 rounded-lg shadow-md hidden">
             <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Unit 6: Exercise 5</h2>
             <p class="mb-4">Complete the sentences. Use the prepositions in the box.</p>
             <div class="mb-4 p-3 bg-yellow-100 rounded-md border border-yellow-200">
@@ -143,7 +235,7 @@
         </section>
 
         <!-- Unit 6: Exercise 6 -->
-        <section class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
+        <section id="exercise6-section" class="exercise-section mb-10 p-6 bg-red-50 rounded-lg shadow-md hidden">
             <h2 class="text-2xl font-semibold text-red-600 mb-4">Unit 6: Exercise 6</h2>
             <p class="mb-4">Read the information. Then choose the correct words to complete the sentences.</p>
             <div class="mb-4 p-3 bg-red-100 rounded-md border border-red-200">
@@ -162,7 +254,7 @@
         </section>
 
         <!-- Unit 6: Exercise 7 -->
-        <section class="mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
+        <section id="exercise7-section" class="exercise-section mb-10 p-6 bg-teal-50 rounded-lg shadow-md hidden">
             <h2 class="text-2xl font-semibold text-teal-600 mb-4">Unit 6: Exercise 7</h2>
             <p class="mb-4">Read the information. Then change the adjectives in the sentences to the correct comparative form where necessary.</p>
             <div class="mb-4 p-3 bg-teal-100 rounded-md border border-teal-200">
@@ -175,9 +267,9 @@
                 </ul>
                 <p class="font-semibold mt-2">Irregular forms:</p>
                 <ul class="list-disc list-inside ml-4">
-                    <li>good / well → better</li>
-                    <li>bad / badly → worse</li>
-                    <li>far → further / farther</li>
+                        <li>good / well → better</li>
+                        <li>bad / badly → worse</li>
+                        <li>far → further / farther</li>
                 </ul>
             </div>
             <div id="exercise7-container" class="space-y-4">
@@ -191,7 +283,7 @@
         </section>
 
         <!-- Unit 6: Exercise 8 -->
-        <section class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
+        <section id="exercise8-section" class="exercise-section mb-10 p-6 bg-orange-50 rounded-lg shadow-md hidden">
             <h2 class="text-2xl font-semibold text-orange-600 mb-4">Unit 6: Exercise 8</h2>
             <p class="mb-4">Use the correct form of the words in brackets to complete the sentences.</p>
             <div id="exercise8-container" class="space-y-4">
@@ -205,7 +297,7 @@
         </section>
 
         <!-- Unit 6: Exercise 9 -->
-        <section class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
+        <section id="exercise9-section" class="exercise-section mb-10 p-6 bg-pink-50 rounded-lg shadow-md hidden">
             <h2 class="text-2xl font-semibold text-pink-600 mb-4">Unit 6: Exercise 9</h2>
             <p class="mb-4">Put the phrases in the correct categories to complete the table.</p>
             <div class="mb-4 p-3 bg-pink-100 rounded-md border border-pink-200">
@@ -223,7 +315,7 @@
         </section>
 
         <!-- Unit 6: Exercise 10 -->
-        <section class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md">
+        <section id="exercise10-section" class="exercise-section mb-10 p-6 bg-gray-50 rounded-lg shadow-md hidden">
             <h2 class="text-2xl font-semibold text-gray-700 mb-4">Unit 6: Exercise 10</h2>
             <p class="mb-4">Complete the text.</p>
             <div id="exercise10-container" class="space-y-4">
@@ -336,7 +428,7 @@
             { text: 'In the USA, sports like baseball and American football are a lot more popular/ the most popular/ most popular than soccer.', options: ['more popular', 'the most popular', 'most popular'], correct: 'more popular' },
             { text: 'Table tennis is a lot more fast/fastest / most fast/faster than normal tennis – it’s hard to see the ball most of the time!', options: ['more fast', 'fastest', 'most fast', 'faster'], correct: 'faster' },
             { text: 'Most sports have become safest/safer / most safe/more safe in the last 100 years, but there are still a lot of accidents and injuries.', options: ['safest', 'safer', 'most safe', 'more safe'], correct: 'safer' },
-            { text: 'Most expensive/ The most expensive/ More expensive footballer in the world cost £89 million.', options: ['Most expensive', 'The most expensive', 'More expensive'], correct: 'The most expensive' },
+            { text: 'Most expensive/ The most expensive/ More expensive footballer in the world cost £89 million.', options: ['Most expensive', 'The most expensive', 'More expensive'], correct: 'The Most Expensive' },
             { text: 'The most cheap / cheapest/ cheaper/ more cheap sport is probably running – you don’t need to buy anything and you can do it wherever you like!', options: ['most cheap', 'cheapest', 'cheaper', 'more cheap'], correct: 'cheapest' },
             { text: 'You should do some more exercise! It’s a lot Healthiest / most healthy/ healthier/ healthier than sitting and watching TV all day.', options: ['Healthiest', 'most healthy', 'healthier'], correct: 'healthier' }, // Corrected options based on usual comparative/superlative forms. The document had a duplicate "healthier"
         ];
@@ -359,7 +451,7 @@
         // Exercise 8 Data
         const exercise8Questions = [
             { text: 'I can run 10 km quite easily, but a marathon is much _____________ (hard) .', correct: 'harder' },
-            { text: 'Most basketball players are much ____________  Most basketball players are much', correct: 'taller' }, // Assuming (tall)
+            { text: 'Most basketball players are much ____________  Most basketball players players are much', correct: 'taller' }, // Assuming (tall)
             { text: 'What’s _____________  sport, in your opinion? Which do you think is the hardest? (difficult)', correct: 'the most difficult' },
             { text: 'Skiing is a lot ____________ in mountainous countries like Switzerland than it is in flatter countries like England. (popular)', correct: 'more popular' },
             { text: 'Who’s ____________ runner in the world? (fast)', correct: 'the fastest' },
@@ -555,6 +647,25 @@ ________________ , however, I believe that more money generally makes sport bett
             } catch (e) {
                 console.error("Error loading from local storage:", e);
                 // showMessage('Failed to load previous progress.', 'error');
+            }
+        }
+
+        // --- Navigation Functions ---
+        function showExercise(exerciseId) {
+            // Hide all exercise sections
+            document.querySelectorAll('.exercise-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            // Show the target exercise section
+            getElement(exerciseId).classList.remove('hidden');
+
+            // Update active state for dropdown items
+            document.querySelectorAll('.dropdown-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            const activeItem = document.querySelector(`.dropdown-item[data-target="${exerciseId}"]`);
+            if (activeItem) {
+                activeItem.classList.add('active');
             }
         }
 
@@ -1241,11 +1352,40 @@ ________________ , however, I believe that more money generally makes sport bett
             initializeExercise9();
             initializeExercise10();
 
+            // Custom dropdown toggle
+            const dropdownButton = getElement('dropdown-button');
+            const dropdownMenu = getElement('dropdown-menu');
+
+            dropdownButton.addEventListener('click', () => {
+                dropdownMenu.classList.toggle('show');
+            });
+
+            // Hide dropdown when clicking outside
+            document.addEventListener('click', (event) => {
+                if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+
+            // Handle clicks on dropdown items
+            document.querySelectorAll('.dropdown-item').forEach(item => {
+                item.addEventListener('click', (event) => {
+                    event.preventDefault(); // Prevent default link behavior
+                    const targetId = event.target.dataset.target;
+                    showExercise(targetId);
+                    dropdownMenu.classList.remove('show'); // Hide dropdown after selection
+                });
+            });
+
+
             // Attach event listener for clear all answers
             getElement('clear-all-answers-button').addEventListener('click', clearAllAnswers);
             
             // Load saved answers on page load
             loadAnswers();
+
+            // Show the first exercise by default
+            showExercise('exercise1-section');
         };
     </script>
 </body>
