@@ -239,6 +239,26 @@
             margin-top: 0.5rem; /* Add some space above the select */
         }
 
+        /* Styles for navigation dropdown */
+        #exercise-select {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #cbd5e1;
+            background-color: #f8fafc;
+            color: #334155;
+            font-weight: 600;
+            cursor: pointer;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
+            max-width: 200px; /* Adjust as needed */
+        }
+
+        #exercise-select:focus {
+            outline: none;
+            border-color: #3b82f6; /* Blue-500 */
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2); /* Blue focus ring */
+        }
+
 
         @media (max-width: 768px) {
             body {
@@ -308,6 +328,24 @@
         <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">
             Mindset for IELTS 1 - Unit 1 Speaking
         </h1>
+
+        <!-- Navigation Dropdown -->
+        <div class="mb-6 flex justify-start">
+            <select id="exercise-select" class="block">
+                <option value="">Go to Exercise...</option>
+                <option value="1">Exercise 1</option>
+                <option value="2">Exercise 2</option>
+                <option value="3">Exercise 3</option>
+                <option value="4">Exercise 4</option>
+                <option value="5">Exercise 5</option>
+                <option value="6">Exercise 6</option>
+                <option value="7">Exercise 7</option>
+                <option value="8">Exercise 8</option>
+                <option value="9">Exercise 9</option>
+                <option value="10">Exercise 10</option>
+            </select>
+        </div>
+
         <div class="exercise-section" id="exercise1">
             <h2 class="mb-4 bg-blue-600 text-white p-2 rounded-md">Unit 1: Exercise 1</h2>
             <p class="mb-4">Look at the pictures. Then choose the correct sentence from the dropdown list to describe each person.</p>
@@ -645,14 +683,14 @@
                 <iframe allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" frameborder="0" src="https://player.vimeo.com/video/1089026927?h=4546f28c1a&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="IELTS Speaking Part 2 Sentence Reordering Video"></iframe>
             </div>
             <p class="mb-2 text-sm text-slate-600">Task Card &amp; Notes:</p>
-            <div class="task-card bg-slate-100 p-4 rounded-md mb-4 border border-slate-200 text-sm text-slate-600">
+            <div class="task-card bg-slate-100 p-4 rounded-md mb-4 border border-slate-200">
                 <p class="font-bold text-slate-700">Describe a person who you really like.</p>
                 <p class="ml-4">You should say:</p>
                 <ul class="list-disc ml-8">
-                    <li>who the person is: <i class="notes-italic">my friend, Ahmed</i></li>
-                    <li>when and where you first met that person: <i class="notes-italic">aged 5 &amp; 6, at school</i></li>
-                    <li>what type of personality he / she has: <i class="notes-italic">supportive</i></li>
-                    <li>and explain why you really like that person: <i class="notes-italic">he is like my brother</i></li>
+                    <li>who the person is</li>
+                    <li>when and where you first met that person</li>
+                    <li>what type of personality he / she has</li>
+                    <li>and explain why you really like that person.</li>
                 </ul>
             </div>
             <div class="question-item">
@@ -925,6 +963,7 @@
 
             // Initialize Exercise 1 on page load
             initializeExercise1();
+            showExercise(1); // Show Exercise 1 by default
         });
 
 
@@ -1254,6 +1293,42 @@
         }
 
         document.addEventListener('input', saveAnswersToLocalStorage);
+
+        // --- Navigation Logic ---
+        function showExercise(exerciseNumber) {
+            // Hide all exercise sections
+            document.querySelectorAll('.exercise-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            // Show the selected exercise section
+            const selectedExercise = document.getElementById(`exercise${exerciseNumber}`);
+            if (selectedExercise) {
+                selectedExercise.classList.remove('hidden');
+            }
+
+            // Set the dropdown value
+            const exerciseSelect = document.getElementById('exercise-select');
+            if (exerciseSelect) {
+                exerciseSelect.value = exerciseNumber.toString();
+            }
+        }
+
+        // Attach event listener to navigation dropdown
+        document.addEventListener('DOMContentLoaded', () => {
+            const exerciseSelect = document.getElementById('exercise-select');
+            if (exerciseSelect) {
+                exerciseSelect.addEventListener('change', (event) => {
+                    const exerciseNum = event.target.value;
+                    if (exerciseNum) {
+                        showExercise(parseInt(exerciseNum));
+                    }
+                });
+            }
+
+            // Show Exercise 1 by default on page load
+            showExercise(1);
+        });
     </script>
 </body>
 </html>
