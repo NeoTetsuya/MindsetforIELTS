@@ -397,7 +397,37 @@
 </head>
 <body>
 <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
-    <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">Mindset for IELTS 1 - Unit 1 Grammar &amp; Vocabulary</h1>
+    <div class="relative flex justify-between items-center mb-8">
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 flex-grow">Mindset for IELTS 1 - Unit 1 Grammar &amp; Vocabulary</h1>
+        <!-- Navigation Dropdown -->
+        <div class="relative inline-block text-left">
+            <div>
+                <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="exercises-menu-button" aria-expanded="true" aria-haspopup="true">
+                    Exercises
+                    <!-- Heroicon for dropdown arrow -->
+                    <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Dropdown menu, show/hide based on menu state. -->
+            <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden" role="menu" aria-orientation="vertical" aria-labelledby="exercises-menu-button" tabindex="-1" id="exercises-dropdown-menu">
+                <div class="py-1" role="none">
+                    <a href="#exercise1" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-0">Exercise 1</a>
+                    <a href="#exercise2" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-1">Exercise 2</a>
+                    <a href="#exercise3" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-2">Exercise 3</a>
+                    <a href="#exercise4" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-3">Exercise 4</a>
+                    <a href="#exercise5" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-4">Exercise 5</a>
+                    <a href="#exercise6" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-5">Exercise 6</a>
+                    <a href="#exercise7" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-6">Exercise 7</a>
+                    <a href="#exercise8" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-7">Exercise 8</a>
+                    <a href="#exercise9" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-8">Exercise 9</a>
+                    <a href="#exercise10" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-9">Exercise 10</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Clear All Answers Button -->
     <div class="flex justify-end mb-6 space-x-2">
@@ -1297,7 +1327,7 @@
             }
         },
         exercise5: {
-            options: [ // Added options array for Exercise 5
+            options: [
                 "always does a lot of work", "doesn’t like meeting new people",
                 "doesn’t want to work or do anything that needs effort",
                 "is happy to give other people money, help or their time",
@@ -2004,6 +2034,40 @@
         
         // Load saved answers on page load
         loadAnswers();
+
+        // Add event listener for the exercises menu button
+        const exercisesMenuButton = document.getElementById('exercises-menu-button');
+        const exercisesDropdownMenu = document.getElementById('exercises-dropdown-menu');
+
+        if (exercisesMenuButton && exercisesDropdownMenu) {
+            exercisesMenuButton.addEventListener('click', () => {
+                exercisesDropdownMenu.classList.toggle('hidden');
+            });
+
+            // Close the dropdown if the user clicks outside of it
+            window.addEventListener('click', (event) => {
+                if (!exercisesMenuButton.contains(event.target) && !exercisesDropdownMenu.contains(event.target)) {
+                    exercisesDropdownMenu.classList.add('hidden');
+                }
+            });
+
+            // Smooth scroll to exercise section when a menu item is clicked
+            exercisesDropdownMenu.querySelectorAll('a[href^="#exercise"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault(); // Prevent default hash behavior
+                    exercisesDropdownMenu.classList.add('hidden'); // Hide dropdown after click
+
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
     });
 </script>
 </body>
