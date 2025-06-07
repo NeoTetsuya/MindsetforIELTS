@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
-<style>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+    <style>
         /* Base styles for the body, setting font, background, and text color */
         body {
             font-family: 'Inter', sans-serif;
@@ -193,6 +192,69 @@
             margin-bottom: 0; /* Remove vertical margin for labels in horizontal group */
         }
 
+        /* Message Box for Save Confirmation */
+        #message-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #message-box.show {
+            opacity: 1;
+        }
+        /* Ensure inline inputs/selects don't break lines awkwardly */
+        .inline-block {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        /* Styling for the new exercise menu */
+        #exercise-menu-container {
+            position: fixed; /* Changed to fixed for persistent visibility */
+            top: 1rem;
+            left: 1rem;
+            z-index: 50;
+        }
+        #exercise-menu {
+            position: absolute;
+            top: calc(100% + 0.5rem); /* Position below the button with a small gap */
+            left: 0;
+            background-color: white;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
+            padding: 0.5rem 0;
+            min-width: 12rem; /* Tailwind w-48 */
+            max-height: 80vh; /* Limit height to prevent overflow on smaller screens */
+            overflow-y: auto; /* Enable scrolling for long lists */
+            display: none; /* Hidden by default */
+        }
+        #exercise-menu.show {
+            display: block; /* Show when 'show' class is added */
+        }
+        #exercise-menu a {
+            display: block;
+            padding: 0.75rem 1rem; /* py-3 px-4 */
+            font-size: 0.875rem; /* text-sm */
+            color: #4B5563; /* text-gray-700 */
+            text-decoration: none;
+        }
+        #exercise-menu a:hover {
+            background-color: #F3F4F6; /* bg-gray-100 */
+            color: #1F2937; /* text-gray-900 */
+        }
+        /* Hide all sections by default, JavaScript will show the active one */
+        .exercise-section {
+            display: none;
+        }
+        .exercise-section.active-exercise {
+            display: block;
+        }
 
         /* --- Responsive Font Adjustments --- */
         /* Media query for tablets (portrait) and larger phones (landscape) */
@@ -227,717 +289,705 @@
             }
         }
     </style>
-<title>Mindset for IELTS 1 - Unit 1 Listening</title></head>
+    <title>Mindset for IELTS 1 - Unit 1 Listening</title>
+</head>
 <body class="p-4">
-<div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg"><h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">Mindset for IELTS 1 - Unit 1 Listening</h1>
-<div class="exercise-section" id="exercise1">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 1</h2>
-<p class="mb-4">Complete the definitions. Use the words in the box.</p>
-<div class="question-item">
-<p>1. Animals that live in forests, the jungle and mountains, and do not live at home as pets are <select class="inline-block w-40" id="ex1_q1" name="exercise1_q1">
-<option value="">Select word</option>
-<option value="wild">wild</option>
-<option value="rare">rare</option>
-<option value="marine">marine</option>
-<option value="sociable">sociable</option>
-<option value="dangerous">dangerous</option>
-<option value="coast">coast</option>
-<option value="behavior">behavior</option>
-</select> animals. (adj.)</p>
-<div class="feedback" id="feedback_ex1_q1"></div>
-</div>
-<div class="question-item">
-<p>2. We say that an animal is <select class="inline-block w-40" id="ex1_q2" name="exercise1_q2">
-<option value="">Select word</option>
-<option value="wild">wild</option>
-<option value="rare">rare</option>
-<option value="marine">marine</option>
-<option value="sociable">sociable</option>
-<option value="dangerous">dangerous</option>
-<option value="coast">coast</option>
-<option value="behavior">behavior</option>
-</select> when there are only a few still alive in the world. (adj.)</p>
-<div class="feedback" id="feedback_ex1_q2"></div>
-</div>
-<div class="question-item">
-<p>3. A <select class="inline-block w-40" id="ex1_q3" name="exercise1_q3">
-<option value="">Select word</option>
-<option value="wild">wild</option>
-<option value="rare">rare</option>
-<option value="marine">marine</option>
-<option value="sociable">sociable</option>
-<option value="dangerous">dangerous</option>
-<option value="coast">coast</option>
-<option value="behavior">behavior</option>
-</select> animal lives only in the sea, for example, a dolphin or a shark. (adj.)</p>
-<div class="feedback" id="feedback_ex1_q3"></div>
-</div>
-<div class="question-item">
-<p>4. A <select class="inline-block w-40" id="ex1_q4" name="exercise1_q4">
-<option value="">Select word</option>
-<option value="wild">wild</option>
-<option value="rare">rare</option>
-<option value="marine">marine</option>
-<option value="sociable">sociable</option>
-<option value="dangerous">dangerous</option>
-<option value="coast">coast</option>
-<option value="behavior">behavior</option>
-</select> person or animal likes being with others, rather than being alone. (adj.)</p>
-<div class="feedback" id="feedback_ex1_q4"></div>
-</div>
-<div class="question-item">
-<p>5. Lions, tigers or sharks can harm you, so these animals are <select class="inline-block w-40" id="ex1_q5" name="exercise1_q5">
-<option value="">Select word</option>
-<option value="wild">wild</option>
-<option value="rare">rare</option>
-<option value="marine">marine</option>
-<option value="sociable">sociable</option>
-<option value="dangerous">dangerous</option>
-<option value="coast">coast</option>
-<option value="behavior">behavior</option>
-</select>, not safe. (adj.)</p>
-<div class="feedback" id="feedback_ex1_q5"></div>
-</div>
-<div class="question-item">
-<p>6. The <select class="inline-block w-40" id="ex1_q6" name="exercise1_q6">
-<option value="">Select word</option>
-<option value="wild">wild</option>
-<option value="rare">rare</option>
-<option value="marine">marine</option>
-<option value="sociable">sociable</option>
-<option value="dangerous">dangerous</option>
-<option value="coast">coast</option>
-<option value="behavior">behavior</option>
-</select> is the area of land next to the sea. (noun)</p>
-<div class="feedback" id="feedback_ex1_q6"></div>
-</div>
-<div class="question-item">
-<p>7. When scientists study the <select class="inline-block w-40" id="ex1_q7" name="exercise1_q7">
-<option value="">Select word</option>
-<option value="wild">wild</option>
-<option value="rare">rare</option>
-<option value="marine">marine</option>
-<option value="sociable">sociable</option>
-<option value="dangerous">dangerous</option>
-<option value="coast">coast</option>
-<option value="behavior">behavior</option>
-</select> of animals, they find out what they eat, when they sleep and how they communicate. (noun)</p>
-<div class="feedback" id="feedback_ex1_q7"></div>
-</div>
-<button class="check-button" onclick="checkExercise1()">Check Answers</button>
-</div>
-<div class="exercise-section" id="exercise2">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 2</h2>
-<p class="mb-4">Complete the sentences with vocabulary related to the natural world. Use the words in the box.</p>
-<div class="question-item">
-<p>1. I really want to go on safari so I can see some <select class="inline-block w-40" id="ex2_q1" name="exercise2_q1">
-<option value="">Select word</option>
-<option value="wild">wild</option>
-<option value="rare">rare</option>
-<option value="marine">marine</option>
-<option value="sociable">sociable</option>
-<option value="dangerous">dangerous</option>
-<option value="coast">coast</option>
-<option value="behavior">behavior</option>
-</select> animals.</p>
-<div class="feedback" id="feedback_ex2_q1"></div>
-</div>
-<div class="question-item">
-<p>2. My dog is incredibly <select class="inline-block w-40" id="ex2_q2" name="exercise2_q2">
-<option value="">Select word</option>
-<option value="wild">wild</option>
-<option value="rare">rare</option>
-<option value="marine">marine</option>
-<option value="sociable">sociable</option>
-<option value="dangerous">dangerous</option>
-<option value="coast">coast</option>
-<option value="behavior">behavior</option>
-</select> – she has to say ‘hello’ to every dog we meet on our walk!</p>
-<div class="feedback" id="feedback_ex2_q2"></div>
-</div>
-<div class="question-item">
-<p>3. In summer, dolphins arrive here and swim all along the west <select class="inline-block w-40" id="ex2_q3" name="exercise2_q3">
-<option value="">Select word</option>
-<option value="wild">wild</option>
-<option value="rare">rare</option>
-<option value="marine">marine</option>
-<option value="sociable">sociable</option>
-<option value="dangerous">dangerous</option>
-<option value="coast">coast</option>
-<option value="behavior">behavior</option>
-</select>.</p>
-<div class="feedback" id="feedback_ex2_q3"></div>
-</div>
-<div class="question-item">
-<p>4. Because of the rubbish polluting our seas, <select class="inline-block w-40" id="ex2_q4" name="exercise2_q4">
-<option value="">Select word</option>
-<option value="wild">wild</option>
-<option value="rare">rare</option>
-<option value="marine">marine</option>
-<option value="sociable">sociable</option>
-<option value="dangerous">dangerous</option>
-<option value="coast">coast</option>
-<option value="behavior">behavior</option>
-</select> animals are dying in large numbers.</p>
-<div class="feedback" id="feedback_ex2_q4"></div>
-</div>
-<div class="question-item">
-<p>5. In the past, there were lots of bears in our country but now sadly, they are very <select class="inline-block w-40" id="ex2_q5" name="exercise2_q5">
-<option value="">Select word</option>
-<option value="wild">wild</option>
-<option value="rare">rare</option>
-<option value="marine">marine</option>
-<option value="sociable">sociable</option>
-<option value="dangerous">dangerous</option>
-<option value="coast">coast</option>
-<option value="behavior">behavior</option>
-</select>.</p>
-<div class="feedback" id="feedback_ex2_q5"></div>
-</div>
-<div class="question-item">
-<p>6. The <select class="inline-block w-40" id="ex2_q6" name="exercise2_q6">
-<option value="">Select word</option>
-<option value="wild">wild</option>
-<option value="rare">rare</option>
-<option value="marine">marine</option>
-<option value="sociable">sociable</option>
-<option value="dangerous">dangerous</option>
-<option value="coast">coast</option>
-<option value="behavior">behavior</option>
-</select> of my last cat was quite strange. She only wanted to sleep on my computer.</p>
-<div class="feedback" id="feedback_ex2_q6"></div>
-</div>
-<div class="question-item">
-<p>7. Some of the most <select class="inline-block w-40" id="ex2_q7" name="exercise2_q7">
-<option value="">Select word</option>
-<option value="wild">wild</option>
-<option value="rare">rare</option>
-<option value="marine">marine</option>
-<option value="sociable">sociable</option>
-<option value="dangerous">dangerous</option>
-<option value="coast">coast</option>
-<option value="behavior">behavior</option>
-</select> snakes in the world live in Australia.</p>
-<div class="feedback" id="feedback_ex2_q7"></div>
-</div>
-<button class="check-button" onclick="checkExercise2()">Check Answers</button>
-</div>
-<div class="exercise-section" id="exercise3">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 3</h2>
-<p class="mb-4">Listen to a conversation about a project someone is working on. Choose the correct answers.</p>
-<div class="audio-player-container">
-<iframe allow="autoplay" frameborder="no" height="120" scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2104710051&amp;color=%2300aabb&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=false" width="100%"></iframe>
-<div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/hienthantrong" style="color: #cccccc; text-decoration: none;" target="_blank" title="Hien">Hien</a> · <a href="https://soundcloud.com/hienthantrong/unit-1_exercise-3-4" style="color: #cccccc; text-decoration: none;" target="_blank" title="Unit 1_Exercise 3">Unit 1_Exercise 3</a></div>
-</div>
-<div class="question-item">
-<!-- Question 1 -->
-<p>1. How many speakers are there?</p>
-<div class="radio-group-horizontal">
-<label><input name="ex3_q1" type="radio" value="Two"/> Two</label>
-<label><input name="ex3_q1" type="radio" value="Three"/> Three</label>
-<label><input name="ex3_q1" type="radio" value="Four"/> Four</label>
-</div>
-<div class="feedback" id="feedback_ex3_q1"></div>
-<!-- Question 2 -->
-<p>2. What is the relationship between the two people?</p>
-<label><input name="ex3_q2" type="radio" value="They are a student and her teacher."/> They are a student and her teacher.</label>
-<label><input name="ex3_q2" type="radio" value="They are both teachers."/> They are both teachers.</label>
-<label><input name="ex3_q2" type="radio" value="They are both students."/> They are both students.</label>
-<div class="feedback" id="feedback_ex3_q2"></div>
-<!-- Question 3 -->
-<p>3. Which animals does the woman decide to do her project on?</p>
-<div class="radio-group-horizontal">
-<label><input name="ex3_q3" type="radio" value="Pandas"/> pandas</label>
-<label><input name="ex3_q3" type="radio" value="Sharks"/> sharks</label>
-<label><input name="ex3_q3" type="radio" value="dolphins"/> dolphins</label>
-</div>
-<div class="feedback" id="feedback_ex3_q3"></div>
-<!-- Question 4 -->
-<p>4. What does the woman have to do for her project?</p>
-<label><input name="ex3_q4" type="radio" value="write a report on an animal"/> write a report on an animal</label>
-<label><input name="ex3_q4" type="radio" value="give a presentation about New Zealand"/> give a presentation about New Zealand</label>
-<label><input name="ex3_q4" type="radio" value="take some photographs of wild animals"/> take some photographs of wild animals</label>
-<div class="feedback" id="feedback_ex3_q4"></div>
-</div>
-<button class="check-button" onclick="checkExercise3()">Check Answers</button>
-</div>
-<div class="exercise-section" id="exercise4">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 4</h2>
-<p class="mb-4">Read the information. Then read the IELTS Listening three-option multiple choice questions. Match the questions with the types of information you would expect to need in the answer.</p>
-<div class="info-box">
-<p class="font-bold">Tip:</p>
-<p>By reading the questions before you listen, you can get an idea of what information to listen for.</p>
-<p>(Why tells you to listen for a reason, possibly starting with the word 'because'.)</p>
-<p>In this exercise, the key words which give you this information are shown in bold.</p>
-</div>
-<div class="question-item">
-<p>1. How <span class="highlight-keyword">long</span> is an adult male Maui dolphin?</p>
-<select class="w-full" id="ex4_q1" name="exercise4_q1">
-<option value="">Select type</option>
-<option value="adjective of character and behavior">adjective of character and behavior</option>
-<option value="number and measurement of distance">number and measurement of distance</option>
-<option value="number and measurement of length">number and measurement of length</option>
-<option value="number showing quantity">number showing quantity</option>
-<option value="place or location">place or location</option>
-</select>
-<div class="feedback" id="feedback_ex4_q1"></div>
-</div>
-<div class="question-item">
-<p>2. <span class="highlight-keyword">Where</span> are Maui dolphins found in New Zealand?</p>
-<select class="w-full" id="ex4_q2" name="exercise4_q2">
-<option value="">Select type</option>
-<option value="adjective of character and behavior">adjective of character and behavior</option>
-<option value="number and measurement of distance">number and measurement of distance</option>
-<option value="number and measurement of length">number and measurement of length</option>
-<option value="number showing quantity">number showing quantity</option>
-<option value="place or location">place or location</option>
-</select>
-<div class="feedback" id="feedback_ex4_q2"></div>
-</div>
-<div class="question-item">
-<p>3. The <span class="highlight-keyword">population</span> of Maui dolphins is now likely to be…</p>
-<select class="w-full" id="ex4_q3" name="exercise4_q3">
-<option value="">Select type</option>
-<option value="adjective of character and behavior">adjective of character and behavior</option>
-<option value="number and measurement of distance">number and measurement of distance</option>
-<option value="number and measurement of length">number and measurement of length</option>
-<option value="number showing quantity">number showing quantity</option>
-<option value="place or location">place or location</option>
-</select>
-<div class="feedback" id="feedback_ex4_q3"></div>
-</div>
-<div class="question-item">
-<p>4. What do Anne and Tom agree is <span class="highlight-keyword">typical behaviour</span> for Maui dolphins?</p>
-<select class="w-full" id="ex4_q4" name="exercise4_q4">
-<option value="">Select type</option>
-<option value="adjective of character and behavior">adjective of character and behavior</option>
-<option value="number and measurement of distance">number and measurement of distance</option>
-<option value="number and measurement of length">number and measurement of length</option>
-<option value="number showing quantity">number showing quantity</option>
-<option value="place or location">place or location</option>
-</select>
-<div class="feedback" id="feedback_ex4_q4"></div>
-</div>
-<div class="question-item">
-<p>5. How <span class="highlight-keyword">far</span> along the coastline do Maui dolphins swim?</p>
-<select class="w-full" id="ex4_q5" name="exercise4_q5">
-<option value="">Select type</option>
-<option value="adjective of character and behavior">adjective of character and behavior</option>
-<option value="number and measurement of distance">number and measurement of distance</option>
-<option value="number and measurement of length">number and measurement of length</option>
-<option value="number showing quantity">number showing quantity</option>
-<option value="place or location">place or location</option>
-</select>
-<div class="feedback" id="feedback_ex4_q5"></div>
-</div>
-<button class="check-button" onclick="checkExercise4()">Check Answers</button>
-</div>
-<div class="exercise-section">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 5</h2>
-<p class="mb-4">In IELTS Listening multiple choice activities, it is often important to recognise different forms of the same word, which are used in paraphrasing. Match the adjectives on the left with the nouns on the right.</p>
-<div class="info-box">
-<p class="font-bold">Tip on Paraphrasing:</p>
-<p>When we paraphrase something, we use different words to express the same or a similar meaning. Sometimes a paraphrase will include a different form of the same word. For example, you hear a noun (e.g. danger) but the question or answer needs an adjective (e.g. dangerous): You read: When is a tiger most dangerous? You hear: ‘If you see a tiger trying to catch fish in a river, you may be in great danger.’</p>
-<p>Other times, we use an adjective that relates to a noun but is a completely different word, for example large (adjective) and size (noun).</p>
-</div>
-<div class="question-item">
-<p>1. <span class="highlight-keyword">far</span></p>
-<select class="inline-block w-48 md:w-56" id="ex5_q1" name="exercise5_q1">
-<option value="">Select noun</option>
-<option value="height">height</option>
-<option value="width">width</option>
-<option value="length">length</option>
-<option value="distance">distance</option>
-<option value="weight">weight</option>
-<option value="speed">speed</option>
-</select>
-<div class="feedback" id="feedback_ex5_q1"></div>
-</div>
-<div class="question-item">
-<p>2. <span class="highlight-keyword">tall</span></p>
-<select class="inline-block w-48 md:w-56" id="ex5_q2" name="exercise5_q2">
-<option value="">Select noun</option>
-<option value="height">height</option>
-<option value="width">width</option>
-<option value="length">length</option>
-<option value="distance">distance</option>
-<option value="weight">weight</option>
-<option value="speed">speed</option>
-</select>
-<div class="feedback" id="feedback_ex5_q2"></div>
-</div>
-<div class="question-item">
-<p>3. <span class="highlight-keyword">long</span></p>
-<select class="inline-block w-48 md:w-56" id="ex5_q3" name="exercise5_q3">
-<option value="">Select noun</option>
-<option value="height">height</option>
-<option value="width">width</option>
-<option value="length">length</option>
-<option value="distance">distance</option>
-<option value="weight">weight</option>
-<option value="speed">speed</option>
-</select>
-<div class="feedback" id="feedback_ex5_q3"></div>
-</div>
-<div class="question-item">
-<p>4. <span class="highlight-keyword">wide</span></p>
-<select class="inline-block w-48 md:w-56" id="ex5_q4" name="exercise5_q4">
-<option value="">Select noun</option>
-<option value="height">height</option>
-<option value="width">width</option>
-<option value="length">length</option>
-<option value="distance">distance</option>
-<option value="weight">weight</option>
-<option value="speed">speed</option>
-</select>
-<div class="feedback" id="feedback_ex5_q4"></div>
-</div>
-<div class="question-item">
-<p>5. <span class="highlight-keyword">heavy</span></p>
-<select class="inline-block w-48 md:w-56" id="ex5_q5" name="exercise5_q5">
-<option value="">Select noun</option>
-<option value="height">height</option>
-<option value="width">width</option>
-<option value="length">length</option>
-<option value="distance">distance</option>
-<option value="weight">weight</option>
-<option value="speed">speed</option>
-</select>
-<div class="feedback" id="feedback_ex5_q5"></div>
-</div>
-<div class="question-item">
-<p>6. <span class="highlight-keyword">fast</span></p>
-<select class="inline-block w-48 md:w-56" id="ex5_q6" name="exercise5_q6">
-<option value="">Select noun</option>
-<option value="height">height</option>
-<option value="width">width</option>
-<option value="length">length</option>
-<option value="distance">distance</option>
-<option value="weight">weight</option>
-<option value="speed">speed</option>
-</select>
-<div class="feedback" id="feedback_ex5_q6"></div>
-</div>
-<button class="check-button" onclick="checkExercise5()">Check Answers</button>
-</div>
-<div class="exercise-section" id="exercise6">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 6</h2>
-<p class="mb-4">Complete the questions. Use the words in the box.</p>
-<div class="question-item">
-<p>1. How <select class="inline-block w-40" id="ex6_q1" name="exercise6_q1">
-<option value="">Select word</option>
-<option value="fast">fast</option>
-<option value="heavy">heavy</option>
-<option value="high">high</option>
-<option value="length">length</option>
-<option value="speed">speed</option>
-<option value="width">width</option>
-</select> can a dolphin swim?</p>
-<div class="feedback" id="feedback_ex6_q1"></div>
-</div>
-<div class="question-item">
-<p>2. How <select class="inline-block w-40" id="ex6_q2" name="exercise6_q2">
-<option value="">Select word</option>
-<option value="fast">fast</option>
-<option value="heavy">heavy</option>
-<option value="high">high</option>
-<option value="length">length</option>
-<option value="speed">speed</option>
-<option value="width">width</option>
-</select> do you think that dolphin is?</p>
-<div class="feedback" id="feedback_ex6_q2"></div>
-</div>
-<div class="question-item">
-<p>3. What <select class="inline-block w-40" id="ex6_q3" name="exercise6_q3">
-<option value="">Select word</option>
-<option value="fast">fast</option>
-<option value="heavy">heavy</option>
-<option value="high">high</option>
-<option value="length">length</option>
-<option value="speed">speed</option>
-<option value="width">width</option>
-</select> can a dolphin travel at?</p>
-<div class="feedback" id="feedback_ex6_q3"></div>
-</div>
-<div class="question-item">
-<p>4. What is the <select class="inline-block w-40" id="ex6_q4" name="exercise6_q4">
-<option value="">Select word</option>
-<option value="fast">fast</option>
-<option value="heavy">heavy</option>
-<option value="high">high</option>
-<option value="length">length</option>
-<option value="speed">speed</option>
-<option value="width">width</option>
-</select> of time that young dolphins stay with their mother?</p>
-<div class="feedback" id="feedback_ex6_q4"></div>
-</div>
-<div class="question-item">
-<p>5. How <select class="inline-block w-40" id="ex6_q5" name="exercise6_q5">
-<option value="">Select word</option>
-<option value="fast">fast</option>
-<option value="heavy">heavy</option>
-<option value="high">high</option>
-<option value="length">length</option>
-<option value="speed">speed</option>
-<option value="width">width</option>
-</select> can an adult dolphin jump?</p>
-<div class="feedback" id="feedback_ex6_q5"></div>
-</div>
-<div class="question-item">
-<p>6. What is the <select class="inline-block w-40" id="ex6_q6" name="exercise6_q6">
-<option value="">Select word</option>
-<option value="fast">fast</option>
-<option value="heavy">heavy</option>
-<option value="high">high</option>
-<option value="length">length</option>
-<option value="speed">speed</option>
-<option value="width">width</option>
-</select> of the pool that the dolphin lives in?</p>
-<div class="feedback" id="feedback_ex6_q6"></div>
-</div>
-<button class="check-button" onclick="checkExercise6()">Check Answers</button>
-</div>
-<div class="exercise-section" id="exercise7">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 7</h2>
-<p class="mb-4">Look at the five questions from different IELTS Listening tests with the extracts from the conversations that answer them. Listen to the recording. Choose the correct answers.</p>
-<div class="audio-player-container">
-<iframe allow="autoplay" frameborder="no" height="120" scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2104710048&amp;color=%2300aabb&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=false" width="100%"></iframe>
-<div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/hienthantrong" style="color: #cccccc; text-decoration: none;" target="_blank" title="Hien">Hien</a> · <a href="https://soundcloud.com/hienthantrong/unit-1_exercise-7-1" style="color: #cccccc; text-decoration: none;" target="_blank" title="Unit 1_Exercise 7">Unit 1_Exercise 7</a></div>
-</div>
-<div class="question-item">
-<!-- Question 1 -->
-<p>1. How does the man describe female elephants?</p>
-<div class="radio-group-horizontal">
-<label><input name="ex7_q1" type="radio" value="Rare"/> rare</label>
-<label><input name="ex7_q1" type="radio" value="Dangerous"/> dangerous</label>
-<label><input name="ex7_q1" type="radio" value="sociable"/> sociable</label>
-</div>
-<div class="feedback" id="feedback_ex7_q1"></div>
-<!-- Question 2 -->
-<p>2. People should not keep wolves as pets because they are</p>
-<label><input name="ex7_q2" type="radio" value="wild animals."/> wild animals.</label>
-<label><input name="ex7_q2" type="radio" value="dangerous."/> dangerous.</label>
-<label><input name="ex7_q2" type="radio" value="very expensive to feed."/> very expensive to feed.</label>
-<div class="feedback" id="feedback_ex7_q2"></div>
-<!-- Question 3 -->
-<p>3. How fast does a great white shark usually swim?</p>
-<div class="radio-group-horizontal">
-<label><input name="ex7_q3" type="radio" value="56 kph"/> 56 kph</label>
-<label><input name="ex7_q3" type="radio" value="2.5 kph"/> 2.5 kph</label>
-<label><input name="ex7_q3" type="radio" value="74 kph"/> 74 kph</label>
-</div>
-<div class="feedback" id="feedback_ex7_q3"></div>
-<!-- Question 4 -->
-<p>4. In what unexpected place do sea lions sometimes sleep?</p>
-<div class="radio-group-horizontal">
-<label><input name="ex7_q4" type="radio" value="on the beach"/> on the beach</label>
-<label><input name="ex7_q4" type="radio" value="along the coast"/> along the coast</label>
-<label><input name="ex7_q4" type="radio" value="in the sea"/> in the sea</label>
-</div>
-<div class="feedback" id="feedback_ex7_q4"></div>
-<!-- Question 5 -->
-<p>5. How long is a giraffe's neck?</p>
-<div class="radio-group-horizontal">
-<label><input name="ex7_q5" type="radio" value="3.5 m"/> 3.5 m</label>
-<label><input name="ex7_q5" type="radio" value="1.45 m"/> 1.45 m</label>
-<label><input name="ex7_q5" type="radio" value="1.8 m"/> 1.8 m</label>
-</div>
-<div class="feedback" id="feedback_ex7_q5"></div>
-</div>
-<button class="check-button" onclick="checkExercise7()">Check Answers</button>
-</div>
-<div class="exercise-section" id="exercise8">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 8</h2>
-<p class="mb-4">Listen to two students talking about an ecology project on Maui dolphins. Decide which two of the five topics they talked about. Choose the correct answers.</p>
-<div class="audio-player-container">
-<iframe allow="autoplay" frameborder="no" height="120" scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2104710045&amp;color=%2300aabb&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=false" width="100%"></iframe>
-<div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/hienthantrong" style="color: #cccccc; text-decoration: none;" target="_blank" title="Hien">Hien</a> · <a href="https://soundcloud.com/hienthantrong/unit-1_exercise-8-2" style="color: #cccccc; text-decoration: none;" target="_blank" title="Unit 1_Exercise 8">Unit 1_Exercise 8</a></div>
-</div>
-<div class="question-item">
-<!-- Question 1 -->
-<p>1. the appearance of the dolphins</p>
-<label><input name="ex8_q1" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
-<label><input name="ex8_q1" type="radio" value="No, they don't discuss this."/> No, they don't discuss this.</label>
-<div class="feedback" id="feedback_ex8_q1"></div>
-<!-- Question 2 -->
-<p>2. the size of the dolphins</p>
-<label><input name="ex8_q2" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
-<label><input name="ex8_q2" type="radio" value="No, they don't discuss this."/> No, they don't discuss this.</label>
-<div class="feedback" id="feedback_ex8_q2"></div>
-<!-- Question 3 -->
-<p>3. how dolphins hunt for their food</p>
-<label><input name="ex8_q3" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
-<label><input name="ex8_q3" type="radio" value="No, they don't discuss this."/> No, they don't discuss this.</label>
-<div class="feedback" id="feedback_ex8_q3"></div>
-<!-- Question 4 -->
-<p>4. how many dolphins are still alive</p>
-<label><input name="ex8_q4" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
-<label><input name="ex8_q4" type="radio" value="No, they don't discuss this."/> No, they don't discuss this.</label>
-<div class="feedback" id="feedback_ex8_q4"></div>
-<!-- Question 5 -->
-<p>5. how the government is trying to help the dolphins</p>
-<label><input name="ex8_q5" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
-<label><input name="ex8_q5" type="radio" value="No, they don't discuss this."/> No, they don't discuss this.</label>
-<div class="feedback" id="feedback_ex8_q5"></div>
-</div>
-<button class="check-button" onclick="checkExercise8()">Check Answers</button>
-</div>
-<div class="exercise-section" id="exercise9">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 9</h2>
-<p class="mb-4">Listen to the recording. Choose the correct answers.</p>
-<div class="audio-player-container">
-<iframe allow="autoplay" frameborder="no" height="120" scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2104710042&amp;color=%2300aabb&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=false" width="100%"></iframe>
-</div>
-<div class="question-item">
-<p>1. Anne has asked Tom to help her with her dolphin project because</p>
-<label><input name="exercise9_q1" type="radio" value="he is in the same class as Anne."/> he is in the same class as Anne.</label>
-<label><input name="exercise9_q1" type="radio" value="he is an expert on dolphins."/> he is an expert on dolphins.</label>
-<label><input name="exercise9_q1" type="radio" value="he once did a similar project to Anne."/> he once did a similar project to Anne.</label>
-<div class="feedback" id="feedback_ex9_q1"></div>
-</div>
-<div class="question-item">
-<p>2. How long is an adult male Maui dolphin?</p>
-<label><input name="exercise9_q2" type="radio" value="1.5 metres"/> 1.5 metres</label>
-<label><input name="exercise9_q2" type="radio" value="1 metre"/> 1 metre</label>
-<label><input name="exercise9_q2" type="radio" value="1.7 metres"/> 1.7 metres</label>
-<div class="feedback" id="feedback_ex9_q2"></div>
-</div>
-<div class="question-item">
-<p>3. Where are Maui dolphins found in New Zealand?</p>
-<label><input name="exercise9_q3" type="radio" value="around most of the coast of the North Island"/> around most of the coast of the North Island</label>
-<label><input name="exercise9_q3" type="radio" value="around the west coast of the North Island"/> around the west coast of the North Island</label>
-<label><input name="exercise9_q3" type="radio" value="around the whole coast of the South Island"/> around the whole coast of the South Island</label>
-<div class="feedback" id="feedback_ex9_q3"></div>
-</div>
-<div class="question-item">
-<p>4. The population of Maui dolphins is now likely to be</p>
-<label><input name="exercise9_q4" type="radio" value="around 100"/> around 100</label>
-<label><input name="exercise9_q4" type="radio" value="well over 500"/> well over 500</label>
-<label><input name="exercise9_q4" type="radio" value="less than 50"/> less than 50</label>
-<div class="feedback" id="feedback_ex9_q4"></div>
-</div>
-<div class="question-item">
-<p>5. What do Anne and Tom agree is typical behaviour for Maui dolphins?</p>
-<label><input name="exercise9_q5" type="radio" value="They prefer to live with many other Maui dolphins."/> They prefer to live with many other Maui dolphins.</label>
-<label><input name="exercise9_q5" type="radio" value="They often choose to follow boats to catch fish more easily."/> They often choose to follow boats to catch fish more easily.</label>
-<label><input name="exercise9_q5" type="radio" value="They are friendly towards people who swim near them."/> They are friendly towards people who swim near them.</label>
-<div class="feedback" id="feedback_ex9_q5"></div>
-</div>
-<div class="question-item">
-<p>6. How far along the coastline do Maui dolphins swim?</p>
-<label><input name="exercise9_q6" type="radio" value="40 kilometres"/> 40 kilometres</label>
-<label><input name="exercise9_q6" type="radio" value="50 kilometres"/> 50 kilometres</label>
-<label><input name="exercise9_q6" type="radio" value="30 kilometres"/> 30 kilometres</label>
-<div class="feedback" id="feedback_ex9_q6"></div>
-</div>
-<button class="check-button" onclick="checkExercise9()">Check Answers</button>
-</div>
-<div class="exercise-section" id="exercise10">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 10</h2>
-<p class="mb-4">Think about what you've learnt from doing this unit. Choose the correct answers.</p>
-<div class="question-item">
-<p>1. Use the time before the recording starts to read the questions carefully and</p>
-<label><input name="exercise10_q1" type="radio" value="think about the type of information you might hear."/> think about the type of information you might hear.</label>
-<label><input name="exercise10_q1" type="radio" value="use your own knowledge to answer some of the questions."/> use your own knowledge to answer some of the questions.</label>
-<div class="feedback" id="feedback_ex10_q1"></div>
-</div>
-<div class="question-item">
-<p>2. When you listen to the recording, you may hear the speakers mention</p>
-<label><input name="exercise10_q2" type="radio" value="some details or information from all of the A, B, C options."/> some details or information from all of the A, B, C options.</label>
-<label><input name="exercise10_q2" type="radio" value="only the details and information from the correct option."/> only the details and information from the correct option.</label>
-<div class="feedback" id="feedback_ex10_q2"></div>
-</div>
-<div class="question-item">
-<p>3. You can find the answer to a three-option multiple choice question by</p>
-<label><input name="exercise10_q3" type="radio" value="matching an option to exactly the same sentence in the recording."/> matching an option to exactly the same sentence in the recording.</label>
-<label><input name="exercise10_q3" type="radio" value="listening for paraphrases of the A, B, C options."/> listening for paraphrases of the A, B, C options.</label>
-<div class="feedback" id="feedback_ex10_q3"></div>
-</div>
-<div class="question-item">
-<p>4. It's best to choose a number or measurement from a set of options</p>
-<label><input name="exercise10_q4" type="radio" value="only after the speakers have mentioned and discussed all of them."/> only after the speakers have mentioned and discussed all of them.</label>
-<label><input name="exercise10_q4" type="radio" value="which the speakers mention first or more than once in their discussion."/> which the speakers mention first or more than once in their discussion.</label>
-<div class="feedback" id="feedback_ex10_q4"></div>
-</div>
-<button class="check-button" onclick="checkExercise10()">Check Answers</button>
-</div>
-<script>
+    <!-- Exercise Navigation Button and Dropdown -->
+    <div id="exercise-menu-container">
+        <button id="menu-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300">
+            Select Exercise
+        </button>
+        <div id="exercise-menu" class="hidden">
+            <a href="#" data-exercise-id="exercise1">Exercise 1</a>
+            <a href="#" data-exercise-id="exercise2">Exercise 2</a>
+            <a href="#" data-exercise-id="exercise3">Exercise 3</a>
+            <a href="#" data-exercise-id="exercise4">Exercise 4</a>
+            <a href="#" data-exercise-id="exercise5">Exercise 5</a>
+            <a href="#" data-exercise-id="exercise6">Exercise 6</a>
+            <a href="#" data-exercise-id="exercise7">Exercise 7</a>
+            <a href="#" data-exercise-id="exercise8">Exercise 8</a>
+            <a href="#" data-exercise-id="exercise9">Exercise 9</a>
+            <a href="#" data-exercise-id="exercise10">Exercise 10</a>
+        </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">Mindset for IELTS 1 - Unit 1 Listening</h1>
+
+        <section class="exercise-section" id="exercise1">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 1</h2>
+            <p class="mb-4">Complete the definitions. Use the words in the box.</p>
+            <div class="question-item">
+                <p>1. Animals that live in forests, the jungle and mountains, and do not live at home as pets are <select class="inline-block w-40" id="ex1_q1" name="exercise1_q1">
+                    <option value="">Select word</option>
+                    <option value="wild">wild</option>
+                    <option value="rare">rare</option>
+                    <option value="marine">marine</option>
+                    <option value="sociable">sociable</option>
+                    <option value="dangerous">dangerous</option>
+                    <option value="coast">coast</option>
+                    <option value="behavior">behavior</option>
+                </select> animals. (adj.)</p>
+                <div class="feedback" id="feedback_ex1_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>2. We say that an animal is <select class="inline-block w-40" id="ex1_q2" name="exercise1_q2">
+                    <option value="">Select word</option>
+                    <option value="wild">wild</option>
+                    <option value="rare">rare</option>
+                    <option value="marine">marine</option>
+                    <option value="sociable">sociable</option>
+                    <option value="dangerous">dangerous</option>
+                    <option value="coast">coast</option>
+                    <option value="behavior">behavior</option>
+                </select> when there are only a few still alive in the world. (adj.)</p>
+                <div class="feedback" id="feedback_ex1_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>3. A <select class="inline-block w-40" id="ex1_q3" name="exercise1_q3">
+                    <option value="">Select word</option>
+                    <option value="wild">wild</option>
+                    <option value="rare">rare</option>
+                    <option value="marine">marine</option>
+                    <option value="sociable">sociable</option>
+                    <option value="dangerous">dangerous</option>
+                    <option value="coast">coast</option>
+                    <option value="behavior">behavior</option>
+                </select> animal lives only in the sea, for example, a dolphin or a shark. (adj.)</p>
+                <div class="feedback" id="feedback_ex1_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>4. A <select class="inline-block w-40" id="ex1_q4" name="exercise1_q4">
+                    <option value="">Select word</option>
+                    <option value="wild">wild</option>
+                    <option value="rare">rare</option>
+                    <option value="marine">marine</option>
+                    <option value="sociable">sociable</option>
+                    <option value="dangerous">dangerous</option>
+                    <option value="coast">coast</option>
+                    <option value="behavior">behavior</option>
+                </select> person or animal likes being with others, rather than being alone. (adj.)</p>
+                <div class="feedback" id="feedback_ex1_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>5. Lions, tigers or sharks can harm you, so these animals are <select class="inline-block w-40" id="ex1_q5" name="exercise1_q5">
+                    <option value="">Select word</option>
+                    <option value="wild">wild</option>
+                    <option value="rare">rare</option>
+                    <option value="marine">marine</option>
+                    <option value="sociable">sociable</option>
+                    <option value="dangerous">dangerous</option>
+                    <option value="coast">coast</option>
+                    <option value="behavior">behavior</option>
+                </select>, not safe. (adj.)</p>
+                <div class="feedback" id="feedback_ex1_q5"></div>
+            </div>
+            <div class="question-item">
+                <p>6. The <select class="inline-block w-40" id="ex1_q6" name="exercise1_q6">
+                    <option value="">Select word</option>
+                    <option value="wild">wild</option>
+                    <option value="rare">rare</option>
+                    <option value="marine">marine</option>
+                    <option value="sociable">sociable</option>
+                    <option value="dangerous">dangerous</option>
+                    <option value="coast">coast</option>
+                    <option value="behavior">behavior</option>
+                </select> is the area of land next to the sea. (noun)</p>
+                <div class="feedback" id="feedback_ex1_q6"></div>
+            </div>
+            <div class="question-item">
+                <p>7. When scientists study the <select class="inline-block w-40" id="ex1_q7" name="exercise1_q7">
+                    <option value="">Select word</option>
+                    <option value="wild">wild</option>
+                    <option value="rare">rare</option>
+                    <option value="marine">marine</option>
+                    <option value="sociable">sociable</option>
+                    <option value="dangerous">dangerous</option>
+                    <option value="coast">coast</option>
+                    <option value="behavior">behavior</option>
+                </select> of animals, they find out what they eat, when they sleep and how they communicate. (noun)</p>
+                <div class="feedback" id="feedback_ex1_q7"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise1()">Check Answers</button>
+        </section>
+
+        <section class="exercise-section" id="exercise2">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 2</h2>
+            <p class="mb-4">Complete the sentences with vocabulary related to the natural world. Use the words in the box.</p>
+            <div class="question-item">
+                <p>1. I really want to go on safari so I can see some <select class="inline-block w-40" id="ex2_q1" name="exercise2_q1">
+                    <option value="">Select word</option>
+                    <option value="wild">wild</option>
+                    <option value="rare">rare</option>
+                    <option value="marine">marine</option>
+                    <option value="sociable">sociable</option>
+                    <option value="dangerous">dangerous</option>
+                    <option value="coast">coast</option>
+                    <option value="behavior">behavior</option>
+                </select> animals.</p>
+                <div class="feedback" id="feedback_ex2_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>2. My dog is incredibly <select class="inline-block w-40" id="ex2_q2" name="exercise2_q2">
+                    <option value="">Select word</option>
+                    <option value="wild">wild</option>
+                    <option value="rare">rare</option>
+                    <option value="marine">marine</option>
+                    <option value="sociable">sociable</option>
+                    <option value="dangerous">dangerous</option>
+                    <option value="coast">coast</option>
+                    <option value="behavior">behavior</option>
+                </select> – she has to say ‘hello’ to every dog we meet on our walk!</p>
+                <div class="feedback" id="feedback_ex2_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>3. In summer, dolphins arrive here and swim all along the west <select class="inline-block w-40" id="ex2_q3" name="exercise2_q3">
+                    <option value="">Select word</option>
+                    <option value="wild">wild</option>
+                    <option value="rare">rare</option>
+                    <option value="marine">marine</option>
+                    <option value="sociable">sociable</option>
+                    <option value="dangerous">dangerous</option>
+                    <option value="coast">coast</option>
+                    <option value="behavior">behavior</option>
+                </select>.</p>
+                <div class="feedback" id="feedback_ex2_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>4. Because of the rubbish polluting our seas, <select class="inline-block w-40" id="ex2_q4" name="exercise2_q4">
+                    <option value="">Select word</option>
+                    <option value="wild">wild</option>
+                    <option value="rare">rare</option>
+                    <option value="marine">marine</option>
+                    <option value="sociable">sociable</option>
+                    <option value="dangerous">dangerous</option>
+                    <option value="coast">coast</option>
+                    <option value="behavior">behavior</option>
+                </select> animals are dying in large numbers.</p>
+                <div class="feedback" id="feedback_ex2_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>5. In the past, there were lots of bears in our country but now sadly, they are very <select class="inline-block w-40" id="ex2_q5" name="exercise2_q5">
+                    <option value="">Select word</option>
+                    <option value="wild">wild</option>
+                    <option value="rare">rare</option>
+                    <option value="marine">marine</option>
+                    <option value="sociable">sociable</option>
+                    <option value="dangerous">dangerous</option>
+                    <option value="coast">coast</option>
+                    <option value="behavior">behavior</option>
+                </select>.</p>
+                <div class="feedback" id="feedback_ex2_q5"></div>
+            </div>
+            <div class="question-item">
+                <p>6. The <select class="inline-block w-40" id="ex2_q6" name="exercise2_q6">
+                    <option value="">Select word</option>
+                    <option value="wild">wild</option>
+                    <option value="rare">rare</option>
+                    <option value="marine">marine</option>
+                    <option value="sociable">sociable</option>
+                    <option value="dangerous">dangerous</option>
+                    <option value="coast">coast</option>
+                    <option value="behavior">behavior</option>
+                </select> of my last cat was quite strange. She only wanted to sleep on my computer.</p>
+                <div class="feedback" id="feedback_ex2_q6"></div>
+            </div>
+            <div class="question-item">
+                <p>7. Some of the most <select class="inline-block w-40" id="ex2_q7" name="exercise2_q7">
+                    <option value="">Select word</option>
+                    <option value="wild">wild</option>
+                    <option value="rare">rare</option>
+                    <option value="marine">marine</option>
+                    <option value="sociable">sociable</option>
+                    <option value="dangerous">dangerous</option>
+                    <option value="coast">coast</option>
+                    <option value="behavior">behavior</option>
+                </select> snakes in the world live in Australia.</p>
+                <div class="feedback" id="feedback_ex2_q7"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise2()">Check Answers</button>
+        </section>
+
+        <section class="exercise-section" id="exercise3">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 3</h2>
+            <p class="mb-4">Listen to a conversation about a project someone is working on. Choose the correct answers.</p>
+            <div class="audio-player-container">
+                <iframe allow="autoplay" frameborder="no" height="120" scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2104710051&amp;color=%2300aabb&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=false" width="100%"></iframe>
+                <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/hienthantrong" style="color: #cccccc; text-decoration: none;" target="_blank" title="Hien">Hien</a> · <a href="https://soundcloud.com/hienthantrong/unit-1_exercise-3-4" style="color: #cccccc; text-decoration: none;" target="_blank" title="Unit 1_Exercise 3">Unit 1_Exercise 3</a></div>
+            </div>
+            <div class="question-item">
+                <!-- Question 1 -->
+                <p>1. How many speakers are there?</p>
+                <div class="radio-group-horizontal">
+                    <label><input name="ex3_q1" type="radio" value="Two"/> Two</label>
+                    <label><input name="ex3_q1" type="radio" value="Three"/> Three</label>
+                    <label><input name="ex3_q1" type="radio" value="Four"/> Four</label>
+                </div>
+                <div class="feedback" id="feedback_ex3_q1"></div>
+                <!-- Question 2 -->
+                <p>2. What is the relationship between the two people?</p>
+                <label><input name="ex3_q2" type="radio" value="They are a student and her teacher."/> They are a student and her teacher.</label>
+                <label><input name="ex3_q2" type="radio" value="They are both teachers."/> They are both teachers.</label>
+                <label><input name="ex3_q2" type="radio" value="They are both students."/> They are both students.</label>
+                <div class="feedback" id="feedback_ex3_q2"></div>
+                <!-- Question 3 -->
+                <p>3. Which animals does the woman decide to do her project on?</p>
+                <div class="radio-group-horizontal">
+                    <label><input name="ex3_q3" type="radio" value="Pandas"/> pandas</label>
+                    <label><input name="ex3_q3" type="radio" value="Sharks"/> sharks</label>
+                    <label><input name="ex3_q3" type="radio" value="dolphins"/> dolphins</label>
+                </div>
+                <div class="feedback" id="feedback_ex3_q3"></div>
+                <!-- Question 4 -->
+                <p>4. What does the woman have to do for her project?</p>
+                <label><input name="ex3_q4" type="radio" value="write a report on an animal"/> write a report on an animal</label>
+                <label><input name="ex3_q4" type="radio" value="give a presentation about New Zealand"/> give a presentation about New Zealand</label>
+                <label><input name="ex3_q4" type="radio" value="take some photographs of wild animals"/> take some photographs of wild animals</label>
+                <div class="feedback" id="feedback_ex3_q4"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise3()">Check Answers</button>
+        </section>
+
+        <section class="exercise-section" id="exercise4">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 4</h2>
+            <p class="mb-4">Read the information. Then read the IELTS Listening three-option multiple choice questions. Match the questions with the types of information you would expect to need in the answer.</p>
+            <div class="info-box">
+                <p class="font-bold">Tip:</p>
+                <p>By reading the questions before you listen, you can get an idea of what information to listen for.</p>
+                <p>(Why tells you to listen for a reason, possibly starting with the word 'because'.)</p>
+                <p>In this exercise, the key words which give you this information are shown in bold.</p>
+            </div>
+            <div class="question-item">
+                <p>1. How <span class="highlight-keyword">long</span> is an adult male Maui dolphin?</p>
+                <select class="w-full" id="ex4_q1" name="exercise4_q1">
+                    <option value="">Select type</option>
+                    <option value="adjective of character and behavior">adjective of character and behavior</option>
+                    <option value="number and measurement of distance">number and measurement of distance</option>
+                    <option value="number and measurement of length">number and measurement of length</option>
+                    <option value="number showing quantity">number showing quantity</option>
+                    <option value="place or location">place or location</option>
+                </select>
+                <div class="feedback" id="feedback_ex4_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>2. <span class="highlight-keyword">Where</span> are Maui dolphins found in New Zealand?</p>
+                <select class="w-full" id="ex4_q2" name="exercise4_q2">
+                    <option value="">Select type</option>
+                    <option value="adjective of character and behavior">adjective of character and behavior</option>
+                    <option value="number and measurement of distance">number and measurement of distance</option>
+                    <option value="number and measurement of length">number and measurement of length</option>
+                    <option value="number showing quantity">number showing quantity</option>
+                    <option value="place or location">place or location</option>
+                </select>
+                <div class="feedback" id="feedback_ex4_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>3. The <span class="highlight-keyword">population</span> of Maui dolphins is now likely to be…</p>
+                <select class="w-full" id="ex4_q3" name="exercise4_q3">
+                    <option value="">Select type</option>
+                    <option value="adjective of character and behavior">adjective of character and behavior</option>
+                    <option value="number and measurement of distance">number and measurement of distance</option>
+                    <option value="number and measurement of length">number and measurement of length</option>
+                    <option value="number showing quantity">number showing quantity</option>
+                    <option value="place or location">place or location</option>
+                </select>
+                <div class="feedback" id="feedback_ex4_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>4. What do Anne and Tom agree is <span class="highlight-keyword">typical behaviour</span> for Maui dolphins?</p>
+                <select class="w-full" id="ex4_q4" name="exercise4_q4">
+                    <option value="">Select type</option>
+                    <option value="adjective of character and behavior">adjective of character and behavior</option>
+                    <option value="number and measurement of distance">number and measurement of distance</option>
+                    <option value="number and measurement of length">number and measurement of length</option>
+                    <option value="number showing quantity">number showing quantity</option>
+                    <option value="place or location">place or location</option>
+                </select>
+                <div class="feedback" id="feedback_ex4_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>5. How <span class="highlight-keyword">far</span> along the coastline do Maui dolphins swim?</p>
+                <select class="w-full" id="ex4_q5" name="exercise4_q5">
+                    <option value="">Select type</option>
+                    <option value="adjective of character and behavior">adjective of character and behavior</option>
+                    <option value="number and measurement of distance">number and measurement of distance</option>
+                    <option value="number and measurement of length">number and measurement of length</option>
+                    <option value="number showing quantity">number showing quantity</option>
+                    <option value="place or location">place or location</option>
+                </select>
+                <div class="feedback" id="feedback_ex4_q5"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise4()">Check Answers</button>
+        </section>
+
+        <section class="exercise-section" id="exercise5">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 5</h2>
+            <p class="mb-4">In IELTS Listening multiple choice activities, it is often important to recognise different forms of the same word, which are used in paraphrasing. Match the adjectives on the left with the nouns on the right.</p>
+            <div class="info-box">
+                <p class="font-bold">Tip on Paraphrasing:</p>
+                <p>When we paraphrase something, we use different words to express the same or a similar meaning. Sometimes a paraphrase will include a different form of the same word. For example, you hear a noun (e.g. danger) but the question or answer needs an adjective (e.g. dangerous): You read: When is a tiger most dangerous? You hear: ‘If you see a tiger trying to catch fish in a river, you may be in great danger.’</p>
+                <p>Other times, we use an adjective that relates to a noun but is a completely different word, for example large (adjective) and size (noun).</p>
+            </div>
+            <div class="question-item">
+                <p>1. <span class="highlight-keyword">far</span></p>
+                <select class="inline-block w-48 md:w-56" id="ex5_q1" name="exercise5_q1">
+                    <option value="">Select noun</option>
+                    <option value="height">height</option>
+                    <option value="width">width</option>
+                    <option value="length">length</option>
+                    <option value="distance">distance</option>
+                    <option value="weight">weight</option>
+                    <option value="speed">speed</option>
+                </select>
+                <div class="feedback" id="feedback_ex5_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>2. <span class="highlight-keyword">tall</span></p>
+                <select class="inline-block w-48 md:w-56" id="ex5_q2" name="exercise5_q2">
+                    <option value="">Select noun</option>
+                    <option value="height">height</option>
+                    <option value="width">width</option>
+                    <option value="length">length</option>
+                    <option value="distance">distance</option>
+                    <option value="weight">weight</option>
+                    <option value="speed">speed</option>
+                </select>
+                <div class="feedback" id="feedback_ex5_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>3. <span class="highlight-keyword">long</span></p>
+                <select class="inline-block w-48 md:w-56" id="ex5_q3" name="exercise5_q3">
+                    <option value="">Select noun</option>
+                    <option value="height">height</option>
+                    <option value="width">width</option>
+                    <option value="length">length</option>
+                    <option value="distance">distance</option>
+                    <option value="weight">weight</option>
+                    <option value="speed">speed</option>
+                </select>
+                <div class="feedback" id="feedback_ex5_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>4. <span class="highlight-keyword">wide</span></p>
+                <select class="inline-block w-48 md:w-56" id="ex5_q4" name="exercise5_q4">
+                    <option value="">Select noun</option>
+                    <option value="height">height</option>
+                    <option value="width">width</option>
+                    <option value="length">length</option>
+                    <option value="distance">distance</option>
+                    <option value="weight">weight</option>
+                    <option value="speed">speed</option>
+                </select>
+                <div class="feedback" id="feedback_ex5_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>5. <span class="highlight-keyword">heavy</span></p>
+                <select class="inline-block w-48 md:w-56" id="ex5_q5" name="exercise5_q5">
+                    <option value="">Select noun</option>
+                    <option value="height">height</option>
+                    <option value="width">width</option>
+                    <option value="length">length</option>
+                    <option value="distance">distance</option>
+                    <option value="weight">weight</option>
+                    <option value="speed">speed</option>
+                </select>
+                <div class="feedback" id="feedback_ex5_q5"></div>
+            </div>
+            <div class="question-item">
+                <p>6. <span class="highlight-keyword">fast</span></p>
+                <select class="inline-block w-48 md:w-56" id="ex5_q6" name="exercise5_q6">
+                    <option value="">Select noun</option>
+                    <option value="height">height</option>
+                    <option value="width">width</option>
+                    <option value="length">length</option>
+                    <option value="distance">distance</option>
+                    <option value="weight">weight</option>
+                    <option value="speed">speed</option>
+                </select>
+                <div class="feedback" id="feedback_ex5_q6"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise5()">Check Answers</button>
+        </section>
+
+        <section class="exercise-section" id="exercise6">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 6</h2>
+            <p class="mb-4">Complete the questions. Use the words in the box.</p>
+            <div class="question-item">
+                <p>1. How <select class="inline-block w-40" id="ex6_q1" name="exercise6_q1">
+                    <option value="">Select word</option>
+                    <option value="fast">fast</option>
+                    <option value="heavy">heavy</option>
+                    <option value="high">high</option>
+                    <option value="length">length</option>
+                    <option value="speed">speed</option>
+                    <option value="width">width</option>
+                </select> can a dolphin swim?</p>
+                <div class="feedback" id="feedback_ex6_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>2. How <select class="inline-block w-40" id="ex6_q2" name="exercise6_q2">
+                    <option value="">Select word</option>
+                    <option value="fast">fast</option>
+                    <option value="heavy">heavy</option>
+                    <option value="high">high</option>
+                    <option value="length">length</option>
+                    <option value="speed">speed</option>
+                    <option value="width">width</option>
+                </select> do you think that dolphin is?</p>
+                <div class="feedback" id="feedback_ex6_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>3. What <select class="inline-block w-40" id="ex6_q3" name="exercise6_q3">
+                    <option value="">Select word</option>
+                    <option value="fast">fast</option>
+                    <option value="heavy">heavy</option>
+                    <option value="high">high</option>
+                    <option value="length">length</option>
+                    <option value="speed">speed</option>
+                    <option value="width">width</option>
+                </select> can a dolphin travel at?</p>
+                <div class="feedback" id="feedback_ex6_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>4. What is the <select class="inline-block w-40" id="ex6_q4" name="exercise6_q4">
+                    <option value="">Select word</option>
+                    <option value="fast">fast</option>
+                    <option value="heavy">heavy</option>
+                    <option value="high">high</option>
+                    <option value="length">length</option>
+                    <option value="speed">speed</option>
+                    <option value="width">width</option>
+                </select> of time that young dolphins stay with their mother?</p>
+                <div class="feedback" id="feedback_ex6_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>5. How <select class="inline-block w-40" id="ex6_q5" name="exercise6_q5">
+                    <option value="">Select word</option>
+                    <option value="fast">fast</option>
+                    <option value="heavy">heavy</option>
+                    <option value="high">high</option>
+                    <option value="length">length</option>
+                    <option value="speed">speed</option>
+                    <option value="width">width</option>
+                </select> can an adult dolphin jump?</p>
+                <div class="feedback" id="feedback_ex6_q5"></div>
+            </div>
+            <div class="question-item">
+                <p>6. What is the <select class="inline-block w-40" id="ex6_q6" name="exercise6_q6">
+                    <option value="">Select word</option>
+                    <option value="fast">fast</option>
+                    <option value="heavy">heavy</option>
+                    <option value="high">high</option>
+                    <option value="length">length</option>
+                    <option value="speed">speed</option>
+                    <option value="width">width</option>
+                </select> of the pool that the dolphin lives in?</p>
+                <div class="feedback" id="feedback_ex6_q6"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise6()">Check Answers</button>
+        </section>
+
+        <section class="exercise-section" id="exercise7">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 7</h2>
+            <p class="mb-4">Look at the five questions from different IELTS Listening tests with the extracts from the conversations that answer them. Listen to the recording. Choose the correct answers.</p>
+            <div class="audio-player-container">
+                <iframe allow="autoplay" frameborder="no" height="120" scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2104710048&amp;color=%2300aabb&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=false" width="100%"></iframe>
+                <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/hienthantrong" style="color: #cccccc; text-decoration: none;" target="_blank" title="Hien">Hien</a> · <a href="https://soundcloud.com/hienthantrong/unit-1_exercise-7-1" style="color: #cccccc; text-decoration: none;" target="_blank" title="Unit 1_Exercise 7">Unit 1_Exercise 7</a></div>
+            </div>
+            <div class="question-item">
+                <!-- Question 1 -->
+                <p>1. How does the man describe female elephants?</p>
+                <div class="radio-group-horizontal">
+                    <label><input name="ex7_q1" type="radio" value="Rare"/> rare</label>
+                    <label><input name="ex7_q1" type="radio" value="Dangerous"/> dangerous</label>
+                    <label><input name="ex7_q1" type="radio" value="sociable"/> sociable</label>
+                </div>
+                <div class="feedback" id="feedback_ex7_q1"></div>
+                <!-- Question 2 -->
+                <p>2. People should not keep wolves as pets because they are</p>
+                <label><input name="ex7_q2" type="radio" value="wild animals."/> wild animals.</label>
+                <label><input name="ex7_q2" type="radio" value="dangerous."/> dangerous.</label>
+                <label><input name="ex7_q2" type="radio" value="very expensive to feed."/> very expensive to feed.</label>
+                <div class="feedback" id="feedback_ex7_q2"></div>
+                <!-- Question 3 -->
+                <p>3. How fast does a great white shark usually swim?</p>
+                <div class="radio-group-horizontal">
+                    <label><input name="ex7_q3" type="radio" value="56 kph"/> 56 kph</label>
+                    <label><input name="ex7_q3" type="radio" value="2.5 kph"/> 2.5 kph</label>
+                    <label><input name="ex7_q3" type="radio" value="74 kph"/> 74 kph</label>
+                </div>
+                <div class="feedback" id="feedback_ex7_q3"></div>
+                <!-- Question 4 -->
+                <p>4. In what unexpected place do sea lions sometimes sleep?</p>
+                <div class="radio-group-horizontal">
+                    <label><input name="ex7_q4" type="radio" value="on the beach"/> on the beach</label>
+                    <label><input name="ex7_q4" type="radio" value="along the coast"/> along the coast</label>
+                    <label><input name="ex7_q4" type="radio" value="in the sea"/> in the sea</label>
+                </div>
+                <div class="feedback" id="feedback_ex7_q4"></div>
+                <!-- Question 5 -->
+                <p>5. How long is a giraffe's neck?</p>
+                <div class="radio-group-horizontal">
+                    <label><input name="ex7_q5" type="radio" value="3.5 m"/> 3.5 m</label>
+                    <label><input name="ex7_q5" type="radio" value="1.45 m"/> 1.45 m</label>
+                    <label><input name="ex7_q5" type="radio" value="1.8 m"/> 1.8 m</label>
+                </div>
+                <div class="feedback" id="feedback_ex7_q5"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise7()">Check Answers</button>
+        </section>
+
+        <section class="exercise-section" id="exercise8">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 8</h2>
+            <p class="mb-4">Listen to two students talking about an ecology project on Maui dolphins. Decide which two of the five topics they talked about. Choose the correct answers.</p>
+            <div class="audio-player-container">
+                <iframe allow="autoplay" frameborder="no" height="120" scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2104710045&amp;color=%2300aabb&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=false" width="100%"></iframe>
+                <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/hienthantrong" style="color: #cccccc; text-decoration: none;" target="_blank" title="Hien">Hien</a> · <a href="https://soundcloud.com/hienthantrong/unit-1_exercise-8-2" style="color: #cccccc; text-decoration: none;" target="_blank" title="Unit 1_Exercise 8">Unit 1_Exercise 8</a></div>
+            </div>
+            <div class="question-item">
+                <!-- Question 1 -->
+                <p>1. the appearance of the dolphins</p>
+                <label><input name="ex8_q1" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
+                <label><input name="ex8_q1" type="radio" value="No, they don't discuss this."/> No, they don't discuss this.</label>
+                <div class="feedback" id="feedback_ex8_q1"></div>
+                <!-- Question 2 -->
+                <p>2. the size of the dolphins</p>
+                <label><input name="ex8_q2" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
+                <label><input name="ex8_q2" type="radio" value="No, they don't discuss this."/> No, they don't discuss this.</label>
+                <div class="feedback" id="feedback_ex8_q2"></div>
+                <!-- Question 3 -->
+                <p>3. how dolphins hunt for their food</p>
+                <label><input name="ex8_q3" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
+                <label><input name="ex8_q3" type="radio" value="No, they don't discuss this."/> No, they don't discuss this.</label>
+                <div class="feedback" id="feedback_ex8_q3"></div>
+                <!-- Question 4 -->
+                <p>4. how many dolphins are still alive</p>
+                <label><input name="ex8_q4" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
+                <label><input name="ex8_q4" type="radio" value="No, they don't discuss this."/> No, they don't discuss this.</label>
+                <div class="feedback" id="feedback_ex8_q4"></div>
+                <!-- Question 5 -->
+                <p>5. how the government is trying to help the dolphins</p>
+                <label><input name="ex8_q5" type="radio" value="Yes, they discuss this."/> Yes, they discuss this.</label>
+                <label><input name="ex8_q5" type="radio" value="No, they don't discuss this."/> No, they don't discuss this.</label>
+                <div class="feedback" id="feedback_ex8_q5"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise8()">Check Answers</button>
+        </section>
+
+        <section class="exercise-section" id="exercise9">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 9</h2>
+            <p class="mb-4">Listen to the recording. Choose the correct answers.</p>
+            <div class="audio-player-container">
+                <iframe allow="autoplay" frameborder="no" height="120" scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2104710042&amp;color=%2300aabb&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=false" width="100%"></iframe>
+            </div>
+            <div class="question-item">
+                <p>1. Anne has asked Tom to help her with her dolphin project because</p>
+                <label><input name="exercise9_q1" type="radio" value="he is in the same class as Anne."/> he is in the same class as Anne.</label>
+                <label><input name="exercise9_q1" type="radio" value="he is an expert on dolphins."/> he is an expert on dolphins.</label>
+                <label><input name="exercise9_q1" type="radio" value="he once did a similar project to Anne."/> he once did a similar project to Anne.</label>
+                <div class="feedback" id="feedback_ex9_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>2. How long is an adult male Maui dolphin?</p>
+                <label><input name="exercise9_q2" type="radio" value="1.5 metres"/> 1.5 metres</label>
+                <label><input name="exercise9_q2" type="radio" value="1 metre"/> 1 metre</label>
+                <label><input name="exercise9_q2" type="radio" value="1.7 metres"/> 1.7 metres</label>
+                <div class="feedback" id="feedback_ex9_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>3. Where are Maui dolphins found in New Zealand?</p>
+                <label><input name="exercise9_q3" type="radio" value="around most of the coast of the North Island"/> around most of the coast of the North Island</label>
+                <label><input name="exercise9_q3" type="radio" value="around the west coast of the North Island"/> around the west coast of the North Island</label>
+                <label><input name="exercise9_q3" type="radio" value="around the whole coast of the South Island"/> around the whole coast of the South Island</label>
+                <div class="feedback" id="feedback_ex9_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>4. The population of Maui dolphins is now likely to be</p>
+                <label><input name="exercise9_q4" type="radio" value="around 100"/> around 100</label>
+                <label><input name="exercise9_q4" type="radio" value="well over 500"/> well over 500</label>
+                <label><input name="exercise9_q4" type="radio" value="less than 50"/> less than 50</label>
+                <div class="feedback" id="feedback_ex9_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>5. What do Anne and Tom agree is typical behaviour for Maui dolphins?</p>
+                <label><input name="exercise9_q5" type="radio" value="They prefer to live with many other Maui dolphins."/> They prefer to live with many other Maui dolphins.</label>
+                <label><input name="exercise9_q5" type="radio" value="They often choose to follow boats to catch fish more easily."/> They often choose to follow boats to catch fish more easily.</label>
+                <label><input name="exercise9_q5" type="radio" value="They are friendly towards people who swim near them."/> They are friendly towards people who swim near them.</label>
+                <div class="feedback" id="feedback_ex9_q5"></div>
+            </div>
+            <div class="question-item">
+                <p>6. How far along the coastline do Maui dolphins swim?</p>
+                <label><input name="exercise9_q6" type="radio" value="40 kilometres"/> 40 kilometres</label>
+                <label><input name="exercise9_q6" type="radio" value="50 kilometres"/> 50 kilometres</label>
+                <label><input name="exercise9_q6" type="radio" value="30 kilometres"/> 30 kilometres</label>
+                <div class="feedback" id="feedback_ex9_q6"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise9()">Check Answers</button>
+        </section>
+
+        <section class="exercise-section" id="exercise10">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 10</h2>
+            <p class="mb-4">Think about what you've learnt from doing this unit. Choose the correct answers.</p>
+            <div class="question-item">
+                <p>1. Use the time before the recording starts to read the questions carefully and</p>
+                <label><input name="exercise10_q1" type="radio" value="think about the type of information you might hear."/> think about the type of information you might hear.</label>
+                <label><input name="exercise10_q1" type="radio" value="use your own knowledge to answer some of the questions."/> use your own knowledge to answer some of the questions.</label>
+                <div class="feedback" id="feedback_ex10_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>2. When you listen to the recording, you may hear the speakers mention</p>
+                <label><input name="exercise10_q2" type="radio" value="some details or information from all of the A, B, C options."/> some details or information from all of the A, B, C options.</label>
+                <label><input name="exercise10_q2" type="radio" value="only the details and information from the correct option."/> only the details and information from the correct option.</label>
+                <div class="feedback" id="feedback_ex10_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>3. You can find the answer to a three-option multiple choice question by</p>
+                <label><input name="exercise10_q3" type="radio" value="matching an option to exactly the same sentence in the recording."/> matching an option to exactly the same sentence in the recording.</label>
+                <label><input name="exercise10_q3" type="radio" value="listening for paraphrases of the A, B, C options."/> listening for paraphrases of the A, B, C options.</label>
+                <div class="feedback" id="feedback_ex10_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>4. It's best to choose a number or measurement from a set of options</p>
+                <label><input name="exercise10_q4" type="radio" value="only after the speakers have mentioned and discussed all of them."/> only after the speakers have mentioned and discussed all of them.</label>
+                <label><input name="exercise10_q4" type="radio" value="which the speakers mention first or more than once in their discussion."/> which the speakers mention first or more than once in their discussion.</label>
+                <div class="feedback" id="feedback_ex10_q4"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise10()">Check Answers</button>
+        </section>
+    </div>
+
+    <script>
         // Object containing all the correct answers for each exercise and question.
         const correctAnswers = {
             exercise1: {
-                q1: "wild",
-                q2: "rare",
-                q3: "marine",
-                q4: "sociable",
-                q5: "dangerous",
-                q6: "coast",
-                q7: "behavior"
+                q1: "wild", q2: "rare", q3: "marine", q4: "sociable", q5: "dangerous", q6: "coast", q7: "behavior"
             },
             exercise2: {
-                q1: "wild",
-                q2: "sociable",
-                q3: "coast",
-                q4: "marine",
-                q5: "rare",
-                q6: "behavior",
-                q7: "dangerous"
+                q1: "wild", q2: "sociable", q3: "coast", q4: "marine", q5: "rare", q6: "behavior", q7: "dangerous"
             },
             exercise3: {
-                q1: "Two",
-                q2: "They are both students.",
-                q3: "dolphins",
-                q4: "give a presentation about New Zealand"
+                q1: "Two", q2: "They are both students.", q3: "dolphins", q4: "give a presentation about New Zealand"
             },
             exercise4: {
-                q1: "number and measurement of length",
-                q2: "place or location",
-                q3: "number showing quantity",
-                q4: "adjective of character and behavior",
-                q5: "number and measurement of distance"
+                q1: "number and measurement of length", q2: "place or location", q3: "number showing quantity", q4: "adjective of character and behavior", q5: "number and measurement of distance"
             },
             exercise5: {
-                q1: "distance",
-                q2: "width",
-                q3: "length",
-                q4: "weight",
-                q5: "height",
-                q6: "speed"
+                q1: "distance", q2: "width", q3: "length", q4: "weight", q5: "height", q6: "speed"
             },
             exercise6: {
-                q1: "fast",
-                q2: "heavy",
-                q3: "speed",
-                q4: "length",
-                q5: "high",
-                q6: "width"
+                q1: "fast", q2: "heavy", q3: "speed", q4: "length", q5: "high", q6: "width"
             },
             exercise7: {
-                q1: "sociable",
-                q2: "wild animals.",
-                q3: "56 kph",
-                q4: "in the sea",
-                q5: "1.8 m"
+                q1: "sociable", q2: "wild animals.", q3: "56 kph", q4: "in the sea", q5: "1.8 m"
             },
             exercise8: {
-                q1: "No, they don't discuss this.",
-                q2: "Yes, they discuss this.",
-                q3: "No, they don't discuss this.",
-                q4: "Yes, they discuss this.",
-                q5: "No, they don't discuss this."
+                q1: "No, they don't discuss this.", q2: "Yes, they discuss this.", q3: "No, they don't discuss this.", q4: "Yes, they discuss this.", q5: "No, they don't discuss this."
             },
             exercise9: {
-                q1: "he once did a similar project to Anne.",
-                q2: "1.5 metres",
-                q3: "around the west coast of the North Island",
-                q4: "less than 50",
-                q5: "They prefer to live with many other Maui dolphins.",
-                q6: "30 kilometres"
+                q1: "he once did a similar project to Anne.", q2: "1.5 metres", q3: "around the west coast of the North Island", q4: "less than 50", q5: "They prefer to live with many other Maui dolphins.", q6: "30 kilometres"
             },
             exercise10: {
-                q1: "think about the type of information you might hear.",
-                q2: "some details or information from all of the A, B, C options.",
-                q3: "listening for paraphrases of the A, B, C options.",
-                q4: "only after the speakers have mentioned and discussed all of them."
+                q1: "think about the type of information you might hear.", q2: "some details or information from all of the A, B, C options.", q3: "listening for paraphrases of the A, B, C options.", q4: "only after the speakers have mentioned and discussed all of them."
             }
         };
 
@@ -1089,49 +1139,99 @@
                 checkRadioQuestion(10, i, false);
             }
         }
+
+        // --- Navigation Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const exerciseMenu = document.getElementById('exercise-menu');
+            const exerciseSections = document.querySelectorAll('.exercise-section');
+
+            // Function to show a specific exercise section
+            function showExercise(exerciseId) {
+                exerciseSections.forEach(section => {
+                    section.classList.remove('active-exercise');
+                });
+                document.getElementById(exerciseId).classList.add('active-exercise');
+                // Optionally hide the menu after selection
+                exerciseMenu.classList.remove('show');
+            }
+
+            // Toggle menu visibility
+            menuButton.addEventListener('click', () => {
+                exerciseMenu.classList.toggle('show');
+            });
+
+            // Hide menu when clicking outside
+            document.addEventListener('click', (event) => {
+                if (!exerciseMenu.contains(event.target) && !menuButton.contains(event.target)) {
+                    exerciseMenu.classList.remove('show');
+                }
+            });
+
+            // Handle exercise selection from menu
+            exerciseMenu.addEventListener('click', (event) => {
+                if (event.target.tagName === 'A') {
+                    const exerciseId = event.target.dataset.exerciseId;
+                    if (exerciseId) {
+                        showExercise(exerciseId);
+                        // Save the selected exercise to local storage
+                        localStorage.setItem('activeExercise', exerciseId);
+                    }
+                }
+            });
+
+            // Load saved exercise or default to the first one
+            const savedExercise = localStorage.getItem('activeExercise');
+            if (savedExercise && document.getElementById(savedExercise)) {
+                showExercise(savedExercise);
+            } else if (exerciseSections.length > 0) {
+                showExercise(exerciseSections[0].id); // Show the first exercise by default
+            }
+        });
+
+
+        // --- Local Storage Save/Load/Reset Functions ---
+        function saveAnswersToLocalStorage() {
+            const inputs = document.querySelectorAll('input, select, textarea');
+            const answers = {};
+
+            inputs.forEach(input => {
+                if (input.type === 'radio' || input.type === 'checkbox') {
+                    const key = input.name + '-' + input.value;
+                    answers[key] = input.checked;
+                } else {
+                    answers[input.name || input.id] = input.value;
+                }
+            });
+
+            localStorage.setItem('ielts_answers', JSON.stringify(answers));
+        }
+
+        function loadAnswersFromLocalStorage() {
+            const saved = localStorage.getItem('ielts_answers');
+            if (!saved) return;
+
+            const answers = JSON.parse(saved);
+
+            Object.keys(answers).forEach(key => {
+                if (key.includes('-')) {
+                    const [name, value] = key.split('-');
+                    const el = document.querySelector(`input[name="${name}"][value="${value}"]`);
+                    if (el) el.checked = answers[key];
+                } else {
+                    const el = document.querySelector(`[name="${key}"], #${key}`);
+                    if (el) el.value = answers[key];
+                }
+            });
+        }
+
+        function resetSavedAnswers() {
+            localStorage.removeItem('ielts_answers');
+            window.location.reload();
+        }
+
+        document.addEventListener('DOMContentLoaded', loadAnswersFromLocalStorage);
+        document.addEventListener('input', saveAnswersToLocalStorage);
     </script>
-<script>
-function saveAnswersToLocalStorage() {
-  const inputs = document.querySelectorAll('input, select, textarea');
-  const answers = {};
-
-  inputs.forEach(input => {
-    if (input.type === 'radio' || input.type === 'checkbox') {
-      const key = input.name + '-' + input.value;
-      answers[key] = input.checked;
-    } else {
-      answers[input.name || input.id] = input.value;
-    }
-  });
-
-  localStorage.setItem('ielts_answers', JSON.stringify(answers));
-}
-
-function loadAnswersFromLocalStorage() {
-  const saved = localStorage.getItem('ielts_answers');
-  if (!saved) return;
-
-  const answers = JSON.parse(saved);
-
-  Object.keys(answers).forEach(key => {
-    if (key.includes('-')) {
-      const [name, value] = key.split('-');
-      const el = document.querySelector(`input[name="${name}"][value="${value}"]`);
-      if (el) el.checked = answers[key];
-    } else {
-      const el = document.querySelector(`[name="${key}"], #${key}`);
-      if (el) el.value = answers[key];
-    }
-  });
-}
-
-function resetSavedAnswers() {
-  localStorage.removeItem('ielts_answers');
-  window.location.reload();
-}
-
-document.addEventListener('DOMContentLoaded', loadAnswersFromLocalStorage);
-document.addEventListener('input', saveAnswersToLocalStorage);
-</script>
-</div></body>
+</body>
 </html>
