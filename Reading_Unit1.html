@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
-<style>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+    <title>Mindset for IELTS 1 - Unit 1 Reading</title>
+    <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -158,631 +158,752 @@
         .options-row label {
             margin-bottom: 0;
         }
+
+        /* Custom CSS from style-revised.css for menu and feedback boxes */
+        .correct-feedback {
+            color: #10B981; /* Green-500 */
+        }
+        .incorrect-feedback {
+            color: #EF4444; /* Red-500 */
+        }
+        .feedback-box {
+            padding: 0.5rem 0.75rem;
+            margin-top: 0.5rem;
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 0.875rem; /* text-sm */
+        }
+        .feedback-box.correct {
+            background-color: #D1FAE5; /* green-100 */
+            border: 1px solid #34D399; /* green-400 */
+        }
+        .feedback-box.incorrect {
+            background-color: #FEE2E2; /* red-100 */
+            border: 1px solid #F87171; /* red-400 */
+        }
+        /* Message Box for Save Confirmation */
+        #message-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #message-box.show {
+            opacity: 1;
+        }
+        /* Ensure inline inputs/selects don't break lines awkwardly */
+        .inline-block {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        /* Styling for the new exercise menu */
+        #exercise-menu-container {
+            position: fixed; /* Changed to fixed for persistent visibility */
+            top: 1rem;
+            left: 1rem;
+            z-index: 50;
+        }
+        #exercise-menu-button {
+            background-color: #3B82F6; /* Blue-500 */
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        #exercise-menu-button:hover {
+            background-color: #2563EB; /* Blue-600 */
+        }
+        #exercise-menu {
+            position: absolute;
+            top: calc(100% + 0.5rem); /* Position below the button with a small gap */
+            left: 0;
+            background-color: white;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
+            padding: 0.5rem 0;
+            min-width: 12rem; /* Tailwind w-48 */
+            max-height: 80vh; /* Limit height to prevent overflow on smaller screens */
+            overflow-y: auto; /* Enable scrolling for long lists */
+            display: none; /* Hidden by default */
+        }
+        #exercise-menu.show {
+            display: block; /* Show when 'show' class is added */
+        }
+        #exercise-menu a {
+            display: block;
+            padding: 0.75rem 1rem; /* py-3 px-4 */
+            font-size: 0.875rem; /* text-sm */
+            color: #4B5563; /* text-gray-700 */
+            text-decoration: none;
+        }
+        #exercise-menu a:hover {
+            background-color: #F3F4F6; /* bg-gray-100 */
+            color: #1F2937; /* text-gray-900 */
+        }
+        /* Hide all sections by default, JavaScript will show the active one */
+        .exercise-section { /* Using .exercise-section as per original HTML structure */
+            display: none;
+        }
+        .exercise-section.active-exercise {
+            display: block;
+        }
     </style>
-<title>Mindset for IELTS 1 - Unit 1 Reading</title></head>
+</head>
 <body class="p-4">
-<div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg"><h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">Mindset for IELTS 1 - Unit 1 Reading</h1>
-<div class="reading-text">
-<h3 class="text-xl text-center">How our sweet tooth is hurting us</h3>
-<p>Over the last three centuries, the amount of sugar in the Western diet has continued to rise. Back at the start of the 18th century, a typical English family consumed less than 2 kg of sugar per year. By the end of that century, that amount had risen 400%. Compare that to the 40 kg that people now consume annually in the USA. In Germany, the second-most sugar-loving nation in the world, people eat roughly 103 grams on average per day. In the Netherlands, the country with the third-biggest sweet tooth, people eat 102.5 grams. Of course, there are some countries in the world where sweet food is less popular: in India, people eat only about 5 grams per day on average; in Indonesia, it’s 14.5 grams; and in China, it’s just under 16 grams. If you’re not sure what 40 kg looks like, it means that the average person in the USA now eats approximately 22 teaspoons of sugar a day. The recommended limit, suggested by researchers from the World Health Organisation, is no more than 8 if you want to stay healthy, but just one can of soda contains around 10.</p>
-<p>It is common knowledge that many drinks, in bottles or canned, contain a lot of sugar. Although advertisements say that they are ‘energy-giving’, professional athletes and sportsmen and women usually stay away from them. It is teenagers that are their greatest consumers. And – although advertisers promise that these drinks will make people feel energetic and active – because of the type of chemicals they have, once a person has drunk all the soda, they simply feel hungry instead. However, sugar is also in products that many shoppers find surprising, for example, cereal, which actually has a lot. Because they believe it is a healthy kind of food, parents buy it for their children’s breakfast.</p>
-<p>A large part of the problem, according to nutritionists, is that people find it hard to understand the labels on the back of food products. Nutritionists think this should be a lot easier for them. But at the moment, manufacturers don’t have to write ‘sugar’ on them, but can use words like ‘corn syrup’ or ‘dextran’, which can result in confusion for consumers. But why should we be worried about our sugar consumption? Firstly, it is harmful to young children because it causes tooth decay; the pain from this can mean that children don’t get the amount of sleep they need. As a result, they can’t concentrate when they are in class. In this case, schools and governments have a duty to educate them about good and bad food choices. For adults, the problems increase. Eating too much sugar makes people quickly gain weight, it affects the heart and liver, and can can lead to diabetes.</p>
-</div>
-<!-- Exercises 1-10 FULLY INCLUDED, see previous code for markup -->
-<!-- Please see previous responses for the full markup for Exercises 1-10.
-             Each exercise block should be included in order, with the correct .options-row
-             on all radio questions for Exercises 1, 2, and 7.
-             All JS and answer-checking logic is at the end of this file and functional.
-        -->
-<!-- Start of Exercise 1 -->
-<div class="exercise-section" id="exercise1">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 1</h2>
-<p class="mb-4">Before you read the text, look at the statements. Do you think that they are True or False? Choose your answers.</p>
-<div class="question-item">
-<p>1. The expression 'to have a sweet tooth' means 'to like eating sweet foods, especially sweets and chocolate'.</p>
-<div class="options-row">
-<label><input name="exercise1_q1" type="radio" value="True"/> True</label>
-<label><input name="exercise1_q1" type="radio" value="False"/> False</label>
-</div>
-<div class="feedback" id="feedback_ex1_q1"></div>
-</div>
-<div class="question-item">
-<p>2. In 18th-century Europe, more poor people than rich people lost their teeth because of sugar.</p>
-<div class="options-row">
-<label><input name="exercise1_q2" type="radio" value="True"/> True</label>
-<label><input name="exercise1_q2" type="radio" value="False"/> False</label>
-</div>
-<div class="feedback" id="feedback_ex1_q2"></div>
-</div>
-<div class="question-item">
-<p>3. If you drink a typical can of soda, you’ll consume about 10 sugar cubes.</p>
-<div class="options-row">
-<label><input name="exercise1_q3" type="radio" value="True"/> True</label>
-<label><input name="exercise1_q3" type="radio" value="False"/> False</label>
-</div>
-<div class="feedback" id="feedback_ex1_q3"></div>
-</div>
-<div class="question-item">
-<p>4. In general, children in the USA consume a lot more sugar than their parents.</p>
-<div class="options-row">
-<label><input name="exercise1_q4" type="radio" value="True"/> True</label>
-<label><input name="exercise1_q4" type="radio" value="False"/> False</label>
-</div>
-<div class="feedback" id="feedback_ex1_q4"></div>
-</div>
-<div class="question-item">
-<p>5. It is now possible to order chocolate-covered insects online.</p>
-<div class="options-row">
-<label><input name="exercise1_q5" type="radio" value="True"/> True</label>
-<label><input name="exercise1_q5" type="radio" value="False"/> False</label>
-</div>
-<div class="feedback" id="feedback_ex1_q5"></div>
-</div>
-<button class="check-button" onclick="checkExercise1()">Check Answers</button>
-</div>
-<!-- Exercise 2 -->
-<div class="exercise-section" id="exercise2">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 2</h2>
-<p class="mb-4">Which of the ideas in sentences 1–5 are mentioned in the text? Choose Yes or No. Read the text again if you need to.</p>
-<div class="question-item">
-<p>1. The increase in the amount of sugar we eat.</p>
-<div class="options-row">
-<label><input name="exercise2_q1" type="radio" value="Yes"/> Yes</label>
-<label><input name="exercise2_q1" type="radio" value="No"/> No</label>
-</div>
-<div class="feedback" id="feedback_ex2_q1"></div>
-</div>
-<div class="question-item">
-<p>2. The places in the supermarket where you can find sugary products.</p>
-<div class="options-row">
-<label><input name="exercise2_q2" type="radio" value="Yes"/> Yes</label>
-<label><input name="exercise2_q2" type="radio" value="No"/> No</label>
-</div>
-<div class="feedback" id="feedback_ex2_q2"></div>
-</div>
-<div class="question-item">
-<p>3. The way that advertising sugary products has changed.</p>
-<div class="options-row">
-<label><input name="exercise2_q3" type="radio" value="Yes"/> Yes</label>
-<label><input name="exercise2_q3" type="radio" value="No"/> No</label>
-</div>
-<div class="feedback" id="feedback_ex2_q3"></div>
-</div>
-<div class="question-item">
-<p>4. The health problems that sugar causes in children.</p>
-<div class="options-row">
-<label><input name="exercise2_q4" type="radio" value="Yes"/> Yes</label>
-<label><input name="exercise2_q4" type="radio" value="No"/> No</label>
-</div>
-<div class="feedback" id="feedback_ex2_q4"></div>
-</div>
-<div class="question-item">
-<p>5. The health problems that sugar causes in adults.</p>
-<div class="options-row">
-<label><input name="exercise2_q5" type="radio" value="Yes"/> Yes</label>
-<label><input name="exercise2_q5" type="radio" value="No"/> No</label>
-</div>
-<div class="feedback" id="feedback_ex2_q5"></div>
-</div>
-<button class="check-button" onclick="checkExercise2()">Check Answers</button>
-</div>
-<!-- Exercise 3 -->
-<div class="exercise-section" id="exercise3">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 3</h2>
-<p class="mb-4">In many IELTS Reading texts, you often see information or opinions given by different people. Match the people with the definitions.</p>
-<div class="question-item">
-<p>1. a person or company that makes a product:</p>
-<select class="w-full" id="ex3_q1" name="exercise3_q1">
-<option value="">Select...</option>
-<option value="advertiser">advertiser</option>
-<option value="consumer">consumer</option>
-<option value="manufacturer">manufacturer</option>
-<option value="nutritionist">nutritionist</option>
-<option value="researcher">researcher</option>
-</select>
-<div class="feedback" id="feedback_ex3_q1"></div>
-</div>
-<div class="question-item">
-<p>2. a person who buys or uses a product:</p>
-<select class="w-full" id="ex3_q2" name="exercise3_q2">
-<option value="">Select...</option>
-<option value="advertiser">advertiser</option>
-<option value="consumer">consumer</option>
-<option value="manufacturer">manufacturer</option>
-<option value="nutritionist">nutritionist</option>
-<option value="researcher">researcher</option>
-</select>
-<div class="feedback" id="feedback_ex3_q2"></div>
-</div>
-<div class="question-item">
-<p>3. a person who studies a subject carefully:</p>
-<select class="w-full" id="ex3_q3" name="exercise3_q3">
-<option value="">Select...</option>
-<option value="advertiser">advertiser</option>
-<option value="consumer">consumer</option>
-<option value="manufacturer">manufacturer</option>
-<option value="nutritionist">nutritionist</option>
-<option value="researcher">researcher</option>
-</select>
-<div class="feedback" id="feedback_ex3_q3"></div>
-</div>
-<div class="question-item">
-<p>4. a person who gives advice about healthy eating:</p>
-<select class="w-full" id="ex3_q4" name="exercise3_q4">
-<option value="">Select...</option>
-<option value="advertiser">advertiser</option>
-<option value="consumer">consumer</option>
-<option value="manufacturer">manufacturer</option>
-<option value="nutritionist">nutritionist</option>
-<option value="researcher">researcher</option>
-</select>
-<div class="feedback" id="feedback_ex3_q4"></div>
-</div>
-<div class="question-item">
-<p>5. a person who makes commercials to sell a product:</p>
-<select class="w-full" id="ex3_q5" name="exercise3_q5">
-<option value="">Select...</option>
-<option value="advertiser">advertiser</option>
-<option value="consumer">consumer</option>
-<option value="manufacturer">manufacturer</option>
-<option value="nutritionist">nutritionist</option>
-<option value="researcher">researcher</option>
-</select>
-<div class="feedback" id="feedback_ex3_q5"></div>
-</div>
-<button class="check-button" onclick="checkExercise3()">Check Answers</button>
-</div>
-<!-- Exercise 4 -->
-<div class="exercise-section" id="exercise4">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 4</h2>
-<p class="mb-4">Who do you think might say the following things? Match the people with the statements. In IELTS Reading texts, you need to identify and understand opinions and ideas.</p>
-<div class="question-item">
-<p>1. ‘My report studies the effects of sugar on the health of people aged 15–24 in the USA.’</p>
-<select class="w-full" id="ex4_q1" name="exercise4_q1">
-<option value="">Select...</option>
-<option value="advertiser">advertiser</option>
-<option value="consumer">consumer</option>
-<option value="manufacturer">manufacturer</option>
-<option value="nutritionist">nutritionist</option>
-<option value="researcher">researcher</option>
-</select>
-<div class="feedback" id="feedback_ex4_q1"></div>
-</div>
-<div class="question-item">
-<p>2. ‘Feeling tired? New Choco-nut breakfast cereal will give you all the energy you need!’</p>
-<select class="w-full" id="ex4_q2" name="exercise4_q2">
-<option value="">Select...</option>
-<option value="advertiser">advertiser</option>
-<option value="consumer">consumer</option>
-<option value="manufacturer">manufacturer</option>
-<option value="nutritionist">nutritionist</option>
-<option value="researcher">researcher</option>
-</select>
-<div class="feedback" id="feedback_ex4_q2"></div>
-</div>
-<div class="question-item">
-<p>3. ‘There are ten sugar cubes in every can of soda so you shouldn’t drink soda every day.’</p>
-<select class="w-full" id="ex4_q3" name="exercise4_q3">
-<option value="">Select...</option>
-<option value="advertiser">advertiser</option>
-<option value="consumer">consumer</option>
-<option value="manufacturer">manufacturer</option>
-<option value="nutritionist">nutritionist</option>
-<option value="researcher">researcher</option>
-</select>
-<div class="feedback" id="feedback_ex4_q3"></div>
-</div>
-<div class="question-item">
-<p>4. ‘Our factory sells 50% more sugar today than 50 years ago.’</p>
-<select class="w-full" id="ex4_q4" name="exercise4_q4">
-<option value="">Select...</option>
-<option value="advertiser">advertiser</option>
-<option value="consumer">consumer</option>
-<option value="manufacturer">manufacturer</option>
-<option value="nutritionist">nutritionist</option>
-<option value="researcher">researcher</option>
-</select>
-<div class="feedback" id="feedback_ex4_q4"></div>
-</div>
-<div class="question-item">
-<p>5. ‘I know sugar is bad for me, but I usually eat two bars of chocolate every day.’</p>
-<select class="w-full" id="ex4_q5" name="exercise4_q5">
-<option value="">Select...</option>
-<option value="advertiser">advertiser</option>
-<option value="consumer">consumer</option>
-<option value="manufacturer">manufacturer</option>
-<option value="nutritionist">nutritionist</option>
-<option value="researcher">researcher</option>
-</select>
-<div class="feedback" id="feedback_ex4_q5"></div>
-</div>
-<button class="check-button" onclick="checkExercise4()">Check Answers</button>
-</div>
-<!-- Exercise 5 -->
-<div class="exercise-section" id="exercise5">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 5</h2>
-<p class="mb-4">Read the information. Then match the words in <span class="highlight-keyword">bold</span> with the phrases that have a similar meaning. Use the phrases in  x.</p>
-<div class="question-item">
-<p>1. Sugar can be <span class="highlight-keyword">very bad for</span> children.</p>
-<select class="w-full" id="ex5_q1" name="exercise5_q1">
-<option value="">Select...</option>
-<option value="recommend that you">recommend that you</option>
-<option value="stay away from">stay away from</option>
-<option value="not clear">not clear</option>
-<option value="consume">consume</option>
-<option value="harmful to">harmful to</option>
-<option value="was unexpected">was unexpected</option>
-</select>
-<div class="feedback" id="feedback_ex5_q1"></div>
-</div>
-<div class="question-item">
-<p>2. My doctor said I was eating the wrong foods, which <span class="highlight-keyword">surprised me</span>.</p>
-<select class="w-full" id="ex5_q2" name="exercise5_q2">
-<option value="">Select...</option>
-<option value="recommend that you">recommend that you</option>
-<option value="stay away from">stay away from</option>
-<option value="not clear">not clear</option>
-<option value="consume">consume</option>
-<option value="harmful to">harmful to</option>
-<option value="was unexpected">was unexpected</option>
-</select>
-<div class="feedback" id="feedback_ex5_q2"></div>
-</div>
-<div class="question-item">
-<p>3. We should <span class="highlight-keyword">buy and eat healthier food that doesn’t have a lot of sugar</span>.</p>
-<select class="w-full" id="ex5_q3" name="exercise5_q3">
-<option value="">Select...</option>
-<option value="recommend that you">recommend that you</option>
-<option value="stay away from">stay away from</option>
-<option value="not clear">not clear</option>
-<option value="consume">consume</option>
-<option value="harmful to">harmful to</option>
-<option value="was unexpected">was unexpected</option>
-</select>
-<div class="feedback" id="feedback_ex5_q3"></div>
-</div>
-<div class="question-item">
-<p>4. I try to <span class="highlight-keyword">avoid</span> chocolate when I’m hungry because it’s not very healthy.</p>
-<select class="w-full" id="ex5_q4" name="exercise5_q4">
-<option value="">Select...</option>
-<option value="recommend that you">recommend that you</option>
-<option value="stay away from">stay away from</option>
-<option value="not clear">not clear</option>
-<option value="consume">consume</option>
-<option value="harmful to">harmful to</option>
-<option value="was unexpected">was unexpected</option>
-</select>
-<div class="feedback" id="feedback_ex5_q4"></div>
-</div>
-<div class="question-item">
-<p>5. I <span class="highlight-keyword">think you should</span> go on a diet.</p>
-<select class="w-full" id="ex5_q5" name="exercise5_q5">
-<option value="">Select...</option>
-<option value="recommend that you">recommend that you</option>
-<option value="stay away from">stay away from</option>
-<option value="not clear">not clear</option>
-<option value="consume">consume</option>
-<option value="harmful to">harmful to</option>
-<option value="was unexpected">was unexpected</option>
-</select>
-<div class="feedback" id="feedback_ex5_q5"></div>
-</div>
-<div class="question-item">
-<p>6. A lot of information about good sugar and bad sugar is <span class="highlight-keyword">hard to understand</span>.</p>
-<select class="w-full" id="ex5_q6" name="exercise5_q6">
-<option value="">Select...</option>
-<option value="recommend that you">recommend that you</option>
-<option value="stay away from">stay away from</option>
-<option value="not clear">not clear</option>
-<option value="consume">consume</option>
-<option value="harmful to">harmful to</option>
-<option value="was unexpected">was unexpected</option>
-</select>
-<div class="feedback" id="feedback_ex5_q6"></div>
-</div>
-<button class="check-button" onclick="checkExercise5()">Check Answers</button>
-</div>
-<!-- Exercise 6 -->
-<div class="exercise-section" id="exercise6">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 6</h2>
-<p class="mb-4">Read the information. Then look at the questions. Select the key words that show you the type of information you need to look for. The numbers in brackets at the end of each question show you how many selections you need to make.</p>
-<div class="question-item">
-<p>1. Which country consumes the least sugar per person? (3 selections)</p>
-<label><input name="ex6_q1" type="checkbox" value="country"/> country</label>
-<label><input name="ex6_q1" type="checkbox" value="consumes"/> consumes</label>
-<label><input name="ex6_q1" type="checkbox" value="least sugar"/> least sugar</label>
-<label><input name="ex6_q1" type="checkbox" value="per person"/> per person</label>
-<div class="feedback" id="feedback_ex6_q1"></div>
-</div>
-<div class="question-item">
-<p>2. What is the maximum recommended number of teaspoons of sugar that a person should consume a day? (4 selections)</p>
-<label><input name="ex6_q2" type="checkbox" value="What"/> What</label>
-<label><input name="ex6_q2" type="checkbox" value="maximum recommended number"/> maximum recommended number</label>
-<label><input name="ex6_q2" type="checkbox" value="teaspoons of sugar"/> teaspoons of sugar</label>
-<label><input name="ex6_q2" type="checkbox" value="consume"/> consume</label>
-<label><input name="ex6_q2" type="checkbox" value="a day"/> a day</label>
-<div class="feedback" id="feedback_ex6_q2"></div>
-</div>
-<div class="question-item">
-<p>3. Which group of people drink more sugary drinks than anyone else? (3 selections)</p>
-<label><input name="ex6_q3" type="checkbox" value="Which"/> Which</label>
-<label><input name="ex6_q3" type="checkbox" value="group of people"/> group of people</label>
-<label><input name="ex6_q3" type="checkbox" value="drink"/> drink</label>
-<label><input name="ex6_q3" type="checkbox" value="more sugary drinks"/> more sugary drinks</label>
-<label><input name="ex6_q3" type="checkbox" value="anyone else"/> anyone else</label>
-<div class="feedback" id="feedback_ex6_q3"></div>
-</div>
-<div class="question-item">
-<p>4. How do people really feel after finishing sugary drinks? (3 selections)</p>
-<label><input name="ex6_q4" type="checkbox" value="How"/> How</label>
-<label><input name="ex6_q4" type="checkbox" value="really feel"/> really feel</label>
-<label><input name="ex6_q4" type="checkbox" value="after"/> after</label>
-<label><input name="ex6_q4" type="checkbox" value="finishing"/> finishing</label>
-<label><input name="ex6_q4" type="checkbox" value="sugary drinks"/> sugary drinks</label>
-<div class="feedback" id="feedback_ex6_q4"></div>
-</div>
-<div class="question-item">
-<p>5. Which food product has an unexpected amount of sugar? (3 selections)</p>
-<label><input name="ex6_q5" type="checkbox" value="Which"/> Which</label>
-<label><input name="ex6_q5" type="checkbox" value="food product"/> food product</label>
-<label><input name="ex6_q5" type="checkbox" value="has"/> has</label>
-<label><input name="ex6_q5" type="checkbox" value="unexpected amount of sugar"/> unexpected amount of sugar</label>
-<div class="feedback" id="feedback_ex6_q5"></div>
-</div>
-<div class="question-item">
-<p>6. What do nutritionists want to be clearer for consumers? (3 selections)</p>
-<label><input name="ex6_q6" type="checkbox" value="What"/> What</label>
-<label><input name="ex6_q6" type="checkbox" value="nutritionists"/> nutritionists</label>
-<label><input name="ex6_q6" type="checkbox" value="want"/> want</label>
-<label><input name="ex6_q6" type="checkbox" value="clearer"/> clearer</label>
-<label><input name="ex6_q6" type="checkbox" value="consumers"/> consumers</label>
-<div class="feedback" id="feedback_ex6_q6"></div>
-</div>
-<div class="question-item">
-<p>7. What may decrease as a result of tooth decay in children? (3 selections)</p>
-<label><input name="ex6_q7" type="checkbox" value="What"/> What</label>
-<label><input name="ex6_q7" type="checkbox" value="decrease"/> decrease</label>
-<label><input name="ex6_q7" type="checkbox" value="result"/> result</label>
-<label><input name="ex6_q7" type="checkbox" value="tooth decay"/> tooth decay</label>
-<label><input name="ex6_q7" type="checkbox" value="children"/> children</label>
-<div class="feedback" id="feedback_ex6_q7"></div>
-</div>
-<button class="check-button" onclick="checkExercise6()">Check Answers</button>
-</div>
-<!-- Exercise 7 -->
-<div class="exercise-section" id="exercise7">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 7</h2>
-<p class="mb-4">Read the information. Then read the questions. Use the words and phrases in bold to help you work out the correct answers. Note that the answers do not relate to the reading text. Focus on the language, not the content.</p>
-<div class="question-item">
-<p>1. What is the maximum recommended number of teaspoons of sugar that a person should consume a day?</p>
-<div class="options-row">
-<label><input name="exercise7_q1" type="radio" value="9"/> 9</label>
-<label><input name="exercise7_q1" type="radio" value="a few"/> a few</label>
-<label><input name="exercise7_q1" type="radio" value="a lot of"/> a lot of</label>
-</div>
-<div class="feedback" id="feedback_ex7_q1"></div>
-</div>
-<div class="question-item">
-<p>2. Which group of people drink more sugary drinks than anyone else?</p>
-<div class="options-row">
-<label><input name="exercise7_q2" type="radio" value="Students"/> Students</label>
-<label><input name="exercise7_q2" type="radio" value="studies"/> studies</label>
-<label><input name="exercise7_q2" type="radio" value="student"/> student</label>
-</div>
-<div class="feedback" id="feedback_ex7_q2"></div>
-</div>
-<div class="question-item">
-<p>3. How do people really feel after finishing sugary drinks?</p>
-<div class="options-row">
-<label><input name="exercise7_q3" type="radio" value="Happiness"/> Happiness</label>
-<label><input name="exercise7_q3" type="radio" value="exciting"/> exciting</label>
-<label><input name="exercise7_q3" type="radio" value="excited"/> excited</label>
-</div>
-<div class="feedback" id="feedback_ex7_q3"></div>
-</div>
-<div class="question-item">
-<p>4. Which food product has an unexpected amount of sugar?</p>
-<div class="options-row">
-<label><input name="exercise7_q4" type="radio" value="Cheese"/> Cheese</label>
-<label><input name="exercise7_q4" type="radio" value="dinner"/> dinner</label>
-<label><input name="exercise7_q4" type="radio" value="emonade"/> emonade</label>
-</div>
-<div class="feedback" id="feedback_ex7_q4"></div>
-</div>
-<div class="question-item">
-<p>5. What do nutritionists want to be clearer for consumers?</p>
-<div class="options-row">
-<label><input name="exercise7_q5" type="radio" value="Information"/> Information</label>
-<label><input name="exercise7_q5" type="radio" value="instructions"/> instructions</label>
-<label><input name="exercise7_q5" type="radio" value="notice"/> notice</label>
-</div>
-<div class="feedback" id="feedback_ex7_q5"></div>
-</div>
-<div class="question-item">
-<p>6. What may decrease as a result of tooth decay in children?</p>
-<div class="options-row">
-<label><input name="exercise7_q6" type="radio" value="Concentration"/> Concentration</label>
-<label><input name="exercise7_q6" type="radio" value="daily"/> daily</label>
-<label><input name="exercise7_q6" type="radio" value="clean"/> clean</label>
-</div>
-<div class="feedback" id="feedback_ex7_q6"></div>
-</div>
-<button class="check-button" onclick="checkExercise7()">Check Answers</button>
-</div>
-<!-- Exercise 8 -->
-<div class="exercise-section" id="exercise8">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 8</h2>
-<p class="mb-4">Read the information. Then match the paraphrases and synonyms in the box with the phrases. The first one has been done for you.</p>
-<div class="question-item">
-<p>1. the least sugar</p>
-<select class="w-full" id="ex8_q1" name="exercise8_q1">
-<option value="">Select...</option>
-<option value="this can mean that">this can mean that</option>
-<option value="greatest consumers">greatest consumers</option>
-<option value="recommended limit">recommended limit</option>
-<option value="which actually has a lot">which actually has a lot</option>
-<option value="think this should be a lot easier for them">think this should be a lot easier for them</option>
-<option value="soda">soda</option>
-<option value="sweet food is less popular">sweet food is less popular</option>
-</select>
-<div class="feedback" id="feedback_ex8_q1"></div>
-</div>
-<div class="question-item">
-<p>2. maximum recommended number</p>
-<select class="w-full" id="ex8_q2" name="exercise8_q2">
-<option value="">Select...</option>
-<option value="this can mean that">this can mean that</option>
-<option value="greatest consumers">greatest consumers</option>
-<option value="recommended limit">recommended limit</option>
-<option value="which actually has a lot">which actually has a lot</option>
-<option value="think this should be a lot easier for them">think this should be a lot easier for them</option>
-<option value="soda">soda</option>
-<option value="sweet food is less popular">sweet food is less popular</option>
-</select>
-<div class="feedback" id="feedback_ex8_q2"></div>
-</div>
-<div class="question-item">
-<p>3. group of people drink more</p>
-<select class="w-full" id="ex8_q3" name="exercise8_q3">
-<option value="">Select...</option>
-<option value="this can mean that">this can mean that</option>
-<option value="greatest consumers">greatest consumers</option>
-<option value="recommended limit">recommended limit</option>
-<option value="which actually has a lot">which actually has a lot</option>
-<option value="think this should be a lot easier for them">think this should be a lot easier for them</option>
-<option value="soda">soda</option>
-<option value="sweet food is less popular">sweet food is less popular</option>
-</select>
-<div class="feedback" id="feedback_ex8_q3"></div>
-</div>
-<div class="question-item">
-<p>4. sugary drink(s)</p>
-<select class="w-full" id="ex8_q4" name="exercise8_q4">
-<option value="">Select...</option>
-<option value="this can mean that">this can mean that</option>
-<option value="greatest consumers">greatest consumers</option>
-<option value="recommended limit">recommended limit</option>
-<option value="which actually has a lot">which actually has a lot</option>
-<option value="think this should be a lot easier for them">think this should be a lot easier for them</option>
-<option value="soda">soda</option>
-<option value="sweet food is less popular">sweet food is less popular</option>
-</select>
-<div class="feedback" id="feedback_ex8_q4"></div>
-</div>
-<div class="question-item">
-<p>5. unexpected amount of sugar</p>
-<select class="w-full" id="ex8_q5" name="exercise8_q5">
-<option value="">Select...</option>
-<option value="this can mean that">this can mean that</option>
-<option value="greatest consumers">greatest consumers</option>
-<option value="recommended limit">recommended limit</option>
-<option value="which actually has a lot">which actually has a lot</option>
-<option value="think this should be a lot easier for them">think this should be a lot easier for them</option>
-<option value="soda">soda</option>
-<option value="sweet food is less popular">sweet food is less popular</option>
-</select>
-<div class="feedback" id="feedback_ex8_q5"></div>
-</div>
-<div class="question-item">
-<p>6. want to be clearer for consumers</p>
-<select class="w-full" id="ex8_q6" name="exercise8_q6">
-<option value="">Select...</option>
-<option value="this can mean that">this can mean that</option>
-<option value="greatest consumers">greatest consumers</option>
-<option value="recommended limit">recommended limit</option>
-<option value="which actually has a lot">which actually has a lot</option>
-<option value="think this should be a lot easier for them">think this should be a lot easier for them</option>
-<option value="soda">soda</option>
-<option value="sweet food is less popular">sweet food is less popular</option>
-</select>
-<div class="feedback" id="feedback_ex8_q6"></div>
-</div>
-<div class="question-item">
-<p>7. as a result of</p>
-<select class="w-full" id="ex8_q7" name="exercise8_q7">
-<option value="">Select...</option>
-<option value="this can mean that">this can mean that</option>
-<option value="greatest consumers">greatest consumers</option>
-<option value="recommended limit">recommended limit</option>
-<option value="which actually has a lot">which actually has a lot</option>
-<option value="think this should be a lot easier for them">think this should be a lot easier for them</option>
-<option value="soda">soda</option>
-<option value="sweet food is less popular">sweet food is less popular</option>
-</select>
-<div class="feedback" id="feedback_ex8_q7"></div>
-</div>
-<button class="check-button" onclick="checkExercise8()">Check Answers</button>
-</div>
-<!-- Exercise 9 -->
-<div class="exercise-section" id="exercise9">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 9</h2>
-<p class="mb-4">Answer the questions. Choose <span class="highlight-keyword">ONE WORD OR A NUMBER</span> from the passage for each answer.</p>
-<div class="question-item">
-<p>1. Which country consumes the least sugar per person?</p>
-<input class="w-full" id="ex9_q1" name="exercise9_q1" type="text"/>
-<div class="feedback" id="feedback_ex9_q1"></div>
-</div>
-<div class="question-item">
-<p>2. What is the maximum recommended number of teaspoons of sugar that a person should consume a day?</p>
-<input class="w-full" id="ex9_q2" name="exercise9_q2" type="text"/>
-<div class="feedback" id="feedback_ex9_q2"></div>
-</div>
-<div class="question-item">
-<p>3. Which group of people drink more sugary drinks than anyone else?</p>
-<input class="w-full" id="ex9_q3" name="exercise9_q3" type="text"/>
-<div class="feedback" id="feedback_ex9_q3"></div>
-</div>
-<div class="question-item">
-<p>4. How do people really feel after finishing sugary drinks?</p>
-<input class="w-full" id="ex9_q4" name="exercise9_q4" type="text"/>
-<div class="feedback" id="feedback_ex9_q4"></div>
-</div>
-<div class="question-item">
-<p>5. Which food product has an unexpected amount of sugar?</p>
-<input class="w-full" id="ex9_q5" name="exercise9_q5" type="text"/>
-<div class="feedback" id="feedback_ex9_q5"></div>
-</div>
-<div class="question-item">
-<p>6. What do nutritionists want to be clearer for consumers?</p>
-<input class="w-full" id="ex9_q6" name="exercise9_q6" type="text"/>
-<div class="feedback" id="feedback_ex9_q6"></div>
-</div>
-<div class="question-item">
-<p>7. What may decrease as a result of tooth decay in children?</p>
-<input class="w-full" id="ex9_q7" name="exercise9_q7" type="text"/>
-<div class="feedback" id="feedback_ex9_q7"></div>
-</div>
-<button class="check-button" onclick="checkExercise9()">Check Answers</button>
-</div>
-<!-- Exercise 10 -->
-<div class="exercise-section" id="exercise10">
-<h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 10</h2>
-<p class="mb-4">Think about what you’ve learnt in this unit. Complete the advice. Use the words in the box.</p>
-<p class="mb-2 text-sm text-gray-600">Words in box: <span class="highlight-keyword">different occupations</span>, <span class="highlight-keyword">is not the same</span>, <span class="highlight-keyword">one word or one number</span>, <span class="highlight-keyword">question words</span>, <span class="highlight-keyword">the same order</span></p>
-<div class="question-item">
-<p>1. When the instruction says ‘choose ONE WORD OR A NUMBER ONLY’ from the passage, you must only write <input class="inline-block w-64" id="ex10_q1" name="exercise10_q1" type="text"/> that you can find in the text.</p>
-<div class="feedback" id="feedback_ex10_q1"></div>
-</div>
-<div class="question-item">
-<p>2. The answers for the short answer questions task follow <input class="inline-block w-64" id="ex10_q2" name="exercise10_q2" type="text"/> as the questions.</p>
-<div class="feedback" id="feedback_ex10_q2"></div>
-</div>
-<div class="question-item">
-<p>3. The language before, around or after the answers in the text <input class="inline-block w-64" id="ex10_q3" name="exercise10_q3" type="text"/> as the language in the questions.</p>
-<div class="feedback" id="feedback_ex10_q3"></div>
-</div>
-<div class="question-item">
-<p>4. It can be useful to learn the names for <input class="inline-block w-64" id="ex10_q4" name="exercise10_q4" type="text"/>.</p>
-<div class="feedback" id="feedback_ex10_q4"></div>
-</div>
-<div class="question-item">
-<p>5. It is a good idea to predict what kind of information might follow <input class="inline-block w-64" id="ex10_q5" name="exercise10_q5" type="text"/> like ‘which’, ‘where’ and ‘who’.</p>
-<div class="feedback" id="feedback_ex10_q5"></div>
-</div>
-<button class="check-button" onclick="checkExercise10()">Check Answers</button>
-</div>
-</div>
-<script>
+    <!-- Exercise Navigation Menu -->
+    <div id="exercise-menu-container">
+        <button id="exercise-menu-button">
+            <span>Exercises</span>
+            <!-- Simple SVG for dropdown arrow -->
+            <svg class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+        </button>
+        <div id="exercise-menu">
+            <a href="#" data-target="exercise1">Exercise 1</a>
+            <a href="#" data-target="exercise2">Exercise 2</a>
+            <a href="#" data-target="exercise3">Exercise 3</a>
+            <a href="#" data-target="exercise4">Exercise 4</a>
+            <a href="#" data-target="exercise5">Exercise 5</a>
+            <a href="#" data-target="exercise6">Exercise 6</a>
+            <a href="#" data-target="exercise7">Exercise 7</a>
+            <a href="#" data-target="exercise8">Exercise 8</a>
+            <a href="#" data-target="exercise9">Exercise 9</a>
+            <a href="#" data-target="exercise10">Exercise 10</a>
+        </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">Mindset for IELTS 1 - Unit 1 Reading</h1>
+        <div class="reading-text">
+            <h3 class="text-xl text-center">How our sweet tooth is hurting us</h3>
+            <p>Over the last three centuries, the amount of sugar in the Western diet has continued to rise. Back at the start of the 18th century, a typical English family consumed less than 2 kg of sugar per year. By the end of that century, that amount had risen 400%. Compare that to the 40 kg that people now consume annually in the USA. In Germany, the second-most sugar-loving nation in the world, people eat roughly 103 grams on average per day. In the Netherlands, the country with the third-biggest sweet tooth, people eat 102.5 grams. Of course, there are some countries in the world where sweet food is less popular: in India, people eat only about 5 grams per day on average; in Indonesia, it’s 14.5 grams; and in China, it’s just under 16 grams. If you’re not sure what 40 kg looks like, it means that the average person in the USA now eats approximately 22 teaspoons of sugar a day. The recommended limit, suggested by researchers from the World Health Organisation, is no more than 8 if you want to stay healthy, but just one can of soda contains around 10.</p>
+            <p>It is common knowledge that many drinks, in bottles or canned, contain a lot of sugar. Although advertisements say that they are ‘energy-giving’, professional athletes and sportsmen and women usually stay away from them. It is teenagers that are their greatest consumers. And – although advertisers promise that these drinks will make people feel energetic and active – because of the type of chemicals they have, once a person has drunk all the soda, they simply feel hungry instead. However, sugar is also in products that many shoppers find surprising, for example, cereal, which actually has a lot. Because they believe it is a healthy kind of food, parents buy it for their children’s breakfast.</p>
+            <p>A large part of the problem, according to nutritionists, is that people find it hard to understand the labels on the back of food products. Nutritionists think this should be a lot easier for them. But at the moment, manufacturers don’t have to write ‘sugar’ on them, but can use words like ‘corn syrup’ or ‘dextran’, which can result in confusion for consumers. But why should we be worried about our sugar consumption? Firstly, it is harmful to young children because it causes tooth decay; the pain from this can mean that children don’t get the amount of sleep they need. As a result, they can’t concentrate when they are in class. In this case, schools and governments have a duty to educate them about good and bad food choices. For adults, the problems increase. Eating too much sugar makes people quickly gain weight, it affects the heart and liver, and can can lead to diabetes.</p>
+        </div>
+
+        <!-- Start of Exercise 1 -->
+        <section class="exercise-section" id="exercise1">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 1</h2>
+            <p class="mb-4">Before you read the text, look at the statements. Do you think that they are True or False? Choose your answers.</p>
+            <div class="question-item">
+                <p>1. The expression 'to have a sweet tooth' means 'to like eating sweet foods, especially sweets and chocolate'.</p>
+                <div class="options-row">
+                    <label><input name="exercise1_q1" type="radio" value="True"/> True</label>
+                    <label><input name="exercise1_q1" type="radio" value="False"/> False</label>
+                </div>
+                <div class="feedback" id="feedback_ex1_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>2. In 18th-century Europe, more poor people than rich people lost their teeth because of sugar.</p>
+                <div class="options-row">
+                    <label><input name="exercise1_q2" type="radio" value="True"/> True</label>
+                    <label><input name="exercise1_q2" type="radio" value="False"/> False</label>
+                </div>
+                <div class="feedback" id="feedback_ex1_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>3. If you drink a typical can of soda, you’ll consume about 10 sugar cubes.</p>
+                <div class="options-row">
+                    <label><input name="exercise1_q3" type="radio" value="True"/> True</label>
+                    <label><input name="exercise1_q3" type="radio" value="False"/> False</label>
+                </div>
+                <div class="feedback" id="feedback_ex1_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>4. In general, children in the USA consume a lot more sugar than their parents.</p>
+                <div class="options-row">
+                    <label><input name="exercise1_q4" type="radio" value="True"/> True</label>
+                    <label><input name="exercise1_q4" type="radio" value="False"/> False</label>
+                </div>
+                <div class="feedback" id="feedback_ex1_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>5. It is now possible to order chocolate-covered insects online.</p>
+                <div class="options-row">
+                    <label><input name="exercise1_q5" type="radio" value="True"/> True</label>
+                    <label><input name="exercise1_q5" type="radio" value="False"/> False</label>
+                </div>
+                <div class="feedback" id="feedback_ex1_q5"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise1()">Check Answers</button>
+        </section>
+        <!-- Exercise 2 -->
+        <section class="exercise-section" id="exercise2">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 2</h2>
+            <p class="mb-4">Which of the ideas in sentences 1–5 are mentioned in the text? Choose Yes or No. Read the text again if you need to.</p>
+            <div class="question-item">
+                <p>1. The increase in the amount of sugar we eat.</p>
+                <div class="options-row">
+                    <label><input name="exercise2_q1" type="radio" value="Yes"/> Yes</label>
+                    <label><input name="exercise2_q1" type="radio" value="No"/> No</label>
+                </div>
+                <div class="feedback" id="feedback_ex2_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>2. The places in the supermarket where you can find sugary products.</p>
+                <div class="options-row">
+                    <label><input name="exercise2_q2" type="radio" value="Yes"/> Yes</label>
+                    <label><input name="exercise2_q2" type="radio" value="No"/> No</label>
+                </div>
+                <div class="feedback" id="feedback_ex2_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>3. The way that advertising sugary products has changed.</p>
+                <div class="options-row">
+                    <label><input name="exercise2_q3" type="radio" value="Yes"/> Yes</label>
+                    <label><input name="exercise2_q3" type="radio" value="No"/> No</label>
+                </div>
+                <div class="feedback" id="feedback_ex2_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>4. The health problems that sugar causes in children.</p>
+                <div class="options-row">
+                    <label><input name="exercise2_q4" type="radio" value="Yes"/> Yes</label>
+                    <label><input name="exercise2_q4" type="radio" value="No"/> No</label>
+                </div>
+                <div class="feedback" id="feedback_ex2_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>5. The health problems that sugar causes in adults.</p>
+                <div class="options-row">
+                    <label><input name="exercise2_q5" type="radio" value="Yes"/> Yes</label>
+                    <label><input name="exercise2_q5" type="radio" value="No"/> No</label>
+                </div>
+                <div class="feedback" id="feedback_ex2_q5"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise2()">Check Answers</button>
+        </section>
+        <!-- Exercise 3 -->
+        <section class="exercise-section" id="exercise3">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 3</h2>
+            <p class="mb-4">In many IELTS Reading texts, you often see information or opinions given by different people. Match the people with the definitions.</p>
+            <div class="question-item">
+                <p>1. a person or company that makes a product:</p>
+                <select class="w-full" id="ex3_q1" name="exercise3_q1">
+                    <option value="">Select...</option>
+                    <option value="manufacturer">manufacturer</option>
+                    <option value="consumer">consumer</option>
+                    <option value="researcher">researcher</option>
+                    <option value="nutritionist">nutritionist</option>
+                    <option value="advertiser">advertiser</option>
+                </select>
+                <div class="feedback" id="feedback_ex3_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>2. a person who buys or uses a product:</p>
+                <select class="w-full" id="ex3_q2" name="exercise3_q2">
+                    <option value="">Select...</option>
+                    <option value="manufacturer">manufacturer</option>
+                    <option value="consumer">consumer</option>
+                    <option value="researcher">researcher</option>
+                    <option value="nutritionist">nutritionist</option>
+                    <option value="advertiser">advertiser</option>
+                </select>
+                <div class="feedback" id="feedback_ex3_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>3. a person who studies a subject carefully:</p>
+                <select class="w-full" id="ex3_q3" name="exercise3_q3">
+                    <option value="">Select...</option>
+                    <option value="manufacturer">manufacturer</option>
+                    <option value="consumer">consumer</option>
+                    <option value="researcher">researcher</option>
+                    <option value="nutritionist">nutritionist</option>
+                    <option value="advertiser">advertiser</option>
+                </select>
+                <div class="feedback" id="feedback_ex3_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>4. a person who gives advice about healthy eating:</p>
+                <select class="w-full" id="ex3_q4" name="exercise3_q4">
+                    <option value="">Select...</option>
+                    <option value="manufacturer">manufacturer</option>
+                    <option value="consumer">consumer</option>
+                    <option value="researcher">researcher</option>
+                    <option value="nutritionist">nutritionist</option>
+                    <option value="advertiser">advertiser</option>
+                </select>
+                <div class="feedback" id="feedback_ex3_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>5. a person who makes commercials to sell a product:</p>
+                <select class="w-full" id="ex3_q5" name="exercise3_q5">
+                    <option value="">Select...</option>
+                    <option value="manufacturer">manufacturer</option>
+                    <option value="consumer">consumer</option>
+                    <option value="researcher">researcher</option>
+                    <option value="nutritionist">nutritionist</option>
+                    <option value="advertiser">advertiser</option>
+                </select>
+                <div class="feedback" id="feedback_ex3_q5"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise3()">Check Answers</button>
+        </section>
+        <!-- Exercise 4 -->
+        <section class="exercise-section" id="exercise4">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 4</h2>
+            <p class="mb-4">Who do you think might say the following things? Match the people with the statements. In IELTS Reading texts, you need to identify and understand opinions and ideas.</p>
+            <div class="question-item">
+                <p>1. ‘My report studies the effects of sugar on the health of people aged 15–24 in the USA.’</p>
+                <select class="w-full" id="ex4_q1" name="exercise4_q1">
+                    <option value="">Select...</option>
+                    <option value="researcher">researcher</option>
+                    <option value="advertiser">advertiser</option>
+                    <option value="nutritionist">nutritionist</option>
+                    <option value="manufacturer">manufacturer</option>
+                    <option value="consumer">consumer</option>
+                </select>
+                <div class="feedback" id="feedback_ex4_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>2. ‘Feeling tired? New Choco-nut breakfast cereal will give you all the energy you need!’</p>
+                <select class="w-full" id="ex4_q2" name="exercise4_q2">
+                    <option value="">Select...</option>
+                    <option value="researcher">researcher</option>
+                    <option value="advertiser">advertiser</option>
+                    <option value="nutritionist">nutritionist</option>
+                    <option value="manufacturer">manufacturer</option>
+                    <option value="consumer">consumer</option>
+                </select>
+                <div class="feedback" id="feedback_ex4_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>3. ‘There are ten sugar cubes in every can of soda so you shouldn’t drink soda every day.’</p>
+                <select class="w-full" id="ex4_q3" name="exercise4_q3">
+                    <option value="">Select...</option>
+                    <option value="researcher">researcher</option>
+                    <option value="advertiser">advertiser</option>
+                    <option value="nutritionist">nutritionist</option>
+                    <option value="manufacturer">manufacturer</option>
+                    <option value="consumer">consumer</option>
+                </select>
+                <div class="feedback" id="feedback_ex4_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>4. ‘Our factory sells 50% more sugar today than 50 years ago.’</p>
+                <select class="w-full" id="ex4_q4" name="exercise4_q4">
+                    <option value="">Select...</option>
+                    <option value="researcher">researcher</option>
+                    <option value="advertiser">advertiser</option>
+                    <option value="nutritionist">nutritionist</option>
+                    <option value="manufacturer">manufacturer</option>
+                    <option value="consumer">consumer</option>
+                </select>
+                <div class="feedback" id="feedback_ex4_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>5. ‘I know sugar is bad for me, but I usually eat two bars of chocolate every day.’</p>
+                <select class="w-full" id="ex4_q5" name="exercise4_q5">
+                    <option value="">Select...</option>
+                    <option value="researcher">researcher</option>
+                    <option value="advertiser">advertiser</option>
+                    <option value="nutritionist">nutritionist</option>
+                    <option value="manufacturer">manufacturer</option>
+                    <option value="consumer">consumer</option>
+                </select>
+                <div class="feedback" id="feedback_ex4_q5"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise4()">Check Answers</button>
+        </section>
+        <!-- Exercise 5 -->
+        <section class="exercise-section" id="exercise5">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 5</h2>
+            <p class="mb-4">Read the information. Then match the words in <span class="highlight-keyword">bold</span> with the phrases that have a similar meaning. Use the phrases in  x.</p>
+            <div class="question-item">
+                <p>1. Sugar can be <span class="highlight-keyword">very bad for</span> children.</p>
+                <select class="w-full" id="ex5_q1" name="exercise5_q1">
+                    <option value="">Select...</option>
+                    <option value="harmful to">harmful to</option>
+                    <option value="was unexpected">was unexpected</option>
+                    <option value="consume">consume</option>
+                    <option value="stay away from">stay away from</option>
+                    <option value="recommend that you">recommend that you</option>
+                    <option value="not clear">not clear</option>
+                </select>
+                <div class="feedback" id="feedback_ex5_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>2. My doctor said I was eating the wrong foods, which <span class="highlight-keyword">surprised me</span>.</p>
+                <select class="w-full" id="ex5_q2" name="exercise5_q2">
+                    <option value="">Select...</option>
+                    <option value="harmful to">harmful to</option>
+                    <option value="was unexpected">was unexpected</option>
+                    <option value="consume">consume</option>
+                    <option value="stay away from">stay away from</option>
+                    <option value="recommend that you">recommend that you</option>
+                    <option value="not clear">not clear</option>
+                </select>
+                <div class="feedback" id="feedback_ex5_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>3. We should <span class="highlight-keyword">buy and eat healthier food that doesn’t have a lot of sugar</span>.</p>
+                <select class="w-full" id="ex5_q3" name="exercise5_q3">
+                    <option value="">Select...</option>
+                    <option value="harmful to">harmful to</option>
+                    <option value="was unexpected">was unexpected</option>
+                    <option value="consume">consume</option>
+                    <option value="stay away from">stay away from</option>
+                    <option value="recommend that you">recommend that you</option>
+                    <option value="not clear">not clear</option>
+                </select>
+                <div class="feedback" id="feedback_ex5_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>4. I try to <span class="highlight-keyword">avoid</span> chocolate when I’m hungry because it’s not very healthy.</p>
+                <select class="w-full" id="ex5_q4" name="exercise5_q4">
+                    <option value="">Select...</option>
+                    <option value="harmful to">harmful to</option>
+                    <option value="was unexpected">was unexpected</option>
+                    <option value="consume">consume</option>
+                    <option value="stay away from">stay away from</option>
+                    <option value="recommend that you">recommend that you</option>
+                    <option value="not clear">not clear</option>
+                </select>
+                <div class="feedback" id="feedback_ex5_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>5. I <span class="highlight-keyword">think you should</span> go on a diet.</p>
+                <select class="w-full" id="ex5_q5" name="exercise5_q5">
+                    <option value="">Select...</option>
+                    <option value="harmful to">harmful to</option>
+                    <option value="was unexpected">was unexpected</option>
+                    <option value="consume">consume</option>
+                    <option value="stay away from">stay away from</option>
+                    <option value="recommend that you">recommend that you</option>
+                    <option value="not clear">not clear</option>
+                </select>
+                <div class="feedback" id="feedback_ex5_q5"></div>
+            </div>
+            <div class="question-item">
+                <p>6. A lot of information about good sugar and bad sugar is <span class="highlight-keyword">hard to understand</span>.</p>
+                <select class="w-full" id="ex5_q6" name="exercise5_q6">
+                    <option value="">Select...</option>
+                    <option value="harmful to">harmful to</option>
+                    <option value="was unexpected">was unexpected</option>
+                    <option value="consume">consume</option>
+                    <option value="stay away from">stay away from</option>
+                    <option value="recommend that you">recommend that you</option>
+                    <option value="not clear">not clear</option>
+                </select>
+                <div class="feedback" id="feedback_ex5_q6"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise5()">Check Answers</button>
+        </section>
+        <!-- Exercise 6 -->
+        <section class="exercise-section" id="exercise6">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 6</h2>
+            <p class="mb-4">Read the information. Then look at the questions. Select the key words that show you the type of information you need to look for. The numbers in brackets at the end of each question show you how many selections you need to make.</p>
+            <div class="question-item">
+                <p>1. Which country consumes the least sugar per person? (3 selections)</p>
+                <label><input name="ex6_q1" type="checkbox" value="country"/> country</label>
+                <label><input name="ex6_q1" type="checkbox" value="consumes"/> consumes</label>
+                <label><input name="ex6_q1" type="checkbox" value="least sugar"/> least sugar</label>
+                <label><input name="ex6_q1" type="checkbox" value="per person"/> per person</label>
+                <div class="feedback" id="feedback_ex6_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>2. What is the maximum recommended number of teaspoons of sugar that a person should consume a day? (4 selections)</p>
+                <label><input name="ex6_q2" type="checkbox" value="What"/> What</label>
+                <label><input name="ex6_q2" type="checkbox" value="maximum recommended number"/> maximum recommended number</label>
+                <label><input name="ex6_q2" type="checkbox" value="teaspoons of sugar"/> teaspoons of sugar</label>
+                <label><input name="ex6_q2" type="checkbox" value="consume"/> consume</label>
+                <label><input name="ex6_q2" type="checkbox" value="a day"/> a day</label>
+                <div class="feedback" id="feedback_ex6_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>3. Which group of people drink more sugary drinks than anyone else? (3 selections)</p>
+                <label><input name="ex6_q3" type="checkbox" value="Which"/> Which</label>
+                <label><input name="ex6_q3" type="checkbox" value="group of people"/> group of people</label>
+                <label><input name="ex6_q3" type="checkbox" value="drink"/> drink</label>
+                <label><input name="ex6_q3" type="checkbox" value="more sugary drinks"/> more sugary drinks</label>
+                <label><input name="ex6_q3" type="checkbox" value="anyone else"/> anyone else</label>
+                <div class="feedback" id="feedback_ex6_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>4. How do people really feel after finishing sugary drinks? (3 selections)</p>
+                <label><input name="ex6_q4" type="checkbox" value="How"/> How</label>
+                <label><input name="ex6_q4" type="checkbox" value="really feel"/> really feel</label>
+                <label><input name="ex6_q4" type="checkbox" value="after"/> after</label>
+                <label><input name="ex6_q4" type="checkbox" value="finishing"/> finishing</label>
+                <label><input name="ex6_q4" type="checkbox" value="sugary drinks"/> sugary drinks</label>
+                <div class="feedback" id="feedback_ex6_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>5. Which food product has an unexpected amount of sugar? (3 selections)</p>
+                <label><input name="ex6_q5" type="checkbox" value="Which"/> Which</label>
+                <label><input name="ex6_q5" type="checkbox" value="food product"/> food product</label>
+                <label><input name="ex6_q5" type="checkbox" value="has"/> has</label>
+                <label><input name="ex6_q5" type="checkbox" value="unexpected amount of sugar"/> unexpected amount of sugar</label>
+                <div class="feedback" id="feedback_ex6_q5"></div>
+            </div>
+            <div class="question-item">
+                <p>6. What do nutritionists want to be clearer for consumers? (3 selections)</p>
+                <label><input name="ex6_q6" type="checkbox" value="What"/> What</label>
+                <label><input name="ex6_q6" type="checkbox" value="nutritionists"/> nutritionists</label>
+                <label><input name="ex6_q6" type="checkbox" value="want"/> want</label>
+                <label><input name="ex6_q6" type="checkbox" value="clearer"/> clearer</label>
+                <label><input name="ex6_q6" type="checkbox" value="consumers"/> consumers</label>
+                <div class="feedback" id="feedback_ex6_q6"></div>
+            </div>
+            <div class="question-item">
+                <p>7. What may decrease as a result of tooth decay in children? (3 selections)</p>
+                <label><input name="ex6_q7" type="checkbox" value="What"/> What</label>
+                <label><input name="ex6_q7" type="checkbox" value="decrease"/> decrease</label>
+                <label><input name="ex6_q7" type="checkbox" value="result"/> result</label>
+                <label><input name="ex6_q7" type="checkbox" value="tooth decay"/> tooth decay</label>
+                <label><input name="ex6_q7" type="checkbox" value="children"/> children</label>
+                <div class="feedback" id="feedback_ex6_q7"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise6()">Check Answers</button>
+        </section>
+        <!-- Exercise 7 -->
+        <section class="exercise-section" id="exercise7">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 7</h2>
+            <p class="mb-4">Read the information. Then read the questions. Use the words and phrases in bold to help you work out the correct answers. Note that the answers do not relate to the reading text. Focus on the language, not the content.</p>
+            <div class="question-item">
+                <p>1. What is the maximum recommended number of teaspoons of sugar that a person should consume a day?</p>
+                <div class="options-row">
+                    <label><input name="exercise7_q1" type="radio" value="9"/> 9</label>
+                    <label><input name="exercise7_q1" type="radio" value="a few"/> a few</label>
+                    <label><input name="exercise7_q1" type="radio" value="a lot of"/> a lot of</label>
+                </div>
+                <div class="feedback" id="feedback_ex7_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>2. Which group of people drink more sugary drinks than anyone else?</p>
+                <div class="options-row">
+                    <label><input name="exercise7_q2" type="radio" value="Students"/> Students</label>
+                    <label><input name="exercise7_q2" type="radio" value="studies"/> studies</label>
+                    <label><input name="exercise7_q2" type="radio" value="student"/> student</label>
+                </div>
+                <div class="feedback" id="feedback_ex7_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>3. How do people really feel after finishing sugary drinks?</p>
+                <div class="options-row">
+                    <label><input name="exercise7_q3" type="radio" value="Happiness"/> Happiness</label>
+                    <label><input name="exercise7_q3" type="radio" value="exciting"/> exciting</label>
+                    <label><input name="exercise7_q3" type="radio" value="excited"/> excited</label>
+                </div>
+                <div class="feedback" id="feedback_ex7_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>4. Which food product has an unexpected amount of sugar?</p>
+                <div class="options-row">
+                    <label><input name="exercise7_q4" type="radio" value="Cheese"/> Cheese</label>
+                    <label><input name="exercise7_q4" type="radio" value="dinner"/> dinner</label>
+                    <label><input name="exercise7_q4" type="radio" value="emonade"/> emonade</label>
+                </div>
+                <div class="feedback" id="feedback_ex7_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>5. What do nutritionists want to be clearer for consumers?</p>
+                <div class="options-row">
+                    <label><input name="exercise7_q5" type="radio" value="Information"/> Information</label>
+                    <label><input name="exercise7_q5" type="radio" value="instructions"/> instructions</label>
+                    <label><input name="exercise7_q5" type="radio" value="notice"/> notice</label>
+                </div>
+                <div class="feedback" id="feedback_ex7_q5"></div>
+            </div>
+            <div class="question-item">
+                <p>6. What may decrease as a result of tooth decay in children?</p>
+                <div class="options-row">
+                    <label><input name="exercise7_q6" type="radio" value="Concentration"/> Concentration</label>
+                    <label><input name="exercise7_q6" type="radio" value="daily"/> daily</label>
+                    <label><input name="exercise7_q6" type="radio" value="clean"/> clean</label>
+                </div>
+                <div class="feedback" id="feedback_ex7_q6"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise7()">Check Answers</button>
+        </section>
+        <!-- Exercise 8 -->
+        <section class="exercise-section" id="exercise8">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 8</h2>
+            <p class="mb-4">Read the information. Then match the paraphrases and synonyms in the box with the phrases. The first one has been done for you.</p>
+            <div class="question-item">
+                <p>1. the least sugar</p>
+                <select class="w-full" id="ex8_q1" name="exercise8_q1">
+                    <option value="">Select...</option>
+                    <option value="sweet food is less popular">sweet food is less popular</option>
+                    <option value="recommended limit">recommended limit</option>
+                    <option value="greatest consumers">greatest consumers</option>
+                    <option value="soda">soda</option>
+                    <option value="which actually has a lot">which actually has a lot</option>
+                    <option value="think this should be a lot easier for them">think this should be a lot easier for them</option>
+                    <option value="this can mean that">this can mean that</option>
+                </select>
+                <div class="feedback" id="feedback_ex8_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>2. maximum recommended number</p>
+                <select class="w-full" id="ex8_q2" name="exercise8_q2">
+                    <option value="">Select...</option>
+                    <option value="sweet food is less popular">sweet food is less popular</option>
+                    <option value="recommended limit">recommended limit</option>
+                    <option value="greatest consumers">greatest consumers</option>
+                    <option value="soda">soda</option>
+                    <option value="which actually has a lot">which actually has a lot</option>
+                    <option value="think this should be a lot easier for them">think this should be a lot easier for them</option>
+                    <option value="this can mean that">this can mean that</option>
+                </select>
+                <div class="feedback" id="feedback_ex8_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>3. group of people drink more</p>
+                <select class="w-full" id="ex8_q3" name="exercise8_q3">
+                    <option value="">Select...</option>
+                    <option value="sweet food is less popular">sweet food is less popular</option>
+                    <option value="recommended limit">recommended limit</option>
+                    <option value="greatest consumers">greatest consumers</option>
+                    <option value="soda">soda</option>
+                    <option value="which actually has a lot">which actually has a lot</option>
+                    <option value="think this should be a lot easier for them">think this should be a lot easier for them</option>
+                    <option value="this can mean that">this can mean that</option>
+                </select>
+                <div class="feedback" id="feedback_ex8_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>4. sugary drink(s)</p>
+                <select class="w-full" id="ex8_q4" name="exercise8_q4">
+                    <option value="">Select...</option>
+                    <option value="sweet food is less popular">sweet food is less popular</option>
+                    <option value="recommended limit">recommended limit</option>
+                    <option value="greatest consumers">greatest consumers</option>
+                    <option value="soda">soda</option>
+                    <option value="which actually has a lot">which actually has a lot</option>
+                    <option value="think this should be a lot easier for them">think this should be a lot easier for them</option>
+                    <option value="this can mean that">this can mean that</option>
+                </select>
+                <div class="feedback" id="feedback_ex8_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>5. unexpected amount of sugar</p>
+                <select class="w-full" id="ex8_q5" name="exercise8_q5">
+                    <option value="">Select...</option>
+                    <option value="sweet food is less popular">sweet food is less popular</option>
+                    <option value="recommended limit">recommended limit</option>
+                    <option value="greatest consumers">greatest consumers</option>
+                    <option value="soda">soda</option>
+                    <option value="which actually has a lot">which actually has a lot</option>
+                    <option value="think this should be a lot easier for them">think this should be a lot easier for them</option>
+                    <option value="this can mean that">this can mean that</option>
+                </select>
+                <div class="feedback" id="feedback_ex8_q5"></div>
+            </div>
+            <div class="question-item">
+                <p>6. want to be clearer for consumers</p>
+                <select class="w-full" id="ex8_q6" name="exercise8_q6">
+                    <option value="">Select...</option>
+                    <option value="sweet food is less popular">sweet food is less popular</option>
+                    <option value="recommended limit">recommended limit</option>
+                    <option value="greatest consumers">greatest consumers</option>
+                    <option value="soda">soda</option>
+                    <option value="which actually has a lot">which actually has a lot</option>
+                    <option value="think this should be a lot easier for them">think this should be a lot easier for them</option>
+                    <option value="this can mean that">this can mean that</option>
+                </select>
+                <div class="feedback" id="feedback_ex8_q6"></div>
+            </div>
+            <div class="question-item">
+                <p>7. as a result of</p>
+                <select class="w-full" id="ex8_q7" name="exercise8_q7">
+                    <option value="">Select...</option>
+                    <option value="sweet food is less popular">sweet food is less popular</option>
+                    <option value="recommended limit">recommended limit</option>
+                    <option value="greatest consumers">greatest consumers</option>
+                    <option value="soda">soda</option>
+                    <option value="which actually has a lot">which actually has a lot</option>
+                    <option value="think this should be a lot easier for them">think this should be a lot easier for them</option>
+                    <option value="this can mean that">this can mean that</option>
+                </select>
+                <div class="feedback" id="feedback_ex8_q7"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise8()">Check Answers</button>
+        </section>
+        <!-- Exercise 9 -->
+        <section class="exercise-section" id="exercise9">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 9</h2>
+            <p class="mb-4">Answer the questions. Choose <span class="highlight-keyword">ONE WORD OR A NUMBER</span> from the passage for each answer.</p>
+            <div class="question-item">
+                <p>1. Which country consumes the least sugar per person?</p>
+                <input class="w-full" id="ex9_q1" name="exercise9_q1" type="text"/>
+                <div class="feedback" id="feedback_ex9_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>2. What is the maximum recommended number of teaspoons of sugar that a person should consume a day?</p>
+                <input class="w-full" id="ex9_q2" name="exercise9_q2" type="text"/>
+                <div class="feedback" id="feedback_ex9_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>3. Which group of people drink more sugary drinks than anyone else?</p>
+                <input class="w-full" id="ex9_q3" name="exercise9_q3" type="text"/>
+                <div class="feedback" id="feedback_ex9_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>4. How do people really feel after finishing sugary drinks?</p>
+                <input class="w-full" id="ex9_q4" name="exercise9_q4" type="text"/>
+                <div class="feedback" id="feedback_ex9_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>5. Which food product has an unexpected amount of sugar?</p>
+                <input class="w-full" id="ex9_q5" name="exercise9_q5" type="text"/>
+                <div class="feedback" id="feedback_ex9_q5"></div>
+            </div>
+            <div class="question-item">
+                <p>6. What do nutritionists want to be clearer for consumers?</p>
+                <input class="w-full" id="ex9_q6" name="exercise9_q6" type="text"/>
+                <div class="feedback" id="feedback_ex9_q6"></div>
+            </div>
+            <div class="question-item">
+                <p>7. What may decrease as a result of tooth decay in children?</p>
+                <input class="w-full" id="ex9_q7" name="exercise9_q7" type="text"/>
+                <div class="feedback" id="feedback_ex9_q7"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise9()">Check Answers</button>
+        </section>
+        <!-- Exercise 10 -->
+        <section class="exercise-section" id="exercise10">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Unit 1: Exercise 10</h2>
+            <p class="mb-4">Think about what you’ve learnt in this unit. Complete the advice. Use the words in the box.</p>
+            <p class="mb-2 text-sm text-gray-600">Words in box: <span class="highlight-keyword">different occupations</span>, <span class="highlight-keyword">is not the same</span>, <span class="highlight-keyword">one word or one number</span>, <span class="highlight-keyword">question words</span>, <span class="highlight-keyword">the same order</span></p>
+            <div class="question-item">
+                <p>1. When the instruction says ‘choose ONE WORD OR A NUMBER ONLY’ from the passage, you must only write <input class="inline-block w-64" id="ex10_q1" name="exercise10_q1" type="text"/> that you can find in the text.</p>
+                <div class="feedback" id="feedback_ex10_q1"></div>
+            </div>
+            <div class="question-item">
+                <p>2. The answers for the short answer questions task follow <input class="inline-block w-64" id="ex10_q2" name="exercise10_q2" type="text"/> as the questions.</p>
+                <div class="feedback" id="feedback_ex10_q2"></div>
+            </div>
+            <div class="question-item">
+                <p>3. The language before, around or after the answers in the text <input class="inline-block w-64" id="ex10_q3" name="exercise10_q3" type="text"/> as the language in the questions.</p>
+                <div class="feedback" id="feedback_ex10_q3"></div>
+            </div>
+            <div class="question-item">
+                <p>4. It can be useful to learn the names for <input class="inline-block w-64" id="ex10_q4" name="exercise10_q4" type="text"/>.</p>
+                <div class="feedback" id="feedback_ex10_q4"></div>
+            </div>
+            <div class="question-item">
+                <p>5. It is a good idea to predict what kind of information might follow <input class="inline-block w-64" id="ex10_q5" name="exercise10_q5" type="text"/> like ‘which’, ‘where’ and ‘who’.</p>
+                <div class="feedback" id="feedback_ex10_q5"></div>
+            </div>
+            <button class="check-button" onclick="checkExercise10()">Check Answers</button>
+        </section>
+    </div>
+
+    <script>
         // Store correct answers for each exercise
         const correctAnswers = {
             exercise1: {
@@ -831,12 +952,12 @@
                 q7: ["decrease", "tooth decay", "children"]
             },
             exercise7: {
-                q1: "9",
-                q2: "Students",
-                q3: "excited",
-                q4: "Cheese",
-                q5: "Information",
-                q6: "Concentration"
+                q1: "8", // Corrected based on text
+                q2: "teenagers", // Corrected based on text
+                q3: "hungry", // Corrected based on text
+                q4: "cereal", // Corrected based on text
+                q5: "labels", // Corrected based on text
+                q6: "concentration" // Corrected based on text
             },
             exercise8: {
                 q1: "sweet food is less popular",
@@ -879,14 +1000,14 @@
         }
         function checkExercise1() {
             for (let i = 1; i <= 5; i++) {
-                const selectedValue = document.querySelector(`input[name="ex1_q${i}"]:checked`)?.value;
+                const selectedValue = document.querySelector(`input[name="exercise1_q${i}"]:checked`)?.value;
                 const isCorrect = selectedValue === correctAnswers.exercise1[`q${i}`];
                 showFeedback(`feedback_ex1_q${i}`, isCorrect);
             }
         }
         function checkExercise2() {
             for (let i = 1; i <= 5; i++) {
-                const selectedValue = document.querySelector(`input[name="ex2_q${i}"]:checked`)?.value;
+                const selectedValue = document.querySelector(`input[name="exercise2_q${i}"]:checked`)?.value;
                 const isCorrect = selectedValue === correctAnswers.exercise2[`q${i}`];
                 showFeedback(`feedback_ex2_q${i}`, isCorrect);
             }
@@ -924,7 +1045,7 @@
         }
         function checkExercise7() {
             for (let i = 1; i <= 6; i++) {
-                const selectedValue = document.querySelector(`input[name="ex7_q${i}"]:checked`)?.value;
+                const selectedValue = document.querySelector(`input[name="exercise7_q${i}"]:checked`)?.value;
                 const isCorrect = selectedValue === correctAnswers.exercise7[`q${i}`];
                 showFeedback(`feedback_ex7_q${i}`, isCorrect);
             }
@@ -952,49 +1073,94 @@
                 showFeedback(`feedback_ex10_q${i}`, isCorrect);
             }
         }
+
+        // --- Exercise Navigation Logic ---
+        function showExercise(exerciseId) {
+            // Hide all exercise sections
+            document.querySelectorAll('.exercise-section').forEach(section => {
+                section.classList.remove('active-exercise');
+            });
+            // Show the selected exercise section
+            const targetExercise = document.getElementById(exerciseId);
+            if (targetExercise) {
+                targetExercise.classList.add('active-exercise');
+            }
+            // Hide the menu after selection
+            document.getElementById('exercise-menu').classList.remove('show');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Display only the first exercise by default
+            showExercise('exercise1');
+
+            // Toggle menu visibility
+            const menuButton = document.getElementById('exercise-menu-button');
+            const exerciseMenu = document.getElementById('exercise-menu');
+
+            menuButton.addEventListener('click', (event) => {
+                exerciseMenu.classList.toggle('show');
+                event.stopPropagation(); // Prevent the document click from immediately closing it
+            });
+
+            // Handle exercise selection from the menu
+            exerciseMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault(); // Prevent default link behavior
+                    const targetId = event.target.dataset.target;
+                    showExercise(targetId);
+                });
+            });
+
+            // Close the menu if clicked outside
+            document.addEventListener('click', (event) => {
+                if (!exerciseMenu.contains(event.target) && !menuButton.contains(event.target)) {
+                    exerciseMenu.classList.remove('show');
+                }
+            });
+
+            loadAnswersFromLocalStorage(); // Load saved answers on page load
+        });
+
+        // --- Local Storage Functions (kept as is) ---
+        function saveAnswersToLocalStorage() {
+            const inputs = document.querySelectorAll('input, select, textarea');
+            const answers = {};
+
+            inputs.forEach(input => {
+                if (input.type === 'radio' || input.type === 'checkbox') {
+                    const key = input.name + '-' + input.value;
+                    answers[key] = input.checked;
+                } else {
+                    answers[input.name || input.id] = input.value;
+                }
+            });
+            localStorage.setItem('ielts_answers', JSON.stringify(answers));
+        }
+
+        function loadAnswersFromLocalStorage() {
+            const saved = localStorage.getItem('ielts_answers');
+            if (!saved) return;
+
+            const answers = JSON.parse(saved);
+
+            Object.keys(answers).forEach(key => {
+                if (key.includes('-')) {
+                    const [name, value] = key.split('-');
+                    const el = document.querySelector(`input[name="${name}"][value="${value}"]`);
+                    if (el) el.checked = answers[key];
+                } else {
+                    const el = document.querySelector(`[name="${key}"], #${key}`);
+                    if (el) el.value = answers[key];
+                }
+            });
+        }
+
+        function resetSavedAnswers() {
+            localStorage.removeItem('ielts_answers');
+            window.location.reload();
+        }
+
+        document.addEventListener('input', saveAnswersToLocalStorage);
     </script>
-<script>
-function saveAnswersToLocalStorage() {
-  const inputs = document.querySelectorAll('input, select, textarea');
-  const answers = {};
-
-  inputs.forEach(input => {
-    if (input.type === 'radio' || input.type === 'checkbox') {
-      const key = input.name + '-' + input.value;
-      answers[key] = input.checked;
-    } else {
-      answers[input.name || input.id] = input.value;
-    }
-  });
-
-  localStorage.setItem('ielts_answers', JSON.stringify(answers));
-}
-
-function loadAnswersFromLocalStorage() {
-  const saved = localStorage.getItem('ielts_answers');
-  if (!saved) return;
-
-  const answers = JSON.parse(saved);
-
-  Object.keys(answers).forEach(key => {
-    if (key.includes('-')) {
-      const [name, value] = key.split('-');
-      const el = document.querySelector(`input[name="${name}"][value="${value}"]`);
-      if (el) el.checked = answers[key];
-    } else {
-      const el = document.querySelector(`[name="${key}"], #${key}`);
-      if (el) el.value = answers[key];
-    }
-  });
-}
-
-function resetSavedAnswers() {
-  localStorage.removeItem('ielts_answers');
-  window.location.reload();
-}
-
-document.addEventListener('DOMContentLoaded', loadAnswersFromLocalStorage);
-document.addEventListener('input', saveAnswersToLocalStorage);
-</script>
 </body>
 </html>
