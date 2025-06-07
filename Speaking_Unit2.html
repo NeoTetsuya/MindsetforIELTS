@@ -11,7 +11,7 @@
     <!-- Vimeo Player API Script - Loaded once for all videos -->
     <script src="https://player.vimeo.com/api/player.js"></script>
     <style>
-        /* Custom CSS from your original file */
+        /* Custom CSS for the Worksheet */
         body {
             font-family: 'Inter', sans-serif;
         }
@@ -52,9 +52,64 @@
         #message-box.show {
             opacity: 1;
         }
+        /* Ensure inline inputs/selects don't break lines awkwardly */
+        .inline-block {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        /* Styling for the new exercise menu */
+        #exercise-menu-container {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 50;
+        }
+        #exercise-menu {
+            position: absolute;
+            top: calc(100% + 0.5rem); /* Position below the button with a small gap */
+            left: 0;
+            background-color: white;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
+            padding: 0.5rem 0;
+            min-width: 12rem; /* Tailwind w-48 */
+            max-height: 80vh; /* Limit height to prevent overflow on smaller screens */
+            overflow-y: auto; /* Enable scrolling for long lists */
+            display: none; /* Hidden by default */
+        }
+        #exercise-menu.show {
+            display: block; /* Show when 'show' class is added */
+        }
+        #exercise-menu a {
+            display: block;
+            padding: 0.75rem 1rem; /* py-3 px-4 */
+            font-size: 0.875rem; /* text-sm */
+            color: #4B5563; /* text-gray-700 */
+            text-decoration: none;
+        }
+        #exercise-menu a:hover {
+            background-color: #F3F4F6; /* bg-gray-100 */
+            color: #1F2937; /* text-gray-900 */
+        }
+        /* Hide all sections by default, JavaScript will show the active one */
+        .exercise-section {
+            display: none;
+        }
+        .exercise-section.active-exercise {
+            display: block;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gray-100 p-4 font-sans text-gray-800">
+
+    <div id="exercise-menu-container">
+        <button id="exercise-menu-toggle" class="px-4 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-200 ease-in-out transform hover:scale-105">
+            Select Exercise
+        </button>
+        <div id="exercise-menu">
+            <!-- Exercise links will be dynamically inserted here -->
+        </div>
+    </div>
 
     <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
         <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">
@@ -68,7 +123,7 @@
         </div>
 
         <!-- Unit 2: Exercise 1 -->
-        <section class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
+        <section id="exercise-1" class="exercise-section mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Unit 2: Exercise 1</h2>
             <p class="mb-4">In IELTS Speaking Part 2 it is a good idea to avoid repetition. Read the task card, paying attention to the words in bold. Then match the words from the task card with words and phrases that have a similar meaning.</p>
             <div class="bg-indigo-100 p-4 rounded-md mb-4 border border-indigo-200">
@@ -87,7 +142,7 @@
         </section>
 
         <!-- Unit 2: Exercise 2 -->
-        <section class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
+        <section id="exercise-2" class="exercise-section mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-blue-600 mb-4">Unit 2: Exercise 2</h2>
             <p class="mb-4">Read the task card. Then complete the student’s notes. Use the words in the box.</p>
             <div class="bg-blue-100 p-4 rounded-md mb-4 border border-blue-200">
@@ -143,7 +198,7 @@
         </section>
 
         <!-- Unit 2: Exercise 3 -->
-        <section class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
+        <section id="exercise-3" class="exercise-section mb-10 p-6 bg-green-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-green-600 mb-4">Unit 2: Exercise 3</h2>
             <p class="mb-4">Read the task card again. It asks you to describe a holiday that you <span class="font-bold">enjoyed</span>, so you should use the past simple tense in your answer. <p>Complete the table with the past simple forms of the verbs.</p>
             <div class="bg-green-100 p-4 rounded-md mb-4 border border-green-200">
@@ -228,14 +283,14 @@
         </section>
 
         <!-- Unit 2: Exercise 4 -->
-        <section class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
+        <section id="exercise-4" class="exercise-section mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-purple-600 mb-4">Unit 2: Exercise 4</h2>
             <p class="mb-4">Read the task card. Then watch the video of a student doing IELTS Speaking Part 2. The student makes some mistakes and uses the wrong tense in her answers. <p>Correct the ten mistakes using the past simple form of the verbs.</p>
             <div class="flex justify-center mb-6">
-                <div style="position:relative; width:100%; height:0px; padding-bottom:56.25%;">
-    <iframe 
-    src="https://streamable.com/e/tsihog?loop=0" 
-    allowfullscreen 
+               <div style="position:relative; width:100%; height:0px; padding-bottom:56.25%;">
+  <iframe
+    src="https://streamable.com/e/tsihog?loop=0"
+    allowfullscreen
     style="border:none; width:100%; height:100%; position:absolute; left:0; top:0; overflow:hidden;">
   </iframe>
 </div>
@@ -265,7 +320,7 @@
         </section>
 
         <!-- Unit 2: Exercise 5 -->
-        <section class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
+        <section id="exercise-5" class="exercise-section mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Unit 2: Exercise 5</h2>
             <p class="mb-4">Read the information. Then complete the sentences using the past simple forms of the verbs in brackets.</p>
             <div class="bg-yellow-100 p-4 rounded-md mb-4 border border-yellow-200">
@@ -340,7 +395,7 @@
         </section>
 
         <!-- Unit 2: Exercise 6 -->
-        <section class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
+        <section id="exercise-6" class="exercise-section mb-10 p-6 bg-red-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-red-600 mb-4">Unit 2: Exercise 6</h2>
             <p class="mb-4">Read the information. Then watch the videos and complete the students’ answers. Use the words from the information box.</p>
             <div class="bg-red-100 p-4 rounded-md mb-4 border border-red-200">
@@ -448,7 +503,7 @@
         </section>
 
         <!-- Unit 2: Exercise 7 -->
-        <section class="mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
+        <section id="exercise-7" class="exercise-section mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-teal-600 mb-4">Unit 2: Exercise 7</h2>
             <p class="mb-4">Match the two halves to complete the sentences.</p>
             <div class="bg-teal-100 p-4 rounded-md mb-4 border border-teal-200">
@@ -465,14 +520,14 @@
         </section>
 
         <!-- Unit 2: Exercise 8 -->
-        <section class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
+        <section id="exercise-8" class="exercise-section mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-orange-600 mb-4">Unit 2: Exercise 8</h2>
             <p class="mb-4">Watch the video and read the information. Then match the descriptions with the sentences. The sentences include words and phrases that you can use in the IELTS Speaking test to sound more natural.</p>
             <div class="flex justify-center mb-6">
                <div style="position:relative; width:100%; height:0px; padding-bottom:56.25%;">
-  <iframe 
-    src="https://streamable.com/e/wam4gv?loop=0" 
-    allowfullscreen 
+  <iframe
+    src="https://streamable.com/e/wam4gv?loop=0"
+    allowfullscreen
     style="border:none; width:100%; height:100%; position:absolute; left:0; top:0; overflow:hidden;">
   </iframe>
 </div>
@@ -492,7 +547,7 @@
         </section>
 
         <!-- Unit 2: Exercise 9 -->
-        <section class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
+        <section id="exercise-9" class="exercise-section mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-pink-600 mb-4">Unit 2: Exercise 9</h2>
             <p class="mb-4">Choose the correct answers to complete the sentences.</p>
             <div id="exercise9-container" class="space-y-4">
@@ -506,7 +561,7 @@
         </section>
 
         <!-- Unit 2: Exercise 10 -->
-        <section class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md">
+        <section id="exercise-10" class="exercise-section mb-10 p-6 bg-gray-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-gray-700 mb-4">Unit 2: Exercise 10</h2>
             <p class="mb-4">You are going to do IELTS Speaking Part 2. You will need some paper and a pencil. Listen to the examiner. Record your answer. Play to hear your answer.</p>
             <div class="bg-gray-100 p-4 rounded-md mb-4 border border-gray-200">
@@ -537,6 +592,7 @@
             exercise8Answers: {}, // For natural phrases
             exercise9Answers: {}, // For multiple choice
             exercise10Text: '',
+            currentExerciseId: 'exercise-1' // New state variable to track the active exercise
         };
 
         // --- Data for Exercises ---
@@ -740,7 +796,9 @@
             try {
                 var savedState = localStorage.getItem('ieltsSpeakingWorksheetAppState');
                 if (savedState) {
-                    appState = JSON.parse(savedState); // Overwrite appState with saved data
+                    var loadedState = JSON.parse(savedState);
+                    // Merge loaded state with current appState, prioritizing loaded values
+                    Object.assign(appState, loadedState);
 
                     // Populate Exercise 1 dropdowns
                     exercise1Mapping.forEach(function(item, index) {
@@ -824,6 +882,50 @@
             } catch (e) {
                 console.error("Error loading from local storage:", e);
             }
+        }
+
+        // --- Exercise Visibility Functions ---
+        function showExercise(exerciseId) {
+            // Hide all exercise sections
+            var allExerciseSections = document.querySelectorAll('.exercise-section');
+            allExerciseSections.forEach(function(section) {
+                section.classList.remove('active-exercise');
+            });
+
+            // Show the selected exercise section
+            var targetSection = getElement(exerciseId);
+            if (targetSection) {
+                targetSection.classList.add('active-exercise');
+                appState.currentExerciseId = exerciseId; // Update current exercise in state
+                saveAnswers(); // Save the new active exercise
+            }
+        }
+
+        function toggleExerciseMenu() {
+            var menu = getElement('exercise-menu');
+            menu.classList.toggle('show');
+        }
+
+        function populateExerciseMenu() {
+            var menu = getElement('exercise-menu');
+            // Clear existing menu items before populating
+            menu.innerHTML = '';
+            var exerciseSections = document.querySelectorAll('.exercise-section');
+            exerciseSections.forEach(function(section, index) {
+                var sectionId = section.id;
+                var sectionTitle = section.querySelector('h2').textContent; // Get the title from the h2
+                var link = document.createElement('a');
+                link.href = '#'; // Prevent page reload
+                link.textContent = sectionTitle;
+                link.setAttribute('data-exercise-id', sectionId);
+                link.classList.add('block', 'py-3', 'px-4', 'text-sm', 'text-gray-700', 'hover:bg-gray-100', 'hover:text-gray-900', 'rounded-md'); // Tailwind classes for styling
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default link behavior
+                    showExercise(sectionId);
+                    menu.classList.remove('show'); // Hide menu after selection
+                });
+                menu.appendChild(link);
+            });
         }
 
         // --- Exercise Initialization Functions ---
@@ -1433,8 +1535,17 @@
             // Attach event listener for clear all answers
             getElement('clear-all-answers-button').addEventListener('click', clearAllAnswers);
 
+            // Populate the exercise menu
+            populateExerciseMenu();
+
+            // Attach event listener for the exercise menu toggle button
+            getElement('exercise-menu-toggle').addEventListener('click', toggleExerciseMenu);
+
             // Load saved answers on page load
             loadAnswers();
+
+            // Show the last active exercise or default to exercise-1
+            showExercise(appState.currentExerciseId || 'exercise-1');
         });
     </script>
 </body>
