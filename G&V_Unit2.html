@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -7,6 +6,7 @@
 <title>Mindset for IELTS 1 - Unit 2 Grammar &amp; Vocabulary</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
+        /* Custom CSS for the Worksheet */
         body {
             font-family: "Inter", sans-serif;
             background-color: #f0f4f8;
@@ -45,22 +45,22 @@
             padding-bottom: 0.5rem;
             margin-top: 2rem;
         }
-        .exercise {
+        .exercise-section { /* Renamed from .exercise to avoid conflict/clarity */
             margin-bottom: 1.5rem;
             padding: 1rem;
             background-color: #f8fafc;
             border-radius: 0.5rem;
             border: 1px solid #e2e8f0;
         }
-        .exercise p {
+        .exercise-section p {
             margin-bottom: 0.75rem;
         }
-        .exercise ol {
+        .exercise-section ol {
             list-style-type: decimal;
             margin-left: 1.5rem;
             padding-left: 0.5rem; /* Added padding for better spacing */
         }
-        .exercise li {
+        .exercise-section li {
             margin-bottom: 0.75rem; /* Increased spacing between list items */
         }
         select, input[type="text"] {
@@ -256,12 +256,118 @@
                 flex-grow: 1; /* Allow dropdown to take available space */
             }
         }
+
+        /* Styles from style-revised.css */
+        .correct-feedback {
+            color: #10B981; /* Green-500 */
+        }
+        .incorrect-feedback {
+            color: #EF4444; /* Red-500 */
+        }
+        .feedback-box {
+            padding: 0.5rem 0.75rem;
+            margin-top: 0.5rem;
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 0.875rem; /* text-sm */
+        }
+        .feedback-box.correct {
+            background-color: #D1FAE5; /* green-100 */
+            border: 1px solid #34D399; /* green-400 */
+        }
+        .feedback-box.incorrect {
+            background-color: #FEE2E2; /* red-100 */
+            border: 1px solid #F87171; /* red-400 */
+        }
+        /* Message Box for Save Confirmation */
+        #message-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #message-box.show {
+            opacity: 1;
+        }
+        /* Ensure inline inputs/selects don't break lines awkwardly */
+        .inline-block {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        /* Styling for the new exercise menu */
+        #exercise-menu-container {
+            position: fixed; /* Changed to fixed for persistent visibility */
+            top: 1rem;
+            left: 1rem;
+            z-index: 50;
+        }
+        #exercise-menu {
+            position: absolute;
+            top: calc(100% + 0.5rem); /* Position below the button with a small gap */
+            left: 0;
+            background-color: white;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
+            padding: 0.5rem 0;
+            min-width: 12rem; /* Tailwind w-48 */
+            max-height: 80vh; /* Limit height to prevent overflow on smaller screens */
+            overflow-y: auto; /* Enable scrolling for long lists */
+            display: none; /* Hidden by default */
+        }
+        #exercise-menu.show {
+            display: block; /* Show when 'show' class is added */
+        }
+        #exercise-menu a {
+            display: block;
+            padding: 0.75rem 1rem; /* py-3 px-4 */
+            font-size: 0.875rem; /* text-sm */
+            color: #4B5563; /* text-gray-700 */
+            text-decoration: none;
+        }
+        #exercise-menu a:hover {
+            background-color: #F3F4F6; /* bg-gray-100 */
+            color: #1F2937; /* text-gray-900 */
+        }
+        /* Hide all sections by default, JavaScript will show the active one */
+        section[id^="exercise"] {
+            display: none;
+        }
+        section.active-exercise {
+            display: block;
+        }
     </style>
 </head>
 <body>
+<!-- Exercise Navigation Menu -->
+<div id="exercise-menu-container">
+    <button id="exercise-menu-toggle" class="px-4 py-2 bg-indigo-600 text-white rounded-md shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition duration-150 ease-in-out">
+        Exercises
+        <svg class="w-4 h-4 inline-block ml-2 -mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+    </button>
+    <div id="exercise-menu">
+        <a href="#" data-exercise-id="exercise1">Exercise 1</a>
+        <a href="#" data-exercise-id="exercise2">Exercise 2</a>
+        <a href="#" data-exercise-id="exercise3">Exercise 3</a>
+        <a href="#" data-exercise-id="exercise4">Exercise 4</a>
+        <a href="#" data-exercise-id="exercise5">Exercise 5</a>
+        <a href="#" data-exercise-id="exercise6">Exercise 6</a>
+        <a href="#" data-exercise-id="exercise7">Exercise 7</a>
+        <a href="#" data-exercise-id="exercise8">Exercise 8</a>
+        <a href="#" data-exercise-id="exercise9">Exercise 9</a>
+        <a href="#" data-exercise-id="exercise10">Exercise 10</a>
+    </div>
+</div>
+
 <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
 <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">Mindset for IELTS 1 - Unit 2 Grammar &amp; Vocabulary</h1>
-<div class="exercise">
+
+<section class="exercise-section" id="exercise1">
 <h2>Unit 2: Exercise 1</h2>
 <p>Complete the sentences. Use the words in the box.</p>
 <ol>
@@ -356,8 +462,9 @@
 </ol>
 <button class="check-button" onclick="checkExercise1()">Check Exercise 1</button>
 <div class="result hidden" id="ex1_result"></div>
-</div>
-<div class="exercise">
+</section>
+
+<section class="exercise-section" id="exercise2">
 <h2>Unit 2: Exercise 2</h2>
 <p>Complete the sentences. Use the words in the box.</p>
 <ol>
@@ -452,8 +559,9 @@
 </ol>
 <button class="check-button" onclick="checkExercise2()">Check Exercise 2</button>
 <div class="result hidden" id="ex2_result"></div>
-</div>
-<div class="exercise">
+</section>
+
+<section class="exercise-section" id="exercise3">
 <h2>Unit 2: Exercise 3</h2>
 <p>Choose the correct verbs to complete the text.</p>
 <p>When I was a teenager, I didn’t like living with my parents, so I <select class="rounded-md" id="ex3_q1">
@@ -509,8 +617,9 @@
 </select> a flat – hopefully I’ll have enough money in a few years.</p>
 <button class="check-button" onclick="checkExercise3()">Check Exercise 3</button>
 <div class="result hidden" id="ex3_result"></div>
-</div>
-<div class="exercise">
+</section>
+
+<section class="exercise-section" id="exercise4">
 <h2>Unit 2: Exercise 4</h2>
 <p>Put the words in the correct categories. Drag and drop the words into the correct boxes.</p>
 <div class="drag-container drop-target" id="ex4_words">
@@ -547,8 +656,9 @@
 </div>
 <button class="check-button" onclick="checkExercise4()">Check Exercise 4</button>
 <div class="result hidden" id="ex4_result"></div>
-</div>
-<div class="exercise">
+</section>
+
+<section class="exercise-section" id="exercise5">
 <h2>Unit 2: Exercise 5</h2>
 <p>Choose the correct option to complete the sentences.</p>
 <ol>
@@ -595,8 +705,9 @@
 </ol>
 <button class="check-button" onclick="checkExercise5()">Check Exercise 5</button>
 <div class="result hidden" id="ex5_result"></div>
-</div>
-<div class="exercise">
+</section>
+
+<section class="exercise-section" id="exercise6">
 <h2>Unit 2: Exercise 6</h2>
 <p>Read the information. Then complete the sentences with the past simple of the verbs in brackets.</p>
 <ol>
@@ -613,8 +724,9 @@
 </ol>
 <button class="check-button" onclick="checkExercise6()">Check Exercise 6</button>
 <div class="result hidden" id="ex6_result"></div>
-</div>
-<div class="exercise">
+</section>
+
+<section class="exercise-section" id="exercise7">
 <h2>Unit 2: Exercise 7</h2>
 <p>Correct the sentences. Change the irregular verbs from the present simple to the past simple. The number of changes you need to make is in brackets.</p>
 <ol>
@@ -629,8 +741,9 @@
 </ol>
 <button class="check-button" onclick="checkExercise7()">Check Exercise 7</button>
 <div class="result hidden" id="ex7_result"></div>
-</div>
-<div class="exercise">
+</section>
+
+<section class="exercise-section" id="exercise8">
 <h2>Unit 2: Exercise 8</h2>
 <p>Complete the sentences with the past simple negative form of the verbs in brackets. Use contractions (e.g. wasn’t) where possible. The first one has been done for you.</p>
 <ol>
@@ -644,8 +757,9 @@
 </ol>
 <button class="check-button" onclick="checkExercise8()">Check Exercise 8</button>
 <div class="result hidden" id="ex8_result"></div>
-</div>
-<div class="exercise">
+</section>
+
+<section class="exercise-section" id="exercise9">
 <h2>Unit 2: Exercise 9</h2>
 <p>Put the words in the correct order to complete the questions. Drag the words from the pool to the sentence box below each question.</p>
 <ol>
@@ -755,8 +869,9 @@
 </ol>
 <button class="check-button" onclick="checkExercise9()">Check Exercise 9</button>
 <div class="result hidden" id="ex9_result"></div>
-</div>
-<div class="exercise">
+</section>
+
+<section class="exercise-section" id="exercise10">
 <h2>Unit 2: Exercise 10</h2>
 <p>Match the answers with the questions. Select the correct answer from the dropdown list.</p>
 <div class="ex10-question-line">
@@ -852,7 +967,7 @@
 </div>
 <button class="check-button" onclick="checkExercise10()">Check Exercise 10</button>
 <div class="result hidden" id="ex10_result"></div>
-</div>
+</section>
 </div>
 <script>
         // Helper function to display results
@@ -891,7 +1006,6 @@
                 "ex1_q8": "historic"
             };
             let score = 0;
-            let feedbackHtml = ''; // Empty feedback
             const totalQuestions = Object.keys(answers).length;
 
             for (const id in answers) {
@@ -901,7 +1015,7 @@
                     score++;
                 }
             }
-            displayResult('ex1_result', score === totalQuestions, score, totalQuestions, feedbackHtml);
+            displayResult('ex1_result', score === totalQuestions, score, totalQuestions, '');
         }
 
         function checkExercise2() {
@@ -916,7 +1030,6 @@
                 "ex2_q8": "the south of"
             };
             let score = 0;
-            let feedbackHtml = ''; // Empty feedback
             const totalQuestions = Object.keys(answers).length;
 
             for (const id in answers) {
@@ -926,7 +1039,7 @@
                     score++;
                 }
             }
-            displayResult('ex2_result', score === totalQuestions, score, totalQuestions, feedbackHtml);
+            displayResult('ex2_result', score === totalQuestions, score, totalQuestions, '');
         }
 
         function checkExercise3() {
@@ -943,7 +1056,6 @@
                 "ex3_q10": "buy"
             };
             let score = 0;
-            let feedbackHtml = ''; // Empty feedback
             const totalQuestions = Object.keys(answers).length;
 
             for (const id in answers) {
@@ -953,7 +1065,7 @@
                     score++;
                 }
             }
-            displayResult('ex3_result', score === totalQuestions, score, totalQuestions, feedbackHtml);
+            displayResult('ex3_result', score === totalQuestions, score, totalQuestions, '');
         }
 
         // Common drag-and-drop logic
@@ -1017,7 +1129,6 @@
             };
 
             let score = 0;
-            let feedbackHtml = ''; // Empty feedback
             const totalWords = 12;
 
             for (const categoryId in answers) {
@@ -1041,7 +1152,7 @@
                     if (score < 0) score = 0;
                 }
             }
-            displayResult('ex4_result', score === totalWords, score, totalWords, feedbackHtml);
+            displayResult('ex4_result', score === totalWords, score, totalWords, '');
         }
 
         function checkExercise5() {
@@ -1056,7 +1167,6 @@
                 "ex5_q8": "group of trees"
             };
             let score = 0;
-            let feedbackHtml = ''; // Empty feedback
             const totalQuestions = Object.keys(answers).length;
 
             for (const id in answers) {
@@ -1066,7 +1176,7 @@
                     score++;
                 }
             }
-            displayResult('ex5_result', score === totalQuestions, score, totalQuestions, feedbackHtml);
+            displayResult('ex5_result', score === totalQuestions, score, totalQuestions, '');
         }
 
         function checkExercise6() {
@@ -1083,7 +1193,6 @@
                 "ex6_q10": "preferred"
             };
             let score = 0;
-            let feedbackHtml = ''; // Empty feedback
             const totalQuestions = Object.keys(answers).length;
 
             for (const id in answers) {
@@ -1093,7 +1202,7 @@
                     score++;
                 }
             }
-            displayResult('ex6_result', score === totalQuestions, score, totalQuestions, feedbackHtml);
+            displayResult('ex6_result', score === totalQuestions, score, totalQuestions, '');
         }
 
         function checkExercise7() {
@@ -1115,7 +1224,6 @@
                 "ex7_q8_p2": "made"
             };
             let score = 0;
-            let feedbackHtml = ''; // Empty feedback
             const totalQuestions = Object.keys(answers).length;
 
             for (const id in answers) {
@@ -1125,7 +1233,7 @@
                     score++;
                 }
             }
-            displayResult('ex7_result', score === totalQuestions, score, totalQuestions, feedbackHtml);
+            displayResult('ex7_result', score === totalQuestions, score, totalQuestions, '');
         }
 
         function checkExercise8() {
@@ -1138,7 +1246,6 @@
                 "ex8_q7": "wasn't"
             };
             let score = 0;
-            let feedbackHtml = ''; // Empty feedback
             const totalQuestions = Object.keys(answers).length;
 
             for (const id in answers) {
@@ -1148,7 +1255,7 @@
                     score++;
                 }
             }
-            displayResult('ex8_result', score === totalQuestions, score, totalQuestions, feedbackHtml);
+            displayResult('ex8_result', score === totalQuestions, score, totalQuestions, '');
         }
 
         function checkExercise9() {
@@ -1203,6 +1310,54 @@
             }
             displayResult('ex10_result', score === totalQuestions, score, totalQuestions, '');
         }
+
+        // Navigation Menu Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const exerciseMenuToggle = document.getElementById('exercise-menu-toggle');
+            const exerciseMenu = document.getElementById('exercise-menu');
+            const exerciseMenuContainer = document.getElementById('exercise-menu-container'); // Added for outside click detection
+            const exerciseSections = document.querySelectorAll('section[id^="exercise"]');
+
+            // Function to show a specific exercise
+            function showExercise(exerciseId) {
+                exerciseSections.forEach(section => {
+                    section.classList.remove('active-exercise');
+                });
+                const activeSection = document.getElementById(exerciseId);
+                if (activeSection) {
+                    activeSection.classList.add('active-exercise');
+                    // Scroll to the active exercise for better UX
+                    activeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+
+            // Toggle menu visibility
+            exerciseMenuToggle.addEventListener('click', () => {
+                exerciseMenu.classList.toggle('show');
+            });
+
+            // Handle menu item clicks
+            exerciseMenu.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') {
+                    e.preventDefault();
+                    const exerciseId = e.target.dataset.exerciseId;
+                    showExercise(exerciseId);
+                    exerciseMenu.classList.remove('show'); // Hide menu after selection
+                }
+            });
+
+            // Hide menu if clicked outside
+            document.addEventListener('click', (e) => {
+                if (!exerciseMenuContainer.contains(e.target) && exerciseMenu.classList.contains('show')) {
+                    exerciseMenu.classList.remove('show');
+                }
+            });
+
+            // Show the first exercise by default on load
+            if (exerciseSections.length > 0) {
+                showExercise(exerciseSections[0].id);
+            }
+        });
     </script>
 </body>
 </html>
