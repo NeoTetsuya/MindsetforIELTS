@@ -267,6 +267,49 @@
             border-top: 1px solid #e2e8f0;
         }
 
+        /* Styling for the new exercise menu */
+        #exercise-menu-container {
+            position: fixed; /* Changed to fixed for persistent visibility */
+            top: 1rem;
+            left: 1rem;
+            z-index: 50;
+        }
+        #exercise-menu {
+            position: absolute;
+            top: calc(100% + 0.5rem); /* Position below the button with a small gap */
+            left: 0;
+            background-color: white;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
+            padding: 0.5rem 0;
+            min-width: 12rem; /* Tailwind w-48 */
+            max-height: 80vh; /* Limit height to prevent overflow on smaller screens */
+            overflow-y: auto; /* Enable scrolling for long lists */
+            display: none; /* Hidden by default */
+        }
+        #exercise-menu.show {
+            display: block; /* Show when 'show' class is added */
+        }
+        #exercise-menu a {
+            display: block;
+            padding: 0.75rem 1rem; /* py-3 px-4 */
+            font-size: 0.875rem; /* text-sm */
+            color: #4B5563; /* text-gray-700 */
+            text-decoration: none;
+        }
+        #exercise-menu a:hover {
+            background-color: #F3F4F6; /* bg-gray-100 */
+            color: #1F2937; /* text-gray-900 */
+        }
+        /* Hide all sections by default, JavaScript will show the active one */
+        .exercise-section {
+            display: none;
+        }
+        .exercise-section.active-exercise {
+            display: block;
+        }
+
+
         @media (max-width: 768px) {
             .container {
                 margin: 1rem;
@@ -300,6 +343,26 @@
     </style>
 </head>
 <body class="min-h-screen bg-gray-100 p-4 font-sans text-gray-800">
+    <!-- Exercise Navigation Menu -->
+    <div id="exercise-menu-container" class="relative">
+        <button id="menu-toggle-button" class="bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-75 transition duration-150 ease-in-out">
+            <!-- Hamburger icon or similar -->
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+        <div id="exercise-menu" class="hidden">
+            <a href="#" data-exercise-id="exercise1">Exercise 1</a>
+            <a href="#" data-exercise-id="exercise2">Exercise 2</a>
+            <a href="#" data-exercise-id="exercise3">Exercise 3</a>
+            <a href="#" data-exercise-id="exercise4">Exercise 4</a>
+            <a href="#" data-exercise-id="exercise5">Exercise 5</a>
+            <a href="#" data-exercise-id="exercise6">Exercise 6</a>
+            <a href="#" data-exercise-id="exercise7">Exercise 7</a>
+            <a href="#" data-exercise-id="exercise8">Exercise 8</a>
+            <a href="#" data-exercise-id="exercise9">Exercise 9</a>
+            <a href="#" data-exercise-id="exercise10">Exercise 10</a>
+        </div>
+    </div>
+
     <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
         <h1>Mindset for IELTS 1 - Unit 4 Reading</h1>
 
@@ -310,7 +373,7 @@
         </div>
 
         <!-- Exercise 1 -->
-        <div class="exercise-section">
+        <div id="exercise1" class="exercise-section">
             <h2>Unit 4: Exercise 1</h2>
             <p>In this unit, you will answer IELTS Reading matching information questions and read a text called ‘How technology has changed the way we communicate’.</p>
             <p>What do you know about the development of the telephone? Match the decades with the correct photos.</p>
@@ -396,7 +459,7 @@
         </div>
 
         <!-- Exercise 2 -->
-        <div class="exercise-section">
+        <div id="exercise2" class="exercise-section">
             <h2>Unit 4: Exercise 2</h2>
             <p>What words and phrases do you already know for describing communication? Match the words and phrases with the definitions.</p>
 
@@ -576,7 +639,7 @@
         </div>
 
         <!-- Exercise 3 -->
-        <div class="exercise-section">
+        <div id="exercise3" class="exercise-section">
             <h2>Unit 4: Exercise 3</h2>
             <p>Read the information. Then match the phrases describing types of information with the words in bold in the statements.</p>
             <p class="paragraph-text">
@@ -654,7 +717,7 @@
         </div>
 
         <!-- Exercise 4 -->
-        <div class="exercise-section">
+        <div id="exercise4" class="exercise-section">
             <h2>Unit 4: Exercise 4</h2>
             <p>Read this paragraph from the text. What information does it contain? Choose the correct answer.</p>
             <h3>How technology has changed the way we communicate</h3>
@@ -674,7 +737,7 @@
         </div>
 
         <!-- Exercise 5 -->
-        <div class="exercise-section">
+        <div id="exercise5" class="exercise-section">
             <h2>Unit 4: Exercise 5</h2>
             <p>Read the information. Then match the types of information with the sentences.</p>
             <p class="paragraph-text">
@@ -735,7 +798,7 @@
         </div>
 
         <!-- Exercise 6 -->
-        <div class="exercise-section">
+        <div id="exercise6" class="exercise-section">
             <h2>Unit 4: Exercise 6</h2>
             <p>Read the next paragraph. Then match the information statements (A–D) with the numbered parts of the paragraph (1–3). There is one information statement that you do not need.</p>
             <p class="font-semibold">Paragraph B</p>
@@ -787,7 +850,7 @@
         </div>
 
         <!-- Exercise 7 -->
-        <div class="exercise-section">
+        <div id="exercise7" class="exercise-section">
             <h2>Unit 4: Exercise 7</h2>
             <p>Read the next paragraph. Then complete the matching information statements for the numbered parts of the paragraph. Use the words in the box.</p>
             <p class="font-semibold">Paragraph C</p>
@@ -840,7 +903,7 @@
         </div>
 
         <!-- Exercise 8 -->
-        <div class="exercise-section">
+        <div id="exercise8" class="exercise-section">
             <h2>Unit 4: Exercise 8</h2>
             <p>Quickly skim read the next paragraphs. Then do the exercise.</p>
             <p class="font-semibold">Paragraph D</p>
@@ -877,7 +940,7 @@
         </div>
 
         <!-- Exercise 9 -->
-        <div class="exercise-section">
+        <div id="exercise9" class="exercise-section">
             <h2>Unit 4: Exercise 9</h2>
             <p>Read the paragraphs again, this time carefully. Then do the exercise.</p>
             <p class="font-semibold">Paragraph D</p>
@@ -924,7 +987,7 @@
         </div>
 
         <!-- Exercise 10 -->
-        <div class="exercise-section">
+        <div id="exercise10" class="exercise-section">
             <h2>Unit 4: Exercise 10</h2>
             <p>Think about what you’ve learnt in this unit.</p>
             <p>Complete the advice. Use the words in the box.</p>
@@ -1165,6 +1228,21 @@
             showMessage('All answers cleared!', 'success');
         }
 
+        // Function to show only the selected exercise
+        function showExercise(exerciseId) {
+            // Hide all exercise sections
+            document.querySelectorAll('.exercise-section').forEach(section => {
+                section.classList.remove('active-exercise');
+            });
+            // Show the selected exercise section
+            const activeExercise = getElement(exerciseId);
+            if (activeExercise) {
+                activeExercise.classList.add('active-exercise');
+            }
+            // Optionally hide the menu after selection
+            getElement('exercise-menu').classList.remove('show');
+        }
+
         // Exercise 1 Check - Updated for Dropdown and new setFeedback
         function checkExercise1() {
             const answers = {
@@ -1341,6 +1419,37 @@
             if (clearButton) {
                 clearButton.addEventListener('click', clearAllAnswers);
             }
+
+            // Exercise menu logic
+            const menuToggleButton = getElement('menu-toggle-button');
+            const exerciseMenu = getElement('exercise-menu');
+
+            if (menuToggleButton && exerciseMenu) {
+                menuToggleButton.addEventListener('click', () => {
+                    exerciseMenu.classList.toggle('show');
+                });
+
+                // Hide menu when clicking outside
+                document.addEventListener('click', (event) => {
+                    if (!exerciseMenu.contains(event.target) && !menuToggleButton.contains(event.target)) {
+                        exerciseMenu.classList.remove('show');
+                    }
+                });
+            }
+
+            // Attach event listeners to exercise links
+            document.querySelectorAll('#exercise-menu a').forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault(); // Prevent default link behavior
+                    const exerciseId = event.target.dataset.exerciseId;
+                    if (exerciseId) {
+                        showExercise(exerciseId);
+                    }
+                });
+            });
+
+            // Show the first exercise by default on page load
+            showExercise('exercise1');
         });
     </script>
 </body>
