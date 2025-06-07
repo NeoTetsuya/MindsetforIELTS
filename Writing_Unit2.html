@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Custom CSS for the Worksheet */
         body {
             font-family: 'Inter', sans-serif;
         }
@@ -47,11 +48,67 @@
         #message-box.show {
             opacity: 1;
         }
+        /* Ensure inline inputs/selects don't break lines awkwardly */
+        .inline-block {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        /* Styling for the new exercise menu */
+        #exercise-menu-container {
+            position: fixed; /* Changed to fixed for persistent visibility */
+            top: 1rem;
+            left: 1rem;
+            z-index: 50;
+        }
+        #exercise-menu {
+            position: absolute;
+            top: calc(100% + 0.5rem); /* Position below the button with a small gap */
+            left: 0;
+            background-color: white;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
+            padding: 0.5rem 0;
+            min-width: 12rem; /* Tailwind w-48 */
+            max-height: 80vh; /* Limit height to prevent overflow on smaller screens */
+            overflow-y: auto; /* Enable scrolling for long lists */
+            display: none; /* Hidden by default */
+        }
+        #exercise-menu.show {
+            display: block; /* Show when 'show' class is added */
+        }
+        #exercise-menu a {
+            display: block;
+            padding: 0.75rem 1rem; /* py-3 px-4 */
+            font-size: 0.875rem; /* text-sm */
+            color: #4B5563; /* text-gray-700 */
+            text-decoration: none;
+        }
+        #exercise-menu a:hover {
+            background-color: #F3F4F6; /* bg-gray-100 */
+            color: #1F2937; /* text-gray-900 */
+        }
+        /* Hide all sections by default, JavaScript will show the active one */
+        section[id^="exercise"] {
+            display: none;
+        }
+        section.active-exercise {
+            display: block;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gray-100 p-4 font-sans text-gray-800">
 
-    <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
+    <!-- Exercise Navigation Menu -->
+    <div id="exercise-menu-container">
+        <button id="menu-toggle-button" class="px-4 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-200 ease-in-out transform hover:scale-105">
+            Select Exercise
+        </button>
+        <div id="exercise-menu">
+            <!-- Exercise links will be populated here by JavaScript -->
+        </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg mt-16 md:mt-4">
         <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">
             Mindset for IELTS 1 - Unit 2 Writing
         </h1>
@@ -62,7 +119,7 @@
             </button>
         </div>
 
-        <section class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
+        <section id="exercise1-section" class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Unit 2: Exercise 1</h2>
             <p class="mb-4">Look at the six famous locations in London. Match the pictures with the correct places.</p>
             <div id="exercise1-container" class="grid grid-cols-1 gap-6">
@@ -74,7 +131,7 @@
             </div>
         </section>
 
-        <section class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
+        <section id="exercise2-section" class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-blue-600 mb-4">Unit 2: Exercise 2</h2>
             <p class="mb-4">Look at the numbers (1–8) on the map. Then put the letters in the correct order to complete the place names and the directions.</p>
             <div class="flex justify-center mb-6">
@@ -129,7 +186,7 @@
             </div>
         </section>
 
-        <section class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
+        <section id="exercise3-section" class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-green-600 mb-4">Unit 2: Exercise 3</h2>
             <p class="mb-4">Match the prepositions with the correct pictures. Use the prepositions in the box.</p>
             <div class="mb-4 p-3 bg-green-100 rounded-md border border-green-200">
@@ -144,7 +201,7 @@
             </div>
         </section>
 
-        <section class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
+        <section id="exercise4-section" class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-purple-600 mb-4">Unit 2: Exercise 4</h2>
             <p class="mb-4">Look at the map. Then choose the correct options to complete the sentences.</p>
             <div class="flex justify-center mb-6">
@@ -159,7 +216,7 @@
             </div>
         </section>
 
-        <section class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
+        <section id="exercise5-section" class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Unit 2: Exercise 5</h2>
             <p class="mb-4">Look at the map. A company wants to open a sandwich shop in this area. It is choosing between two possible positions: Location 1 and Location 2. Complete the descriptions of the two locations. Use the words in the box.</p>
             <div class="flex justify-center mb-6">
@@ -278,7 +335,7 @@
             </div>
         </section>
 
-        <section class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
+        <section id="exercise6-section" class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-red-600 mb-4">Unit 2: Exercise 6</h2>
             <p class="mb-4">Look at the map. Read the first part of a report comparing the advantages of Location 1 with Location 2 for the sandwich shop. There are five mistakes. Find and correct them.</p>
             <div class="flex justify-center mb-6">
@@ -302,7 +359,7 @@
             </div>
         </section>
 
-        <section class="mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
+        <section id="exercise7-section" class="mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-teal-600 mb-4">Unit 2: Exercise 7</h2>
             <p class="mb-4">Look at the map. Read the report comparing the advantages of Location 1 and Location 2 for the sandwich shop. Then match the descriptions in the box with the correct parts of the report.</p>
             <div class="flex justify-center mb-6">
@@ -320,7 +377,7 @@
             </div>
         </section>
 
-        <section class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
+        <section id="exercise8-section" class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-orange-600 mb-4">Unit 2: Exercise 8</h2>
             <p class="mb-4">Look at the map. Then match the two halves to complete the sentences.</p>
             <div class="flex justify-center mb-6">
@@ -335,7 +392,7 @@
             </div>
         </section>
 
-        <section class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
+        <section id="exercise9-section" class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-pink-600 mb-4">Unit 2: Exercise 9</h2>
             <p class="mb-4">Look at the pictures of places in Paris. Then put the letters in the correct order to complete the names of the locations.</p>
             <div id="exercise9-container" class="grid grid-cols-1 gap-6">
@@ -347,7 +404,7 @@
             </div>
         </section>
 
-        <section class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md">
+        <section id="exercise10-section" class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-gray-700 mb-4">Unit 2: Exercise 10 - WRITING TASK 1</h2>
             <p class="mb-4">You should spend about 20 minutes on this task.</p>
             <p class="mb-4">The map shows the centre of Paris. A company wants to open a new restaurant in the area. The map shows two possible locations for the restaurant.</p>
@@ -388,6 +445,7 @@
             exercise9Answers: {},
             exercise9Feedback: {},
             exercise10Text: '',
+            activeExercise: 'exercise1-section' // New state to track active exercise
         };
 
         // --- Data for Exercises ---
@@ -1407,6 +1465,41 @@
             saveAnswers(); // Save the cleared state
         }
 
+        // --- Navigation Functions ---
+        function showExercise(exerciseId) {
+            // Hide all exercise sections
+            document.querySelectorAll('section[id^="exercise"]').forEach(section => {
+                section.classList.remove('active-exercise');
+            });
+            // Show the selected exercise section
+            const activeSection = getElement(exerciseId);
+            if (activeSection) {
+                activeSection.classList.add('active-exercise');
+                appState.activeExercise = exerciseId; // Update active exercise in state
+                saveAnswers(); // Save the active exercise
+            }
+        }
+
+        function populateExerciseMenu() {
+            const menu = getElement('exercise-menu');
+            const exerciseSections = document.querySelectorAll('section[id^="exercise"]');
+            
+            exerciseSections.forEach(section => {
+                const exerciseId = section.id;
+                const exerciseTitle = section.querySelector('h2').textContent; // Get the title from h2
+                
+                const link = document.createElement('a');
+                link.href = `#${exerciseId}`;
+                link.textContent = exerciseTitle;
+                link.addEventListener('click', (event) => {
+                    event.preventDefault(); // Prevent default anchor link behavior
+                    showExercise(exerciseId);
+                    // Hide the menu after selection (optional)
+                    getElement('exercise-menu').classList.remove('show');
+                });
+                menu.appendChild(link);
+            });
+        }
 
         // --- Initialize all exercises on window load ---
         window.onload = function() {
@@ -1421,11 +1514,30 @@
             initializeExercise9();
             initializeExercise10();
 
+            // Populate the exercise navigation menu
+            populateExerciseMenu();
+
             // Attach event listener for clear all answers
             getElement('clear-all-answers-button').addEventListener('click', clearAllAnswers);
             
-            // Load saved answers on page load
+            // Toggle exercise menu visibility
+            getElement('menu-toggle-button').addEventListener('click', () => {
+                getElement('exercise-menu').classList.toggle('show');
+            });
+
+            // Close menu if clicked outside
+            document.addEventListener('click', (event) => {
+                const menuContainer = getElement('exercise-menu-container');
+                if (menuContainer && !menuContainer.contains(event.target)) {
+                    getElement('exercise-menu').classList.remove('show');
+                }
+            });
+
+
+            // Load saved answers and active exercise on page load
             loadAnswers();
+            // Show the last active exercise or default to Exercise 1
+            showExercise(appState.activeExercise || 'exercise1-section');
         };
     </script>
 </body>
