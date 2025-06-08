@@ -938,7 +938,7 @@
                 <option value="is happy to help other people">is happy to help other people</option>
                 <option value="is happy to meet new people">is happy to meet new people</option>
                 <option value="thinks only of themselves, and doesn’t care about other people">thinks only of themselves, and doesn’t care about other people</option>
-                <option value="will do what they say they will do">will do what they say they will do</option>
+                <option value="will do what they say they will do">will do what they will do</option>
             </select></p>
             <div class="feedback" id="feedback_ex5_q6"></div>
         </div>
@@ -2068,7 +2068,8 @@
                     e.preventDefault(); 
                     exercisesDropdownMenu.classList.add('hidden'); 
 
-                    const exerciseId = `exercise${this.dataset.exercise-id}`;
+                    // FIX: Changed this.dataset.exercise-id to this.dataset.exerciseId
+                    const exerciseId = `exercise${this.dataset.exerciseId}`; 
                     showOnlyExercise(exerciseId); 
                     window.scrollTo(0, 0); 
                 });
