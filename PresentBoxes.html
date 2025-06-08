@@ -540,9 +540,9 @@
                     { question: "Someone who is very hard to please.", answer: "demanding" }
                 ]
             },
-            'Job': { // New 'Job' topic
+            'Job': { // New 'Job' topic with occupations
                 'easy': [
-                    { question: "What do you call someone who cooks food in a restaurant?", answer: "chef" },
+                    { question: "Who cooks food in a restaurant?", answer: "chef" },
                     { question: "Who helps sick people in a hospital?", answer: "doctor" },
                     { question: "Who teaches students in a school?", answer: "teacher" },
                     { question: "Who sings songs professionally?", answer: "singer" },
@@ -560,40 +560,40 @@
                     { question: "Who serves food in a restaurant?", answer: "waiter" }
                 ],
                 'medium': [
-                    { question: "Who designs buildings?", answer: "architect" },
-                    { question: "Who represents clients in court?", answer: "lawyer" },
-                    { question: "Who manages money and investments for others?", answer: "accountant" },
-                    { question: "Who takes professional photographs?", answer: "photographer" },
-                    { question: "Who designs websites and apps?", answer: "web developer" },
-                    { question: "Who treats sick or injured animals?", answer: "veterinarian" },
-                    { question: "Who designs clothes?", answer: "fashion designer" },
-                    { question: "Who investigates crimes?", answer: "detective" },
-                    { question: "Who repairs plumbing systems?", answer: "plumber" },
-                    { question: "Who works in a laboratory doing scientific research?", answer: "scientist" },
-                    { question: "Who studies the Earth's physical structure and substance?", answer: "geologist" },
-                    { question: "Who plans and organizes events like weddings or conferences?", answer: "event planner" },
-                    { question: "Who creates art using paint?", answer: "painter" },
-                    { question: "Who designs and builds roads, bridges, and other structures?", answer: "civil engineer" },
-                    { question: "Who performs surgeries?", answer: "surgeon" },
-                    { question: "Who works on ships at sea?", answer: "sailor" }
+                    { question: "Who designs buildings and creates plans for construction?", answer: "architect" },
+                    { question: "Who gives legal advice and represents clients in court?", answer: "lawyer" },
+                    { question: "Who manages financial records and prepares tax returns for individuals or companies?", answer: "accountant" },
+                    { question: "Who captures images using a camera, often for artistic or commercial purposes?", answer: "photographer" },
+                    { question: "Who creates and maintains websites and web applications?", answer: "web developer" },
+                    { question: "Who treats sick or injured animals, often in a clinic or hospital setting?", answer: "veterinarian" },
+                    { question: "Who designs clothing and fashion lines?", answer: "fashion designer" },
+                    { question: "Who investigates crimes and gathers evidence for legal cases?", answer: "detective" },
+                    { question: "Who installs and repairs pipes and drainage systems?", answer: "plumber" },
+                    { question: "Who conducts research and experiments in a laboratory to advance knowledge?", answer: "scientist" },
+                    { question: "Who studies the Earth's physical structure, processes, and history?", answer: "geologist" },
+                    { question: "Who organizes and coordinates events, such as weddings, conferences, or parties?", answer: "event planner" },
+                    { question: "Who creates works of art using paint, often on canvas or other surfaces?", answer: "painter" },
+                    { question: "Who designs and supervises the construction of infrastructure projects like roads and bridges?", answer: "civil engineer" },
+                    { question: "Who performs medical operations on patients?", answer: "surgeon" },
+                    { question: "Who works as a crew member on a ship or boat?", answer: "sailor" }
                 ],
                 'hard': [
-                    { question: "Who specializes in the study of human behavior and mental processes?", answer: "psychologist" },
-                    { question: "Who designs and develops computer hardware and software systems?", answer: "computer engineer" },
-                    { question: "Who studies the universe beyond Earth's atmosphere?", answer: "astronomer" },
-                    { question: "Who advises organizations on management issues, providing fresh perspectives?", answer: "management consultant" },
-                    { question: "Who creates musical compositions?", answer: "composer" },
-                    { question: "Who specializes in the legal aspects of patents, trademarks, and copyrights?", answer: "patent attorney" },
-                    { question: "Who designs and supervises the construction of aircraft?", answer: "aeronautical engineer" },
-                    { question: "Who evaluates and manages financial risk, particularly in insurance and pensions?", answer: "actuary" },
-                    { question: "Who researches, produces, and applies biological solutions to environmental problems?", answer: "environmental engineer" },
-                    { question: "Who studies ancient societies through the recovery and analysis of artifacts?", answer: "archaeologist" },
-                    { question: "Who manages investment funds and makes decisions for clients?", answer: "portfolio manager" },
-                    { question: "Who specializes in the diagnosis and treatment of mental illnesses?", answer: "psychiatrist" },
-                    { question: "Who designs and analyzes the safety of large structures like skyscrapers and bridges?", answer: "structural engineer" },
-                    { question: "Who develops and implements strategies for effective public relations?", answer: "public relations specialist" },
-                    { question: "Who analyzes and interprets data to solve complex business problems?", answer: "data scientist" },
-                    { question: "Who researches and develops new drugs and pharmaceutical products?", answer: "pharmaceutical scientist" }
+                    { question: "Who studies human behavior and mental processes, often providing therapy or counseling?", answer: "psychologist" },
+                    { question: "Who designs and develops computer hardware, software, or entire systems?", answer: "computer engineer" },
+                    { question: "Who studies celestial objects, space, and the physical universe?", answer: "astronomer" },
+                    { question: "Who advises organizations on strategies to improve their performance and efficiency?", answer: "management consultant" },
+                    { question: "Who creates original musical pieces, often for instruments or voices?", answer: "composer" },
+                    { question: "Who specializes in the legal aspects of intellectual property, such as patents and trademarks?", answer: "patent attorney" },
+                    { question: "Who designs, develops, and tests aircraft or spacecraft?", answer: "aeronautical engineer" },
+                    { question: "Who analyzes and manages financial risks, particularly in the insurance and pension industries?", answer: "actuary" },
+                    { question: "Who applies scientific principles to design solutions for environmental problems?", answer: "environmental engineer" },
+                    { question: "Who studies human history and prehistory through the excavation of sites and the analysis of artifacts?", answer: "archaeologist" },
+                    { question: "Who manages investment portfolios for clients, aiming to maximize returns while minimizing risk?", answer: "portfolio manager" },
+                    { question: "Who is a medical doctor specializing in the diagnosis and treatment of mental illnesses?", answer: "psychiatrist" },
+                    { question: "Who designs and analyzes the structural integrity of buildings, bridges, and other constructions?", answer: "structural engineer" },
+                    { question: "Who manages communication between an organization and its public to build and maintain a positive image?", answer: "public relations specialist" },
+                    { question: "Who extracts knowledge and insights from data using scientific methods, processes, algorithms, and systems?", answer: "data scientist" },
+                    { question: "Who develops and researches new drugs and pharmaceutical products?", answer: "pharmaceutical scientist" }
                 ]
             }
         };
@@ -792,12 +792,11 @@
             currentExercises = JSON.parse(JSON.stringify(allExercises[selectedTopic][selectedLevel]));
 
             // Ensure we have 16 questions for the boxes, duplicate if necessary
-            // Shuffle the chosen exercises to ensure variety across presents
-            currentExercises = shuffleArray(currentExercises);
             while (currentExercises.length < 16) {
-                currentExercises = currentExercises.concat(shuffleArray(JSON.parse(JSON.stringify(allExercises[selectedTopic][selectedLevel]))));
+                currentExercises = currentExercises.concat(JSON.parse(JSON.stringify(allExercises[selectedTopic][selectedLevel])));
             }
             currentExercises = currentExercises.slice(0, 16); // Trim if too many
+            currentExercises = shuffleArray(currentExercises); // Shuffle immediately after populating
 
             topicStep.classList.remove('active');
             teamStep.classList.add('active');
