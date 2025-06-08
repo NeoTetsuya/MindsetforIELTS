@@ -56,8 +56,17 @@
             100% { transform: scale(1); }
         }
 
+        /* Styles for the number inside the box */
+        .present-box .box-number {
+            position: absolute;
+            z-index: 4; /* Above ribbons and bow */
+        }
+        /* .present-box .meme-img is removed */
+
+
         .ribbon-h, .ribbon-v {
             position: absolute;
+            background-color: #fcd34d; /* Gold */
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
             z-index: 1;
         }
@@ -246,9 +255,13 @@
                 Question will appear here...
             </div>
             <div class="mt-4 flex flex-col sm:flex-row gap-3 justify-center">
-                <button id="modal-reveal-outcome-button"
+                <button id="correct-answer-button"
                         class="px-8 py-3 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-200 ease-in-out shadow-md text-lg">
-                    Reveal Outcome
+                    Correct Answer
+                </button>
+                <button id="incorrect-answer-button"
+                        class="px-8 py-3 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 transition duration-200 ease-in-out shadow-md text-lg">
+                    Incorrect Answer
                 </button>
                 <button id="next-team-button"
                         class="px-8 py-3 bg-yellow-500 text-white text-xl font-bold rounded-lg hover:bg-yellow-600 transition duration-200 ease-in-out shadow-lg
@@ -278,35 +291,35 @@
             { question: "Give some synonyms to 'Tired'.", answer: "weary" },
             { question: "Give some synonyms to 'Sad'.", answer: "unhappy" },
             { question: "Give some synonyms to 'Happy'.", answer: "glad" },
-            // Duplicated Exercises to reach 16
-            { question: "Give some forms of 'communicate'.", answer: "communication" },
-            { question: "Give some forms of 'predict'.", answer: "predictable" },
-            { question: "Give some synonyms to 'Important'.", answer: "vital" },
-            { question: "Give some synonyms to 'Interesting'.", answer: "fascinating" }
+            // Duplicated Exercises to reach 16 (for diverse questions)
+            { question: "Give some forms of 'collaborate'.", answer: "collaboration" }, // New example for variety
+            { question: "Give some forms of 'educate'.", answer: "education" }, // New example for variety
+            { question: "Give some synonyms to 'Big'.", answer: "large" }, // New example for variety
+            { question: "Give some synonyms to 'Quick'.", answer: "fast" } // New example for variety
         ];
 
-        // Rewards (8 distinct outcomes)
+        // Rewards (8 distinct outcomes with adjusted points)
         const rewards = [
-            "🎁 Direct: +10 Points!",
-            "🎁 Direct: +15 Points!",
-            "🎁 Direct: +20 Points!",
-            "🎁 Direct: +25 Points!", // New direct point reward
+            "🎁 Direct: +25 Points!",
+            "🎁 Direct: +30 Points!",
+            "🎁 Direct: +35 Points!",
+            "🎁 Direct: +40 Points!",
             "🎉 Inventory: Steal 15 Points!",
             "✨ Inventory: Double Next Points!",
             "🔄 Inventory: Swap Question!",
-            "💡 Inventory: Get a free hint!" // New power-up reward
+            "💡 Inventory: Get a free hint!"
         ];
 
-        // Punishments (8 distinct outcomes)
+        // Punishments (8 distinct outcomes with adjusted points)
         const punishments = [
-            "💀 Direct: -5 Points!",
-            "💀 Direct: -10 Points!",
             "💀 Direct: -15 Points!",
-            "💀 Direct: -20 Points!", // New direct point punishment
+            "💀 Direct: -20 Points!",
+            "💀 Direct: -25 Points!",
+            "💀 Direct: -30 Points!",
             "🎭 Immediate: Silly Voice for next answer!",
             "🤸 Immediate: Do 3 Jumping Jacks!",
             "🃏 Immediate: Charades (Teacher picks word)!",
-            "😂 Immediate: Tell a joke before answering!" // New immediate action punishment
+            "😂 Immediate: Tell a joke before answering!"
         ];
 
         // Combine all rewards and punishments for shuffling
@@ -314,6 +327,10 @@
             ...rewards, // 8 rewards
             ...punishments // 8 punishments
         ]; // Total 16 outcomes
+
+        // No more meme map needed
+        // const outcomeToMemeMap = { /* ... */ };
+
 
         // Array of distinct color palettes for the presents
         const presentBoxColors = [
@@ -348,7 +365,7 @@
             {
                 bg: '#6d28d9', gradient: '#4c1d95', border: '#3b0764',
                 ribbon: '#c084fc', bow: '#d8b4fe', bowLight: '#a78bfa'
-            }  // Indigo/Light Purple - Added more to ensure enough distinct colors for 16 boxes
+            }
         ];
 
 
@@ -372,7 +389,8 @@
         // Modal specific elements
         const questionModalOverlay = document.getElementById('question-modal-overlay');
         const modalExerciseDisplay = document.getElementById('modal-exercise-display');
-        const modalRevealOutcomeButton = document.getElementById('modal-reveal-outcome-button');
+        const correctAnswerButton = document.getElementById('correct-answer-button'); // New button
+        const incorrectAnswerButton = document.getElementById('incorrect-answer-button'); // New button
         const modalFeedbackDisplay = document.getElementById('modal-feedback-display');
         const nextTeamButton = document.getElementById('next-team-button'); // Now inside the modal
 
@@ -437,9 +455,11 @@
 
             // Create 16 presents, assigning a unique exercise and outcome to each
             for (let i = 0; i < 16; i++) { // Changed to 16 presents
+                const outcome = shuffledOutcomes[i];
+
                 presents.push({
                     exercise: shuffledExercises[i], // Assign a unique shuffled exercise
-                    outcome: shuffledOutcomes[i] // Assign a unique shuffled outcome
+                    outcome: outcome
                 });
 
                 // Create present box HTML element
@@ -460,7 +480,8 @@
                     <div class="bow" style="background-color: ${colorPalette.bow}">
                         <div class="bow-inner" style="background-color: ${colorPalette.bowLight};"></div>
                     </div>
-                    <span>${i + 1}</span>
+                    <span class="box-number">${i + 1}</span>
+                    <!-- meme-img removed -->
                 `;
                 presentsGrid.appendChild(presentBox);
 
@@ -478,7 +499,8 @@
             exerciseDisplay.classList.add('text-gray-700'); // Set default color
 
 
-            modalRevealOutcomeButton.disabled = true; // Disable modal reveal button until a present is clicked
+            correctAnswerButton.disabled = true; // Disable correct/incorrect buttons initially
+            incorrectAnswerButton.disabled = true;
             nextTeamButton.disabled = true; // Disable next team button initially
 
             updateScoreboardDisplay(); // Update scoreboard for initial state
@@ -516,10 +538,12 @@
 
             currentPresentIndex = index;
             modalExerciseDisplay.textContent = presents[currentPresentIndex].exercise.question; // Set question in modal
-            modalFeedbackDisplay.textContent = `Team ${teams[currentTeamIndex].name}: Solve this exercise and click "Reveal Outcome" to see what\'s inside!`;
+            modalFeedbackDisplay.textContent = `Team ${teams[currentTeamIndex].name}: Answer the question, then click "Correct Answer" or "Incorrect Answer".`;
             modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-blue-700';
-            modalRevealOutcomeButton.disabled = false; // Enable reveal button in modal
-            nextTeamButton.disabled = true; // Disable next team button until outcome is revealed
+            
+            correctAnswerButton.disabled = false; // Enable correct/incorrect buttons
+            incorrectAnswerButton.disabled = false;
+            nextTeamButton.disabled = true; // Disable next team button until outcome is determined
 
             questionModalOverlay.classList.add('active'); // Show the modal
             if (mainChallengeZoneDisplay) {
@@ -529,11 +553,11 @@
         }
 
         /**
-         * Handles the "Reveal Outcome" button click inside the modal.
+         * Handles when the teacher marks an answer as CORRECT.
          */
-        function handleRevealOutcome() {
+        function handleCorrectAnswer() {
             if (currentPresentIndex === null || presentsOpened.has(currentPresentIndex)) {
-                modalFeedbackDisplay.textContent = "Error: No present selected or already opened."; // Should not happen with current flow
+                modalFeedbackDisplay.textContent = "Error: No present selected or already opened.";
                 modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-red-600';
                 return;
             }
@@ -546,28 +570,71 @@
             const outcome = presents[currentPresentIndex].outcome;
             const currentTeam = teams[currentTeamIndex];
 
-            modalFeedbackDisplay.textContent = `Outcome Revealed for ${currentTeam.name}: ${outcome}\n\nClick "Next Team's Turn" to continue.`; // Added explicit instruction
+            modalFeedbackDisplay.textContent = `Correct! Outcome for ${currentTeam.name}: ${outcome}\n\nClick "Next Team's Turn" to continue.`;
 
-            // Determine outcome type and apply effects
-            if (rewards.includes(outcome)) { // Check if the outcome is in the rewards array
+            // Apply reward/punishment logic for a correct answer
+            if (rewards.includes(outcome)) {
                 const pointsMatch = outcome.match(/\+(\d+)/);
-                if (pointsMatch) { // It's a direct point reward
+                if (pointsMatch) {
                     currentTeam.score += parseInt(pointsMatch[1]);
-                } else { // It's an inventory power-up
+                } else {
                     currentTeam.inventory.push(outcome.substring(outcome.indexOf(":") + 2).trim());
                 }
                 modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold reward-text';
-            } else if (punishments.includes(outcome)) { // Check if the outcome is in the punishments array
-                 const pointsMatch = outcome.match(/(\-?\d+)/);
-                if (pointsMatch) { // It's a direct point punishment
-                    currentTeam.score += parseInt(pointsMatch[1]);
-                }
-                modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold punishment-text';
+            } else if (punishments.includes(outcome)) {
+                // If a punishment is drawn on a CORRECT answer, it becomes a "missed punishment" or similar.
+                // For this scenario, we'll just acknowledge the punishment but don't apply it if the answer was correct.
+                // You can customize this logic based on your game rules (e.g., still apply part of it, or a lesser penalty).
+                modalFeedbackDisplay.textContent = `Correct, but you drew a punishment for ${currentTeam.name}: ${outcome}. You avoid the penalty this time!\n\nClick "Next Team's Turn" to continue.`;
+                modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-yellow-600'; // Neutral/warning color
             }
 
-            updateScoreboardDisplay(); // Update scoreboard with new scores/inventory
-            modalRevealOutcomeButton.disabled = true; // Disable reveal button after outcome
-            nextTeamButton.disabled = false; // Enable next team button to proceed
+            updateScoreboardDisplay();
+            correctAnswerButton.disabled = true; // Disable buttons after outcome is revealed
+            incorrectAnswerButton.disabled = true;
+            nextTeamButton.disabled = false; // Enable next team button
+        }
+
+        /**
+         * Handles when the teacher marks an answer as INCORRECT.
+         */
+        function handleIncorrectAnswer() {
+            if (currentPresentIndex === null || presentsOpened.has(currentPresentIndex)) {
+                modalFeedbackDisplay.textContent = "Error: No present selected or already opened.";
+                modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-red-600';
+                return;
+            }
+
+            const presentBox = document.getElementById(`present-${currentPresentIndex}`);
+            presentsOpened.add(currentPresentIndex); // Mark as opened
+            presentBox.classList.add('opened'); // Change visual style
+            presentBox.removeEventListener('click', handlePresentClick); // Disable further clicks on this box
+
+            const outcome = presents[currentPresentIndex].outcome;
+            const currentTeam = teams[currentTeamIndex];
+
+            modalFeedbackDisplay.textContent = `Incorrect! No reward or punishment is applied for ${currentTeam.name}.\n\nClick "Next Team's Turn" to continue.`;
+            modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-orange-600'; // Indicates incorrect
+
+            // If a punishment is drawn on an INCORRECT answer, it *should* be applied.
+            // If a reward is drawn on an INCORRECT answer, it's NOT applied.
+            if (punishments.includes(outcome)) {
+                const pointsMatch = outcome.match(/(\-?\d+)/);
+                if (pointsMatch) { // It's a direct point punishment
+                    currentTeam.score += parseInt(pointsMatch[1]);
+                    modalFeedbackDisplay.textContent = `Incorrect! Outcome for ${currentTeam.name}: ${outcome}\n\nClick "Next Team's Turn" to continue.`;
+                    modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold punishment-text';
+                } else { // It's an immediate action punishment
+                    modalFeedbackDisplay.textContent = `Incorrect! Outcome for ${currentTeam.name}: ${outcome}\n\nClick "Next Team's Turn" to continue.`;
+                    modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold punishment-text';
+                }
+            }
+
+
+            updateScoreboardDisplay();
+            correctAnswerButton.disabled = true; // Disable buttons after outcome is determined
+            incorrectAnswerButton.disabled = true;
+            nextTeamButton.disabled = false; // Enable next team button
         }
 
         /**
@@ -585,29 +652,33 @@
             const mainChallengeZoneDisplay = exerciseDisplay;
             if (mainChallengeZoneDisplay) {
                 mainChallengeZoneDisplay.textContent = `It's ${teams[currentTeamIndex].name}'s turn! Click a present to reveal your challenge!`;
-                mainChallengeZoneDisplay.classList.remove('text-yellow-600', 'text-red-600', 'text-green-700'); // Clear old colors
+                mainChallengeZoneDisplay.classList.remove('text-yellow-600', 'text-red-600', 'text-green-700', 'text-orange-600'); // Clear old colors
                 mainChallengeZoneDisplay.classList.add('text-gray-700'); // Set default color
             }
 
-            nextTeamButton.disabled = true; // Disable until new outcome is revealed
+            correctAnswerButton.disabled = true; // Reset buttons for next turn
+            incorrectAnswerButton.disabled = true;
+            nextTeamButton.disabled = true; // Disable until new outcome is determined
 
             // If all presents are opened, prevent further clicks and turns
             if (presentsOpened.size === 16) {
                 if (mainChallengeZoneDisplay) {
                     mainChallengeZoneDisplay.textContent = "All presents opened! Game Over. Click Reset to play again.";
-                    mainChallengeZoneDisplay.classList.remove('text-yellow-600', 'text-red-600', 'text-gray-700');
+                    mainChallengeZoneDisplay.classList.remove('text-yellow-600', 'text-red-600', 'text-gray-700', 'text-orange-600');
                     mainChallengeZoneDisplay.classList.add('text-green-700');
                 }
+                correctAnswerButton.disabled = true;
+                incorrectAnswerButton.disabled = true;
                 nextTeamButton.disabled = true;
-                modalRevealOutcomeButton.disabled = true; // Ensure modal button stays disabled
             }
             currentPresentIndex = null; // Clear current present for the next turn
         }
 
         // Event listeners for buttons
-        modalRevealOutcomeButton.addEventListener('click', handleRevealOutcome); // Attach to modal button
+        correctAnswerButton.addEventListener('click', handleCorrectAnswer);
+        incorrectAnswerButton.addEventListener('click', handleIncorrectAnswer);
         resetButton.addEventListener('click', initializeGame);
-        nextTeamButton.addEventListener('click', handleNextTeam); // Now attached to the button inside the modal
+        nextTeamButton.addEventListener('click', handleNextTeam);
 
         // Initialize the game when the window loads
         window.onload = initializeGame;
