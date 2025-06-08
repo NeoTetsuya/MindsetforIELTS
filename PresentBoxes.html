@@ -236,36 +236,71 @@
             opacity: 0.5;
             cursor: not-allowed;
         }
+
+        /* Team Selection Overlay */
+        #team-selection-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #e0f2fe; /* Match body background */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001; /* Above everything else */
+            text-align: center;
+        }
+        #team-selection-overlay.hidden {
+            display: none;
+        }
+        #team-selection-overlay button {
+            background-color: #10b981; /* Green */
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+        #team-selection-overlay button:hover {
+            background-color: #059669; /* Darker green */
+        }
+        #team-selection-overlay h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2563eb; /* Blue */
+            margin-bottom: 2rem;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center p-4">
-    <div class="max-w-4xl w-full container-card space-y-6">
+
+    <!-- Team Selection Overlay -->
+    <div id="team-selection-overlay">
+        <h2>Select Number of Teams</h2>
+        <div class="flex flex-col sm:flex-row gap-4">
+            <button onclick="selectTeams(2)">2 Teams</button>
+            <button onclick="selectTeams(3)">3 Teams</button>
+            <button onclick="selectTeams(4)">4 Teams</button>
+        </div>
+    </div>
+
+    <div id="main-game-container" class="max-w-4xl w-full container-card space-y-6 hidden">
         <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6">
             Present Challenge Game
         </h1>
 
         <!-- Scoreboard and Current Turn Display -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            <div class="team-score-card text-center">
-                <h3 class="font-semibold text-xl text-blue-700 mb-2">Team 1</h3>
-                <p class="text-3xl font-bold text-blue-600 mb-2" id="team-0-score">0 Points</p>
-                <div class="text-sm text-gray-600 mb-1">Inventory:</div>
-                <ul id="team-0-inventory" class="list-disc list-inside text-sm text-gray-700 text-left mx-auto max-w-max">
-                    <!-- Inventory items will be listed here -->
-                </ul>
-            </div>
-            <div class="team-score-card text-center">
-                <h3 class="font-semibold text-xl text-blue-700 mb-2">Team 2</h3>
-                <p class="text-3xl font-bold text-blue-600 mb-2" id="team-1-score">0 Points</p>
-                <div class="text-sm text-gray-600 mb-1">Inventory:</div>
-                <ul id="team-1-inventory" class="list-disc list-inside text-sm text-gray-700 text-left mx-auto max-w-max">
-                    <!-- Inventory items will be listed here -->
-                </ul>
-            </div>
+        <div id="scoreboard-container" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <!-- Team score cards will be dynamically generated here -->
         </div>
 
         <div class="text-2xl font-bold text-center text-gray-800 mb-6">
-            Current Turn: <span id="current-team-display" class="text-blue-700">Team 1</span>
+            Current Turn: <span id="current-team-display" class="text-blue-700"></span>
         </div>
 
         <!-- Presents Grid -->
@@ -324,15 +359,8 @@
         <div class="modal-content space-y-4">
             <h2 class="text-2xl font-semibold text-blue-700 mb-4">Steal Points Power-up!</h2>
             <p class="text-lg text-gray-700">Which team would you like to steal 15 points from?</p>
-            <div class="mt-4 flex flex-col sm:flex-row gap-3 justify-center">
-                <button id="steal-target-team1-button"
-                        class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200 ease-in-out shadow-md text-lg">
-                    Team 1
-                </button>
-                <button id="steal-target-team2-button"
-                        class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200 ease-in-out shadow-md text-lg">
-                    Team 2
-                </button>
+            <div id="steal-target-buttons" class="mt-4 flex flex-col sm:flex-row gap-3 justify-center">
+                <!-- Dynamically generated buttons -->
             </div>
             <div id="steal-feedback" class="message-box mt-4 text-center text-lg font-bold"></div>
         </div>
@@ -375,6 +403,16 @@
             { question: "What is the opposite of 'up'?", answer: "down" }
         ];
 
+        // Pool of tongue twisters for the new punishment
+        let tongueTwisters = [
+            "She sells seashells by the seashore.",
+            "The sixth sick sheik's sixth sheep's sick.",
+            "A box of biscuits, a box of mixed biscuits.",
+            "A proper cup of coffee from a proper copper coffeepot.",
+            "Round and round the rugged rock the ragged rascal ran.",
+            "If two witches were watching two watches, which witch would watch which watch?"
+        ];
+
         // Rewards (8 distinct outcomes with adjusted points and defined types)
         const rewards = [
             { type: 'direct_points', value: 25, description: "🎁 Direct: +25 Points!" },
@@ -393,10 +431,10 @@
             { type: 'direct_points', value: -20, description: "💀 Direct: -20 Points!" },
             { type: 'direct_points', value: -25, description: "💀 Direct: -25 Points!" },
             { type: 'direct_points', value: -30, description: "💀 Direct: -30 Points!" },
-            { type: 'immediate_action', description: "🎭 Immediate: Silly Voice for next answer!" },
+            { type: 'immediate_action', name: 'Tongue Twister', description: "🗣️ Immediate: Recite a tongue twister!" }, // Changed: now specifically for tongue twisters
             { type: 'immediate_action', description: "🤸 Immediate: Do 3 Jumping Jacks!" },
             { type: 'immediate_action', description: "🃏 Immediate: Charades (Teacher picks word)!" },
-            { type: 'immediate_action', description: "😂 Immediate: Tell a joke before answering!" }
+            { type: 'immediate_action', description: "🎨 Immediate: Quickly draw a relevant icon on the board before answering!" } // Changed
         ];
 
         // Combine all rewards and punishments for shuffling
@@ -448,16 +486,18 @@
         let presentsOpened = new Set(); // Stores indices of opened presents
 
         // Team Data: Each team has a name, score, and inventory of power-ups
-        let teams = [
-            { name: 'Team 1', score: 0, inventory: [], doublePointsActive: false, swapQuestionActive: false },
-            { name: 'Team 2', score: 0, inventory: [], doublePointsActive: false, swapQuestionActive: false }
-        ];
+        let teams = []; // Initialized after selection
         let currentTeamIndex = 0; // Index of the team whose turn it is (0 for Team 1, 1 for Team 2)
 
-        // Store a copy of reserved exercises for reset
-        let initialReservedExercises = [];
+        // Store a copy of reserved exercises and tongue twisters for reset
+        let initialReservedExercises = []; // This will be populated in initializeGame
+        let initialTongueTwisters = []; // This will be populated in initializeGame
 
         // DOM elements
+        const teamSelectionOverlay = document.getElementById('team-selection-overlay');
+        const mainGameContainer = document.getElementById('main-game-container');
+        const scoreboardContainer = document.getElementById('scoreboard-container');
+
         const presentsGrid = document.getElementById('presents-grid');
         const exerciseDisplay = document.getElementById('exercise-display'); // Main Challenge Zone display
 
@@ -474,8 +514,7 @@
 
         // Steal Points Modal elements
         const stealTargetModalOverlay = document.getElementById('steal-target-modal-overlay');
-        const stealTargetTeam1Button = document.getElementById('steal-target-team1-button');
-        const stealTargetTeam2Button = document.getElementById('steal-target-team2-button');
+        const stealTargetButtonsContainer = document.getElementById('steal-target-buttons');
         const stealFeedbackDisplay = document.getElementById('steal-feedback');
 
 
@@ -493,14 +532,46 @@
         }
 
         /**
+         * Selects the number of teams and prepares the game state.
+         * @param {number} numTeams - The number of teams to set up.
+         */
+        window.selectTeams = function(numTeams) {
+            teams = [];
+            for (let i = 0; i < numTeams; i++) {
+                teams.push({ name: `Team ${i + 1}`, score: 0, inventory: [], doublePointsActive: false, swapQuestionActive: false });
+            }
+            startGame(); // Proceed to start the game
+        }
+
+        /**
+         * Starts the game, hiding the team selection and showing the main game UI.
+         */
+        function startGame() {
+            teamSelectionOverlay.classList.add('hidden');
+            mainGameContainer.classList.remove('hidden');
+            initializeGame(true); // Pass true to indicate it's the initial game start
+        }
+
+        /**
          * Updates the scoreboard display (scores and inventories) for all teams.
          */
         function updateScoreboardDisplay() {
+            scoreboardContainer.innerHTML = ''; // Clear existing team cards
             teams.forEach((team, index) => {
-                document.getElementById(`team-${index}-score`).textContent = `${team.score} Points`;
-                const inventoryList = document.getElementById(`team-${index}-inventory`);
-                inventoryList.innerHTML = ''; // Clear previous inventory
+                const teamCard = document.createElement('div');
+                teamCard.className = 'team-score-card text-center';
+                teamCard.innerHTML = `
+                    <h3 class="font-semibold text-xl text-blue-700 mb-2">${team.name}</h3>
+                    <p class="text-3xl font-bold text-blue-600 mb-2" id="team-${index}-score">${team.score} Points</p>
+                    <div class="text-sm text-gray-600 mb-1">Inventory:</div>
+                    <ul id="team-${index}-inventory" class="list-disc list-inside text-sm text-gray-700 text-left mx-auto max-w-max">
+                        <!-- Inventory items will be listed here -->
+                    </ul>
+                `;
+                scoreboardContainer.appendChild(teamCard);
 
+                // Populate inventory for the newly created card
+                const inventoryList = teamCard.querySelector(`#team-${index}-inventory`);
                 if (team.inventory.length === 0) {
                     inventoryList.innerHTML = '<li class="text-gray-500">None</li>';
                 } else {
@@ -508,8 +579,8 @@
                         const listItem = document.createElement('li');
                         const button = document.createElement('button');
                         button.className = 'power-up-btn';
-                        button.textContent = item.description; // Display the power-up description
-                        button.onclick = () => usePowerUp(index, itemIndex); // Pass teamIndex and itemIndex
+                        button.textContent = item.description;
+                        button.onclick = () => usePowerUp(index, itemIndex);
                         listItem.appendChild(button);
                         inventoryList.appendChild(listItem);
                     });
@@ -520,16 +591,36 @@
 
         /**
          * Initializes the game by setting up presents and UI.
+         * @param {boolean} isInitialStart - True if this is the first time the game is starting after team selection.
          */
-        function initializeGame() {
-            // Store initial state of reserved exercises
-            initialReservedExercises = JSON.parse(JSON.stringify(reservedExercises));
+        function initializeGame(isInitialStart = false) {
+            // Store initial state of reserved exercises and tongue twisters only once
+            if (initialReservedExercises.length === 0 || isInitialStart) { // Re-populate on initial start or if empty
+                initialReservedExercises = JSON.parse(JSON.stringify(reservedExercises));
+                initialTongueTwisters = JSON.parse(JSON.stringify(tongueTwisters));
+            } else {
+                // Re-initialize for reset button functionality
+                reservedExercises = JSON.parse(JSON.stringify(initialReservedExercises));
+                tongueTwisters = JSON.parse(JSON.stringify(initialTongueTwisters));
+            }
 
-            // Reset teams data
-            teams = [
-                { name: 'Team 1', score: 0, inventory: [], doublePointsActive: false, swapQuestionActive: false },
-                { name: 'Team 2', score: 0, inventory: [], doublePointsActive: false, swapQuestionActive: false }
-            ];
+            // If not initial start, clear existing team data and recreate based on previously selected num teams
+            if (!isInitialStart && teams.length > 0) {
+                const numTeams = teams.length;
+                teams = []; // Clear current teams
+                for (let i = 0; i < numTeams; i++) {
+                    teams.push({ name: `Team ${i + 1}`, score: 0, inventory: [], doublePointsActive: false, swapQuestionActive: false });
+                }
+            } else if (teams.length === 0) {
+                 // Fallback: If initializeGame is called without prior team selection (e.g., direct refresh)
+                 // This should technically not happen with the team picker, but good for robustness.
+                teams = [
+                    { name: 'Team 1', score: 0, inventory: [], doublePointsActive: false, swapQuestionActive: false },
+                    { name: 'Team 2', score: 0, inventory: [], doublePointsActive: false, swapQuestionActive: false }
+                ];
+            }
+
+
             currentTeamIndex = 0; // Start with Team 1
 
             // Shuffle all possible outcomes
@@ -629,16 +720,21 @@
             let questionToDisplay;
 
             // Check if "Swap Question" power-up is active for the current team
-            if (currentTeam.swapQuestionActive && reservedExercises.length > 0) {
-                // Get a random question from reserved pool
+            if (currentTeam.swapQuestionActive) {
                 const randomIndex = Math.floor(Math.random() * reservedExercises.length);
-                questionToDisplay = reservedExercises[randomIndex].question;
-                reservedExercises.splice(randomIndex, 1); // Remove used reserved question
+                if (reservedExercises.length > 0) {
+                    questionToDisplay = reservedExercises[randomIndex].question;
+                    reservedExercises.splice(randomIndex, 1); // Remove from reserved pool
+                    modalFeedbackDisplay.textContent = `Team ${currentTeam.name} used "Swap Question"! New challenge:`;
+                    modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold reward-text';
+                } else {
+                    questionToDisplay = presents[currentPresentIndex].exercise.question;
+                    modalFeedbackDisplay.textContent = `Team ${currentTeam.name} tried to use "Swap Question" but no more reserved questions! Using original question.`;
+                    modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-red-600';
+                }
 
                 currentTeam.swapQuestionActive = false; // Consume the power-up effect
-                modalFeedbackDisplay.textContent = `Team ${currentTeam.name} used "Swap Question"! New challenge:`;
-                modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold reward-text';
-                updateScoreboardDisplay(); // Update inventory
+                updateScoreboardDisplay(); // Update inventory (to reflect power-up removal)
             } else {
                 questionToDisplay = presents[currentPresentIndex].exercise.question;
                 modalFeedbackDisplay.textContent = `Team ${currentTeam.name}: Answer the question, then click "Correct Answer" or "Incorrect Answer".`;
@@ -713,6 +809,16 @@
                     feedbackClass += ' text-orange-600';
                 } else if (outcome.type === 'immediate_action') {
                     // Apply immediate action punishments even if incorrect
+                    if (outcome.name === 'Tongue Twister') {
+                        if (tongueTwisters.length > 0) {
+                            const randomIndex = Math.floor(Math.random() * tongueTwisters.length);
+                            const selectedTwister = tongueTwisters[randomIndex];
+                            tongueTwisters.splice(randomIndex, 1); // Remove used twister
+                            feedbackMessage = `Incorrect! ${currentTeam.name} must recite this tongue twister: "${selectedTwister}"`;
+                        } else {
+                            feedbackMessage = `Incorrect! ${currentTeam.name} drew a tongue twister punishment, but no more available!`;
+                        }
+                    }
                     feedbackClass += ' punishment-text';
                 }
             }
@@ -760,9 +866,22 @@
                     stealFeedbackDisplay.textContent = `Team ${teamIdx + 1} is using "Steal 15 Points!". Choose a target team.`;
                     stealFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-blue-700';
 
-                    // Store context for steal power-up
+                    // Clear and populate steal target buttons
+                    stealTargetButtonsContainer.innerHTML = '';
+                    teams.forEach((targetTeam, idx) => {
+                        if (idx !== teamIdx) { // Don't allow stealing from self
+                            const targetButton = document.createElement('button');
+                            targetButton.className = 'px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200 ease-in-out shadow-md text-lg';
+                            targetButton.textContent = targetTeam.name;
+                            targetButton.onclick = () => handleStealTargetSelect(teamIdx, idx); // Pass usingTeamIndex and targetTeamIndex
+                            stealTargetButtonsContainer.appendChild(targetButton);
+                        }
+                    });
+
+                    // Store context for power-up (powerUpItemIndex is no longer needed after splice)
                     stealTargetModalOverlay.dataset.usingTeamIndex = teamIdx;
-                    stealTargetModalOverlay.dataset.powerUpItemIndex = itemIdx;
+                    team.inventory.splice(itemIdx, 1); // Remove from inventory IMMEDIATELY when used
+                    updateScoreboardDisplay(); // Update inventory display
 
                     break;
                 case 'Double Next Points':
@@ -782,7 +901,8 @@
                         setGameInteractionState(true); // Re-enable game
                         return; // Don't consume power-up if no questions are available
                     }
-                    team.swapQuestionActive = true; // Set flag to swap question on next present click
+                    // This flag will trigger the question swap on the *next* present click
+                    team.swapQuestionActive = true;
                     modalFeedbackDisplay.textContent = `${team.name} activated "Swap Question!" The next present you click will have a new question.`;
                     modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold reward-text';
                     team.inventory.splice(itemIdx, 1); // Remove from inventory
@@ -824,16 +944,14 @@
 
         /**
          * Handles selecting a target for the Steal Points power-up.
+         * @param {number} usingTeamIndex - The index of the team using the power-up.
          * @param {number} targetTeamIndex - The index of the team to steal from.
          */
-        function handleStealTargetSelect(targetTeamIndex) {
-            const usingTeamIndex = parseInt(stealTargetModalOverlay.dataset.usingTeamIndex);
-            const powerUpItemIndex = parseInt(stealTargetModalOverlay.dataset.powerUpItemIndex);
-
+        function handleStealTargetSelect(usingTeamIndex, targetTeamIndex) {
             const usingTeam = teams[usingTeamIndex];
             const targetTeam = teams[targetTeamIndex];
 
-            // Prevent stealing from oneself
+            // Prevent stealing from oneself (already handled in usePowerUp but good for robustness)
             if (usingTeamIndex === targetTeamIndex) {
                 stealFeedbackDisplay.textContent = "You can't steal points from your own team!";
                 stealFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-red-600';
@@ -846,8 +964,6 @@
 
             stealFeedbackDisplay.textContent = `${usingTeam.name} successfully stole ${pointsToSteal} points from ${targetTeam.name}!`;
             stealFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold reward-text';
-
-            usingTeam.inventory.splice(powerUpItemIndex, 1); // Remove the used power-up
 
             updateScoreboardDisplay();
 
@@ -910,16 +1026,16 @@
         // Event listeners for buttons
         correctAnswerButton.addEventListener('click', handleCorrectAnswer);
         incorrectAnswerButton.addEventListener('click', handleIncorrectAnswer);
-        resetButton.addEventListener('click', initializeGame);
+        resetButton.addEventListener('click', () => initializeGame(false)); // Reset button now explicitly calls with false for non-initial start
         nextTeamButton.addEventListener('click', handleNextTeam);
 
-        // Steal points modal buttons
-        stealTargetTeam1Button.addEventListener('click', () => handleStealTargetSelect(0));
-        stealTargetTeam2Button.addEventListener('click', () => handleStealTargetSelect(1));
 
-
-        // Initialize the game when the window loads
-        window.onload = initializeGame;
+        // Initial setup on window load: show team selection
+        window.onload = function() {
+            teamSelectionOverlay.classList.remove('hidden');
+            mainGameContainer.classList.add('hidden');
+            // No need to call initializeGame here, it will be called by selectTeams -> startGame
+        };
     </script>
 </body>
 </html>
