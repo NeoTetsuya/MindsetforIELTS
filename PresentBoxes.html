@@ -322,7 +322,7 @@
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <button onclick="selectTopic('General Vocabulary')">General Vocabulary</button>
                     <button onclick="selectTopic('Personality')">Personality</button>
-                    <!-- Add more topic buttons here as needed -->
+                    <button onclick="selectTopic('Job')">Job</button> <!-- New Job Topic Button -->
                 </div>
             </div>
 
@@ -444,8 +444,42 @@
                     { question: "Give some synonyms to 'Big'.", answer: "large" },
                     { question: "Give some synonyms to 'Quick'.", answer: "fast" }
                 ],
-                'medium': [], // Placeholder for future medium questions
-                'hard': []    // Placeholder for future hard questions
+                'medium': [
+                    { question: "What is the collective noun for a group of lions?", answer: "pride" },
+                    { question: "What do you call a person who studies rocks?", answer: "geologist" },
+                    { question: "Which word means 'to make larger'?", answer: "enlarge" },
+                    { question: "What is the opposite of 'optimistic'?", answer: "pessimistic" },
+                    { question: "Fill in the blank: 'He was so ______ he finished the race in record time.' (quick)", answer: "quick" },
+                    { question: "What is the scientific study of plants?", answer: "botany" },
+                    { question: "Give a synonym for 'ancient'.", answer: "old" },
+                    { question: "What is a short, amusing story about a real incident or person?", answer: "anecdote" },
+                    { question: "What is the process by which plants make their own food?", answer: "photosynthesis" },
+                    { question: "Which word means 'to change'?", answer: "alter" },
+                    { question: "What is the capital city of Canada?", answer: "Ottawa" },
+                    { question: "What is the young of a sheep called?", answer: "lamb" },
+                    { question: "Give a synonym for 'beautiful'.", answer: "pretty" },
+                    { question: "What is the main advantage of solar energy?", answer: "renewable" },
+                    { question: "What is the collective noun for a group of fish?", answer: "school" },
+                    { question: "What do you call someone who writes books?", answer: "author" }
+                ],
+                'hard': [
+                    { question: "What is the term for a word that sounds the same as another word but has a different meaning and spelling?", answer: "homophone" },
+                    { question: "What literary device involves an interruption of the chronological sequence (as of events) by interjection of events of earlier occurrence?", answer: "flashback" },
+                    { question: "What is the study of the origin and history of words?", answer: "etymology" },
+                    { question: "In grammar, what is a word or phrase that modifies or qualifies an adjective, verb, or other adverb or a word group, expressing a relation of place, time, circumstance, manner, cause, degree, etc.?", answer: "adverb" },
+                    { question: "What is the philosophical theory that all knowledge is derived from sense experience?", answer: "empiricism" },
+                    { question: "What is the artistic and literary movement that originated in the late 18th century, emphasizing inspiration, subjectivity, and the primacy of the individual?", answer: "romanticism" },
+                    { question: "Give a synonym for 'ubiquitous'.", answer: "omnipresent" },
+                    { question: "What is the act of speaking or acting in a way that avoids directly answering a question or committing oneself to a definite course of action?", answer: "equivocation" },
+                    { question: "What term describes a figure of speech involving the comparison of one thing with another thing of a different kind, used to make a description more emphatic or vivid (e.g., as brave as a lion)?", answer: "simile" },
+                    { question: "What is the psychological phenomenon in which people tend to attribute success to internal factors and failure to external factors?", answer: "self-serving bias" },
+                    { question: "What is a literary technique in which a speaker or character says something that is known by the audience to be contradictory to fact?", answer: "irony" },
+                    { question: "What is the branch of philosophy that deals with the first principles of things, including abstract concepts such as being, knowing, identity, time, and space?", answer: "metaphysics" },
+                    { question: "Give a synonym for 'benevolent'.", answer: "kind" },
+                    { question: "What is a figure of speech in which a part is made to represent the whole or vice versa (e.g., 'all hands on deck' for sailors)?", answer: "synecdoche" },
+                    { question: "What is the formal and polite term for a person's behavior, especially in a particular situation?", answer: "demeanor" },
+                    { question: "What is the ability to acquire and apply knowledge and skills?", answer: "intelligence" }
+                ]
             },
             'Personality': {
                 'easy': [
@@ -503,6 +537,62 @@
                     { question: "Give a synonym for 'show' (as in to disclose).", answer: "divulge" },
                     { question: "Someone who is showing a rude and arrogant lack of respect.", answer: "insolent" },
                     { question: "Someone who is difficult to please.", answer: "fastidious" }
+                ]
+            },
+            'Job': { // New 'Job' topic
+                'easy': [
+                    { question: "What do you call someone who cooks food in a restaurant?", answer: "chef" },
+                    { question: "Who helps sick people in a hospital?", answer: "doctor" },
+                    { question: "Who teaches students in a school?", answer: "teacher" },
+                    { question: "Who sings songs professionally?", answer: "singer" },
+                    { question: "Who builds houses?", answer: "builder" },
+                    { question: "Who drives a taxi?", answer: "taxi driver" },
+                    { question: "Who puts out fires?", answer: "firefighter" },
+                    { question: "Who delivers mail?", answer: "mail carrier" },
+                    { question: "Who bakes bread and cakes?", answer: "baker" },
+                    { question: "Who cuts hair?", answer: "hairdresser" },
+                    { question: "Who flies airplanes?", answer: "pilot" },
+                    { question: "Who cleans houses or offices?", answer: "cleaner" },
+                    { question: "Who works on a farm?", answer: "farmer" },
+                    { question: "Who fixes cars?", answer: "mechanic" },
+                    { question: "Who writes books?", answer: "author" },
+                    { question: "Who serves food in a restaurant?", answer: "waiter" }
+                ],
+                'medium': [
+                    { question: "Who designs buildings?", answer: "architect" },
+                    { question: "Who represents clients in court?", answer: "lawyer" },
+                    { question: "Who manages money and investments for others?", answer: "accountant" },
+                    { question: "Who takes professional photographs?", answer: "photographer" },
+                    { question: "Who designs websites and apps?", answer: "web developer" },
+                    { question: "Who treats sick or injured animals?", answer: "veterinarian" },
+                    { question: "Who designs clothes?", answer: "fashion designer" },
+                    { question: "Who investigates crimes?", answer: "detective" },
+                    { question: "Who repairs plumbing systems?", answer: "plumber" },
+                    { question: "Who works in a laboratory doing scientific research?", answer: "scientist" },
+                    { question: "Who studies the Earth's physical structure and substance?", answer: "geologist" },
+                    { question: "Who plans and organizes events like weddings or conferences?", answer: "event planner" },
+                    { question: "Who creates art using paint?", answer: "painter" },
+                    { question: "Who designs and builds roads, bridges, and other structures?", answer: "civil engineer" },
+                    { question: "Who performs surgeries?", answer: "surgeon" },
+                    { question: "Who works on ships at sea?", answer: "sailor" }
+                ],
+                'hard': [
+                    { question: "Who specializes in the study of human behavior and mental processes?", answer: "psychologist" },
+                    { question: "Who designs and develops computer hardware and software systems?", answer: "computer engineer" },
+                    { question: "Who studies the universe beyond Earth's atmosphere?", answer: "astronomer" },
+                    { question: "Who advises organizations on management issues, providing fresh perspectives?", answer: "management consultant" },
+                    { question: "Who creates musical compositions?", answer: "composer" },
+                    { question: "Who specializes in the legal aspects of patents, trademarks, and copyrights?", answer: "patent attorney" },
+                    { question: "Who designs and supervises the construction of aircraft?", answer: "aeronautical engineer" },
+                    { question: "Who evaluates and manages financial risk, particularly in insurance and pensions?", answer: "actuary" },
+                    { question: "Who researches, produces, and applies biological solutions to environmental problems?", answer: "environmental engineer" },
+                    { question: "Who studies ancient societies through the recovery and analysis of artifacts?", answer: "archaeologist" },
+                    { question: "Who manages investment funds and makes decisions for clients?", answer: "portfolio manager" },
+                    { question: "Who specializes in the diagnosis and treatment of mental illnesses?", answer: "psychiatrist" },
+                    { question: "Who designs and analyzes the safety of large structures like skyscrapers and bridges?", answer: "structural engineer" },
+                    { question: "Who develops and implements strategies for effective public relations?", answer: "public relations specialist" },
+                    { question: "Who analyzes and interprets data to solve complex business problems?", answer: "data scientist" },
+                    { question: "Who researches and develops new drugs and pharmaceutical products?", answer: "pharmaceutical scientist" }
                 ]
             }
         };
@@ -697,11 +787,14 @@
         window.selectTopic = function(topic) {
             selectedTopic = topic;
             // Get questions based on selected topic and level
+            // Create a deep copy of the exercises for the selected topic/level to ensure uniqueness for each game
             currentExercises = JSON.parse(JSON.stringify(allExercises[selectedTopic][selectedLevel]));
 
             // Ensure we have 16 questions for the boxes, duplicate if necessary
+            // Shuffle the chosen exercises to ensure variety across presents
+            currentExercises = shuffleArray(currentExercises);
             while (currentExercises.length < 16) {
-                currentExercises = currentExercises.concat(JSON.parse(JSON.stringify(allExercises[selectedTopic][selectedLevel])));
+                currentExercises = currentExercises.concat(shuffleArray(JSON.parse(JSON.stringify(allExercises[selectedTopic][selectedLevel]))));
             }
             currentExercises = currentExercises.slice(0, 16); // Trim if too many
 
@@ -794,8 +887,9 @@
                 if (selectedTopic && selectedLevel) {
                     currentExercises = JSON.parse(JSON.stringify(allExercises[selectedTopic][selectedLevel]));
                     // Ensure we have 16 questions for the boxes, duplicate if necessary
+                    currentExercises = shuffleArray(currentExercises); // Re-shuffle on reset
                     while (currentExercises.length < 16) {
-                        currentExercises = currentExercises.concat(JSON.parse(JSON.stringify(allExercises[selectedTopic][selectedLevel])));
+                        currentExercises = currentExercises.concat(shuffleArray(JSON.parse(JSON.stringify(allExercises[selectedTopic][selectedLevel]))));
                     }
                     currentExercises = currentExercises.slice(0, 16); // Trim if too many
                 }
@@ -818,8 +912,9 @@
             // Shuffle all possible outcomes
             let shuffledOutcomes = shuffleArray([...allPossibleOutcomes]); // 16 outcomes
 
-            // Shuffle currentExercises only once per game, not on every reset if it's already set
-            let shuffledCurrentExercises = shuffleArray(JSON.parse(JSON.stringify(currentExercises))); // Deep copy
+            // Use the `currentExercises` which is already populated based on selected topic/level and shuffled
+            let shuffledCurrentExercisesForPresents = currentExercises;
+
 
             presents = []; // Clear previous presents
             presentsOpened.clear(); // Clear opened presents set
@@ -831,7 +926,7 @@
                 const outcomeObject = shuffledOutcomes[i]; // Get the full outcome object
 
                 presents.push({
-                    exercise: shuffledCurrentExercises[i], // Assign a unique shuffled exercise from current pool
+                    exercise: shuffledCurrentExercisesForPresents[i], // Assign a unique shuffled exercise from current pool
                     outcome: outcomeObject // Store the full outcome object
                 });
 
