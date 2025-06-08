@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 8: Grammar & Vocabulary Worksheet</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Apply Inter font and basic styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #f0f4f8; /* Light blue-grey background */
+            min-height: 100vh; /* Ensure body takes full viewport height */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        /* Styling for correct/incorrect feedback */
+        .correct {
+            color: #10B981; /* Green-500 */
+        }
+        .incorrect {
+            color: #EF4444; /* Red-500 */
+        }
+        .feedback {
+            font-size: 0.875rem; /* text-sm */
+            margin-left: 0.5rem; /* ml-2 */
+            font-weight: 500; /* font-medium */
+        }
+        .answer-input:focus {
+            outline: none;
+            border-color: #3B82F6; /* blue-500 */
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); /* ring-2 focus:ring-blue-500 */
+        }
+        .sentence-blank {
+            min-width: 150px; /* Adjust as needed */
+            text-align: center;
+        }
+        /* Hidden class for exercises */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 md:p-8 lg:p-10">
+
+    <div class="max-w-4xl w-full bg-white shadow-xl rounded-xl p-6 sm:p-8 md:p-10 mb-8 relative">
+        <!-- Navigation Dropdown -->
+        <div class="absolute top-4 left-4">
+            <select id="exercise-selector" class="px-3 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out">
+                <option value="exercise1">Exercise 1</option>
+                <option value="exercise2">Exercise 2</option>
+                <option value="exercise3">Exercise 3</option>
+                <option value="exercise4">Exercise 4</option>
+                <option value="exercise5">Exercise 5</option>
+                <option value="exercise6">Exercise 6</option>
+                <option value="exercise7">Exercise 7</option>
+                <option value="exercise8">Exercise 8</option>
+                <option value="exercise9">Exercise 9</option>
+                <option value="exercise10">Exercise 10</option>
+            </select>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-6 text-center mt-12 sm:mt-0">Unit 8: Grammar & Vocabulary Worksheet</h1>
+        <p class="text-gray-600 text-lg mb-8 text-center">Complete the exercises below and click "Check Answers" to see your results.</p>
+
+        <!-- Exercise 1 -->
+        <section id="exercise1" class="exercise-section mb-10 p-6 bg-gray-50 rounded-lg border border-gray-200">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Exercise 1: Categorize the Animals</h2>
+            <p class="text-gray-600 mb-6">Put the words in the correct categories to complete the table.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="ex1-questions">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+            <button onclick="checkExercise1()" class="mt-8 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                Check Exercise 1
+            </button>
+        </section>
+
+        <!-- Exercise 2 -->
+        <section id="exercise2" class="exercise-section mb-10 p-6 bg-gray-50 rounded-lg border border-gray-200 hidden">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Exercise 2: Odd One Out</h2>
+            <p class="text-gray-600 mb-6">Look at the plant and animal characteristics. Choose the incorrect answers.</p>
+            <div class="space-y-6" id="ex2-questions">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+            <button onclick="checkExercise2()" class="mt-8 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                Check Exercise 2
+            </button>
+        </section>
+
+        <!-- Exercise 3 -->
+        <section id="exercise3" class="exercise-section mb-10 p-6 bg-gray-50 rounded-lg border border-gray-200 hidden">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Exercise 3: Complete the Text</h2>
+            <p class="text-gray-600 mb-4">Complete the text. Use the words and phrases in the box:</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">Common</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">conservation</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">endangered species</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">habitat</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">population</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">Rare</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">risk</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">wildlife</span>
+            </div>
+            <p class="text-gray-700 leading-relaxed" id="ex3-text">
+                <!-- Text with blanks will be dynamically inserted -->
+            </p>
+            <button onclick="checkExercise3()" class="mt-8 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                Check Exercise 3
+            </button>
+        </section>
+
+        <!-- Exercise 4 -->
+        <section id="exercise4" class="exercise-section mb-10 p-6 bg-gray-50 rounded-lg border border-gray-200 hidden">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Exercise 4: Match the Definitions</h2>
+            <p class="text-gray-600 mb-6">Match the words and phrases with the definitions.</p>
+            <div class="space-y-4" id="ex4-questions">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+            <button onclick="checkExercise4()" class="mt-8 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                Check Exercise 4
+            </button>
+        </section>
+
+        <!-- Exercise 5 -->
+        <section id="exercise5" class="exercise-section mb-10 p-6 bg-gray-50 rounded-lg border border-gray-200 hidden">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Exercise 5: Choose the Correct Words</h2>
+            <p class="text-gray-600 mb-6">Choose the correct words to complete the sentences.</p>
+            <div class="space-y-4" id="ex5-questions">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+            <button onclick="checkExercise5()" class="mt-8 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                Check Exercise 5
+            </button>
+        </section>
+
+        <!-- Exercise 6 -->
+        <section id="exercise6" class="exercise-section mb-10 p-6 bg-gray-50 rounded-lg border border-gray-200 hidden">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Exercise 6: Modal Verbs</h2>
+            <p class="text-gray-600 mb-6">Read the sentences. How is the speaker using the modal verbs in bold? Match the correct descriptions with the sentences. Use the descriptions in the box.</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">To talk about a future possibility</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">To talk about a lack of ability to do something in the present and past</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">To talk about a possibility in the present</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">To talk about an ability to do something in the present and past</span>
+            </div>
+            <div class="space-y-4" id="ex6-questions">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+            <button onclick="checkExercise6()" class="mt-8 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                Check Exercise 6
+            </button>
+        </section>
+
+        <!-- Exercise 7 -->
+        <section id="exercise7" class="exercise-section mb-10 p-6 bg-gray-50 rounded-lg border border-gray-200 hidden">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Exercise 7: Complete the Conversation</h2>
+            <p class="text-gray-600 mb-6">Complete the conversation using can, could, may or might.</p>
+            <div class="space-y-4" id="ex7-questions">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+            <button onclick="checkExercise7()" class="mt-8 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                Check Exercise 7
+            </button>
+        </section>
+
+        <!-- Exercise 8 -->
+        <section id="exercise8" class="exercise-section mb-10 p-6 bg-gray-50 rounded-lg border border-gray-200 hidden">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Exercise 8: Present Perfect Reasons</h2>
+            <p class="text-gray-600 mb-6">Match the examples in the box with the correct reasons for using the present perfect.</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">I’ve felt very strongly about green issues since I was a child.</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">I’ve just bought a pet snake. Do you want to see it?</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">I’ve never seen a bear in the wild, but I’ve seen them in zoos.</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">That poor sparrow can’t fly because it’s broken its wing.</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">The squirrel population has now reached 500, so I hope it’ll reach our target of 750 soon.</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">We’ve already done the report for the conservation project.</span>
+            </div>
+            <div class="space-y-4" id="ex8-questions">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+            <button onclick="checkExercise8()" class="mt-8 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                Check Exercise 8
+            </button>
+        </section>
+
+        <!-- Exercise 9 -->
+        <section id="exercise9" class="exercise-section mb-10 p-6 bg-gray-50 rounded-lg border border-gray-200 hidden">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Exercise 9: Complete the Sentences</h2>
+            <p class="text-gray-600 mb-4">Complete the sentences. Use the words in the box:</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">Already</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">always</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">ever</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">just</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">long</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">never</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">since</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">so far</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">yet</span>
+            </div>
+            <div class="space-y-4" id="ex9-questions">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+            <button onclick="checkExercise9()" class="mt-8 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                Check Exercise 9
+            </button>
+        </section>
+
+        <!-- Exercise 10 -->
+        <section id="exercise10" class="exercise-section mb-10 p-6 bg-gray-50 rounded-lg border border-gray-200 hidden">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Exercise 10: Choose the Correct Verb Forms</h2>
+            <p class="text-gray-600 mb-6">Choose the correct verb forms to complete the interview.</p>
+            <div class="space-y-4" id="ex10-questions">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+            <button onclick="checkExercise10()" class="mt-8 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                Check Exercise 10
+            </button>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Data for exercises
+            const exerciseData = {
+                exercise1: {
+                    categories: {
+                        Mammals: ["Rabbit", "bear", "Whale"],
+                        Reptiles: ["crocodile", "snake", "lizard"],
+                        Amphibians: ["frog"],
+                        Fish: ["salmon", "shark", "seahorse"],
+                        Birds: ["parrot", "eagle", "penguin"],
+                        Insects: ["bee", "butterfly", "ant"]
+                    },
+                    animals: ["Rabbit", "salmon", "bee", "parrot", "shark", "crocodile", "frog", "bear", "Whale", "snake", "eagle", "penguin", "lizard", "seahorse", "butterfly", "ant"]
+                },
+                exercise2: [
+                    { question: "Trees have", options: ["Branches", "claws", "leaves."], incorrect: "claws" },
+                    { question: "Bears have", options: ["Antlers", "Fur", "Teeth."], incorrect: "Antlers" },
+                    { question: "Eagles have", options: ["Beaks", "Humps", "Wings ."], incorrect: "Humps" },
+                    { question: "Elephants have", options: ["Feathers", "Thick skins", "Trunks."], incorrect: "Feathers" },
+                    { question: "Salmon have", options: ["Scales", "Tails", "Trunks."], incorrect: "Trunks" },
+                    { question: "Crocodiles have", options: ["Fins", "Scales", "Teeth."], incorrect: "Fins" },
+                    { question: "Rhinos have", options: ["Bones", "Fur", "Horns."], incorrect: "Bones" }
+                ],
+                exercise3: {
+                    words: ["Common", "conservation", "endangered species", "habitat", "population", "Rare", "risk", "wildlife"],
+                    text: `I believe that people have a responsibility to take care of BLANK_0 . The best way to do this is to protect the places where they live – their natural BLANK_1 . That’s why I decided to take part in a local BLANK_2 project to protect the plants and animals in a forest near my town. The forest is home to several BLANK_3 – types of animals and plants which may soon not exist because there are so few of them. For example, there are some very BLANK_4 birds, which are only found in a few small areas now – there are probably fewer than 500 of them left in the wild. Fifty years ago, there were lots of them everywhere – they were a lot more BLANK_5 . Anyway, thanks to our conservation project, the bird BLANK_6 is slowly going up again. The birds are still at BLANK_7 , but hopefully we’ll be able to save them.`
+                        .replace(/\s+/g, ' '), // Normalize spaces
+                    answers: ["wildlife", "habitat", "conservation", "endangered species", "Rare", "Common", "population", "risk"]
+                },
+                exercise4: [
+                    { definition: "The general name for the natural world: the air, water and land in or on which people, animals and plants live:", answer: "the environment" },
+                    { definition: "Connected to the protection of the environment:", answer: "green issues" }, // There are two "Connected to the protection of the environment:" in the document, I'm assuming one is meant to be 'climate change' or similar based on context, but will use 'green issues' for both if nothing else matches. For now, I'll only include one.
+                    { definition: "The layer of air high above the Earth that protects it from the sun’s rays:", answer: "the ozone layer" },
+                    { definition: "Changes in the world’s weather due to air pollution:", answer: "climate change" },
+                    { definition: "Damage to water, air or land due to human behaviour:", answer: "pollution" },
+                    { definition: "When heat from the Earth can’t escape into space, and so the Earth gets hotter and hotter:", answer: "the greenhouse effect" },
+                    { definition: "Gases like carbon dioxide (CO2) which stop heat from the Earth escaping into space:", answer: "greenhouse gases" }
+                ],
+                exercise5: [
+                    { sentence: "Is it too late to cause/produce/save our planet? I don’t think so.", options: ["cause", "produce", "save"], correct: "save" },
+                    { sentence: "I think we should do more to damage/destroy/protect the environment.", options: ["damage", "destroy", "protect"], correct: "protect" },
+                    { sentence: "Power stations don’t just damage/produce/survive electricity; they also cause pollution.", options: ["damage", "produce", "survive"], correct: "produce" },
+                    { sentence: "A lot of people believe that pollution causes/goes/saves global warming, but some people think the Earth is getting hotter by itself.", options: ["causes", "goes", "saves"], correct: "causes" },
+                    { sentence: "The population fell to below 100 animals, but a group of conservationists worked very hard and the number is now declining/dying/increasing – it’s going up again.", options: ["declining", "dying", "increasing"], correct: "increasing" },
+                    { sentence: "I think it’s wrong to cut down rainforests and destroy/go/recover animals’ natural habitats.", options: ["destroy", "go", "recover"], correct: "destroy" },
+                    { sentence: "When we cut down rainforests, etc., we make it impossible for the animals and plants that live there to protect/save/survive .", options: ["protect", "save", "survive"], correct: "survive" },
+                    { sentence: "Don’t break the branches on that tree! It’s alive and you’re causing/damaging/recovering it!", options: ["causing", "damaging", "recovering"], correct: "damaging" }
+                ],
+                exercise6: [
+                    { sentence: "Crocodiles can swim fast over short distances.", correct: "To talk about an ability to do something in the present and past" },
+                    { sentence: "Some species of crocodile might not exist in a few years’ time.", correct: "To talk about a future possibility" },
+                    { sentence: "Crocodiles can’t breathe underwater.", correct: "To talk about a lack of ability to do something in the present and past" },
+                    { sentence: "Crocodiles may survive in other habitats, not just freshwater areas.", correct: "To talk about a possibility in the present" },
+                    { sentence: "The number of endangered crocodiles could increase as a result of conservation efforts.", correct: "To talk about a future possibility" },
+                    { sentence: "If people understood crocodiles better and were less afraid of them, this could help their survival.", correct: "To talk about a future possibility" }
+                ],
+                exercise7: {
+                    blanks: [
+                        { answer: "can" }, // Student 1: I can write about so many things.
+                        { answer: "could" }, // Student 2: You could ask the teacher for help, you know.
+                        { answer: "might" }, // Student 1: she might think that I’m asking her for the answer.
+                        { answer: "think I will", options: ["can", "could", "may", "might"], dynamic: true }, // Student 1: I think I might write about the destruction of the rainforests. (flexible, 'might' or 'may' are common here)
+                        { answer: "can" }, // Student 2: what we can do to slow down global warming.
+                        { answer: "can" }, // Student 2: how we can be more ‘green’.
+                        { answer: "may" }, // People may not realise that even small changes might make a big difference.
+                        { answer: "can" }, // Student 1: You can talk about people recycling their rubbish.
+                        { answer: "may" } // Student 2: Yes, I may do that.
+                    ],
+                    // Original conversation text with blanks marked as [BLANK_X]
+                    text: `Student 1: Our teacher’s asked us to write an essay on the natural world for homework. I’m not sure what to write about. I [BLANK_0] write about so many things.
+Student 2: You [BLANK_1] ask the teacher for help, you know.
+Student 1: No, it’s alright. If I ask her, she [BLANK_2] think that I’m asking her for the answer. I [BLANK_3] write about the destruction of the rainforests. What about you?
+Student 2: Oh, I’m going to write about what we [BLANK_4] do to slow down global warming. I’m going to write about how we [BLANK_5] be more ‘green’. People [BLANK_6] not realise that even small changes might make a big difference.
+Student 1: Good idea. You [BLANK_7] talk about people recycling their rubbish.
+Student 2: Yes, I [BLANK_8] do that. I’m not sure yet. I need to write a plan first.
+Student 1: Me too!`
+                },
+                exercise8: {
+                    examples: [
+                        "I’ve felt very strongly about green issues since I was a child.",
+                        "I’ve just bought a pet snake. Do you want to see it?",
+                        "I’ve never seen a bear in the wild, but I’ve seen them in zoos.",
+                        "That poor sparrow can’t fly because it’s broken its wing.",
+                        "The squirrel population has now reached 500, so I hope it’ll reach our target of 750 soon.",
+                        "We’ve already done the report for the conservation project."
+                    ],
+                    reasons: [
+                        { text: "We use the present perfect to talk about our progress through a list of jobs. I’ve already done it often means ‘I don’t need to do it again’. I haven’t done it yet often means ‘I still need to do it’.", correctExample: "We’ve already done the report for the conservation project." },
+                        { text: "We use the present perfect to talk about news – things that the listener probably doesn’t already know. I’ve just done it means ‘I did it very recently’.", correctExample: "I’ve just bought a pet snake. Do you want to see it?" },
+                        { text: "We use the present perfect to show the past reason for a present situation (often with can / can’t). We often use because to show this relationship.", correctExample: "That poor sparrow can’t fly because it’s broken its wing." },
+                        { text: "We use the present perfect to talk about the present results of a process that is continuing now. We often use numbers to present these results, and phrases like so far or up to now.", correctExample: "The squirrel population has now reached 500, so I hope it’ll reach our target of 750 soon." },
+                        { text: "We use the present perfect to talk about our experiences – things that have happened in our lifetime. We usually ask questions with Have you ever … ? and we use never in negative sentences about experiences.", correctExample: "I’ve never seen a bear in the wild, but I’ve seen them in zoos." },
+                        { text: "We use the present perfect to measure a period of time from a point in the past (e.g. yesterday) to the present moment. We usually ask questions with How long … ? and use for (e.g. for a week) or since (e.g. since yesterday) to describe the period of time.", correctExample: "I’ve felt very strongly about green issues since I was a child." }
+                    ]
+                },
+                exercise9: {
+                    words: ["Already", "always", "ever", "just", "long", "never", "since", "so far", "yet"],
+                    sentences: [
+                        { text: "I’ve BLANK_0 been to a zoo and I don’t want to go. I think animals should be free.", answer: "never" },
+                        { text: "The hole in the ozone layer has BLANK_1 grown very big.", answer: "already" },
+                        { text: "Have you BLANK_2 seen a shark?", answer: "ever" },
+                        { text: "Average temperatures around the world have risen by about 2°C BLANK_3 as a result of global warming, and they’ll probably continue to rise.", answer: "so far" },
+                        { text: "Green issues have become a lot more popular BLANK_4 the 1980s and 1990s.", answer: "since" },
+                        { text: "I’ve BLANK_5 seen an eagle! It flew over that field a few minutes ago.", answer: "just" },
+                        { text: "Politicians keep saying they want to stop global warming, but they haven’t done much about it BLANK_6 .", answer: "yet" },
+                        { text: "How BLANK_7 have scientists known about the hole in the ozone layer?", answer: "long" },
+                        { text: "I’ve BLANK_8 loved plants and animals, ever since I can remember.", answer: "always" }
+                    ]
+                },
+                exercise10: [
+                    { dialogue: "A: How long are you being/have you been/were you a wildlife photographer?", options: ["are you being", "have you been", "were you"], correct: "have you been" },
+                    { dialogue: "B: Well, I’ve loved taking photos of animals since I’m/I’ve been/I was a child.", options: ["I’m", "I’ve been", "I was"], correct: "I was" },
+                    { dialogue: "I think I take/I took/I’ve taken my first animal photo when I was about five years old.", options: ["I take", "I took", "I’ve taken"], correct: "I took" },
+                    { dialogue: "But I’m/I’ve been/I was a professional photographer for about 20 years now.", options: ["I’m", "I’ve been", "I was"], correct: "I’ve been" },
+                    { dialogue: "A: In your career, you’ve won/ you win/ you won a lot of awards for your photos.", options: ["you’ve won", "you win", "you won"], correct: "you’ve won" },
+                    { dialogue: "What’s the best award that you’ve won/ you win/ you won so far?", options: ["you’ve won", "you win", "you won"], correct: "you’ve won" },
+                    { dialogue: "B: Wildlife Photographer of the Year . I’ve won/ I win/I won that five years ago, and then again last year.", options: ["I’ve won", "I win", "I won"], correct: "I won" },
+                    { dialogue: "A: So you’re winning/ you’ve won/ you win that award twice, then?", options: ["you’re winning", "you’ve won", "you win"], correct: "you’ve won" },
+                    { dialogue: "B: Yes, that’s right, and I just hear/ I just heard/ I’ve just heard I might win it again this year.", options: ["I just hear", "I just heard", "I’ve just heard"], correct: "I’ve just heard" }
+                ]
+            };
+
+            // Helper to shuffle an array (for dropdowns)
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            // Function to show a specific exercise and hide others
+            window.showExercise = function(exerciseId) {
+                const sections = document.querySelectorAll('.exercise-section');
+                sections.forEach(section => {
+                    if (section.id === exerciseId) {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
+            };
+
+            // Render Exercise 1
+            function renderExercise1() {
+                const container = document.getElementById('ex1-questions');
+                container.innerHTML = ''; // Clear previous content
+                const animals = shuffleArray([...exerciseData.exercise1.animals]); // Shuffle for variety
+
+                animals.forEach((animal, index) => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'flex items-center space-x-2 p-3 bg-white rounded-md shadow-sm border border-gray-200';
+                    questionDiv.innerHTML = `
+                        <span class="text-gray-700 font-medium">${animal}:</span>
+                        <select id="ex1-animal-${index}" class="answer-input flex-grow block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                            <option value="">Select Category</option>
+                            ${Object.keys(exerciseData.exercise1.categories).map(cat => `<option value="${cat}">${cat}</option>`).join('')}
+                        </select>
+                        <span id="ex1-feedback-${index}" class="feedback"></span>
+                    `;
+                    container.appendChild(questionDiv);
+                });
+            }
+
+            // Check Exercise 1 answers
+            window.checkExercise1 = function() {
+                exerciseData.exercise1.animals.forEach((animal, index) => {
+                    const selectElement = document.getElementById(`ex1-animal-${index}`);
+                    const feedbackSpan = document.getElementById(`ex1-feedback-${index}`);
+                    const userAnswer = selectElement.value;
+                    let isCorrect = false;
+
+                    for (const category in exerciseData.exercise1.categories) {
+                        if (exerciseData.exercise1.categories[category].includes(animal) && userAnswer === category) {
+                            isCorrect = true;
+                            break;
+                        }
+                    }
+
+                    feedbackSpan.textContent = isCorrect ? '✅ Correct!' : `❌ Incorrect! Correct: ${Object.keys(exerciseData.exercise1.categories).find(cat => exerciseData.exercise1.categories[cat].includes(animal))}`;
+                    feedbackSpan.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                });
+            };
+
+            // Render Exercise 2
+            function renderExercise2() {
+                const container = document.getElementById('ex2-questions');
+                container.innerHTML = ''; // Clear previous content
+                exerciseData.exercise2.forEach((q, qIndex) => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'p-4 bg-white rounded-lg shadow-sm border border-gray-200';
+                    questionDiv.innerHTML = `
+                        <p class="text-gray-800 font-semibold mb-2">${qIndex + 1}. ${q.question}</p>
+                        <div class="mt-2">
+                            <select id="ex2-select-${qIndex}" class="answer-input block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                <option value="">Select Option</option>
+                                ${shuffleArray([...q.options]).map(option => `<option value="${option}">${option}</option>`).join('')}
+                            </select>
+                            <span id="ex2-feedback-${qIndex}" class="feedback mt-2 block"></span>
+                        </div>
+                    `;
+                    container.appendChild(questionDiv);
+                });
+            }
+
+            // Check Exercise 2 answers
+            window.checkExercise2 = function() {
+                exerciseData.exercise2.forEach((q, qIndex) => {
+                    const selectElement = document.getElementById(`ex2-select-${qIndex}`);
+                    const feedbackSpan = document.getElementById(`ex2-feedback-${qIndex}`);
+                    if (selectElement) {
+                        const userAnswer = selectElement.value;
+                        const isCorrect = (userAnswer === q.incorrect);
+                        feedbackSpan.textContent = isCorrect ? '✅ Correct! This is the odd one out.' : `❌ Incorrect! The odd one out is: ${q.incorrect}`;
+                        feedbackSpan.className = `feedback ${isCorrect ? 'correct' : 'incorrect'} mt-2 block`;
+                    } else {
+                        feedbackSpan.textContent = 'Please select an option.';
+                        feedbackSpan.className = 'feedback text-yellow-600 mt-2 block';
+                    }
+                });
+            };
+
+            // Render Exercise 3
+            function renderExercise3() {
+                const container = document.getElementById('ex3-text');
+                container.innerHTML = ''; // Clear previous content
+                let text = exerciseData.exercise3.text;
+                exerciseData.exercise3.answers.forEach((ans, index) => {
+                    const blankId = `ex3-blank-${index}`;
+                    const selectOptions = shuffleArray([...exerciseData.exercise3.words]).map(word => `<option value="${word}">${word}</option>`).join('');
+                    text = text.replace(`BLANK_${index}`, `
+                        <select id="${blankId}" class="answer-input px-2 py-1 border border-gray-300 rounded-md bg-white text-gray-800 sentence-blank">
+                            <option value="">---</option>
+                            ${selectOptions}
+                        </select>
+                        <span id="ex3-feedback-${index}" class="feedback inline-block ml-2"></span>
+                    `);
+                });
+                container.innerHTML = text;
+            }
+
+            // Check Exercise 3 answers
+            window.checkExercise3 = function() {
+                exerciseData.exercise3.answers.forEach((correctAnswer, index) => {
+                    const selectElement = document.getElementById(`ex3-blank-${index}`);
+                    const feedbackSpan = document.getElementById(`ex3-feedback-${index}`);
+                    const userAnswer = selectElement.value;
+                    const isCorrect = (userAnswer.toLowerCase() === correctAnswer.toLowerCase());
+                    feedbackSpan.textContent = isCorrect ? '✅' : `❌ (${correctAnswer})`;
+                    feedbackSpan.className = `feedback ${isCorrect ? 'correct' : 'incorrect'} inline-block ml-2`;
+                });
+            };
+
+            // Render Exercise 4
+            function renderExercise4() {
+                const container = document.getElementById('ex4-questions');
+                container.innerHTML = ''; // Clear previous content
+                // Create a pool of all possible words/phrases including correct answers
+                const allTerms = shuffleArray([...exerciseData.exercise4.map(item => item.answer), "global warming"]); // Add global warming from doc that's not a direct answer
+                exerciseData.exercise4.forEach((item, index) => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 p-4 bg-white rounded-lg shadow-sm border border-gray-200';
+                    questionDiv.innerHTML = `
+                        <p class="text-gray-800 font-semibold mb-2 sm:mb-0 w-full sm:w-2/3">${index + 1}. ${item.definition}</p>
+                        <div class="flex items-center w-full sm:w-1/3">
+                            <select id="ex4-select-${index}" class="answer-input flex-grow block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                <option value="">Select Term</option>
+                                ${allTerms.map(term => `<option value="${term}">${term}</option>`).join('')}
+                            </select>
+                            <span id="ex4-feedback-${index}" class="feedback ml-2"></span>
+                        </div>
+                    `;
+                    container.appendChild(questionDiv);
+                });
+            }
+
+            // Check Exercise 4 answers
+            window.checkExercise4 = function() {
+                exerciseData.exercise4.forEach((item, index) => {
+                    const selectElement = document.getElementById(`ex4-select-${index}`);
+                    const feedbackSpan = document.getElementById(`ex4-feedback-${index}`);
+                    const userAnswer = selectElement.value;
+                    const isCorrect = (userAnswer.toLowerCase() === item.answer.toLowerCase());
+                    feedbackSpan.textContent = isCorrect ? '✅' : `❌ (${item.answer})`;
+                    feedbackSpan.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                });
+            };
+
+            // Render Exercise 5
+            function renderExercise5() {
+                const container = document.getElementById('ex5-questions');
+                container.innerHTML = ''; // Clear previous content
+                exerciseData.exercise5.forEach((q, qIndex) => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'p-4 bg-white rounded-lg shadow-sm border border-gray-200';
+                    // Replace "word1/word2/word3" with radio buttons
+                    const sentenceHtml = q.sentence.replace(/([a-zA-Z]+)\/([a-zA-Z]+)\/([a-zA-Z]+)/g, (match, opt1, opt2, opt3) => {
+                        const options = shuffleArray([opt1, opt2, opt3]); // Shuffle options
+                        return `
+                            <span class="inline-flex flex-wrap gap-x-3 gap-y-1 mx-1 p-1 bg-gray-100 rounded-md">
+                                <select id="ex5-select-${qIndex}" class="answer-input px-2 py-1 border border-gray-300 rounded-md bg-white text-gray-800 inline-block align-middle min-w-[120px]">
+                                    <option value="">---</option>
+                                    ${options.map(option => `<option value="${option}">${option}</option>`).join('')}
+                                </select>
+                            </span>
+                        `;
+                    });
+
+                    questionDiv.innerHTML = `
+                        <p class="text-gray-800 mb-2">${qIndex + 1}. ${sentenceHtml}</p>
+                        <span id="ex5-feedback-${qIndex}" class="feedback mt-2 block"></span>
+                    `;
+                    container.appendChild(questionDiv);
+                });
+            }
+
+            // Check Exercise 5 answers
+            window.checkExercise5 = function() {
+                exerciseData.exercise5.forEach((q, qIndex) => {
+                    const selectElement = document.getElementById(`ex5-select-${qIndex}`);
+                    const feedbackSpan = document.getElementById(`ex5-feedback-${qIndex}`);
+                    if (selectElement) {
+                        const userAnswer = selectElement.value;
+                        const isCorrect = (userAnswer === q.correct);
+                        feedbackSpan.textContent = isCorrect ? '✅ Correct!' : `❌ Incorrect! Correct: ${q.correct}`;
+                        feedbackSpan.className = `feedback ${isCorrect ? 'correct' : 'incorrect'} mt-2 block`;
+                    } else {
+                        feedbackSpan.textContent = 'Please select an option.';
+                        feedbackSpan.className = 'feedback text-yellow-600 mt-2 block';
+                    }
+                });
+            };
+
+            // Render Exercise 6
+            function renderExercise6() {
+                const container = document.getElementById('ex6-questions');
+                container.innerHTML = ''; // Clear previous content
+                const availableReasons = shuffleArray([...new Set(exerciseData.exercise6.map(item => item.correct))]); // Get unique reasons and shuffle
+                exerciseData.exercise6.forEach((q, qIndex) => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'p-4 bg-white rounded-lg shadow-sm border border-gray-200';
+                    questionDiv.innerHTML = `
+                        <p class="text-gray-800 font-semibold mb-2">${qIndex + 1}. ${q.sentence}</p>
+                        <div class="mt-2">
+                            <select id="ex6-select-${qIndex}" class="answer-input block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                <option value="">Select Description</option>
+                                ${availableReasons.map(reason => `<option value="${reason}">${reason}</option>`).join('')}
+                            </select>
+                            <span id="ex6-feedback-${qIndex}" class="feedback mt-2 block"></span>
+                        </div>
+                    `;
+                    container.appendChild(questionDiv);
+                });
+            }
+
+            // Check Exercise 6 answers
+            window.checkExercise6 = function() {
+                exerciseData.exercise6.forEach((q, qIndex) => {
+                    const selectElement = document.getElementById(`ex6-select-${qIndex}`);
+                    const feedbackSpan = document.getElementById(`ex6-feedback-${qIndex}`);
+                    const userAnswer = selectElement.value;
+                    const isCorrect = (userAnswer === q.correct);
+                    feedbackSpan.textContent = isCorrect ? '✅ Correct!' : `❌ Incorrect! Correct: ${q.correct}`;
+                    feedbackSpan.className = `feedback ${isCorrect ? 'correct' : 'incorrect'} mt-2 block`;
+                });
+            };
+
+            // Render Exercise 7
+            function renderExercise7() {
+                const container = document.getElementById('ex7-questions');
+                container.innerHTML = ''; // Clear previous content
+
+                let formattedText = exerciseData.exercise7.text;
+                exerciseData.exercise7.blanks.forEach((blank, index) => {
+                    const blankId = `ex7-blank-${index}`;
+                    const options = shuffleArray(["can", "could", "may", "might"]); // Options for all blanks
+                    formattedText = formattedText.replace(`[BLANK_${index}]`, `
+                        <select id="${blankId}" class="answer-input px-2 py-1 border border-gray-300 rounded-md bg-white text-gray-800 sentence-blank">
+                            <option value="">---</option>
+                            ${options.map(opt => `<option value="${opt}">${opt}</option>`).join('')}
+                        </select>
+                        <span id="ex7-feedback-${index}" class="feedback inline-block ml-2"></span>
+                    `);
+                });
+
+                // Splitting by newline to create paragraphs for cleaner display of conversation
+                formattedText.split('\n').forEach(paragraphText => {
+                    if (paragraphText.trim()) {
+                        const pElement = document.createElement('p');
+                        pElement.className = 'text-gray-700 leading-relaxed mb-2';
+                        pElement.innerHTML = paragraphText.trim();
+                        container.appendChild(pElement);
+                    }
+                });
+            }
+
+            // Check Exercise 7 answers
+            window.checkExercise7 = function() {
+                exerciseData.exercise7.blanks.forEach((blank, index) => {
+                    const selectElement = document.getElementById(`ex7-blank-${index}`);
+                    const feedbackSpan = document.getElementById(`ex7-feedback-${index}`);
+                    const userAnswer = selectElement.value;
+                    const isCorrect = (userAnswer.toLowerCase() === blank.answer.toLowerCase());
+                    feedbackSpan.textContent = isCorrect ? '✅' : `❌ (${blank.answer})`;
+                    feedbackSpan.className = `feedback ${isCorrect ? 'correct' : 'incorrect'} inline-block ml-2`;
+                });
+            };
+
+
+            // Render Exercise 8
+            function renderExercise8() {
+                const container = document.getElementById('ex8-questions');
+                container.innerHTML = ''; // Clear previous content
+                // Create a mapping of examples to their correct reasons
+                const exampleToReasonMap = new Map();
+                exerciseData.exercise8.reasons.forEach(reason => {
+                    exampleToReasonMap.set(reason.correctExample, reason.text);
+                });
+
+                // Prepare options for the dropdowns (all example sentences)
+                const allExamples = shuffleArray([...exerciseData.exercise8.examples]);
+
+                exerciseData.exercise8.reasons.forEach((reason, index) => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'p-4 bg-white rounded-lg shadow-sm border border-gray-200';
+                    questionDiv.innerHTML = `
+                        <p class="text-gray-800 font-semibold mb-2">${index + 1}. ${reason.text}</p>
+                        <div class="mt-2">
+                            <select id="ex8-select-${index}" class="answer-input block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                <option value="">Select Example</option>
+                                ${allExamples.map(example => `<option value="${example}">${example}</option>`).join('')}
+                            </select>
+                            <span id="ex8-feedback-${index}" class="feedback mt-2 block"></span>
+                        </div>
+                    `;
+                    container.appendChild(questionDiv);
+                });
+            }
+
+            // Check Exercise 8 answers
+            window.checkExercise8 = function() {
+                exerciseData.exercise8.reasons.forEach((reason, index) => {
+                    const selectElement = document.getElementById(`ex8-select-${index}`);
+                    const feedbackSpan = document.getElementById(`ex8-feedback-${index}`);
+                    const userAnswer = selectElement.value;
+                    const isCorrect = (userAnswer === reason.correctExample);
+                    feedbackSpan.textContent = isCorrect ? '✅ Correct!' : `❌ Incorrect! Correct: ${reason.correctExample}`;
+                    feedbackSpan.className = `feedback ${isCorrect ? 'correct' : 'incorrect'} mt-2 block`;
+                });
+            };
+
+            // Render Exercise 9
+            function renderExercise9() {
+                const container = document.getElementById('ex9-questions');
+                container.innerHTML = ''; // Clear previous content
+                exerciseData.exercise9.sentences.forEach((q, index) => {
+                    // Split the sentence by BLANK_X and insert select elements
+                    const parts = q.text.split(`BLANK_${index}`);
+                    const sentenceHtml = parts.map((part, i) => {
+                        if (i < parts.length - 1) { // If it's not the last part
+                            const selectOptions = shuffleArray([...exerciseData.exercise9.words]).map(word => `<option value="${word}">${word}</option>`).join('');
+                            return `
+                                ${part}
+                                <select id="ex9-blank-${index}" class="answer-input px-2 py-1 border border-gray-300 rounded-md bg-white text-gray-800 sentence-blank">
+                                    <option value="">---</option>
+                                    ${selectOptions}
+                                </select>
+                                <span id="ex9-feedback-${index}" class="feedback inline-block ml-2"></span>
+                            `;
+                        }
+                        return part;
+                    }).join('');
+
+                    const sentenceDiv = document.createElement('div');
+                    sentenceDiv.className = 'p-4 bg-white rounded-lg shadow-sm border border-gray-200 text-gray-700 flex flex-wrap items-center';
+                    sentenceDiv.innerHTML = `<span class="mr-2">${index + 1}.</span> ${sentenceHtml}`;
+                    container.appendChild(sentenceDiv);
+                });
+            }
+
+            // Check Exercise 9 answers
+            window.checkExercise9 = function() {
+                exerciseData.exercise9.sentences.forEach((q, index) => {
+                    const selectElement = document.getElementById(`ex9-blank-${index}`);
+                    const feedbackSpan = document.getElementById(`ex9-feedback-${index}`);
+                    const userAnswer = selectElement.value;
+                    const isCorrect = (userAnswer.toLowerCase() === q.answer.toLowerCase());
+                    feedbackSpan.textContent = isCorrect ? '✅' : `❌ (${q.answer})`;
+                    feedbackSpan.className = `feedback ${isCorrect ? 'correct' : 'incorrect'} inline-block ml-2`;
+                });
+            };
+
+            // Render Exercise 10
+            function renderExercise10() {
+                const container = document.getElementById('ex10-questions');
+                container.innerHTML = ''; // Clear previous content
+                exerciseData.exercise10.forEach((q, qIndex) => {
+                    // Use a regular expression to find the options in the dialogue string
+                    const dialogueHtml = q.dialogue.replace(/([a-zA-Z\s]+)\/([a-zA-Z\s]+)\/([a-zA-Z\s]+)/g, (match, opt1, opt2, opt3) => {
+                        const options = shuffleArray([opt1.trim(), opt2.trim(), opt3.trim()]);
+                        // Create a select dropdown for these options
+                        return `
+                            <select id="ex10-select-${qIndex}" class="answer-input px-2 py-1 border border-gray-300 rounded-md bg-white text-gray-800 inline-block align-middle min-w-[120px]">
+                                <option value="">---</option>
+                                ${options.map(option => `<option value="${option}">${option}</option>`).join('')}
+                            </select>
+                        `;
+                    });
+
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'p-4 bg-white rounded-lg shadow-sm border border-gray-200';
+                    questionDiv.innerHTML = `
+                        <p class="text-gray-800 mb-2">${qIndex + 1}. ${dialogueHtml}</p>
+                        <span id="ex10-feedback-${qIndex}" class="feedback mt-2 block"></span>
+                    `;
+                    container.appendChild(questionDiv);
+                });
+            }
+
+            // Check Exercise 10 answers
+            window.checkExercise10 = function() {
+                exerciseData.exercise10.forEach((q, qIndex) => {
+                    const selectElement = document.getElementById(`ex10-select-${qIndex}`); // Changed to select element
+                    const feedbackSpan = document.getElementById(`ex10-feedback-${qIndex}`);
+                    if (selectElement) {
+                        const userAnswer = selectElement.value;
+                        const isCorrect = (userAnswer === q.correct);
+                        feedbackSpan.textContent = isCorrect ? '✅ Correct!' : `❌ Incorrect! Correct: ${q.correct}`;
+                        feedbackSpan.className = `feedback ${isCorrect ? 'correct' : 'incorrect'} mt-2 block`;
+                    } else {
+                        feedbackSpan.textContent = 'Please select an option.';
+                        feedbackSpan.className = 'feedback text-yellow-600 mt-2 block';
+                    }
+                });
+            };
+
+            // Initialize all exercises on page load
+            renderExercise1();
+            renderExercise2();
+            renderExercise3();
+            renderExercise4();
+            renderExercise5();
+            renderExercise6();
+            renderExercise7();
+            renderExercise8();
+            renderExercise9();
+            renderExercise10();
+
+            // Set up navigation
+            const exerciseSelector = document.getElementById('exercise-selector');
+            exerciseSelector.addEventListener('change', (event) => {
+                showExercise(event.target.value);
+            });
+
+            // Initially show the first exercise
+            showExercise('exercise1');
+        });
+    </script>
+</body>
+</html>
