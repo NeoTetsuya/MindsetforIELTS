@@ -16,9 +16,8 @@
         }
 
         .present-box {
-            background-color: #ef4444; /* Red */
-            background-image: linear-gradient(to bottom right, #ef4444, #dc2626); /* Red gradient */
-            border: 4px solid #b91c1c; /* Darker red border */
+            /* Base styles for all present boxes */
+            border: 4px solid; /* Border color will be dynamic */
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.2);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             cursor: pointer;
@@ -27,11 +26,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 2.25rem; /* Larger number */
+            font-size: 2.5rem; /* Larger number */
             font-weight: bold;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-            padding: 1.5rem; /* Increase padding for larger feel */
+            padding: 2rem; /* Increased padding for larger feel */
             aspect-ratio: 1 / 1; /* Ensure square aspect ratio */
             border-radius: 12px; /* More rounded corners */
         }
@@ -40,9 +39,9 @@
             box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.3);
         }
         .present-box.opened {
-            background-color: #6ee7b7; /* Green for opened */
-            background-image: linear-gradient(to bottom right, #6ee7b7, #34d399); /* Green gradient */
-            border-color: #059669; /* Darker green border */
+            background-color: #6ee7b7 !important; /* Green for opened, !important to override inline */
+            background-image: linear-gradient(to bottom right, #6ee7b7, #34d399) !important; /* Green gradient, !important to override inline */
+            border-color: #059669 !important; /* Darker green border, !important to override inline */
             cursor: default;
             transform: translateY(0) scale(1);
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), inset 0 0 10px rgba(0, 0, 0, 0.1);
@@ -59,7 +58,6 @@
 
         .ribbon-h, .ribbon-v {
             position: absolute;
-            background-color: #fcd34d; /* Gold */
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
             z-index: 1;
         }
@@ -84,7 +82,6 @@
             transform: translate(-50%, -50%) rotate(45deg); /* Rotated for a dynamic look */
             width: 50px; /* Larger bow */
             height: 50px; /* Larger bow */
-            background-color: #fde047; /* Lighter Gold */
             border-radius: 50%;
             z-index: 2;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.3);
@@ -94,7 +91,6 @@
             position: absolute;
             width: 70%;
             height: 70%;
-            background-color: #fbbf24; /* Even lighter gold */
             border-radius: 50%;
             z-index: 3;
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -130,6 +126,24 @@
                 padding: 2rem;
             }
         }
+        .team-score-card {
+            background-color: #f0f9ff; /* Light blue background */
+            border: 1px solid #bfdbfe; /* Light blue border */
+            border-radius: 0.75rem; /* rounded-lg */
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); /* shadow-md */
+        }
+        /* Adjust grid for 16 boxes on larger screens */
+        @media (min-width: 1024px) { /* lg:grid-cols-4 */
+            #presents-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr)); /* Keep 4 columns */
+            }
+        }
+        @media (min-width: 768px) and (max-width: 1023px) { /* md:grid-cols-3 (adjust for 16 boxes if needed) */
+            #presents-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr)); /* Force 4 columns on tablets too for 16 boxes */
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center p-4">
@@ -137,6 +151,30 @@
         <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6">
             Present Challenge Game
         </h1>
+
+        <!-- Scoreboard and Current Turn Display -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="team-score-card text-center">
+                <h3 class="font-semibold text-xl text-blue-700 mb-2">Team 1</h3>
+                <p class="text-3xl font-bold text-blue-600 mb-2" id="team-0-score">0 Points</p>
+                <div class="text-sm text-gray-600 mb-1">Inventory:</div>
+                <ul id="team-0-inventory" class="list-disc list-inside text-sm text-gray-700 text-left mx-auto max-w-max">
+                    <!-- Inventory items will be listed here -->
+                </ul>
+            </div>
+            <div class="team-score-card text-center">
+                <h3 class="font-semibold text-xl text-blue-700 mb-2">Team 2</h3>
+                <p class="text-3xl font-bold text-blue-600 mb-2" id="team-1-score">0 Points</p>
+                <div class="text-sm text-gray-600 mb-1">Inventory:</div>
+                <ul id="team-1-inventory" class="list-disc list-inside text-sm text-gray-700 text-left mx-auto max-w-max">
+                    <!-- Inventory items will be listed here -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="text-2xl font-bold text-center text-gray-800 mb-6">
+            Current Turn: <span id="current-team-display" class="text-blue-700">Team 1</span>
+        </div>
 
         <!-- Presents Grid -->
         <div id="presents-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-8">
@@ -163,6 +201,11 @@
 
         <!-- Game Control Buttons -->
         <div class="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+            <button id="next-team-button"
+                    class="px-8 py-4 bg-yellow-500 text-white text-xl font-bold rounded-lg hover:bg-yellow-600 transition duration-200 ease-in-out shadow-lg
+                            disabled:opacity-50 disabled:cursor-not-allowed">
+                Next Team's Turn
+            </button>
             <button id="reset-button"
                     class="px-8 py-4 bg-purple-600 text-white text-xl font-bold rounded-lg hover:bg-purple-700 transition duration-200 ease-in-out shadow-lg">
                 Reset Game
@@ -173,7 +216,7 @@
     <script>
         // Game configuration and data
         const exercises = [
-            // Word Formation Exercises
+            // Word Formation Exercises (7 unique)
             { question: "Give some forms of 'communicate'.", answer: "communication" },
             { question: "Give some forms of 'predict'.", answer: "predictable" },
             { question: "Give some forms of 'participate'.", answer: "participation" },
@@ -181,30 +224,75 @@
             { question: "Give some forms of 'act'.", answer: "action" },
             { question: "Give some forms of 'employ'.", answer: "employment" },
             { question: "Give some forms of 'compete'.", answer: "competitive" },
-            // Synonym Exercises
-            { question: "Give some synonyms to 'Important'.", answer: "vital" }, // The answer here is just for internal tracking, not displayed.
+            // Synonym Exercises (5 unique)
+            { question: "Give some synonyms to 'Important'.", answer: "vital" },
             { question: "Give some synonyms to 'Interesting'.", answer: "fascinating" },
             { question: "Give some synonyms to 'Tired'.", answer: "weary" },
             { question: "Give some synonyms to 'Sad'.", answer: "unhappy" },
-            { question: "Give some synonyms to 'Happy'.", answer: "glad" }
+            { question: "Give some synonyms to 'Happy'.", answer: "glad" },
+            // Duplicated Exercises to reach 16
+            { question: "Give some forms of 'communicate'.", answer: "communication" },
+            { question: "Give some forms of 'predict'.", answer: "predictable" },
+            { question: "Give some synonyms to 'Important'.", answer: "vital" },
+            { question: "Give some synonyms to 'Interesting'.", answer: "fascinating" }
         ];
 
+        // Rewards (8 distinct outcomes)
         const rewards = [
-            "🍭 A delicious candy!",
-            "🍰 A tasty slice of cake!",
-            "🍬 A handful of assorted candies!",
-            "� A sweet cupcake!",
-            "🍫 A yummy chocolate bar!",
-            "🍪 A giant cookie!",
-            "🍩 A glazed donut!",
-            "🍦 A scoop of ice cream!",
-            "🍎 A fresh apple (it's a sweet reward for health!)",
-            "🍓 A bowl of fresh berries!"
+            "🎁 Direct: +10 Points!",
+            "🎁 Direct: +15 Points!",
+            "🎁 Direct: +20 Points!",
+            "🎁 Direct: +25 Points!", // New direct point reward
+            "🎉 Inventory: Steal 15 Points!",
+            "✨ Inventory: Double Next Points!",
+            "🔄 Inventory: Swap Question!",
+            "💡 Inventory: Get a free hint!" // New power-up reward
         ];
 
+        // Punishments (8 distinct outcomes)
         const punishments = [
-            "🚫 Oh no! You owe 5 minutes of extra homework.",
-            "❌ Incorrect! You lose 5 virtual points."
+            "💀 Direct: -5 Points!",
+            "💀 Direct: -10 Points!",
+            "💀 Direct: -15 Points!",
+            "💀 Direct: -20 Points!", // New direct point punishment
+            "🎭 Immediate: Silly Voice for next answer!",
+            "🤸 Immediate: Do 3 Jumping Jacks!",
+            "🃏 Immediate: Charades (Teacher picks word)!",
+            "😂 Immediate: Tell a joke before answering!" // New immediate action punishment
+        ];
+
+        // Combine all rewards and punishments for shuffling
+        const allPossibleOutcomes = [
+            ...rewards, // 8 rewards
+            ...punishments // 8 punishments
+        ]; // Total 16 outcomes
+
+        // Array of distinct color palettes for the presents
+        const presentBoxColors = [
+            {
+                bg: '#ef4444', gradient: '#dc2626', border: '#b91c1c',
+                ribbon: '#fcd34d', bow: '#fde047', bowLight: '#fbbf24'
+            }, // Red/Gold
+            {
+                bg: '#3b82f6', gradient: '#2563eb', border: '#1d4ed8',
+                ribbon: '#d1d5db', bow: '#e5e7eb', bowLight: '#9ca3af'
+            }, // Blue/Silver
+            {
+                bg: '#a855f7', gradient: '#9333ea', border: '#7e22ce',
+                ribbon: '#f472b6', bow: '#f87171', bowLight: '#ec4899'
+            }, // Purple/Pink
+            {
+                bg: '#10b981', gradient: '#059669', border: '#047857',
+                ribbon: '#facc15', bow: '#fde047', bowLight: '#fbbf24'
+            }, // Green/Yellow
+            {
+                bg: '#ec4899', gradient: '#db2777', border: '#be185d',
+                ribbon: '#a78bfa', bow: '#c4b5fd', bowLight: '#8b5cf6'
+            }, // Rose/Violet
+            {
+                bg: '#f97316', gradient: '#ea580c', border: '#c2410c',
+                ribbon: '#60a5fa', bow: '#93c5fd', bowLight: '#3b82f6'
+            }  // Orange/Blue
         ];
 
         // Game state variables
@@ -212,12 +300,22 @@
         let currentPresentIndex = null; // Index of the currently selected present
         let presentsOpened = new Set(); // Stores indices of opened presents
 
+        // Team Data: Each team has a name, score, and inventory of power-ups
+        let teams = [
+            { name: 'Team 1', score: 0, inventory: [] },
+            { name: 'Team 2', score: 0, inventory: [] }
+        ];
+        let currentTeamIndex = 0; // Index of the team whose turn it is (0 for Team 1, 1 for Team 2)
+
+
         // DOM elements
         const presentsGrid = document.getElementById('presents-grid');
         const exerciseDisplay = document.getElementById('exercise-display');
         const revealOutcomeButton = document.getElementById('reveal-outcome-button');
         const feedbackDisplay = document.getElementById('feedback-display');
         const resetButton = document.getElementById('reset-button');
+        const nextTeamButton = document.getElementById('next-team-button');
+        const currentTeamDisplay = document.getElementById('current-team-display');
 
         /**
          * Shuffles an array randomly using the Fisher-Yates algorithm.
@@ -233,36 +331,73 @@
         }
 
         /**
+         * Updates the scoreboard display (scores and inventories) for all teams.
+         */
+        function updateScoreboardDisplay() {
+            teams.forEach((team, index) => {
+                document.getElementById(`team-${index}-score`).textContent = `${team.score} Points`;
+                const inventoryList = document.getElementById(`team-${index}-inventory`);
+                inventoryList.innerHTML = ''; // Clear previous inventory
+                if (team.inventory.length === 0) {
+                    inventoryList.innerHTML = '<li class="text-gray-500">None</li>';
+                } else {
+                    team.inventory.forEach(item => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = item;
+                        inventoryList.appendChild(listItem);
+                    });
+                }
+            });
+            currentTeamDisplay.textContent = teams[currentTeamIndex].name; // Update current team display
+        }
+
+        /**
          * Initializes the game by setting up presents and UI.
          */
         function initializeGame() {
-            // Combine rewards and punishments, then shuffle them
-            let outcomes = shuffleArray([...rewards, ...punishments]);
+            // Reset teams data
+            teams = [
+                { name: 'Team 1', score: 0, inventory: [] },
+                { name: 'Team 2', score: 0, inventory: [] }
+            ];
+            currentTeamIndex = 0; // Start with Team 1
+
+            // Shuffle all possible outcomes
+            let shuffledOutcomes = shuffleArray([...allPossibleOutcomes]); // 16 outcomes
 
             // Ensure exercises are also shuffled to vary the challenge
-            let shuffledExercises = shuffleArray([...exercises]);
+            let shuffledExercises = shuffleArray([...exercises]); // 16 exercises
 
             presents = []; // Clear previous presents
             presentsOpened.clear(); // Clear opened presents set
             presentsGrid.innerHTML = ''; // Clear present boxes from UI
             currentPresentIndex = null; // Reset current present
 
-            // Create 12 presents, assigning a unique exercise and outcome to each
-            for (let i = 0; i < 12; i++) {
+            // Create 16 presents, assigning a unique exercise and outcome to each
+            for (let i = 0; i < 16; i++) { // Changed to 16 presents
                 presents.push({
                     exercise: shuffledExercises[i], // Assign a unique shuffled exercise
-                    outcome: outcomes[i]
+                    outcome: shuffledOutcomes[i] // Assign a unique shuffled outcome
                 });
 
                 // Create present box HTML element
                 const presentBox = document.createElement('div');
                 presentBox.id = `present-${i}`;
                 presentBox.dataset.index = i; // Store index for easy access
-                presentBox.className = 'present-box relative w-full aspect-square flex items-center justify-center text-white'; // Removed rounded-lg here as it's in style
+                presentBox.className = 'present-box relative w-full aspect-square flex items-center justify-center text-white';
+
+                // Apply dynamic colors
+                const colorPalette = presentBoxColors[i % presentBoxColors.length]; // Cycle through colors
+                presentBox.style.backgroundColor = colorPalette.bg;
+                presentBox.style.backgroundImage = `linear-gradient(to bottom right, ${colorPalette.bg}, ${colorPalette.gradient})`;
+                presentBox.style.borderColor = colorPalette.border;
+
                 presentBox.innerHTML = `
-                    <div class="ribbon-h"></div>
-                    <div class="ribbon-v"></div>
-                    <div class="bow"></div>
+                    <div class="ribbon-h" style="background-color: ${colorPalette.ribbon}"></div>
+                    <div class="ribbon-v" style="background-color: ${colorPalette.ribbon}"></div>
+                    <div class="bow" style="background-color: ${colorPalette.bow}">
+                        <div class="bow-inner" style="background-color: ${colorPalette.bowLight};"></div>
+                    </div>
                     <span>${i + 1}</span>
                 `;
                 presentsGrid.appendChild(presentBox);
@@ -275,7 +410,10 @@
             exerciseDisplay.textContent = "Click a present to reveal your challenge!";
             feedbackDisplay.textContent = '';
             revealOutcomeButton.disabled = true; // Disable reveal button until a present is clicked
+            nextTeamButton.disabled = true; // Disable next team button initially
             feedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold'; // Reset class
+
+            updateScoreboardDisplay(); // Update scoreboard for initial state
         }
 
         /**
@@ -293,7 +431,7 @@
                 return;
             }
 
-            // If a present is already selected and not yet solved, show feedback
+            // If a present is already selected and its outcome hasn't been revealed yet
             if (currentPresentIndex !== null && !presentsOpened.has(currentPresentIndex)) {
                 feedbackDisplay.textContent = "Please reveal the outcome for the current exercise first!";
                 feedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-red-600';
@@ -302,9 +440,10 @@
 
             currentPresentIndex = index;
             exerciseDisplay.textContent = presents[currentPresentIndex].exercise.question;
-            feedbackDisplay.textContent = 'Solve this exercise and click "Reveal Outcome" to see what\'s inside!'; // Clear previous feedback
+            feedbackDisplay.textContent = `Team ${currentTeamIndex + 1}: Solve this exercise and click "Reveal Outcome" to see what\'s inside!`;
             feedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-blue-700';
             revealOutcomeButton.disabled = false; // Enable reveal button
+            nextTeamButton.disabled = true; // Disable next team button until outcome is revealed
         }
 
         /**
@@ -323,34 +462,65 @@
             presentBox.removeEventListener('click', handlePresentClick); // Disable further clicks
 
             const outcome = presents[currentPresentIndex].outcome;
-            feedbackDisplay.textContent = `Outcome Revealed: ${outcome}`;
+            const currentTeam = teams[currentTeamIndex];
 
-            // Apply specific styling based on outcome (reward or punishment)
-            if (rewards.includes(outcome)) {
+            feedbackDisplay.textContent = `Outcome Revealed for ${currentTeam.name}: ${outcome}`;
+
+            // Determine outcome type and apply effects
+            if (rewards.includes(outcome)) { // Check if the outcome is in the rewards array
+                const pointsMatch = outcome.match(/\+(\d+)/);
+                if (pointsMatch) { // It's a direct point reward
+                    currentTeam.score += parseInt(pointsMatch[1]);
+                } else { // It's an inventory power-up
+                    currentTeam.inventory.push(outcome.substring(outcome.indexOf(":") + 2).trim());
+                }
                 feedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold reward-text';
-            } else {
+            } else if (punishments.includes(outcome)) { // Check if the outcome is in the punishments array
+                 const pointsMatch = outcome.match(/(\-?\d+)/);
+                if (pointsMatch) { // It's a direct point punishment
+                    currentTeam.score += parseInt(pointsMatch[1]);
+                }
                 feedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold punishment-text';
             }
 
-            // Reset for next challenge
-            exerciseDisplay.textContent = "Great job! Pick another present.";
-            revealOutcomeButton.disabled = true; // Disable reveal button
+
+            updateScoreboardDisplay(); // Update scoreboard with new scores/inventory
+            revealOutcomeButton.disabled = true; // Disable reveal button after outcome
+            nextTeamButton.disabled = false; // Enable next team button
 
             // Check if all presents are opened
-            if (presentsOpened.size === 12) {
-                feedbackDisplay.textContent = "All presents opened! Game Over. Click Reset to play again.";
-                feedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-green-700';
+            if (presentsOpened.size === 16) { // Changed to 16 presents
+                feedbackDisplay.textContent += " All presents opened! Game Over. Click Reset to play again.";
+                nextTeamButton.disabled = true; // No more turns needed
             }
-            currentPresentIndex = null; // Clear current present as its outcome is revealed
+        }
+
+        /**
+         * Switches to the next team's turn.
+         */
+        function handleNextTeam() {
+            currentTeamIndex = (currentTeamIndex + 1) % teams.length; // Cycle through teams
+            updateScoreboardDisplay(); // Update current team display
+            exerciseDisplay.textContent = `It's ${teams[currentTeamIndex].name}'s turn! Click a present to reveal your challenge!`;
+            feedbackDisplay.textContent = ''; // Clear previous feedback
+            feedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold'; // Reset class
+            nextTeamButton.disabled = true; // Disable until new outcome is revealed
+
+            // If all presents are opened, prevent further clicks and turns
+            if (presentsOpened.size === 16) { // Changed to 16 presents
+                exerciseDisplay.textContent = "All presents opened! Game Over. Click Reset to play again.";
+                nextTeamButton.disabled = true;
+                revealOutcomeButton.disabled = true;
+            }
         }
 
         // Event listeners for buttons
         revealOutcomeButton.addEventListener('click', handleRevealOutcome);
         resetButton.addEventListener('click', initializeGame);
+        nextTeamButton.addEventListener('click', handleNextTeam);
 
         // Initialize the game when the window loads
         window.onload = initializeGame;
     </script>
 </body>
 </html>
-�
