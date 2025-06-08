@@ -142,6 +142,25 @@
             padding: 1rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); /* shadow-md */
         }
+        .team-score-card ul {
+            max-height: 100px; /* Limit height for scroll if many items */
+            overflow-y: auto;
+        }
+        .team-score-card ul::-webkit-scrollbar {
+            width: 8px;
+        }
+        .team-score-card ul::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        .team-score-card ul::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        .team-score-card ul::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
         /* Adjust grid for 16 boxes on larger screens */
         @media (min-width: 1024px) { /* lg:grid-cols-4 */
             #presents-grid {
@@ -189,6 +208,33 @@
         }
         .modal-overlay.active .modal-content {
             transform: translateY(0);
+        }
+
+        /* Power-up button styles */
+        .power-up-btn {
+            background-color: #6366f1; /* Indigo */
+            color: white;
+            padding: 0.25rem 0.75rem; /* px-3 py-1 */
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 500; /* font-medium */
+            transition: background-color 0.2s ease-in-out;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            border: none;
+            outline: none;
+        }
+        .power-up-btn:hover:not(:disabled) {
+            background-color: #4f46e5; /* Darker indigo */
+        }
+        .power-up-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
     </style>
 </head>
@@ -273,6 +319,25 @@
         </div>
     </div>
 
+    <!-- Steal Points Target Selection Modal -->
+    <div id="steal-target-modal-overlay" class="modal-overlay">
+        <div class="modal-content space-y-4">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Steal Points Power-up!</h2>
+            <p class="text-lg text-gray-700">Which team would you like to steal 15 points from?</p>
+            <div class="mt-4 flex flex-col sm:flex-row gap-3 justify-center">
+                <button id="steal-target-team1-button"
+                        class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200 ease-in-out shadow-md text-lg">
+                    Team 1
+                </button>
+                <button id="steal-target-team2-button"
+                        class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200 ease-in-out shadow-md text-lg">
+                    Team 2
+                </button>
+            </div>
+            <div id="steal-feedback" class="message-box mt-4 text-center text-lg font-bold"></div>
+        </div>
+    </div>
+
 
     <script>
         // Game configuration and data
@@ -298,39 +363,47 @@
             { question: "Give some synonyms to 'Quick'.", answer: "fast" } // New example for variety
         ];
 
-        // Rewards (8 distinct outcomes with adjusted points)
-        const rewards = [
-            "🎁 Direct: +25 Points!",
-            "🎁 Direct: +30 Points!",
-            "🎁 Direct: +35 Points!",
-            "🎁 Direct: +40 Points!",
-            "🎉 Inventory: Steal 15 Points!",
-            "✨ Inventory: Double Next Points!",
-            "🔄 Inventory: Swap Question!",
-            "💡 Inventory: Get a free hint!"
+        // Reserved questions for the "Swap Question" power-up
+        let reservedExercises = [
+            { question: "What is the past tense of 'go'?", answer: "went" },
+            { question: "Name a fruit that starts with 'B'.", answer: "banana" },
+            { question: "What color is a stop sign?", answer: "red" },
+            { question: "Spell 'quiz' backwards.", answer: "ziuq" },
+            { question: "What is 2 + 2 * 3?", answer: "8" },
+            { question: "Which season comes after spring?", answer: "summer" },
+            { question: "Give a synonym for 'small'.", answer: "tiny" },
+            { question: "What is the opposite of 'up'?", answer: "down" }
         ];
 
-        // Punishments (8 distinct outcomes with adjusted points)
+        // Rewards (8 distinct outcomes with adjusted points and defined types)
+        const rewards = [
+            { type: 'direct_points', value: 25, description: "🎁 Direct: +25 Points!" },
+            { type: 'direct_points', value: 30, description: "🎁 Direct: +30 Points!" },
+            { type: 'direct_points', value: 35, description: "🎁 Direct: +35 Points!" },
+            { type: 'direct_points', value: 40, description: "🎁 Direct: +40 Points!" },
+            { type: 'power_up', name: 'Steal Points', description: "🎉 Inventory: Steal 15 Points!" },
+            { type: 'power_up', name: 'Double Next Points', description: "✨ Inventory: Double Next Points!" },
+            { type: 'power_up', name: 'Swap Question', description: "🔄 Inventory: Swap Question!" },
+            { type: 'power_up', name: 'Free Hint', description: "💡 Inventory: Get a free hint!" }
+        ];
+
+        // Punishments (8 distinct outcomes with adjusted points and defined types)
         const punishments = [
-            "💀 Direct: -15 Points!",
-            "💀 Direct: -20 Points!",
-            "💀 Direct: -25 Points!",
-            "💀 Direct: -30 Points!",
-            "🎭 Immediate: Silly Voice for next answer!",
-            "🤸 Immediate: Do 3 Jumping Jacks!",
-            "🃏 Immediate: Charades (Teacher picks word)!",
-            "😂 Immediate: Tell a joke before answering!"
+            { type: 'direct_points', value: -15, description: "💀 Direct: -15 Points!" },
+            { type: 'direct_points', value: -20, description: "💀 Direct: -20 Points!" },
+            { type: 'direct_points', value: -25, description: "💀 Direct: -25 Points!" },
+            { type: 'direct_points', value: -30, description: "💀 Direct: -30 Points!" },
+            { type: 'immediate_action', description: "🎭 Immediate: Silly Voice for next answer!" },
+            { type: 'immediate_action', description: "🤸 Immediate: Do 3 Jumping Jacks!" },
+            { type: 'immediate_action', description: "🃏 Immediate: Charades (Teacher picks word)!" },
+            { type: 'immediate_action', description: "😂 Immediate: Tell a joke before answering!" }
         ];
 
         // Combine all rewards and punishments for shuffling
         const allPossibleOutcomes = [
-            ...rewards, // 8 rewards
-            ...punishments // 8 punishments
-        ]; // Total 16 outcomes
-
-        // No more meme map needed
-        // const outcomeToMemeMap = { /* ... */ };
-
+            ...rewards,
+            ...punishments
+        ];
 
         // Array of distinct color palettes for the presents
         const presentBoxColors = [
@@ -370,17 +443,19 @@
 
 
         // Game state variables
-        let presents = []; // Stores details for each present (exercise, outcome)
+        let presents = []; // Stores details for each present (exercise, outcome object)
         let currentPresentIndex = null; // Index of the currently selected present
         let presentsOpened = new Set(); // Stores indices of opened presents
 
         // Team Data: Each team has a name, score, and inventory of power-ups
         let teams = [
-            { name: 'Team 1', score: 0, inventory: [] },
-            { name: 'Team 2', score: 0, inventory: [] }
+            { name: 'Team 1', score: 0, inventory: [], doublePointsActive: false, swapQuestionActive: false },
+            { name: 'Team 2', score: 0, inventory: [], doublePointsActive: false, swapQuestionActive: false }
         ];
         let currentTeamIndex = 0; // Index of the team whose turn it is (0 for Team 1, 1 for Team 2)
 
+        // Store a copy of reserved exercises for reset
+        let initialReservedExercises = [];
 
         // DOM elements
         const presentsGrid = document.getElementById('presents-grid');
@@ -389,13 +464,20 @@
         // Modal specific elements
         const questionModalOverlay = document.getElementById('question-modal-overlay');
         const modalExerciseDisplay = document.getElementById('modal-exercise-display');
-        const correctAnswerButton = document.getElementById('correct-answer-button'); // New button
-        const incorrectAnswerButton = document.getElementById('incorrect-answer-button'); // New button
+        const correctAnswerButton = document.getElementById('correct-answer-button');
+        const incorrectAnswerButton = document.getElementById('incorrect-answer-button');
         const modalFeedbackDisplay = document.getElementById('modal-feedback-display');
-        const nextTeamButton = document.getElementById('next-team-button'); // Now inside the modal
+        const nextTeamButton = document.getElementById('next-team-button');
 
-        const resetButton = document.getElementById('reset-button'); // Remains outside the modal
+        const resetButton = document.getElementById('reset-button');
         const currentTeamDisplay = document.getElementById('current-team-display');
+
+        // Steal Points Modal elements
+        const stealTargetModalOverlay = document.getElementById('steal-target-modal-overlay');
+        const stealTargetTeam1Button = document.getElementById('steal-target-team1-button');
+        const stealTargetTeam2Button = document.getElementById('steal-target-team2-button');
+        const stealFeedbackDisplay = document.getElementById('steal-feedback');
+
 
         /**
          * Shuffles an array randomly using the Fisher-Yates algorithm.
@@ -418,12 +500,17 @@
                 document.getElementById(`team-${index}-score`).textContent = `${team.score} Points`;
                 const inventoryList = document.getElementById(`team-${index}-inventory`);
                 inventoryList.innerHTML = ''; // Clear previous inventory
+
                 if (team.inventory.length === 0) {
                     inventoryList.innerHTML = '<li class="text-gray-500">None</li>';
                 } else {
-                    team.inventory.forEach(item => {
+                    team.inventory.forEach((item, itemIndex) => {
                         const listItem = document.createElement('li');
-                        listItem.textContent = item;
+                        const button = document.createElement('button');
+                        button.className = 'power-up-btn';
+                        button.textContent = item.description; // Display the power-up description
+                        button.onclick = () => usePowerUp(index, itemIndex); // Pass teamIndex and itemIndex
+                        listItem.appendChild(button);
                         inventoryList.appendChild(listItem);
                     });
                 }
@@ -435,10 +522,13 @@
          * Initializes the game by setting up presents and UI.
          */
         function initializeGame() {
+            // Store initial state of reserved exercises
+            initialReservedExercises = JSON.parse(JSON.stringify(reservedExercises));
+
             // Reset teams data
             teams = [
-                { name: 'Team 1', score: 0, inventory: [] },
-                { name: 'Team 2', score: 0, inventory: [] }
+                { name: 'Team 1', score: 0, inventory: [], doublePointsActive: false, swapQuestionActive: false },
+                { name: 'Team 2', score: 0, inventory: [], doublePointsActive: false, swapQuestionActive: false }
             ];
             currentTeamIndex = 0; // Start with Team 1
 
@@ -446,7 +536,7 @@
             let shuffledOutcomes = shuffleArray([...allPossibleOutcomes]); // 16 outcomes
 
             // Ensure exercises are also shuffled to vary the challenge
-            let shuffledExercises = shuffleArray([...exercises]); // 16 exercises
+            let shuffledExercises = shuffleArray(JSON.parse(JSON.stringify(exercises))); // Deep copy to avoid modifying original
 
             presents = []; // Clear previous presents
             presentsOpened.clear(); // Clear opened presents set
@@ -455,11 +545,11 @@
 
             // Create 16 presents, assigning a unique exercise and outcome to each
             for (let i = 0; i < 16; i++) { // Changed to 16 presents
-                const outcome = shuffledOutcomes[i];
+                const outcomeObject = shuffledOutcomes[i]; // Get the full outcome object
 
                 presents.push({
                     exercise: shuffledExercises[i], // Assign a unique shuffled exercise
-                    outcome: outcome
+                    outcome: outcomeObject // Store the full outcome object
                 });
 
                 // Create present box HTML element
@@ -481,7 +571,6 @@
                         <div class="bow-inner" style="background-color: ${colorPalette.bowLight};"></div>
                     </div>
                     <span class="box-number">${i + 1}</span>
-                    <!-- meme-img removed -->
                 `;
                 presentsGrid.appendChild(presentBox);
 
@@ -492,6 +581,7 @@
             // Reset UI elements
             modalFeedbackDisplay.textContent = ''; // Reset modal feedback
             questionModalOverlay.classList.remove('active'); // Hide modal initially
+            stealTargetModalOverlay.classList.remove('active'); // Hide steal modal initially
 
             // Update the main challenge display area
             exerciseDisplay.textContent = "Click a present to reveal your challenge!";
@@ -514,15 +604,13 @@
             const presentBox = event.currentTarget;
             const index = parseInt(presentBox.dataset.index);
 
-            // Access the always-visible Challenge Zone for main feedback messages
             const mainChallengeZoneDisplay = exerciseDisplay;
-
 
             // Prevent opening an already opened present
             if (presentsOpened.has(index)) {
                 if (mainChallengeZoneDisplay) {
                     mainChallengeZoneDisplay.textContent = "This present has already been opened!";
-                    mainChallengeZoneDisplay.classList.add('text-yellow-600'); // Add color for opened feedback
+                    mainChallengeZoneDisplay.classList.add('text-yellow-600');
                 }
                 return;
             }
@@ -531,111 +619,255 @@
             if (currentPresentIndex !== null && !presentsOpened.has(currentPresentIndex)) {
                 if (mainChallengeZoneDisplay) {
                     mainChallengeZoneDisplay.textContent = "Please reveal the outcome for the current exercise first!";
-                    mainChallengeZoneDisplay.classList.add('text-red-600'); // Add color for error feedback
+                    mainChallengeZoneDisplay.classList.add('text-red-600');
                 }
                 return;
             }
 
             currentPresentIndex = index;
-            modalExerciseDisplay.textContent = presents[currentPresentIndex].exercise.question; // Set question in modal
-            modalFeedbackDisplay.textContent = `Team ${teams[currentTeamIndex].name}: Answer the question, then click "Correct Answer" or "Incorrect Answer".`;
-            modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-blue-700';
-            
-            correctAnswerButton.disabled = false; // Enable correct/incorrect buttons
+            const currentTeam = teams[currentTeamIndex];
+            let questionToDisplay;
+
+            // Check if "Swap Question" power-up is active for the current team
+            if (currentTeam.swapQuestionActive && reservedExercises.length > 0) {
+                // Get a random question from reserved pool
+                const randomIndex = Math.floor(Math.random() * reservedExercises.length);
+                questionToDisplay = reservedExercises[randomIndex].question;
+                reservedExercises.splice(randomIndex, 1); // Remove used reserved question
+
+                currentTeam.swapQuestionActive = false; // Consume the power-up effect
+                modalFeedbackDisplay.textContent = `Team ${currentTeam.name} used "Swap Question"! New challenge:`;
+                modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold reward-text';
+                updateScoreboardDisplay(); // Update inventory
+            } else {
+                questionToDisplay = presents[currentPresentIndex].exercise.question;
+                modalFeedbackDisplay.textContent = `Team ${currentTeam.name}: Answer the question, then click "Correct Answer" or "Incorrect Answer".`;
+                modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-blue-700';
+            }
+
+            modalExerciseDisplay.textContent = questionToDisplay; // Set question in modal
+
+            correctAnswerButton.disabled = false;
             incorrectAnswerButton.disabled = false;
             nextTeamButton.disabled = true; // Disable next team button until outcome is determined
 
-            questionModalOverlay.classList.add('active'); // Show the modal
+            questionModalOverlay.classList.add('active');
             if (mainChallengeZoneDisplay) {
-                mainChallengeZoneDisplay.textContent = ''; // Clear main feedback when modal is open
-                mainChallengeZoneDisplay.classList.remove('text-yellow-600', 'text-red-600', 'text-green-700'); // Clear old colors
+                mainChallengeZoneDisplay.textContent = '';
+                mainChallengeZoneDisplay.classList.remove('text-yellow-600', 'text-red-600', 'text-green-700');
             }
+        }
+
+        /**
+         * Applies the outcome to the current team.
+         * @param {string} answerStatus - 'correct' or 'incorrect'.
+         */
+        function applyOutcome(answerStatus) {
+            if (currentPresentIndex === null || presentsOpened.has(currentPresentIndex)) {
+                modalFeedbackDisplay.textContent = "Error: No present selected or already opened.";
+                modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-red-600';
+                return;
+            }
+
+            const presentBox = document.getElementById(`present-${currentPresentIndex}`);
+            presentsOpened.add(currentPresentIndex);
+            presentBox.classList.add('opened');
+            presentBox.removeEventListener('click', handlePresentClick);
+
+            const outcome = presents[currentPresentIndex].outcome; // This is the outcome object from the box
+            const currentTeam = teams[currentTeamIndex];
+
+            let feedbackMessage = '';
+            let feedbackClass = 'message-box mt-4 text-center text-lg font-bold';
+
+            if (answerStatus === 'correct') {
+                feedbackMessage = `Correct! Outcome for ${currentTeam.name}: ${outcome.description}`;
+                if (outcome.type === 'direct_points') {
+                    let points = outcome.value;
+                    if (currentTeam.doublePointsActive) {
+                        points *= 2;
+                        currentTeam.doublePointsActive = false; // Consume double points buff
+                        feedbackMessage += ` (Points Doubled!)`;
+                    }
+                    currentTeam.score += points;
+                    feedbackClass += ' reward-text';
+                } else if (outcome.type === 'power_up') {
+                    currentTeam.inventory.push(outcome); // Store the full power-up object
+                    feedbackClass += ' reward-text';
+                } else if (outcome.type === 'immediate_action') {
+                    feedbackMessage = `Correct! You drew a punishment for ${currentTeam.name}: ${outcome.description}. You avoid the penalty this time!`;
+                    feedbackClass += ' text-yellow-600'; // Neutral/warning color
+                }
+            } else { // answerStatus === 'incorrect'
+                feedbackMessage = `Incorrect! Outcome for ${currentTeam.name}: ${outcome.description}`;
+                if (outcome.type === 'direct_points') {
+                    if (outcome.value < 0) { // Only apply negative points if it's a punishment
+                        currentTeam.score += outcome.value;
+                        feedbackClass += ' punishment-text';
+                    } else { // It was a reward, but they got it incorrect
+                        feedbackMessage = `Incorrect! You missed out on a reward for ${currentTeam.name}: ${outcome.description}.`;
+                        feedbackClass += ' text-orange-600';
+                    }
+                } else if (outcome.type === 'power_up') {
+                    feedbackMessage = `Incorrect! You missed out on a power-up for ${currentTeam.name}: ${outcome.description}.`;
+                    feedbackClass += ' text-orange-600';
+                } else if (outcome.type === 'immediate_action') {
+                    // Apply immediate action punishments even if incorrect
+                    feedbackClass += ' punishment-text';
+                }
+            }
+
+            modalFeedbackDisplay.textContent = `${feedbackMessage}\n\nClick "Next Team's Turn" to continue.`;
+            modalFeedbackDisplay.className = feedbackClass;
+
+            updateScoreboardDisplay();
+            correctAnswerButton.disabled = true;
+            incorrectAnswerButton.disabled = true;
+            nextTeamButton.disabled = false;
         }
 
         /**
          * Handles when the teacher marks an answer as CORRECT.
          */
         function handleCorrectAnswer() {
-            if (currentPresentIndex === null || presentsOpened.has(currentPresentIndex)) {
-                modalFeedbackDisplay.textContent = "Error: No present selected or already opened.";
-                modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-red-600';
-                return;
-            }
-
-            const presentBox = document.getElementById(`present-${currentPresentIndex}`);
-            presentsOpened.add(currentPresentIndex); // Mark as opened
-            presentBox.classList.add('opened'); // Change visual style
-            presentBox.removeEventListener('click', handlePresentClick); // Disable further clicks on this box
-
-            const outcome = presents[currentPresentIndex].outcome;
-            const currentTeam = teams[currentTeamIndex];
-
-            modalFeedbackDisplay.textContent = `Correct! Outcome for ${currentTeam.name}: ${outcome}\n\nClick "Next Team's Turn" to continue.`;
-
-            // Apply reward/punishment logic for a correct answer
-            if (rewards.includes(outcome)) {
-                const pointsMatch = outcome.match(/\+(\d+)/);
-                if (pointsMatch) {
-                    currentTeam.score += parseInt(pointsMatch[1]);
-                } else {
-                    currentTeam.inventory.push(outcome.substring(outcome.indexOf(":") + 2).trim());
-                }
-                modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold reward-text';
-            } else if (punishments.includes(outcome)) {
-                // If a punishment is drawn on a CORRECT answer, it becomes a "missed punishment" or similar.
-                // For this scenario, we'll just acknowledge the punishment but don't apply it if the answer was correct.
-                // You can customize this logic based on your game rules (e.g., still apply part of it, or a lesser penalty).
-                modalFeedbackDisplay.textContent = `Correct, but you drew a punishment for ${currentTeam.name}: ${outcome}. You avoid the penalty this time!\n\nClick "Next Team's Turn" to continue.`;
-                modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-yellow-600'; // Neutral/warning color
-            }
-
-            updateScoreboardDisplay();
-            correctAnswerButton.disabled = true; // Disable buttons after outcome is revealed
-            incorrectAnswerButton.disabled = true;
-            nextTeamButton.disabled = false; // Enable next team button
+            applyOutcome('correct');
         }
 
         /**
          * Handles when the teacher marks an answer as INCORRECT.
          */
         function handleIncorrectAnswer() {
-            if (currentPresentIndex === null || presentsOpened.has(currentPresentIndex)) {
-                modalFeedbackDisplay.textContent = "Error: No present selected or already opened.";
-                modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-red-600';
+            applyOutcome('incorrect');
+        }
+
+        /**
+         * Handles using a power-up from a team's inventory.
+         * @param {number} teamIdx - The index of the team using the power-up.
+         * @param {number} itemIdx - The index of the power-up in the team's inventory.
+         */
+        function usePowerUp(teamIdx, itemIdx) {
+            const team = teams[teamIdx];
+            const powerUp = team.inventory[itemIdx];
+
+            // Disable main game buttons and present clicks during power-up interaction
+            setGameInteractionState(false);
+            questionModalOverlay.classList.remove('active'); // Hide question modal if open
+
+            switch (powerUp.name) {
+                case 'Steal Points':
+                    // Open modal for target selection
+                    stealTargetModalOverlay.classList.add('active');
+                    stealFeedbackDisplay.textContent = `Team ${teamIdx + 1} is using "Steal 15 Points!". Choose a target team.`;
+                    stealFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-blue-700';
+
+                    // Store context for steal power-up
+                    stealTargetModalOverlay.dataset.usingTeamIndex = teamIdx;
+                    stealTargetModalOverlay.dataset.powerUpItemIndex = itemIdx;
+
+                    break;
+                case 'Double Next Points':
+                    team.doublePointsActive = true;
+                    modalFeedbackDisplay.textContent = `${team.name} activated "Double Next Points!" Their next point gain will be doubled.`;
+                    modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold reward-text';
+                    team.inventory.splice(itemIdx, 1); // Remove from inventory
+                    updateScoreboardDisplay();
+                    questionModalOverlay.classList.add('active'); // Show feedback in main modal
+                    setGameInteractionState(true); // Re-enable game after immediate power-up
+                    break;
+                case 'Swap Question':
+                    if (reservedExercises.length === 0) {
+                        modalFeedbackDisplay.textContent = `No more reserved questions available to swap!`;
+                        modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-red-600';
+                        questionModalOverlay.classList.add('active'); // Show feedback in main modal
+                        setGameInteractionState(true); // Re-enable game
+                        return; // Don't consume power-up if no questions are available
+                    }
+                    team.swapQuestionActive = true; // Set flag to swap question on next present click
+                    modalFeedbackDisplay.textContent = `${team.name} activated "Swap Question!" The next present you click will have a new question.`;
+                    modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold reward-text';
+                    team.inventory.splice(itemIdx, 1); // Remove from inventory
+                    updateScoreboardDisplay();
+                    questionModalOverlay.classList.add('active'); // Show feedback in main modal
+                    setGameInteractionState(true); // Re-enable game after immediate power-up
+                    break;
+                case 'Free Hint':
+                    modalFeedbackDisplay.textContent = `${team.name} activated "Get a Free Hint!" The teacher can now provide a hint for the current challenge.`;
+                    modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold reward-text';
+                    team.inventory.splice(itemIdx, 1); // Remove from inventory
+                    updateScoreboardDisplay();
+                    questionModalOverlay.classList.add('active'); // Show feedback in main modal
+                    setGameInteractionState(true); // Re-enable game after immediate power-up
+                    break;
+                default:
+                    console.error("Unknown power-up:", powerUp.name);
+                    setGameInteractionState(true); // Re-enable game in case of error
+            }
+        }
+
+        /**
+         * Helper function to enable/disable main game interaction buttons.
+         * @param {boolean} enable - True to enable, false to disable.
+         */
+        function setGameInteractionState(enable) {
+            correctAnswerButton.disabled = !enable;
+            incorrectAnswerButton.disabled = !enable;
+            nextTeamButton.disabled = !enable;
+            // Also disable clicks on presents when modals are active or during power-up interaction
+            document.querySelectorAll('.present-box').forEach(box => {
+                if (!presentsOpened.has(parseInt(box.dataset.index))) { // Only unopened boxes
+                    box.style.pointerEvents = enable ? 'auto' : 'none';
+                    box.style.cursor = enable ? 'pointer' : 'default';
+                }
+            });
+        }
+
+
+        /**
+         * Handles selecting a target for the Steal Points power-up.
+         * @param {number} targetTeamIndex - The index of the team to steal from.
+         */
+        function handleStealTargetSelect(targetTeamIndex) {
+            const usingTeamIndex = parseInt(stealTargetModalOverlay.dataset.usingTeamIndex);
+            const powerUpItemIndex = parseInt(stealTargetModalOverlay.dataset.powerUpItemIndex);
+
+            const usingTeam = teams[usingTeamIndex];
+            const targetTeam = teams[targetTeamIndex];
+
+            // Prevent stealing from oneself
+            if (usingTeamIndex === targetTeamIndex) {
+                stealFeedbackDisplay.textContent = "You can't steal points from your own team!";
+                stealFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-red-600';
                 return;
             }
 
-            const presentBox = document.getElementById(`present-${currentPresentIndex}`);
-            presentsOpened.add(currentPresentIndex); // Mark as opened
-            presentBox.classList.add('opened'); // Change visual style
-            presentBox.removeEventListener('click', handlePresentClick); // Disable further clicks on this box
+            const pointsToSteal = 15; // Hardcoded for Steal Points power-up
+            usingTeam.score += pointsToSteal;
+            targetTeam.score -= pointsToSteal;
 
-            const outcome = presents[currentPresentIndex].outcome;
-            const currentTeam = teams[currentTeamIndex];
+            stealFeedbackDisplay.textContent = `${usingTeam.name} successfully stole ${pointsToSteal} points from ${targetTeam.name}!`;
+            stealFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold reward-text';
 
-            modalFeedbackDisplay.textContent = `Incorrect! No reward or punishment is applied for ${currentTeam.name}.\n\nClick "Next Team's Turn" to continue.`;
-            modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-orange-600'; // Indicates incorrect
-
-            // If a punishment is drawn on an INCORRECT answer, it *should* be applied.
-            // If a reward is drawn on an INCORRECT answer, it's NOT applied.
-            if (punishments.includes(outcome)) {
-                const pointsMatch = outcome.match(/(\-?\d+)/);
-                if (pointsMatch) { // It's a direct point punishment
-                    currentTeam.score += parseInt(pointsMatch[1]);
-                    modalFeedbackDisplay.textContent = `Incorrect! Outcome for ${currentTeam.name}: ${outcome}\n\nClick "Next Team's Turn" to continue.`;
-                    modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold punishment-text';
-                } else { // It's an immediate action punishment
-                    modalFeedbackDisplay.textContent = `Incorrect! Outcome for ${currentTeam.name}: ${outcome}\n\nClick "Next Team's Turn" to continue.`;
-                    modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold punishment-text';
-                }
-            }
-
+            usingTeam.inventory.splice(powerUpItemIndex, 1); // Remove the used power-up
 
             updateScoreboardDisplay();
-            correctAnswerButton.disabled = true; // Disable buttons after outcome is determined
-            incorrectAnswerButton.disabled = true;
-            nextTeamButton.disabled = false; // Enable next team button
+
+            // Close steal modal and re-enable main game interaction
+            setTimeout(() => {
+                stealTargetModalOverlay.classList.remove('active');
+                setGameInteractionState(true); // Re-enable game
+                // If a question modal was open before the power-up, reactivate it with appropriate buttons enabled
+                if (currentPresentIndex !== null && !presentsOpened.has(currentPresentIndex)) {
+                     questionModalOverlay.classList.add('active');
+                     correctAnswerButton.disabled = false;
+                     incorrectAnswerButton.disabled = false;
+                     nextTeamButton.disabled = true; // Wait for answer
+                } else {
+                    nextTeamButton.disabled = false; // If no question, enable next turn
+                }
+                modalFeedbackDisplay.textContent = ""; // Clear lingering modal feedback
+            }, 1500); // Give a moment for feedback to be read
         }
+
 
         /**
          * Switches to the next team's turn and closes the modal.
@@ -670,6 +902,7 @@
                 correctAnswerButton.disabled = true;
                 incorrectAnswerButton.disabled = true;
                 nextTeamButton.disabled = true;
+                setGameInteractionState(false); // Disable all interaction if game is over
             }
             currentPresentIndex = null; // Clear current present for the next turn
         }
@@ -679,6 +912,11 @@
         incorrectAnswerButton.addEventListener('click', handleIncorrectAnswer);
         resetButton.addEventListener('click', initializeGame);
         nextTeamButton.addEventListener('click', handleNextTeam);
+
+        // Steal points modal buttons
+        stealTargetTeam1Button.addEventListener('click', () => handleStealTargetSelect(0));
+        stealTargetTeam2Button.addEventListener('click', () => handleStealTargetSelect(1));
+
 
         // Initialize the game when the window loads
         window.onload = initializeGame;
