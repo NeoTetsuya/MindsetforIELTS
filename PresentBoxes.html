@@ -237,55 +237,104 @@
             cursor: not-allowed;
         }
 
-        /* Team Selection Overlay */
-        #team-selection-overlay {
+        /* Full-screen overlays for initial selections */
+        .selection-modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #e0f2fe; /* Match body background */
+            background-color: rgba(0, 0, 0, 0.7); /* Dim background */
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 1001; /* Above everything else */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+        .selection-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .selection-modal-content {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-width: 90%;
+            width: 600px;
             text-align: center;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease-in-out;
         }
-        #team-selection-overlay.hidden {
-            display: none;
+        .selection-modal-overlay.active .selection-modal-content {
+            transform: translateY(0);
         }
-        #team-selection-overlay button {
-            background-color: #10b981; /* Green */
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 0.5rem;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 1rem;
-            cursor: pointer;
-            transition: background-color 0.2s ease-in-out;
-        }
-        #team-selection-overlay button:hover {
-            background-color: #059669; /* Darker green */
-        }
-        #team-selection-overlay h2 {
-            font-size: 2.5rem;
+        .selection-modal-content h2 {
+            font-size: 2.25rem; /* text-3xl */
             font-weight: bold;
             color: #2563eb; /* Blue */
             margin-bottom: 2rem;
+        }
+        .selection-modal-content button {
+            background-color: #10b981; /* Green */
+            color: white;
+            padding: 0.75rem 1.5rem; /* py-3 px-6 */
+            border-radius: 0.5rem; /* rounded-lg */
+            font-size: 1.125rem; /* text-lg */
+            font-weight: bold;
+            margin: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .selection-modal-content button:hover {
+            background-color: #059669; /* Darker green */
+        }
+        .selection-step {
+            display: none; /* Hidden by default */
+        }
+        .selection-step.active {
+            display: block; /* Show active step */
         }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center p-4">
 
-    <!-- Team Selection Overlay -->
-    <div id="team-selection-overlay">
-        <h2>Select Number of Teams</h2>
-        <div class="flex flex-col sm:flex-row gap-4">
-            <button onclick="selectTeams(2)">2 Teams</button>
-            <button onclick="selectTeams(3)">3 Teams</button>
-            <button onclick="selectTeams(4)">4 Teams</button>
+    <!-- Game Setup Modal -->
+    <div id="game-setup-modal-overlay" class="selection-modal-overlay">
+        <div class="selection-modal-content space-y-6">
+            <h2 id="setup-modal-title">Game Setup</h2>
+
+            <!-- Level Selection Step -->
+            <div id="level-step" class="selection-step active">
+                <p class="text-xl text-gray-700 mb-4">Select Difficulty Level</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="selectLevel('easy')">Easy</button>
+                    <button onclick="selectLevel('medium')">Medium</button>
+                    <button onclick="selectLevel('hard')">Hard</button>
+                </div>
+            </div>
+
+            <!-- Topic Selection Step -->
+            <div id="topic-step" class="selection-step">
+                <p class="text-xl text-gray-700 mb-4">Select Topic</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="selectTopic('General Vocabulary')">General Vocabulary</button>
+                    <button onclick="selectTopic('Personality')">Personality</button>
+                    <!-- Add more topic buttons here as needed -->
+                </div>
+            </div>
+
+            <!-- Team Selection Step -->
+            <div id="team-step" class="selection-step">
+                <p class="text-xl text-gray-700 mb-4">Select Number of Teams</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="selectTeams(2)">2 Teams</button>
+                    <button onclick="selectTeams(3)">3 Teams</button>
+                    <button onclick="selectTeams(4)">4 Teams</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -336,16 +385,20 @@
                 Question will appear here...
             </div>
             <div class="mt-4 flex flex-col sm:flex-row gap-3 justify-center">
+                <button id="check-answer-button"
+                        class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200 ease-in-out shadow-md text-base">
+                    Check Answer
+                </button>
                 <button id="correct-answer-button"
-                        class="px-8 py-3 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-200 ease-in-out shadow-md text-lg">
+                        class="px-6 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-200 ease-in-out shadow-md text-base">
                     Correct Answer
                 </button>
                 <button id="incorrect-answer-button"
-                        class="px-8 py-3 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 transition duration-200 ease-in-out shadow-md text-lg">
+                        class="px-6 py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 transition duration-200 ease-in-out shadow-md text-base">
                     Incorrect Answer
                 </button>
                 <button id="next-team-button"
-                        class="px-8 py-3 bg-yellow-500 text-white text-xl font-bold rounded-lg hover:bg-yellow-600 transition duration-200 ease-in-out shadow-lg
+                        class="px-6 py-2 bg-yellow-500 text-white text-base font-bold rounded-lg hover:bg-yellow-600 transition duration-200 ease-in-out shadow-lg
                                 disabled:opacity-50 disabled:cursor-not-allowed">
                     Next Team's Turn
                 </button>
@@ -368,31 +421,94 @@
 
 
     <script>
-        // Game configuration and data
-        const exercises = [
-            // Word Formation Exercises (7 unique)
-            { question: "Give some forms of 'communicate'.", answer: "communication" },
-            { question: "Give some forms of 'predict'.", answer: "predictable" },
-            { question: "Give some forms of 'participate'.", answer: "participation" },
-            { question: "Give some forms of 'influence'.", answer: "influential" },
-            { question: "Give some forms of 'act'.", answer: "action" },
-            { question: "Give some forms of 'employ'.", answer: "employment" },
-            { question: "Give some forms of 'compete'.", answer: "competitive" },
-            // Synonym Exercises (5 unique)
-            { question: "Give some synonyms to 'Important'.", answer: "vital" },
-            { question: "Give some synonyms to 'Interesting'.", answer: "fascinating" },
-            { question: "Give some synonyms to 'Tired'.", answer: "weary" },
-            { question: "Give some synonyms to 'Sad'.", answer: "unhappy" },
-            { question: "Give some synonyms to 'Happy'.", answer: "glad" },
-            // Duplicated Exercises to reach 16 (for diverse questions)
-            { question: "Give some forms of 'collaborate'.", answer: "collaboration" }, // New example for variety
-            { question: "Give some forms of 'educate'.", answer: "education" }, // New example for variety
-            { question: "Give some synonyms to 'Big'.", answer: "large" }, // New example for variety
-            { question: "Give some synonyms to 'Quick'.", answer: "fast" } // New example for variety
-        ];
+        // --- GAME DATA ---
+
+        // Main exercise categories by topic and level
+        const allExercises = {
+            'General Vocabulary': {
+                'easy': [
+                    { question: "Give some forms of 'communicate'.", answer: "communication" },
+                    { question: "Give some forms of 'predict'.", answer: "predictable" },
+                    { question: "Give some forms of 'participate'.", answer: "participation" },
+                    { question: "Give some forms of 'influence'.", answer: "influential" },
+                    { question: "Give some forms of 'act'.", answer: "action" },
+                    { question: "Give some forms of 'employ'.", answer: "employment" },
+                    { question: "Give some forms of 'compete'.", answer: "competitive" },
+                    { question: "Give some synonyms to 'Important'.", answer: "vital" },
+                    { question: "Give some synonyms to 'Interesting'.", answer: "fascinating" },
+                    { question: "Give some synonyms to 'Tired'.", answer: "weary" },
+                    { question: "Give some synonyms to 'Sad'.", answer: "unhappy" },
+                    { question: "Give some synonyms to 'Happy'.", answer: "glad" },
+                    { question: "Give some forms of 'collaborate'.", answer: "collaboration" },
+                    { question: "Give some forms of 'educate'.", answer: "education" },
+                    { question: "Give some synonyms to 'Big'.", answer: "large" },
+                    { question: "Give some synonyms to 'Quick'.", answer: "fast" }
+                ],
+                'medium': [], // Placeholder for future medium questions
+                'hard': []    // Placeholder for future hard questions
+            },
+            'Personality': {
+                'easy': [
+                    // New easy level questions for Personality
+                    { question: "Someone who is kind and caring.", answer: "nice" },
+                    { question: "Someone who is friendly and likes people.", answer: "friendly" },
+                    { question: "Someone who is honest and tells the truth.", answer: "truthful" },
+                    { question: "Someone who works hard.", answer: "hardworking" },
+                    { question: "Someone who is often happy.", answer: "cheerful" },
+                    { question: "Someone who is brave and not afraid.", answer: "courageous" },
+                    { question: "Give a synonym for 'show' (as in to point).", answer: "point" },
+                    { question: "Give a synonym for 'show' (as in to give).", answer: "give" },
+                    { question: "Someone who is calm and relaxed.", answer: "calm" },
+                    { question: "Someone who can wait without getting upset.", answer: "patient" },
+                    { question: "Someone who thinks of others.", answer: "thoughtful" },
+                    { question: "Someone who is always happy to help.", answer: "helpful" },
+                    { question: "Give a synonym for 'show' (as in to open).", answer: "open" },
+                    { question: "Give a synonym for 'show' (as in to offer).", answer: "offer" },
+                    { question: "Someone who learns new things easily.", answer: "quick learner" },
+                    { question: "Someone who is neat and tidy.", answer: "tidy" }
+                ],
+                'medium': [
+                    // Lowered difficulty for medium level
+                    { question: "Someone who works hard and is careful.", answer: "diligent" },
+                    { question: "Someone who wants to achieve a lot.", answer: "ambitious" },
+                    { question: "Someone who always tells the truth and does what's right.", answer: "honest" },
+                    { question: "Someone who stays calm even in tough situations.", answer: "composed" },
+                    { question: "Someone who can understand how others feel.", answer: "understanding" },
+                    { question: "Someone who doesn't boast about their achievements.", answer: "humble" },
+                    { question: "Give a synonym for 'show' (as in to make clear).", answer: "clarify" },
+                    { question: "Give a synonym for 'show' (as in to confirm).", answer: "confirm" },
+                    { question: "Someone who has new and clever ideas.", answer: "innovative" },
+                    { question: "Someone who doesn't talk much about themselves.", answer: "private" },
+                    { question: "Someone who is quick to understand things.", answer: "sharp" },
+                    { question: "Someone who likes everything to be very neat and precise.", answer: "orderly" },
+                    { question: "Give a synonym for 'show' (as in to put on display).", answer: "present" },
+                    { question: "Give a synonym for 'show' (as in to tell someone how to do something).", answer: "guide" },
+                    { question: "Someone who enjoys meeting and spending time with other people.", answer: "sociable" },
+                    { question: "Someone who gets annoyed easily.", answer: "grumpy" }
+                ],
+                'hard': [
+                    { question: "Someone who is very talkative, especially about trivial matters.", answer: "garrulous" },
+                    { question: "Someone who is unwilling to spend money or use resources.", answer: "frugal" },
+                    { question: "Someone who is arrogant and boastful.", answer: "pompous" },
+                    { question: "Someone who is cheerful and optimistic, especially in a difficult situation.", answer: "sanguine" },
+                    { question: "Someone who is cunning and deceitful.", answer: "Machiavellian" },
+                    { question: "Someone who is hesitant or unwilling to do something.", answer: "reluctant" },
+                    { question: "Give a synonym for 'show' (as in to manifest).", answer: "evince" },
+                    { question: "Give a synonym for 'show' (as in to promulgate).", answer: "promulgate" },
+                    { question: "Someone who is extremely particular about details.", answer: "fastidious" },
+                    { question: "Someone who is characterized by cleverness or originality of invention or construction.", answer: "ingenious" },
+                    { question: "Someone who is easily persuaded to believe something.", answer: "gullible" },
+                    { question: "Someone who is habitually silent or uncommunicative.", answer: "taciturn" },
+                    { question: "Give a synonym for 'show' (as in to portray).", answer: "depict" },
+                    { question: "Give a synonym for 'show' (as in to disclose).", answer: "divulge" },
+                    { question: "Someone who is showing a rude and arrogant lack of respect.", answer: "insolent" },
+                    { question: "Someone who is difficult to please.", answer: "fastidious" }
+                ]
+            }
+        };
 
         // Reserved questions for the "Swap Question" power-up
-        let reservedExercises = [
+        let reservedExercisesPool = [
             { question: "What is the past tense of 'go'?", answer: "went" },
             { question: "Name a fruit that starts with 'B'.", answer: "banana" },
             { question: "What color is a stop sign?", answer: "red" },
@@ -404,7 +520,7 @@
         ];
 
         // Pool of tongue twisters for the new punishment
-        let tongueTwisters = [
+        let tongueTwistersPool = [
             "She sells seashells by the seashore.",
             "The sixth sick sheik's sixth sheep's sick.",
             "A box of biscuits, a box of mixed biscuits.",
@@ -431,10 +547,10 @@
             { type: 'direct_points', value: -20, description: "💀 Direct: -20 Points!" },
             { type: 'direct_points', value: -25, description: "💀 Direct: -25 Points!" },
             { type: 'direct_points', value: -30, description: "💀 Direct: -30 Points!" },
-            { type: 'immediate_action', name: 'Tongue Twister', description: "🗣️ Immediate: Recite a tongue twister!" }, // Changed: now specifically for tongue twisters
+            { type: 'immediate_action', name: 'Tongue Twister', description: "🗣️ Immediate: Recite a tongue twister!" },
             { type: 'immediate_action', description: "🤸 Immediate: Do 3 Jumping Jacks!" },
             { type: 'immediate_action', description: "🃏 Immediate: Charades (Teacher picks word)!" },
-            { type: 'immediate_action', description: "🎨 Immediate: Quickly draw a relevant icon on the board before answering!" } // Changed
+            { type: 'immediate_action', description: "🎨 Immediate: Quickly draw a relevant icon on the board before answering!" }
         ];
 
         // Combine all rewards and punishments for shuffling
@@ -480,30 +596,39 @@
         ];
 
 
-        // Game state variables
-        let presents = []; // Stores details for each present (exercise, outcome object)
-        let currentPresentIndex = null; // Index of the currently selected present
-        let presentsOpened = new Set(); // Stores indices of opened presents
-
-        // Team Data: Each team has a name, score, and inventory of power-ups
+        // --- GAME STATE ---
+        let presents = [];
+        let currentPresentIndex = null;
+        let presentsOpened = new Set();
         let teams = []; // Initialized after selection
-        let currentTeamIndex = 0; // Index of the team whose turn it is (0 for Team 1, 1 for Team 2)
+        let currentTeamIndex = 0;
 
-        // Store a copy of reserved exercises and tongue twisters for reset
-        let initialReservedExercises = []; // This will be populated in initializeGame
-        let initialTongueTwisters = []; // This will be populated in initializeGame
+        let selectedLevel = null;
+        let selectedTopic = null;
+        let currentExercises = []; // Exercises chosen based on level and topic
+        let currentReservedExercises = []; // Reserved exercises for the current game
+        let currentTongueTwisters = []; // Tongue twisters for the current game
 
-        // DOM elements
-        const teamSelectionOverlay = document.getElementById('team-selection-overlay');
+        // Store initial copies of exercise pools for resetting
+        const initialReservedExercisesCopy = JSON.parse(JSON.stringify(reservedExercisesPool));
+        const initialTongueTwistersCopy = JSON.parse(JSON.stringify(tongueTwistersPool));
+
+
+        // --- DOM ELEMENTS ---
+        const gameSetupModalOverlay = document.getElementById('game-setup-modal-overlay');
+        const levelStep = document.getElementById('level-step');
+        const topicStep = document.getElementById('topic-step');
+        const teamStep = document.getElementById('team-step');
+
         const mainGameContainer = document.getElementById('main-game-container');
         const scoreboardContainer = document.getElementById('scoreboard-container');
 
         const presentsGrid = document.getElementById('presents-grid');
         const exerciseDisplay = document.getElementById('exercise-display'); // Main Challenge Zone display
 
-        // Modal specific elements
         const questionModalOverlay = document.getElementById('question-modal-overlay');
         const modalExerciseDisplay = document.getElementById('modal-exercise-display');
+        const checkAnswerButton = document.getElementById('check-answer-button'); // New button
         const correctAnswerButton = document.getElementById('correct-answer-button');
         const incorrectAnswerButton = document.getElementById('incorrect-answer-button');
         const modalFeedbackDisplay = document.getElementById('modal-feedback-display');
@@ -512,11 +637,12 @@
         const resetButton = document.getElementById('reset-button');
         const currentTeamDisplay = document.getElementById('current-team-display');
 
-        // Steal Points Modal elements
         const stealTargetModalOverlay = document.getElementById('steal-target-modal-overlay');
         const stealTargetButtonsContainer = document.getElementById('steal-target-buttons');
         const stealFeedbackDisplay = document.getElementById('steal-feedback');
 
+
+        // --- FUNCTIONS ---
 
         /**
          * Shuffles an array randomly using the Fisher-Yates algorithm.
@@ -532,7 +658,36 @@
         }
 
         /**
-         * Selects the number of teams and prepares the game state.
+         * Step 1: Selects the difficulty level.
+         * @param {string} level - The selected difficulty level ('easy', 'medium', 'hard').
+         */
+        window.selectLevel = function(level) {
+            selectedLevel = level;
+            levelStep.classList.remove('active');
+            topicStep.classList.add('active');
+        }
+
+        /**
+         * Step 2: Selects the topic.
+         * @param {string} topic - The selected topic.
+         */
+        window.selectTopic = function(topic) {
+            selectedTopic = topic;
+            // Get questions based on selected topic and level
+            currentExercises = JSON.parse(JSON.stringify(allExercises[selectedTopic][selectedLevel]));
+
+            // Ensure we have 16 questions for the boxes, duplicate if necessary
+            while (currentExercises.length < 16) {
+                currentExercises = currentExercises.concat(JSON.parse(JSON.stringify(allExercises[selectedTopic][selectedLevel])));
+            }
+            currentExercises = currentExercises.slice(0, 16); // Trim if too many
+
+            topicStep.classList.remove('active');
+            teamStep.classList.add('active');
+        }
+
+        /**
+         * Step 3: Selects the number of teams and prepares the game state.
          * @param {number} numTeams - The number of teams to set up.
          */
         window.selectTeams = function(numTeams) {
@@ -544,10 +699,10 @@
         }
 
         /**
-         * Starts the game, hiding the team selection and showing the main game UI.
+         * Starts the game, hiding the selection overlays and showing the main game UI.
          */
         function startGame() {
-            teamSelectionOverlay.classList.add('hidden');
+            gameSetupModalOverlay.classList.remove('active'); // Hide the setup modal
             mainGameContainer.classList.remove('hidden');
             initializeGame(true); // Pass true to indicate it's the initial game start
         }
@@ -568,6 +723,17 @@
                         <!-- Inventory items will be listed here -->
                     </ul>
                 `;
+                // Add appropriate grid column classes based on the number of teams
+                if (teams.length === 2) {
+                    scoreboardContainer.classList.add('md:grid-cols-2');
+                    scoreboardContainer.classList.remove('md:grid-cols-3', 'md:grid-cols-4');
+                } else if (teams.length === 3) {
+                    scoreboardContainer.classList.add('md:grid-cols-3');
+                    scoreboardContainer.classList.remove('md:grid-cols-2', 'md:grid-cols-4');
+                } else if (teams.length === 4) {
+                    scoreboardContainer.classList.add('md:grid-cols-4');
+                    scoreboardContainer.classList.remove('md:grid-cols-2', 'md:grid-cols-3');
+                }
                 scoreboardContainer.appendChild(teamCard);
 
                 // Populate inventory for the newly created card
@@ -594,31 +760,34 @@
          * @param {boolean} isInitialStart - True if this is the first time the game is starting after team selection.
          */
         function initializeGame(isInitialStart = false) {
-            // Store initial state of reserved exercises and tongue twisters only once
-            if (initialReservedExercises.length === 0 || isInitialStart) { // Re-populate on initial start or if empty
-                initialReservedExercises = JSON.parse(JSON.stringify(reservedExercises));
-                initialTongueTwisters = JSON.parse(JSON.stringify(tongueTwisters));
-            } else {
-                // Re-initialize for reset button functionality
-                reservedExercises = JSON.parse(JSON.stringify(initialReservedExercises));
-                tongueTwisters = JSON.parse(JSON.stringify(initialTongueTwisters));
+            // Re-initialize reserved exercises and tongue twisters to their original state on reset
+            if (isInitialStart) { // Only on initial start, deep copy the pools
+                currentReservedExercises = JSON.parse(JSON.stringify(reservedExercisesPool));
+                currentTongueTwisters = JSON.parse(JSON.stringify(tongueTwistersPool));
+            } else { // On reset button click, restore from original copies
+                currentReservedExercises = JSON.parse(JSON.stringify(initialReservedExercisesCopy));
+                currentTongueTwisters = JSON.parse(JSON.stringify(initialTongueTwistersCopy));
+                // Restore original exercises for the selected topic/level
+                if (selectedTopic && selectedLevel) {
+                    currentExercises = JSON.parse(JSON.stringify(allExercises[selectedTopic][selectedLevel]));
+                    // Ensure we have 16 questions for the boxes, duplicate if necessary
+                    while (currentExercises.length < 16) {
+                        currentExercises = currentExercises.concat(JSON.parse(JSON.stringify(allExercises[selectedTopic][selectedLevel])));
+                    }
+                    currentExercises = currentExercises.slice(0, 16); // Trim if too many
+                }
             }
 
-            // If not initial start, clear existing team data and recreate based on previously selected num teams
-            if (!isInitialStart && teams.length > 0) {
-                const numTeams = teams.length;
-                teams = []; // Clear current teams
+
+            // Reset teams data if not initial start (to keep selected number of teams)
+            if (!isInitialStart) {
+                const numTeams = teams.length; // Preserve the number of teams selected
+                teams = [];
                 for (let i = 0; i < numTeams; i++) {
                     teams.push({ name: `Team ${i + 1}`, score: 0, inventory: [], doublePointsActive: false, swapQuestionActive: false });
                 }
-            } else if (teams.length === 0) {
-                 // Fallback: If initializeGame is called without prior team selection (e.g., direct refresh)
-                 // This should technically not happen with the team picker, but good for robustness.
-                teams = [
-                    { name: 'Team 1', score: 0, inventory: [], doublePointsActive: false, swapQuestionActive: false },
-                    { name: 'Team 2', score: 0, inventory: [], doublePointsActive: false, swapQuestionActive: false }
-                ];
             }
+            // If it is initial start, teams array is already populated by selectTeams.
 
 
             currentTeamIndex = 0; // Start with Team 1
@@ -626,8 +795,8 @@
             // Shuffle all possible outcomes
             let shuffledOutcomes = shuffleArray([...allPossibleOutcomes]); // 16 outcomes
 
-            // Ensure exercises are also shuffled to vary the challenge
-            let shuffledExercises = shuffleArray(JSON.parse(JSON.stringify(exercises))); // Deep copy to avoid modifying original
+            // Shuffle currentExercises only once per game, not on every reset if it's already set
+            let shuffledCurrentExercises = shuffleArray(JSON.parse(JSON.stringify(currentExercises))); // Deep copy
 
             presents = []; // Clear previous presents
             presentsOpened.clear(); // Clear opened presents set
@@ -639,7 +808,7 @@
                 const outcomeObject = shuffledOutcomes[i]; // Get the full outcome object
 
                 presents.push({
-                    exercise: shuffledExercises[i], // Assign a unique shuffled exercise
+                    exercise: shuffledCurrentExercises[i], // Assign a unique shuffled exercise from current pool
                     outcome: outcomeObject // Store the full outcome object
                 });
 
@@ -679,10 +848,11 @@
             exerciseDisplay.classList.remove('text-yellow-600', 'text-red-600', 'text-green-700'); // Clear old colors
             exerciseDisplay.classList.add('text-gray-700'); // Set default color
 
-
-            correctAnswerButton.disabled = true; // Disable correct/incorrect buttons initially
+            // Initially, only 'Check Answer' is enabled for personality questions
+            checkAnswerButton.disabled = true;
+            correctAnswerButton.disabled = true;
             incorrectAnswerButton.disabled = true;
-            nextTeamButton.disabled = true; // Disable next team button initially
+            nextTeamButton.disabled = true;
 
             updateScoreboardDisplay(); // Update scoreboard for initial state
         }
@@ -718,17 +888,22 @@
             currentPresentIndex = index;
             const currentTeam = teams[currentTeamIndex];
             let questionToDisplay;
+            let currentQuestionAnswer; // Store the answer for checking
 
             // Check if "Swap Question" power-up is active for the current team
             if (currentTeam.swapQuestionActive) {
-                const randomIndex = Math.floor(Math.random() * reservedExercises.length);
-                if (reservedExercises.length > 0) {
-                    questionToDisplay = reservedExercises[randomIndex].question;
-                    reservedExercises.splice(randomIndex, 1); // Remove from reserved pool
+                const randomIndex = Math.floor(Math.random() * currentReservedExercises.length);
+                if (currentReservedExercises.length > 0) {
+                    const swappedExercise = currentReservedExercises[randomIndex];
+                    questionToDisplay = swappedExercise.question;
+                    currentQuestionAnswer = swappedExercise.answer; // Get answer for swapped question
+                    currentReservedExercises.splice(randomIndex, 1); // Remove from reserved pool
                     modalFeedbackDisplay.textContent = `Team ${currentTeam.name} used "Swap Question"! New challenge:`;
                     modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold reward-text';
                 } else {
-                    questionToDisplay = presents[currentPresentIndex].exercise.question;
+                    const originalExercise = presents[currentPresentIndex].exercise;
+                    questionToDisplay = originalExercise.question;
+                    currentQuestionAnswer = originalExercise.answer; // Get answer for original question
                     modalFeedbackDisplay.textContent = `Team ${currentTeam.name} tried to use "Swap Question" but no more reserved questions! Using original question.`;
                     modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-red-600';
                 }
@@ -736,15 +911,20 @@
                 currentTeam.swapQuestionActive = false; // Consume the power-up effect
                 updateScoreboardDisplay(); // Update inventory (to reflect power-up removal)
             } else {
-                questionToDisplay = presents[currentPresentIndex].exercise.question;
-                modalFeedbackDisplay.textContent = `Team ${currentTeam.name}: Answer the question, then click "Correct Answer" or "Incorrect Answer".`;
+                const originalExercise = presents[currentPresentIndex].exercise;
+                questionToDisplay = originalExercise.question;
+                currentQuestionAnswer = originalExercise.answer; // Get answer for original question
+                modalFeedbackDisplay.textContent = `Team ${currentTeam.name}: Answer the question, then click "Check Answer".`;
                 modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-blue-700';
             }
 
+            // Store the current question's correct answer (important for "Check Answer" functionality)
+            modalExerciseDisplay.dataset.correctAnswer = currentQuestionAnswer;
             modalExerciseDisplay.textContent = questionToDisplay; // Set question in modal
 
-            correctAnswerButton.disabled = false;
-            incorrectAnswerButton.disabled = false;
+            checkAnswerButton.disabled = false; // Enable check answer button
+            correctAnswerButton.disabled = true; // Correct/Incorrect disabled until check answer
+            incorrectAnswerButton.disabled = true;
             nextTeamButton.disabled = true; // Disable next team button until outcome is determined
 
             questionModalOverlay.classList.add('active');
@@ -753,6 +933,28 @@
                 mainChallengeZoneDisplay.classList.remove('text-yellow-600', 'text-red-600', 'text-green-700');
             }
         }
+
+        /**
+         * Handles the "Check Answer" button click.
+         */
+        function handleCheckAnswer() {
+            const correctAnswer = modalExerciseDisplay.dataset.correctAnswer;
+            const currentTeam = teams[currentTeamIndex];
+
+            if (!correctAnswer) {
+                modalFeedbackDisplay.textContent = "Error: No answer available for this question.";
+                modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-red-600';
+                return;
+            }
+
+            modalFeedbackDisplay.textContent = `The correct answer is: "${correctAnswer}".\n\nWas Team ${currentTeam.name}'s answer correct?`;
+            modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-blue-700'; // Neutral color for showing answer
+
+            checkAnswerButton.disabled = true; // Disable Check Answer after showing
+            correctAnswerButton.disabled = false; // Enable Correct/Incorrect
+            incorrectAnswerButton.disabled = false;
+        }
+
 
         /**
          * Applies the outcome to the current team.
@@ -810,10 +1012,10 @@
                 } else if (outcome.type === 'immediate_action') {
                     // Apply immediate action punishments even if incorrect
                     if (outcome.name === 'Tongue Twister') {
-                        if (tongueTwisters.length > 0) {
-                            const randomIndex = Math.floor(Math.random() * tongueTwisters.length);
-                            const selectedTwister = tongueTwisters[randomIndex];
-                            tongueTwisters.splice(randomIndex, 1); // Remove used twister
+                        if (currentTongueTwisters.length > 0) { // Use currentTongueTwisters
+                            const randomIndex = Math.floor(Math.random() * currentTongueTwisters.length);
+                            const selectedTwister = currentTongueTwisters[randomIndex];
+                            currentTongueTwisters.splice(randomIndex, 1); // Remove used twister
                             feedbackMessage = `Incorrect! ${currentTeam.name} must recite this tongue twister: "${selectedTwister}"`;
                         } else {
                             feedbackMessage = `Incorrect! ${currentTeam.name} drew a tongue twister punishment, but no more available!`;
@@ -827,6 +1029,7 @@
             modalFeedbackDisplay.className = feedbackClass;
 
             updateScoreboardDisplay();
+            checkAnswerButton.disabled = true; // Disable check answer button
             correctAnswerButton.disabled = true;
             incorrectAnswerButton.disabled = true;
             nextTeamButton.disabled = false;
@@ -894,7 +1097,7 @@
                     setGameInteractionState(true); // Re-enable game after immediate power-up
                     break;
                 case 'Swap Question':
-                    if (reservedExercises.length === 0) {
+                    if (currentReservedExercises.length === 0) { // Use currentReservedExercises
                         modalFeedbackDisplay.textContent = `No more reserved questions available to swap!`;
                         modalFeedbackDisplay.className = 'message-box mt-4 text-center text-lg font-bold text-red-600';
                         questionModalOverlay.classList.add('active'); // Show feedback in main modal
@@ -929,6 +1132,8 @@
          * @param {boolean} enable - True to enable, false to disable.
          */
         function setGameInteractionState(enable) {
+            // Only set 'Check Answer' to enabled if we're enabling interaction AND it's a new question state
+            checkAnswerButton.disabled = !enable; // Initially enable/disable based on overall state
             correctAnswerButton.disabled = !enable;
             incorrectAnswerButton.disabled = !enable;
             nextTeamButton.disabled = !enable;
@@ -974,8 +1179,9 @@
                 // If a question modal was open before the power-up, reactivate it with appropriate buttons enabled
                 if (currentPresentIndex !== null && !presentsOpened.has(currentPresentIndex)) {
                      questionModalOverlay.classList.add('active');
-                     correctAnswerButton.disabled = false;
-                     incorrectAnswerButton.disabled = false;
+                     checkAnswerButton.disabled = false; // Re-enable check answer if modal was active
+                     correctAnswerButton.disabled = true; // Still disabled until check answer
+                     incorrectAnswerButton.disabled = true; // Still disabled until check answer
                      nextTeamButton.disabled = true; // Wait for answer
                 } else {
                     nextTeamButton.disabled = false; // If no question, enable next turn
@@ -1004,9 +1210,11 @@
                 mainChallengeZoneDisplay.classList.add('text-gray-700'); // Set default color
             }
 
-            correctAnswerButton.disabled = true; // Reset buttons for next turn
+            // Reset modal buttons for the next turn
+            checkAnswerButton.disabled = true;
+            correctAnswerButton.disabled = true;
             incorrectAnswerButton.disabled = true;
-            nextTeamButton.disabled = true; // Disable until new outcome is determined
+            nextTeamButton.disabled = true;
 
             // If all presents are opened, prevent further clicks and turns
             if (presentsOpened.size === 16) {
@@ -1015,6 +1223,7 @@
                     mainChallengeZoneDisplay.classList.remove('text-yellow-600', 'text-red-600', 'text-gray-700', 'text-orange-600');
                     mainChallengeZoneDisplay.classList.add('text-green-700');
                 }
+                checkAnswerButton.disabled = true;
                 correctAnswerButton.disabled = true;
                 incorrectAnswerButton.disabled = true;
                 nextTeamButton.disabled = true;
@@ -1024,17 +1233,20 @@
         }
 
         // Event listeners for buttons
+        checkAnswerButton.addEventListener('click', handleCheckAnswer); // New event listener
         correctAnswerButton.addEventListener('click', handleCorrectAnswer);
         incorrectAnswerButton.addEventListener('click', handleIncorrectAnswer);
         resetButton.addEventListener('click', () => initializeGame(false)); // Reset button now explicitly calls with false for non-initial start
         nextTeamButton.addEventListener('click', handleNextTeam);
 
 
-        // Initial setup on window load: show team selection
+        // Initial setup on window load: show level selection
         window.onload = function() {
-            teamSelectionOverlay.classList.remove('hidden');
-            mainGameContainer.classList.add('hidden');
-            // No need to call initializeGame here, it will be called by selectTeams -> startGame
+            gameSetupModalOverlay.classList.add('active'); // Show the setup modal
+            levelStep.classList.add('active'); // Show level selection first
+            topicStep.classList.remove('active'); // Hide other steps
+            teamStep.classList.remove('active'); // Hide other steps
+            mainGameContainer.classList.add('hidden'); // Ensure main game is hidden initially
         };
     </script>
 </body>
