@@ -10,107 +10,63 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #e0f2fe; /* Lighter blue background */
+            background-color: #e0f2fe; /* Light blue background */
             background-image: radial-gradient(at 50% 100%, rgba(255,255,255,0.2), transparent),
                               radial-gradient(at 0% 0%, rgba(255,255,255,0.1), transparent);
         }
 
         .present-box {
-            /* Base styles for all present boxes */
-            border: 4px solid; /* Border color will be dynamic */
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            /* Styles for Baamboozle-like tiles */
+            background-color: #ffffff; /* Default, will be overridden by JS */
+            border: none; /* No border for a flat look */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow like the example */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
             cursor: pointer;
             position: relative;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 2.5rem; /* Larger number */
-            font-weight: bold;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-            padding: 2rem; /* Increased padding for larger feel */
-            aspect-ratio: 1 / 1; /* Ensure square aspect ratio */
-            border-radius: 12px; /* More rounded corners */
+            font-size: 3rem; /* Larger number for prominence */
+            font-weight: 700; /* Bolder */
+            color: #ffffff; /* White text for numbers */
+            text-shadow: none;
+            padding: 1rem; /* Adjust padding for a tighter tile look */
+            aspect-ratio: 1 / 1;
+            border-radius: 8px; /* Consistent rounded corners */
+            text-align: center;
         }
         .present-box:hover {
-            transform: translateY(-8px) scale(1.02); /* More noticeable hover effect */
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px) scale(1.02); /* Subtle lift and slight scale */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Slightly more prominent shadow on hover */
+            filter: brightness(1.05); /* Slightly brighten on hover */
         }
         .present-box.opened {
-            background-color: #6ee7b7 !important; /* Green for opened, !important to override inline */
-            background-image: linear-gradient(to bottom right, #6ee7b7, #34d399) !important; /* Green gradient, !important to override inline */
-            border-color: #059669 !important; /* Darker green border, !important to override inline */
+            background-color: #d1fae5 !important; /* Lighter green for opened */
+            color: #1a202c !important; /* Dark text for opened */
+            border-color: #34d399 !important; /* Main green border */
             cursor: default;
             transform: translateY(0) scale(1);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), inset 0 0 10px rgba(0, 0, 0, 0.1);
-            color: #1a202c; /* Dark text for opened */
-            animation: bounceIn 0.5s ease-out; /* Add bounce animation on open */
+            box-shadow: none; /* No shadow when opened */
+            animation: none; /* Remove bounce for minimalist opened state */
         }
 
-        /* Keyframe animation for opening a present */
+        /* Keyframe animation for opening a present (no longer used by .opened, but kept for reference) */
         @keyframes bounceIn {
             0% { transform: scale(0.8); opacity: 0; }
             50% { transform: scale(1.05); opacity: 1; }
             100% { transform: scale(1); }
         }
 
-        /* Styles for the number inside the box */
+        /* Number inside the card */
         .present-box .box-number {
-            position: absolute;
-            z-index: 4; /* Above ribbons and bow */
-        }
-        /* .present-box .meme-img is removed */
-
-
-        .ribbon-h, .ribbon-v {
-            position: absolute;
-            background-color: #fcd34d; /* Gold */
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
             z-index: 1;
         }
-        .ribbon-h {
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 25px; /* Thicker ribbon */
-            transform: translateY(-50%);
-        }
-        .ribbon-v {
-            top: 0;
-            left: 50%;
-            height: 100%;
-            width: 25px; /* Thicker ribbon */
-            transform: translateX(-50%);
-        }
-        .bow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(45deg); /* Rotated for a dynamic look */
-            width: 50px; /* Larger bow */
-            height: 50px; /* Larger bow */
-            border-radius: 50%;
-            z-index: 2;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.3);
-        }
-        .bow::before, .bow::after {
-            content: '';
-            position: absolute;
-            width: 70%;
-            height: 70%;
-            border-radius: 50%;
-            z-index: 3;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        .bow::before {
-            top: -10%;
-            left: -10%;
-        }
-        .bow::after {
-            bottom: -10%;
-            right: -10%;
+
+        /* Ribbons and Bows are now completely removed for the Baamboozle style */
+        .ribbon-h, .ribbon-v, .bow {
+            display: none;
         }
 
 
@@ -277,19 +233,17 @@
             color: #2563eb; /* Blue */
             margin-bottom: 2rem;
         }
-        .selection-modal-content button {
-            background-color: #10b981; /* Green */
-            color: white;
-            padding: 0.75rem 1.5rem; /* py-3 px-6 */
-            border-radius: 0.5rem; /* rounded-lg */
-            font-size: 1.125rem; /* text-lg */
-            font-weight: bold;
-            margin: 0.5rem;
-            cursor: pointer;
-            transition: background-color 0.2s ease-in-out;
+        /* Adjusted styles for the text within selection steps */
+        .selection-step p {
+            font-size: 1.125rem; /* text-xl */
+            font-weight: bold; /* Make it bold */
+            color: #334155; /* Darker gray color */
+            margin-bottom: 1rem; /* Adjust margin as needed */
         }
-        .selection-modal-content button:hover {
-            background-color: #059669; /* Darker green */
+        .selection-modal-content .flex button { /* Target buttons inside flex container in selection modal */
+            padding: 0.4rem 0.8rem; /* Further reduced padding */
+            font-size: 0.9rem; /* Further reduced font size */
+            margin: 0.3rem; /* Reduced margin */
         }
         .selection-step {
             display: none; /* Hidden by default */
@@ -308,28 +262,30 @@
 
             <!-- Level Selection Step -->
             <div id="level-step" class="selection-step active">
-                <p class="text-xl text-gray-700 mb-4">Select Difficulty Level</p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button onclick="selectLevel('easy')">Easy</button>
-                    <button onclick="selectLevel('medium')">Medium</button>
-                    <button onclick="selectLevel('hard')">Hard</button>
+                <p class="text-xl text-gray-700 mb-4 font-bold text-gray-800">Select Difficulty Level</p>
+                <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
+                    <button onclick="selectLevel('beginner')">Beginner</button>
+                    <button onclick="selectLevel('pre_intermediate')">Pre-Intermediate</button>
+                    <button onclick="selectLevel('intermediate')">Intermediate</button>
+                    <button onclick="selectLevel('upper_intermediate')">Upper-Intermediate</button>
+                    <button onclick="selectLevel('advanced')">Advanced</button>
                 </div>
             </div>
 
             <!-- Topic Selection Step -->
             <div id="topic-step" class="selection-step">
-                <p class="text-xl text-gray-700 mb-4">Select Topic</p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <p class="text-xl text-gray-700 mb-4 font-bold text-gray-800">Select Topic</p>
+                <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
                     <button onclick="selectTopic('General Vocabulary')">General Vocabulary</button>
                     <button onclick="selectTopic('Personality')">Personality</button>
-                    <button onclick="selectTopic('Job')">Job</button> <!-- New Job Topic Button -->
+                    <button onclick="selectTopic('Job')">Job</button>
                 </div>
             </div>
 
             <!-- Team Selection Step -->
             <div id="team-step" class="selection-step">
-                <p class="text-xl text-gray-700 mb-4">Select Number of Teams</p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <p class="text-xl text-gray-700 mb-4 font-bold text-gray-800">Select Number of Teams</p>
+                <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
                     <button onclick="selectTeams(2)">2 Teams</button>
                     <button onclick="selectTeams(3)">3 Teams</button>
                     <button onclick="selectTeams(4)">4 Teams</button>
@@ -384,22 +340,22 @@
             <div id="modal-exercise-display" class="text-lg md:text-xl font-medium text-gray-700 min-h-[4rem] flex items-center justify-center p-2 bg-blue-50 rounded-md border border-blue-200">
                 Question will appear here...
             </div>
-            <div class="mt-4 flex flex-col sm:flex-row gap-3 justify-center">
+            <div class="mt-4 flex flex-col sm:flex-row gap-2 justify-center"> <!-- Reduced gap for smaller buttons -->
                 <button id="check-answer-button"
-                        class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200 ease-in-out shadow-md text-base">
+                        class="px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200 ease-in-out shadow-md text-sm"> <!-- Reduced padding and font size -->
                     Check Answer
                 </button>
                 <button id="correct-answer-button"
-                        class="px-6 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-200 ease-in-out shadow-md text-base">
+                        class="px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-200 ease-in-out shadow-md text-sm"> <!-- Reduced padding and font size -->
                     Correct Answer
                 </button>
                 <button id="incorrect-answer-button"
-                        class="px-6 py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 transition duration-200 ease-in-out shadow-md text-base">
+                        class="px-4 py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 transition duration-200 ease-in-out shadow-md text-sm"> <!-- Reduced padding and font size -->
                     Incorrect Answer
                 </button>
                 <button id="next-team-button"
-                        class="px-6 py-2 bg-yellow-500 text-white text-base font-bold rounded-lg hover:bg-yellow-600 transition duration-200 ease-in-out shadow-lg
-                                disabled:opacity-50 disabled:cursor-not-allowed">
+                        class="px-4 py-2 bg-yellow-500 text-white text-sm font-bold rounded-lg hover:bg-yellow-600 transition duration-200 ease-in-out shadow-lg
+                                disabled:opacity-50 disabled:cursor-not-allowed"> <!-- Reduced padding and font size -->
                     Next Team's Turn
                 </button>
             </div>
@@ -426,7 +382,7 @@
         // Main exercise categories by topic and level
         const allExercises = {
             'General Vocabulary': {
-                'easy': [
+                'beginner': [
                     { question: "Give some forms of 'communicate'.", answer: "communication" },
                     { question: "Give some forms of 'predict'.", answer: "predictable" },
                     { question: "Give some forms of 'participate'.", answer: "participation" },
@@ -444,7 +400,7 @@
                     { question: "Give some synonyms to 'Big'.", answer: "large" },
                     { question: "Give some synonyms to 'Quick'.", answer: "fast" }
                 ],
-                'medium': [
+                'pre_intermediate': [
                     { question: "What is the collective noun for a group of lions?", answer: "pride" },
                     { question: "What do you call a person who studies rocks?", answer: "geologist" },
                     { question: "Which word means 'to make larger'?", answer: "enlarge" },
@@ -462,7 +418,7 @@
                     { question: "What is the collective noun for a group of fish?", answer: "school" },
                     { question: "What do you call someone who writes books?", answer: "author" }
                 ],
-                'hard': [
+                'intermediate': [
                     { question: "What is the term for a word that sounds the same as another word but has a different meaning and spelling?", answer: "homophone" },
                     { question: "What literary device involves an interruption of the chronological sequence (as of events) by interjection of events of earlier occurrence?", answer: "flashback" },
                     { question: "What is the study of the origin and history of words?", answer: "etymology" },
@@ -479,10 +435,46 @@
                     { question: "What is a figure of speech in which a part is made to represent the whole or vice versa (e.g., 'all hands on deck' for sailors)?", answer: "synecdoche" },
                     { question: "What is the formal and polite term for a person's behavior, especially in a particular situation?", answer: "demeanor" },
                     { question: "What is the ability to acquire and apply knowledge and skills?", answer: "intelligence" }
+                ],
+                'upper_intermediate': [
+                    { question: "What is the rhetorical device in which a question is asked in order to create a dramatic effect or to make a point rather than to get an answer?", answer: "rhetorical question" },
+                    { question: "What is the literary device that involves a contrast between expectation and reality?", answer: "irony" },
+                    { question: "What is the figure of speech in which an object or animal is given human feelings, thoughts, or attitudes?", answer: "personification" },
+                    { question: "What is the literary technique in which a person makes a statement that is contrary to fact and then immediately takes it back?", answer: "recantation" },
+                    { question: "What is a universal symbol that has been used across different cultures and eras?", answer: "archetype" },
+                    { question: "What is a type of verbal irony where someone says something but means the opposite, often for humorous or sarcastic effect?", answer: "sarcasm" },
+                    { question: "What is the use of an object or idea to represent something else?", answer: "symbolism" },
+                    { question: "What is a brief and indirect reference to a person, place, thing or idea of historical, cultural, literary or political significance?", answer: "allusion" },
+                    { question: "What is the general feeling or atmosphere that a piece of writing creates for the reader?", answer: "mood" },
+                    { question: "What is the process of conveying a meaning opposite to what is literally said?", answer: "antiphrasis" },
+                    { question: "What is the literary device where two seemingly contradictory words are used together for effect?", answer: "oxymoron" },
+                    { question: "What is an exaggerated statement or claim not meant to be taken literally?", answer: "hyperbole" },
+                    { question: "What is the repetitive use of a word or phrase at the beginning of successive clauses or sentences?", answer: "anaphora" },
+                    { question: "What is the formation of a word from a sound associated with what is named (e.g., cuckoo, sizzle)?", answer: "onomatopoeia" },
+                    { question: "What is a figure of speech in which a word or phrase is applied to an object or action to which it is not literally applicable?", answer: "metaphor" },
+                    { question: "What is a literary element that involves a struggle between two opposing forces, usually a protagonist and an antagonist?", answer: "conflict" }
+                ],
+                'advanced': [
+                    { question: "What is the literary device where a word or phrase is used to represent an abstract idea or quality?", answer: "allegory" },
+                    { question: "What is the use of seemingly contradictory terms or ideas to create a surprising or thought-provoking effect?", answer: "paradox" },
+                    { question: "What is the literary technique where an author uses an object or idea to represent an abstract concept or another thing?", answer: "symbolism" },
+                    { question: "What is the literary device of contrasting elements within a sentence or passage?", answer: "antithesis" },
+                    { question: "What is a short, personal story used to illustrate a point or make an audience laugh?", answer: "anecdote" },
+                    { question: "What is the literary device where an author deliberately places two contrasting elements together to highlight their differences?", answer: "juxtaposition" },
+                    { question: "What is the figure of speech in which a part is made to represent the whole or vice versa?", answer: "synecdoche" },
+                    { question: "What is the literary device that involves a speaker addressing an absent person, an abstract idea, or an inanimate object?", answer: "apostrophe" },
+                    { question: "What is the rhetorical device of asking a series of questions without expecting answers, typically to emphasize a point?", answer: "rhetorical interrogation" },
+                    { question: "What is the literary device of using an apparently contradictory statement to highlight an underlying truth?", answer: "oxymoron" },
+                    { question: "What is the subtle difference in meaning or expression?", answer: "nuance" },
+                    { question: "What is the use of informal words, phrases, or even slang in a piece of writing?", answer: "colloquialism" },
+                    { question: "What is the repetition of consonant sounds at the beginning of words in close proximity?", answer: "alliteration" },
+                    { question: "What is a short, memorable saying that expresses a general truth or piece of advice?", answer: "aphorism" },
+                    { question: "What is the art of effective or persuasive speaking or writing, especially the use of figures of speech and other compositional techniques?", answer: "rhetoric" },
+                    { question: "What is a literary device in which a character makes a speech while alone on stage, revealing their thoughts to the audience?", answer: "soliloquy" }
                 ]
             },
             'Personality': {
-                'easy': [
+                'beginner': [
                     // A1-A2 level
                     { question: "Someone who is kind and caring.", answer: "nice" },
                     { question: "Someone who is friendly and likes people.", answer: "friendly" },
@@ -501,8 +493,8 @@
                     { question: "Someone who learns new things quickly.", answer: "quick learner" },
                     { question: "Someone who likes things tidy.", answer: "neat" }
                 ],
-                'medium': [
-                    // B1 level
+                'pre_intermediate': [
+                    // A2-B1 level (from old medium)
                     { question: "Someone who is thorough and careful in their work.", answer: "diligent" },
                     { question: "Someone who is determined to succeed.", answer: "ambitious" },
                     { question: "Someone who acts morally and tells the truth.", answer: "principled" },
@@ -520,28 +512,66 @@
                     { question: "Someone who enjoys meeting and being with other people.", answer: "sociable" },
                     { question: "Someone who often feels or shows annoyance or anger.", answer: "irritable" }
                 ],
-                'hard': [
-                    // B2-C1 level
-                    { question: "Someone who talks excessively, especially about trivial matters.", answer: "garrulous" },
-                    { question: "Someone who is economical or thrifty with money or resources.", answer: "frugal" },
-                    { question: "Someone who is excessively grand, self-important, or boastful.", answer: "pompous" },
-                    { question: "Someone who is optimistic and cheerful, especially in a seemingly difficult situation.", answer: "sanguine" },
-                    { question: "Someone who is cunning, deceitful, and manipulative.", answer: "Machiavellian" },
-                    { question: "Someone who is hesitant or unwilling to do something, typically due to fear or caution.", answer: "reluctant" },
-                    { question: "Give a synonym for 'show' (as in to manifest or reveal a quality).", answer: "evince" },
-                    { question: "Give a synonym for 'show' (as in to officially announce or spread a doctrine).", answer: "promulgate" },
+                'intermediate': [
+                    // B1-B2 level (new intermediate questions)
+                    { question: "Someone who is easily convinced by others.", answer: "gullible" },
+                    { question: "Someone who likes to spend money carefully.", answer: "frugal" },
+                    { question: "Someone who is always happy and hopeful.", answer: "optimistic" },
+                    { question: "Someone who is good at persuading others.", answer: "persuasive" },
+                    { question: "Someone who is usually quiet and doesn't talk much.", answer: "taciturn" },
+                    { question: "Someone who acts without thinking much.", answer: "impulsive" },
+                    { question: "Give a synonym for 'show' (as in to display a quality).", answer: "manifest" },
+                    { question: "Give a synonym for 'show' (as in to reveal something hidden).", answer: "unveil" },
+                    { question: "Someone who is strong and doesn't give up easily.", answer: "resilient" },
+                    { question: "Someone who quickly adapts to new situations.", answer: "adaptable" },
+                    { question: "Someone who is very careful and exact about rules or details.", answer: "pedantic" },
+                    { question: "Someone who is very energetic and active.", answer: "dynamic" },
+                    { question: "Give a synonym for 'show' (as in to explain something clearly).", answer: "elucidate" },
+                    { question: "Give a synonym for 'show' (as in to demonstrate skill).", answer: "flaunt" },
+                    { question: "Someone who is very confident in their own abilities.", answer: "self-assured" },
+                    { question: "Someone who tends to keep their thoughts and feelings to themselves.", answer: "reticent" }
+                ],
+                'upper_intermediate': [
+                    // B2 level (from old hard, plus new ones)
+                    { question: "Someone who talks excessively, especially about unimportant things.", answer: "garrulous" },
+                    { question: "Someone who is arrogant and boasts a lot.", answer: "pompous" },
+                    { question: "Someone who is cheerful and hopeful about the future.", answer: "sanguine" },
+                    { question: "Someone who is hesitant or unwilling to do something.", answer: "reluctant" },
                     { question: "Someone who is extremely concerned with and attentive to detail.", answer: "fastidious" },
                     { question: "Someone who is characterized by cleverness, originality, and inventiveness.", answer: "ingenious" },
-                    { question: "Someone who is easily deceived or tricked.", answer: "gullible" },
-                    { question: "Someone who is habitually silent or uncommunicative.", answer: "taciturn" },
-                    { question: "Give a synonym for 'show' (as in to depict or represent).", answer: "portray" },
+                    { question: "Someone who is showing a rude and arrogant lack of respect.", answer: "insolent" },
+                    { question: "Someone who is very difficult to please.", answer: "demanding" },
+                    { question: "Give a synonym for 'show' (as in to portray or represent).", answer: "depict" },
                     { question: "Give a synonym for 'show' (as in to make secret information known).", answer: "divulge" },
-                    { question: "Someone who is rude and arrogant, showing a lack of respect.", answer: "insolent" },
-                    { question: "Someone who is very hard to please.", answer: "demanding" }
+                    { question: "Someone who is able to express ideas clearly and effectively in speech or writing.", answer: "articulate" },
+                    { question: "Someone who is able to recover quickly from difficulties; tough.", answer: "resilient" },
+                    { question: "Someone who acts in a way that is designed to get what they want, even if it involves being cunning or deceitful.", answer: "Machiavellian" },
+                    { question: "Someone who is careful to avoid embarrassing or upsetting others.", answer: "tactful" },
+                    { question: "Someone who is very insightful and perceptive.", answer: "discerning" },
+                    { question: "Someone who is bold, confident, and assertive in expressing opinions.", answer: "assertive" }
+                ],
+                'advanced': [
+                    // C1 level (remaining old hard, plus new C1)
+                    { question: "Give a synonym for 'show' (as in to make evident or demonstrate clearly).", answer: "evince" },
+                    { question: "Give a synonym for 'show' (as in to officially announce or spread a doctrine or idea).", answer: "promulgate" },
+                    { question: "Someone who is characterized by extreme self-centeredness and a lack of empathy.", answer: "narcissistic" },
+                    { question: "Someone who is able to produce original and unusual ideas, or to make new and interesting things.", answer: "innovative" },
+                    { question: "Someone who is widely spread or found everywhere.", answer: "ubiquitous" },
+                    { question: "Someone who is brief and to the point, sometimes rudely so.", answer: "terse" },
+                    { question: "Someone who is constantly moving from one thing to another, unable to settle.", answer: "fickle" },
+                    { question: "Someone who is very precise and careful about details and correct behavior.", answer: "punctilious" },
+                    { question: "Someone who is highly enthusiastic and energetic.", answer: "ebullient" },
+                    { question: "Someone who is prone to sudden and unpredictable changes of mood or mind.", answer: "capricious" },
+                    { question: "Someone who tends to interpret facts and events in a self-serving way.", answer: "egocentric" },
+                    { question: "Someone who is given to examining their own thoughts and feelings.", answer: "introspective" },
+                    { question: "Give a synonym for 'show' (as in to reveal or disclose something secret).", answer: "divulge" },
+                    { question: "Give a synonym for 'show' (as in to present formally).", answer: "promulgate" },
+                    { question: "Someone who is characterized by profound intellectual insight.", answer: "profound" },
+                    { question: "Someone who is marked by a disinclination to work or activity.", answer: "indolent" }
                 ]
             },
             'Job': { // New 'Job' topic with occupations
-                'easy': [
+                'beginner': [
                     { question: "Who cooks food in a restaurant?", answer: "chef" },
                     { question: "Who helps sick people in a hospital?", answer: "doctor" },
                     { question: "Who teaches students in a school?", answer: "teacher" },
@@ -559,41 +589,77 @@
                     { question: "Who writes books?", answer: "author" },
                     { question: "Who serves food in a restaurant?", answer: "waiter" }
                 ],
-                'medium': [
-                    { question: "Who designs buildings and creates plans for construction?", answer: "architect" },
-                    { question: "Who gives legal advice and represents clients in court?", answer: "lawyer" },
-                    { question: "Who manages financial records and prepares tax returns for individuals or companies?", answer: "accountant" },
-                    { question: "Who captures images using a camera, often for artistic or commercial purposes?", answer: "photographer" },
-                    { question: "Who creates and maintains websites and web applications?", answer: "web developer" },
-                    { question: "Who treats sick or injured animals, often in a clinic or hospital setting?", answer: "veterinarian" },
+                'pre_intermediate': [
+                    { question: "Who designs buildings and draws plans for them?", answer: "architect" },
+                    { question: "Who advises people about legal problems?", answer: "lawyer" },
+                    { question: "Who keeps financial records and prepares taxes?", answer: "accountant" },
+                    { question: "Who takes pictures with a camera?", answer: "photographer" },
+                    { question: "Who builds and maintains websites?", answer: "web developer" },
+                    { question: "Who takes care of sick animals?", answer: "veterinarian" },
                     { question: "Who designs clothing and fashion lines?", answer: "fashion designer" },
-                    { question: "Who investigates crimes and gathers evidence for legal cases?", answer: "detective" },
-                    { question: "Who installs and repairs pipes and drainage systems?", answer: "plumber" },
-                    { question: "Who conducts research and experiments in a laboratory to advance knowledge?", answer: "scientist" },
-                    { question: "Who studies the Earth's physical structure, processes, and history?", answer: "geologist" },
-                    { question: "Who organizes and coordinates events, such as weddings, conferences, or parties?", answer: "event planner" },
-                    { question: "Who creates works of art using paint, often on canvas or other surfaces?", answer: "painter" },
-                    { question: "Who designs and supervises the construction of infrastructure projects like roads and bridges?", answer: "civil engineer" },
-                    { question: "Who performs medical operations on patients?", answer: "surgeon" },
+                    { question: "Who finds out who committed a crime?", answer: "detective" },
+                    { question: "Who installs and fixes pipes?", answer: "plumber" },
+                    { question: "Who does experiments and studies in a lab?", answer: "scientist" },
+                    { question: "Who studies rocks and the Earth's history?", answer: "geologist" },
+                    { question: "Who plans and organizes events, such as weddings, conferences, or parties?", answer: "event planner" },
+                    { question: "Who creates art with paint?", answer: "painter" },
+                    { question: "Who designs and builds roads, bridges, and other structures?", answer: "civil engineer" },
+                    { question: "Who performs operations in a hospital?", answer: "surgeon" },
                     { question: "Who works as a crew member on a ship or boat?", answer: "sailor" }
                 ],
-                'hard': [
-                    { question: "Who studies human behavior and mental processes, often providing therapy or counseling?", answer: "psychologist" },
-                    { question: "Who designs and develops computer hardware, software, or entire systems?", answer: "computer engineer" },
-                    { question: "Who studies celestial objects, space, and the physical universe?", answer: "astronomer" },
-                    { question: "Who advises organizations on strategies to improve their performance and efficiency?", answer: "management consultant" },
-                    { question: "Who creates original musical pieces, often for instruments or voices?", answer: "composer" },
-                    { question: "Who specializes in the legal aspects of intellectual property, such as patents and trademarks?", answer: "patent attorney" },
-                    { question: "Who designs, develops, and tests aircraft or spacecraft?", answer: "aeronautical engineer" },
-                    { question: "Who analyzes and manages financial risks, particularly in the insurance and pension industries?", answer: "actuary" },
-                    { question: "Who applies scientific principles to design solutions for environmental problems?", answer: "environmental engineer" },
-                    { question: "Who studies human history and prehistory through the excavation of sites and the analysis of artifacts?", answer: "archaeologist" },
-                    { question: "Who manages investment portfolios for clients, aiming to maximize returns while minimizing risk?", answer: "portfolio manager" },
+                'intermediate': [
+                    { question: "Who manages and develops software systems?", answer: "software engineer" },
+                    { question: "Who studies stars, planets, and space?", answer: "astronomer" },
+                    { question: "Who helps companies solve problems and improve?", answer: "management consultant" },
+                    { question: "Who writes music?", answer: "composer" },
+                    { question: "Who deals with legal aspects of new inventions?", answer: "patent attorney" },
+                    { question: "Who designs and builds airplanes?", answer: "aeronautical engineer" },
+                    { question: "Who analyzes and manages financial risks, especially for insurance?", answer: "actuary" },
+                    { question: "Who designs ways to protect the environment?", answer: "environmental engineer" },
+                    { question: "Who studies old societies by digging up artifacts?", answer: "archaeologist" },
+                    { question: "Who manages money for investors?", answer: "financial advisor" },
+                    { question: "Who helps people with mental health issues?", answer: "psychiatrist" },
+                    { question: "Who designs safe structures like buildings and bridges?", answer: "structural engineer" },
+                    { question: "Who handles communication between a company and the public?", answer: "public relations specialist" },
+                    { question: "Who analyzes large amounts of information to find trends?", answer: "data analyst" },
+                    { question: "Who develops new medicines?", answer: "pharmacist" },
+                    { question: "Who designs and builds robots?", answer: "robotics engineer" }
+                ],
+                'upper_intermediate': [
+                    { question: "Who specializes in the study of human behavior and mental processes, often providing therapy?", answer: "psychologist" },
+                    { question: "Who designs and develops computer hardware, software, or entire interconnected systems?", answer: "computer engineer" },
+                    { question: "Who designs complex electrical systems and components?", answer: "electrical engineer" },
+                    { question: "Who advises individuals or companies on financial planning and investment strategies?", answer: "financial planner" },
+                    { question: "Who creates and performs original musical pieces?", answer: "musician" },
+                    { question: "Who specializes in the legal protection of inventions, artistic works, and brand names?", answer: "intellectual property lawyer" },
+                    { question: "Who designs and oversees the construction of civil aircraft and spacecraft components?", answer: "aerospace engineer" },
+                    { question: "Who performs complex mathematical calculations to assess and manage risk for insurance companies or pension funds?", answer: "actuary" },
+                    { question: "Who applies scientific and engineering principles to develop solutions for environmental protection and sustainability?", answer: "environmental engineer" },
+                    { question: "Who studies past human societies and cultures through the excavation and analysis of material remains?", answer: "archaeologist" },
+                    { question: "Who manages investment portfolios and makes buy/sell decisions for institutional or high-net-worth clients?", answer: "portfolio manager" },
                     { question: "Who is a medical doctor specializing in the diagnosis and treatment of mental illnesses?", answer: "psychiatrist" },
-                    { question: "Who designs and analyzes the structural integrity of buildings, bridges, and other constructions?", answer: "structural engineer" },
-                    { question: "Who manages communication between an organization and its public to build and maintain a positive image?", answer: "public relations specialist" },
-                    { question: "Who extracts knowledge and insights from data using scientific methods, processes, algorithms, and systems?", answer: "data scientist" },
-                    { question: "Who develops and researches new drugs and pharmaceutical products?", answer: "pharmaceutical scientist" }
+                    { question: "Who designs and analyzes the structural integrity of buildings, bridges, tunnels, and other large-scale construction projects?", answer: "structural engineer" },
+                    { question: "Who manages the communication and public image of an organization, often acting as a spokesperson?", answer: "public relations specialist" },
+                    { question: "Who uses advanced analytical methods and machine learning to extract insights from complex datasets and drive strategic decisions?", answer: "data scientist" },
+                    { question: "Who conducts research and development to discover, develop, and manufacture new drugs and pharmaceutical products?", answer: "pharmaceutical scientist" }
+                ],
+                'advanced': [
+                    { question: "Who specializes in the psychological analysis of criminal behavior and works within the legal system?", answer: "forensic psychologist" },
+                    { question: "Who designs, develops, and tests robotic systems and automation solutions?", answer: "robotics engineer" },
+                    { question: "Who analyzes and interprets satellite imagery and geographical data to solve spatial problems?", answer: "geospatial analyst" },
+                    { question: "Who specializes in providing expert advice to companies on mergers, acquisitions, and financial restructuring?", answer: "investment banker" },
+                    { question: "Who designs and constructs intricate mechanical systems and machinery?", answer: "mechanical engineer" },
+                    { question: "Who performs specialized statistical analysis to support clinical trials and drug development in the pharmaceutical industry?", answer: "biostatistician" },
+                    { question: "Who specializes in the design and development of sustainable energy systems and technologies?", answer: "renewable energy engineer" },
+                    { question: "Who is responsible for the design, construction, and maintenance of digital and analog electronic circuits and systems?", answer: "electronics engineer" },
+                    { question: "Who uses computational methods and mathematical models to solve complex problems in financial markets?", answer: "quantitative analyst" },
+                    { question: "Who designs and implements computer networks, ensuring their security and efficiency?", answer: "network architect" },
+                    { question: "Who specializes in the design of user interfaces and user experiences for software applications and websites?", answer: "UX/UI designer" },
+                    { question: "Who designs and develops new materials with specific properties for various applications?", answer: "materials scientist" },
+                    { question: "Who provides strategic advice to companies on their overall business operations and competitive positioning?", answer: "strategy consultant" },
+                    { question: "Who specializes in the legal aspects of space law, international agreements, and commercial space activities?", answer: "space lawyer" },
+                    { question: "Who designs and tests new chemical processes and products?", answer: "chemical engineer" },
+                    { question: "Who manages and oversees large-scale construction projects from conception to completion?", answer: "construction manager" }
                 ]
             }
         };
@@ -675,38 +741,23 @@
 
         // Array of distinct color palettes for the presents
         const presentBoxColors = [
-            {
-                bg: '#ef4444', gradient: '#dc2626', border: '#b91c1c',
-                ribbon: '#fcd34d', bow: '#fde047', bowLight: '#fbbf24'
-            }, // Red/Gold
-            {
-                bg: '#3b82f6', gradient: '#2563eb', border: '#1d4ed8',
-                ribbon: '#d1d5db', bow: '#e5e7eb', bowLight: '#9ca3af'
-            }, // Blue/Silver
-            {
-                bg: '#a855f7', gradient: '#9333ea', border: '#7e22ce',
-                ribbon: '#f472b6', bow: '#f87171', bowLight: '#ec4899'
-            }, // Purple/Pink
-            {
-                bg: '#10b981', gradient: '#059669', border: '#047857',
-                ribbon: '#facc15', bow: '#fde047', bowLight: '#fbbf24'
-            }, // Green/Yellow
-            {
-                bg: '#ec4899', gradient: '#db2777', border: '#be185d',
-                ribbon: '#a78bfa', bow: '#c4b5fd', bowLight: '#8b5cf6'
-            }, // Rose/Violet
-            {
-                bg: '#f97316', gradient: '#ea580c', border: '#c2410c',
-                ribbon: '#60a5fa', bow: '#93c5fd', bowLight: '#3b82f6'
-            }, // Orange/Blue
-            {
-                bg: '#94a3b8', gradient: '#64748b', border: '#475569',
-                ribbon: '#f87171', bow: '#fca5a5', bowLight: '#ef4444'
-            }, // Grey/Red
-            {
-                bg: '#6d28d9', gradient: '#4c1d95', border: '#3b0764',
-                ribbon: '#c084fc', bow: '#d8b4fe', bowLight: '#a78bfa'
-            }
+            // Vibrant, flat colors similar to Baamboozle
+            { bg: '#ef4444', text: '#ffffff' }, /* Red */
+            { bg: '#3b82f6', text: '#ffffff' }, /* Blue */
+            { bg: '#a855f7', text: '#ffffff' }, /* Purple */
+            { bg: '#10b981', text: '#ffffff' }, /* Green */
+            { bg: '#ec4899', text: '#ffffff' }, /* Pink */
+            { bg: '#f97316', text: '#ffffff' }, /* Orange */
+            { bg: '#60a5fa', text: '#ffffff' }, /* Light Blue */
+            { bg: '#eab308', text: '#ffffff' }, /* Yellow */
+            { bg: '#84cc16', text: '#ffffff' }, /* Lime Green */
+            { bg: '#f43f5e', text: '#ffffff' }, /* Rose */
+            { bg: '#c026d3', text: '#ffffff' }, /* Fuchsia */
+            { bg: '#06b6d4', text: '#ffffff' }, /* Cyan */
+            { bg: '#a16207', text: '#ffffff' }, /* Amber */
+            { bg: '#4ade80', text: '#ffffff' }, /* Green-400 */
+            { bg: '#facc15', text: '#ffffff' }, /* Yellow-400 */
+            { bg: '#fb923c', text: '#ffffff' }  /* Orange-400 */
         ];
 
 
@@ -793,7 +844,7 @@
 
             // Ensure we have 16 questions for the boxes, duplicate if necessary
             while (currentExercises.length < 16) {
-                currentExercises = currentExercises.concat(JSON.parse(JSON.stringify(allExercises[selectedTopic][selectedLevel])));
+                currentExercises = currentExercises.concat(shuffleArray(JSON.parse(JSON.stringify(allExercises[selectedTopic][selectedLevel]))));
             }
             currentExercises = currentExercises.slice(0, 16); // Trim if too many
             currentExercises = shuffleArray(currentExercises); // Shuffle immediately after populating
@@ -934,20 +985,15 @@
                 const presentBox = document.createElement('div');
                 presentBox.id = `present-${i}`;
                 presentBox.dataset.index = i; // Store index for easy access
-                presentBox.className = 'present-box relative w-full aspect-square flex items-center justify-center text-white';
+                // Simplified class names for minimalist look
+                presentBox.className = 'present-box relative w-full aspect-square flex items-center justify-center';
 
-                // Apply dynamic colors
-                const colorPalette = presentBoxColors[i % presentBoxColors.length]; // Cycle through colors
+                // Apply background color from selected palette (simplified for minimalist look)
+                const colorPalette = presentBoxColors[i % presentBoxColors.length];
                 presentBox.style.backgroundColor = colorPalette.bg;
-                presentBox.style.backgroundImage = `linear-gradient(to bottom right, ${colorPalette.bg}, ${colorPalette.gradient})`;
-                presentBox.style.borderColor = colorPalette.border;
+                presentBox.style.color = colorPalette.text; /* Ensure number color is dark for contrast on light cards */
 
                 presentBox.innerHTML = `
-                    <div class="ribbon-h" style="background-color: ${colorPalette.ribbon}"></div>
-                    <div class="ribbon-v" style="background-color: ${colorPalette.ribbon}"></div>
-                    <div class="bow" style="background-color: ${colorPalette.bow}">
-                        <div class="bow-inner" style="background-color: ${colorPalette.bowLight};"></div>
-                    </div>
                     <span class="box-number">${i + 1}</span>
                 `;
                 presentsGrid.appendChild(presentBox);
