@@ -65,7 +65,7 @@
     background-color: #eef5e8;
     padding: 10px;
     margin-top: 8px;
-    border-left: 4px solid #4CAF50;
+    border-left: 44px solid #4CAF50;
     font-size: 0.95em;
     color: #333;
   }
@@ -199,7 +199,7 @@
 <div class="floating-tools">
   <button onclick="highlightSelection()" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1)'" title="Highlight" style="background-color: transparent; border: none; font-size: 0.9em; cursor: pointer; transition: transform 0.2s ease; color: #2c3e50;">✏️</button>
   <button onclick="clearHighlights()" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1)'" title="Clear Highlights" style="background-color: transparent; border: none; font-size: 0.9em; cursor: pointer; transition: transform 0.2s ease; color: #dc3545;">❌</button>
-  <button onclick="translateSelection()" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1)'" title="Translate Selection" style="background-color: transparent; border: none; font-size: 0.9em; cursor: pointer; transition: transform 0.2s ease; color: #007bff;">🌐</button>
+  <button onclick="translateSelection()" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='1)'" title="Translate Selection" style="background-color: transparent; border: none; font-size: 0.9em; cursor: pointer; transition: transform 0.2s ease; color: #007bff;">🌐</button>
 </div>
 <script>
 const left = document.querySelector('.left');
@@ -239,23 +239,119 @@ setInterval(updateTimer, 1000);
 function highlightSelection() {
   const selection = window.getSelection();
   if (!selection.rangeCount) return;
+
   const range = selection.getRangeAt(0);
-  const selectedText = range.toString();
-  if (!selectedText.trim()) return;
-  const span = document.createElement("span");
-  span.className = "highlighted";
-  span.textContent = selectedText;
-  range.deleteContents();
-  range.insertNode(span);
-  selection.removeAllRanges();
+  const selectedText = range.toString().trim();
+  if (!selectedText) return; // Do nothing if selection is empty or just whitespace
+
+  // Helper function to check if a node is an ancestor of another node
+  function isAncestor(ancestor, descendant) {
+    let node = descendant;
+    while (node) {
+      if (node === ancestor) return true;
+      node = node.parentNode;
+    }
+    return false;
+  }
+
+  // Find all text nodes within the selection range
+  const textNodesInSelection = [];
+  const nodesInRange = range.cloneContents().querySelectorAll('*'); // Get all elements within the range for traversal
+
+  // Handle case where selection is entirely within one text node
+  if (range.startContainer.nodeType === Node.TEXT_NODE && range.startContainer === range.endContainer) {
+    textNodesInSelection.push(range.startContainer);
+  } else {
+    // Iterate through elements that are part of the selection
+    const allNodes = Array.from(range.commonAncestorContainer.querySelectorAll('*')).concat(range.commonAncestorContainer);
+    for (const node of allNodes) {
+        if (range.intersectsNode(node) && node.nodeType === Node.TEXT_NODE) {
+            textNodesInSelection.push(node);
+        }
+    }
+    // Add text nodes that are direct children of the common ancestor if they are not picked up by querySelectorAll
+    if (range.commonAncestorContainer.nodeType === Node.ELEMENT_NODE) {
+        for (const child of Array.from(range.commonAncestorContainer.childNodes)) {
+            if (child.nodeType === Node.TEXT_NODE && range.intersectsNode(child) && !textNodesInSelection.includes(child)) {
+                textNodesInSelection.push(child);
+            }
+        }
+    }
+  }
+
+  // Iterate over each relevant text node and apply highlight
+  for (const textNode of textNodesInSelection) {
+    const currentNodeRange = document.createRange();
+    currentNodeRange.selectNodeContents(textNode);
+
+    let start = 0;
+    let end = textNode.length;
+
+    // Adjust start and end offsets if this text node is the start or end container of the overall selection
+    if (textNode === range.startContainer) {
+      start = range.startOffset;
+    }
+    if (textNode === range.endContainer) {
+      end = range.endOffset;
+    }
+
+    // Ensure the offsets are within the bounds of the current text node
+    start = Math.min(start, textNode.length);
+    end = Math.min(end, textNode.length);
+    start = Math.max(0, start);
+    end = Math.max(start, end); // Ensure end is not less than start
+
+    // If the text node is the start container, and the selection starts in it,
+    // ensure the start offset is applied.
+    if (textNode === range.startContainer) {
+      currentNodeRange.setStart(textNode, range.startOffset);
+    } else {
+      // If the text node is past the start of the overall selection,
+      // start from the beginning of this text node.
+      currentNodeRange.setStart(textNode, 0);
+    }
+
+    // If the text node is the end container, and the selection ends in it,
+    // ensure the end offset is applied.
+    if (textNode === range.endContainer) {
+      currentNodeRange.setEnd(textNode, range.endOffset);
+    } else {
+      // If the text node is before the end of the overall selection,
+      // end at the end of this text node.
+      currentNodeRange.setEnd(textNode, textNode.length);
+    }
+
+    // Only highlight if there's actual text selected in this segment
+    if (currentNodeRange.toString().trim().length > 0) {
+      const span = document.createElement("span");
+      span.className = "highlighted";
+      try {
+        currentNodeRange.surroundContents(span);
+      } catch (e) {
+        // This catch block is for robustness, though the logic above should prevent errors.
+        console.error("Error surrounding contents:", e, currentNodeRange);
+      }
+    }
+  }
+  selection.removeAllRanges(); // Clear the original selection
 }
 
+
 function clearHighlights() {
-  const highlights = document.querySelectorAll('.highlighted');
-  highlights.forEach(span => {
-    const textNode = document.createTextNode(span.textContent);
-    span.parentNode.replaceChild(textNode, span);
-  });
+    const highlights = document.querySelectorAll('.highlighted');
+    highlights.forEach(span => {
+        // Create a document fragment to hold the span's children
+        const fragment = document.createDocumentFragment();
+        while (span.firstChild) {
+            fragment.appendChild(span.firstChild);
+        }
+        // Replace the span with its children
+        span.parentNode.replaceChild(fragment, span);
+    });
+    // Normalize all paragraph elements in the left panel to merge adjacent text nodes
+    document.querySelectorAll('.left p').forEach(p => {
+        p.normalize();
+    });
 }
 
 function translateSelection() {
