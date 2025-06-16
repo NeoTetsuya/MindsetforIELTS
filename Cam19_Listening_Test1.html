@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambridge 19 - Listening Test 1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles for Inter font and general colors */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Container specific styles (width not fully covered by max-w-4xl) */
+        .container {
+            width: 100%; /* Ensures it respects max-width and is fluid within that */
+        }
+
+        /* Part Section general styling */
+        .part-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            background-color: #fdfdff;
+            display: none; /* Hidden by default */
+        }
+        .part-section.active {
+            display: block; /* Shown when active */
+        }
+        .part-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .question-group {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-bottom: 1px dashed #e9ecef;
+        }
+        .question-group:last-child {
+            border-bottom: none;
+        }
+        .question-text {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap; /* Allow wrapping for responsiveness */
+        }
+        .question-text .input-container {
+            display: flex;
+            align-items: center;
+            margin-left: 8px; /* Space between question text and input */
+        }
+        .input-field {
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 8px 12px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            min-width: 80px; /* Minimum width for inputs */
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+        }
+        .audio-player {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden; /* Ensures rounded corners apply to iframe */
+        }
+        /* Adjusted height for a more compact audio player */
+        .audio-player iframe {
+            height: 100px; /* New compact height for the iframe */
+        }
+        .audio-player div {
+            padding: 2px 10px !important; /* Smaller padding for the branding div */
+        }
+        .answer-choice {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 8px 0;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+        }
+        .answer-choice:hover {
+            background-color: #f0f8ff;
+        }
+        .answer-choice input[type="radio"],
+        .answer-choice input[type="checkbox"] {
+            margin-right: 12px;
+            transform: scale(1.2);
+            accent-color: #3b82f6;
+        }
+        .map-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .map-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        /* Removed .map-label styles as the elements are removed */
+
+        .opinion-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .opinion-table th, .opinion-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .opinion-table th {
+            background-color: #eef2f6;
+            font-weight: 600;
+            color: #444;
+        }
+        .opinion-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .opinion-table .opinion-select { /* Added class for opinion dropdown */
+            width: 70px; /* Adjusted width for dropdown */
+            text-align: center;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 15px;
+            flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+        }
+        .nav-button {
+            padding: 10px 25px;
+            border-radius: 8px;
+            background-color: #4a90e2;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            border: none;
+        }
+        .nav-button:hover {
+            background-color: #357bd8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .nav-button.active-nav {
+            background-color: #2c5282; /* Darker blue for active state */
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+            transform: translateY(0);
+        }
+        .check-answers-button {
+            padding: 8px 18px;
+            border-radius: 8px;
+            background-color: #28a745; /* Green for checking */
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: none;
+            margin-top: 20px;
+            display: block; /* Make it a block element to center */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .check-answers-button:hover {
+            background-color: #218838;
+        }
+        .feedback-icon {
+            margin-left: 10px;
+            vertical-align: middle;
+            font-size: 1.3rem; /* Adjust size of icon */
+        }
+        .feedback-icon.correct svg {
+            fill: #28a745; /* Green checkmark */
+        }
+        .feedback-icon.incorrect svg {
+            fill: #dc3545; /* Red X */
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100 p-4 font-sans text-gray-800">
+    <div class="container max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8 rounded-lg py-3 bg-gradient-to-r from-blue-100 to-indigo-100 shadow-md">
+            Cambridge 19 - Listening Test 1
+        </h1>
+
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+            <button class="nav-button active-nav" onclick="showPart('part1-section', this)">Part 1</button>
+            <button class="nav-button" onclick="showPart('part2-section', this)">Part 2</button>
+            <button class="nav-button" onclick="showPart('part3-section', this)">Part 3</button>
+            <button class="nav-button" onclick="showPart('part4-section', this)">Part 4</button>
+        </div>
+
+        <!-- Part 1 -->
+        <div id="part1-section" class="part-section active">
+            <h2 class="part-title">PART 1</h2>
+            <div class="audio-player rounded-lg overflow-hidden shadow-lg">
+                <iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2114094972&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100; padding: 2px 10px; background-color: #f0f0f0;"><a href="https://soundcloud.com/hienthantrong" title="Hien" target="_blank" style="color: #cccccc; text-decoration: none;">Hien</a> · <a href="https://soundcloud.com/hienthantrong/test1-part1-1" title="Test1 Part1" target="_blank" style="color: #cccccc; text-decoration: none;">Test1 Part1</a></div>
+            </div>
+
+            <div class="mb-6">
+                <p class="text-lg font-semibold text-gray-700 mb-3">Questions 1-10</p>
+                <p class="text-md text-gray-600 mb-4">Complete the notes below. Write ONE WORD AND/OR A NUMBER for each answer.</p>
+
+                <h3 class="text-xl font-bold text-blue-700 mb-4">Hinchingbrooke Country Park</h3>
+
+                <div class="question-group">
+                    <p class="question-text">Area: 1 <span class="input-container"><input type="text" id="q1" class="input-field w-24" placeholder="e.g. 200"><span class="feedback-icon" id="feedback-q1"></span></span></p>
+                </div>
+                <div class="question-group">
+                    <p class="question-text">Habitats: wetland, grassland and woodland</p>
+                    <p class="question-text">Wetland: lakes, ponds and a 2 <span class="input-container"><input type="text" id="q2" class="input-field w-32" placeholder=""><span class="feedback-icon" id="feedback-q2"></span></span></p>
+                </div>
+                <div class="question-group">
+                    <p class="question-text">Wildlife includes birds, insects and animals</p>
+                </div>
+                <h3 class="text-lg font-semibold text-blue-600 mb-3">Subjects studied in educational visits include</h3>
+                <div class="question-group">
+                    <p class="question-text">Science: Children look at 3 <span class="input-container"><input type="text" id="q3" class="input-field w-40" placeholder=""><span class="feedback-icon" id="feedback-q3"></span></span></p>
+                </div>
+                <div class="question-group">
+                    <p class="question-text">Geography: includes learning to use a 4 <span class="input-container"><input type="text" id="q4" class="input-field w-40" placeholder=""><span class="feedback-icon" id="feedback-q4"></span></span> and compass</p>
+                </div>
+                <div class="question-group">
+                    <p class="question-text">History: changes in land use</p>
+                </div>
+                <div class="question-group">
+                    <p class="question-text">Leisure and tourism: mostly concentrates on the park's 5 <span class="input-container"><input type="text" id="q5" class="input-field w-40" placeholder=""><span class="feedback-icon" id="feedback-q5"></span></span></p>
+                </div>
+                <div class="question-group">
+                    <p class="question-text">Music: Children make 6 <span class="input-container"><input type="text" id="q6" class="input-field w-40" placeholder=""><span class="feedback-icon" id="feedback-q6"></span></span> with natural materials, and experiment with rhythm and speed.</p>
+                </div>
+                <h3 class="text-lg font-semibold text-blue-600 mb-3">Benefits of outdoor educational visits</h3>
+                <div class="question-group">
+                    <p class="question-text">They give children a feeling of 7 <span class="input-container"><input type="text" id="q7" class="input-field w-40" placeholder=""><span class="feedback-icon" id="feedback-q7"></span></span> that they may not have elsewhere.</p>
+                </div>
+                <div class="question-group">
+                    <p class="question-text">Children learn new 8 <span class="input-container"><input type="text" id="q8" class="input-field w-40" placeholder=""><span class="feedback-icon" id="feedback-q8"></span></span> and gain self-confidence.</p>
+                </div>
+                <h3 class="text-lg font-semibold text-blue-600 mb-3">Practical issues</h3>
+                <div class="question-group">
+                    <p class="question-text">Cost per child: 9 £<span class="input-container"><input type="text" id="q9" class="input-field w-24" placeholder=""><span class="feedback-icon" id="feedback-q9"></span></span></p>
+                </div>
+                <div class="question-group">
+                    <p class="question-text">Adults, such as 10 <span class="input-container"><input type="text" id="q10" class="input-field w-40" placeholder=""><span class="feedback-icon" id="feedback-q10"></span></span> free</p>
+                </div>
+            </div>
+             <button class="check-answers-button" onclick="checkAnswers()">Check Answers</button>
+        </div>
+
+        <!-- Part 2 -->
+        <div id="part2-section" class="part-section">
+            <h2 class="part-title">PART 2</h2>
+            <div class="audio-player rounded-lg overflow-hidden shadow-lg">
+                <iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2114094975&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100; padding: 2px 10px; background-color: #f0f0f0;"><a href="https://soundcloud.com/hienthantrong" title="Hien" target="_blank" style="color: #cccccc; text-decoration: none;">Hien</a> · <a href="https://soundcloud.com/hienthantrong/test1-part2-2" title="Test1 Part2" target="_blank" style="color: #cccccc; text-decoration: none;">Test1 Part2</a></div>
+            </div>
+
+            <div class="mb-6">
+                <p class="text-lg font-semibold text-gray-700 mb-3">Questions 11-15</p>
+                <p class="text-md text-gray-600 mb-4">Choose the correct letter, A, B or C.</p>
+
+                <h3 class="text-xl font-bold text-blue-700 mb-4">Stanthorpe Twinning Association</h3>
+
+                <div class="question-group">
+                    <p class="question-text font-medium">11 During the visit to Malatte, in France, members especially enjoyed <span class="feedback-icon" id="feedback-q11"></span></p>
+                    <label class="answer-choice">
+                        <input type="radio" name="q11" value="A"> A going to a theme park.
+                    </label>
+                    <label class="answer-choice">
+                        <input type="radio" name="q11" value="B"> B experiencing a river trip.
+                    </label>
+                    <label class="answer-choice">
+                        <input type="radio" name="q11" value="C"> C visiting a cheese factory.
+                    </label>
+                </div>
+
+                <div class="question-group">
+                    <p class="question-text font-medium">12 What will happen in Stanthorpe to mark the 25th anniversary of the Twinning Association? <span class="feedback-icon" id="feedback-q12"></span></p>
+                    <label class="answer-choice">
+                        <input type="radio" name="q12" value="A"> A A tree will be planted.
+                    </label>
+                    <label class="answer-choice">
+                        <input type="radio" name="q12" value="B"> B A garden seat will be bought.
+                    </label>
+                    <label class="answer-choice">
+                        <input type="radio" name="q12" value="C"> C A footbridge will be built.
+                    </label>
+                </div>
+
+                <div class="question-group">
+                    <p class="question-text font-medium">13 Which event raised most funds this year? <span class="feedback-icon" id="feedback-q13"></span></p>
+                    <label class="answer-choice">
+                        <input type="radio" name="q13" value="A"> A the film show
+                    </label>
+                    <label class="answer-choice">
+                        <input type="radio" name="q13" value="B"> B the pancake evening
+                    </label>
+                    <label class="answer-choice">
+                        <input type="radio" name="q13" value="C"> C the cookery demonstration
+                    </label>
+                </div>
+
+                <div class="question-group">
+                    <p class="question-text font-medium">14 For the first evening with the French visitors host families are advised to <span class="feedback-icon" id="feedback-q14"></span></p>
+                    <label class="answer-choice">
+                        <input type="radio" name="q14" value="A"> A take them for a walk round the town.
+                    </label>
+                    <label class="answer-choice">
+                        <input type="radio" name="q14" value="B"> B go to a local restaurant.
+                    </label>
+                    <label class="answer-choice">
+                        <input type="radio" name="q14" value="C"> C have a meal at home.
+                    </label>
+                </div>
+
+                <div class="question-group">
+                    <p class="question-text font-medium">15 On Saturday evening there will be the chance to <span class="feedback-icon" id="feedback-q15"></span></p>
+                    <label class="answer-choice">
+                        <input type="radio" name="q15" value="A"> A listen to a concert.
+                    </label>
+                    <label class="answer-choice">
+                        <input type="radio" name="q15" value="B"> B watch a match.
+                    </label>
+                    <label class="answer-choice">
+                        <input type="radio" name="q15" value="C"> C take part in a competition.
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <p class="text-lg font-semibold text-gray-700 mb-3">Questions 16-20</p>
+                <p class="text-md text-gray-600 mb-4">Label the map below. Write the correct letter, A-H, next to Questions 16-20.</p>
+
+                <h3 class="text-xl font-bold text-blue-700 mb-4">Farley House Map</h3>
+                <div class="map-container">
+                    <!-- Image provided in the PDF for reference -->
+                    <img src="https://i.postimg.cc/D0bDrXXF/image.png" alt="Farley House Map" class="map-image">
+                </div>
+
+                <div class="question-group">
+                    <p class="question-text">16 Farm shop <span class="input-container"><input type="text" id="q16" class="input-field w-20" placeholder="Letter"><span class="feedback-icon" id="feedback-q16"></span></span></p>
+                </div>
+                <div class="question-group">
+                    <p class="question-text">17 Disabled entry <span class="input-container"><input type="text" id="q17" class="input-field w-20" placeholder="Letter"><span class="feedback-icon" id="feedback-q17"></span></span></p>
+                </div>
+                <div class="question-group">
+                    <p class="question-text">18 Adventure playground <span class="input-container"><input type="text" id="q18" class="input-field w-20" placeholder="Letter"><span class="feedback-icon" id="feedback-q18"></span></span></p>
+                </div>
+                <div class="question-group">
+                    <p class="question-text">19 Kitchen gardens <span class="input-container"><input type="text" id="q19" class="input-field w-20" placeholder="Letter"><span class="feedback-icon" id="feedback-q19"></span></span></p>
+                </div>
+                <div class="question-group">
+                    <p class="question-text">20 The Temple of the Four Winds <span class="input-container"><input type="text" id="q20" class="input-field w-20" placeholder="Letter"><span class="feedback-icon" id="feedback-q20"></span></span></p>
+                </div>
+            </div>
+             <button class="check-answers-button" onclick="checkAnswers()">Check Answers</button>
+        </div>
+
+        <!-- Part 3 -->
+        <div id="part3-section" class="part-section">
+            <h2 class="part-title">PART 3</h2>
+            <div class="audio-player rounded-lg overflow-hidden shadow-lg">
+                <iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2114094981&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100; padding: 2px 10px; background-color: #f0f0f0;"><a href="https://soundcloud.com/hienthantrong" title="Hien" target="_blank" style="color: #cccccc; text-decoration: none;">Hien</a> · <a href="https://soundcloud.com/hienthantrong/test1-part3-3" title="Test1 Part3" target="_blank" style="color: #cccccc; text-decoration: none;">Test1 Part3</a></div>
+            </div>
+
+            <div class="mb-6">
+                <p class="text-lg font-semibold text-gray-700 mb-3">Questions 21 and 22</p>
+                <p class="text-md text-gray-600 mb-4">Choose TWO letters, A-E.</p>
+
+                <div class="question-group">
+                    <p class="question-text font-medium">Which TWO things did Colin find most satisfying about his bread reuse project? <span class="feedback-icon" id="feedback-q21_22"></span></p>
+                    <label class="answer-choice">
+                        <input type="checkbox" name="q21_22" value="A" class="form-checkbox text-blue-600 rounded"> A receiving support from local restaurants
+                    </label>
+                    <label class="answer-choice">
+                        <input type="checkbox" name="q21_22" value="B" class="form-checkbox text-blue-600 rounded"> B finding a good way to prevent waste
+                    </label>
+                    <label class="answer-choice">
+                        <input type="checkbox" name="q21_22" value="C" class="form-checkbox text-blue-600 rounded"> C overcoming problems in a basic process
+                    </label>
+                    <label class="answer-choice">
+                        <input type="checkbox" name="q21_22" value="D" class="form-checkbox text-blue-600 rounded"> D experimenting with designs and colours
+                    </label>
+                    <label class="answer-choice">
+                        <input type="checkbox" name="q21_22" value="E" class="form-checkbox text-blue-600 rounded"> E learning how to apply 3-D printing
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <p class="text-lg font-semibold text-gray-700 mb-3">Questions 23 and 24</p>
+                <p class="text-md text-gray-600 mb-4">Choose TWO letters, A-E.</p>
+
+                <div class="question-group">
+                    <p class="question-text font-medium">Which TWO ways do the students agree that touch-sensitive sensors for food labels could be developed in future? <span class="feedback-icon" id="feedback-q23_24"></span></p>
+                    <label class="answer-choice">
+                        <input type="checkbox" name="q23_24" value="A" class="form-checkbox text-blue-600 rounded"> A for use on medical products
+                    </label>
+                    <label class="answer-choice">
+                        <input type="checkbox" name="q23_24" value="B" class="form-checkbox text-blue-600 rounded"> B to show that food is no longer fit to eat
+                    </label>
+                    <label class="answer-choice">
+                        <input type="checkbox" name="q23_24" value="C" class="form-checkbox text-blue-600 rounded"> C for use with drinks as well as foods
+                    </label>
+                    <label class="answer-choice">
+                        <input type="checkbox" name="q23_24" value="D" class="form-checkbox text-blue-600 rounded"> D to provide applications for blind people
+                    </label>
+                    <label class="answer-choice">
+                        <input type="checkbox" name="q23_24" value="E" class="form-checkbox text-blue-600 rounded"> E to indicate the weight of certain foods
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <p class="text-lg font-semibold text-gray-700 mb-3">Questions 25-30</p>
+                <p class="text-md text-gray-600 mb-4">What is the students' opinion about each of the following food trends?</p>
+                <p class="text-md text-gray-600 mb-4">Choose SIX answers from the box and write the correct letter, A-H, next to Questions 25-30.</p>
+
+                <div class="question-group">
+                    <h4 class="text-lg font-semibold text-blue-600 mb-2">Opinions</h4>
+                    <ul class="list-disc list-inside mb-4">
+                        <li>A This is only relevant to young people.</li>
+                        <li>B This may have disappointing results.</li>
+                        <li>C This already seems to be widespread.</li>
+                        <li>D Retailers should do more to encourage this.</li>
+                        <li>E More financial support is needed for this.</li>
+                        <li>F Most people know little about this.</li>
+                        <li>G There should be stricter regulations about this.</li>
+                        <li>H This could be dangerous.</li>
+                    </ul>
+
+                    <table class="opinion-table rounded-lg overflow-hidden shadow-sm">
+                        <thead>
+                            <tr>
+                                <th class="w-1/2">Food trends</th>
+                                <th class="w-1/2">Opinion (A-H)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>25 Use of local products <span class="feedback-icon" id="feedback-q25"></span></td>
+                                <td>
+                                    <select id="q25" class="input-field opinion-select">
+                                        <option value="">-</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                        <option value="F">F</option>
+                                        <option value="G">G</option>
+                                        <option value="H">H</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>26 Reduction in unnecessary packaging <span class="feedback-icon" id="feedback-q26"></span></td>
+                                <td>
+                                    <select id="q26" class="input-field opinion-select">
+                                        <option value="">-</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                        <option value="F">F</option>
+                                        <option value="G">G</option>
+                                        <option value="H">H</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>27 Gluten-free and lactose-free food <span class="feedback-icon" id="feedback-q27"></span></td>
+                                <td>
+                                    <select id="q27" class="input-field opinion-select">
+                                        <option value="">-</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                        <option value="F">F</option>
+                                        <option value="G">G</option>
+                                        <option value="H">H</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>28 Use of branded products related to celebrity chefs <span class="feedback-icon" id="feedback-q28"></span></td>
+                                <td>
+                                    <select id="q28" class="input-field opinion-select">
+                                        <option value="">-</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                        <option value="F">F</option>
+                                        <option value="G">G</option>
+                                        <option value="H">H</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>29 Development of 'ghost kitchens' for takeaway food <span class="feedback-icon" id="feedback-q29"></span></td>
+                                <td>
+                                    <select id="q29" class="input-field opinion-select">
+                                        <option value="">-</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                        <option value="F">F</option>
+                                        <option value="G">G</option>
+                                        <option value="H">H</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>30 Use of mushrooms for common health concerns <span class="feedback-icon" id="feedback-q30"></span></td>
+                                <td>
+                                    <select id="q30" class="input-field opinion-select">
+                                        <option value="">-</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                        <option value="F">F</option>
+                                        <option value="G">G</option>
+                                        <option value="H">H</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+             <button class="check-answers-button" onclick="checkAnswers()">Check Answers</button>
+        </div>
+
+        <!-- Part 4 -->
+        <div id="part4-section" class="part-section">
+            <h2 class="part-title">PART 4</h2>
+            <div class="audio-player rounded-lg overflow-hidden shadow-lg">
+                <iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2114094978&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100; padding: 2px 10px; background-color: #f0f0f0;"><a href="https://soundcloud.com/hienthantrong" title="Hien" target="_blank" style="color: #cccccc; text-decoration: none;">Hien</a> · <a href="https://soundcloud.com/hienthantrong/test1-part4-4" title="Test1 Part4" target="_blank" style="color: #cccccc; text-decoration: none;">Test1 Part4</a></div>
+            </div>
+
+            <div class="mb-6">
+                <p class="text-lg font-semibold text-gray-700 mb-3">Questions 31-40</p>
+                <p class="text-md text-gray-600 mb-4">Complete the notes below. Write ONE WORD ONLY for each answer.</p>
+
+                <h3 class="text-xl font-bold text-blue-700 mb-4">Céide Fields</h3>
+                <p class="question-text mb-4">an important Neolithic archaeological site in the northwest of Ireland</p>
+
+                <h4 class="text-lg font-semibold text-blue-600 mb-2">Discovery</h4>
+                <ul class="list-disc list-inside pl-5 mb-4">
+                    <li class="question-text">In the 1930s, a local teacher realised that stones beneath the bog surface were once 31 <span class="input-container"><input type="text" id="q31" class="input-field w-40" placeholder=""><span class="feedback-icon" id="feedback-q31"></span></span>.</li>
+                    <li class="question-text">His 32 <span class="input-container"><input type="text" id="q32" class="input-field w-40" placeholder=""><span class="feedback-icon" id="feedback-q32"></span></span> became an archaeologist and undertook an investigation of the site:</li>
+                    <ul class="list-circle list-inside pl-5 mt-2">
+                        <li class="question-text">a traditional method used by local people to dig for 33 <span class="input-container"><input type="text" id="q33" class="input-field w-40" placeholder=""><span class="feedback-icon" id="feedback-q33"></span></span> was used to identify where stones were located</li>
+                        <li class="question-text">carbon dating later proved the site was Neolithic.</li>
+                    </ul>
+                    <li class="question-text">Items are well preserved in the bog because of a lack of 34 <span class="input-container"><input type="text" id="q34" class="input-field w-40" placeholder=""><span class="feedback-icon" id="feedback-q34"></span></span>.</li>
+                </ul>
+
+                <h4 class="text-lg font-semibold text-blue-600 mb-2">Neolithic farmers</h4>
+                <ul class="list-disc list-inside pl-5 mb-4">
+                    <li class="question-text">Houses were 35 <span class="input-container"><input type="text" id="q35" class="input-field w-40" placeholder=""><span class="feedback-icon" id="feedback-q35"></span></span> in shape and had a hole in the roof.</li>
+                    <li class="question-text">Neolithic innovations include:</li>
+                    <ul class="list-circle list-inside pl-5 mt-2">
+                        <li class="question-text">cooking indoors</li>
+                        <li class="question-text">pots used for storage and to make 36 <span class="input-container"><input type="text" id="q36" class="input-field w-40" placeholder=""><span class="feedback-icon" id="feedback-q36"></span></span></li>
+                    </ul>
+                    <li class="question-text">Each field at Céide was large enough to support a big 37 <span class="input-container"><input type="text" id="q37" class="input-field w-40" placeholder=""><span class="feedback-icon" id="feedback-q37"></span></span>.</li>
+                    <li class="question-text">The fields were probably used to restrict the grazing of animals – no evidence of structures to house them during 38 <span class="input-container"><input type="text" id="q38" class="input-field w-40" placeholder=""><span class="feedback-icon" id="feedback-q38"></span></span>.</li>
+                </ul>
+
+                <h4 class="text-lg font-semibold text-blue-600 mb-2">Reasons for the decline in farming</h4>
+                <ul class="list-disc list-inside pl-5 mb-4">
+                    <li class="question-text">a decline in 39 <span class="input-container"><input type="text" id="q39" class="input-field w-40" placeholder=""><span class="feedback-icon" id="feedback-q39"></span></span> quality</li>
+                    <li class="question-text">an increase in 40 <span class="input-container"><input type="text" id="q40" class="input-field w-40" placeholder=""><span class="feedback-icon" id="feedback-q40"></span></span></li>
+                </ul>
+            </div>
+            <button class="check-answers-button" onclick="checkAnswers()">Check Answers</button>
+        </div>
+
+        <script>
+            // Object to store the correct answers
+            const correctAnswers = {
+                // Part 1
+                q1: "69", q2: "stream", q3: "data", q4: "map", q5: "visitors",
+                q6: "sounds", q7: "freedom", q8: "skills", q9: "4.95", q10: "leaders",
+                // Part 2
+                q11: "B", q12: "A", q13: "B", q14: "C", q15: "A",
+                q16: "G", q17: "C", q18: "B", q19: "D", q20: "A",
+                // Part 3
+                q21_22: ["B", "D"], // For multiple select, store as an array
+                q23_24: ["A", "E"],
+                q25: "D", q26: "G", q27: "C", q28: "B", q29: "F", q30: "H",
+                // Part 4
+                q31: "walls", q32: "son", q33: "fuel", q34: "oxygen", q35: "rectangular",
+                q36: "lamps", q37: "family", q38: "winter", q39: "soil", q40: "rain"
+            };
+
+            /**
+             * Function to display correct (checkmark) or incorrect (x) icon.
+             * @param {HTMLElement} iconElement - The span element where the icon should be placed.
+             * @param {boolean} isCorrect - True if the answer is correct, false otherwise.
+             */
+            function displayFeedbackIcon(iconElement, isCorrect) {
+                iconElement.innerHTML = ''; // Clear previous icon
+                iconElement.classList.remove('correct', 'incorrect');
+
+                if (isCorrect) {
+                    iconElement.classList.add('correct');
+                    iconElement.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>'; // Checkmark SVG
+                } else {
+                    iconElement.classList.add('incorrect');
+                    iconElement.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>'; // X-mark SVG
+                }
+            }
+
+            /**
+             * Controls the visibility of worksheet parts based on button clicks.
+             * Hides all part sections and then displays only the selected part.
+             * Also manages the active state styling for the navigation buttons.
+             * Clears feedback icons when switching parts.
+             * @param {string} partId - The ID of the part section to display (e.g., 'part1-section').
+             * @param {HTMLElement} clickedButton - The button element that was clicked.
+             */
+            function showPart(partId, clickedButton) {
+                // Get all part sections
+                const allParts = document.querySelectorAll('.part-section');
+                // Hide all part sections and clear feedback
+                allParts.forEach(part => {
+                    part.classList.remove('active');
+                    part.querySelectorAll('.feedback-icon').forEach(icon => {
+                        icon.innerHTML = '';
+                        icon.classList.remove('correct', 'incorrect');
+                    });
+                     // Remove 'processed-group' class from all checkboxes
+                    part.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.classList.remove('processed-group'));
+                });
+
+                // Show the selected part section
+                const activePart = document.getElementById(partId);
+                if (activePart) {
+                    activePart.classList.add('active');
+                }
+
+                // Remove 'active-nav' class from all buttons
+                const allButtons = document.querySelectorAll('.nav-button');
+                allButtons.forEach(button => {
+                    button.classList.remove('active-nav');
+                });
+
+                // Add 'active-nav' class to the clicked button
+                if (clickedButton) {
+                    clickedButton.classList.add('active-nav');
+                }
+            }
+
+            /**
+             * Checks the user's answers for the currently active part and displays feedback icons.
+             */
+            function checkAnswers() {
+                const activePart = document.querySelector('.part-section.active');
+                if (!activePart) return; // No active part
+
+                // Clear existing processed-group class before re-checking
+                activePart.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.classList.remove('processed-group'));
+
+                // Iterate through text inputs (including table inputs)
+                activePart.querySelectorAll('input[type="text"]').forEach(input => {
+                    const qId = input.id;
+                    const feedbackIcon = document.getElementById(`feedback-${qId}`);
+                    if (feedbackIcon && correctAnswers[qId]) {
+                        const userAnswer = input.value.trim().toLowerCase();
+                        const correctAnswer = String(correctAnswers[qId]).toLowerCase();
+                        displayFeedbackIcon(feedbackIcon, userAnswer === correctAnswer);
+                    }
+                });
+
+                // Iterate through radio button groups
+                activePart.querySelectorAll('input[type="radio"]').forEach(radio => {
+                    const groupName = radio.name;
+                    // Only process once per group
+                    // Check if this radio button is the first one encountered for its name within the active part
+                    const firstRadioInGroup = activePart.querySelector(`input[name="${groupName}"]`);
+                    if (radio !== firstRadioInGroup) return;
+
+                    const feedbackIcon = document.getElementById(`feedback-${groupName}`);
+                    if (feedbackIcon && correctAnswers[groupName]) {
+                        const selectedRadio = activePart.querySelector(`input[name="${groupName}"]:checked`);
+                        const userAnswer = selectedRadio ? selectedRadio.value : '';
+                        const correctAnswer = String(correctAnswers[groupName]);
+                        displayFeedbackIcon(feedbackIcon, userAnswer === correctAnswer);
+                    }
+                });
+
+                // Iterate through checkbox groups
+                activePart.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                    const groupName = checkbox.name;
+                    // Only process once per group. Check if this is the first checkbox for this group name that hasn't been processed.
+                    if (!checkbox.classList.contains('processed-group-main')) { // Using a distinct class for main group processing
+                        const feedbackIcon = document.getElementById(`feedback-${groupName}`);
+                        if (feedbackIcon && correctAnswers[groupName]) {
+                            const checkedValues = Array.from(activePart.querySelectorAll(`input[name="${groupName}"]:checked`))
+                                                        .map(cb => cb.value)
+                                                        .sort(); // Sort to ensure order-insensitive comparison
+                            const correctValues = correctAnswers[groupName].sort();
+
+                            // Compare arrays
+                            const isCorrect = checkedValues.length === correctValues.length &&
+                                              checkedValues.every((value, index) => value === correctValues[index]);
+                            displayFeedbackIcon(feedbackIcon, isCorrect);
+                            // Mark all checkboxes in this group as processed to avoid re-checking
+                            activePart.querySelectorAll(`input[name="${groupName}"]`).forEach(cb => cb.classList.add('processed-group-main'));
+                        }
+                    }
+                });
+
+                // Handle select (dropdown) elements for opinion table
+                activePart.querySelectorAll('.opinion-table select').forEach(select => {
+                    const qId = select.id;
+                    const feedbackIcon = document.getElementById(`feedback-${qId}`);
+                    if (feedbackIcon && correctAnswers[qId]) {
+                        const userAnswer = select.value.trim();
+                        const correctAnswer = String(correctAnswers[qId]);
+                        displayFeedbackIcon(feedbackIcon, userAnswer === correctAnswer);
+                    }
+                });
+            }
+
+            // Ensure Part 1 is shown by default on load
+            document.addEventListener('DOMContentLoaded', () => {
+                showPart('part1-section', document.querySelector('.nav-button'));
+            });
+        </script>
+    </div>
+</body>
+</html>
