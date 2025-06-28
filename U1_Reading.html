@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindset for IELTS 1 - Unit 1 Reading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden; /* Prevent body scrolling */
+        }
+        .exercise-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .check-btn {
+            background-color: #4f46e5;
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .check-btn:hover {
+            background-color: #4338ca;
+        }
+        .feedback {
+            margin-left: 1rem;
+            font-weight: 500;
+        }
+        .correct {
+            color: #16a34a;
+        }
+        .incorrect {
+            color: #dc2626;
+        }
+        .correct-answer {
+             border: 2px solid #16a34a;
+             background-color: #f0fdf4;
+        }
+        .incorrect-answer {
+            border: 2px solid #dc2626;
+            background-color: #fef2f2;
+        }
+        .reading-text {
+            background-color: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+            line-height: 1.6;
+        }
+        /* Custom scrollbar for better aesthetics */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="flex flex-col h-screen">
+        <header class="text-center py-4 px-4 md:px-8 border-b bg-white">
+            <h1 class="text-2xl md:text-3xl font-bold text-indigo-700">
+                Mindset for IELTS 1 - Unit 1 Reading
+            </h1>
+        </header>
+
+        <div class="flex-grow lg:flex lg:gap-8 p-4 md:p-8 overflow-hidden">
+            <!-- Left Scrollable Column -->
+            <aside class="lg:w-2/5 h-full overflow-y-auto custom-scrollbar pr-2">
+                 <!-- Reading Passage -->
+                <div class="exercise-card bg-gray-50">
+                    <h2 class="text-2xl font-semibold text-gray-700 mb-4 pb-2 border-b">Reading Passage</h2>
+                    <div class="reading-text" id="reading-passage">
+                        <h3 class="font-bold text-lg mb-4 text-center">How our sweet tooth is hurting us</h3>
+                        <p class="mb-4">Over the last three centuries, the amount of sugar in the Western diet has continued to rise. Back at the start of the 18th century, a typical English family consumed less than 2 kg of sugar per year. By the end of that century, that amount had risen 400%. Compare that to the 40 kg that people now consume annually in the USA. In Germany, the second-most sugar-loving nation in the world, people eat roughly 103 grams on average per day. In the Netherlands, the country with the third-biggest sweet tooth, people eat 102.5 grams. Of course, there are some countries in the world where sweet food is less popular: in India, people eat only about 5 grams per day on average; in Indonesia, it’s 14.5 grams; and in China, it’s just under 16 grams. If you’re not sure what 40 kg looks like, it means that the average person in the USA now eats approximately 22 teaspoons of sugar a day. The recommended limit, suggested by researchers from the World Health Organisation, is no more than 8 if you want to stay healthy, but just one can of soda contains around 10.</p>
+                        <p class="mb-4">It is common knowledge that many drinks, in bottles or canned, contain a lot of sugar. Although advertisements say that they are ‘energy-giving’, professional athletes and sportsmen and women usually stay away from them. It is teenagers that are their greatest consumers. And – although advertisers promise that these drinks will make people feel energetic and active – because of the type of chemicals they have, once a person has drunk all the soda, they simply feel hungry instead. However, sugar is also in products that many shoppers find surprising, for example, cereal, which actually has a lot. Because they believe it is a healthy kind of food, parents buy it for their children’s breakfast.</p>
+                        <p>A large part of the problem, according to nutritionists, is that people find it hard to understand the labels on the back of food products. Nutritionists think this should be a lot easier for them. But at the moment, manufacturers don’t have to write ‘sugar’ on them, but can use words like ‘corn syrup’ or ‘dextran’, which can result in confusion for consumers. But why should we be worried about our sugar consumption? Firstly, it is harmful to young children because it causes tooth decay; the pain from this can mean that children don’t get the amount of sleep they need. As a result, they can’t concentrate when they are in class. In this case, schools and governments have a duty to educate them about good and bad food choices. For adults, the problems increase. Eating too much sugar makes people quickly gain weight, it affects the heart and liver, and can lead to diabetes.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Scrollable Column -->
+            <main class="lg:w-3/5 h-full overflow-y-auto custom-scrollbar pr-2 mt-8 lg:mt-0">
+                <!-- Exercise 1: True/False -->
+                <div class="exercise-card bg-indigo-50">
+                    <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Exercise 1: True or False?</h2>
+                    <p class="mb-4 text-gray-600">Before you read the text, look at the statements. Do you think that they are True or False? Choose your answers.</p>
+                    <div id="ex1-questions"></div>
+                    <button id="check-ex1" class="check-btn mt-4">Check Answers</button>
+                </div>
+                
+                <!-- Exercise 2: Yes/No -->
+                <div class="exercise-card bg-blue-50">
+                    <h2 class="text-2xl font-semibold text-blue-600 mb-4">Exercise 2: Ideas in the Text</h2>
+                    <p class="mb-4 text-gray-600">Which of the ideas in sentences 1–5 are mentioned in the text? Choose Yes or No.</p>
+                    <div id="ex2-questions"></div>
+                    <button id="check-ex2" class="check-btn mt-4">Check Answers</button>
+                </div>
+
+                <!-- Exercise 3: Matching Definitions -->
+                <div class="exercise-card bg-green-50">
+                    <h2 class="text-2xl font-semibold text-green-600 mb-4">Exercise 3: Match the Definitions</h2>
+                    <p class="mb-4 text-gray-600">Match the people with their definitions.</p>
+                    <div id="ex3-container" class="space-y-4"></div>
+                    <button id="check-ex3" class="check-btn mt-4">Check Answers</button>
+                </div>
+
+                <!-- Exercise 4: Who said it? -->
+                <div class="exercise-card bg-purple-50">
+                    <h2 class="text-2xl font-semibold text-purple-600 mb-4">Exercise 4: Who might say this?</h2>
+                    <p class="mb-4 text-gray-600">Match the people with the statements.</p>
+                    <div id="ex4-container" class="space-y-4"></div>
+                    <button id="check-ex4" class="check-btn mt-4">Check Answers</button>
+                </div>
+
+                <!-- Exercise 5: Matching Synonyms -->
+                <div class="exercise-card bg-yellow-50">
+                    <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Exercise 5: Match the Synonyms</h2>
+                    <p class="mb-4 text-gray-600">Match the words in bold with phrases that have a similar meaning.</p>
+                    <div id="ex5-container" class="space-y-4"></div>
+                    <button id="check-ex5" class="check-btn mt-4">Check Answers</button>
+                </div>
+
+                <!-- Exercise 6: Find the Keywords -->
+                <div class="exercise-card bg-red-50">
+                    <h2 class="text-2xl font-semibold text-red-600 mb-4">Exercise 6: Find the Keywords</h2>
+                    <p class="mb-4 text-gray-600">Look at the questions. Select the key words that show you the type of information you need to look for.</p>
+                    <div id="ex6-questions" class="space-y-4"></div>
+                    <button id="check-ex6" class="check-btn mt-4">Check Answers</button>
+                </div>
+
+                <!-- Exercise 7: Word Forms -->
+                <div class="exercise-card bg-teal-50">
+                    <h2 class="text-2xl font-semibold text-teal-600 mb-4">Exercise 7: Word Forms</h2>
+                    <p class="mb-4 text-gray-600">Read the questions. Choose the correct word to complete the answer. Focus on the language, not the content.</p>
+                    <div id="ex7-questions" class="space-y-4"></div>
+                    <button id="check-ex7" class="check-btn mt-4">Check Answers</button>
+                </div>
+
+                <!-- Exercise 8: Paraphrases and Synonyms -->
+                <div class="exercise-card bg-orange-50">
+                    <h2 class="text-2xl font-semibold text-orange-600 mb-4">Exercise 8: Match Paraphrases and Synonyms</h2>
+                    <p class="mb-4 text-gray-600">Match the phrases from the questions with their paraphrased versions from the text.</p>
+                    <div id="ex8-container" class="space-y-4"></div>
+                    <button id="check-ex8" class="check-btn mt-4">Check Answers</button>
+                </div>
+
+                <!-- Exercise 9: Short Answer Questions -->
+                <div class="exercise-card bg-pink-50">
+                    <h2 class="text-2xl font-semibold text-pink-600 mb-4">Exercise 9: Short Answer Questions</h2>
+                    <p class="mb-4 text-gray-600">Answer the questions. Choose <strong>ONE WORD OR A NUMBER</strong> from the passage for each answer.</p>
+                    <div id="ex9-questions" class="space-y-4"></div>
+                    <button id="check-ex9" class="check-btn mt-4">Check Answers</button>
+                </div>
+
+                <!-- Exercise 10: Complete the advice -->
+                <div class="exercise-card bg-gray-200">
+                    <h2 class="text-2xl font-semibold text-gray-700 mb-4">Exercise 10: Complete the Advice</h2>
+                    <p class="mb-4 text-gray-600">Complete the advice. Use the words in the box.</p>
+                    <div class="p-4 bg-gray-100 border-l-4 border-gray-500 rounded mb-4">
+                        <p class="font-mono text-gray-800">different occupations | is not the same | one word or one number | question words | the same order</p>
+                    </div>
+                    <div id="ex10-container" class="space-y-4"></div>
+                    <button id="check-ex10" class="check-btn mt-4">Check Answers</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Data for Exercises ---
+
+            const ex1_data = [
+                { question: "The expression to have a sweet tooth means to like eating sweet foods, especially sweets and chocolate.", answer: "True" },
+                { question: "In 18th-century Europe, more poor people than rich people lost their teeth because of sugar.", answer: "False" },
+                { question: "If you drink a typical can of soda, you’ll consume about 10 sugar cubes.", answer: "True" },
+                { question: "In general, children in the USA consume a lot more sugar than their parents.", answer: "False" },
+                { question: "It is now possible to order chocolate-covered insects online.", answer: "False" }
+            ];
+
+            const ex2_data = [
+                { question: "The increase in the amount of sugar we eat.", answer: "Yes" },
+                { question: "The places in the supermarket where you can find sugary products.", answer: "No" },
+                { question: "The way that advertising sugary products has changed.", answer: "No" },
+                { question: "The health problems that sugar causes in children.", answer: "Yes" },
+                { question: "The health problems that sugar causes in adults.", answer: "Yes" }
+            ];
+
+            const ex3_data = {
+                'a person or company that makes a product:': 'manufacturer',
+                'a person who buys or uses a product:': 'consumer',
+                'a person who studies a subject carefully:': 'researcher',
+                'a person who gives advice about healthy eating:': 'nutritionist',
+                'a person who makes commercials to sell a product:': 'advertiser'
+            };
+
+            const ex4_data = {
+                '‘My report studies the effects of sugar on the health of people aged 15–24 in the USA.’': 'researcher',
+                '‘Feeling tired? New Choco-nut breakfast cereal will give you all the energy you need!’': 'advertiser',
+                '‘There are ten sugar cubes in every can of soda so you shouldn’t drink soda every day.’': 'nutritionist',
+                '‘Our factory sells 50% more sugar today than 50 years ago.’': 'manufacturer',
+                "‘I know sugar is bad for me, but I usually eat two bars of chocolate every day.’": 'consumer'
+            };
+
+            const ex5_data = {
+                'Sugar can be <strong>very bad for</strong> children.': 'harmful to',
+                'My doctor said I was eating the wrong foods, which <strong>surprised me</strong>.': 'was unexpected',
+                'We should <strong>buy and eat</strong> healthier food that doesn’t have a lot of sugar.': 'consume',
+                'I try to <strong>avoid</strong> chocolate when I’m hungry because it’s not very healthy.': 'stay away from',
+                'I <strong>think you should</strong> go on a diet.': 'recommend that you',
+                'A lot of information about good sugar and bad sugar is <strong>hard to understand</strong>.': 'not clear'
+            };
+
+            const ex6_data = [
+                { question: "Which <b>country</b> consumes the <b>least</b> sugar per person?", options: ["Which", "country", "consumes", "the least", "sugar", "person"], answer: ["country", "the least", "sugar"] },
+                { question: "What is the <b>maximum recommended number</b> of teaspoons of sugar that a person should consume a <b>day</b>?", options: ["What", "maximum recommended number", "teaspoons", "sugar", "consume", "day"], answer: ["maximum recommended number", "teaspoons", "sugar", "day"] },
+                { question: "Which <b>group of people</b> drink <b>more</b> sugary drinks than anyone else?", options: ["Which", "group of people", "drink", "more", "sugary drinks", "anyone else"], answer: ["group of people", "more", "sugary drinks"] },
+                { question: "How do people really <b>feel</b> after finishing sugary drinks?", options: ["How", "people", "really", "feel", "after finishing", "sugary drinks"], answer: ["feel", "after finishing", "sugary drinks"] },
+                { question: "Which <b>food product</b> has an <b>unexpected amount</b> of sugar?", options: ["Which", "food product", "unexpected amount", "sugar"], answer: ["food product", "unexpected amount", "sugar"] },
+                { question: "What do nutritionists want to be <b>clearer</b> for consumers?", options: ["What", "nutritionists", "want", "clearer", "consumers"], answer: ["nutritionists", "clearer", "consumers"] },
+                { question: "What may <b>decrease</b> as a result of <b>tooth decay</b> in children?", options: ["What", "decrease", "as a result of", "tooth decay", "children"], answer: ["decrease", "tooth decay", "children"] }
+            ];
+
+            const ex7_data = [
+                 { question: "What is the maximum recommended number of teaspoons of sugar that a person should consume a day?", options: ["9", "a few", "a lot of"], answer: "9"},
+                 { question: "Which group of people drink more sugary drinks than anyone else?", options: ["Students", "studies", "student"], answer: "Students"},
+                 { question: "How do people really feel after finishing sugary drinks?", options: ["Happiness", "exciting", "excited"], answer: "excited"},
+                 { question: "Which food product has an unexpected amount of sugar?", options: ["Cheese", "dinner", "lemonade"], answer: "Cheese"},
+                 { question: "What do nutritionists want to be clearer for consumers?", options: ["Information", "instructions", "notice"], answer: "Information"},
+                 { question: "What may decrease as a result of tooth decay in children?", options: ["Concentration", "daily", "clean"], answer: "Concentration"}
+            ];
+            
+            const ex8_data = {
+                'the least sugar': 'sweet food is less popular',
+                'maximum recommended number': 'recommended limit',
+                'group of people drink more': 'greatest consumers',
+                'sugary drink(s)': 'soda',
+                'unexpected amount of sugar': 'which actually has a lot',
+                'want to be clearer for consumers': 'think this should be a lot easier for them',
+                'as a result of': 'this can mean that'
+            };
+
+
+            const ex9_data = [
+                { question: "Which country consumes the least sugar per person?", answer: "India" },
+                { question: "What is the maximum recommended number of teaspoons of sugar that a person should consume a day?", answer: "8" },
+                { question: "Which group of people drink more sugary drinks than anyone else?", answer: "teenagers" },
+                { question: "How do people really feel after finishing sugary drinks?", answer: "hungry" },
+                { question: "Which food product has an unexpected amount of sugar?", answer: "cereal" },
+                { question: "What do nutritionists want to be clearer for consumers?", answer: "labels" },
+                { question: "What may decrease as a result of tooth decay in children?", answer: "concentration" }
+            ];
+            
+            const ex10_data = {
+                "When the instruction says ‘choose ONE WORD OR A NUMBER ONLY’ from the passage, you must only write ___ that you can find in the text.": "one word or one number",
+                "The answers for the short answer questions task follow ___ as the questions.": "the same order",
+                "The language before, around or after the answers in the text ___ as the language in the questions.": "is not the same",
+                "It can be useful to learn the names for ___.": "different occupations",
+                "It is a good idea to predict what kind of information might follow ___ like ‘which’, ‘where’ and ‘who’.": "question words"
+            };
+
+
+            // --- Helper Functions ---
+            const shuffleArray = (array) => {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            };
+
+            const createRadioOrCheckbox = (type, name, value, text, index) => `
+                <label class="flex items-center cursor-pointer p-2 rounded-md hover:bg-gray-100 transition-colors">
+                    <input type="${type}" name="${name}" value="${value}" class="mr-3 h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"> ${text}
+                </label>`;
+
+            // Generic checker for radio-button style questions
+            const checkRadioExercise = (data, exerciseIdPrefix) => {
+                 data.forEach((item, index) => {
+                    const selected = document.querySelector(`input[name="${exerciseIdPrefix}-${index}"]:checked`);
+                    const feedbackEl = document.getElementById(`feedback-${exerciseIdPrefix}-${index}`);
+                    const questionContainer = selected ? selected.closest('.question-item') : document.querySelector(`input[name="${exerciseIdPrefix}-${index}"]`).closest('.question-item');
+                    
+                    questionContainer.classList.remove('correct-answer', 'incorrect-answer');
+
+                    if (selected) {
+                        if (selected.value === item.answer) {
+                            feedbackEl.textContent = 'Correct!';
+                            feedbackEl.className = 'feedback correct';
+                            questionContainer.classList.add('correct-answer');
+                        } else {
+                            feedbackEl.textContent = `Incorrect. The answer is ${item.answer}.`;
+                            feedbackEl.className = 'feedback incorrect';
+                            questionContainer.classList.add('incorrect-answer');
+                        }
+                    } else {
+                        feedbackEl.textContent = 'Please select an answer.';
+                        feedbackEl.className = 'feedback incorrect';
+                        questionContainer.classList.add('incorrect-answer');
+                    }
+                });
+            }
+
+             // Generic checker for select/dropdown style questions
+            const checkSelectExercise = (data, exerciseIdPrefix) => {
+                const keys = Object.keys(data);
+                keys.forEach((key, index) => {
+                    const select = document.getElementById(`${exerciseIdPrefix}-select-${index}`);
+                    const feedbackEl = document.getElementById(`feedback-${exerciseIdPrefix}-${index}`);
+                    const correctAnswer = data[key];
+                    
+                    select.classList.remove('correct-answer', 'incorrect-answer');
+
+                    if (select.value === correctAnswer) {
+                        feedbackEl.textContent = 'Correct!';
+                        feedbackEl.className = 'feedback correct';
+                        select.classList.add('correct-answer');
+                    } else {
+                        feedbackEl.textContent = `Incorrect. Correct is: ${correctAnswer}`;
+                        feedbackEl.className = 'feedback incorrect';
+                        select.classList.add('incorrect-answer');
+                    }
+                });
+            };
+
+            // --- Exercise 1: True/False ---
+            const ex1Container = document.getElementById('ex1-questions');
+            ex1_data.forEach((item, index) => {
+                const qDiv = document.createElement('div');
+                qDiv.className = 'question-item p-4 border border-indigo-200 rounded-lg bg-white';
+                qDiv.innerHTML = `
+                    <p class="mb-2">${index + 1}. ${item.question}</p>
+                    <div class="flex items-center space-x-4">
+                        ${createRadioOrCheckbox('radio', `ex1-${index}`, 'True', 'True', index)}
+                        ${createRadioOrCheckbox('radio', `ex1-${index}`, 'False', 'False', index)}
+                        <span id="feedback-ex1-${index}" class="feedback"></span>
+                    </div>
+                `;
+                ex1Container.appendChild(qDiv);
+            });
+            document.getElementById('check-ex1').addEventListener('click', () => checkRadioExercise(ex1_data, 'ex1'));
+
+            // --- Exercise 2: Yes/No ---
+            const ex2Container = document.getElementById('ex2-questions');
+            ex2_data.forEach((item, index) => {
+                const qDiv = document.createElement('div');
+                qDiv.className = 'question-item p-4 border border-blue-200 rounded-lg bg-white';
+                qDiv.innerHTML = `
+                    <p class="mb-2">${index + 1}. ${item.question}</p>
+                    <div class="flex items-center space-x-4">
+                        ${createRadioOrCheckbox('radio', `ex2-${index}`, 'Yes', 'Yes', index)}
+                        ${createRadioOrCheckbox('radio', `ex2-${index}`, 'No', 'No', index)}
+                        <span id="feedback-ex2-${index}" class="feedback"></span>
+                    </div>
+                `;
+                ex2Container.appendChild(qDiv);
+            });
+            document.getElementById('check-ex2').addEventListener('click', () => checkRadioExercise(ex2_data, 'ex2'));
+
+
+            // --- Exercise 3: Matching Definitions ---
+            const ex3Container = document.getElementById('ex3-container');
+            const ex3Definitions = Object.keys(ex3_data);
+            const ex3Terms = shuffleArray(Object.values(ex3_data));
+            ex3Definitions.forEach((definition, index) => {
+                const row = document.createElement('div');
+                row.className = 'grid grid-cols-1 md:grid-cols-2 gap-4 items-center p-3 border border-green-200 rounded-lg bg-white';
+                row.innerHTML = `
+                    <p>${index+1}. ${definition}</p>
+                    <div class="flex items-center">
+                        <select id="ex3-select-${index}" class="w-full p-2 border border-gray-300 rounded-md">
+                            <option value="">Select a term...</option>
+                            ${ex3Terms.map(term => `<option value="${term}">${term}</option>`).join('')}
+                        </select>
+                        <span id="feedback-ex3-${index}" class="feedback ml-2"></span>
+                    </div>`;
+                ex3Container.appendChild(row);
+            });
+            document.getElementById('check-ex3').addEventListener('click', () => checkSelectExercise(ex3_data, 'ex3'));
+
+            // --- Exercise 4: Who said it? ---
+            const ex4Container = document.getElementById('ex4-container');
+            const ex4Statements = Object.keys(ex4_data);
+            const ex4People = shuffleArray(Object.values(ex4_data));
+             ex4Statements.forEach((statement, index) => {
+                const row = document.createElement('div');
+                row.className = 'grid grid-cols-1 md:grid-cols-2 gap-4 items-center p-3 border border-purple-200 rounded-lg bg-white';
+                row.innerHTML = `
+                    <p>${index+1}. ${statement}</p>
+                    <div class="flex items-center">
+                        <select id="ex4-select-${index}" class="w-full p-2 border border-gray-300 rounded-md">
+                            <option value="">Select a person...</option>
+                            ${ex4People.map(person => `<option value="${person}">${person}</option>`).join('')}
+                        </select>
+                        <span id="feedback-ex4-${index}" class="feedback ml-2"></span>
+                    </div>`;
+                ex4Container.appendChild(row);
+            });
+            document.getElementById('check-ex4').addEventListener('click', () => checkSelectExercise(ex4_data, 'ex4'));
+
+            // --- Exercise 5: Matching Synonyms ---
+            const ex5Container = document.getElementById('ex5-container');
+            const ex5Phrases = Object.keys(ex5_data);
+            const ex5Synonyms = shuffleArray(Object.values(ex5_data));
+            ex5Phrases.forEach((phrase, index) => {
+                const row = document.createElement('div');
+                row.className = 'grid grid-cols-1 md:grid-cols-2 gap-4 items-center p-3 border border-yellow-200 rounded-lg bg-white';
+                row.innerHTML = `
+                    <p>${index+1}. ${phrase}</p>
+                    <div class="flex items-center">
+                        <select id="ex5-select-${index}" class="w-full p-2 border border-gray-300 rounded-md">
+                            <option value="">Select a synonym...</option>
+                            ${ex5Synonyms.map(synonym => `<option value="${synonym}">${synonym}</option>`).join('')}
+                        </select>
+                        <span id="feedback-ex5-${index}" class="feedback ml-2"></span>
+                    </div>`;
+                ex5Container.appendChild(row);
+            });
+            document.getElementById('check-ex5').addEventListener('click', () => checkSelectExercise(ex5_data, 'ex5'));
+
+            // --- Exercise 6: Find the Keywords ---
+            const ex6Container = document.getElementById('ex6-questions');
+            ex6_data.forEach((item, index) => {
+                const qDiv = document.createElement('div');
+                qDiv.className = 'question-item p-4 border border-red-200 rounded-lg bg-white';
+                let optionsHtml = item.options.map(opt => createRadioOrCheckbox('checkbox', `ex6-${index}`, opt, opt, index)).join('</div><div class="flex flex-col">');
+                qDiv.innerHTML = `
+                    <p class="mb-2 font-medium">${index + 1}. ${item.question}</p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-2" id="ex6-options-${index}">${optionsHtml}</div>
+                     <span id="feedback-ex6-${index}" class="feedback block mt-2"></span>
+                `;
+                ex6Container.appendChild(qDiv);
+            });
+            document.getElementById('check-ex6').addEventListener('click', () => {
+                ex6_data.forEach((item, index) => {
+                    const feedbackEl = document.getElementById(`feedback-ex6-${index}`);
+                    const container = document.getElementById(`ex6-options-${index}`);
+                    const checkedBoxes = container.querySelectorAll('input:checked');
+                    let selectedAnswers = [];
+                    checkedBoxes.forEach(box => selectedAnswers.push(box.value));
+
+                    container.closest('.question-item').classList.remove('correct-answer', 'incorrect-answer');
+                    const isCorrect = selectedAnswers.length === item.answer.length && selectedAnswers.sort().every((value, i) => value === item.answer.sort()[i]);
+
+                    if (isCorrect) {
+                        feedbackEl.textContent = 'Correct!';
+                        feedbackEl.className = 'feedback correct block mt-2';
+                        container.closest('.question-item').classList.add('correct-answer');
+                    } else {
+                        feedbackEl.textContent = `Incorrect. The key words are: ${item.answer.join(', ')}.`;
+                        feedbackEl.className = 'feedback incorrect block mt-2';
+                        container.closest('.question-item').classList.add('incorrect-answer');
+                    }
+                });
+            });
+
+            // --- Exercise 7: Word Forms ---
+            const ex7Container = document.getElementById('ex7-questions');
+            ex7_data.forEach((item, index) => {
+                const qDiv = document.createElement('div');
+                qDiv.className = 'question-item p-4 border border-teal-200 rounded-lg bg-white';
+                let optionsHtml = item.options.map(opt => createRadioOrCheckbox('radio', `ex7-${index}`, opt, opt, index)).join('');
+                qDiv.innerHTML = `
+                    <p class="mb-2">${index + 1}. ${item.question}</p>
+                    <div class="flex items-center space-x-4">
+                        ${optionsHtml}
+                        <span id="feedback-ex7-${index}" class="feedback"></span>
+                    </div>
+                `;
+                ex7Container.appendChild(qDiv);
+            });
+            document.getElementById('check-ex7').addEventListener('click', () => checkRadioExercise(ex7_data, 'ex7'));
+
+            // --- Exercise 8: Matching Paraphrases ---
+            const ex8Container = document.getElementById('ex8-container');
+            const ex8Phrases = Object.keys(ex8_data);
+            const ex8Paraphrases = shuffleArray(Object.values(ex8_data));
+            ex8Phrases.forEach((phrase, index) => {
+                const row = document.createElement('div');
+                row.className = 'grid grid-cols-1 md:grid-cols-2 gap-4 items-center p-3 border border-orange-200 rounded-lg bg-white';
+                row.innerHTML = `
+                    <p class="font-semibold">${index+1}. ${phrase}</p>
+                    <div class="flex items-center">
+                        <select id="ex8-select-${index}" class="w-full p-2 border border-gray-300 rounded-md">
+                            <option value="">Select a paraphrase...</option>
+                            ${ex8Paraphrases.map(p => `<option value="${p}">${p}</option>`).join('')}
+                        </select>
+                        <span id="feedback-ex8-${index}" class="feedback ml-2"></span>
+                    </div>`;
+                ex8Container.appendChild(row);
+            });
+            document.getElementById('check-ex8').addEventListener('click', () => checkSelectExercise(ex8_data, 'ex8'));
+
+
+            // --- Exercise 9: Short Answer ---
+            const ex9Container = document.getElementById('ex9-questions');
+            ex9_data.forEach((item, index) => {
+                const qDiv = document.createElement('div');
+                qDiv.className = 'question-item grid grid-cols-1 md:grid-cols-2 gap-4 items-center p-3 border border-pink-200 rounded-lg bg-white';
+                qDiv.innerHTML = `
+                    <label for="q9-${index}">${index + 1}. ${item.question}</label>
+                    <div class="flex items-center">
+                        <input type="text" id="q9-${index}" class="w-full p-2 border border-gray-300 rounded-md">
+                        <span id="feedback-ex9-${index}" class="feedback"></span>
+                    </div>
+                `;
+                ex9Container.appendChild(qDiv);
+            });
+            document.getElementById('check-ex9').addEventListener('click', () => {
+                ex9_data.forEach((item, index) => {
+                    const inputEl = document.getElementById(`q9-${index}`);
+                    const feedbackEl = document.getElementById(`feedback-ex9-${index}`);
+                    const userAnswer = inputEl.value.trim().toLowerCase();
+                    const correctAnswer = item.answer.toLowerCase();
+
+                    inputEl.classList.remove('correct-answer', 'incorrect-answer');
+
+                    if (userAnswer === correctAnswer) {
+                        feedbackEl.textContent = 'Correct!';
+                        feedbackEl.className = 'feedback correct';
+                        inputEl.classList.add('correct-answer');
+                    } else {
+                        feedbackEl.textContent = `Incorrect. Answer: ${item.answer}`;
+                        feedbackEl.className = 'feedback incorrect';
+                        inputEl.classList.add('incorrect-answer');
+                    }
+                });
+            });
+            
+            // --- Exercise 10: Fill in the Blanks ---
+            const ex10Container = document.getElementById('ex10-container');
+            const ex10Sentences = Object.keys(ex10_data);
+            const ex10Answers = shuffleArray(Object.values(ex10_data));
+            ex10Sentences.forEach((sentence, index) => {
+                const row = document.createElement('div');
+                row.className = 'p-3 border border-gray-300 rounded-lg bg-white flex flex-wrap items-center';
+                row.innerHTML = `
+                    <span class="mr-2">${index + 1}. ${sentence.split('___')[0]}</span>
+                    <select id="ex10-select-${index}" class="mx-2 p-1 border border-gray-300 rounded-md">
+                        <option value="">Select...</option>
+                        ${ex10Answers.map(ans => `<option value="${ans}">${ans}</option>`).join('')}
+                    </select>
+                    <span>${sentence.split('___')[1]}</span>
+                    <span id="feedback-ex10-${index}" class="feedback ml-2"></span>`;
+                ex10Container.appendChild(row);
+            });
+            document.getElementById('check-ex10').addEventListener('click', () => checkSelectExercise(ex10_data, 'ex10'));
+
+        });
+    </script>
+</body>
+</html>

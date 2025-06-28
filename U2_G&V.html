@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindset for IELTS 1 - Unit 2 Grammar & Vocabulary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .question {
+            margin-bottom: 1rem;
+        }
+        .correct {
+            border-color: #10b981 !important;
+            background-color: #ecfdf5 !important;
+        }
+        .incorrect {
+            border-color: #ef4444 !important;
+            background-color: #fee2e2 !important;
+        }
+        select, input[type="text"] {
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            padding: 0.5rem;
+        }
+        .draggable {
+            cursor: move;
+            padding: 0.5rem 1rem;
+            background-color: #e5e7eb;
+            border-radius: 0.375rem;
+            margin: 0.25rem;
+            display: inline-block;
+            user-select: none;
+        }
+        .drop-zone {
+            border: 2px dashed #d1d5db;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            min-height: 50px;
+            transition: background-color 0.2s;
+        }
+        .drop-zone.drag-over {
+            background-color: #d1d5db;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .btn-primary {
+            background-color: #4f46e5;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #4338ca;
+        }
+         .btn-tertiary {
+            background-color: #d1d5db;
+            color: #1f2937;
+        }
+        .btn-tertiary:hover {
+            background-color: #9ca3af;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-2">Mindset for IELTS 1</h1>
+            <h2 class="text-xl sm:text-2xl text-gray-600">Unit 2: Grammar & Vocabulary</h2>
+        </header>
+
+        <!-- Exercise 1 -->
+        <section id="ex1" class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Exercise 1: Complete the sentences</h2>
+            <p class="mb-4 text-gray-600">Complete the sentences. Use the words in the box.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="question">1. A <select id="q1-1" class=""><option value="">...</option><option>crowded</option><option>fashionable</option><option>historic</option><option>leafy</option><option>modern</option><option>noisy</option><option>quiet</option><option>remote</option></select> part of town is full of people.</div>
+                <div class="question">2. A <select id="q1-2" class=""><option value="">...</option><option>crowded</option><option>fashionable</option><option>historic</option><option>leafy</option><option>modern</option><option>noisy</option><option>quiet</option><option>remote</option></select> village is a long way from any towns or cities.</div>
+                <div class="question">3. A <select id="q1-3" class=""><option value="">...</option><option>crowded</option><option>fashionable</option><option>historic</option><option>leafy</option><option>modern</option><option>noisy</option><option>quiet</option><option>remote</option></select> part of town is pleasant and has a lot of trees.</div>
+                <div class="question">4. A <select id="q1-4" class=""><option value="">...</option><option>crowded</option><option>fashionable</option><option>historic</option><option>leafy</option><option>modern</option><option>noisy</option><option>quiet</option><option>remote</option></select> part of town is popular.</div>
+                <div class="question">5. A <select id="q1-5" class=""><option value="">...</option><option>crowded</option><option>fashionable</option><option>historic</option><option>leafy</option><option>modern</option><option>noisy</option><option>quiet</option><option>remote</option></select> part of town doesn’t have many people or cars.</div>
+                <div class="question">6. A <select id="q1-6" class=""><option value="">...</option><option>crowded</option><option>fashionable</option><option>historic</option><option>leafy</option><option>modern</option><option>noisy</option><option>quiet</option><option>remote</option></select> street is very loud, so it might be difficult to sleep if you live there.</div>
+                <div class="question">7. A <select id="q1-7" class=""><option value="">...</option><option>crowded</option><option>fashionable</option><option>historic</option><option>leafy</option><option>modern</option><option>noisy</option><option>quiet</option><option>remote</option></select> part of town is very new.</div>
+                <div class="question">8. A <select id="q1-8" class=""><option value="">...</option><option>crowded</option><option>fashionable</option><option>historic</option><option>leafy</option><option>modern</option><option>noisy</option><option>quiet</option><option>remote</option></select> area of town is old and has important buildings in it.</div>
+            </div>
+            <button class="btn btn-primary mt-6 check-btn" data-exercise="ex1">Check Exercise 1</button>
+        </section>
+
+        <!-- Exercise 2 -->
+        <section id="ex2" class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-blue-600 mb-4">Exercise 2: Complete the sentences</h2>
+            <p class="mb-4 text-gray-600">Complete the sentences. Use the phrases in the box.</p>
+            <div class="space-y-4">
+                 <div class="question">1. I come from a tourist town by <select id="q2-1"><option value="">...</option><option>a village</option><option>the city centre</option><option>the coast</option><option>the countryside</option><option>the outskirts of</option><option>the seaside</option><option>the south of</option><option>the suburbs</option></select>. Every summer the beach is full of visitors.</div>
+                <div class="question">2. My house is in <select id="q2-2"><option value="">...</option><option>a village</option><option>the city centre</option><option>the coast</option><option>the countryside</option><option>the outskirts of</option><option>the seaside</option><option>the south of</option><option>the suburbs</option></select>, so it’s part of the city but away from the city centre.</div>
+                <div class="question">3. We live on <select id="q2-3"><option value="">...</option><option>a village</option><option>the city centre</option><option>the coast</option><option>the countryside</option><option>the outskirts of</option><option>the seaside</option><option>the south of</option><option>the suburbs</option></select> the city – it takes just five minutes to walk from our house to the countryside.</div>
+                <div class="question">4. I’d love to live in <select id="q2-4"><option value="">...</option><option>a village</option><option>the city centre</option><option>the coast</option><option>the countryside</option><option>the outskirts of</option><option>the seaside</option><option>the south of</option><option>the suburbs</option></select>, away from all the noise and traffic of the city.</div>
+                <div class="question">5. Our house is in <select id="q2-5"><option value="">...</option><option>a village</option><option>the city centre</option><option>the coast</option><option>the countryside</option><option>the outskirts of</option><option>the seaside</option><option>the south of</option><option>the suburbs</option></select> in the mountains. There are only about 30 houses and two shops.</div>
+                <div class="question">6. The city where I was born is on <select id="q2-6"><option value="">...</option><option>a village</option><option>the city centre</option><option>the coast</option><option>the countryside</option><option>the outskirts of</option><option>the seaside</option><option>the south of</option><option>the suburbs</option></select>. There are always a lot of ships from around the world in the port.</div>
+                <div class="question">7. I live in <select id="q2-7"><option value="">...</option><option>a village</option><option>the city centre</option><option>the coast</option><option>the countryside</option><option>the outskirts of</option><option>the seaside</option><option>the south of</option><option>the suburbs</option></select>, which is great. It means that I can walk to restaurants, cinemas and museums.</div>
+                <div class="question">8. My town is in <select id="q2-8"><option value="">...</option><option>a village</option><option>the city centre</option><option>the coast</option><option>the countryside</option><option>the outskirts of</option><option>the seaside</option><option>the south of</option><option>the suburbs</option></select> my country, not far from the mountains.</div>
+            </div>
+            <button class="btn btn-primary mt-6 check-btn" data-exercise="ex2">Check Exercise 2</button>
+        </section>
+
+        <!-- Exercise 3 -->
+        <section id="ex3" class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-green-600 mb-4">Exercise 3: Choose the correct verbs</h2>
+            <p class="mb-4 text-gray-600 leading-loose">
+                When I was a teenager, I didn’t like living with my parents, so I <select id="q3-1"><option>...</option><option>left</option><option>moved</option><option>lived</option></select> home when I was 20 years old. At first, I <select id="q3-2"><option>...</option><option>rented</option><option>bought</option><option>borrowed</option></select> a room in a flat. I didn’t live there alone – I <select id="q3-3"><option>...</option><option>paid</option><option>lent</option><option>shared</option></select> the flat with three other people. It was horrible. The other people never cleaned the flat, and we had a lot of arguments. So I moved <select id="q3-4"><option>...</option><option>alone</option><option>out</option><option>in</option></select> after a couple of weeks and <select id="q3-5"><option>...</option><option>caught</option><option>stayed</option><option>gave</option></select> with some friends for about a week. Then I moved <select id="q3-6"><option>...</option><option>in</option><option>on</option><option>across</option></select> with my brother and his family. They <select id="q3-7"><option>...</option><option>help</option><option>owned</option><option>owed</option></select> a big house in the suburbs. I lived with them for about six months, but then they <select id="q3-8"><option>...</option><option>left</option><option>moved</option><option>chose</option></select> house and went to live in a different city. So I had to find a new place to live. In the end, I moved <select id="q3-9"><option>...</option><option>about</option><option>back</option><option>between</option></select> in with my parents. It’s much nicer now than when I first lived here. But now I’m saving money to <select id="q3-10"><option>...</option><option>buy</option><option>become</option><option>earn</option></select> a flat – hopefully I’ll have enough money in a few years.
+            </p>
+            <button class="btn btn-primary mt-6 check-btn" data-exercise="ex3">Check Exercise 3</button>
+        </section>
+        
+        <!-- Exercise 4 -->
+        <section id="ex4" class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-purple-600 mb-4">Exercise 4: Categorise the words</h2>
+            <p class="mb-4 text-gray-600">Drag and drop the words into the correct categories.</p>
+            <div id="ex4-words" class="p-4 bg-gray-100 rounded-lg mb-4 flex flex-wrap justify-center">
+                <!-- Draggable words will be added by JS -->
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <h4 class="font-semibold text-center mb-2">places to live</h4>
+                    <div id="cat-live" class="drop-zone" data-category="live"></div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-center mb-2">places to buy things</h4>
+                    <div id="cat-buy" class="drop-zone" data-category="buy"></div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-center mb-2">places to relax and have fun</h4>
+                    <div id="cat-fun" class="drop-zone" data-category="fun"></div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-center mb-2">places to learn about your city’s past</h4>
+                    <div id="cat-past" class="drop-zone" data-category="past"></div>
+                </div>
+            </div>
+            <button class="btn btn-primary mt-6 check-btn" data-exercise="ex4">Check Exercise 4</button>
+        </section>
+
+        <!-- Exercise 5 -->
+        <section id="ex5" class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
+             <h2 class="text-2xl font-semibold text-yellow-600 mb-4">Exercise 5: Choose the correct option</h2>
+             <div class="space-y-4">
+                <div class="question">1. A cottage is <select id="q5-1"><option>...</option><option>a modern house in a city</option><option>a small house, usually in the countryside</option></select>.</div>
+                <div class="question">2. A neighbourhood is a part of a town or city where people <select id="q5-2"><option>...</option><option>live</option><option>work</option></select>.</div>
+                <div class="question">3. A stream is a very <select id="q5-3"><option>...</option><option>small river</option><option>wide river</option></select>.</div>
+                <div class="question">4. A pond is an extremely small <select id="q5-4"><option>...</option><option>forest</option><option>lake</option></select>.</div>
+                <div class="question">5. A path is a narrow road for <select id="q5-5"><option>...</option><option>cars to drive along</option><option>people to walk along</option></select>.</div>
+                <div class="question">6. A town is <select id="q5-6"><option>...</option><option>bigger than a city</option><option>bigger than a village, but not as big as a city</option></select>.</div>
+                <div class="question">7. A hill is <select id="q5-7"><option>...</option><option>higher</option><option>lower</option></select> than a mountain and easier to climb.</div>
+                <div class="question">8. A wood is a <select id="q5-8"><option>...</option><option>group of trees</option><option>large lake</option></select>.</div>
+             </div>
+             <button class="btn btn-primary mt-6 check-btn" data-exercise="ex5">Check Exercise 5</button>
+        </section>
+
+        <!-- Exercise 6 -->
+        <section id="ex6" class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-red-600 mb-4">Exercise 6: Past Simple (Regular Verbs)</h2>
+            <p class="mb-4 text-gray-600">Complete the sentences with the past simple of the verbs in brackets.</p>
+            <div class="space-y-4">
+                 <div class="question">1. It was a beautiful evening, so we <input type="text" id="q6-1" placeholder="walk"> along the beach.</div>
+                 <div class="question">2. I was born in Spain, but my parents <input type="text" id="q6-2" placeholder="move"> to Switzerland when I was a baby.</div>
+                 <div class="question">3. Last week, we <input type="text" id="q6-3" placeholder="visit"> the History Museum. It was really interesting.</div>
+                 <div class="question">4. We <input type="text" id="q6-4" placeholder="plan"> to spend our holiday in the countryside.</div>
+                 <div class="question">5. There isn’t a university in my town, so I <input type="text" id="q6-5" placeholder="study"> in a big city.</div>
+                 <div class="question">6. I <input type="text" id="q6-6" placeholder="enjoy"> my trip to London, but there were a lot of tourists everywhere.</div>
+                 <div class="question">7. We went to the theatre every week, but we <input type="text" id="q6-7" placeholder="stop"> going after we moved to the suburbs.</div>
+                 <div class="question">8. I <input type="text" id="q6-8" placeholder="try"> to contact you, but our phones didn’t work.</div>
+                 <div class="question">9. We <input type="text" id="q6-9" placeholder="stay"> in a lovely guest house by the seaside.</div>
+                 <div class="question">10. My parents loved it, but I <input type="text" id="q6-10" placeholder="prefer"> living in the city.</div>
+            </div>
+            <button class="btn btn-primary mt-6 check-btn" data-exercise="ex6">Check Exercise 6</button>
+        </section>
+        
+        <!-- Exercise 7 -->
+        <section id="ex7" class="mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-teal-600 mb-4">Exercise 7: Correct the sentences</h2>
+             <p class="mb-4 text-gray-600">Change the irregular verbs from the present simple to the past simple.</p>
+             <div class="space-y-4">
+                <div class="question">1. My parents <strong class="text-indigo-600">buy</strong> their house 20 years ago. <br><input class="w-full mt-1" type="text" id="q7-1" placeholder="Rewrite the full sentence..."></div>
+                <div class="question">2. It <strong class="text-indigo-600">is</strong> quite expensive, but the bank <strong class="text-indigo-600">lends</strong> them half the money so they <strong class="text-indigo-600">can</strong> afford to buy it. <br><input class="w-full mt-1" type="text" id="q7-2" placeholder="Rewrite the full sentence..."></div>
+                <div class="question">3. It <strong class="text-indigo-600">is</strong> a small house, but it <strong class="text-indigo-600">feels</strong> OK when my brother and I <strong class="text-indigo-600">are</strong> children. <br><input class="w-full mt-1" type="text" id="q7-3" placeholder="Rewrite the full sentence..."></div>
+                <div class="question">4. But as we <strong class="text-indigo-600">grow</strong> older, the house <strong class="text-indigo-600">becomes</strong> too small. <br><input class="w-full mt-1" type="text" id="q7-4" placeholder="Rewrite the full sentence..."></div>
+                <div class="question">5. After about ten years, my parents <strong class="text-indigo-600">build</strong> a new room at the back of the house. <br><input class="w-full mt-1" type="text" id="q7-5" placeholder="Rewrite the full sentence..."></div>
+                <div class="question">6. But then my brother <strong class="text-indigo-600">leaves</strong> home and the house <strong class="text-indigo-600">is</strong> too big again! <br><input class="w-full mt-1" type="text" id="q7-6" placeholder="Rewrite the full sentence..."></div>
+                <div class="question">7. House prices then <strong class="text-indigo-600">rise</strong> very quickly. <br><input class="w-full mt-1" type="text" id="q7-7" placeholder="Rewrite the full sentence..."></div>
+                <div class="question">8. So when my parents <strong class="text-indigo-600">sell</strong> their house last year, they <strong class="text-indigo-600">make</strong> a lot of money. <br><input class="w-full mt-1" type="text" id="q7-8" placeholder="Rewrite the full sentence..."></div>
+             </div>
+             <button class="btn btn-primary mt-6 check-btn" data-exercise="ex7">Check Exercise 7</button>
+        </section>
+
+        <!-- Exercise 8 -->
+        <section id="ex8" class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-orange-600 mb-4">Exercise 8: Past Simple Negative</h2>
+            <p class="mb-4 text-gray-600">Complete the sentences with the past simple negative form of the verbs in brackets.</p>
+            <div class="space-y-4">
+                 <div class="question">1. We couldn’t (can) find their house for hours. It was in the middle of nowhere.</div>
+                 <div class="question">2. I <input type="text" id="q8-1" placeholder="like"> living in the city centre – it was too crowded.</div>
+                 <div class="question">3. Our old flat <input type="text" id="q8-2" placeholder="have"> a balcony, but our new flat’s got one.</div>
+                 <div class="question">4. There <input type="text" id="q8-3" placeholder="be"> many other children in the part of town where I grew up.</div>
+                 <div class="question">5. I <input type="text" id="q8-4" placeholder="see"> my grandparents often when I was young because they lived a long way away.</div>
+                 <div class="question">6. We <input type="text" id="q8-5" placeholder="need"> a car when we lived in the city.</div>
+                 <div class="question">7. It <input type="text" id="q8-6" placeholder="be"> a very fashionable neighbourhood, but I liked living there.</div>
+            </div>
+            <button class="btn btn-primary mt-6 check-btn" data-exercise="ex8">Check Exercise 8</button>
+        </section>
+        
+        <!-- Exercise 10 (Putting 10 before 9 for better flow) -->
+        <section id="ex10" class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-pink-600 mb-4">Exercise 10: Match questions and answers</h2>
+            <p class="mb-4 text-gray-600">Match the answers with the questions.</p>
+            <div class="space-y-4">
+                <div class="question">Where did you live when you were a child? <select id="q10-1" class="max-w-lg mt-1"><option value="">...</option><option value="a">I left home because I went to study at university.</option><option value="b">I lived in a small mountain village.</option><option value="c">I was 18.</option><option value="d">No, I couldn’t. It was too far away.</option><option value="e">There weren’t many other children, so sometimes I felt quite lonely.</option><option value="f">Yes, I did. It was a lovely place to live.</option><option value="g">Yes, it was. It was very safe.</option></select></div>
+                <div class="question">Did you enjoy living there? <select id="q10-2" class="max-w-lg mt-1"><option value="">...</option><option value="a">I left home because I went to study at university.</option><option value="b">I lived in a small mountain village.</option><option value="c">I was 18.</option><option value="d">No, I couldn’t. It was too far away.</option><option value="e">There weren’t many other children, so sometimes I felt quite lonely.</option><option value="f">Yes, I did. It was a lovely place to live.</option><option value="g">Yes, it was. It was very safe.</option></select></div>
+                <div class="question">What didn’t you like about it? <select id="q10-3" class="max-w-lg mt-1"><option value="">...</option><option value="a">I left home because I went to study at university.</option><option value="b">I lived in a small mountain village.</option><option value="c">I was 18.</option><option value="d">No, I couldn’t. It was too far away.</option><option value="e">There weren’t many other children, so sometimes I felt quite lonely.</option><option value="f">Yes, I did. It was a lovely place to live.</option><option value="g">Yes, it was. It was very safe.</option></select></div>
+                <div class="question">Could you walk to school from your house? <select id="q10-4" class="max-w-lg mt-1"><option value="">...</option><option value="a">I left home because I went to study at university.</option><option value="b">I lived in a small mountain village.</option><option value="c">I was 18.</option><option value="d">No, I couldn’t. It was too far away.</option><option value="e">There weren’t many other children, so sometimes I felt quite lonely.</option><option value="f">Yes, I did. It was a lovely place to live.</option><option value="g">Yes, it was. It was very safe.</option></select></div>
+                <div class="question">Was it a good place to grow up? <select id="q10-5" class="max-w-lg mt-1"><option value="">...</option><option value="a">I left home because I went to study at university.</option><option>I lived in a small mountain village.</option><option value="c">I was 18.</option><option value="d">No, I couldn’t. It was too far away.</option><option value="e">There weren’t many other children, so sometimes I felt quite lonely.</option><option value="f">Yes, I did. It was a lovely place to live.</option><option value="g">Yes, it was. It was very safe.</option></select></div>
+                <div class="question">How old were you when you left home? <select id="q10-6" class="max-w-lg mt-1"><option value="">...</option><option value="a">I left home because I went to study at university.</option><option value="b">I lived in a small mountain village.</option><option value="c">I was 18.</option><option value="d">No, I couldn’t. It was too far away.</option><option value="e">There weren’t many other children, so sometimes I felt quite lonely.</option><option value="f">Yes, I did. It was a lovely place to live.</option><option value="g">Yes, it was. It was very safe.</option></select></div>
+                <div class="question">Why did you leave home? <select id="q10-7" class="max-w-lg mt-1"><option value="">...</option><option value="a">I left home because I went to study at university.</option><option value="b">I lived in a small mountain village.</option><option value="c">I was 18.</option><option value="d">No, I couldn’t. It was too far away.</option><option value="e">There weren’t many other children, so sometimes I felt quite lonely.</option><option value="f">Yes, I did. It was a lovely place to live.</option><option value="g">Yes, it was. It was very safe.</option></select></div>
+            </div>
+            <button class="btn btn-primary mt-6 check-btn" data-exercise="ex10">Check Exercise 10</button>
+        </section>
+
+        <div class="text-center mt-8 mb-4">
+            <button id="reset" class="btn btn-tertiary">Reset All Exercises</button>
+        </div>
+    </div>
+
+    <script>
+        // --- DATA ---
+        const answers = {
+            ex1: { 'q1-1': 'crowded', 'q1-2': 'remote', 'q1-3': 'leafy', 'q1-4': 'fashionable', 'q1-5': 'quiet', 'q1-6': 'noisy', 'q1-7': 'modern', 'q1-8': 'historic' },
+            ex2: { 'q2-1': 'the seaside', 'q2-2': 'the suburbs', 'q2-3': 'the outskirts of', 'q2-4': 'the countryside', 'q2-5': 'a village', 'q2-6': 'the coast', 'q2-7': 'the city centre', 'q2-8': 'the south of' },
+            ex3: { 'q3-1': 'left', 'q3-2': 'rented', 'q3-3': 'shared', 'q3-4': 'out', 'q3-5': 'stayed', 'q3-6': 'in', 'q3-7': 'owned', 'q3-8': 'moved', 'q3-9': 'back', 'q3-10': 'buy' },
+            ex4: {
+                words: [
+                    {text: 'leisure centre', category: 'fun'}, {text: 'library', category: 'fun'},
+                    {text: 'tower block', category: 'live'}, {text: 'shopping centre', category: 'buy'},
+                    {text: 'retail park', category: 'buy'}, {text: 'cinema', category: 'fun'},
+                    {text: 'museum', category: 'past'}, {text: 'historic castle', category: 'past'},
+                    {text: 'theatre', category: 'fun'}, {text: 'department store', category: 'buy'},
+                    {text: 'residential area', category: 'live'}, {text: 'housing estate', category: 'live'}
+                ]
+            },
+            ex5: { 'q5-1': 'a small house, usually in the countryside', 'q5-2': 'live', 'q5-3': 'small river', 'q5-4': 'lake', 'q5-5': 'people to walk along', 'q5-6': 'bigger than a village, but not as big as a city', 'q5-7': 'lower', 'q5-8': 'group of trees' },
+            ex6: { 'q6-1': 'walked', 'q6-2': 'moved', 'q6-3': 'visited', 'q6-4': 'planned', 'q6-5': 'studied', 'q6-6': 'enjoyed', 'q6-7': 'stopped', 'q6-8': 'tried', 'q6-9': 'stayed', 'q6-10': 'preferred' },
+            ex7: { 
+                'q7-1': 'My parents bought their house 20 years ago.',
+                'q7-2': 'It was quite expensive, but the bank lent them half the money so they could afford to buy it.',
+                'q7-3': 'It was a small house, but it felt OK when my brother and I were children.',
+                'q7-4': 'But as we grew older, the house became too small.',
+                'q7-5': 'After about ten years, my parents built a new room at the back of the house.',
+                'q7-6': 'But then my brother left home and the house was too big again!',
+                'q7-7': 'House prices then rose very quickly.',
+                'q7-8': 'So when my parents sold their house last year, they made a lot of money.'
+            },
+            ex8: { 'q8-1': "didn't like", 'q8-2': "didn't have", 'q8-3': "weren't", 'q8-4': "didn't see", 'q8-5': "didn't need", 'q8-6': "wasn't" },
+            ex10: { 'q10-1': 'b', 'q10-2': 'f', 'q10-3': 'e', 'q10-4': 'd', 'q10-5': 'g', 'q10-6': 'c', 'q10-7': 'a' }
+        };
+
+        // --- UTILITY FUNCTIONS ---
+        function checkAnswer(element, correctAnswer) {
+            const userAnswer = element.value.trim().toLowerCase();
+            correctAnswer = correctAnswer.toLowerCase();
+            element.classList.remove('correct', 'incorrect');
+            if (userAnswer === '') return;
+            if (userAnswer === correctAnswer) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+        
+        function checkSentenceRewrite(element, correctSentence) {
+            const userSentence = element.value.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/\s{2,}/g," ");
+            element.classList.remove('correct', 'incorrect');
+            if (userSentence === '') return;
+            
+            const simplifiedCorrect = correctSentence.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/\s{2,}/g," ");
+
+            if(userSentence === simplifiedCorrect){
+                 element.classList.add('correct');
+            } else {
+                 element.classList.add('incorrect');
+            }
+        }
+        
+        function resetAll() {
+            document.querySelectorAll('select, input[type="text"]').forEach(el => {
+                el.value = el.tagName === 'SELECT' ? '' : '';
+                el.classList.remove('correct', 'incorrect');
+            });
+            // Reset drag and drop
+            setupEx4();
+        }
+
+        // --- EVENT LISTENERS ---
+        function checkExercise(exerciseId) {
+             const exerciseAnswers = answers[exerciseId];
+             if (!exerciseAnswers) return;
+
+             switch(exerciseId) {
+                case 'ex1':
+                case 'ex2':
+                case 'ex3':
+                case 'ex5':
+                case 'ex6':
+                case 'ex8':
+                case 'ex10':
+                     Object.keys(exerciseAnswers).forEach(id => checkAnswer(document.getElementById(id), exerciseAnswers[id]));
+                     break;
+                case 'ex7':
+                     Object.keys(exerciseAnswers).forEach(id => checkSentenceRewrite(document.getElementById(id), exerciseAnswers[id]));
+                     break;
+                case 'ex4':
+                     document.querySelectorAll('#ex4 .drop-zone').forEach(zone => {
+                        const category = zone.dataset.category;
+                        zone.querySelectorAll('.draggable').forEach(wordEl => {
+                             wordEl.classList.remove('correct', 'incorrect');
+                             const wordData = answers.ex4.words.find(w => w.text === wordEl.textContent);
+                             if (wordData && wordData.category === category) {
+                                 wordEl.classList.add('correct');
+                             } else {
+                                 wordEl.classList.add('incorrect');
+                             }
+                        });
+                    });
+                    break;
+             }
+        }
+
+        document.querySelectorAll('.check-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const exerciseId = e.target.dataset.exercise;
+                checkExercise(exerciseId);
+            });
+        });
+
+        document.getElementById('reset').addEventListener('click', resetAll);
+        
+        
+        // --- DRAG & DROP LOGIC FOR EXERCISE 4 ---
+        let draggedItem = null;
+
+        function addDragListeners(item) {
+            item.addEventListener('dragstart', (e) => {
+                draggedItem = item;
+                setTimeout(() => item.style.display = 'none', 0);
+            });
+
+            item.addEventListener('dragend', () => {
+                setTimeout(() => {
+                    draggedItem.style.display = 'inline-block';
+                    draggedItem = null;
+                }, 0);
+            });
+        }
+        
+        function setupEx4() {
+            const wordsContainer = document.getElementById('ex4-words');
+            wordsContainer.innerHTML = ''; // Clear previous words
+            document.querySelectorAll('.drop-zone').forEach(zone => zone.innerHTML = '');
+
+            // Shuffle words for variety
+            const shuffledWords = answers.ex4.words.map(value => ({ value, sort: Math.random() }))
+                                                   .sort((a, b) => a.sort - b.sort)
+                                                   .map(({ value }) => value);
+
+            shuffledWords.forEach(word => {
+                const wordEl = document.createElement('div');
+                wordEl.className = 'draggable';
+                wordEl.textContent = word.text;
+                wordEl.setAttribute('draggable', 'true');
+                addDragListeners(wordEl);
+                wordsContainer.appendChild(wordEl);
+            });
+        }
+        
+        document.querySelectorAll('.drop-zone').forEach(zone => {
+            zone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                zone.classList.add('drag-over');
+            });
+            zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+            zone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                zone.classList.remove('drag-over');
+                if (draggedItem) {
+                    zone.appendChild(draggedItem);
+                }
+            });
+        });
+
+        // Initial setup on page load
+        window.onload = () => {
+            setupEx4();
+        }
+
+    </script>
+</body>
+</html>
