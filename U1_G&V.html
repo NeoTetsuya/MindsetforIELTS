@@ -67,16 +67,17 @@
         </header>
 
         <nav id="exercise-nav" class="flex flex-wrap justify-center gap-2 mb-8">
-            <button class="nav-btn" data-target="ex1">Ex 1</button>
-            <button class="nav-btn" data-target="ex2">Ex 2</button>
-            <button class="nav-btn" data-target="ex3">Ex 3</button>
-            <button class="nav-btn" data-target="ex4">Ex 4</button>
-            <button class="nav-btn" data-target="ex5">Ex 5</button>
-            <button class="nav-btn" data-target="ex6">Ex 6</button>
-            <button class="nav-btn" data-target="ex7">Ex 7</button>
-            <button class="nav-btn" data-target="ex8">Ex 8</button>
-            <button class="nav-btn" data-target="ex9">Ex 9</button>
-            <button class="nav-btn" data-target="ex10">Ex 10</button>
+            <button class="nav-btn" data-target="all">All</button>
+            <button class="nav-btn" data-target="ex1">1</button>
+            <button class="nav-btn" data-target="ex2">2</button>
+            <button class="nav-btn" data-target="ex3">3</button>
+            <button class="nav-btn" data-target="ex4">4</button>
+            <button class="nav-btn" data-target="ex5">5</button>
+            <button class="nav-btn" data-target="ex6">6</button>
+            <button class="nav-btn" data-target="ex7">7</button>
+            <button class="nav-btn" data-target="ex8">8</button>
+            <button class="nav-btn" data-target="ex9">9</button>
+            <button class="nav-btn" data-target="ex10">10</button>
         </nav>
 
         <div id="worksheet">
@@ -360,27 +361,25 @@
             const navButtons = navContainer.querySelectorAll('.nav-btn');
 
             function showExercise(targetKey) {
-                // Hide all sections
-                exerciseSections.forEach(section => {
-                    section.classList.add('hidden');
-                });
-
-                // Deactivate all buttons
+                // Deactivate all buttons first
                 navButtons.forEach(button => {
                     button.classList.remove('active');
                 });
 
-                // Show target section
-                const targetSection = document.getElementById(`exercise-section-${targetKey}`);
-                if(targetSection) {
-                    targetSection.classList.remove('hidden');
-                }
-
-                // Activate target button
+                // Then activate the clicked one
                 const targetButton = navContainer.querySelector(`[data-target="${targetKey}"]`);
-                 if(targetButton) {
+                if (targetButton) {
                     targetButton.classList.add('active');
                 }
+
+                // Now handle section visibility
+                exerciseSections.forEach(section => {
+                    if (targetKey === 'all' || section.id === `exercise-section-${targetKey}`) {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
             }
 
             navContainer.addEventListener('click', function(event) {
