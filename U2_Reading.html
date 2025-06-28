@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindset for IELTS 1 - Unit 2 Reading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .exercise-wrapper {
+            /* This class will be used to hide/show exercises */
+        }
+        .exercise-container {
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .exercise-header {
+            padding: 1rem 1.5rem;
+            background-color: #f8fafc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .exercise-content {
+            padding: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        .info-box {
+            background-color: #eef2ff;
+            border-left: 4px solid #4f46e5;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0.25rem;
+            font-style: italic;
+        }
+        .draggable {
+            cursor: move;
+            user-select: none;
+        }
+        .drop-zone {
+            border: 2px dashed #cbd5e1;
+            min-height: 50px;
+            transition: background-color 0.3s;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+        }
+        .drop-zone.drag-over {
+            background-color: #e0e7ff;
+        }
+        .feedback {
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+        .correct {
+            color: #16a34a;
+        }
+        .incorrect {
+            color: #dc2626;
+        }
+        .correct-answer-text {
+             color: #1d4ed8;
+             font-weight: 500;
+        }
+        input[type="text"], select {
+            border: 1px solid #cbd5e1;
+            border-radius: 0.375rem;
+            padding: 0.5rem 0.75rem;
+            width: auto;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            transform: scale(1);
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        .btn-primary {
+            background-color: #4f46e5;
+            box-shadow: 0 4px 14px 0 rgb(79 70 229 / 39%);
+        }
+        .btn-primary:hover {
+            background-color: #4338ca;
+        }
+        .btn-secondary {
+            background-color: #64748b;
+             box-shadow: 0 4px 14px 0 rgb(100 116 139 / 39%);
+        }
+        .btn-secondary:hover {
+            background-color: #475569;
+        }
+        .nav-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        .nav-btn.active {
+            background-color: #4f46e5;
+            color: white;
+            box-shadow: 0 4px 14px 0 rgb(79 70 229 / 39%);
+        }
+        .nav-btn:not(.active) {
+            background-color: #fff;
+            color: #4f46e5;
+            border-color: #e2e8f0;
+        }
+        .nav-btn:not(.active):hover {
+            background-color: #eef2ff;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-4">Mindset for IELTS 1</h1>
+            <p class="text-xl text-gray-600 mt-2">Unit 2 Reading: Bringing the mammoth back to life</p>
+        </header>
+
+        <!-- Navigation Bar -->
+        <nav id="exercise-nav" class="flex flex-wrap justify-center gap-2 mb-8">
+            <button class="nav-btn" onclick="showExercise(1)">Ex 1</button>
+            <button class="nav-btn" onclick="showExercise(2)">Ex 2</button>
+            <button class="nav-btn" onclick="showExercise(3)">Ex 3</button>
+            <button class="nav-btn" onclick="showExercise(4)">Ex 4</button>
+            <button class="nav-btn" onclick="showExercise(5)">Ex 5</button>
+            <button class="nav-btn" onclick="showExercise(6)">Ex 6</button>
+            <button class="nav-btn" onclick="showExercise(7)">Ex 7</button>
+            <button class="nav-btn" onclick="showExercise(8)">Ex 8</button>
+            <button class="nav-btn" onclick="showExercise(9)">Ex 9</button>
+            <button class="nav-btn" onclick="showExercise(10)">Ex 10</button>
+        </nav>
+        
+        <main id="worksheet">
+
+            <!-- Exercise 1 -->
+            <div id="exercise-1" class="exercise-wrapper">
+                <div class="exercise-container">
+                    <div class="exercise-header">
+                        <h2 class="text-2xl font-semibold text-indigo-600">Exercise 1: What do you know?</h2>
+                    </div>
+                    <div class="exercise-content">
+                        <p class="mb-4">In this unit, you will answer IELTS Reading sentence completion questions and read a text about mammoths. What do you already know about mammoths? Choose the correct answers.</p>
+                        <div id="ex1-questions" class="space-y-4">
+                            <div>
+                                <p class="font-medium">1. Mammoths had ... .</p>
+                                <div class="space-y-2 mt-2">
+                                    <label class="flex items-center"><input type="radio" name="q1" value="a" class="mr-2"> no fur and long tusks</label>
+                                    <label class="flex items-center"><input type="radio" name="q1" value="b" class="mr-2"> orange-brown fur and long tusks</label>
+                                    <label class="flex items-center"><input type="radio" name="q1" value="c" class="mr-2"> orange-brown fur and short tusks</label>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="font-medium">2. The last mammoths were alive about ... .</p>
+                                <div class="space-y-2 mt-2">
+                                    <label class="flex items-center"><input type="radio" name="q2" value="a" class="mr-2"> 4,000 years ago</label>
+                                    <label class="flex items-center"><input type="radio" name="q2" value="b" class="mr-2"> 7,000 years ago</label>
+                                    <label class="flex items-center"><input type="radio" name="q2" value="c" class="mr-2"> 10,000 years ago</label>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="font-medium">3. People have found many bodies of mammoths ... .</p>
+                                <div class="space-y-2 mt-2">
+                                    <label class="flex items-center"><input type="radio" name="q3" value="a" class="mr-2"> at the bottom of lakes in Europe</label>
+                                    <label class="flex items-center"><input type="radio" name="q3" value="b" class="mr-2"> in the desert in Australia</label>
+                                    <label class="flex items-center"><input type="radio" name="q3" value="c" class="mr-2"> in the ice in Siberia</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="ex1-feedback" class="mt-4"></div>
+                        <button class="btn btn-primary mt-4" onclick="checkEx1()">Check Answers</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exercise 2 -->
+             <div id="exercise-2" class="exercise-wrapper">
+                <div class="exercise-container">
+                    <div class="exercise-header">
+                        <h2 class="text-2xl font-semibold text-indigo-600">Exercise 2: Predicting content</h2>
+                    </div>
+                    <div class="exercise-content">
+                        <p class="mb-4">The title of the text about mammoths is called ‘Bringing the mammoth back to life’. What do you think the text might be about? Choose the best option.</p>
+                        <div id="ex2-questions" class="space-y-2">
+                            <label class="flex items-center"><input type="radio" name="q_ex2" value="a" class="mr-2"> a scientific study of the way mammoths used to behave</label>
+                            <label class="flex items-center"><input type="radio" name="q_ex2" value="b" class="mr-2"> methods for transporting mammoth skeletons to museums in different countries</label>
+                            <label class="flex items-center"><input type="radio" name="q_ex2" value="c" class="mr-2"> the idea that mammoths might be created again in the future</label>
+                        </div>
+                        <div id="ex2-feedback" class="mt-4"></div>
+                        <button class="btn btn-primary mt-4" onclick="checkEx2()">Check Answer</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exercise 3 -->
+            <div id="exercise-3" class="exercise-wrapper">
+                <div class="exercise-container">
+                    <div class="exercise-header">
+                        <h2 class="text-2xl font-semibold text-indigo-600">Exercise 3: Understanding the main idea</h2>
+                    </div>
+                    <div class="exercise-content">
+                        <p class="mb-4">Read the first paragraph of the text. Try to focus only on the main words. Choose the correct answer.</p>
+                        <div class="bg-gray-100 p-4 rounded-lg mb-4">
+                            <h3 class="font-bold text-lg mb-2">Bringing the mammoth back to life</h3>
+                            <p><b>Mammoths</b> once <b>lived</b> in <b>large numbers</b> across <b>Asia</b>, <b>Africa</b>, <b>North America</b> and <b>Europe</b>. However, over time, their <b>numbers fell</b> until the <b>mammoth</b> became <b>extinct</b>. <b>Scientists think</b> this <b>happened</b> for <b>two reasons</b>. Firstly, the <b>mammoths’ natural habitat decreased</b> in size because of <b>climate change</b>. Secondly, many <b>mammoths were killed</b> by <b>people</b> who <b>hunted</b> them. The <b>last population</b> of <b>mammoths lived</b> on <b>Wrangel Island</b>, off <b>north-east Siberia</b> in the <b>Chukchi Sea</b>. These were <b>woolly mammoths</b> that could <b>survive</b> in <b>very cold conditions</b>, but they also <b>died out</b> around <b>4,000 years</b> ago.</p>
+                        </div>
+                        <p class="font-medium">What is the main idea of this paragraph?</p>
+                        <div id="ex3-questions" class="space-y-2 mt-2">
+                             <label class="flex items-center"><input type="radio" name="q_ex3" value="a" class="mr-2"> to explain where mammoths lived before they became extinct</label>
+                             <label class="flex items-center"><input type="radio" name="q_ex3" value="b" class="mr-2"> to explain when mammoths became extinct</label>
+                             <label class="flex items-center"><input type="radio" name="q_ex3" value="c" class="mr-2"> to explain why mammoths became extinct</label>
+                        </div>
+                        <div id="ex3-feedback" class="mt-4"></div>
+                        <button class="btn btn-primary mt-4" onclick="checkEx3()">Check Answer</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exercise 4 -->
+            <div id="exercise-4" class="exercise-wrapper">
+                <div class="exercise-container">
+                    <div class="exercise-header">
+                        <h2 class="text-2xl font-semibold text-indigo-600">Exercise 4: Vocabulary matching</h2>
+                    </div>
+                    <div class="exercise-content">
+                        <p class="mb-4">Match the words with the definitions. Drag the definitions to the correct words.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                            <!-- Words Column -->
+                            <div class="space-y-4">
+                                <div><p class="font-semibold p-3 bg-indigo-100 rounded-lg">to become extinct</p><div id="dz-extinct" class="drop-zone p-2 rounded-lg mt-1"></div></div>
+                                <div><p class="font-semibold p-3 bg-indigo-100 rounded-lg">to decrease</p><div id="dz-decrease" class="drop-zone p-2 rounded-lg mt-1"></div></div>
+                                <div><p class="font-semibold p-3 bg-indigo-100 rounded-lg">to hunt</p><div id="dz-hunt" class="drop-zone p-2 rounded-lg mt-1"></div></div>
+                                <div><p class="font-semibold p-3 bg-indigo-100 rounded-lg">to preserve</p><div id="dz-preserve" class="drop-zone p-2 rounded-lg mt-1"></div></div>
+                                <div><p class="font-semibold p-3 bg-indigo-100 rounded-lg">a population</p><div id="dz-population" class="drop-zone p-2 rounded-lg mt-1"></div></div>
+                                <div><p class="font-semibold p-3 bg-indigo-100 rounded-lg">an ecosystem</p><div id="dz-ecosystem" class="drop-zone p-2 rounded-lg mt-1"></div></div>
+                                <div><p class="font-semibold p-3 bg-indigo-100 rounded-lg">a skeleton</p><div id="dz-skeleton" class="drop-zone p-2 rounded-lg mt-1"></div></div>
+                            </div>
+                            <!-- Definitions Column -->
+                            <div id="definitions-pool" class="space-y-2 bg-gray-100 p-4 rounded-lg">
+                                <p class="font-medium mb-2">Drag from here:</p>
+                                <div id="def-extinct" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">This happens when a type of bird, animal or plant doesn’t exist any more.</div>
+                                <div id="def-decrease" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">to become smaller in size or number.</div>
+                                <div id="def-hunt" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">to follow and kill an animal for food or for sport.</div>
+                                <div id="def-preserve" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">to put something (e.g. food) in ice, salt, sugar or chemicals, so it can stay in good condition.</div>
+                                <div id="def-population" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">all the people or animals that live in one place or area.</div>
+                                <div id="def-ecosystem" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">all the living things in an area and the way they affect each other and the environment.</div>
+                                <div id="def-skeleton" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">the frame of bones supporting a human or animal body.</div>
+                            </div>
+                        </div>
+                        <div id="ex4-feedback" class="mt-4"></div>
+                        <button class="btn btn-primary mt-4" onclick="checkEx4()">Check Answers</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exercise 5 -->
+            <div id="exercise-5" class="exercise-wrapper">
+                <div class="exercise-container">
+                    <div class="exercise-header">
+                        <h2 class="text-2xl font-semibold text-indigo-600">Exercise 5: Fill in the blanks</h2>
+                    </div>
+                    <div class="exercise-content">
+                         <p class="mb-4">Complete the sentences about the natural world.</p>
+                         <div id="ex5-questions" class="space-y-4">
+                            <p>1. Pollution harms all the plants, fish and animals in the <input type="text" id="ans5-1" class="inline-block w-48">.</p>
+                            <p>2. The tutor showed the <input type="text" id="ans5-2" class="inline-block w-48"> to the medical students and asked which small bones were missing.</p>
+                            <p>3. We expect the number of people living in the countryside will <input type="text" id="ans5-3" class="inline-block w-48"> as families move to the cities.</p>
+                            <p>4. There are so few polar bears left that it is possible they will soon become <input type="text" id="ans5-4" class="inline-block w-48">.</p>
+                            <p>5. The <input type="text" id="ans5-5" class="inline-block w-48"> of my city has risen to 8 million people.</p>
+                            <p>6. Lions often <input type="text" id="ans5-6" class="inline-block w-48"> other animals at night.</p>
+                            <p>7. Nowadays, most people use fridges to <input type="text" id="ans5-7" class="inline-block w-48"> their food.</p>
+                         </div>
+                         <div id="ex5-feedback" class="mt-4"></div>
+                         <button class="btn btn-primary mt-4" onclick="checkEx5()">Check Answers</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Exercise 6 -->
+            <div id="exercise-6" class="exercise-wrapper">
+                 <div class="exercise-container">
+                    <div class="exercise-header">
+                        <h2 class="text-2xl font-semibold text-indigo-600">Exercise 6: Predicting information type</h2>
+                    </div>
+                    <div class="exercise-content">
+                        <p class="mb-4">Read the sentences and look at the gaps. What type of information do you need to complete the gaps? Choose the best option for your predictions.</p>
+                         <div id="ex6-questions" class="space-y-6">
+                            <div>
+                                <p>1. The number of mammoths started to fall when their ________ got smaller.</p>
+                                <p class="mt-2">This word is probably <select id="ans6-1">
+                                    <option value="">--select type--</option>
+                                    <option value="a">a plural countable noun</option>
+                                    <option value="b">a plural countable noun or an uncountable noun</option>
+                                    <option value="c">an adjective</option>
+                                    <option value="d">a singular noun</option>
+                                </select>.</p>
+                            </div>
+                            <div>
+                                <p>2. Mammoths had smaller ________ than modern elephants.</p>
+                                <p class="mt-2">This word is probably <select id="ans6-2">
+                                    <option value="">--select type--</option>
+                                    <option value="a">a plural countable noun</option>
+                                    <option value="b">a plural countable noun or an uncountable noun</option>
+                                    <option value="c">an adjective</option>
+                                    <option value="d">a singular noun</option>
+                                </select>.</p>
+                            </div>
+                            <div>
+                                <p>3. Mammoths were very ________ animals.</p>
+                                <p class="mt-2">This word is probably <select id="ans6-3">
+                                    <option value="">--select type--</option>
+                                    <option value="a">a plural countable noun</option>
+                                    <option value="b">a plural countable noun or an uncountable noun</option>
+                                    <option value="c">an adjective</option>
+                                    <option value="d">a singular noun</option>
+                                </select>.</p>
+                            </div>
+                            <div>
+                                <p>4. The ________ of a baby mammoth was found recently in the Arctic.</p>
+                                <p class="mt-2">This word is probably <select id="ans6-4">
+                                    <option value="">--select type--</option>
+                                    <option value="a">a plural countable noun</option>
+                                    <option value="b">a plural countable noun or an uncountable noun</option>
+                                    <option value="c">an adjective</option>
+                                    <option value="d">a singular noun</option>
+                                </select>.</p>
+                            </div>
+                         </div>
+                         <div id="ex6-feedback" class="mt-4"></div>
+                         <button class="btn btn-primary mt-4" onclick="checkEx6()">Check Answers</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exercise 7 -->
+            <div id="exercise-7" class="exercise-wrapper">
+                <div class="exercise-container">
+                    <div class="exercise-header">
+                        <h2 class="text-2xl font-semibold text-indigo-600">Exercise 7: Synonyms and paraphrasing</h2>
+                    </div>
+                    <div class="exercise-content">
+                        <p class="mb-4">Match the words and phrases with the correct synonyms and paraphrases. Drag the items from the right to the matching words on the left.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                            <!-- Words Column -->
+                            <div class="space-y-4">
+                                <div><p class="font-semibold p-3 bg-indigo-100 rounded-lg">get smaller</p><div id="dz-syn-1" class="drop-zone p-2 rounded-lg mt-1"></div></div>
+                                <div><p class="font-semibold p-3 bg-indigo-100 rounded-lg">make</p><div id="dz-syn-2" class="drop-zone p-2 rounded-lg mt-1"></div></div>
+                                <div><p class="font-semibold p-3 bg-indigo-100 rounded-lg">a possibility</p><div id="dz-syn-3" class="drop-zone p-2 rounded-lg mt-1"></div></div>
+                                <div><p class="font-semibold p-3 bg-indigo-100 rounded-lg">both</p><div id="dz-syn-4" class="drop-zone p-2 rounded-lg mt-1"></div></div>
+                                <div><p class="font-semibold p-3 bg-indigo-100 rounded-lg">some</p><div id="dz-syn-5" class="drop-zone p-2 rounded-lg mt-1"></div></div>
+                                <div><p class="font-semibold p-3 bg-indigo-100 rounded-lg">lower (than)</p><div id="dz-syn-6" class="drop-zone p-2 rounded-lg mt-1"></div></div>
+                                 <div><p class="font-semibold p-3 bg-indigo-100 rounded-lg">the contents of</p><div id="dz-syn-7" class="drop-zone p-2 rounded-lg mt-1"></div></div>
+                            </div>
+                            <!-- Synonyms Column -->
+                            <div id="synonyms-pool" class="space-y-2 bg-gray-100 p-4 rounded-lg">
+                                <p class="font-medium mb-2">Drag from here:</p>
+                                <div id="syn-6" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">decrease or fall</div>
+                                <div id="syn-1" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">build or create</div>
+                                <div id="syn-7" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">might or may</div>
+                                <div id="syn-3" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">a pair of</div>
+                                <div id="syn-5" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">a little or an amount of</div>
+                                <div id="syn-4" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">not as high as</div>
+                                <div id="syn-2" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">inside of or within</div>
+                            </div>
+                        </div>
+                        <div id="ex7-feedback" class="mt-4"></div>
+                        <button class="btn btn-primary mt-4" onclick="checkEx7()">Check Answers</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exercise 8 -->
+            <div id="exercise-8" class="exercise-wrapper">
+                 <div class="exercise-container">
+                    <div class="exercise-header">
+                        <h2 class="text-2xl font-semibold text-indigo-600">Exercise 8: Sentence Completion</h2>
+                    </div>
+                    <div class="exercise-content">
+                        <p class="mb-4">Complete the sentences below. Write <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
+                        <div class="bg-gray-100 p-6 rounded-lg mb-6">
+                            <h3 class="font-bold text-xl mb-4 text-center">Bringing the mammoth back to life</h3>
+                            <div class="space-y-4 text-justify">
+                                <p>Mammoths once lived in large numbers across Asia, Africa, North America and Europe. However, over time, their numbers fell until the mammoth became extinct. Scientists think this happened for two reasons. Firstly, the mammoths’ natural <strong>habitat</strong> decreased in size because of climate change. Secondly, many mammoths were killed by people who hunted them. The last population of mammoths lived on Wrangel Island, off north-east Siberia in the Chukchi Sea. These were woolly mammoths that could survive in very cold conditions, but they also died out around 4,000 years ago.</p>
+                                <p>Prehistoric cave paintings show us that people ate the woolly mammoths they killed, but also used their bones and tusks. They used these to make simple animal and human figures, an early kind of art, and also to create some basic <strong>tools</strong>. We also know a lot about the woolly mammoth because the freezing conditions in Alaska and Siberia have preserved them. Researchers have studied their skeletons, their teeth and even the grass and plants that were still inside their <strong>stomachs</strong>. We know that their fur was an orange-brown colour, they had a thick layer of fat, and they had long, curved tusks. Their <strong>ears</strong> were short compared to an African or Asian elephant’s we might see today, so they would not lose so much heat or get frostbite.</p>
+                                <p>In recent years, some researchers have suggested that we could bring woolly mammoths back to life. Interestingly, not all scientists believe that bringing the mammoth back to life would be a good thing. They think it would be unfair to create a ‘new’ mammoth and then keep it in a small space. They think the right thing to do would be to give it a certain amount of <strong>freedom</strong>, perhaps in a wildlife park. But where would this be? And the mammoth would also be alone, and like elephants, mammoths were probably <strong>social</strong> in the way they behaved. This does seem to be a strong reason against bringing the mammoth back to life. Perhaps the ‘new’ mammoth might also develop an ‘old’ <strong>disease</strong> – and this might have an effect on the ecosystem that scientists cannot predict. Although the idea of bringing the mammoth back seems like an exciting one at first, there are many issues that we need to consider.</p>
+                            </div>
+                        </div>
+                         <div id="ex8-questions" class="space-y-4">
+                            <p>1. The number of mammoths started to fall when their <input type="text" id="ans8-1" class="inline-block w-48"> got smaller.</p>
+                            <p>2. Humans used mammoths for food, and to make art and <input type="text" id="ans8-2" class="inline-block w-48">.</p>
+                            <p>3. Scientists have examined the contents of mammoths’ <input type="text" id="ans8-3" class="inline-block w-48">.</p>
+                            <p>4. Mammoths had smaller <input type="text" id="ans8-4" class="inline-block w-48"> than modern elephants.</p>
+                            <p>5. Some scientists think that a ‘new’ mammoth should have some <input type="text" id="ans8-5" class="inline-block w-48">.</p>
+                            <p>6. Both elephants and mammoths are <input type="text" id="ans8-6" class="inline-block w-48"> animals.</p>
+                            <p>7. There is a possibility that a ‘new’ mammoth could get a <input type="text" id="ans8-7" class="inline-block w-48">.</p>
+                         </div>
+                         <div id="ex8-feedback" class="mt-4"></div>
+                         <button class="btn btn-primary mt-4" onclick="checkEx8()">Check Answers</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exercise 9 -->
+            <div id="exercise-9" class="exercise-wrapper">
+                <div class="exercise-container">
+                    <div class="exercise-header">
+                        <h2 class="text-2xl font-semibold text-indigo-600">Exercise 9: Vocabulary for people and experts</h2>
+                    </div>
+                    <div class="exercise-content">
+                        <p class="mb-4">Complete the table. Drag the nouns from the box at the bottom into the correct category.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h3 class="font-semibold text-lg text-center mb-2">People</h3>
+                                <div id="dz-people" class="drop-zone min-h-[150px] space-y-2"></div>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-center mb-2">Experts</h3>
+                                <div id="dz-experts" class="drop-zone min-h-[150px] space-y-2"></div>
+                            </div>
+                        </div>
+                        <div id="people-pool" class="mt-6 bg-gray-100 p-4 rounded-lg flex flex-wrap gap-2 justify-center">
+                             <div id="item-society" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">Society</div>
+                             <div id="item-scholars" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">scholars</div>
+                             <div id="item-public" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">the public</div>
+                             <div id="item-academics" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">academics</div>
+                             <div id="item-researchers" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">researchers</div>
+                             <div id="item-individuals" draggable="true" class="draggable bg-white p-2 border rounded-md shadow-sm">individuals</div>
+                        </div>
+                         <div id="ex9-feedback" class="mt-4"></div>
+                         <button class="btn btn-primary mt-4" onclick="checkEx9()">Check Answers</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exercise 10 -->
+            <div id="exercise-10" class="exercise-wrapper">
+                 <div class="exercise-container">
+                    <div class="exercise-header">
+                        <h2 class="text-2xl font-semibold text-indigo-600">Exercise 10: Final Review</h2>
+                    </div>
+                    <div class="exercise-content">
+                         <p class="mb-4">Think about what you’ve learnt in this unit. Complete the advice.</p>
+                         <div id="ex10-questions" class="space-y-4">
+                            <p>1. Look at the title of the article to help you predict the <input type="text" id="ans10-1" class="inline-block w-48"> of the whole article.</p>
+                            <p>2. Quickly read the whole text first to get a general idea of the <input type="text" id="ans10-2" class="inline-block w-48"> of each paragraph.</p>
+                            <p>3. Read the questions and use your general knowledge to predict the <input type="text" id="ans10-3" class="inline-block w-48"> you need to look for.</p>
+                            <p>4. Look for key information in the questions and think what <input type="text" id="ans10-4" class="inline-block w-48"> you might see in the text.</p>
+                            <p>5. Look out for <input type="text" id="ans10-5" class="inline-block w-48"> for people and different kinds of expert.</p>
+                            <p>6. Only use words from the <input type="text" id="ans10-6" class="inline-block w-48"> in your answers.</p>
+                            <p>7. When you write your answers, make sure you copy the <input type="text" id="ans10-7" class="inline-block w-48">, and don’t forget to use the correct form if the word is plural.</p>
+                         </div>
+                         <div id="ex10-feedback" class="mt-4"></div>
+                         <button class="btn btn-primary mt-4" onclick="checkEx10()">Check Answers</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-8">
+                <button class="btn btn-secondary text-lg px-8 py-3" onclick="resetAll()">Reset Worksheet</button>
+            </div>
+
+        </main>
+    </div>
+
+<script>
+    // --- Navigation Functions ---
+    function showExercise(exerciseNumber) {
+        // Hide all exercise wrappers
+        document.querySelectorAll('.exercise-wrapper').forEach(wrapper => {
+            wrapper.style.display = 'none';
+        });
+
+        // Show the selected exercise wrapper
+        const selectedWrapper = document.getElementById(`exercise-${exerciseNumber}`);
+        if (selectedWrapper) {
+            selectedWrapper.style.display = 'block';
+        }
+
+        // Update active state of nav buttons
+        const navButtons = document.querySelectorAll('#exercise-nav .nav-btn');
+        navButtons.forEach((btn, index) => {
+            if ((index + 1) === exerciseNumber) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    }
+
+    // --- General Functions ---
+    function resetAll() {
+        // Reset radio buttons
+        document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+        document.querySelectorAll('select').forEach(select => select.selectedIndex = 0);
+        document.querySelectorAll('select').forEach(s => s.classList.remove('border-green-500', 'border-red-500'));
+
+        // Reset text inputs
+        document.querySelectorAll('input[type="text"]').forEach(input => {
+            input.value = '';
+            input.classList.remove('border-green-500', 'border-red-500');
+            const feedback = input.nextElementSibling;
+            if (feedback && feedback.classList.contains('feedback-span')) feedback.remove();
+        });
+
+        // Reset feedback divs
+        document.querySelectorAll('[id$="-feedback"]').forEach(div => div.innerHTML = '');
+
+        // Reset drag and drop for Ex 4
+        const ex4Pool = document.getElementById('definitions-pool');
+        if (ex4Pool) {
+            document.querySelectorAll('#def-extinct, #def-decrease, #def-hunt, #def-preserve, #def-population, #def-ecosystem, #def-skeleton').forEach(d => ex4Pool.appendChild(d));
+            document.querySelectorAll('#exercise-4 .drop-zone').forEach(dz => {
+                dz.innerHTML = '';
+                dz.classList.remove('border-green-500', 'border-red-500');
+            });
+        }
+        
+
+        // Reset drag and drop for Ex 7
+        const ex7Pool = document.getElementById('synonyms-pool');
+        if(ex7Pool) {
+             document.querySelectorAll('#syn-1, #syn-2, #syn-3, #syn-4, #syn-5, #syn-6, #syn-7').forEach(d => ex7Pool.appendChild(d));
+             document.querySelectorAll('#exercise-7 .drop-zone').forEach(dz => {
+                dz.innerHTML = '';
+                dz.classList.remove('border-green-500', 'border-red-500');
+            });
+        }
+
+        // Reset drag and drop for Ex 9
+        const ex9Pool = document.getElementById('people-pool');
+        if (ex9Pool) {
+            document.querySelectorAll('#item-society, #item-scholars, #item-public, #item-academics, #item-researchers, #item-individuals').forEach(d => ex9Pool.appendChild(d));
+            document.querySelectorAll('#dz-people, #dz-experts').forEach(dz => {
+                dz.innerHTML = '';
+                 dz.classList.remove('border-green-500', 'border-red-500');
+            });
+        }
+
+        // Show the first exercise after reset
+        showExercise(1);
+    }
+
+    // --- Exercise 1: Multiple Choice ---
+    function checkEx1() {
+        const answers = { q1: 'b', q2: 'a', q3: 'c' };
+        const feedbackDiv = document.getElementById('ex1-feedback');
+        let correctCount = 0;
+        feedbackDiv.innerHTML = '';
+
+        Object.keys(answers).forEach(q => {
+            const selected = document.querySelector(`input[name="${q}"]:checked`);
+            const qFeedback = document.createElement('div');
+            qFeedback.classList.add('feedback');
+
+            if (selected) {
+                if (selected.value === answers[q]) {
+                    correctCount++;
+                    qFeedback.textContent = `Question ${q.slice(1)}: Correct!`;
+                    qFeedback.classList.add('correct');
+                } else {
+                    qFeedback.textContent = `Question ${q.slice(1)}: Incorrect.`;
+                    qFeedback.classList.add('incorrect');
+                }
+            } else {
+                qFeedback.textContent = `Question ${q.slice(1)}: Please select an answer.`;
+                qFeedback.classList.add('incorrect');
+            }
+            feedbackDiv.appendChild(qFeedback);
+        });
+    }
+    
+    // --- Exercise 2: Multiple Choice ---
+    function checkEx2() {
+        const correctAnswer = 'c';
+        const feedbackDiv = document.getElementById('ex2-feedback');
+        const selected = document.querySelector('input[name="q_ex2"]:checked');
+        
+        if (selected) {
+            if (selected.value === correctAnswer) {
+                feedbackDiv.innerHTML = `<p class="feedback correct">Correct! The title suggests a future possibility.</p>`;
+            } else {
+                feedbackDiv.innerHTML = `<p class="feedback incorrect">Incorrect. Think about what "bringing back to life" implies.</p>`;
+            }
+        } else {
+             feedbackDiv.innerHTML = `<p class="feedback incorrect">Please select an answer.</p>`;
+        }
+    }
+
+    // --- Exercise 3: Multiple Choice ---
+    function checkEx3() {
+        const correctAnswer = 'c';
+        const feedbackDiv = document.getElementById('ex3-feedback');
+        const selected = document.querySelector('input[name="q_ex3"]:checked');
+        
+        if (selected) {
+            if (selected.value === correctAnswer) {
+                feedbackDiv.innerHTML = `<p class="feedback correct">Correct! The paragraph lists two reasons for extinction: climate change and hunting.</p>`;
+            } else {
+                feedbackDiv.innerHTML = `<p class="feedback incorrect">Not quite. The paragraph mentions where and when, but the main focus is on the reasons for extinction.</p>`;
+            }
+        } else {
+             feedbackDiv.innerHTML = `<p class="feedback incorrect">Please select an answer.</p>`;
+        }
+    }
+
+    // --- Drag and Drop Logic ---
+    function initializeDragAndDrop() {
+        const draggables = document.querySelectorAll('.draggable');
+        const dropZones = document.querySelectorAll('.drop-zone');
+
+        draggables.forEach(draggable => {
+            draggable.addEventListener('dragstart', () => draggable.classList.add('dragging'));
+            draggable.addEventListener('dragend', () => draggable.classList.remove('dragging'));
+        });
+
+        dropZones.forEach(zone => {
+            zone.addEventListener('dragover', e => {
+                e.preventDefault();
+                zone.classList.add('drag-over');
+            });
+            zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+            zone.addEventListener('drop', e => {
+                e.preventDefault();
+                zone.classList.remove('drag-over');
+                const draggable = document.querySelector('.dragging');
+                if (!draggable) return;
+                
+                // For single-item zones
+                if (!zone.classList.contains('multi-item') && zone.children.length > 0) {
+                   return; // Don't drop if zone is full
+                }
+                zone.appendChild(draggable);
+            });
+        });
+    }
+
+
+    // --- Exercise 4: Vocabulary Matching ---
+    function checkEx4() {
+        const correctMatches = {
+            'dz-extinct': 'def-extinct', 'dz-decrease': 'def-decrease', 'dz-hunt': 'def-hunt',
+            'dz-preserve': 'def-preserve', 'dz-population': 'def-population', 'dz-ecosystem': 'def-ecosystem', 'dz-skeleton': 'def-skeleton'
+        };
+        const feedbackDiv = document.getElementById('ex4-feedback');
+        checkDragAndDrop(correctMatches, feedbackDiv);
+    }
+    
+    // --- Exercise 6: Predicting Info Type ---
+    function checkEx6() {
+        const answers = { 'ans6-1': 'b', 'ans6-2': 'a', 'ans6-3': 'c', 'ans6-4': 'd' };
+        const feedbackDiv = document.getElementById('ex6-feedback');
+        feedbackDiv.innerHTML = '';
+        let allCorrect = true;
+
+        Object.keys(answers).forEach(selectId => {
+            const select = document.getElementById(selectId);
+            select.classList.remove('border-green-500', 'border-red-500', 'border-2');
+            if (select.value === answers[selectId]) {
+                select.classList.add('border-2', 'border-green-500');
+            } else {
+                select.classList.add('border-2', 'border-red-500');
+                allCorrect = false;
+            }
+        });
+
+        if (allCorrect) {
+            feedbackDiv.innerHTML = '<p class="feedback correct">All predictions are correct!</p>';
+        } else {
+            feedbackDiv.innerHTML = '<p class="feedback incorrect">Some predictions are incorrect. Check the highlighted boxes.</p>';
+        }
+    }
+
+    // --- Exercise 7: Synonyms ---
+    function checkEx7() {
+         const correctMatches = {
+            'dz-syn-1': 'syn-6', 'dz-syn-2': 'syn-1', 'dz-syn-3': 'syn-7',
+            'dz-syn-4': 'syn-3', 'dz-syn-5': 'syn-5', 'dz-syn-6': 'syn-4', 'dz-syn-7': 'syn-2'
+        };
+        const feedbackDiv = document.getElementById('ex7-feedback');
+        checkDragAndDrop(correctMatches, feedbackDiv);
+    }
+    
+    // --- Exercise 9: People and Experts ---
+    function checkEx9() {
+        const experts = ['item-scholars', 'item-academics', 'item-researchers'];
+        const people = ['item-society', 'item-public', 'item-individuals'];
+        const expertsZone = document.getElementById('dz-experts');
+        const peopleZone = document.getElementById('dz-people');
+        const feedbackDiv = document.getElementById('ex9-feedback');
+        let allCorrect = true;
+        
+        [expertsZone, peopleZone].forEach(z => z.classList.remove('border-green-500', 'border-red-500'));
+
+        experts.forEach(id => {
+            const item = document.getElementById(id);
+            if (item.parentElement.id !== 'dz-experts') allCorrect = false;
+        });
+        
+         people.forEach(id => {
+            const item = document.getElementById(id);
+            if (item.parentElement.id !== 'dz-people') allCorrect = false;
+        });
+
+        if (allCorrect && expertsZone.children.length === 3 && peopleZone.children.length === 3) {
+            expertsZone.classList.add('border-2', 'border-green-500');
+            peopleZone.classList.add('border-2', 'border-green-500');
+            feedbackDiv.innerHTML = '<p class="feedback correct">All categories are correct!</p>';
+        } else {
+             expertsZone.classList.add('border-2', 'border-red-500');
+             peopleZone.classList.add('border-2', 'border-red-500');
+            feedbackDiv.innerHTML = '<p class="feedback incorrect">The categories are not quite right. Try again.</p>';
+        }
+    }
+
+    // --- Shared Helper Functions ---
+    function checkFillInBlanks(exerciseId, answers) {
+        const feedbackDiv = document.getElementById(`ex${exerciseId}-feedback`);
+        feedbackDiv.innerHTML = '';
+        let allCorrect = true;
+
+        answers.forEach((answer, index) => {
+            const inputId = `ans${exerciseId}-${index + 1}`;
+            const input = document.getElementById(inputId);
+            const userAnswer = input.value.trim().toLowerCase();
+            input.classList.remove('border-green-500', 'border-red-500', 'border-2');
+            
+            const oldFeedback = input.nextElementSibling;
+            if (oldFeedback && oldFeedback.classList.contains('feedback-span')) oldFeedback.remove();
+
+            if (userAnswer === answer) {
+                input.classList.add('border-2', 'border-green-500');
+            } else {
+                allCorrect = false;
+                input.classList.add('border-2', 'border-red-500');
+            }
+        });
+
+        if (allCorrect) {
+            feedbackDiv.innerHTML = '<p class="feedback correct">All answers are correct!</p>';
+        } else {
+            feedbackDiv.innerHTML = '<p class="feedback incorrect">Some answers are incorrect. Check the highlighted boxes.</p>';
+        }
+    }
+    
+    function checkDragAndDrop(correctMatches, feedbackDiv) {
+        feedbackDiv.innerHTML = '';
+        let allCorrect = true;
+        Object.keys(correctMatches).forEach(zoneId => {
+            const zone = document.getElementById(zoneId);
+            zone.classList.remove('border-green-500', 'border-red-500', 'border-2');
+            const child = zone.firstElementChild;
+            if (child && child.id === correctMatches[zoneId]) {
+                zone.classList.add('border-2', 'border-green-500');
+            } else {
+                zone.classList.add('border-2', 'border-red-500');
+                allCorrect = false;
+            }
+        });
+        if(allCorrect) {
+            feedbackDiv.innerHTML = '<p class="feedback correct">All matches are correct!</p>';
+        } else {
+            feedbackDiv.innerHTML = '<p class="feedback incorrect">Some matches are incorrect. Correct matches are outlined in green, incorrect in red.</p>';
+        }
+    }
+
+    // --- Specific Exercise Checkers ---
+    function checkEx5() { checkFillInBlanks(5, ["ecosystem", "skeleton", "decrease", "extinct", "population", "hunt", "preserve"]); }
+    function checkEx8() { checkFillInBlanks(8, ["habitat", "tools", "stomachs", "ears", "freedom", "social", "disease"]); }
+    function checkEx10() { checkFillInBlanks(10, ["topic", "main point", "type of information", "kind of paraphrasing", "synonyms of words", "ielts reading text", "spelling correctly"]); }
+
+    // --- Initial State ---
+    document.addEventListener('DOMContentLoaded', () => {
+        initializeDragAndDrop();
+        // Show the first exercise by default
+        showExercise(1);
+    });
+
+</script>
+</body>
+</html>
