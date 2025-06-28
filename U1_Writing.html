@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unit 1 - Writing Worksheet</title>
+    <title>Mindset for IELTS 1 - Unit 1 Writing</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -20,9 +20,12 @@
             /* Improved draggable item styling */
             @apply p-2 border-2 border-dashed border-gray-400 rounded-xl cursor-move bg-white/70 touch-none shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200;
         }
+        .draggable-para {
+            @apply p-2 border-2 border-dashed border-gray-400 rounded-xl cursor-move bg-white/70 touch-none shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200;
+        }
         .drop-zone {
             /* Styling for the drop targets */
-            @apply p-4 border-2 border-dashed border-gray-300 rounded-xl h-28 w-full flex items-center justify-center text-gray-400 bg-gray-50/50 transition-all duration-200;
+            @apply p-4 border-2 border-dashed border-gray-300 rounded-xl h-auto min-h-[7rem] w-full flex items-center justify-center text-gray-400 bg-gray-50/50 transition-all duration-200;
         }
         .drop-zone.over {
             /* Glowing effect when dragging over */
@@ -40,6 +43,15 @@
         input[type="radio"] {
             @apply appearance-none h-4 w-4 border-2 border-gray-400 rounded-full bg-white checked:bg-indigo-600 checked:border-indigo-600 focus:outline-none transition duration-200;
         }
+        .nav-btn {
+             @apply px-4 py-2 text-sm font-semibold rounded-lg shadow-sm transition-all duration-200;
+        }
+        .nav-btn.active {
+            @apply bg-indigo-600 text-white scale-105;
+        }
+        .nav-btn:not(.active) {
+            @apply bg-white text-gray-700 hover:bg-gray-200;
+        }
     </style>
 </head>
 <body class="bg-gray-100 p-4 font-sans text-gray-800">
@@ -47,10 +59,23 @@
     <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
         
         <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">
-            IELTS Writing Task 1 Workout
+             Mindset for IELTS 1 - Unit 1 Writing
         </h1>
+        
+        <nav class="mb-8 p-2 bg-gray-200 rounded-lg flex flex-wrap justify-center gap-2">
+            <button id="nav-btn-all" class="nav-btn" onclick="showExercise('all')">Show All</button>
+            <button id="nav-btn-exercise1" class="nav-btn active" onclick="showExercise('exercise1')">Exercise 1</button>
+            <button id="nav-btn-exercise2" class="nav-btn" onclick="showExercise('exercise2')">Exercise 2</button>
+            <button id="nav-btn-exercise3" class="nav-btn" onclick="showExercise('exercise3')">Exercise 3</button>
+            <button id="nav-btn-exercise4" class="nav-btn" onclick="showExercise('exercise4')">Exercise 4</button>
+            <button id="nav-btn-exercise5" class="nav-btn" onclick="showExercise('exercise5')">Exercise 5</button>
+            <button id="nav-btn-exercise6" class="nav-btn" onclick="showExercise('exercise6')">Exercise 6</button>
+            <button id="nav-btn-exercise7" class="nav-btn" onclick="showExercise('exercise7')">Exercise 7</button>
+            <button id="nav-btn-exercise8" class="nav-btn" onclick="showExercise('exercise8')">Exercise 8</button>
+            <button id="nav-btn-exercise9-10" class="nav-btn" onclick="showExercise('exercise9-10')">Exercise 9-10</button>
+        </nav>
 
-        <section id="exercise1" class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
+        <section id="exercise1" class="exercise-section mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-indigo-600 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>Exercise 1: General Knowledge</h2>
             <form id="form1">
                 <div class="space-y-6">
@@ -91,7 +116,7 @@
             </form>
         </section>
 
-        <section id="exercise2" class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
+        <section id="exercise2" class="exercise-section mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-blue-600 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>Exercise 2: Ordering the Tea Process</h2>
             <p class="question">Look at the pictures. Drag and drop them into the correct order to show the process of producing tea.</p>
             
@@ -106,7 +131,7 @@
             </div>
         </section>
         
-        <section id="exercise3" class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
+        <section id="exercise3" class="exercise-section mb-10 p-6 bg-green-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-green-600 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>Exercise 3: Fill in the Blanks</h2>
             <p class="question">Complete the information about each stage of the tea process. Use the words in the box.</p>
             <div class="p-4 bg-green-100/50 border border-green-200/50 rounded-xl mb-6">
@@ -126,7 +151,7 @@
             </div>
         </section>
 
-        <section id="exercise4" class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
+        <section id="exercise4" class="exercise-section mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-purple-600 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>Exercise 4: Important Information</h2>
             <p class="question">Choose whether the information is important or not important for a report.</p>
             <form id="form4" class="space-y-4">
@@ -137,7 +162,7 @@
             </div>
         </section>
 
-        <section id="exercise5" class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
+        <section id="exercise5" class="exercise-section mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-pink-600 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>Exercise 5: Analyse a Report</h2>
             <p class="question">Read the report on the diagram and answer the questions.</p>
             <div class="bg-white p-4 rounded-md border border-gray-200 mb-6">
@@ -151,7 +176,7 @@
             </div>
         </section>
 
-        <section id="exercise6" class="mb-10 p-6 bg-gray-200 rounded-lg shadow-md">
+        <section id="exercise6" class="exercise-section mb-10 p-6 bg-gray-200 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-gray-700 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" /></svg>Exercise 6: Order Paragraphs</h2>
             <p class="question">Look at the diagram again. Then put the paragraphs in the correct order to complete the report.</p>
              <div id="drop-zones-para" class="space-y-4">
@@ -166,7 +191,7 @@
             </div>
         </section>
 
-        <section id="exercise7" class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
+        <section id="exercise7" class="exercise-section mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-orange-600 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l-1.586-1.586a2 2 0 00-2.828 0L6 14m6-6l.01.01" /></svg>Exercise 7: Match Sentences to Pictures</h2>
             <p class="question">Match the correct pictures with the sentences describing the process of producing tea.</p>
             <div id="ex7-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -177,7 +202,7 @@
             </div>
         </section>
 
-        <section id="exercise8" class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
+        <section id="exercise8" class="exercise-section mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-yellow-700 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2V7a2 2 0 012-2h6l2-2h2l-2 2z" /></svg>Exercise 8: Present Simple Passive</h2>
             <p class="question">Complete the sentences in the present simple passive.</p>
              <div class="p-4 bg-gray-100/80 border border-gray-200 rounded-xl mb-6 text-base text-gray-700">
@@ -196,7 +221,7 @@
             </div>
         </section>
         
-        <section id="exercise9-10" class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
+        <section id="exercise9-10" class="exercise-section mb-10 p-6 bg-red-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-red-600 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>Exercise 9 & 10: The Banana Process & Writing Task</h2>
             <p class="question">Look at the diagram showing how bananas are grown and prepared for sale.</p>
             <img src="https://i.postimg.cc/NfwVGMHQ/Writing-Exercise10.png" alt="Process of growing bananas" class="w-full rounded-2xl shadow-lg mb-6" onerror="this.onerror=null;this.src='https://placehold.co/800x600/f0f0f0/333?text=Banana+Process+Diagram';">
@@ -230,6 +255,26 @@
         // --- Icon Definitions ---
         const correctIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>`;
         const incorrectIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" /></svg>`;
+        
+        // --- Navigation Logic ---
+        function showExercise(exerciseId) {
+            document.querySelectorAll('.exercise-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            if (exerciseId === 'all') {
+                 document.querySelectorAll('.exercise-section').forEach(section => {
+                    section.style.display = 'block';
+                });
+                document.getElementById('nav-btn-all').classList.add('active');
+            } else {
+                document.getElementById(exerciseId).style.display = 'block';
+                document.getElementById(`nav-btn-${exerciseId}`).classList.add('active');
+            }
+        }
 
         // --- General Answer Checking Functions ---
         function checkAnswers(formId) {
@@ -312,6 +357,7 @@
                     div.innerHTML = `<img src="${item.content}" alt="Process stage" class="h-20 mx-auto pointer-events-none">`;
                 } else if(item.type === 'paragraph'){
                      div.innerHTML = `<p class="p-2">${item.content}</p>`;
+                     div.classList.add('draggable-para', 'bg-gray-100', 'border', 'border-gray-300', 'rounded-md', 'cursor-move');
                 }
                 else {
                     div.className += ' px-4 py-2 bg-indigo-100/80 border-indigo-300 text-base';
@@ -561,7 +607,7 @@
                 
                 const select = document.createElement('select');
                 select.id = `ex7-select-${index}`;
-                select.className = 'p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500 w-full !text-input';
+                select.className = 'p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500 w-full text-input !border-orange-400 focus:!border-orange-500 focus:!ring-orange-400';
                 
                 const defaultOption = document.createElement('option');
                 defaultOption.value = "";
@@ -608,6 +654,7 @@
             initializeEx5();
             initializeEx6();
             initializeEx7();
+            showExercise('exercise1');
 
             const teaItems = [
                 { id: 'tea-stage-1', type: 'image', content: 'https://i.postimg.cc/GhY7YKMq/Tea-Stage1.jpg' },
