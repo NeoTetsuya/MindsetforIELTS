@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindset for IELTS 1 - Unit 1 Grammar & Vocabulary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .input-field.correct {
+            border-color: #10B981;
+            background-color: #F0FDF4;
+        }
+        .input-field.incorrect {
+            border-color: #EF4444;
+            background-color: #FEF2F2;
+        }
+        .word-box {
+            background-color: #ffffff;
+            border: 1px dashed #d1d5db;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        .word-box span {
+            background-color: #e5e7eb;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .exercise-score {
+             min-height: 28px; /* Reserve space for the score to prevent layout shift */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 p-4">
+
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
+        <header>
+            <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-2">Mindset for IELTS 1</h1>
+            <p class="text-lg text-center text-gray-500 mb-8">Unit 1: Grammar & Vocabulary</p>
+        </header>
+
+        <div id="worksheet">
+            <!-- Exercise 1 -->
+            <section class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Exercise 1: Family Relationships</h2>
+                <p class="mb-6 text-gray-700">Choose the correct answers to complete the sentences. There is often more than one possible answer.</p>
+                <div id="ex1"></div>
+                <div class="mt-6 flex gap-4">
+                    <button class="btn px-5 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-200 ease-in-out transform hover:scale-105 check-exercise-btn" data-exercise-key="ex1">Check Exercise</button>
+                    <button class="btn px-5 py-2 bg-gray-500 text-white rounded-lg shadow-md hover:bg-gray-600 transition duration-200 ease-in-out transform hover:scale-105 reset-exercise-btn" data-exercise-key="ex1">Reset</button>
+                </div>
+                <div class="mt-4 text-xl font-bold exercise-score" data-score-container="ex1"></div>
+            </section>
+
+            <!-- Exercise 2 -->
+            <section class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold text-blue-600 mb-4">Exercise 2: Special Occasions</h2>
+                <p class="mb-6 text-gray-700">Complete the text. Use the words in the box.</p>
+                <div class="word-box">
+                    <span>Anniversary</span><span>celebrate</span><span>congratulated</span><span>engaged</span><span>have</span><span>invited</span><span>married</span><span>occasions</span><span>together</span><span>wish</span>
+                </div>
+                <div id="ex2" class="space-y-4"></div>
+                <div class="mt-6 flex gap-4">
+                    <button class="btn px-5 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-200 ease-in-out transform hover:scale-105 check-exercise-btn" data-exercise-key="ex2">Check Exercise</button>
+                    <button class="btn px-5 py-2 bg-gray-500 text-white rounded-lg shadow-md hover:bg-gray-600 transition duration-200 ease-in-out transform hover:scale-105 reset-exercise-btn" data-exercise-key="ex2">Reset</button>
+                </div>
+                <div class="mt-4 text-xl font-bold exercise-score" data-score-container="ex2"></div>
+            </section>
+
+            <!-- Exercise 3 -->
+            <section class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold text-green-600 mb-4">Exercise 3: Describing People (Appearance)</h2>
+                <p class="mb-6 text-gray-700">Choose two correct words to complete the sentences.</p>
+                <div id="ex3"></div>
+                <div class="mt-6 flex gap-4">
+                    <button class="btn px-5 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition duration-200 ease-in-out transform hover:scale-105 check-exercise-btn" data-exercise-key="ex3">Check Exercise</button>
+                    <button class="btn px-5 py-2 bg-gray-500 text-white rounded-lg shadow-md hover:bg-gray-600 transition duration-200 ease-in-out transform hover:scale-105 reset-exercise-btn" data-exercise-key="ex3">Reset</button>
+                </div>
+                <div class="mt-4 text-xl font-bold exercise-score" data-score-container="ex3"></div>
+            </section>
+            
+            <!-- Exercise 4 -->
+            <section class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold text-purple-600 mb-4">Exercise 4: Types of People</h2>
+                <p class="mb-6 text-gray-700">Complete the sentences. Use the words in the box.</p>
+                <div class="word-box">
+                    <span>Boss</span><span>classmate</span><span>colleague</span><span>enemy</span><span>neighbor</span><span>partner</span><span>relative</span><span>stranger</span>
+                </div>
+                <div id="ex4" class="space-y-4"></div>
+                <div class="mt-6 flex gap-4">
+                     <button class="btn px-5 py-2 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-200 ease-in-out transform hover:scale-105 check-exercise-btn" data-exercise-key="ex4">Check Exercise</button>
+                    <button class="btn px-5 py-2 bg-gray-500 text-white rounded-lg shadow-md hover:bg-gray-600 transition duration-200 ease-in-out transform hover:scale-105 reset-exercise-btn" data-exercise-key="ex4">Reset</button>
+                </div>
+                <div class="mt-4 text-xl font-bold exercise-score" data-score-container="ex4"></div>
+            </section>
+
+            <!-- Exercise 5 -->
+            <section class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
+                 <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Exercise 5: Describing People (Personality)</h2>
+                 <p class="mb-6 text-gray-700">Complete the sentences. Choose the correct description.</p>
+                 <div id="ex5" class="space-y-4"></div>
+                 <div class="mt-6 flex gap-4">
+                    <button class="btn px-5 py-2 bg-yellow-600 text-white rounded-lg shadow-md hover:bg-yellow-700 transition duration-200 ease-in-out transform hover:scale-105 check-exercise-btn" data-exercise-key="ex5">Check Exercise</button>
+                    <button class="btn px-5 py-2 bg-gray-500 text-white rounded-lg shadow-md hover:bg-gray-600 transition duration-200 ease-in-out transform hover:scale-105 reset-exercise-btn" data-exercise-key="ex5">Reset</button>
+                </div>
+                <div class="mt-4 text-xl font-bold exercise-score" data-score-container="ex5"></div>
+            </section>
+            
+            <!-- Exercise 6 -->
+            <section class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold text-red-600 mb-4">Exercise 6: Negative Sentences</h2>
+                 <p class="mb-6 text-gray-700">Change the underlined words to the negative form. Use contractions (e.g. don’t, aren’t) where possible.</p>
+                 <div id="ex6" class="space-y-4"></div>
+                 <div class="mt-6 flex gap-4">
+                    <button class="btn px-5 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition duration-200 ease-in-out transform hover:scale-105 check-exercise-btn" data-exercise-key="ex6">Check Exercise</button>
+                    <button class="btn px-5 py-2 bg-gray-500 text-white rounded-lg shadow-md hover:bg-gray-600 transition duration-200 ease-in-out transform hover:scale-105 reset-exercise-btn" data-exercise-key="ex6">Reset</button>
+                </div>
+                <div class="mt-4 text-xl font-bold exercise-score" data-score-container="ex6"></div>
+            </section>
+
+            <!-- Exercise 7 -->
+            <section class="mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold text-teal-600 mb-4">Exercise 7: Wh- Questions</h2>
+                 <p class="mb-6 text-gray-700">Complete the questions in the conversations.</p>
+                 <div id="ex7" class="space-y-4"></div>
+                 <div class="mt-6 flex gap-4">
+                    <button class="btn px-5 py-2 bg-teal-600 text-white rounded-lg shadow-md hover:bg-teal-700 transition duration-200 ease-in-out transform hover:scale-105 check-exercise-btn" data-exercise-key="ex7">Check Exercise</button>
+                    <button class="btn px-5 py-2 bg-gray-500 text-white rounded-lg shadow-md hover:bg-gray-600 transition duration-200 ease-in-out transform hover:scale-105 reset-exercise-btn" data-exercise-key="ex7">Reset</button>
+                </div>
+                <div class="mt-4 text-xl font-bold exercise-score" data-score-container="ex7"></div>
+            </section>
+
+            <!-- Exercise 8 -->
+            <section class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold text-orange-600 mb-4">Exercise 8: Adverbs of Frequency</h2>
+                 <p class="mb-6 text-gray-700">Choose the sentence that is closest in meaning to the first sentence.</p>
+                 <div id="ex8"></div>
+                 <div class="mt-6 flex gap-4">
+                    <button class="btn px-5 py-2 bg-orange-600 text-white rounded-lg shadow-md hover:bg-orange-700 transition duration-200 ease-in-out transform hover:scale-105 check-exercise-btn" data-exercise-key="ex8">Check Exercise</button>
+                    <button class="btn px-5 py-2 bg-gray-500 text-white rounded-lg shadow-md hover:bg-gray-600 transition duration-200 ease-in-out transform hover:scale-105 reset-exercise-btn" data-exercise-key="ex8">Reset</button>
+                </div>
+                <div class="mt-4 text-xl font-bold exercise-score" data-score-container="ex8"></div>
+            </section>
+            
+            <!-- Exercise 9 -->
+            <section class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold text-pink-600 mb-4">Exercise 9: Present Simple Passive</h2>
+                 <p class="mb-6 text-gray-700">Read the active sentences. Then complete the present simple passive sentences underneath.</p>
+                 <div id="ex9" class="space-y-4"></div>
+                 <div class="mt-6 flex gap-4">
+                    <button class="btn px-5 py-2 bg-pink-600 text-white rounded-lg shadow-md hover:bg-pink-700 transition duration-200 ease-in-out transform hover:scale-105 check-exercise-btn" data-exercise-key="ex9">Check Exercise</button>
+                    <button class="btn px-5 py-2 bg-gray-500 text-white rounded-lg shadow-md hover:bg-gray-600 transition duration-200 ease-in-out transform hover:scale-105 reset-exercise-btn" data-exercise-key="ex9">Reset</button>
+                </div>
+                <div class="mt-4 text-xl font-bold exercise-score" data-score-container="ex9"></div>
+            </section>
+
+            <!-- Exercise 10 -->
+            <section class="mb-10 p-6 bg-gray-200 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-4">Exercise 10: Present Simple Active vs. Passive</h2>
+                 <p class="mb-6 text-gray-700">Complete the sentences with the correct present simple form of the verbs in brackets.</p>
+                 <div id="ex10" class="space-y-4"></div>
+                 <div class="mt-6 flex gap-4">
+                    <button class="btn px-5 py-2 bg-gray-600 text-white rounded-lg shadow-md hover:bg-gray-700 transition duration-200 ease-in-out transform hover:scale-105 check-exercise-btn" data-exercise-key="ex10">Check Exercise</button>
+                    <button class="btn px-5 py-2 bg-gray-500 text-white rounded-lg shadow-md hover:bg-gray-600 transition duration-200 ease-in-out transform hover:scale-105 reset-exercise-btn" data-exercise-key="ex10">Reset</button>
+                </div>
+                <div class="mt-4 text-xl font-bold exercise-score" data-score-container="ex10"></div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Data for Exercises ---
+            const exercises = {
+                ex1: {
+                    container: document.getElementById('ex1'),
+                    type: 'checkbox',
+                    questions: [
+                        { q: "Your uncle is your...", options: ["aunt’s husband.", "mother or father’s brother.", "sister’s husband."], a: [0, 1] },
+                        { q: "Your cousin is your...", options: ["brother’s father.", "father’s nephew or niece.", "uncle or aunt’s child."], a: [2] },
+                        { q: "Your niece is your...", options: ["brother or sister’s daughter.", "mother or father’s cousin.", "son or daughter’s cousin."], a: [0] },
+                        { q: "Your brother-in-law is your...", options: ["brother’s wife.", "husband or wife’s brother.", "sister’s husband."], a: [1, 2] },
+                        { q: "Your aunt is your...", options: ["cousin’s wife.", "mother or father’s sister.", "uncle’s wife."], a: [1, 2] },
+                        { q: "Your daughter-in-law is your...", options: ["brother’s wife.", "daughter’s husband.", "son’s wife."], a: [2] },
+                        { q: "Your nephew is your...", options: ["brother or sister’s daughter.", "brother or sister’s son.", "niece’s brother."], a: [1, 2] }
+                    ]
+                },
+                ex2: {
+                    container: document.getElementById('ex2'),
+                    type: 'fill-in',
+                    text: [
+                        "I come from a very large family, but we all live in different places, so we don’t get {together} very often. We usually meet for special {occasions} like weddings. Last year, we all met for my grandparents’ 50th wedding {Anniversary}.",
+                        "It was my birthday a few weeks ago, but I didn’t {have} a big party. I prefer to {celebrate} my birthday with my family and a few close friends. My cousin, who lives in Australia, phoned to {wish} me a happy birthday. She got {engaged} last month and is going to get {married} next year. I {congratulated} her on the great news. She’s {invited} me to her wedding next year. I'm so excited because I've never been to Australia before."
+                    ]
+                },
+                ex3: {
+                    container: document.getElementById('ex3'),
+                    type: 'checkbox',
+                    questions: [
+                        { q: "Age: She’s ...", options: ["middle-aged.", "slim.", "young."], a: [0, 2] },
+                        { q: "Type of person: He’s a/an ...", options: ["baby.", "child.", "scar."], a: [0, 1] },
+                        { q: "Size/Height: He’s ...", options: ["long.", "short.", "tall."], a: [1, 2] },
+                        { q: "Weight: He’s ...", options: ["plain.", "slim.", "thin."], a: [1, 2] },
+                        { q: "Looks: She’s ...", options: ["good-looking.", "plain.", "wavy."], a: [0, 1] },
+                        { q: "Hair: He’s got ... hair.", options: ["bald", "dark", "fair"], a: [1, 2] },
+                        { q: "Features: He’s got a/an ...", options: ["adult.", "beard.", "moustache."], a: [1, 2] },
+                        { q: "Features: She wears ...", options: ["big earrings.", "glasses.", "long hair."], a: [0, 1] },
+                    ]
+                },
+                 ex4: {
+                    container: document.getElementById('ex4'),
+                    type: 'fill-in-single',
+                    questions: [
+                        { q: "A/An {relative} is a member of your family, such as a cousin, a parent or one of your children." },
+                        { q: "A/An {enemy} is a person who hates another person and tries to hurt them or stop them from doing something." },
+                        { q: "Your {neighbor} is someone who lives very close to you, sometimes in the next house or flat." },
+                        { q: "If you don’t know somebody, they are a/an {stranger}." },
+                        { q: "Your {Boss} is the person who tells you what to do at work." },
+                        { q: "A/An {classmate} is someone who is in the same class as you at school or university." },
+                        { q: "A/An {colleague} is one of a group of people who work together." },
+                        { q: "Your {partner} is a person you work closely with, for example in pairwork." }
+                    ]
+                },
+                ex5: {
+                    container: document.getElementById('ex5'),
+                    type: 'select',
+                    questions: [
+                        { q: "A hard-working person...", a: 0 },
+                        { q: "A lazy person...", a: 1 },
+                        { q: "A shy person...", a: 2 },
+                        { q: "A friendly person...", a: 3 },
+                        { q: "A reliable person...", a: 4 },
+                        { q: "A selfish person...", a: 5 },
+                        { q: "A helpful person...", a: 6 },
+                        { q: "A generous person...", a: 7 }
+                    ],
+                    options: [
+                        "always does a lot of work",
+                        "doesn’t want to work or do anything that needs effort",
+                        "doesn’t like meeting new people",
+                        "is happy to meet new people",
+                        "will do what they say they will do",
+                        "thinks only of themselves, and doesn’t care about other people",
+                        "is happy to help other people",
+                        "is happy to give other people money, help or their time"
+                    ]
+                },
+                 ex6: {
+                    container: document.getElementById('ex6'),
+                    type: 'fill-in-rewrite',
+                    questions: [
+                         { q: "I <u>can</u> remember people’s names because I<u>’ve got</u> a good memory.", a: ["can't", "haven't got"] },
+                         { q: "My uncle <u>looks</u> old because he<u>’s got</u> grey hair.", a: ["doesn't look", "hasn't got"] },
+                         { q: "My grandmother <u>gives</u> us lots of presents because she<u>’s</u> a rich person.", a: ["doesn't give", "isn't"] },
+                         { q: "We <u>have</u> a lot of family get-togethers, so I <u>know</u> my cousins very well.", a: ["don't have", "don't know"] },
+                         { q: "You <u>can buy</u> toys for your nieces and nephews because they<u>’re</u> little children.", a: ["can't buy", "aren't"] }
+                    ]
+                },
+                 ex7: {
+                    container: document.getElementById('ex7'),
+                    type: 'fill-in-single',
+                    questions: [
+                         { q: "A: How {often} do you see your cousins?<br>B: Not very often. I only see them about once a year." },
+                         { q: "A: {Does your boss} wear a lot of make-up?<br>B: My boss? Yes, she wears a lot of make-up." },
+                         { q: "A: {How old are} your nephews and nieces?<br>B: My nephew is eight years old and my nieces are five and two years old." },
+                         { q: "A: {Are} your colleagues lazy or hard-working?<br>B: They’re quite lazy." },
+                         { q: "A: How {many cousins have you} got?<br>B: I’ve got six cousins." },
+                         { q: "A: What {colour is} your brother’s hair?<br>B: It’s dark brown." },
+                         { q: "A: {Can you remember} your cousin’s wedding?<br>B: No, I can’t. I was only three years old at the time, so I can’t remember it at all." },
+                         { q: "A: {How do you} usually celebrate your birthday?<br>B: I usually have a party with my relatives and close friends." }
+                    ]
+                },
+                 ex8: {
+                    container: document.getElementById('ex8'),
+                    type: 'radio',
+                    questions: [
+                        { q: "<b>Whenever</b> it’s my aunt’s birthday, she organises a family get-together.", options: ["My aunt always organises a family get-together for her birthday.", "My aunt occasionally organises a family get-together for her birthday.", "My aunt rarely organises a family get-together for her birthday."], a: 0 },
+                        { q: "When it’s my aunt’s birthday, she <b>usually</b> organises a family get-together.", options: ["My aunt almost never organises a family get-together for her birthday.", "My aunt always organises a family get-together for her birthday.", "My aunt organises a family get-together most years for her birthday."], a: 2 },
+                        { q: "My aunt <b>often</b> organises family get-togethers.", options: ["My aunt always organises family get-togethers.", "My aunt occasionally organises family get-togethers.", "My aunt organises a lot of family get-togethers."], a: 2 },
+                        { q: "My aunt organises family get-togethers <b>from time to time</b>.", options: ["My aunt almost never organises family get-togethers.", "My aunt always organises family get-togethers.", "My aunt occasionally organises family get-togethers."], a: 2 },
+                        { q: "My aunt organises a family get-together <b>three times a year</b>.", options: ["My aunt organises a family get-together every four months.", "My aunt organises a family get-together every month.", "My aunt organises a family get-together every three months."], a: 0 },
+                        { q: "My aunt organises a family get-together <b>every other month</b>.", options: ["My aunt organises a family get-together every four months.", "My aunt organises a family get-together six times a year.", "My aunt organises a family get-together twice a year."], a: 1 },
+                        { q: "My aunt <b>doesn’t often</b> organise family get-togethers.", options: ["My aunt organises a lot of family get-togethers.", "My aunt organises family get-togethers from time to time.", "My aunt rarely organises family get-togethers."], a: 2 },
+                        { q: "My aunt <b>hardly ever</b> organises family get-togethers.", options: ["My aunt almost never organises family get-togethers.", "My aunt always organises family get-togethers.", "My aunt occasionally organises family get-togethers."], a: 0 }
+                    ]
+                },
+                 ex9: {
+                    container: document.getElementById('ex9'),
+                    type: 'fill-in-rewrite-single',
+                    questions: [
+                         { pre: "We define teenagers as young people aged between 13 and 19 years old.", q: "{Teenagers are defined} as young people aged between 13 and 19 years old." },
+                         { pre: "The police describe the thief as tall with a scar on his face.", q: "{The thief is described} as tall with a scar on his face." },
+                         { pre: "The police advise members of the public not to speak to the thief.", q: "{Members of the public are advised} not to speak to the thief." },
+                         { pre: "How do people usually celebrate birthdays in your country?", q: "How {are birthdays usually celebrated} in your country?" },
+                         { pre: "We don’t expect you to give us an exact number of guests.", q: "{You are not expected} to give us an exact number of guests." },
+                         { pre: "They don’t allow us to wear make-up at school.", q: "{We are not allowed to wear make-up} at school." },
+                         { pre: "What kind of presents do people normally give at weddings in your country?", q: "What kind of presents {are normally given} at weddings in your country?" }
+                    ]
+                },
+                 ex10: {
+                    container: document.getElementById('ex10'),
+                    type: 'fill-in-single',
+                    questions: [
+                        { q: "In my country, a wedding usually {takes} (take) months, or even years, to prepare." },
+                        { q: "The best places for a wedding reception {are booked} (book) years in advance." },
+                        { q: "So you {need} (need) to make a booking as soon as possible." },
+                        { q: "This {means} (mean) that you need to quickly decide how many people you want to invite." },
+                        { q: "A wedding often {costs} (cost) a lot of money, so you need to find out how many people you can afford to invite." },
+                        { q: "The guests {are invited} (invite) as soon as possible to give them time to make the necessary arrangements." },
+                        { q: "The whole event {is planned} (plan) very carefully, as there are a lot of things to organise in time for the wedding." },
+                        { q: "Finally, the wedding day {arrives} (arrive)." },
+                        { q: "Usually, everything goes well, everyone has a nice time and the stress of the last months {is forgotten} (forget)." }
+                    ]
+                }
+            };
+
+            // --- Function to build the worksheet ---
+            function buildWorksheet() {
+                for (const key in exercises) {
+                    const exercise = exercises[key];
+                    const container = exercise.container;
+                    if (!container) continue;
+
+                    if (exercise.type === 'checkbox' || exercise.type === 'radio') {
+                        exercise.questions.forEach((item, index) => {
+                            const qDiv = document.createElement('div');
+                            qDiv.className = 'question-item';
+                            qDiv.innerHTML = `<p class="font-semibold mb-2 text-gray-800">${item.q}</p>`;
+                            const optionsDiv = document.createElement('div');
+                            optionsDiv.className = 'flex flex-col space-y-2';
+                            item.options.forEach((opt, optIndex) => {
+                                const label = document.createElement('label');
+                                label.className = 'flex items-center space-x-3 cursor-pointer text-gray-700';
+                                const input = document.createElement('input');
+                                input.type = exercise.type;
+                                input.name = `${key}-q${index}`;
+                                input.value = optIndex;
+                                input.className = `form-${exercise.type} h-5 w-5 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded`;
+                                label.appendChild(input);
+                                label.append(opt);
+                                optionsDiv.appendChild(label);
+                            });
+                            qDiv.appendChild(optionsDiv);
+                            container.appendChild(qDiv);
+                        });
+                    } else if (exercise.type === 'fill-in') {
+                        let questionCounter = 0;
+                        exercise.text.forEach(paragraph => {
+                            const p = document.createElement('p');
+                            p.className = 'text-gray-700 leading-relaxed mb-4';
+                            p.innerHTML = paragraph.replace(/\{([^}]+)\}/g, (match, answer) => {
+                                return `<input type="text" class="input-field inline-block w-40" data-answer="${answer.toLowerCase()}" data-ex="${key}" data-q="${questionCounter++}">`;
+                            });
+                            container.appendChild(p);
+                        });
+                    } else if (exercise.type === 'fill-in-single') {
+                         exercise.questions.forEach((item, index) => {
+                            const p = document.createElement('p');
+                            p.className = 'text-gray-700 leading-relaxed question-item';
+                            p.innerHTML = item.q.replace(/\{([^}]+)\}/g, (match, answer) => {
+                                return `<input type="text" class="input-field inline-block w-48" data-answer="${answer.toLowerCase()}" data-ex="${key}" data-q="${index}">`;
+                            });
+                            container.appendChild(p);
+                        });
+                    } else if (exercise.type === 'select') {
+                        exercise.questions.forEach((item, index) => {
+                            const div = document.createElement('div');
+                            div.className = 'question-item flex flex-col sm:flex-row sm:items-center gap-2';
+                            const p = document.createElement('p');
+                            p.className = 'font-semibold flex-shrink-0 text-gray-800';
+                            p.textContent = item.q;
+                            div.appendChild(p);
+
+                            const select = document.createElement('select');
+                            select.className = 'input-field w-full';
+                            select.dataset.ex = key;
+                            select.dataset.q = index;
+
+                            const defaultOption = document.createElement('option');
+                            defaultOption.textContent = "Select a description...";
+                            defaultOption.value = "";
+                            select.appendChild(defaultOption);
+
+                            exercise.options.forEach((opt, optIndex) => {
+                                const option = document.createElement('option');
+                                option.value = optIndex;
+                                option.textContent = opt;
+                                select.appendChild(option);
+                            });
+                            div.appendChild(select);
+                            container.appendChild(div);
+                        });
+                    } else if (exercise.type === 'fill-in-rewrite') {
+                        exercise.questions.forEach((item, index) => {
+                            const p = document.createElement('p');
+                            p.className = 'text-gray-700 leading-relaxed question-item';
+                            let inputIndex = 0;
+                            const questionHTML = item.q.replace(/<u>([^<]+)<\/u>/g, () => {
+                                return `<input type="text" class="input-field inline-block w-32" data-ex="${key}" data-q="${index}" data-sub-q="${inputIndex++}">`;
+                            });
+                            p.innerHTML = `${questionHTML}`;
+                            container.appendChild(p);
+                        });
+                    } else if (exercise.type === 'fill-in-rewrite-single') {
+                        exercise.questions.forEach((item, index) => {
+                            const div = document.createElement('div');
+                            div.className = 'question-item';
+                            const pre = document.createElement('p');
+                            pre.className = 'text-gray-500 italic';
+                            pre.textContent = item.pre;
+                            div.appendChild(pre);
+
+                            const p = document.createElement('p');
+                            p.className = 'text-gray-700 leading-relaxed mt-1';
+                            p.innerHTML = item.q.replace(/\{([^}]+)\}/g, (match, answer) => {
+                                return `<input type="text" class="input-field inline-block w-64" data-answer="${answer.toLowerCase()}" data-ex="${key}" data-q="${index}">`;
+                            });
+                            div.appendChild(p);
+                            container.appendChild(div);
+                        });
+                    }
+                }
+            }
+            
+            // --- Function to check a single exercise ---
+            function checkSingleExercise(exerciseKey) {
+                let totalCorrect = 0;
+                let totalQuestions = 0;
+                const exercise = exercises[exerciseKey];
+                const container = exercise.container;
+                if (!container) return;
+
+                // Reset feedback before checking
+                resetSingleExercise(exerciseKey, true);
+
+                if (exercise.type === 'checkbox') {
+                     exercise.questions.forEach((item, index) => {
+                        totalQuestions++;
+                        const userInputs = container.querySelectorAll(`input[name="${exerciseKey}-q${index}"]:checked`);
+                        const userAnswers = Array.from(userInputs).map(input => parseInt(input.value));
+                        const correctAnswers = item.a;
+                        userAnswers.sort();
+                        correctAnswers.sort();
+                        const isCorrect = userAnswers.length === correctAnswers.length && userAnswers.every((val, i) => val === correctAnswers[i]);
+                        const qDiv = container.children[index];
+                        const label = qDiv.querySelector('p');
+                        if (isCorrect) {
+                            totalCorrect++;
+                            label.classList.add('text-green-600');
+                        } else {
+                            label.classList.add('text-red-600');
+                        }
+                    });
+                } else if (exercise.type === 'radio') {
+                     exercise.questions.forEach((item, index) => {
+                        totalQuestions++;
+                        const userInput = container.querySelector(`input[name="${exerciseKey}-q${index}"]:checked`);
+                        const qDiv = container.children[index];
+                        const label = qDiv.querySelector('p');
+                        if (userInput && parseInt(userInput.value) === item.a) {
+                            totalCorrect++;
+                            label.classList.add('text-green-600');
+                        } else {
+                            label.classList.add('text-red-600');
+                        }
+                    });
+
+                } else if (exercise.type === 'fill-in' || exercise.type === 'fill-in-single' || exercise.type === 'fill-in-rewrite-single') {
+                    const inputs = container.querySelectorAll(`input[data-ex="${exerciseKey}"]`);
+                    inputs.forEach(input => {
+                        totalQuestions++;
+                        const userAnswer = input.value.trim().toLowerCase();
+                        const correctAnswer = input.dataset.answer;
+                        if (userAnswer === correctAnswer) {
+                            totalCorrect++;
+                            input.classList.add('correct');
+                        } else {
+                            input.classList.add('incorrect');
+                        }
+                    });
+                } else if (exercise.type === 'select') {
+                    const selects = container.querySelectorAll(`select[data-ex="${exerciseKey}"]`);
+                    selects.forEach(select => {
+                        totalQuestions++;
+                        const qIndex = parseInt(select.dataset.q);
+                        if (parseInt(select.value) === exercises[exerciseKey].questions[qIndex].a) {
+                            totalCorrect++;
+                            select.classList.add('correct');
+                        } else {
+                            select.classList.add('incorrect');
+                        }
+                    });
+                } else if (exercise.type === 'fill-in-rewrite') {
+                     exercise.questions.forEach((item, qIndex) => {
+                        const inputs = container.querySelectorAll(`input[data-q="${qIndex}"]`);
+                        inputs.forEach((input, subQIndex) => {
+                            totalQuestions++;
+                            const userAnswer = input.value.trim().toLowerCase().replace(/'/g, '’');
+                            const correctAnswer = item.a[subQIndex].toLowerCase().replace(/'/g, '’');
+                            if (userAnswer === correctAnswer) {
+                                totalCorrect++;
+                                input.classList.add('correct');
+                            } else {
+                                input.classList.add('incorrect');
+                            }
+                        });
+                    });
+                }
+                
+                const scoreContainer = document.querySelector(`div[data-score-container="${exerciseKey}"]`);
+                if (scoreContainer) {
+                   scoreContainer.innerHTML = `Score: ${totalCorrect} / ${totalQuestions}`;
+                }
+            }
+            
+            // --- Function to reset a single exercise ---
+            function resetSingleExercise(exerciseKey, feedbackOnly = false) {
+                 const exercise = exercises[exerciseKey];
+                 const container = exercise.container;
+                 if (!container) return;
+
+                 const inputs = container.querySelectorAll('input, select');
+                 inputs.forEach(input => {
+                    input.classList.remove('correct', 'incorrect');
+                    if (!feedbackOnly) {
+                        if(input.type === 'text') input.value = '';
+                        if(input.type === 'checkbox' || input.type === 'radio') input.checked = false;
+                        if(input.tagName === 'SELECT') input.selectedIndex = 0;
+                    }
+                 });
+
+                const labels = container.querySelectorAll('.question-item p');
+                labels.forEach(label => {
+                    label.classList.remove('text-green-600', 'text-red-600');
+                });
+                
+                const scoreContainer = document.querySelector(`div[data-score-container="${exerciseKey}"]`);
+                if (scoreContainer && !feedbackOnly) {
+                   scoreContainer.innerHTML = '';
+                }
+            }
+
+            // --- Event Listeners using Delegation ---
+            document.getElementById('worksheet').addEventListener('click', function(event) {
+                const target = event.target;
+                if (target.classList.contains('check-exercise-btn')) {
+                    const exerciseKey = target.dataset.exerciseKey;
+                    checkSingleExercise(exerciseKey);
+                }
+                if (target.classList.contains('reset-exercise-btn')) {
+                    const exerciseKey = target.dataset.exerciseKey;
+                    resetSingleExercise(exerciseKey);
+                }
+            });
+
+            // --- Initial Setup ---
+            buildWorksheet();
+        });
+    </script>
+</body>
+</html>
