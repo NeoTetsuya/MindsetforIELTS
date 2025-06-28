@@ -38,6 +38,24 @@
         .exercise-score {
              min-height: 28px; /* Reserve space for the score to prevent layout shift */
         }
+        .nav-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            background-color: #f3f4f6; /* gray-200 */
+            color: #374151; /* gray-700 */
+            border: 1px solid #d1d5db; /* gray-300 */
+        }
+        .nav-btn:hover {
+            background-color: #e5e7eb; /* gray-300 */
+        }
+        .nav-btn.active {
+            background-color: #4F46E5; /* indigo-600 */
+            color: white;
+            border-color: #4F46E5;
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 p-4">
@@ -48,9 +66,22 @@
             <p class="text-lg text-center text-gray-500 mb-8">Unit 1: Grammar & Vocabulary</p>
         </header>
 
+        <nav id="exercise-nav" class="flex flex-wrap justify-center gap-2 mb-8">
+            <button class="nav-btn" data-target="ex1">Ex 1</button>
+            <button class="nav-btn" data-target="ex2">Ex 2</button>
+            <button class="nav-btn" data-target="ex3">Ex 3</button>
+            <button class="nav-btn" data-target="ex4">Ex 4</button>
+            <button class="nav-btn" data-target="ex5">Ex 5</button>
+            <button class="nav-btn" data-target="ex6">Ex 6</button>
+            <button class="nav-btn" data-target="ex7">Ex 7</button>
+            <button class="nav-btn" data-target="ex8">Ex 8</button>
+            <button class="nav-btn" data-target="ex9">Ex 9</button>
+            <button class="nav-btn" data-target="ex10">Ex 10</button>
+        </nav>
+
         <div id="worksheet">
             <!-- Exercise 1 -->
-            <section class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
+            <section id="exercise-section-ex1" class="exercise-section mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
                 <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Exercise 1: Family Relationships</h2>
                 <p class="mb-6 text-gray-700">Choose the correct answers to complete the sentences. There is often more than one possible answer.</p>
                 <div id="ex1"></div>
@@ -62,7 +93,7 @@
             </section>
 
             <!-- Exercise 2 -->
-            <section class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
+            <section id="exercise-section-ex2" class="exercise-section mb-10 p-6 bg-blue-50 rounded-lg shadow-md hidden">
                 <h2 class="text-2xl font-semibold text-blue-600 mb-4">Exercise 2: Special Occasions</h2>
                 <p class="mb-6 text-gray-700">Complete the text. Use the words in the box.</p>
                 <div class="word-box">
@@ -77,7 +108,7 @@
             </section>
 
             <!-- Exercise 3 -->
-            <section class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
+            <section id="exercise-section-ex3" class="exercise-section mb-10 p-6 bg-green-50 rounded-lg shadow-md hidden">
                 <h2 class="text-2xl font-semibold text-green-600 mb-4">Exercise 3: Describing People (Appearance)</h2>
                 <p class="mb-6 text-gray-700">Choose two correct words to complete the sentences.</p>
                 <div id="ex3"></div>
@@ -89,7 +120,7 @@
             </section>
             
             <!-- Exercise 4 -->
-            <section class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
+            <section id="exercise-section-ex4" class="exercise-section mb-10 p-6 bg-purple-50 rounded-lg shadow-md hidden">
                 <h2 class="text-2xl font-semibold text-purple-600 mb-4">Exercise 4: Types of People</h2>
                 <p class="mb-6 text-gray-700">Complete the sentences. Use the words in the box.</p>
                 <div class="word-box">
@@ -104,7 +135,7 @@
             </section>
 
             <!-- Exercise 5 -->
-            <section class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
+            <section id="exercise-section-ex5" class="exercise-section mb-10 p-6 bg-yellow-50 rounded-lg shadow-md hidden">
                  <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Exercise 5: Describing People (Personality)</h2>
                  <p class="mb-6 text-gray-700">Complete the sentences. Choose the correct description.</p>
                  <div id="ex5" class="space-y-4"></div>
@@ -116,7 +147,7 @@
             </section>
             
             <!-- Exercise 6 -->
-            <section class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
+            <section id="exercise-section-ex6" class="exercise-section mb-10 p-6 bg-red-50 rounded-lg shadow-md hidden">
                 <h2 class="text-2xl font-semibold text-red-600 mb-4">Exercise 6: Negative Sentences</h2>
                  <p class="mb-6 text-gray-700">Change the underlined words to the negative form. Use contractions (e.g. don’t, aren’t) where possible.</p>
                  <div id="ex6" class="space-y-4"></div>
@@ -128,7 +159,7 @@
             </section>
 
             <!-- Exercise 7 -->
-            <section class="mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
+            <section id="exercise-section-ex7" class="exercise-section mb-10 p-6 bg-teal-50 rounded-lg shadow-md hidden">
                 <h2 class="text-2xl font-semibold text-teal-600 mb-4">Exercise 7: Wh- Questions</h2>
                  <p class="mb-6 text-gray-700">Complete the questions in the conversations.</p>
                  <div id="ex7" class="space-y-4"></div>
@@ -140,7 +171,7 @@
             </section>
 
             <!-- Exercise 8 -->
-            <section class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
+            <section id="exercise-section-ex8" class="exercise-section mb-10 p-6 bg-orange-50 rounded-lg shadow-md hidden">
                 <h2 class="text-2xl font-semibold text-orange-600 mb-4">Exercise 8: Adverbs of Frequency</h2>
                  <p class="mb-6 text-gray-700">Choose the sentence that is closest in meaning to the first sentence.</p>
                  <div id="ex8"></div>
@@ -152,7 +183,7 @@
             </section>
             
             <!-- Exercise 9 -->
-            <section class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
+            <section id="exercise-section-ex9" class="exercise-section mb-10 p-6 bg-pink-50 rounded-lg shadow-md hidden">
                 <h2 class="text-2xl font-semibold text-pink-600 mb-4">Exercise 9: Present Simple Passive</h2>
                  <p class="mb-6 text-gray-700">Read the active sentences. Then complete the present simple passive sentences underneath.</p>
                  <div id="ex9" class="space-y-4"></div>
@@ -164,7 +195,7 @@
             </section>
 
             <!-- Exercise 10 -->
-            <section class="mb-10 p-6 bg-gray-200 rounded-lg shadow-md">
+            <section id="exercise-section-ex10" class="exercise-section mb-10 p-6 bg-gray-200 rounded-lg shadow-md hidden">
                 <h2 class="text-2xl font-semibold text-gray-700 mb-4">Exercise 10: Present Simple Active vs. Passive</h2>
                  <p class="mb-6 text-gray-700">Complete the sentences with the correct present simple form of the verbs in brackets.</p>
                  <div id="ex10" class="space-y-4"></div>
@@ -322,6 +353,44 @@
                     ]
                 }
             };
+
+            // --- Navigation Logic ---
+            const navContainer = document.getElementById('exercise-nav');
+            const exerciseSections = document.querySelectorAll('.exercise-section');
+            const navButtons = navContainer.querySelectorAll('.nav-btn');
+
+            function showExercise(targetKey) {
+                // Hide all sections
+                exerciseSections.forEach(section => {
+                    section.classList.add('hidden');
+                });
+
+                // Deactivate all buttons
+                navButtons.forEach(button => {
+                    button.classList.remove('active');
+                });
+
+                // Show target section
+                const targetSection = document.getElementById(`exercise-section-${targetKey}`);
+                if(targetSection) {
+                    targetSection.classList.remove('hidden');
+                }
+
+                // Activate target button
+                const targetButton = navContainer.querySelector(`[data-target="${targetKey}"]`);
+                 if(targetButton) {
+                    targetButton.classList.add('active');
+                }
+            }
+
+            navContainer.addEventListener('click', function(event) {
+                const target = event.target.closest('.nav-btn');
+                if (target) {
+                    const targetKey = target.dataset.target;
+                    showExercise(targetKey);
+                }
+            });
+
 
             // --- Function to build the worksheet ---
             function buildWorksheet() {
@@ -564,6 +633,7 @@
 
             // --- Initial Setup ---
             buildWorksheet();
+            showExercise('ex1'); // Show the first exercise by default
         });
     </script>
 </body>
