@@ -48,21 +48,21 @@
         }
         .nav-btn {
             padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
-            font-weight: 500;
-            color: #4b5563;
-            background-color: #e5e7eb;
+            border-radius: 0.5rem; /* rounded-lg */
+            font-weight: 600;
+            color: #4338ca; /* indigo-700 */
+            background-color: #e0e7ff; /* indigo-100 */
             transition: all 0.2s;
             border: 2px solid transparent;
         }
         .nav-btn:hover {
-             background-color: #d1d5db;
+             background-color: #c7d2fe; /* indigo-200 */
         }
         .nav-btn.active {
-            background-color: #6366f1;
+            background-color: #4f46e5; /* indigo-600 */
             color: white;
-            font-weight: 600;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-weight: 700;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
         }
         .exercise-section {
             display: none;
@@ -335,10 +335,18 @@
             const navBar = document.getElementById('navigation-bar');
             const totalExercises = 10;
 
+            // Create "All" button
+            const allButton = document.createElement('button');
+            allButton.textContent = 'All';
+            allButton.id = 'nav-btn-all';
+            allButton.className = 'nav-btn';
+            allButton.onclick = () => showAllExercises();
+            navBar.appendChild(allButton);
+
             // Create navigation buttons
             for (let i = 1; i <= totalExercises; i++) {
                 const button = document.createElement('button');
-                button.textContent = `Ex. ${i}`;
+                button.textContent = i;
                 button.id = `nav-btn-${i}`;
                 button.className = 'nav-btn';
                 button.onclick = () => showExercise(i);
@@ -348,6 +356,24 @@
             // Show the first exercise by default
             showExercise(1);
         });
+        
+        function showAllExercises() {
+            // Show all exercises
+            const exercises = document.querySelectorAll('.exercise-section');
+            exercises.forEach(ex => {
+                ex.style.display = 'block';
+            });
+
+            // Update active state of navigation buttons
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const allButton = document.getElementById(`nav-btn-all`);
+            if (allButton) {
+                allButton.classList.add('active');
+            }
+        }
 
         function showExercise(exerciseNumber) {
             // Hide all exercises
