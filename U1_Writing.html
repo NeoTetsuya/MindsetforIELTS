@@ -126,6 +126,57 @@
             </div>
         </section>
 
+        <section id="exercise4" class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-purple-600 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>Exercise 4: Important Information</h2>
+            <p class="question">Choose whether the information is important or not important for a report.</p>
+            <form id="form4" class="space-y-4">
+                <!-- Questions will be injected by JS -->
+            </form>
+            <div class="mt-8 text-center">
+                <button type="button" onclick="checkForm4()" class="px-5 py-2 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-200 ease-in-out transform hover:scale-105">Check Answers</button>
+            </div>
+        </section>
+
+        <section id="exercise5" class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-pink-600 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>Exercise 5: Analyse a Report</h2>
+            <p class="question">Read the report on the diagram and answer the questions.</p>
+            <div class="bg-white p-4 rounded-md border border-gray-200 mb-6">
+                <p class="text-gray-700 italic">The diagram explains how tea is produced before it is sold in supermarkets. Supermarkets in my country sell a lot of tea.It shows several stages of production from the growing and picking stages to when lorries deliver the tea to supermarkets and when customers buy it while they are shopping. There are seven main stages between the tea being planted and being bought. First of all, the tea is grown for three years when it is picked by hand. After that, the tea is left to rest either outdoors or indoors. After this comes the packaging stage. The dried tea is made into teabags and the teabags are put into boxes. The boxes are then packed into lorries. The lorries are very big. The lorries deliver the tea to the supermarkets. Tea is a healthy drink.</p>
+            </div>
+            <form id="form5">
+                 <!-- Questions will be injected by JS -->
+            </form>
+            <div class="mt-8 text-center">
+                <button type="button" onclick="checkForm5()" class="px-5 py-2 bg-pink-600 text-white rounded-lg shadow-md hover:bg-pink-700 transition duration-200 ease-in-out transform hover:scale-105">Check Answers</button>
+            </div>
+        </section>
+
+        <section id="exercise6" class="mb-10 p-6 bg-gray-200 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" /></svg>Exercise 6: Order Paragraphs</h2>
+            <p class="question">Look at the diagram again. Then put the paragraphs in the correct order to complete the report.</p>
+             <div id="drop-zones-para" class="space-y-4">
+                <!-- Drop zones for paragraphs will be injected by JS -->
+            </div>
+             <div id="draggable-items-para" class="flex flex-wrap gap-4 my-6 p-4 bg-gray-300/50 rounded-xl justify-center">
+                <!-- Draggable paragraphs will be injected here by JS -->
+            </div>
+            <div class="mt-8 text-center">
+                <button type="button" onclick="checkParaOrder()" class="px-5 py-2 bg-gray-600 text-white rounded-lg shadow-md hover:bg-gray-700 transition duration-200 ease-in-out transform hover:scale-105">Check Order</button>
+                <div id="feedback-ex6" class="feedback justify-center mt-3 text-sm font-semibold flex items-center gap-2"></div>
+            </div>
+        </section>
+
+        <section id="exercise7" class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-orange-600 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l-1.586-1.586a2 2 0 00-2.828 0L6 14m6-6l.01.01" /></svg>Exercise 7: Match Sentences to Pictures</h2>
+            <p class="question">Match the correct pictures with the sentences describing the process of producing tea.</p>
+            <div id="ex7-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Matching items will be injected by JS -->
+            </div>
+            <div class="mt-8 text-center">
+                 <button type="button" onclick="checkEx7()" class="px-5 py-2 bg-orange-600 text-white rounded-lg shadow-md hover:bg-orange-700 transition duration-200 ease-in-out transform hover:scale-105">Check Answers</button>
+            </div>
+        </section>
+
         <section id="exercise8" class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-yellow-700 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2V7a2 2 0 012-2h6l2-2h2l-2 2z" /></svg>Exercise 8: Present Simple Passive</h2>
             <p class="question">Complete the sentences in the present simple passive.</p>
@@ -229,13 +280,13 @@
                 if (userAnswer === correctAnswer) {
                     feedbackEl.innerHTML = `${correctIcon} <span>Correct</span>`;
                     feedbackEl.className = 'feedback correct';
-                    input.classList.add('border-green-500', 'ring-green-500');
-                    input.classList.remove('border-red-500', 'ring-red-500');
+                    input.classList.add('!border-green-500', 'ring-green-500');
+                    input.classList.remove('!border-red-500', 'ring-red-500');
                 } else {
                     feedbackEl.innerHTML = `${incorrectIcon} <span>Try again</span>`;
                     feedbackEl.className = 'feedback incorrect';
-                    input.classList.add('border-red-500', 'ring-red-500');
-                    input.classList.remove('border-green-500', 'ring-green-500');
+                    input.classList.add('!border-red-500', 'ring-red-500');
+                    input.classList.remove('!border-green-500', 'ring-green-500');
                 }
             });
         }
@@ -243,7 +294,7 @@
         // --- Drag and Drop Logic ---
         let draggedItem = null;
 
-        function setupDragAndDrop(containerId, items, dropZoneContainerId, numDropZones) {
+        function setupDragAndDrop(containerId, items, dropZoneContainerId, numDropZones, itemClass = 'draggable-item') {
             const draggableContainer = document.getElementById(containerId);
             const dropZoneContainer = document.getElementById(dropZoneContainerId);
             
@@ -254,31 +305,32 @@
             items.forEach(item => {
                 const div = document.createElement('div');
                 div.id = item.id;
-                div.className = 'draggable';
+                div.className = itemClass;
                 div.draggable = true;
                 
                 if(item.type === 'image') {
                     div.innerHTML = `<img src="${item.content}" alt="Process stage" class="h-20 mx-auto pointer-events-none">`;
-                } else {
+                } else if(item.type === 'paragraph'){
+                     div.innerHTML = `<p class="p-2">${item.content}</p>`;
+                }
+                else {
                     div.className += ' px-4 py-2 bg-indigo-100/80 border-indigo-300 text-base';
                     div.textContent = item.content;
                 }
 
                 div.addEventListener('dragstart', (e) => {
-                    draggedItem = e.target.closest('.draggable');
+                    draggedItem = e.target.closest('.' + itemClass);
                     e.dataTransfer.effectAllowed = 'move';
                     setTimeout(() => {
-                        draggedItem.style.opacity = '0.5';
+                        if(draggedItem) draggedItem.style.opacity = '0.5';
                     }, 0);
                 });
 
                 div.addEventListener('dragend', () => {
-                    setTimeout(() => {
-                         if (draggedItem) {
-                            draggedItem.style.opacity = '1';
-                            draggedItem = null;
-                         }
-                    }, 0);
+                     if(draggedItem) {
+                        draggedItem.style.opacity = '1';
+                        draggedItem = null;
+                     }
                 });
 
                 draggableContainer.appendChild(div);
@@ -288,7 +340,7 @@
                 const zone = document.createElement('div');
                 zone.className = 'drop-zone';
                 zone.dataset.order = i;
-                zone.innerHTML = `<span class="font-bold text-lg text-gray-300">${i}</span>`;
+                zone.innerHTML = `<span class="font-bold text-lg text-gray-400 p-4">${i}</span>`;
 
                 zone.addEventListener('dragover', (e) => {
                     e.preventDefault();
@@ -301,8 +353,8 @@
                     e.preventDefault();
                     zone.classList.remove('over');
                     if (zone.children.length > 1) { 
-                        const existingChild = zone.querySelector('.draggable');
-                        draggableContainer.appendChild(existingChild);
+                        const existingChild = zone.querySelector('.' + itemClass);
+                        if(existingChild) draggableContainer.appendChild(existingChild);
                     }
                     if (draggedItem) {
                        zone.appendChild(draggedItem);
@@ -379,8 +431,184 @@
             wordCountEl.textContent = words.length;
         });
 
+        // --- Exercise 4 Specific ---
+        const ex4Questions = [
+            { text: "Sun shining a lot.", answer: "Not important" },
+            { text: "Tea grows for three years.", answer: "Important" },
+            { text: "Person picking tea is female.", answer: "Not important" },
+            { text: "Tea picked by hand.", answer: "Important" },
+            { text: "Tea left to rest outdoors or indoors.", answer: "Important" },
+            { text: "Round machine has open lid.", answer: "Not important" },
+            { text: "Tea in drying machine for two hours.", answer: "Important" },
+            { text: "Tea is dried at 260°C.", answer: "Important" },
+            { text: "Put in box at packaging stage.", answer: "Important" },
+            { text: "Delivered to supermarket.", answer: "Important" },
+            { text: "Tea is finally bought by customers.", answer: "Important" }
+        ];
+
+        function initializeEx4() {
+            const container = document.getElementById('form4');
+            ex4Questions.forEach((q, index) => {
+                const div = document.createElement('div');
+                div.className = 'p-3 bg-purple-100 rounded-lg';
+                div.innerHTML = `
+                    <p class="question font-semibold">${index + 1}. ${q.text}</p>
+                    <div class="space-y-2" data-correct="${q.answer}">
+                        <label class="flex items-center p-2 rounded-lg hover:bg-purple-200 cursor-pointer"><input type="radio" name="ex4_q${index}" value="Important" class="!checked:bg-purple-600 !checked:border-purple-600"> <span class="option-label">Important</span></label>
+                        <label class="flex items-center p-2 rounded-lg hover:bg-purple-200 cursor-pointer"><input type="radio" name="ex4_q${index}" value="Not important" class="!checked:bg-purple-600 !checked:border-purple-600"> <span class="option-label">Not important</span></label>
+                    </div>
+                    <div class="feedback mt-3 text-sm font-semibold flex items-center gap-2"></div>
+                `;
+                container.appendChild(div);
+            });
+        }
+        function checkForm4() { checkAnswers('form4'); }
+
+         // --- Exercise 5 Specific ---
+        const ex5Questions = [
+            { question: "Has the student used all of the important information?", answer: "No" },
+            { question: "Has the student given his or her own opinion or used any information that is not important?", answer: "Yes" },
+            { question: "Is the report long enough?", answer: "No" }
+        ];
+
+        function initializeEx5() {
+            const container = document.getElementById('form5');
+            container.innerHTML = ''; // Clear previous
+            ex5Questions.forEach((q, index) => {
+                const div = document.createElement('div');
+                div.className = 'p-3 bg-pink-100 rounded-lg space-y-2';
+                div.innerHTML = `
+                    <p class="question font-semibold">${index + 1}. ${q.question}</p>
+                    <div class="space-y-2" data-correct="${q.answer}">
+                        <label class="flex items-center p-2 rounded-lg hover:bg-pink-200 cursor-pointer"><input type="radio" name="ex5_q${index}" value="Yes" class="!checked:bg-pink-600 !checked:border-pink-600"> <span class="option-label">Yes</span></label>
+                        <label class="flex items-center p-2 rounded-lg hover:bg-pink-200 cursor-pointer"><input type="radio" name="ex5_q${index}" value="No" class="!checked:bg-pink-600 !checked:border-pink-600"> <span class="option-label">No</span></label>
+                    </div>
+                    <div class="feedback mt-3 text-sm font-semibold flex items-center gap-2"></div>
+                `;
+                container.appendChild(div);
+            });
+        }
+        function checkForm5() { checkAnswers('form5'); }
+
+        // --- Exercise 6 Specific ---
+        const ex6Paragraphs = [
+            { id: 'para-item-1', order: 1, content: 'The diagram explains how tea is produced before it is sold in supermarkets.' },
+            { id: 'para-item-2', order: 2, content: 'It shows several stages of production from the growing and picking stages to when lorries deliver the tea to supermarkets and when customers buy it while they are shopping. There are seven main stages between the tea being planted and being bought.' },
+            { id: 'para-item-3', order: 3, content: 'First of all, the tea is grown for three years when it is picked by hand. After that, the tea is left to rest either outdoors or indoors. Next, it is put in a drying machine where it is dried for two hours. The temperature during this stage of the process should be just over 260°C.' },
+            { id: 'para-item-4', order: 4, content: 'After this comes the packaging stage. The dried tea is made into teabags and the teabags are put into boxes. The boxes are then packed into lorries. The lorries deliver the tea to the supermarkets. Finally, customers buy the tea when they are shopping.'}
+        ];
+        
+        function initializeEx6() {
+            const paragraphsForDnd = ex6Paragraphs.map(p => ({...p, type: 'paragraph'}));
+            setupDragAndDrop('draggable-items-para', paragraphsForDnd, 'drop-zones-para', 4, 'draggable-para');
+        }
+
+        function checkParaOrder() {
+            const dropZones = document.querySelectorAll('#drop-zones-para .drop-zone');
+            let allCorrect = true;
+            dropZones.forEach(zone => {
+                const placedItem = zone.querySelector('.draggable-para');
+                const correctOrder = zone.dataset.order;
+                zone.classList.remove('border-green-500', 'border-red-500', 'bg-green-100', 'bg-red-100');
+                if (!placedItem || placedItem.id !== `para-item-${correctOrder}`) {
+                    allCorrect = false;
+                    zone.classList.add('border-red-500', 'bg-red-100');
+                } else {
+                    zone.classList.add('border-green-500', 'bg-green-100');
+                }
+            });
+            const feedbackEl = document.getElementById('feedback-ex6');
+             if (allCorrect) {
+                feedbackEl.innerHTML = `${correctIcon} <span>Perfect order!</span>`;
+                feedbackEl.className = 'feedback correct justify-center';
+            } else {
+                feedbackEl.innerHTML = `${incorrectIcon} <span>The order is not quite right. Try again!</span>`;
+                feedbackEl.className = 'feedback incorrect justify-center';
+            }
+        }
+        
+         // --- Exercise 7 Specific ---
+        const ex7Sentences = [
+            "First of all, the tea is grown for three years.",
+            "Then it is picked by hand.",
+            "After that, the tea is left to rest either outdoors or indoors.",
+            "Next, it is put in a drying machine where it is dried for two hours. The temperature during this stage of the process should be just over 260°C.",
+            "After this comes the packaging stage. The dried tea is made into teabags and the teabags are put into boxes.",
+            "The boxes are then packed into lorries. The lorries deliver the tea to the supermarkets.",
+            "Finally, customers buy the tea when they are shopping."
+        ];
+        
+        const ex7Images = [
+            'https://i.postimg.cc/GhY7YKMq/Tea-Stage1.jpg',
+            'https://i.postimg.cc/kgmjySz9/Tea-Stage2.jpg',
+            'https://i.postimg.cc/VNsDx8zV/Tea-Stage3.jpg',
+            'https://i.postimg.cc/3xFtfRQG/Tea-Stage4.jpg',
+            'https://i.postimg.cc/wBW0HGvT/Tea-Stage5.jpg',
+            'https://i.postimg.cc/bJsLv9D0/Tea-Stage6.jpg',
+            'https://i.postimg.cc/pT4C55zw/Tea-Stage7.jpg'
+        ];
+        
+        function initializeEx7() {
+            const container = document.getElementById('ex7-container');
+            ex7Images.forEach((imgSrc, index) => {
+                const div = document.createElement('div');
+                div.className = 'p-3 bg-orange-100 rounded-lg flex flex-col gap-4';
+                
+                const img = document.createElement('img');
+                img.src = imgSrc;
+                img.className = 'w-full h-40 object-contain rounded-md shadow-sm';
+                div.appendChild(img);
+                
+                const select = document.createElement('select');
+                select.id = `ex7-select-${index}`;
+                select.className = 'p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500 w-full !text-input';
+                
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select matching sentence...";
+                select.appendChild(defaultOption);
+                
+                ex7Sentences.forEach((sentence, sIndex) => {
+                    const option = document.createElement('option');
+                    option.value = sIndex;
+                    option.textContent = sentence;
+                    select.appendChild(option);
+                });
+                div.appendChild(select);
+                
+                const feedbackDiv = document.createElement('div');
+                feedbackDiv.id = `ex7-feedback-${index}`;
+                feedbackDiv.className = 'feedback';
+                div.appendChild(feedbackDiv);
+                
+                container.appendChild(div);
+            });
+        }
+
+        function checkEx7() {
+            ex7Images.forEach((_, index) => {
+                const select = document.getElementById(`ex7-select-${index}`);
+                const feedbackEl = document.getElementById(`ex7-feedback-${index}`);
+                const isCorrect = select.value == index; // Correct if selected option index matches image index
+                
+                if (isCorrect) {
+                     feedbackEl.innerHTML = `${correctIcon} <span>Correct!</span>`;
+                     feedbackEl.className = 'feedback correct';
+                } else {
+                     feedbackEl.innerHTML = `${incorrectIcon} <span>Incorrect.</span>`;
+                     feedbackEl.className = 'feedback incorrect';
+                }
+            });
+        }
+
+
         // --- Initialize Exercises on Load ---
         document.addEventListener('DOMContentLoaded', () => {
+            initializeEx4();
+            initializeEx5();
+            initializeEx6();
+            initializeEx7();
+
             const teaItems = [
                 { id: 'tea-stage-1', type: 'image', content: 'https://i.postimg.cc/GhY7YKMq/Tea-Stage1.jpg' },
                 { id: 'tea-stage-2', type: 'image', content: 'https://i.postimg.cc/kgmjySz9/Tea-Stage2.jpg' },
@@ -390,7 +618,7 @@
                 { id: 'tea-stage-6', type: 'image', content: 'https://i.postimg.cc/bJsLv9D0/Tea-Stage6.jpg' },
                 { id: 'tea-stage-7', type: 'image', content: 'https://i.postimg.cc/pT4C55zw/Tea-Stage7.jpg' }
             ];
-            setupDragAndDrop('draggable-items-tea', teaItems, 'drop-zones-tea', 7);
+            setupDragAndDrop('draggable-items-tea', teaItems, 'drop-zones-tea', 7, 'draggable');
 
             const bananaLabels = [
                 { id: 'banana-label-1', type: 'text', content: 'Growing' },
@@ -401,7 +629,7 @@
                 { id: 'banana-label-6', type: 'text', content: 'Delivery' },
                 { id: 'banana-label-7', type: 'text', content: 'Buying' }
             ];
-            setupDragAndDrop('draggable-labels-banana', bananaLabels, 'drop-zones-banana', 7);
+            setupDragAndDrop('draggable-labels-banana', bananaLabels, 'drop-zones-banana', 7, 'draggable');
         });
 
     </script>
