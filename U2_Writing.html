@@ -37,11 +37,11 @@
             background-color: #4338ca;
         }
         .btn-secondary {
-            background-color: #6b7280;
-            color: white;
+            background-color: #e0e7ff;
+            color: #3730a3;
         }
         .btn-secondary:hover {
-            background-color: #4b5563;
+            background-color: #c7d2fe;
         }
         .input-field {
             border: 1px solid #d1d5db;
@@ -73,18 +73,45 @@
             border-color: #ef4444;
             background-color: #fef2f2;
         }
+        .nav-btn.active {
+            background-color: #4f46e5;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%);
+        }
+        .nav-btn:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.5);
+        }
+        .nav-btn.active:focus {
+            box-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%);
+        }
     </style>
 </head>
 <body class="p-4 sm:p-6 md:p-8">
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-8">
-            <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-8">Mindset for IELTS 1 - Unit 2 Writing</h1>
+            <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-2">Mindset for IELTS 1 - Unit 2 Writing</h1>
             <p class="text-gray-600 mt-2">Giving Directions and Comparing Locations</p>
         </header>
 
+        <nav class="flex flex-wrap justify-center gap-2 mb-8 sticky top-4 bg-white/80 backdrop-blur-sm p-2 rounded-lg z-10 shadow-sm">
+            <button onclick="showExercise('all')" class="nav-btn btn btn-secondary">All</button>
+            <button onclick="showExercise('ex1')" class="nav-btn btn btn-secondary">1</button>
+            <button onclick="showExercise('ex2')" class="nav-btn btn btn-secondary">2</button>
+            <button onclick="showExercise('ex3')" class="nav-btn btn btn-secondary">3</button>
+            <button onclick="showExercise('ex4')" class="nav-btn btn btn-secondary">4</button>
+            <button onclick="showExercise('ex5')" class="nav-btn btn btn-secondary">5</button>
+            <button onclick="showExercise('ex6')" class="nav-btn btn btn-secondary">6</button>
+            <button onclick="showExercise('ex7')" class="nav-btn btn btn-secondary">7</button>
+            <button onclick="showExercise('ex8')" class="nav-btn btn btn-secondary">8</button>
+            <button onclick="showExercise('ex9')" class="nav-btn btn btn-secondary">9</button>
+            <button onclick="showExercise('ex10')" class="nav-btn btn btn-secondary">10</button>
+        </nav>
+
         <!-- Exercise 1 -->
-        <div id="ex1" class="exercise-card">
+        <div id="ex1" class="exercise-card exercise-content">
             <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Exercise 1: Famous London Locations</h2>
             <p class="text-gray-600 mb-4">Look at the six famous locations in London. Match the pictures with the correct places by selecting from the dropdown menu.</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -173,7 +200,7 @@
         </div>
 
         <!-- Exercise 2 -->
-        <div id="ex2" class="exercise-card">
+        <div id="ex2" class="exercise-card exercise-content">
             <h2 class="text-2xl font-semibold text-blue-600 mb-4">Exercise 2: Unscramble the Words</h2>
             <p class="text-gray-600 mb-4">Look at the map. Put the letters in the correct order to complete the place names and directions.</p>
             <img src="https://i.postimg.cc/mg8sdFB5/Writing-Unit2-Exercise2.jpg" alt="Map of Westminster" class="rounded-lg shadow-md w-full mb-6">
@@ -193,7 +220,7 @@
         </div>
 
         <!-- Exercise 3 -->
-        <div id="ex3" class="exercise-card">
+        <div id="ex3" class="exercise-card exercise-content">
             <h2 class="text-2xl font-semibold text-green-600 mb-4">Exercise 3: Prepositions</h2>
              <p class="text-gray-600 mb-4">Match the prepositions with the correct pictures.</p>
             <div class="text-center p-4 mb-4 bg-indigo-100 rounded-lg">
@@ -244,7 +271,7 @@
         </div>
 
         <!-- Exercise 4 -->
-        <div id="ex4" class="exercise-card">
+        <div id="ex4" class="exercise-card exercise-content">
             <h2 class="text-2xl font-semibold text-purple-600 mb-4">Exercise 4: Choose the Correct Option</h2>
             <p class="text-gray-600 mb-4">Look at the map. Then choose the correct options to complete the sentences.</p>
             <img src="https://i.postimg.cc/7YN86TGZ/Writing-Unit2-Exercise4.jpg" alt="Map of Westminster area" class="rounded-lg shadow-md w-full mb-6">
@@ -296,7 +323,7 @@
         </div>
 
         <!-- Exercise 5 -->
-        <div id="ex5" class="exercise-card">
+        <div id="ex5" class="exercise-card exercise-content">
             <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Exercise 5: Describe the Locations</h2>
             <p class="text-gray-600 mb-4">Complete the descriptions of the two locations. Use the words in the box.</p>
             <img src="https://i.postimg.cc/kgj0N3yr/Writing-Unit2-Exercise5.png" alt="Map with two sandwich shop locations" class="rounded-lg shadow-md w-full mb-6">
@@ -331,7 +358,7 @@
         </div>
 
         <!-- Exercise 6 -->
-        <div id="ex6" class="exercise-card">
+        <div id="ex6" class="exercise-card exercise-content">
             <h2 class="text-2xl font-semibold text-red-600 mb-4">Exercise 6: Find the Mistakes</h2>
             <p class="text-gray-600 mb-4">The following text has five mistakes. Find and correct them.</p>
             <img src="https://i.postimg.cc/x1TrbTMy/Writing-Unit2-Exercise6.png" alt="Map with two sandwich shop locations" class="rounded-lg shadow-md w-full mb-6">
@@ -365,7 +392,7 @@
         </div>
 
         <!-- Exercise 7 -->
-        <div id="ex7" class="exercise-card">
+        <div id="ex7" class="exercise-card exercise-content">
             <h2 class="text-2xl font-semibold text-teal-600 mb-4">Exercise 7: Structure of a Report</h2>
             <p class="text-gray-600 mb-4">Match the descriptions with the correct parts of the report.</p>
             <img src="https://i.postimg.cc/3wdPnSLk/Writing-Unit2-Exercise7.png" alt="Map with two sandwich shop locations" class="rounded-lg shadow-md w-full mb-6">
@@ -385,7 +412,7 @@
         </div>
         
         <!-- Exercise 8 -->
-        <div id="ex8" class="exercise-card">
+        <div id="ex8" class="exercise-card exercise-content">
             <h2 class="text-2xl font-semibold text-orange-600 mb-4">Exercise 8: Match the Sentence Halves</h2>
             <p class="text-gray-600 mb-4">Look at the map and match the two halves to complete the sentences.</p>
              <img src="https://i.postimg.cc/4dcjTKRZ/Writing-Unit2-Exercise8.png" alt="Map with two sandwich shop locations" class="rounded-lg shadow-md w-full mb-6">
@@ -417,7 +444,7 @@
         </div>
 
         <!-- Exercise 9 -->
-         <div id="ex9" class="exercise-card">
+         <div id="ex9" class="exercise-card exercise-content">
             <h2 class="text-2xl font-semibold text-pink-600 mb-4">Exercise 9: Unscramble Paris Locations</h2>
             <p class="text-gray-600 mb-4">Look at the pictures of places in Paris. Put the letters in the correct order to complete the names of the locations.</p>
             <div id="ex9-questions" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -476,7 +503,7 @@
         </div>
         
         <!-- Exercise 10 -->
-        <div id="ex10" class="exercise-card">
+        <div id="ex10" class="exercise-card exercise-content">
             <h2 class="text-2xl font-semibold text-gray-700 mb-4">Exercise 10: Writing Task</h2>
             <p class="text-gray-600 mb-4">
                 The map shows the centre of Paris. A company wants to open a new restaurant in the area. The map shows two possible locations for the restaurant. Summarise the information by selecting and reporting the main features and make comparisons where relevant. <strong>Write at least 150 words.</strong>
@@ -504,6 +531,41 @@
         };
 
         // --- FUNCTIONS ---
+        function showExercise(exerciseId) {
+            // Hide all exercise cards
+            document.querySelectorAll('.exercise-content').forEach(card => {
+                card.classList.add('hidden');
+            });
+
+            // Deactivate all nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.classList.remove('btn-primary');
+                btn.classList.add('btn-secondary');
+            });
+            
+            // Show the selected exercise(s) and activate the corresponding button
+            if (exerciseId === 'all') {
+                document.querySelectorAll('.exercise-content').forEach(card => {
+                    card.classList.remove('hidden');
+                });
+                const allBtn = document.querySelector('button[onclick="showExercise(\'all\')"]');
+                allBtn.classList.add('active','btn-primary');
+                allBtn.classList.remove('btn-secondary');
+            } else {
+                const targetCard = document.getElementById(exerciseId);
+                if (targetCard) {
+                    targetCard.classList.remove('hidden');
+                }
+                const targetBtn = document.querySelector(`button[onclick="showExercise('${exerciseId}')"]`);
+                if (targetBtn) {
+                    targetBtn.classList.add('active','btn-primary');
+                    targetBtn.classList.remove('btn-secondary');
+                }
+            }
+        }
+
+
         function checkAnswers(exNum) {
             const exercise = solutions[exNum];
             if (!exercise) return;
@@ -582,12 +644,17 @@
         }
 
         // --- EVENT LISTENERS ---
-        const writingArea = document.getElementById('writing-task');
-        const wordCountSpan = document.getElementById('word-count');
-        writingArea.addEventListener('input', () => {
-            const text = writingArea.value.trim();
-            const words = text.split(/\s+/).filter(word => word.length > 0);
-            wordCountSpan.textContent = words.length;
+        document.addEventListener('DOMContentLoaded', () => {
+            const writingArea = document.getElementById('writing-task');
+            const wordCountSpan = document.getElementById('word-count');
+            if (writingArea && wordCountSpan) {
+                writingArea.addEventListener('input', () => {
+                    const text = writingArea.value.trim();
+                    const words = text.split(/\s+/).filter(word => word.length > 0);
+                    wordCountSpan.textContent = words.length;
+                });
+            }
+            showExercise('ex1'); 
         });
 
     </script>
