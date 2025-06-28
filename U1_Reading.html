@@ -76,6 +76,25 @@
                 height: calc(100vh - 120px); /* Adjust height based on header */
             }
         }
+        .nav-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .nav-btn.active {
+            background-color: #4f46e5;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .nav-btn:not(.active) {
+            background-color: #e0e7ff;
+            color: #4338ca;
+        }
+        .nav-btn:not(.active):hover {
+            background-color: #c7d2fe;
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
@@ -104,8 +123,15 @@
 
             <!-- Right Scrollable Column (on Desktop) -->
             <main class="lg:col-span-3 lg:overflow-y-auto custom-scrollbar scroll-pane mt-8 lg:mt-0">
+                <!-- Navigation -->
+                <div class="p-4 bg-white rounded-lg shadow-md mb-6 sticky top-0 z-5">
+                    <div id="exercise-nav" class="flex flex-wrap gap-2 justify-center">
+                        <!-- Nav buttons will be injected here -->
+                    </div>
+                </div>
+
                 <!-- Exercise 1: True/False -->
-                <div class="exercise-card bg-indigo-50">
+                <div id="exercise-1" class="exercise-card bg-indigo-50">
                     <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Exercise 1: True or False?</h2>
                     <p class="mb-4 text-gray-600">Before you read the text, look at the statements. Do you think that they are True or False? Choose your answers.</p>
                     <div id="ex1-questions"></div>
@@ -113,7 +139,7 @@
                 </div>
                 
                 <!-- Exercise 2: Yes/No -->
-                <div class="exercise-card bg-blue-50">
+                <div id="exercise-2" class="exercise-card bg-blue-50">
                     <h2 class="text-2xl font-semibold text-blue-600 mb-4">Exercise 2: Ideas in the Text</h2>
                     <p class="mb-4 text-gray-600">Which of the ideas in sentences 1–5 are mentioned in the text? Choose Yes or No.</p>
                     <div id="ex2-questions"></div>
@@ -121,7 +147,7 @@
                 </div>
 
                 <!-- Exercise 3: Matching Definitions -->
-                <div class="exercise-card bg-green-50">
+                <div id="exercise-3" class="exercise-card bg-green-50">
                     <h2 class="text-2xl font-semibold text-green-600 mb-4">Exercise 3: Match the Definitions</h2>
                     <p class="mb-4 text-gray-600">Match the people with their definitions.</p>
                     <div id="ex3-container" class="space-y-4"></div>
@@ -129,7 +155,7 @@
                 </div>
 
                 <!-- Exercise 4: Who said it? -->
-                <div class="exercise-card bg-purple-50">
+                <div id="exercise-4" class="exercise-card bg-purple-50">
                     <h2 class="text-2xl font-semibold text-purple-600 mb-4">Exercise 4: Who might say this?</h2>
                     <p class="mb-4 text-gray-600">Match the people with the statements.</p>
                     <div id="ex4-container" class="space-y-4"></div>
@@ -137,7 +163,7 @@
                 </div>
 
                 <!-- Exercise 5: Matching Synonyms -->
-                <div class="exercise-card bg-yellow-50">
+                <div id="exercise-5" class="exercise-card bg-yellow-50">
                     <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Exercise 5: Match the Synonyms</h2>
                     <p class="mb-4 text-gray-600">Match the words in bold with phrases that have a similar meaning.</p>
                     <div id="ex5-container" class="space-y-4"></div>
@@ -145,7 +171,7 @@
                 </div>
 
                 <!-- Exercise 6: Find the Keywords -->
-                <div class="exercise-card bg-red-50">
+                <div id="exercise-6" class="exercise-card bg-red-50">
                     <h2 class="text-2xl font-semibold text-red-600 mb-4">Exercise 6: Find the Keywords</h2>
                     <p class="mb-4 text-gray-600">Look at the questions. Select the key words that show you the type of information you need to look for.</p>
                     <div id="ex6-questions" class="space-y-4"></div>
@@ -153,7 +179,7 @@
                 </div>
 
                 <!-- Exercise 7: Word Forms -->
-                <div class="exercise-card bg-teal-50">
+                <div id="exercise-7" class="exercise-card bg-teal-50">
                     <h2 class="text-2xl font-semibold text-teal-600 mb-4">Exercise 7: Word Forms</h2>
                     <p class="mb-4 text-gray-600">Read the questions. Choose the correct word to complete the answer. Focus on the language, not the content.</p>
                     <div id="ex7-questions" class="space-y-4"></div>
@@ -161,7 +187,7 @@
                 </div>
 
                 <!-- Exercise 8: Paraphrases and Synonyms -->
-                <div class="exercise-card bg-orange-50">
+                <div id="exercise-8" class="exercise-card bg-orange-50">
                     <h2 class="text-2xl font-semibold text-orange-600 mb-4">Exercise 8: Match Paraphrases and Synonyms</h2>
                     <p class="mb-4 text-gray-600">Match the phrases from the questions with their paraphrased versions from the text.</p>
                     <div id="ex8-container" class="space-y-4"></div>
@@ -169,7 +195,7 @@
                 </div>
 
                 <!-- Exercise 9: Short Answer Questions -->
-                <div class="exercise-card bg-pink-50">
+                <div id="exercise-9" class="exercise-card bg-pink-50">
                     <h2 class="text-2xl font-semibold text-pink-600 mb-4">Exercise 9: Short Answer Questions</h2>
                     <p class="mb-4 text-gray-600">Answer the questions. Choose <strong>ONE WORD OR A NUMBER</strong> from the passage for each answer.</p>
                     <div id="ex9-questions" class="space-y-4"></div>
@@ -177,7 +203,7 @@
                 </div>
 
                 <!-- Exercise 10: Complete the advice -->
-                <div class="exercise-card bg-gray-200">
+                <div id="exercise-10" class="exercise-card bg-gray-200">
                     <h2 class="text-2xl font-semibold text-gray-700 mb-4">Exercise 10: Complete the Advice</h2>
                     <p class="mb-4 text-gray-600">Complete the advice. Use the words in the box.</p>
                     <div class="p-4 bg-gray-100 border-l-4 border-gray-500 rounded mb-4">
@@ -192,6 +218,54 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Navigation Logic ---
+            const navContainer = document.getElementById('exercise-nav');
+            const exercises = document.querySelectorAll('.exercise-card:not(.bg-gray-50)');
+            const totalExercises = exercises.length;
+
+            function showExercise(exerciseNumber) {
+                // Deactivate all buttons
+                navContainer.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+                if (exerciseNumber === 'all') {
+                    exercises.forEach(ex => ex.style.display = 'block');
+                    navContainer.querySelector('.nav-btn[data-ex="all"]').classList.add('active');
+                } else {
+                    exercises.forEach((ex, index) => {
+                        if (index + 1 === exerciseNumber) {
+                            ex.style.display = 'block';
+                        } else {
+                            ex.style.display = 'none';
+                        }
+                    });
+                     // Activate the specific button
+                    const activeButton = navContainer.querySelector(`.nav-btn[data-ex="${exerciseNumber}"]`);
+                    if (activeButton) {
+                        activeButton.classList.add('active');
+                    }
+                }
+            }
+            
+            // Create navigation buttons
+            for (let i = 1; i <= totalExercises; i++) {
+                const btn = document.createElement('button');
+                btn.textContent = `Ex ${i}`;
+                btn.className = 'nav-btn';
+                btn.dataset.ex = i;
+                btn.addEventListener('click', () => showExercise(i));
+                navContainer.appendChild(btn);
+            }
+            const showAllBtn = document.createElement('button');
+            showAllBtn.textContent = 'Show All';
+            showAllBtn.className = 'nav-btn';
+            showAllBtn.dataset.ex = 'all';
+            showAllBtn.addEventListener('click', () => showExercise('all'));
+            navContainer.appendChild(showAllBtn);
+
+            // Set initial state
+            showExercise(1);
+
 
             // --- Data for Exercises ---
 
