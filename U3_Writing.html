@@ -46,17 +46,43 @@
         .check-btn:hover {
             background-color: #1d4ed8;
         }
+        .nav-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            color: #4b5563;
+            background-color: #e5e7eb;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        .nav-btn:hover {
+             background-color: #d1d5db;
+        }
+        .nav-btn.active {
+            background-color: #6366f1;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .exercise-section {
+            display: none;
+        }
     </style>
 </head>
 <body class="p-4 sm:p-6 md:p-8">
     <div class="max-w-4xl mx-auto">
-        <header class="text-center mb-10">
+        <header class="text-center mb-6">
             <h1 class="text-3xl md:text-4xl font-bold text-indigo-700 mb-2">Mindset for IELTS 1</h1>
             <h2 class="text-xl md:text-2xl font-semibold text-gray-600">Unit 3: Writing Task 1</h2>
         </header>
 
+        <!-- Navigation Bar -->
+        <nav id="navigation-bar" class="flex flex-wrap justify-center gap-2 mb-8 p-4 bg-white rounded-lg shadow-md">
+            <!-- Navigation buttons will be inserted here by JavaScript -->
+        </nav>
+
         <!-- Exercise 1 -->
-        <section id="ex1" class="mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
+        <section id="ex1" class="exercise-section mb-10 p-6 bg-indigo-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Exercise 1: Match the Charts</h2>
             <p class="text-gray-700 mb-4">In IELTS Writing Task 1 you might be asked to write a report about a chart or graph. Match the descriptions with the charts and graphs.</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -95,7 +121,7 @@
         </section>
 
         <!-- Exercise 2 -->
-        <section id="ex2" class="mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
+        <section id="ex2" class="exercise-section mb-10 p-6 bg-blue-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-blue-600 mb-4">Exercise 2: Fill the Gaps</h2>
             <p class="text-gray-700 mb-4">The bar chart compares the amount of money (in millions of dollars) that people in four different age groups from Seoul, South Korea, spent on going to the cinema, restaurants and music concerts in 2014. Fill the gaps in the chart below with the correct words.</p>
             <div class="text-center mb-4">
@@ -114,7 +140,7 @@
         </section>
 
         <!-- Exercise 3 -->
-        <section id="ex3" class="mb-10 p-6 bg-green-50 rounded-lg shadow-md">
+        <section id="ex3" class="exercise-section mb-10 p-6 bg-green-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-green-600 mb-4">Exercise 3: Choose the Correct Answer</h2>
             <p class="text-gray-700 mb-4">The bar chart compares the amount of money (in millions of dollars) that people in four different age groups from Seoul, South Korea, spent on going to the cinema, restaurants and music concerts in 2014. Choose the correct answers to complete the statements.</p>
             <div class="text-center mb-4">
@@ -144,7 +170,7 @@
         </section>
         
         <!-- Exercise 4 -->
-        <section id="ex4" class="mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
+        <section id="ex4" class="exercise-section mb-10 p-6 bg-purple-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-purple-600 mb-4">Exercise 4: Identifying Main Features</h2>
             <p class="text-gray-700 mb-4">Read the sentences about the chart and match them with the correct main features.</p>
             <div class="text-center mb-4">
@@ -171,7 +197,7 @@
         </section>
 
         <!-- Exercise 5 -->
-        <section id="ex5" class="mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
+        <section id="ex5" class="exercise-section mb-10 p-6 bg-yellow-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Exercise 5: Complete the Report</h2>
             <p class="text-gray-700 mb-4">Choose the correct words to complete the student’s report.</p>
             <div class="text-center mb-4">
@@ -191,7 +217,7 @@
         </section>
 
         <!-- Exercise 6 -->
-        <section id="ex6" class="mb-10 p-6 bg-red-50 rounded-lg shadow-md">
+        <section id="ex6" class="exercise-section mb-10 p-6 bg-red-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-red-600 mb-4">Exercise 6: Understanding Pie Charts</h2>
             <p class="text-gray-700 mb-4">The pie charts compare what male and female teenagers from Peru prefer to do in their free time. Look at the two charts. Choose the correct option to complete each statement.</p>
             <div class="text-center mb-4">
@@ -210,7 +236,7 @@
         </section>
         
         <!-- Exercise 7 -->
-        <section id="ex7" class="mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
+        <section id="ex7" class="exercise-section mb-10 p-6 bg-teal-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-teal-600 mb-4">Exercise 7: Comparing & Adding Information</h2>
             <p class="text-gray-700 mb-4">Some words or phrases can help you compare or add information in IELTS Writing Task 1. Read the student’s report and categorize the words in bold.</p>
             <div class="text-center mb-4">
@@ -236,7 +262,7 @@
         </section>
 
         <!-- Exercise 8 -->
-        <section id="ex8" class="mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
+        <section id="ex8" class="exercise-section mb-10 p-6 bg-orange-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-orange-600 mb-4">Exercise 8: Complete the Sentences</h2>
             <p class="text-gray-700 mb-4">Complete the sentences with the correct words or phrases.</p>
             <div class="space-y-4">
@@ -256,7 +282,7 @@
         </section>
 
         <!-- Exercise 9 -->
-        <section id="ex9" class="mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
+        <section id="ex9" class="exercise-section mb-10 p-6 bg-pink-50 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-pink-600 mb-4">Exercise 9: Sentence Scramble</h2>
             <p class="text-gray-700 mb-4">Put the words in the correct order to complete the sentences.</p>
             <div class="space-y-6">
@@ -284,7 +310,7 @@
         </section>
 
         <!-- Exercise 10 -->
-        <section id="ex10" class="mb-10 p-6 bg-gray-200 rounded-lg shadow-md">
+        <section id="ex10" class="exercise-section mb-10 p-6 bg-gray-200 rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-gray-700 mb-4">Exercise 10: Writing Task 1</h2>
             <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg mb-4">
                 <h4 class="font-bold text-blue-800">WRITING TASK 1</h4>
@@ -305,6 +331,48 @@
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navBar = document.getElementById('navigation-bar');
+            const totalExercises = 10;
+
+            // Create navigation buttons
+            for (let i = 1; i <= totalExercises; i++) {
+                const button = document.createElement('button');
+                button.textContent = `Ex. ${i}`;
+                button.id = `nav-btn-${i}`;
+                button.className = 'nav-btn';
+                button.onclick = () => showExercise(i);
+                navBar.appendChild(button);
+            }
+            
+            // Show the first exercise by default
+            showExercise(1);
+        });
+
+        function showExercise(exerciseNumber) {
+            // Hide all exercises
+            const exercises = document.querySelectorAll('.exercise-section');
+            exercises.forEach(ex => {
+                ex.style.display = 'none';
+            });
+
+            // Show the selected exercise
+            const selectedExercise = document.getElementById(`ex${exerciseNumber}`);
+            if (selectedExercise) {
+                selectedExercise.style.display = 'block';
+            }
+
+            // Update active state of navigation buttons
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const activeButton = document.getElementById(`nav-btn-${exerciseNumber}`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+        }
+
         // --- Helper Function ---
         function setFeedback(element, message, isCorrect) {
             element.textContent = message;
@@ -459,7 +527,6 @@
             let correctCount = 0;
             Object.keys(answers).forEach(id => {
                 const input = document.getElementById(id);
-                // Normalize by removing trailing period and converting to lower case
                 const userAnswer = input.value.trim().replace(/\.$/, '').toLowerCase();
                 const correctAnswer = answers[id].trim().replace(/\.$/, '').toLowerCase();
                 if (userAnswer === correctAnswer) {
