@@ -248,20 +248,21 @@
             }
             
             // Create navigation buttons
+            const showAllBtn = document.createElement('button');
+            showAllBtn.textContent = 'All';
+            showAllBtn.className = 'nav-btn';
+            showAllBtn.dataset.ex = 'all';
+            showAllBtn.addEventListener('click', () => showExercise('all'));
+            navContainer.appendChild(showAllBtn);
+
             for (let i = 1; i <= totalExercises; i++) {
                 const btn = document.createElement('button');
-                btn.textContent = `Ex ${i}`;
+                btn.textContent = i;
                 btn.className = 'nav-btn';
                 btn.dataset.ex = i;
                 btn.addEventListener('click', () => showExercise(i));
                 navContainer.appendChild(btn);
             }
-            const showAllBtn = document.createElement('button');
-            showAllBtn.textContent = 'Show All';
-            showAllBtn.className = 'nav-btn';
-            showAllBtn.dataset.ex = 'all';
-            showAllBtn.addEventListener('click', () => showExercise('all'));
-            navContainer.appendChild(showAllBtn);
 
             // Set initial state
             showExercise(1);
