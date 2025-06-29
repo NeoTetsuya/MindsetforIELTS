@@ -9,7 +9,6 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            /* Removed overflow:hidden to allow natural scrolling on mobile */
         }
         .exercise-card {
             background-color: white;
@@ -56,26 +55,6 @@
             border: 1px solid #e5e7eb;
             line-height: 1.6;
         }
-        /* Custom scrollbar for better aesthetics */
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 8px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #94a3b8;
-            border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #64748b;
-        }
-        /* Define a fixed height for the scrollable panes on large screens */
-        @media (min-width: 1024px) {
-            .scroll-pane {
-                height: calc(100vh - 120px); /* Adjust height based on header */
-            }
-        }
         .nav-btn {
             padding: 0.5rem 1rem;
             border-radius: 0.5rem;
@@ -99,121 +78,115 @@
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-    <div class="flex flex-col min-h-screen">
-        <header class="text-center py-4 px-4 md:px-8 border-b bg-white sticky top-0 z-10">
-            <h1 class="text-2xl md:text-3xl font-bold text-indigo-700">
+    <div class="container mx-auto max-w-4xl p-4 md:p-8">
+        <header class="text-center py-4 mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-indigo-700">
                 Mindset for IELTS 1 - Unit 1 Reading
             </h1>
         </header>
 
-        <div class="flex-grow lg:grid lg:grid-cols-5 lg:gap-8 p-4 md:p-8">
-            <!-- Left Scrollable Column (on Desktop) -->
-            <aside class="lg:col-span-2 lg:overflow-y-auto custom-scrollbar scroll-pane">
-                 <!-- Reading Passage -->
-                <div class="exercise-card bg-gray-50">
-                    <h2 class="text-2xl font-semibold text-gray-700 mb-4 pb-2 border-b">Reading Passage</h2>
-                    <div class="reading-text" id="reading-passage">
-                        <h3 class="font-bold text-lg mb-4 text-center">How our sweet tooth is hurting us</h3>
-                        <p class="mb-4">Over the last three centuries, the amount of sugar in the Western diet has continued to rise. Back at the start of the 18th century, a typical English family consumed less than 2 kg of sugar per year. By the end of that century, that amount had risen 400%. Compare that to the 40 kg that people now consume annually in the USA. In Germany, the second-most sugar-loving nation in the world, people eat roughly 103 grams on average per day. In the Netherlands, the country with the third-biggest sweet tooth, people eat 102.5 grams. Of course, there are some countries in the world where sweet food is less popular: in India, people eat only about 5 grams per day on average; in Indonesia, it’s 14.5 grams; and in China, it’s just under 16 grams. If you’re not sure what 40 kg looks like, it means that the average person in the USA now eats approximately 22 teaspoons of sugar a day. The recommended limit, suggested by researchers from the World Health Organisation, is no more than 8 if you want to stay healthy, but just one can of soda contains around 10.</p>
-                        <p class="mb-4">It is common knowledge that many drinks, in bottles or canned, contain a lot of sugar. Although advertisements say that they are ‘energy-giving’, professional athletes and sportsmen and women usually stay away from them. It is teenagers that are their greatest consumers. And – although advertisers promise that these drinks will make people feel energetic and active – because of the type of chemicals they have, once a person has drunk all the soda, they simply feel hungry instead. However, sugar is also in products that many shoppers find surprising, for example, cereal, which actually has a lot. Because they believe it is a healthy kind of food, parents buy it for their children’s breakfast.</p>
-                        <p>A large part of the problem, according to nutritionists, is that people find it hard to understand the labels on the back of food products. Nutritionists think this should be a lot easier for them. But at the moment, manufacturers don’t have to write ‘sugar’ on them, but can use words like ‘corn syrup’ or ‘dextran’, which can result in confusion for consumers. But why should we be worried about our sugar consumption? Firstly, it is harmful to young children because it causes tooth decay; the pain from this can mean that children don’t get the amount of sleep they need. As a result, they can’t concentrate when they are in class. In this case, schools and governments have a duty to educate them about good and bad food choices. For adults, the problems increase. Eating too much sugar makes people quickly gain weight, it affects the heart and liver, and can lead to diabetes.</p>
-                    </div>
+        <main>
+             <!-- Reading Passage -->
+            <div class="exercise-card bg-gray-50">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-4 pb-2 border-b">Reading Passage</h2>
+                <div class="reading-text" id="reading-passage">
+                    <h3 class="font-bold text-lg mb-4 text-center">How our sweet tooth is hurting us</h3>
+                    <p class="mb-4">Over the last three centuries, the amount of sugar in the Western diet has continued to rise. Back at the start of the 18th century, a typical English family consumed less than 2 kg of sugar per year. By the end of that century, that amount had risen 400%. Compare that to the 40 kg that people now consume annually in the USA. In Germany, the second-most sugar-loving nation in the world, people eat roughly 103 grams on average per day. In the Netherlands, the country with the third-biggest sweet tooth, people eat 102.5 grams. Of course, there are some countries in the world where sweet food is less popular: in India, people eat only about 5 grams per day on average; in Indonesia, it’s 14.5 grams; and in China, it’s just under 16 grams. If you’re not sure what 40 kg looks like, it means that the average person in the USA now eats approximately 22 teaspoons of sugar a day. The recommended limit, suggested by researchers from the World Health Organisation, is no more than 8 if you want to stay healthy, but just one can of soda contains around 10.</p>
+                    <p class="mb-4">It is common knowledge that many drinks, in bottles or canned, contain a lot of sugar. Although advertisements say that they are ‘energy-giving’, professional athletes and sportsmen and women usually stay away from them. It is teenagers that are their greatest consumers. And – although advertisers promise that these drinks will make people feel energetic and active – because of the type of chemicals they have, once a person has drunk all the soda, they simply feel hungry instead. However, sugar is also in products that many shoppers find surprising, for example, cereal, which actually has a lot. Because they believe it is a healthy kind of food, parents buy it for their children’s breakfast.</p>
+                    <p>A large part of the problem, according to nutritionists, is that people find it hard to understand the labels on the back of food products. Nutritionists think this should be a lot easier for them. But at the moment, manufacturers don’t have to write ‘sugar’ on them, but can use words like ‘corn syrup’ or ‘dextran’, which can result in confusion for consumers. But why should we be worried about our sugar consumption? Firstly, it is harmful to young children because it causes tooth decay; the pain from this can mean that children don’t get the amount of sleep they need. As a result, they can’t concentrate when they are in class. In this case, schools and governments have a duty to educate them about good and bad food choices. For adults, the problems increase. Eating too much sugar makes people quickly gain weight, it affects the heart and liver, and can lead to diabetes.</p>
                 </div>
-            </aside>
+            </div>
 
-            <!-- Right Scrollable Column (on Desktop) -->
-            <main class="lg:col-span-3 lg:overflow-y-auto custom-scrollbar scroll-pane mt-8 lg:mt-0">
-                <!-- Navigation -->
-                <div class="p-4 bg-white rounded-lg shadow-md mb-6 sticky top-0 z-5">
-                    <div id="exercise-nav" class="flex flex-wrap gap-2 justify-center">
-                        <!-- Nav buttons will be injected here -->
-                    </div>
+            <!-- Navigation -->
+            <div class="p-4 bg-white rounded-lg shadow-md mb-6 sticky top-4 z-5">
+                <div id="exercise-nav" class="flex flex-wrap gap-2 justify-center">
+                    <!-- Nav buttons will be injected here -->
                 </div>
+            </div>
 
-                <!-- Exercise 1: True/False -->
-                <div id="exercise-1" class="exercise-card bg-indigo-50">
-                    <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Exercise 1: True or False?</h2>
-                    <p class="mb-4 text-gray-600">Before you read the text, look at the statements. Do you think that they are True or False? Choose your answers.</p>
-                    <div id="ex1-questions"></div>
-                    <button id="check-ex1" class="check-btn mt-4">Check Answers</button>
-                </div>
-                
-                <!-- Exercise 2: Yes/No -->
-                <div id="exercise-2" class="exercise-card bg-blue-50">
-                    <h2 class="text-2xl font-semibold text-blue-600 mb-4">Exercise 2: Ideas in the Text</h2>
-                    <p class="mb-4 text-gray-600">Which of the ideas in sentences 1–5 are mentioned in the text? Choose Yes or No.</p>
-                    <div id="ex2-questions"></div>
-                    <button id="check-ex2" class="check-btn mt-4">Check Answers</button>
-                </div>
+            <!-- Exercise 1: True/False -->
+            <div id="exercise-1" class="exercise-card bg-indigo-50">
+                <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Exercise 1: True or False?</h2>
+                <p class="mb-4 text-gray-600">Before you read the text, look at the statements. Do you think that they are True or False? Choose your answers.</p>
+                <div id="ex1-questions"></div>
+                <button id="check-ex1" class="check-btn mt-4">Check Answers</button>
+            </div>
+            
+            <!-- Exercise 2: Yes/No -->
+            <div id="exercise-2" class="exercise-card bg-blue-50">
+                <h2 class="text-2xl font-semibold text-blue-600 mb-4">Exercise 2: Ideas in the Text</h2>
+                <p class="mb-4 text-gray-600">Which of the ideas in sentences 1–5 are mentioned in the text? Choose Yes or No.</p>
+                <div id="ex2-questions"></div>
+                <button id="check-ex2" class="check-btn mt-4">Check Answers</button>
+            </div>
 
-                <!-- Exercise 3: Matching Definitions -->
-                <div id="exercise-3" class="exercise-card bg-green-50">
-                    <h2 class="text-2xl font-semibold text-green-600 mb-4">Exercise 3: Match the Definitions</h2>
-                    <p class="mb-4 text-gray-600">Match the people with their definitions.</p>
-                    <div id="ex3-container" class="space-y-4"></div>
-                    <button id="check-ex3" class="check-btn mt-4">Check Answers</button>
-                </div>
+            <!-- Exercise 3: Matching Definitions -->
+            <div id="exercise-3" class="exercise-card bg-green-50">
+                <h2 class="text-2xl font-semibold text-green-600 mb-4">Exercise 3: Match the Definitions</h2>
+                <p class="mb-4 text-gray-600">Match the people with their definitions.</p>
+                <div id="ex3-container" class="space-y-4"></div>
+                <button id="check-ex3" class="check-btn mt-4">Check Answers</button>
+            </div>
 
-                <!-- Exercise 4: Who said it? -->
-                <div id="exercise-4" class="exercise-card bg-purple-50">
-                    <h2 class="text-2xl font-semibold text-purple-600 mb-4">Exercise 4: Who might say this?</h2>
-                    <p class="mb-4 text-gray-600">Match the people with the statements.</p>
-                    <div id="ex4-container" class="space-y-4"></div>
-                    <button id="check-ex4" class="check-btn mt-4">Check Answers</button>
-                </div>
+            <!-- Exercise 4: Who said it? -->
+            <div id="exercise-4" class="exercise-card bg-purple-50">
+                <h2 class="text-2xl font-semibold text-purple-600 mb-4">Exercise 4: Who might say this?</h2>
+                <p class="mb-4 text-gray-600">Match the people with the statements.</p>
+                <div id="ex4-container" class="space-y-4"></div>
+                <button id="check-ex4" class="check-btn mt-4">Check Answers</button>
+            </div>
 
-                <!-- Exercise 5: Matching Synonyms -->
-                <div id="exercise-5" class="exercise-card bg-yellow-50">
-                    <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Exercise 5: Match the Synonyms</h2>
-                    <p class="mb-4 text-gray-600">Match the words in bold with phrases that have a similar meaning.</p>
-                    <div id="ex5-container" class="space-y-4"></div>
-                    <button id="check-ex5" class="check-btn mt-4">Check Answers</button>
-                </div>
+            <!-- Exercise 5: Matching Synonyms -->
+            <div id="exercise-5" class="exercise-card bg-yellow-50">
+                <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Exercise 5: Match the Synonyms</h2>
+                <p class="mb-4 text-gray-600">Match the words in bold with phrases that have a similar meaning.</p>
+                <div id="ex5-container" class="space-y-4"></div>
+                <button id="check-ex5" class="check-btn mt-4">Check Answers</button>
+            </div>
 
-                <!-- Exercise 6: Find the Keywords -->
-                <div id="exercise-6" class="exercise-card bg-red-50">
-                    <h2 class="text-2xl font-semibold text-red-600 mb-4">Exercise 6: Find the Keywords</h2>
-                    <p class="mb-4 text-gray-600">Look at the questions. Select the key words that show you the type of information you need to look for.</p>
-                    <div id="ex6-questions" class="space-y-4"></div>
-                    <button id="check-ex6" class="check-btn mt-4">Check Answers</button>
-                </div>
+            <!-- Exercise 6: Find the Keywords -->
+            <div id="exercise-6" class="exercise-card bg-red-50">
+                <h2 class="text-2xl font-semibold text-red-600 mb-4">Exercise 6: Find the Keywords</h2>
+                <p class="mb-4 text-gray-600">Look at the questions. Select the key words that show you the type of information you need to look for.</p>
+                <div id="ex6-questions" class="space-y-4"></div>
+                <button id="check-ex6" class="check-btn mt-4">Check Answers</button>
+            </div>
 
-                <!-- Exercise 7: Word Forms -->
-                <div id="exercise-7" class="exercise-card bg-teal-50">
-                    <h2 class="text-2xl font-semibold text-teal-600 mb-4">Exercise 7: Word Forms</h2>
-                    <p class="mb-4 text-gray-600">Read the questions. Choose the correct word to complete the answer. Focus on the language, not the content.</p>
-                    <div id="ex7-questions" class="space-y-4"></div>
-                    <button id="check-ex7" class="check-btn mt-4">Check Answers</button>
-                </div>
+            <!-- Exercise 7: Word Forms -->
+            <div id="exercise-7" class="exercise-card bg-teal-50">
+                <h2 class="text-2xl font-semibold text-teal-600 mb-4">Exercise 7: Word Forms</h2>
+                <p class="mb-4 text-gray-600">Read the questions. Choose the correct word to complete the answer. Focus on the language, not the content.</p>
+                <div id="ex7-questions" class="space-y-4"></div>
+                <button id="check-ex7" class="check-btn mt-4">Check Answers</button>
+            </div>
 
-                <!-- Exercise 8: Paraphrases and Synonyms -->
-                <div id="exercise-8" class="exercise-card bg-orange-50">
-                    <h2 class="text-2xl font-semibold text-orange-600 mb-4">Exercise 8: Match Paraphrases and Synonyms</h2>
-                    <p class="mb-4 text-gray-600">Match the phrases from the questions with their paraphrased versions from the text.</p>
-                    <div id="ex8-container" class="space-y-4"></div>
-                    <button id="check-ex8" class="check-btn mt-4">Check Answers</button>
-                </div>
+            <!-- Exercise 8: Paraphrases and Synonyms -->
+            <div id="exercise-8" class="exercise-card bg-orange-50">
+                <h2 class="text-2xl font-semibold text-orange-600 mb-4">Exercise 8: Match Paraphrases and Synonyms</h2>
+                <p class="mb-4 text-gray-600">Match the phrases from the questions with their paraphrased versions from the text.</p>
+                <div id="ex8-container" class="space-y-4"></div>
+                <button id="check-ex8" class="check-btn mt-4">Check Answers</button>
+            </div>
 
-                <!-- Exercise 9: Short Answer Questions -->
-                <div id="exercise-9" class="exercise-card bg-pink-50">
-                    <h2 class="text-2xl font-semibold text-pink-600 mb-4">Exercise 9: Short Answer Questions</h2>
-                    <p class="mb-4 text-gray-600">Answer the questions. Choose <strong>ONE WORD OR A NUMBER</strong> from the passage for each answer.</p>
-                    <div id="ex9-questions" class="space-y-4"></div>
-                    <button id="check-ex9" class="check-btn mt-4">Check Answers</button>
-                </div>
+            <!-- Exercise 9: Short Answer Questions -->
+            <div id="exercise-9" class="exercise-card bg-pink-50">
+                <h2 class="text-2xl font-semibold text-pink-600 mb-4">Exercise 9: Short Answer Questions</h2>
+                <p class="mb-4 text-gray-600">Answer the questions. Choose <strong>ONE WORD OR A NUMBER</strong> from the passage for each answer.</p>
+                <div id="ex9-questions" class="space-y-4"></div>
+                <button id="check-ex9" class="check-btn mt-4">Check Answers</button>
+            </div>
 
-                <!-- Exercise 10: Complete the advice -->
-                <div id="exercise-10" class="exercise-card bg-gray-200">
-                    <h2 class="text-2xl font-semibold text-gray-700 mb-4">Exercise 10: Complete the Advice</h2>
-                    <p class="mb-4 text-gray-600">Complete the advice. Use the words in the box.</p>
-                    <div class="p-4 bg-gray-100 border-l-4 border-gray-500 rounded mb-4">
-                        <p class="font-mono text-gray-800">different occupations | is not the same | one word or one number | question words | the same order</p>
-                    </div>
-                    <div id="ex10-container" class="space-y-4"></div>
-                    <button id="check-ex10" class="check-btn mt-4">Check Answers</button>
+            <!-- Exercise 10: Complete the advice -->
+            <div id="exercise-10" class="exercise-card bg-gray-200">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-4">Exercise 10: Complete the Advice</h2>
+                <p class="mb-4 text-gray-600">Complete the advice. Use the words in the box.</p>
+                <div class="p-4 bg-gray-100 border-l-4 border-gray-500 rounded mb-4">
+                    <p class="font-mono text-gray-800">different occupations | is not the same | one word or one number | question words | the same order</p>
                 </div>
-            </main>
-        </div>
+                <div id="ex10-container" class="space-y-4"></div>
+                <button id="check-ex10" class="check-btn mt-4">Check Answers</button>
+            </div>
+        </main>
     </div>
 
     <script>
