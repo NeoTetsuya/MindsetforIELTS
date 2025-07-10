@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Thực Hành Chiến Lược IELTS Reading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .tab-btn {
+            transition: all 0.3s ease;
+        }
+        .tab-btn.active {
+            background-color: #4a5568;
+            color: white;
+            border-bottom: 2px solid #3b82f6;
+        }
+        .content-pane {
+            display: none;
+        }
+        .content-pane.active {
+            display: block;
+        }
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        .color-swatch.selected {
+            border-color: #2563eb;
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .interactive-text span, .highlight {
+            cursor: pointer;
+            padding: 2px 1px;
+            border-radius: 3px;
+            transition: background-color 0.3s ease;
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .strategy-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .strategy-step {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 16px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .strategy-step::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .color-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin: 0 4px;
+            vertical-align: middle;
+        }
+        .solved-example {
+            border-left: 4px solid #3b82f6;
+            background-color: #eff6ff;
+        }
+        .toggle-solution-btn {
+            transition: background-color 0.2s ease;
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900">IELTS Reading: Bảng Thực Hành Chiến Lược</h1>
+            <p class="text-gray-600 mt-2">Dựa trên tài liệu của bạn. Chọn một dạng câu hỏi để bắt đầu.</p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <div class="mb-8 overflow-x-auto">
+            <div class="border-b border-gray-300 flex space-x-2 md:space-x-4" style="list-style: none; padding: 0;">
+                <button class="tab-btn active py-3 px-4 font-semibold text-gray-600 whitespace-nowrap" onclick="showPage('scq')">Điền từ vào chỗ trống (SCQ)</button>
+                <button class="tab-btn py-3 px-4 font-semibold text-gray-600 whitespace-nowrap" onclick="showPage('tfng')">True/False/Not Given</button>
+                <button class="tab-btn py-3 px-4 font-semibold text-gray-600 whitespace-nowrap" onclick="showPage('matching-headings')">Nối tiêu đề (Matching Headings)</button>
+                <button class="tab-btn py-3 px-4 font-semibold text-gray-600 whitespace-nowrap" onclick="showPage('multiple-choice')">Trắc nghiệm (Multiple Choice)</button>
+                <button class="tab-btn py-3 px-4 font-semibold text-gray-600 whitespace-nowrap" onclick="showPage('short-answer')">Câu trả lời ngắn</button>
+            </div>
+        </div>
+
+        <!-- Content Panes -->
+        <main>
+            <!-- Sentence Completion Questions (SCQ) -->
+            <div id="scq" class="content-pane active">
+                <div class="card">
+                    <h2 class="text-2xl font-bold mb-2">Dạng 1: Điền từ vào chỗ trống (Sentence Completion)</h2>
+                    <p class="mb-6 text-gray-600">Dạng bài này yêu cầu bạn điền vào chỗ trống trong câu bằng các từ trong bài đọc. Hãy làm theo chiến lược để xác định đúng loại từ và tìm ra câu trả lời.</p>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Các bước chiến lược</h3>
+                            <ol class="strategy-list" style="counter-reset: step-counter;">
+                                <li class="strategy-step">Xem đề bài giới hạn đáp án trong bao nhiêu từ (ONE/TWO/THREE words).</li>
+                                <li class="strategy-step">Tô màu <span class="color-dot" style="background-color: #add8e6;"></span> (xanh dương nhạt) từ trước và sau chỗ đục lỗ.</li>
+                                <li class="strategy-step">Xác định loại từ của đáp án (danh từ, động từ) và tô màu quy ước (ví dụ: <span class="color-dot" style="background-color: #00008b;"></span> cho danh từ số ít, <span class="color-dot" style="background-color: #ffa500;"></span> cho danh từ số nhiều).</li>
+                                <li class="strategy-step">Tô màu các từ khóa (keywords): <span class="color-dot" style="background-color: #fff352;"></span> (vàng) cho danh từ và <span class="color-dot" style="background-color: #90ee90;"></span> (xanh lá) cho động từ chính.</li>
+                                <li class="strategy-step">Dựa vào keywords để khoanh vùng đoạn và câu chứa đáp án.</li>
+                                <li class="strategy-step">So sánh, đối chiếu và loại bỏ những từ tương đương để tìm ra đáp án chính xác.</li>
+                            </ol>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Bảng màu chiến lược</h3>
+                            <p class="mb-4">Chọn một màu, sau đó nhấp vào các từ trong ví dụ bên dưới để tô màu.</p>
+                            <div class="flex flex-wrap gap-4 items-start" id="color-palette-scq">
+                                <div class="text-center"><img src="https://placehold.co/40x40/fff352/fff352.png" class="color-swatch selected" data-color="#fff352" alt="Yellow swatch"><p class="text-xs mt-1 w-16">Từ khóa (danh từ)</p></div>
+                                <div class="text-center"><img src="https://placehold.co/40x40/90ee90/90ee90.png" class="color-swatch" data-color="#90ee90" alt="Green swatch"><p class="text-xs mt-1 w-16">Từ khóa (động từ)</p></div>
+                                <div class="text-center"><img src="https://placehold.co/40x40/add8e6/add8e6.png" class="color-swatch" data-color="#add8e6" alt="Light blue swatch"><p class="text-xs mt-1 w-16">Quanh chỗ trống</p></div>
+                                <div class="text-center"><img src="https://placehold.co/40x40/ffcccb/ffcccb.png" class="color-swatch" data-color="#ffcccb" alt="Red swatch"><p class="text-xs mt-1 w-16">Từ bối cảnh</p></div>
+                                <div class="text-center"><img src="https://placehold.co/40x40/00008b/00008b.png" class="color-swatch" data-color="#00008b" alt="Dark blue swatch"><p class="text-xs mt-1 w-16">Danh từ (số ít)</p></div>
+                                <div class="text-center"><img src="https://placehold.co/40x40/ffa500/ffa500.png" class="color-swatch" data-color="#ffa500" alt="Orange swatch"><p class="text-xs mt-1 w-16">Danh từ (số nhiều)</p></div>
+                                <div class="text-center"><img src="https://placehold.co/40x40/e5e7eb/e5e7eb.png" class="color-swatch" data-color="transparent" alt="Clear color swatch"><p class="text-xs mt-1 w-16">Xóa màu</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-t pt-6 mt-8">
+                        <h3 class="text-xl font-semibold mb-2">Ví dụ tương tác</h3>
+                        <p class="mb-4 text-sm text-gray-500"><strong>Hướng dẫn:</strong> Hoàn thành câu dưới đây với <strong>ONE WORD ONLY</strong> từ đoạn văn.</p>
+                        <div class="mb-4 p-4 bg-gray-100 rounded-lg"><h4 class="font-semibold mb-2">Đoạn văn</h4><p>The printing press was a revolutionary invention. Before its creation, books were painstakingly copied by hand, a process that made them both rare and extremely expensive. The press allowed for the mass production of written materials, making them far more accessible to the general population. Consequently, this surge in availability was a primary driver for a dramatic increase in literacy rates across Europe.</p></div>
+                        <div class="p-4 bg-blue-50 rounded-lg"><h4 class="font-semibold mb-2">Câu hỏi</h4><p class="text-lg interactive-text" data-palette="color-palette-scq"><span>The</span> <span>invention</span> <span>of</span> <span>the</span> <span>printing</span> <span>press</span> <span>led</span> <span>to</span> <span>a</span> <span>significant</span> <span>rise</span> <span>in</span> <span>____________</span> <span>rates.</span></p></div>
+                    </div>
+                    <div class="border-t pt-6 mt-8">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-semibold">Ví dụ đã giải (Color-Coded)</h3>
+                            <button class="toggle-solution-btn px-3 py-1 text-sm bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">Hiện đáp án</button>
+                        </div>
+                        <div class="solution-content" style="display: none;">
+                            <div class="p-4 rounded-lg solved-example">
+                                <h4 class="font-semibold mb-2">Câu hỏi đã phân tích</h4>
+                                <p class="text-lg">The <span class="highlight" style="background-color: #fff352;">invention</span> of the <span class="highlight" style="background-color: #fff352;">printing press</span> <span class="highlight" style="background-color: #90ee90;">led to</span> a significant <span class="highlight" style="background-color: #fff352;">rise</span> <span class="highlight" style="background-color: #add8e6;">in</span> ____________ <span class="highlight" style="background-color: #add8e6;">rates</span>.</p>
+                                <h4 class="font-semibold mt-4 mb-2">Câu trả lời trong đoạn văn</h4>
+                                <p>...a dramatic increase in <strong class="highlight" style="background-color: #ffa500; color: white; padding: 2px 4px; border-radius: 4px;">literacy</strong> rates across Europe.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- True/False/Not Given -->
+            <div id="tfng" class="content-pane">
+                 <div class="card">
+                    <h2 class="text-2xl font-bold mb-4">Dạng 2: True / False / Not Given</h2>
+                    <p class="mb-6 text-gray-600">Với dạng bài này, bạn phải quyết định xem một nhận định là đúng, sai, hay thông tin không được đưa ra trong bài đọc. Sử dụng phương pháp phân tích A/B/C (SVO).</p>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Các bước chiến lược</h3>
+                            <ol class="strategy-list" style="counter-reset: step-counter;">
+                                <li class="strategy-step">Xác định 3 thành phần A (Chủ ngữ), B (Động từ chính), C (Vị ngữ/Phần còn lại) trong câu hỏi.</li>
+                                <li class="strategy-step">Tô màu đặc biệt <span class="color-dot" style="background-color: #ffcccb;"></span> (màu đỏ) cho các từ phủ định (not, no) hoặc từ bẫy (always, only, all).</li>
+                                <li class="strategy-step">Dùng keywords để xác định câu chứa đáp án trong bài đọc.</li>
+                                <li class="strategy-step">Đối chiếu từng thành phần A, B, C giữa câu hỏi và bài đọc để quyết định:
+                                    <ul class="list-disc pl-5 mt-2">
+                                        <li><b>TRUE:</b> Nếu A, B, C đều khớp.</li>
+                                        <li><b>FALSE:</b> Nếu một trong các thành phần được nhắc đến nhưng sai.</li>
+                                        <li><b>NOT GIVEN:</b> Nếu một trong các thành phần hoàn toàn không được nhắc đến.</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Phân tích A/B/C (SVO)</h3>
+                             <p class="mb-4">Chọn màu để tô sáng các phần của câu hỏi (Chủ ngữ/Động từ/Vị ngữ).</p>
+                            <div class="flex flex-wrap gap-4 items-start" id="color-palette-tfng">
+                                <div class="text-center"><img src="https://placehold.co/40x40/a7f3d0/a7f3d0.png" class="color-swatch selected" data-color="#a7f3d0" alt="Green swatch for SVO"><p class="text-xs mt-1 w-16">A (Chủ ngữ)</p></div>
+                                <div class="text-center"><img src="https://placehold.co/40x40/fde68a/fde68a.png" class="color-swatch" data-color="#fde68a" alt="Yellow swatch for SVO"><p class="text-xs mt-1 w-16">B (Động từ)</p></div>
+                                <div class="text-center"><img src="https://placehold.co/40x40/bfdbfe/bfdbfe.png" class="color-swatch" data-color="#bfdbfe" alt="Blue swatch for SVO"><p class="text-xs mt-1 w-16">C (Vị ngữ)</p></div>
+                                <div class="text-center"><img src="https://placehold.co/40x40/e5e7eb/e5e7eb.png" class="color-swatch" data-color="transparent" alt="Clear color swatch"><p class="text-xs mt-1 w-16">Xóa màu</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-t pt-6 mt-8">
+                        <h3 class="text-xl font-semibold mb-2">Ví dụ tương tác</h3>
+                        <div class="mb-4 p-4 bg-gray-100 rounded-lg"><h4 class="font-semibold mb-2">Đoạn văn</h4><p>The Pacific Ocean is the largest and deepest of the world's five oceans. It extends from the Arctic Ocean in the north to the Southern Ocean in the south and is bounded by the continents of Asia and Australia in the west and the Americas in the east. It covers about 46% of Earth's water surface and about one-third of its total surface area, making it larger than all of Earth's land area combined.</p></div>
+                        <div class="p-4 bg-blue-50 rounded-lg"><h4 class="font-semibold mb-2">Câu hỏi</h4><p class="text-lg mb-2 interactive-text" data-palette="color-palette-tfng"><span>The</span> <span>Pacific</span> <span>Ocean</span> <span>is</span> <span>saltier</span> <span>than</span> <span>the</span> <span>Atlantic</span> <span>Ocean.</span></p><div class="flex space-x-2 mt-4"><button class="px-4 py-2 bg-white border border-gray-300 rounded-md hover:bg-gray-100">True</button><button class="px-4 py-2 bg-white border border-gray-300 rounded-md hover:bg-gray-100">False</button><button class="px-4 py-2 bg-white border border-gray-300 rounded-md hover:bg-gray-100">Not Given</button></div></div>
+                    </div>
+                     <div class="border-t pt-6 mt-8">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-semibold">Ví dụ đã giải (Color-Coded)</h3>
+                            <button class="toggle-solution-btn px-3 py-1 text-sm bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">Hiện đáp án</button>
+                        </div>
+                        <div class="solution-content" style="display: none;">
+                            <div class="p-4 rounded-lg solved-example">
+                                <h4 class="font-semibold mb-2">Câu hỏi đã phân tích (A/B/C)</h4>
+                                <p class="text-lg"><span class="highlight" style="background-color: #a7f3d0;">The Pacific Ocean</span> <span class="highlight" style="background-color: #fde68a;">is saltier than</span> <span class="highlight" style="background-color: #bfdbfe;">the Atlantic Ocean</span>.</p>
+                                <h4 class="font-semibold mt-4 mb-2">Phân tích</h4>
+                                <p>Đoạn văn mô tả Thái Bình Dương là đại dương lớn nhất và sâu nhất, nhưng không hề đề cập hay so sánh độ mặn của nó với Đại Tây Dương.</p>
+                                <p class="mt-2"><b>Kết luận:</b> <span class="font-bold px-2 py-1 bg-gray-200 rounded">NOT GIVEN</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Matching Headings -->
+            <div id="matching-headings" class="content-pane">
+                <div class="card">
+                    <h2 class="text-2xl font-bold mb-4">Dạng 3: Nối tiêu đề (Matching Headings)</h2>
+                    <p class="mb-6 text-gray-600">Trong dạng bài này, bạn chọn tiêu đề tóm tắt đúng nhất ý chính của một đoạn văn. Tập trung vào ý nghĩa tổng thể, không chỉ các từ khóa riêng lẻ.</p>
+                    <h3 class="text-xl font-semibold mb-4">Các bước chiến lược</h3>
+                    <ol class="strategy-list" style="counter-reset: step-counter;">
+                        <li class="strategy-step">Đọc kỹ tất cả các tiêu đề (headings) và tô màu từ khóa quan trọng.</li>
+                        <li class="strategy-step">Sử dụng màu <span class="color-dot" style="background-color: #ffa500;"></span> (cam) để nhóm các tiêu đề có ý nghĩa tương tự, và màu <span class="color-dot" style="background-color: #90ee90;"></span> (xanh lá nhạt) để tìm sự khác biệt giữa chúng.</li>
+                        <li class="strategy-step">Đọc lướt đoạn văn, tập trung vào câu đầu và câu cuối để nắm ý chính.</li>
+                        <li class="strategy-step">Đối chiếu ý chính của đoạn với danh sách tiêu đề đã phân tích.</li>
+                        <li class="strategy-step">Chọn tiêu đề bao quát toàn bộ đoạn văn, không chỉ một phần nhỏ.</li>
+                        <li class="strategy-step">Loại bỏ các tiêu đề đã chọn hoặc không phù hợp.</li>
+                    </ol>
+                    <div class="grid md:grid-cols-2 gap-8 border-t pt-6 mt-6">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Danh sách tiêu đề</h3>
+                            <ul class="space-y-3">
+                                <li class="p-3 bg-gray-100 rounded-md">i. The financial benefits of recycling</li>
+                                <li class="p-3 bg-gray-100 rounded-md">ii. The role of government in environmental protection</li>
+                                <li class="p-3 bg-gray-100 rounded-md">iii. How supermarkets attract customers</li>
+                                <li class="p-3 bg-gray-100 rounded-md">iv. Additional services in modern supermarkets</li>
+                                <li class="p-3 bg-gray-100 rounded-md">v. The negative impacts of consumerism</li>
+                            </ul>
+                        </div>
+                        <div>
+                             <h3 class="text-xl font-semibold mb-4">Đoạn văn A</h3>
+                             <div class="p-4 bg-blue-50 rounded-lg space-y-4 text-gray-700"><p>Modern supermarkets are not only places to buy groceries but have evolved into multi-service hubs. Many now offer additional services such as in-store banking facilities, pharmacies, and even fast-food counters. This strategic integration helps customers save valuable time by consolidating their errands into a single trip, thereby enhancing the convenience of their shopping experience.</p></div>
+                             <div class="mt-4"><label for="heading-select" class="block mb-2 font-semibold">Chọn tiêu đề phù hợp nhất cho Đoạn A:</label><select id="heading-select" class="w-full p-2 border border-gray-300 rounded-md"><option>Chọn một tiêu đề...</option><option value="i">i. The financial benefits of recycling</option><option value="ii">ii. The role of government in environmental protection</option><option value="iii">iii. How supermarkets attract customers</option><option value="iv">iv. Additional services in modern supermarkets</option><option value="v">v. The negative impacts of consumerism</option></select></div>
+                        </div>
+                    </div>
+                     <div class="border-t pt-6 mt-8">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-semibold">Ví dụ đã giải (Color-Coded)</h3>
+                            <button class="toggle-solution-btn px-3 py-1 text-sm bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">Hiện đáp án</button>
+                        </div>
+                        <div class="solution-content" style="display: none;">
+                            <div class="p-4 rounded-lg solved-example">
+                                 <h4 class="font-semibold mb-2">Phân tích đoạn văn và tiêu đề</h4>
+                                 <p><b>Đoạn văn:</b> Modern <span class="highlight" style="background-color: #ffa500;">supermarkets</span> are not only places to buy groceries but have evolved into multi-service hubs. Many now offer <span class="highlight" style="background-color: #90ee90;">additional services</span> such as in-store <span class="highlight" style="background-color: #90ee90;">banking facilities</span>, <span class="highlight" style="background-color: #90ee90;">pharmacies</span>, and even <span class="highlight" style="background-color: #90ee90;">fast-food counters</span>...</p>
+                                 <p class="mt-2"><b>Tiêu đề phù hợp:</b> iv. <span class="highlight" style="background-color: #90ee90;">Additional services</span> in modern <span class="highlight" style="background-color: #ffa500;">supermarkets</span></p>
+                                 <p class="mt-4"><b>Phân tích:</b> Đoạn văn tập trung liệt kê các "dịch vụ bổ sung" (additional services) có trong "siêu thị" (supermarkets). Tiêu đề (iv) tóm tắt chính xác và đầy đủ nhất ý chính này.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Multiple Choice -->
+            <div id="multiple-choice" class="content-pane">
+                 <div class="card">
+                    <h2 class="text-2xl font-bold mb-4">Dạng 4: Trắc nghiệm (Multiple Choice)</h2>
+                    <p class="mb-6 text-gray-600">Chọn phương án đúng nhất (A, B, C, hoặc D). Cẩn thận với các phương án gây nhiễu sử dụng từ trong bài đọc nhưng không trả lời đúng câu hỏi.</p>
+                     <h3 class="text-xl font-semibold mb-4">Các bước chiến lược</h3>
+                    <ol class="strategy-list" style="counter-reset: step-counter;">
+                        <li class="strategy-step">Đọc kỹ câu hỏi và tô màu <span class="color-dot" style="background-color: #fff352;"></span> (vàng) cho các từ khóa quan trọng.</li>
+                        <li class="strategy-step">Tô màu <span class="color-dot" style="background-color: #90ee90;"></span> (xanh lá nhạt) cho động từ chính và ý chính của từng đáp án để hiểu nhanh.</li>
+                        <li class="strategy-step">Xác định đoạn chứa đáp án bằng cách quét (scan) từ khóa của câu hỏi.</li>
+                        <li class="strategy-step">Đọc kỹ câu chứa đáp án và so sánh với các lựa chọn.</li>
+                        <li class="strategy-step">Loại trừ các đáp án sai (thông tin trái ngược hoặc không được đề cập).</li>
+                        <li class="strategy-step">Kiểm tra lại để chắc chắn đáp án đã chọn là chính xác nhất.</li>
+                    </ol>
+                    <div class="border-t pt-6 mt-6">
+                        <div class="mb-4 p-4 bg-gray-100 rounded-lg"><h4 class="font-semibold mb-2">Đoạn văn</h4><p>Before the invention of the printing press, books were copied by hand, making them rare and expensive. The printing press allowed for mass production of books, making them more accessible to people. As a result, literacy rates increased, and knowledge spread rapidly across different regions. This was not merely a technological shift but a cultural revolution that reshaped societies.</p></div>
+                        <div class="p-4 bg-blue-50 rounded-lg"><h4 class="font-semibold mb-2">Câu hỏi</h4><p class="text-lg mb-4">What was the main impact of the printing press?</p><div class="space-y-3" id="mcq-options"><button class="w-full text-left p-3 bg-white border border-gray-300 rounded-md hover:bg-gray-100">A. It made books more expensive.</button><button class="w-full text-left p-3 bg-white border border-gray-300 rounded-md hover:bg-gray-100">B. It increased literacy rates.</button><button class="w-full text-left p-3 bg-white border border-gray-300 rounded-md hover:bg-gray-100">C. It limited the spread of knowledge.</button><button class="w-full text-left p-3 bg-white border border-gray-300 rounded-md hover:bg-gray-100">D. It was only a technological shift.</button></div></div>
+                    </div>
+                     <div class="border-t pt-6 mt-8">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-semibold">Ví dụ đã giải (Color-Coded)</h3>
+                            <button class="toggle-solution-btn px-3 py-1 text-sm bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">Hiện đáp án</button>
+                        </div>
+                        <div class="solution-content" style="display: none;">
+                            <div class="p-4 rounded-lg solved-example">
+                                <h4 class="font-semibold mb-2">Câu hỏi và các lựa chọn đã phân tích</h4>
+                                <p class="text-lg mb-4">What was the <span class="highlight" style="background-color: #fff352;">main impact</span> of the <span class="highlight" style="background-color: #fff352;">printing press</span>?</p>
+                                <div class="space-y-3">
+                                    <p class="p-2 rounded-md bg-red-100">A. It <span class="highlight" style="background-color: #90ee90;">made books more expensive</span>. (Sai, bài đọc nói ngược lại "making them more accessible")</p>
+                                    <p class="p-2 rounded-md bg-green-100">B. It <span class="highlight" style="background-color: #90ee90;">increased literacy rates</span>. (Đúng, khớp với "literacy rates increased")</p>
+                                    <p class="p-2 rounded-md bg-red-100">C. It <span class="highlight" style="background-color: #90ee90;">limited the spread of knowledge</span>. (Sai, bài đọc nói ngược lại "knowledge spread rapidly")</p>
+                                    <p class="p-2 rounded-md bg-red-100">D. It was <span class="highlight" style="background-color: #90ee90;">only a technological shift</span>. (Sai, bài đọc nói "not merely a technological shift but a cultural revolution")</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Short Answer Questions -->
+            <div id="short-answer" class="content-pane">
+                <div class="card">
+                    <h2 class="text-2xl font-bold mb-4">Dạng 5: Câu trả lời ngắn (Short Answer)</h2>
+                    <p class="mb-6 text-gray-600">Trả lời câu hỏi bằng thông tin từ văn bản. Chú ý kỹ đến giới hạn từ (ví dụ: "NO MORE THAN THREE WORDS...").</p>
+                     <h3 class="text-xl font-semibold mb-4">Các bước chiến lược</h3>
+                    <ol class="strategy-list" style="counter-reset: step-counter;">
+                        <li class="strategy-step">Đọc kỹ yêu cầu đề bài, đặc biệt là giới hạn từ.</li>
+                        <li class="strategy-step">Xác định và tô màu <span class="color-dot" style="background-color: #fff352;"></span> (vàng) các từ khóa trong câu hỏi (đặc biệt là các từ để hỏi Who, What, Where, etc.).</li>
+                        <li class="strategy-step">Quét (scan) đoạn văn để tìm từ khóa hoặc từ đồng nghĩa.</li>
+                        <li class="strategy-step">Xác định chính xác câu chứa đáp án.</li>
+                        <li class="strategy-step">Chọn từ chính xác từ bài đọc để trả lời, không diễn đạt lại. Đảm bảo câu trả lời đúng ngữ pháp và không vượt quá giới hạn từ.</li>
+                    </ol>
+                     <div class="border-t pt-6 mt-6">
+                        <div class="mb-4 p-4 bg-gray-100 rounded-lg"><h4 class="font-semibold mb-2">Đoạn văn</h4><p>Fancy Foods wishes to inform the public that pieces of metal have been found in some jars of Fancy Foods Chicken Curry (Spicy). The batches of the jars involved have numbers from J6617 to J6624. The batch number is printed on the bottom of each jar.</p></div>
+                        <div class="p-4 bg-blue-50 rounded-lg space-y-4">
+                            <div><h4 class="font-semibold mb-1">1. What has been found in some Fancy Foods products?</h4><p class="text-xs text-gray-500 mb-2">Trả lời KHÔNG QUÁ BA TỪ.</p><input type="text" class="w-full md:w-1/2 p-2 border border-gray-300 rounded-md" placeholder="Câu trả lời của bạn..."></div>
+                            <div><h4 class="font-semibold mb-1">2. Where can you find the batch number on the jars?</h4><p class="text-xs text-gray-500 mb-2">Trả lời KHÔNG QUÁ BA TỪ.</p><input type="text" class="w-full md:w-1/2 p-2 border border-gray-300 rounded-md" placeholder="Câu trả lời của bạn..."></div>
+                        </div>
+                    </div>
+                     <div class="border-t pt-6 mt-8">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-semibold">Ví dụ đã giải (Color-Coded)</h3>
+                            <button class="toggle-solution-btn px-3 py-1 text-sm bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">Hiện đáp án</button>
+                        </div>
+                        <div class="solution-content" style="display: none;">
+                            <div class="p-4 rounded-lg solved-example">
+                                <h4 class="font-semibold mb-2">Câu hỏi 1 đã phân tích</h4>
+                                <p class="text-lg mb-2"><span class="highlight" style="background-color: #fff352;">What</span> has been <span class="highlight" style="background-color: #fff352;">found</span> in some <span class="highlight" style="background-color: #fff352;">Fancy Foods products</span>?</p>
+                                <h4 class="font-semibold mt-4 mb-2">Câu chứa đáp án trong đoạn văn</h4>
+                                <p>...<span class="highlight" style="background-color: #fff352;">pieces of metal</span> have been <span class="highlight" style="background-color: #fff352;">found</span> in some jars of Fancy Foods Chicken Curry...</p>
+                                <p class="mt-2"><b>Đáp án:</b> <span class="font-bold px-2 py-1 bg-gray-200 rounded">pieces of metal</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // This function is now in the global scope, accessible by onclick attributes.
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.content-pane');
+            const tabs = document.querySelectorAll('.tab-btn');
+            
+            pages.forEach(page => page.classList.remove('active'));
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            const newActivePage = document.getElementById(pageId);
+            if (newActivePage) {
+                newActivePage.classList.add('active');
+            }
+            const newActiveTab = document.querySelector(`.tab-btn[onclick="showPage('${pageId}')"]`);
+            if (newActiveTab) {
+                newActiveTab.classList.add('active');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            function setupColorPalettes() {
+                const palettes = document.querySelectorAll('[id^="color-palette-"]');
+                palettes.forEach(palette => {
+                    const swatches = palette.querySelectorAll('.color-swatch');
+                    swatches.forEach(swatch => {
+                        swatch.addEventListener('click', () => {
+                            swatches.forEach(s => s.classList.remove('selected'));
+                            swatch.classList.add('selected');
+                        });
+                    });
+                });
+            }
+
+            function setupInteractiveText() {
+                const interactiveTexts = document.querySelectorAll('.interactive-text');
+                interactiveTexts.forEach(textContainer => {
+                    const spans = textContainer.querySelectorAll('span');
+                    const paletteId = textContainer.dataset.palette;
+                    const palette = document.getElementById(paletteId);
+
+                    spans.forEach(span => {
+                        span.addEventListener('click', () => {
+                            if (!palette) return;
+                            
+                            const selectedSwatch = palette.querySelector('.color-swatch.selected');
+                            if (!selectedSwatch) return;
+
+                            const newColor = selectedSwatch.dataset.color;
+                            
+                            const currentColor = span.style.backgroundColor;
+                            const currentColorHex = RGBColor.fromString(currentColor);
+
+                            if (currentColorHex && currentColorHex.toLowerCase() === newColor.toLowerCase() && newColor !== 'transparent') {
+                                span.style.backgroundColor = '';
+                                span.style.color = '';
+                            } else {
+                                span.style.backgroundColor = newColor === 'transparent' ? '' : newColor;
+                                span.style.color = newColor === '#00008b' ? 'white' : '';
+                            }
+                        });
+                    });
+                });
+            }
+
+            function setupToggleButtons() {
+                const toggleButtons = document.querySelectorAll('.toggle-solution-btn');
+                toggleButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const solutionContent = button.parentElement.nextElementSibling;
+                        const isHidden = solutionContent.style.display === 'none';
+                        
+                        solutionContent.style.display = isHidden ? 'block' : 'none';
+                        button.textContent = isHidden ? 'Ẩn đáp án' : 'Hiện đáp án';
+                    });
+                });
+            }
+
+            const RGBColor = {
+                fromString: function(rgbString) {
+                    if (!rgbString) return null;
+                    let sep = rgbString.indexOf(",") > -1 ? "," : " ";
+                    let rgb = rgbString.substr(4).split(")")[0].split(sep);
+                    let r = parseInt(rgb[0], 10);
+                    let g = parseInt(rgb[1], 10);
+                    let b = parseInt(rgb[2], 10);
+                    return this.toHex(r, g, b);
+                },
+                toHex: function(r, g, b) {
+                    return "#" +
+                        ("0" + r.toString(16)).slice(-2) +
+                        ("0" + g.toString(16)).slice(-2) +
+                        ("0" + b.toString(16)).slice(-2);
+                }
+            };
+            
+            // --- Initialization ---
+            showPage('scq');
+            setupColorPalettes();
+            setupInteractiveText();
+            setupToggleButtons();
+        });
+    </script>
+
+</body>
+</html>
