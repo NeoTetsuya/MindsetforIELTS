@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Writing - Tuần 1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: #f8fafc;
+        }
+        .tab-btn {
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        .tab-btn.active {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+        }
+        .content-pane {
+            display: none;
+        }
+        .content-pane.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            margin-bottom: 1.5rem;
+        }
+        .page-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #dbeafe;
+        }
+         .subsection-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e40af;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .example {
+            background-color: #f1f5f9;
+            border-left: 4px solid #60a5fa;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.5rem;
+        }
+        .example .vi {
+            color: #475569;
+            font-style: italic;
+        }
+        .example .en {
+            color: #1e3a8a;
+            font-weight: 500;
+        }
+        .tip-card {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin-top: 1.5rem;
+        }
+        .tip-card .tip-title {
+            font-weight: 700;
+            color: #1d4ed8;
+        }
+        .daily-test-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 0;
+        }
+        .daily-test-item:last-child {
+            border-bottom: none;
+        }
+        .toggle-answer-btn {
+            background-color: #e2e8f0;
+            color: #475569;
+            transition: background-color 0.2s ease;
+        }
+        .toggle-answer-btn:hover {
+            background-color: #cbd5e1;
+        }
+        .answer-block {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #166534;
+            padding: 0.75rem;
+            margin-top: 0.5rem;
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <div class="container mx-auto p-4 md:p-6">
+        <!-- Header -->
+        <header class="text-center my-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-900">IELTS Writing Basic</h1>
+            <p class="text-slate-500 mt-2 text-lg">Ôn tập ngữ pháp cần thiết - Tuần 1</p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <div class="sticky top-0 bg-white/80 backdrop-blur-lg z-10 mb-8">
+            <div class="border-b border-slate-200">
+                <nav class="flex -mb-px space-x-4 md:space-x-8 overflow-x-auto" aria-label="Tabs">
+                    <button class="tab-btn active shrink-0 py-4 px-1 text-sm font-medium" onclick="showPage('intro')">Intro</button>
+                    <button class="tab-btn shrink-0 py-4 px-1 text-sm font-medium" onclick="showPage('day1')">Day 1</button>
+                    <button class="tab-btn shrink-0 py-4 px-1 text-sm font-medium" onclick="showPage('day2')">Day 2</button>
+                    <button class="tab-btn shrink-0 py-4 px-1 text-sm font-medium" onclick="showPage('day3')">Day 3</button>
+                    <button class="tab-btn shrink-0 py-4 px-1 text-sm font-medium" onclick="showPage('day4')">Day 4</button>
+                    <button class="tab-btn shrink-0 py-4 px-1 text-sm font-medium" onclick="showPage('day5')">Day 5</button>
+                    <button class="tab-btn shrink-0 py-4 px-1 text-sm font-medium" onclick="showPage('day6')">Day 6</button>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Content Panes -->
+        <main>
+            <!-- Intro Page -->
+            <div id="intro" class="content-pane active">
+                <div class="card">
+                    <h2 class="section-title">1. Các thành phần cơ bản trong câu</h2>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="subsection-title">Chủ ngữ (Subject)</h4>
+                            <p>Là chủ thể của hành động, hoàn cảnh. Tất cả danh từ/cụm danh từ đều có thể làm chủ ngữ.</p>
+                            <div class="example"><p class="vi">Những ngôi sao tỏa sáng.</p><p class="en"><span class="font-semibold text-blue-700">The stars</span> shine.</p></div>
+                        </div>
+                        <div>
+                            <h4 class="subsection-title">Động từ (Verb)</h4>
+                            <p>Là từ thể hiện hành động hay trạng thái của chủ ngữ.</p>
+                            <div class="example"><p class="vi">Những ngôi sao tỏa sáng.</p><p class="en">The stars <span class="font-semibold text-blue-700">shine</span>.</p></div>
+                        </div>
+                        <div>
+                            <h4 class="subsection-title">Tân ngữ (Object)</h4>
+                            <p>Đứng sau động từ, chịu sự tác động do chủ ngữ gây ra.</p>
+                            <div class="example"><p class="vi">Tôi đã nhìn thấy những ngôi sao.</p><p class="en">I saw <span class="font-semibold text-blue-700">the stars</span>.</p></div>
+                        </div>
+                        <div>
+                            <h4 class="subsection-title">Bổ ngữ (Complement)</h4>
+                            <p>Bổ nghĩa cho chủ ngữ hoặc tân ngữ để câu có nghĩa đầy đủ.</p>
+                            <div class="example"><p class="vi">Mặt trời là một ngôi sao.</p><p class="en">The sun is <span class="font-semibold text-blue-700">a star</span>. (Bổ ngữ cho chủ ngữ)</p></div>
+                            <div class="example"><p class="vi">Tôi đã nhìn thấy những vì sao tỏa sáng.</p><p class="en">I saw the stars <span class="font-semibold text-blue-700">shining</span>. (Bổ ngữ của tân ngữ)</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                     <h2 class="section-title">2. Nối câu</h2>
+                     <p>Khi các câu có sự kết nối về ý nghĩa, ta có thể liên kết chúng để tạo thành câu ghép, giúp diễn đạt súc tích hơn. Các mệnh đề được nối với nhau bằng liên từ đẳng lập (and, but, or, so) hoặc liên từ phụ thuộc (that, when, because...).</p>
+                     <div class="example"><p class="vi">Tôi đã nhìn thấy sao băng. Tôi đã ước. → Tôi nhìn thấy sao băng và tôi đã ước.</p><p class="en">I saw a shooting star. I made a wish. → I saw a shooting star, <span class="font-semibold text-blue-700">and</span> I made a wish.</p></div>
+                     <div class="example"><p class="vi">Tôi nghĩ. + Nước rất quan trọng. → Tôi nghĩ rằng nước rất quan trọng.</p><p class="en">I think. + Water is important. → I think <span class="font-semibold text-blue-700">that water is important</span>.</p></div>
+                </div>
+            </div>
+
+            <!-- Day 1 Page -->
+            <div id="day1" class="content-pane">
+                <h2 class="page-title">Day 1: V-ing và To-V</h2>
+                <div class="card">
+                    <h3 class="section-title">1. Cách sử dụng V-ing và To-V</h3>
+                    <p>V-ing và to-V có chức năng như một danh từ nên có thể đóng vai trò chủ ngữ, tân ngữ hoặc bổ ngữ trong câu.</p>
+                    <div class="example"><p class="vi">Việc nói ngoại ngữ rất khó.</p><p class="en"><span class="font-semibold text-blue-700">Speaking a foreign language / To speak a foreign language</span> is difficult. (Làm chủ ngữ)</p></div>
+                    <div class="example"><p class="vi">Sở thích của tôi là tập thể dục.</p><p class="en">My hobby is <span class="font-semibold text-blue-700">exercising / to exercise</span>. (Làm bổ ngữ)</p></div>
+                    <div class="example"><p class="vi">Tôi thích hát.</p><p class="en">I enjoy <span class="font-semibold text-blue-700">singing</span>. (Làm tân ngữ)</p></div>
+                    <div class="tip-card">
+                        <p><span class="tip-title">TIP:</span> V-ing và to-V đóng vai trò tân ngữ trực tiếp sau một số động từ nhất định.</p>
+                        <ul class="list-disc list-inside mt-2 space-y-1">
+                            <li><b>Theo sau bởi V-ing:</b> enjoy, avoid, admit, deny, quit, practice, postpone, give up...</li>
+                            <li><b>Theo sau bởi To-V:</b> want, decide, demand, plan, hope, agree, ask, promise...</li>
+                            <li><b>Theo sau bởi cả hai:</b> like, love, hate, continue, prefer, begin, start...</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="section-title">2. Cách dùng cấu trúc "danh từ + to-V"</h3>
+                    <p>To-V có thể đóng vai trò làm tính từ bổ nghĩa cho danh từ.</p>
+                    <div class="example"><p class="vi">Tôi có bài tập phải làm.</p><p class="en">I have <span class="font-semibold text-blue-700">homework to do</span>.</p></div>
+                    <div class="example"><p class="vi">Tôi đã có thời gian mua sắm vào buổi chiều.</p><p class="en">I had <span class="font-semibold text-blue-700">time to shop</span> in the afternoon.</p></div>
+                </div>
+                 <div class="card">
+                    <h3 class="section-title">3. Cách dùng to-V với nghĩa "để làm gì"</h3>
+                    <p>To-V có thể đóng vai trò làm trạng từ bổ nghĩa cho động từ và mang nghĩa "để làm gì".</p>
+                    <div class="example"><p class="vi">Tôi đã học hành chăm chỉ để đạt điểm cao.</p><p class="en">I studied hard <span class="font-semibold text-blue-700">to get a good grade</span>.</p></div>
+                </div>
+                <div class="card">
+                    <h3 class="section-title">Jump-up Skills</h3>
+                    <ul class="list-disc list-inside space-y-3">
+                        <li>Thêm "not" vào trước to-V và V-ing để tạo dạng phủ định: <span class="italic block">I decided <span class="font-semibold">not to give up</span>.</span></li>
+                        <li>Sử dụng cấu trúc "what/where/when/how + to-V": <span class="italic block">I forgot <span class="font-semibold">what to say</span>.</span></li>
+                        <li>Sử dụng cấu trúc "động từ + sb + to-V" (ask, tell, want...): <span class="italic block">He asked <span class="font-semibold">me to leave</span>.</span></li>
+                        <li>Sử dụng cấu trúc "too + adj + to-V" (quá... để làm gì): <span class="italic block">The bread is <span class="font-semibold">too hard to slice</span>.</span></li>
+                        <li>Sử dụng cấu trúc "adj + enough + to-V" (đủ... để làm gì): <span class="italic block">He is <span class="font-semibold">rich enough to buy</span> a big house.</span></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="section-title">Daily Check-up</h3>
+                    <div id="day1-checkup-exercises"></div>
+                </div>
+                 <div class="card">
+                    <h3 class="section-title">Daily Test</h3>
+                    <div id="day1-test-exercises"></div>
+                </div>
+            </div>
+
+            <!-- Day 2 Page -->
+            <div id="day2" class="content-pane">
+                <h2 class="page-title">Day 2: Phân từ (Participles)</h2>
+                <div class="card">
+                     <h3 class="section-title">1. Hiện tại phân từ (V-ing) và Quá khứ phân từ (V-ed)</h3>
+                     <p>Giống như tính từ, phân từ bổ nghĩa cho danh từ hoặc làm bổ ngữ trong câu.</p>
+                     <div class="example"><p class="vi">Hiện tại phân từ (V-ing) mang nghĩa chủ động: các bà mẹ đang đi làm</p><p class="en"><span class="font-semibold text-blue-700">working</span> moms</p></div>
+                     <div class="example"><p class="vi">Quá khứ phân từ (V-ed) mang nghĩa bị động: một chiếc đồng hồ bị đánh cắp</p><p class="en">a <span class="font-semibold text-blue-700">stolen</span> watch</p></div>
+                </div>
+                <div class="card">
+                     <h3 class="section-title">2. Cụm phân từ</h3>
+                     <p>Khi câu có chung chủ ngữ, ta có thể rút gọn mệnh đề trạng ngữ thành cụm phân từ để câu súc tích hơn.</p>
+                     <div class="example"><p class="vi">Đến nhà ga, tôi liền gọi cho anh ấy.</p><p class="en"><span class="font-semibold text-blue-700">Arriving at the station</span>, I called him. (= When I arrived...)</p></div>
+                     <div class="example"><p class="vi">Anh ấy phải đến bệnh viện vì bị xe đâm.</p><p class="en"><span class="font-semibold text-blue-700">Hit by a car</span>, he had to go to a hospital. (= Because he was hit...)</p></div>
+                </div>
+                 <div class="card">
+                    <h3 class="section-title">Jump-up Skills</h3>
+                    <ul class="list-disc list-inside space-y-3">
+                        <li>Dạng phủ định của phân từ: "not + phân từ": <span class="italic block"><span class="font-semibold">Not knowing what to say</span>, I kept silent.</span></li>
+                        <li>Cấu trúc "with + danh từ + phân từ": <span class="italic block">He listened to the song <span class="font-semibold">with his eyes closed</span>.</span></li>
+                        <li>Cấu trúc "have + tân ngữ + quá khứ phân từ" (bị/được/nhờ ai làm gì): <span class="italic block">I <span class="font-semibold">had my wallet stolen</span>.</span></li>
+                    </ul>
+                </div>
+                 <div class="card">
+                    <h3 class="section-title">Daily Check-up</h3>
+                    <div id="day2-checkup-exercises"></div>
+                </div>
+                 <div class="card">
+                    <h3 class="section-title">Daily Test</h3>
+                    <div id="day2-test-exercises"></div>
+                </div>
+            </div>
+
+            <!-- Day 3 Page -->
+            <div id="day3" class="content-pane">
+                 <h2 class="page-title">Day 3: Mệnh đề danh ngữ & Mệnh đề trạng ngữ</h2>
+                 <div class="card">
+                     <h3 class="section-title">1. Mệnh đề danh ngữ (Noun Clause)</h3>
+                     <p>Là mệnh đề đóng vai trò như một danh từ (làm chủ ngữ, tân ngữ, bổ ngữ). Bắt đầu bằng các từ như that, what, who, when, where, why, how, whether.</p>
+                     <div class="example"><p class="vi">Những điều đã diễn ra hôm qua rất có ý nghĩa đối với tôi.</p><p class="en"><span class="font-semibold text-blue-700">What happened yesterday</span> meant a lot to me.</p></div>
+                     <div class="example"><p class="vi">Điều quan trọng là chúng ta phải tuân thủ các quy định.</p><p class="en">The important thing is <span class="font-semibold text-blue-700">that we have to follow the rules</span>.</p></div>
+                </div>
+                 <div class="card">
+                     <h3 class="section-title">2. Mệnh đề trạng ngữ (Adverb Clause)</h3>
+                     <p>Bổ nghĩa cho mệnh đề chính, chỉ thời gian, nơi chốn, lý do, điều kiện... Bắt đầu bằng các liên từ như when, because, if, although...</p>
+                     <div class="example"><p class="vi">Nếu sống một mình, bạn sẽ trở nên có trách nhiệm.</p><p class="en"><span class="font-semibold text-blue-700">If you live alone</span>, you become responsible.</p></div>
+                     <div class="example"><p class="vi">Trông bạn thật hạnh phúc lúc đang đọc sách.</p><p class="en">You look happy <span class="font-semibold text-blue-700">when you are reading a book</span>.</p></div>
+                </div>
+                 <div class="card">
+                    <h3 class="section-title">Daily Check-up</h3>
+                    <div id="day3-checkup-exercises"></div>
+                </div>
+                 <div class="card">
+                    <h3 class="section-title">Daily Test</h3>
+                    <div id="day3-test-exercises"></div>
+                </div>
+            </div>
+
+            <!-- Day 4 Page -->
+            <div id="day4" class="content-pane">
+                 <h2 class="page-title">Day 4: Mệnh đề quan hệ</h2>
+                 <div class="card">
+                     <h3 class="section-title">1. Đại từ quan hệ (Relative Pronouns)</h3>
+                     <p>Dùng để bổ nghĩa cho danh từ đứng trước nó. Bắt đầu bằng các đại từ quan hệ (who, whom, which, that, whose).</p>
+                     <div class="example"><p class="vi">Tôi đã gặp một cô gái làm việc ở trung tâm thương mại.</p><p class="en">I met a girl <span class="font-semibold text-blue-700">who works at a department store</span>.</p></div>
+                     <div class="example"><p class="vi">Đây là những chìa khóa mà bạn đang tìm.</p><p class="en">These are the keys <span class="font-semibold text-blue-700">that you were looking for</span>.</p></div>
+                </div>
+                 <div class="card">
+                     <h3 class="section-title">2. Trạng từ quan hệ (Relative Adverbs)</h3>
+                     <p>Dùng để bổ nghĩa cho danh từ chỉ nơi chốn (where), thời gian (when), lý do (why).</p>
+                     <div class="example"><p class="vi">Đây là thị trấn nơi tôi sinh ra.</p><p class="en">This is the town <span class="font-semibold text-blue-700">where I was born</span>.</p></div>
+                </div>
+                 <div class="card">
+                    <h3 class="section-title">Daily Check-up</h3>
+                    <div id="day4-checkup-exercises"></div>
+                </div>
+                 <div class="card">
+                    <h3 class="section-title">Daily Test</h3>
+                    <div id="day4-test-exercises"></div>
+                </div>
+            </div>
+
+            <!-- Day 5 Page -->
+            <div id="day5" class="content-pane">
+                 <h2 class="page-title">Day 5: Chủ ngữ giả It và There</h2>
+                 <div class="card">
+                     <h3 class="section-title">1. Chủ ngữ giả "It"</h3>
+                     <p>Dùng khi chủ ngữ thật là một cụm to-V hoặc một mệnh đề danh ngữ dài. Cấu trúc: <span class="font-mono bg-slate-100 p-1 rounded">It is + adj + to-V / that-clause</span>.</p>
+                     <div class="example"><p class="vi">Học Mỹ thuật rất quan trọng.</p><p class="en"><span class="font-semibold text-blue-700">It is important</span> to study arts.</p></div>
+                     <div class="example"><p class="vi">Việc bạn là ai không quan trọng.</p><p class="en"><span class="font-semibold text-blue-700">It does not matter</span> who you are.</p></div>
+                </div>
+                 <div class="card">
+                     <h3 class="section-title">2. Cấu trúc "There"</h3>
+                     <p>Dùng để diễn tả sự tồn tại của một sự vật, hiện tượng. Cấu trúc: <span class="font-mono bg-slate-100 p-1 rounded">There + be + Noun Phrase</span>.</p>
+                     <div class="example"><p class="vi">Có ba quy tắc trong trò chơi.</p><p class="en"><span class="font-semibold text-blue-700">There are</span> three rules to the game.</p></div>
+                     <div class="example"><p class="vi">Có một nhà thờ trong thị trấn.</p><p class="en"><span class="font-semibold text-blue-700">There was</span> a church in the town.</p></div>
+                </div>
+                 <div class="card">
+                    <h3 class="section-title">Daily Check-up</h3>
+                    <div id="day5-checkup-exercises"></div>
+                </div>
+                 <div class="card">
+                    <h3 class="section-title">Daily Test</h3>
+                    <div id="day5-test-exercises"></div>
+                </div>
+            </div>
+
+            <!-- Day 6 Page -->
+            <div id="day6" class="content-pane">
+                <h2 class="page-title">Day 6: Cấu trúc so sánh và Cấu trúc song song</h2>
+                <div class="card">
+                     <h3 class="section-title">1. Cấu trúc so sánh (Comparison)</h3>
+                     <p>Dùng để so sánh đặc tính của hai hay nhiều sự vật, sự việc.</p>
+                     <div class="example"><p class="vi">So sánh bằng: Seoul rộng như New York.</p><p class="en">Seoul is <span class="font-semibold text-blue-700">as big as</span> New York.</p></div>
+                     <div class="example"><p class="vi">So sánh hơn: Tòa thị chính lớn hơn thư viện này.</p><p class="en">The city hall is <span class="font-semibold text-blue-700">bigger than</span> this library.</p></div>
+                     <div class="example"><p class="vi">So sánh nhất: New York là thành phố lớn nhất thế giới.</p><p class="en">New York is <span class="font-semibold text-blue-700">the biggest</span> city in the world.</p></div>
+                </div>
+                 <div class="card">
+                     <h3 class="section-title">2. Cấu trúc song song (Parallel Structure)</h3>
+                     <p>Sử dụng liên từ (and, or, but) để nối các từ, cụm từ có cùng dạng ngữ pháp.</p>
+                     <div class="example"><p class="vi">Bạn nên bỏ uống rượu và hút thuốc.</p><p class="en">You should quit <span class="font-semibold text-blue-700">drinking and smoking</span>.</p></div>
+                     <div class="example"><p class="vi">Anh ấy không phải là giáo sư mà là sinh viên.</p><p class="en">He is <span class="font-semibold text-blue-700">not a professor but a student</span>.</p></div>
+                </div>
+                 <div class="card">
+                    <h3 class="section-title">Daily Check-up</h3>
+                    <div id="day6-checkup-exercises"></div>
+                </div>
+                 <div class="card">
+                    <h3 class="section-title">Daily Test</h3>
+                    <div id="day6-test-exercises"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.content-pane');
+            const tabs = document.querySelectorAll('.tab-btn');
+            
+            pages.forEach(page => page.classList.remove('active'));
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            const newActivePage = document.getElementById(pageId);
+            if (newActivePage) newActivePage.classList.add('active');
+            
+            const newActiveTab = document.querySelector(`.tab-btn[onclick="showPage('${pageId}')"]`);
+            if (newActiveTab) newActiveTab.classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const exercises = {
+                day1_checkup: [
+                    { q: "01. Uống quá nhiều thuốc (medicine) có thể gây hại cho sức khỏe của bạn.", a: "Taking too much medicine may be harmful to your health." },
+                    { q: "02. Sở thích duy nhất của anh ấy là sưu tầm tiền xu.", a: "His only hobby is collecting coins." },
+                    { q: "03. Cô gái chợt ngừng khóc.", a: "The girl suddenly stopped crying." },
+                    { q: "04. Tôi đã quen tìm thông tin trên mạng.", a: "I am used to searching for information on the Internet." },
+                    { q: "05. Tôi quyết định bắt đầu tập thể dục.", a: "I decided to start working out." },
+                    { q: "06. Bạn có đủ thời gian để giải quyết vấn đề.", a: "You have enough time to solve the problem." },
+                    { q: "07. Chúng tôi đã tìm được một nhóm nghiên cứu để tham gia.", a: "We found a study group to join." },
+                    { q: "08. Họ khuyên tôi nên có mặt đúng giờ.", a: "They advised me to be on time." },
+                    { q: "09. Anh ấy lấy ví ra cho chúng tôi xem ảnh gia đình mình.", a: "He took his wallet out to show us his family pictures." },
+                    { q: "10. Trời mưa quá to đến nỗi không thể đi câu cá được.", a: "It rained too much to go fishing." },
+                    { q: "11. Tuần trước, tôi đã không có cơ hội về thăm bố mẹ.", a: "I did not have a chance to visit my parents last week." },
+                    { q: "12. Tôi đồng ý dọn dẹp bếp.", a: "I agreed to clean the kitchen." },
+                    { q: "13. Cô ấy phủ nhận đã gian lận trong bài kiểm tra.", a: "She denied cheating on the test." },
+                    { q: "14. Tôi phản đối việc thay đổi lịch họp.", a: "I object to rescheduling the meeting." },
+                    { q: "15. Một số người đi du lịch để tìm hiểu về các nền văn hóa khác.", a: "Some people travel to learn about other cultures." }
+                ],
+                day1_test: [
+                    { q: "01. việc xem ti vi nhiều / không tốt cho lũ trẻ", a: "Watching TV a lot is not good for children." },
+                    { q: "02. cách tốt nhất / để giải tỏa căng thẳng / là chạy", a: "The best way to relieve stress is to run." },
+                    { q: "03. trên hết, / thanh thiếu niên tận hưởng / chơi với bạn bè", a: "Above all, teenagers enjoy playing with friends." },
+                    { q: "04. thông qua việc luyện tập, / ai cũng có thể trở nên thành thạo / chơi một loại nhạc cụ", a: "Through practice, anyone can become skilled at playing an instrument." },
+                    { q: "05. phần lớn mọi người thích / làm việc / ban ngày", a: "Most people prefer to work during the day." },
+                    { q: "06. việc không hút thuốc lá / một trong những cách dễ nhất / tránh ung thư phổi", a: "Not smoking is one of the easiest ways to avoid lung cancer." },
+                    { q: "07. người già cần học hỏi / suy nghĩ cởi mở", a: "The elderly need to learn to keep an open mind." },
+                    { q: "08. các lãnh đạo đang tìm những phương pháp / thúc đẩy những người khác", a: "Leaders are looking for ways to motivate others." },
+                    { q: "09. mọi người xem phim / rời xa / hiện thực", a: "People watch movies to take a break from reality." },
+                    { q: "10. việc này giúp / những học sinh bị điểm kém / cải thiện kết quả học tập", a: "This helps students with low grades to improve their academic performance." },
+                    { q: "11. kỳ nghỉ hè dài cho phép / học sinh ra nước ngoài học tập", a: "A long summer vacation allows students to study abroad." },
+                    { q: "12. phần lớn trẻ em học / cách bơi / khi còn nhỏ", a: "Most children learn how to swim at a young age." },
+                    { q: "13. một số công việc quá khó / xử lý một mình", a: "Some tasks are too difficult to handle alone." },
+                    { q: "14. các bậc phụ huynh giỏi / đưa ra lời khuyên cho con của họ", a: "Good parents are good at giving advice to their children." },
+                    { q: "15. Nhiều công ty đã lên kế hoạch / khiến các sản phẩm của công ty họ / thân thiện với môi trường", a: "Many companies have planned to make their products environmentally friendly." }
+                ],
+                day2_checkup: [
+                    { q: "01. Cô gái đang bước về phía chúng tôi là Jessica.", a: "The girl coming toward us is Jessica." },
+                    { q: "02. Anh ấy thích đọc tiểu thuyết (được viết bằng) tiếng Anh.", a: "He enjoys reading novels written in English." },
+                    { q: "03. Có rất nhiều người đang đợi xe buýt.", a: "There were many people waiting for the bus." },
+                    { q: "04. Tôi thấy bạn đang học trong thư viện.", a: "I saw you studying in the library." },
+                    { q: "05. Bạn nên cẩn thận khi cầm cây nến đang cháy.", a: "You should be careful when you are holding a burning candle." },
+                    { q: "06. Cô ấy đã nhờ người sửa giúp máy in trong vòng một tiếng.", a: "She had the printer fixed in an hour." },
+                    { q: "07. Khi đang đi dạo phố, tôi tình cờ gặp Ben.", a: "Walking down the street, I ran into Ben." },
+                    { q: "08. Khi bị một người đàn ông truy đuổi, tên trộm chạy quanh góc đó.", a: "Followed by a man, the thief ran around the corner." },
+                    { q: "09. Vì không biết địa chỉ email của anh nên cô không thể liên lạc được với anh.", a: "Not knowing his email address, she could not contact him." },
+                    { q: "10. Vì thấy buồn chán ở bữa tiệc nên tôi đã tìm cớ cáo lui.", a: "Being bored at the party, I left the room giving an excuse." },
+                    { q: "11. Rẽ trái rồi bạn sẽ thấy cửa hàng tiện lợi.", a: "Turning left, you will find the convenience store." },
+                    { q: "12. Khi đang đi bộ dọc bờ biển, chúng tôi đã bắt được một con cua.", a: "Walking along the beach, we caught a crab." },
+                    { q: "13. Vì không có tiền nên tôi không thể mua quà cho bạn mình.", a: "Having no money, I was unable to buy a gift for my friend." },
+                    { q: "14. Jane đang ngồi bắt chéo chân trên ghế.", a: "Jane was sitting in a chair with her legs crossed." },
+                    { q: "15. Vì không biết đó là lỗi của một học sinh khác nên cô giáo đã mắng tôi.", a: "Not knowing it was another student's fault, the teacher scolded me." }
+                ],
+                day2_test: [
+                    { q: "01. vấn đề ô nhiễm không khí ở các thành phố lớn / có liên quan đến / số lượng ngày càng tăng / xe ô tô", a: "The problem of air pollution in big cities is related to the increasing number of cars." },
+                    { q: "02. mọi người không muốn sống / gần các nhà máy / thải ra chất thải hóa học", a: "People do not want to live near factories emitting chemical waste." },
+                    { q: "03. một số chương trình ti vi / (được) trẻ em xem / thú vị và có tính giáo dục", a: "Some TV programs watched by children are fun and educational." },
+                    { q: "04. bạn có thể tìm thấy / lời khuyên thiết thực / được viết trong sách", a: "You can find practical advice written in books." },
+                    { q: "05. có nhiều học sinh / không chú ý / trong giờ học", a: "There are many students not paying attention in class." },
+                    { q: "06. đi du lịch theo nhóm, / du khách có thể tiết kiệm / tiền", a: "Traveling in a group, tourists can save money." },
+                    { q: "07. nếu có cơ hội / gặp gỡ các nhân vật lịch sử, / hầu hết các nhà khoa học đều muốn gặp / Einstein", a: "Given the chance to meet historical figures, most scientists would want to meet Einstein." },
+                    { q: "08. khi gặp phải dịch vụ không tốt ở nhà hàng, / vài khách hàng / đã bày tỏ / sự không hài lòng", a: "Encountering poor service at a restaurant, some customers expressed their dissatisfaction." },
+                    { q: "09. nếu được yêu cầu chọn một thứ / để đại diện cho đất nước mình, / phần lớn người Việt Nam sẽ chọn áo dài", a: "Asked to choose one thing to represent their country, the majority of Vietnamese people would choose the Ao Dai." },
+                    { q: "10. vì lớn lên trong kỷ nguyên thông tin, / trẻ em thời nay thành thạo / việc sử dụng các thiết bị điện tử", a: "Growing up in the information age, children today are good at using electronics." },
+                    { q: "11. các bài học / được học thông qua trải nghiệm cá nhân / có ý nghĩa hơn / so với những lời khuyên răn", a: "Lessons learned through personal experience are more meaningful than advice." },
+                    { q: "12. vì lo sợ bạo lực gia tăng, / mọi người đều mong muốn / luật sử dụng súng nghiêm ngặt hơn", a: "Afraid of increasing violence, people want stricter laws on gun use." },
+                    { q: "13. các hoạt động được lên kế hoạch rõ ràng / khiến thời gian rảnh của bạn / thú vị hơn", a: "Well-planned activities make your free time more enjoyable." },
+                    { q: "14. khi giúp cha mẹ làm việc nhà, / trẻ em có thể học / trách nhiệm", a: "Helping their parents with household chores, children can learn responsibility." },
+                    { q: "15. xe ô tô / đi ngang qua khu vực xung quanh / gây ra / ô nhiễm tiếng ồn", a: "Cars passing through the neighborhood cause noise pollution." }
+                ],
+                day3_checkup: [
+                    { q: "01. Cô ấy không thể chấp nhận sự thật rằng thiết kế của mình đã bị loại.", a: "She could not accept the fact that her design was rejected." },
+                    { q: "02. Họ đã chỉ ra rằng uống quá nhiều cà phê không tốt cho sức khỏe.", a: "They pointed out that drinking too much coffee is unhealthy." },
+                    { q: "03. Anh ấy không biết liệu có bưu điện nào gần đó không.", a: "He did not know if there was a post office nearby." },
+                    { q: "04. Tôi viết về những điều đã trải nghiệm trong chuyến đi.", a: "I wrote about what I experienced on the trip." },
+                    { q: "05. Cô ấy rất vui vì đạt điểm cao.", a: "She was pleased that she received a good grade." },
+                    { q: "06. Khi chuông báo cháy vang lên, mọi người phải ra khỏi tòa nhà.", a: "When the fire alarm rings, everyone must exit the building." },
+                    { q: "07. Tôi tự hỏi Terry đã đi đâu.", a: "I wonder where Terry went." },
+                    { q: "08. Thật khó mà giải thích được vì sao tôi lại thích những ngày mưa.", a: "It is hard to explain why I like rainy days." },
+                    { q: "09. Hãy cho tôi biết tai nạn đã xảy ra như thế nào.", a: "Tell me how the accident happened." },
+                    { q: "10. Anh ấy đã ghé qua khi bạn đang học trong lớp.", a: "He stopped by while you were in class." },
+                    { q: "11. Nếu không hoàn thành dự án, bạn sẽ không qua được môn học này.", a: "If you do not complete the project, you will not pass the course." },
+                    { q: "12. Vì phải nghiên cứu thêm nên chúng ta cần đến thư viện.", a: "Since we have to do more research, we should go to the library." },
+                    { q: "13. Cô ấy ăn chay để được khỏe mạnh hơn.", a: "She became a vegetarian so that she could be healthier." },
+                    { q: "14. Dù đang sống ở New York nhưng tôi lớn lên ở California.", a: "Although I live in New York, I grew up in California." },
+                    { q: "15. Bạn có thể giữ những cuốn sách đó nếu cần.", a: "You may keep the books if you need them." }
+                ],
+                day3_test: [
+                    { q: "01. tôi đồng ý / rằng cha mẹ là những người thầy tốt nhất", a: "I agree that parents are the best teachers." },
+                    { q: "02. tôi tin / rằng ti vi làm giảm / sự giao tiếp giữa các thành viên trong gia đình", a: "I believe that TV reduces communication among family members." },
+                    { q: "03. tôi nghi ngờ / liệu việc làm bài tập về nhà mỗi ngày có giúp học sinh / học tốt hơn", a: "I doubt whether doing homework every day helps students learn better." },
+                    { q: "04. sự thật rằng ai đó giàu có / không đồng nghĩa với việc họ / thành công", a: "The fact that someone is rich does not mean they are successful." },
+                    { q: "05. ý kiến rằng mọi người học theo nhiều phương pháp khác nhau / nhìn chung được chấp nhận", a: "The idea that people learn in different ways is generally accepted." },
+                    { q: "06. chúng ta cần biết / rạp chiếu phim mới sẽ ảnh hưởng như thế nào / đến nền kinh tế địa phương", a: "We need to know how the new movie theater will affect the local economy." },
+                    { q: "07. điều quan trọng là / những cơ hội tương đương được trao / cho mọi người", a: "It is important that equal opportunities are given to everyone." },
+                    { q: "08. vấn đề là / mọi người ngày càng nghiện / mạng xã hội", a: "The problem is that people are becoming addicted to social media." },
+                    { q: "09. trong khi rất nhiều người học lịch sử / chỉ rất ít người nhận ra / giá trị của nó", a: "While many people study history, only a few recognize its value." },
+                    { q: "10. thật quan trọng / tiết kiệm tiền / đề phòng những việc không mong đợi xảy ra", a: "It is important to save money in case unexpected things happen." },
+                    { q: "11. dù máy tính đã khiến cuộc sống của chúng ta trở nên dễ dàng hơn, / một vài hạn chế / cũng có", a: "Although computers have made our lives easier, there are some drawbacks as well." },
+                    { q: "12. các bộ phim siêu anh hùng rất được ưa thích / đến mức chúng tạo ra / hàng triệu đô-la", a: "Superhero movies are so popular that they generate millions of dollars." },
+                    { q: "13. dù sống ở thành phố có thể rất căng thẳng / nhưng cũng có nhiều lợi ích", a: "Although living in a city can be stressful, there are also many benefits." },
+                    { q: "14. các nhà khoa học đang cố gắng xác định / điều gì có thể giúp con người / sống lâu hơn", a: "Scientists are trying to determine what can help people live longer." },
+                    { q: "15. mặc quần áo khác nhau / thỉnh thoảng cũng ảnh hưởng đến / cách con người cư xử", a: "Wearing different clothes sometimes influences how people behave." }
+                ],
+                day4_checkup: [
+                    { q: "01. Người đàn ông mà bạn gặp hôm qua là bạn cấp ba của tôi.", a: "The man whom you met yesterday is my high school friend." },
+                    { q: "02. Đây là thị trấn nơi tôi sinh ra.", a: "This is the town where I was born." },
+                    { q: "03. Cô ấy là đồng nghiệp đang giúp tôi làm thiết kế này.", a: "She is a co-worker who is helping me with this design." },
+                    { q: "04. Cô giáo dạy tôi một môn học đã đạt danh hiệu Giáo viên của năm.", a: "A teacher who taught me a subject won the Teacher of the Year award." },
+                    { q: "05. Bức tranh anh ấy mua năm ngoài được treo trong phòng khách.", a: "The painting which he purchased last year hangs in his living room." },
+                    { q: "06. Tôi đã cho anh ấy mượn cái máy ảnh mà tôi nhận được trong dịp sinh nhật.", a: "I lent him the camera that I received for my birthday." },
+                    { q: "07. Ngày mai chiếc máy bị hỏng sẽ được sửa.", a: "The machine that broke down will be fixed tomorrow." },
+                    { q: "08. Anh ấy đã giới thiệu cuốn sách mà mình yêu thích nhất.", a: "He recommended the book that he loves the most." },
+                    { q: "09. Điểm số của tôi bị kém đi và điều đó khiến cha mẹ tôi lo lắng.", a: "My grades fell, which worried my parents." },
+                    { q: "10. Kỷ niệm thời thơ ấu mà tôi yêu thích là những lần chơi bóng chày với cha.", a: "My favorite childhood memories are of the times when I played baseball with my father." },
+                    { q: "11. Thí sinh đạt điểm cao sẽ được chọn.", a: "Candidates who get high scores will be selected." },
+                    { q: "12. Tôi không hiểu được cách cô ấy tư duy.", a: "I do not understand the way she thinks." },
+                    { q: "13. Chẳng có lý do gì mà bạn không thể đi.", a: "There is no reason why you cannot go." },
+                    { q: "14. Trung tâm thương mại nơi chúng tôi mua sắm chật cứng người.", a: "The department store where we shopped was packed with people." },
+                    { q: "15. Những học sinh chuẩn bị trước thường làm tốt bài kiểm tra.", a: "Students who prepare in advance usually do well on tests." }
+                ],
+                day4_test: [
+                    { q: "01. các đồng nghiệp / sẵn lòng giúp đỡ người khác trong công việc / được đánh giá cao", a: "Colleagues who are willing to help others with their work are appreciated." },
+                    { q: "02. đồ ăn nhanh, / chứa nhiều chất bảo quản / có hại cho sức khỏe", a: "Fast food, which contains a lot of preservatives, is unhealthy." },
+                    { q: "03. các nhân viên muốn làm việc cho công ty / nơi họ có thể nhanh chóng thăng tiến", a: "Employees want to work for a company where they can advance quickly." },
+                    { q: "04. những kỷ niệm / theo mãi đến suốt đời / là khía cạnh đáng giá nhất của một chuyến đi", a: "Memories that last a lifetime are the most valuable aspect of a trip." },
+                    { q: "05. trẻ em / bắt đầu được giáo dục từ khi còn nhỏ / thường đạt được nhiều thành công trong học tập hơn / sau này", a: "Children who start their education at an early age usually have more academic success later." },
+                    { q: "06. có vài lý do / vì sao tốt hơn hết là nên tiết kiệm tiền / cho tương lai", a: "There are several reasons why it is better to save money for the future." },
+                    { q: "07. mọi người kết bạn với / (những) người mà họ có cùng điểm chung", a: "People make friends with those with whom they have something in common." },
+                    { q: "08. chúng ta sống trong xã hội / nơi mọi người đều được coi là bình đẳng / trước pháp luật", a: "We live in a society where everyone is considered equal under the law." },
+                    { q: "09. thỉnh thoảng mọi người cảm thấy (rằng) / chẳng ai / hiểu họ", a: "Sometimes people feel that there is no one who understands them." },
+                    { q: "10. các món đồ / được làm thủ công / thường có chất lượng tốt nhất", a: "Items that are made by hand are often of the highest quality." },
+                    { q: "11. phụ huynh / quá o ép con cái / có thể khiến chúng chống đối", a: "Parents who push their children too hard can cause them to rebel." },
+                    { q: "12. rất khó tìm được nhân viên giỏi, / đấy là lý do vì sao công ty đó chưa tuyển dụng bất kỳ ai", a: "It is difficult to find good employees, which is why the company has not hired anyone yet." },
+                    { q: "13. một trong những khoảnh khắc hạnh phúc nhất trong cuộc đời tôi / chính là buổi tối / khi em gái tôi chào đời", a: "One of the happiest moments of my life was the evening when my sister was born." },
+                    { q: "14. kiểu bạn bè tốt nhất / là người trung thành và trung thực", a: "The best type of friend is someone who is loyal and honest." },
+                    { q: "15. trẻ em / lớn lên ở nông thôn / thường độc lập hơn", a: "Children who grow up in the countryside are often more independent." }
+                ],
+                day5_checkup: [
+                    { q: "01. Dự đoán tương lai là điều không thể.", a: "It is impossible to predict the future." },
+                    { q: "02. Đối với tôi, việc kết bạn mới thật khó khăn.", a: "It is hard for me to make new friends." },
+                    { q: "03. Một số trò chơi điện tử đúng là có tính giáo dục.", a: "It is true that some video games are educational." },
+                    { q: "04. Hóa ra anh ta đã ở Paris.", a: "It turned out that he was in Paris." },
+                    { q: "05. (Lợi thế về) Chiều cao giúp cô ấy dễ trở thành người mẫu nổi tiếng hơn.", a: "Her height made it easier for her to become a famous model." },
+                    { q: "06. Tuyết rơi liên tục suốt đêm.", a: "It snowed steadily through the night." },
+                    { q: "07. Hiệu sách chính là nơi tôi gặp bạn lần đầu tiên.", a: "It was in the bookstore where I first met you." },
+                    { q: "08. Hôm qua chính là ngày tôi đã làm mất cuốn sách đó.", a: "It was yesterday that I lost the book." },
+                    { q: "09. Gia đình chính là nơi khiến tôi hạnh phúc.", a: "It is my family that makes me happy." },
+                    { q: "10. Mất 10 năm để viết xong cuốn sách này.", a: "It took 10 years to finish writing this book." },
+                    { q: "11. Tôi tốn một tuần lương để mua chiếc áo đó.", a: "It cost me a week's salary to buy the coat." },
+                    { q: "12. Có hai luồng quan điểm trái ngược nhau về vấn đề này.", a: "There are two contrasting views on the matter." },
+                    { q: "13. Trong tủ lạnh không có thức ăn.", a: "There is no food in the fridge." },
+                    { q: "14. Có một số người không có khiếu hài hước.", a: "There are some people that have no sense of humor." },
+                    { q: "15. Sẽ không còn rừng sau khi phát triển đất canh tác.", a: "There will be no forest left after the land is developed." }
+                ],
+                day5_test: [
+                    { q: "01. cần thiết / giảm số lượng xe máy / ở Hanoi", a: "It is necessary to reduce the number of motorcycles in Hanoi." },
+                    { q: "02. sự thật là / quảng cáo khuyến khích mọi người / mua những thứ không cần thiết", a: "It is a fact that advertising encourages people to buy unnecessary things." },
+                    { q: "03. quan trọng là / thanh thiếu niên có kinh nghiệm làm việc / từ khi còn nhỏ", a: "It is important for teenagers to get work experience from an early age." },
+                    { q: "04. chính nỗ lực của một người / tạo nên sự khác biệt giữa thất bại và thành công", a: "It is one's dedication that makes the difference between failure and success." },
+                    { q: "05. tốn lượng lớn tiền thuế / để cải thiện đường sá và cao tốc", a: "It costs a large amount of tax money to improve roads and highways." },
+                    { q: "06. chính thành công là thứ / mà mọi người đều phấn đấu đạt được / trong cuộc sống của mình", a: "It is success that everyone strives for in their daily life." },
+                    { q: "07. có những khu ký túc xá / cung cấp đường truyền Internet tốc độ cao", a: "There are dormitories that offer high-speed Internet access." },
+                    { q: "08. hầu như không có lợi ích gì / chơi trò chơi điện tử", a: "There are few benefits to playing video games." },
+                    { q: "09. gần như không cần đến / bưu điện / trong tương lai / nhờ có e-mail", a: "There is little use for post offices in the future due to e-mail." },
+                    { q: "10. do việc sử dụng rộng rãi Internet / có nhiều khóa học đại học trực tuyến hơn", a: "Due to the widespread use of the Internet, there are more online university courses." },
+                    { q: "11. con người hầu như không bao giờ thỏa mãn / với những gì họ có", a: "It is unlikely that people are ever satisfied with what they have." },
+                    { q: "12. những trải nghiệm nhất định / định hình nên cuộc đời của một người", a: "There are certain experiences that shape a person's life." },
+                    { q: "13. e-mail khiến mọi người dễ dàng / giữ liên lạc", a: "E-mail makes it easy for people to keep in touch." },
+                    { q: "14. rất khó cho người lớn tuổi / hiểu được thế hệ trẻ", a: "It is difficult for older people to understand the young generation." },
+                    { q: "15. có lúc / thanh thiếu niên phải bắt đầu / tự đưa ra quyết định", a: "There comes a time when teenagers have to start making their own decisions." }
+                ],
+                day6_checkup: [
+                    { q: "01. Tôi vẫn bận như hôm qua.", a: "I am as busy as I was yesterday." },
+                    { q: "02. Bài kiểm tra dễ hơn nhiều so với bài trước đó.", a: "The test was much easier than the last one." },
+                    { q: "03. Anh ấy không đẹp trai bằng cậu em trai.", a: "He is not as handsome as his brother." },
+                    { q: "04. Cô ấy đã dành nhiều thời gian nhất có thể để ở bên con.", a: "She spent as much time as possible with her child." },
+                    { q: "05. Ron là vận động viên chạy nhanh nhất trong đội.", a: "Ron is the fastest runner on the team." },
+                    { q: "06. Cô ấy làm việc chăm chỉ hơn các đồng nghiệp.", a: "She works harder than her co-workers." },
+                    { q: "07. GDP của Nhật Bản nhiều gấp ba lần GDP của Hàn Quốc.", a: "Japan's GDP is three times bigger than South Korea's." },
+                    { q: "08. Càng có nhiều, người ta lại càng muốn có nhiều hơn nữa.", a: "The more people have, the more they want." },
+                    { q: "09. Hình thức tập thể dục yêu thích của tôi là chạy bộ và bơi lội.", a: "My favorite types of exercise are jogging and swimming." },
+                    { q: "10. Việc tham gia lớp học ngoại ngữ không phải là bắt buộc mà là khuyến khích.", a: "Taking a foreign language class is not mandatory but recommended." },
+                    { q: "11. Cách hiệu quả nhất để ngăn chặn việc băng qua đường trái phép là tăng tiền phạt.", a: "The most effective way to prevent jaywalking is by increasing fines." },
+                    { q: "12. Cả học tập và giảng dạy đều là những quá trình bổ ích.", a: "Both learning and teaching are rewarding processes." },
+                    { q: "13. Cô ấy không chỉ thông minh mà còn rất tốt bụng.", a: "She is not only smart but also very kind." },
+                    { q: "14. Xe đạp của anh ấy đắt tiền ngang xe của tôi.", a: "His bike is as expensive as mine." },
+                    { q: "15. Làm việc cẩn thận thì quan trọng hơn là làm xong sớm.", a: "It is more important to do a thorough job than to finish early." }
+                ],
+                day6_test: [
+                    { q: "01. dành thời gian ở một mình / không vui vẻ như khi bên bạn bè", a: "Spending time alone is not as pleasant as being with friends." },
+                    { q: "02. nhiều người nghĩ / những năm tháng đại học là quãng thời gian thú vị nhất / trong cuộc đời họ", a: "Many people think that their college days are the most enjoyable time in their lives." },
+                    { q: "03. những học sinh / hỏi thường xuyên nhất / có xu hướng làm tốt bài kiểm tra", a: "Students who ask questions the most frequently tend to do well in exams." },
+                    { q: "04. các nhân viên trẻ tuổi / không có cả thời gian hay năng lượng / tập thể dục / dạo này", a: "Young workers have neither the time nor the energy to exercise these days." },
+                    { q: "05. việc nhận lương cao cho phép / mọi người đầu tư hoặc tiết kiệm / cho tương lai", a: "Earning a high salary allows people to either invest or save for the future." },
+                    { q: "06. tuần làm việc 4 ngày sẽ có lợi / cho cả chủ doanh nghiệp lẫn nhân viên", a: "A four-day workweek would benefit both employers and employees." },
+                    { q: "07. việc tham gia các lớp giáo dục thể chất / không phải là bắt buộc mà là khuyến khích", a: "Taking physical education classes is not essential but recommended." },
+                    { q: "08. kỹ năng giao tiếp thành thục quan trọng / không chỉ trong công việc mà còn trong cả đời tư", a: "Strong communication skills are important not only in business but also in personal matters." },
+                    { q: "09. làm việc trong công ty nhỏ có thể cũng bổ ích / như làm ở tập đoàn lớn", a: "Working for a small company can be as rewarding as working for a large corporation." },
+                    { q: "10. thanh thiếu niên nên tập trung hơn / vào việc học / so với việc kiếm tiền", a: "Teenagers should focus more on their studies than on earning money." },
+                    { q: "11. quan trọng là / kiểm tra lại việc bạn làm / kỹ lưỡng nhất có thể", a: "It is important to check your work as thoroughly as possible." },
+                    { q: "12. các giờ học văn không hữu ích / bằng các giờ khoa học", a: "Literature classes are not as useful as science classes." },
+                    { q: "13. đối với một số người / vật nuôi gần gũi / như thành viên trong gia đình", a: "For some people, pets are as close as family members." },
+                    { q: "14. thông thường, / người trẻ cởi mở hơn / so với người lớn tuổi", a: "Generally, young people are more open-minded than older people." },
+                    { q: "15. thỉnh thoảng, / thất bại của bạn lại có giá trị hơn / thành công", a: "Sometimes, your failure is more valuable than your success." }
+                ]
+            };
+
+            function createExerciseHTML(exercise) {
+                return `
+                    <div class="daily-test-item">
+                        <p>${exercise.q}</p>
+                        <div class="mt-2 text-right">
+                            <button class="toggle-answer-btn px-3 py-1 text-sm rounded-md">Hiện đáp án</button>
+                        </div>
+                        <div class="answer-block" style="display: none;">${exercise.a}</div>
+                    </div>
+                `;
+            }
+
+            // Populate all exercise containers
+            for (const key in exercises) {
+                const containerId = key.replace('_', '-') + '-exercises';
+                const container = document.getElementById(containerId);
+                if (container) {
+                    container.innerHTML = exercises[key].map(createExerciseHTML).join('');
+                }
+            }
+
+
+            function setupToggleButtons() {
+                const toggleButtons = document.querySelectorAll('.toggle-answer-btn');
+                toggleButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const answerBlock = button.parentElement.nextElementSibling;
+                        const isHidden = answerBlock.style.display === 'none';
+                        
+                        answerBlock.style.display = isHidden ? 'block' : 'none';
+                        button.textContent = isHidden ? 'Ẩn đáp án' : 'Hiện đáp án';
+                    });
+                });
+            }
+            
+            // --- Initialization ---
+            showPage('intro');
+            setupToggleButtons();
+        });
+    </script>
+
+</body>
+</html>
